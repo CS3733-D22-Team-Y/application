@@ -76,5 +76,6 @@
             </Label>
          </top>
       </BorderPane>
+      <JFXButton layoutX="489.0" layoutY="754.0" onAction="#activeRequests" text="view active requests" />
    </children>
 </AnchorPane>
