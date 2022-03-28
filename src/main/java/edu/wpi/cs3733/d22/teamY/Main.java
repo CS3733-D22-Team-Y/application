@@ -23,10 +23,10 @@ public class Main {
     // add ArrayList locations so that Datamanager can access all values
     dataManager.addLocations(locationArray);
 
-    // creatae locationManager to run console loop
-    LocationManagerInterface locationManagerInterface = new LocationManagerInterface();
-    locationManagerInterface.start();
-    //    App.launch(App.class, args);
+    // create locationManager to run console loop
+    // LocationManagerInterface locationManagerInterface = new LocationManagerInterface();
+    // locationManagerInterface.start();
+    App.launch(App.class, args);
 
     // once ended, shuts off the database
     locationDB.shutdown_db();
