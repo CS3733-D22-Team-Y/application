@@ -49,4 +49,9 @@ public class requestMenuController {
   void maintenanceRequests(ActionEvent event) throws IOException {
     App.getInstance().setSceneToSecurityServicesRequest();
   }
+
+  @FXML
+  void activeRequests(ActionEvent event) throws IOException {
+    App.getInstance().setSceneToActiveRequests();
+  }
 }
