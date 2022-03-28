@@ -5,6 +5,9 @@ build/
 bin/
 .config/
 *.xml
+*.log
 
+#Ignore DB
+LocationDB/
 #Mac Specific
 .DS_Store

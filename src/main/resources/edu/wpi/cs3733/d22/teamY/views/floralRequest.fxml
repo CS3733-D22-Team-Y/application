@@ -3,10 +3,10 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -37,11 +37,11 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <TextField layoutX="287.0" layoutY="183.0" prefHeight="56.0" prefWidth="250.0">
+      <TextField fx:id="floralRoomID" layoutX="287.0" layoutY="183.0" prefHeight="56.0" prefWidth="250.0">
          <font>
             <Font size="24.0" />
          </font></TextField>
-      <TextField layoutX="288.0" layoutY="262.0" prefHeight="56.0" prefWidth="250.0">
+      <TextField fx:id="floralPatientName" layoutX="288.0" layoutY="262.0" prefHeight="56.0" prefWidth="250.0">
          <font>
             <Font size="24.0" />
          </font>
@@ -55,30 +55,37 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TextArea layoutX="44.0" layoutY="349.0" prefHeight="298.0" prefWidth="504.0" promptText="Additional Notes...">
+      <TextArea fx:id="floralAdditionalNotes" layoutX="44.0" layoutY="349.0" prefHeight="298.0" prefWidth="504.0" promptText="Additional Notes...">
          <font>
             <Font size="24.0" />
          </font>
       </TextArea>
       <VBox layoutX="748.0" layoutY="97.0" />
-      <Group layoutX="611.0" layoutY="180.0">
-         <children>
-            <JFXRadioButton layoutX="12.0" layoutY="12.0" text="Get well soon Bouquet">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </JFXRadioButton>
-            <JFXRadioButton layoutX="12.0" layoutY="64.0" text="New baby">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </JFXRadioButton>
-            <JFXRadioButton layoutX="12.0" layoutY="115.0" text="Bouquet of the Day">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </JFXRadioButton>
-         </children>
-      </Group>
+      <JFXRadioButton fx:id="GetWellSoonBouquetRadioButton" layoutX="623.0" layoutY="192.0" text="Get well soon Bouquet">
+         <font>
+            <Font size="36.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="flowerType" />
+         </toggleGroup>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="NewBabyRadioButton" layoutX="623.0" layoutY="244.0" text="New baby" toggleGroup="$flowerType">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="BouquetOfTheDayRadioButton" layoutX="623.0" layoutY="295.0" text="Bouquet of the Day" toggleGroup="$flowerType">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </JFXRadioButton>
+      <JFXButton fx:id="ResetAllFieldsButton" alignment="CENTER" layoutX="720.0" layoutY="601.0" onAction="#resetAllFields" prefHeight="68.0" prefWidth="150.0" style="-fx-background-color: #012d5a;" text="Reset" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>
