@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -40,11 +39,11 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <TextField layoutX="279.0" layoutY="108.0" prefHeight="56.0" prefWidth="250.0">
+      <TextField fx:id="inputRoomID" layoutX="279.0" layoutY="108.0" prefHeight="56.0" prefWidth="250.0">
          <font>
             <Font size="24.0" />
          </font></TextField>
-      <TextField layoutX="278.0" layoutY="189.0" prefHeight="56.0" prefWidth="250.0">
+      <TextField fx:id="inputPatientName" layoutX="278.0" layoutY="189.0" prefHeight="56.0" prefWidth="250.0">
          <font>
             <Font size="24.0" />
          </font>
@@ -58,7 +57,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TextArea layoutX="25.0" layoutY="278.0" prefHeight="298.0" prefWidth="504.0" promptText="Additional Notes..." wrapText="true">
+      <TextArea fx:id="inputAdditionalNotes" layoutX="25.0" layoutY="278.0" prefHeight="298.0" prefWidth="504.0" promptText="Additional Notes..." wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
@@ -66,7 +65,7 @@
       <VBox layoutX="748.0" layoutY="97.0" />
       <Group layoutX="747.0" layoutY="166.0">
          <children>
-            <JFXRadioButton layoutX="12.0" layoutY="12.0" text="Pizza">
+            <JFXRadioButton fx:id="pizzaSelect" layoutX="12.0" layoutY="12.0" text="Pizza">
                <font>
                   <Font size="24.0" />
                </font>
@@ -74,32 +73,24 @@
                   <ToggleGroup fx:id="mainItem" />
                </toggleGroup>
             </JFXRadioButton>
-            <JFXRadioButton layoutX="12.0" layoutY="56.0" text="Burger" toggleGroup="$mainItem">
+            <JFXRadioButton fx:id="burgerSelect" layoutX="12.0" layoutY="56.0" text="Burger" toggleGroup="$mainItem">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXRadioButton>
-            <JFXRadioButton layoutX="12.0" layoutY="99.0" text="Salad" toggleGroup="$mainItem">
+            <JFXRadioButton fx:id="saladSelect" layoutX="12.0" layoutY="99.0" text="Salad" toggleGroup="$mainItem">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXRadioButton>
          </children>
       </Group>
-      <MenuButton layoutX="760.0" layoutY="354.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="205.0">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Gluten Free" />
-          <MenuItem mnemonicParsing="false" text="Vegetarian" />
-            <MenuItem mnemonicParsing="false" text="Vegan" />
-            <MenuItem mnemonicParsing="false" text="Other (specify)" />
-        </items>
-      </MenuButton>
       <Text layoutX="760.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dietary Restrictions" wrappingWidth="223.541015625">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TextArea layoutX="760.0" layoutY="397.0" prefHeight="190.0" prefWidth="293.0" promptText="Special Instructions..." wrapText="true">
+      <TextArea fx:id="specialInstructions" disable="true" layoutX="760.0" layoutY="397.0" prefHeight="190.0" prefWidth="293.0" promptText="Special Instructions..." wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
@@ -116,7 +107,7 @@
       </Text>
       <Group layoutX="908.0" layoutY="166.0">
          <children>
-            <JFXRadioButton layoutX="12.0" layoutY="12.0" text="Rice">
+            <JFXRadioButton fx:id="riceSelect" layoutX="12.0" layoutY="12.0" text="Rice">
                <font>
                   <Font size="24.0" />
                </font>
@@ -124,17 +115,26 @@
                   <ToggleGroup fx:id="sides" />
                </toggleGroup>
             </JFXRadioButton>
-            <JFXRadioButton layoutX="12.0" layoutY="56.0" text="Peas" toggleGroup="$sides">
+            <JFXRadioButton fx:id="peasSelect" layoutX="12.0" layoutY="56.0" text="Peas" toggleGroup="$sides">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXRadioButton>
-            <JFXRadioButton layoutX="12.0" layoutY="99.0" text="Apple" toggleGroup="$sides">
+            <JFXRadioButton fx:id="appleSelect" layoutX="12.0" layoutY="99.0" text="Apple" toggleGroup="$sides">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXRadioButton>
          </children>
       </Group>
+      <JFXComboBox fx:id="dietaryRestrictionsSelectionBox" layoutX="761.0" layoutY="355.0" onAction="#checkSpecialInstructionsEnable" prefHeight="26.0" prefWidth="150.0" promptText="None" style="-fx-background-color: ddd;" />
+      <JFXButton alignment="CENTER" layoutX="720.0" layoutY="601.0" onAction="#resetAllFields" prefHeight="68.0" prefWidth="150.0" style="-fx-background-color: #012d5a;" text="Reset" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>
