@@ -1,0 +1,10 @@
+#Ignore Folders
+.idea/
+.gradle/
+build/
+bin/
+.config/
+*.xml
+
+#Mac Specific
+.DS_Store
