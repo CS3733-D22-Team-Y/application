@@ -3,10 +3,10 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -37,11 +37,11 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <TextField layoutX="279.0" layoutY="108.0" prefHeight="56.0" prefWidth="250.0">
+      <TextField fx:id="laundryRequestRoomID" layoutX="279.0" layoutY="108.0" prefHeight="56.0" prefWidth="250.0">
          <font>
             <Font size="24.0" />
          </font></TextField>
-      <TextField layoutX="278.0" layoutY="189.0" prefHeight="56.0" prefWidth="250.0">
+      <TextField fx:id="laundryPatientName" layoutX="278.0" layoutY="189.0" prefHeight="56.0" prefWidth="250.0">
          <font>
             <Font size="24.0" />
          </font>
@@ -55,30 +55,37 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TextArea layoutX="25.0" layoutY="278.0" prefHeight="298.0" prefWidth="504.0" promptText="Additional Notes...">
+      <TextArea fx:id="laundryAdditionalNotes" layoutX="25.0" layoutY="278.0" prefHeight="298.0" prefWidth="504.0" promptText="Additional Notes...">
          <font>
             <Font size="24.0" />
          </font>
       </TextArea>
       <VBox layoutX="748.0" layoutY="97.0" />
-      <Group layoutX="763.0" layoutY="119.0">
-         <children>
-            <JFXRadioButton layoutX="12.0" layoutY="12.0" text="Linens">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </JFXRadioButton>
-            <JFXRadioButton layoutX="12.0" layoutY="64.0" text="Scrubs">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </JFXRadioButton>
-            <JFXRadioButton layoutX="12.0" layoutY="115.0" text="Hazardous">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </JFXRadioButton>
-         </children>
-      </Group>
+      <JFXRadioButton fx:id="linensRadioButton" layoutX="775.0" layoutY="131.0" text="Linens">
+         <font>
+            <Font size="36.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="laundryChooseType" />
+         </toggleGroup>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="scrubsRadioButton" layoutX="775.0" layoutY="183.0" text="Scrubs" toggleGroup="$laundryChooseType">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="hazardousRadioButton" layoutX="775.0" layoutY="234.0" text="Hazardous" toggleGroup="$laundryChooseType">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </JFXRadioButton>
+      <JFXButton fx:id="resetButton" alignment="CENTER" layoutX="720.0" layoutY="601.0" onAction="#resetAllFields" prefHeight="68.0" prefWidth="150.0" style="-fx-background-color: #012d5a;" text="Reset" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>
