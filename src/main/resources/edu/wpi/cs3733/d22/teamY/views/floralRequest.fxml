@@ -24,7 +24,7 @@
       </JFXButton>
       <Label alignment="CENTER" layoutX="157.0" layoutY="15.0" prefHeight="80.0" prefWidth="882.0" text="Floral Delivery" textFill="#297bce">
          <font>
-            <Font name="Microsoft YaHei" size="60.0" />
+            <Font name="Microsoft Tai Le Bold" size="54.0" />
          </font>
       </Label>
       <Text layoutX="45.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room:">
