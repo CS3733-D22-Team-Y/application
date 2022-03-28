@@ -10,16 +10,21 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class mealRequestController {
-  @FXML private TextField inputRoomID;
-  @FXML private TextField inputPatientName;
-  @FXML private TextArea inputAdditionalNotes;
-  @FXML private JFXRadioButton pizzaSelect;
-  @FXML private JFXRadioButton burgerSelect;
-  @FXML private JFXRadioButton saladSelect;
-  @FXML private JFXRadioButton riceSelect;
-  @FXML private JFXRadioButton peasSelect;
-  @FXML private JFXRadioButton appleSelect;
-  @FXML private TextArea specialInstructions;
+  // Text input
+  @FXML private TextField input_RoomID;
+  @FXML private TextField input_PatientName;
+  @FXML private TextArea input_AdditionalNotes;
+
+  @FXML private TextArea input_SpecialInstructions;
+  // Radio button main course
+  @FXML private JFXRadioButton pizzaRadioButton;
+  @FXML private JFXRadioButton burgerRadioButton;
+  @FXML private JFXRadioButton saladRadioButton;
+  // Radio button sides
+  @FXML private JFXRadioButton riceRadioButton;
+  @FXML private JFXRadioButton peasRadioButton;
+  @FXML private JFXRadioButton appleRadioButton;
+  // Dropdown menu
   @FXML private JFXComboBox<String> dietaryRestrictionsSelectionBox;
 
   private String textOther = "Other (specify)";
@@ -35,33 +40,37 @@ public class mealRequestController {
 
   @FXML
   void backToRequestMenu(ActionEvent event) throws IOException {
+    resetAllFields();
     App.getInstance().setSceneToRequestMenu(); // Returns to request menu
   }
 
   // Checks if the "Special Instructions" box should be enabled.
-  // Will only enable if "Other (specify)" is checked.
+  // Will only enable if "Other (specify)" is selected.
   @FXML
   void checkSpecialInstructionsEnable() {
-    if (dietaryRestrictionsSelectionBox.getValue().equals(textOther))
-      specialInstructions.setDisable(false);
-    else specialInstructions.setDisable(true);
+    if (dietaryRestrictionsSelectionBox.getValue().equals(textOther)) {
+      input_SpecialInstructions.setDisable(false);
+    } else {
+      input_SpecialInstructions.setDisable(true);
+    }
   }
 
+  // Reset button functionality
   @FXML
   void resetAllFields() {
     // Input text fields
-    inputRoomID.setText("");
-    inputPatientName.setText("");
-    inputAdditionalNotes.setText("");
-    specialInstructions.setText("");
+    input_RoomID.setText("");
+    input_PatientName.setText("");
+    input_AdditionalNotes.setText("");
+    input_SpecialInstructions.setText("");
     // Mains
-    pizzaSelect.setSelected(false);
-    burgerSelect.setSelected(false);
-    saladSelect.setSelected(false);
+    pizzaRadioButton.setSelected(false);
+    burgerRadioButton.setSelected(false);
+    saladRadioButton.setSelected(false);
     // Sides
-    riceSelect.setSelected(false);
-    peasSelect.setSelected(false);
-    appleSelect.setSelected(false);
+    riceRadioButton.setSelected(false);
+    peasRadioButton.setSelected(false);
+    appleRadioButton.setSelected(false);
     // Selection box
     dietaryRestrictionsSelectionBox.setValue(textNone);
   }

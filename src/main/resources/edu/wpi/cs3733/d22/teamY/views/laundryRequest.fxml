@@ -37,11 +37,11 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <TextField fx:id="laundryRequestRoomID" layoutX="279.0" layoutY="108.0" prefHeight="56.0" prefWidth="250.0">
+      <TextField fx:id="input_RoomID" layoutX="279.0" layoutY="108.0" prefHeight="56.0" prefWidth="250.0">
          <font>
             <Font size="24.0" />
          </font></TextField>
-      <TextField fx:id="laundryPatientName" layoutX="278.0" layoutY="189.0" prefHeight="56.0" prefWidth="250.0">
+      <TextField fx:id="input_PatientName" layoutX="278.0" layoutY="189.0" prefHeight="56.0" prefWidth="250.0">
          <font>
             <Font size="24.0" />
          </font>
@@ -55,7 +55,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TextArea fx:id="laundryAdditionalNotes" layoutX="25.0" layoutY="278.0" prefHeight="298.0" prefWidth="504.0" promptText="Additional Notes...">
+      <TextArea fx:id="input_AdditionalNotes" layoutX="25.0" layoutY="278.0" prefHeight="298.0" prefWidth="504.0" promptText="Additional Notes...">
          <font>
             <Font size="24.0" />
          </font>
@@ -79,7 +79,7 @@
             <Font size="36.0" />
          </font>
       </JFXRadioButton>
-      <JFXButton fx:id="resetButton" alignment="CENTER" layoutX="720.0" layoutY="601.0" onAction="#resetAllFields" prefHeight="68.0" prefWidth="150.0" style="-fx-background-color: #012d5a;" text="Reset" textFill="WHITE">
+      <JFXButton alignment="CENTER" layoutX="720.0" layoutY="601.0" onAction="#resetAllFields" prefHeight="68.0" prefWidth="150.0" style="-fx-background-color: #012d5a;" text="Reset" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

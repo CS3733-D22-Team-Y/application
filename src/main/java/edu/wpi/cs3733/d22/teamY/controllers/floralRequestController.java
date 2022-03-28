@@ -9,25 +9,27 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class floralRequestController {
-  @FXML private JFXRadioButton GetWellSoonBouquetRadioButton;
-  @FXML private JFXRadioButton NewBabyRadioButton;
-  @FXML private JFXRadioButton BouquetOfTheDayRadioButton;
-  @FXML private TextField floralRoomID;
-  @FXML private TextField floralPatientName;
-  @FXML private TextArea floralAdditionalNotes;
+  @FXML private JFXRadioButton getWellSoonBouquetRadioButton;
+  @FXML private JFXRadioButton newBabyRadioButton;
+  @FXML private JFXRadioButton bouquetOfTheDayRadioButton;
+  @FXML private TextField input_RoomID;
+  @FXML private TextField input_PatientName;
+  @FXML private TextArea input_AdditionalNotes;
 
   @FXML
   void backToRequestMenu(ActionEvent event) throws IOException {
+    resetAllFields();
     App.getInstance().setSceneToRequestMenu(); // Returns to request menu
   }
 
+  // Reset button functionality
   @FXML
   void resetAllFields() {
-    GetWellSoonBouquetRadioButton.setSelected(false);
-    NewBabyRadioButton.setSelected(false);
-    BouquetOfTheDayRadioButton.setSelected(false);
-    floralRoomID.setText("");
-    floralPatientName.setText("");
-    floralAdditionalNotes.setText("");
+    getWellSoonBouquetRadioButton.setSelected(false);
+    newBabyRadioButton.setSelected(false);
+    bouquetOfTheDayRadioButton.setSelected(false);
+    input_RoomID.setText("");
+    input_PatientName.setText("");
+    input_AdditionalNotes.setText("");
   }
 }

@@ -12,12 +12,13 @@ public class laundryRequestController {
   @FXML private JFXRadioButton hazardousRadioButton;
   @FXML private JFXRadioButton scrubsRadioButton;
   @FXML private JFXRadioButton linensRadioButton;
-  @FXML private TextField laundryRequestRoomID;
-  @FXML private TextField laundryPatientName;
-  @FXML private TextArea laundryAdditionalNotes;
+  @FXML private TextField input_RoomID;
+  @FXML private TextField input_PatientName;
+  @FXML private TextArea input_AdditionalNotes;
 
   @FXML
   void backToRequestMenu(ActionEvent event) throws IOException {
+    resetAllFields();
     App.getInstance().setSceneToRequestMenu(); // Returns to request menu
   }
 
@@ -26,8 +27,8 @@ public class laundryRequestController {
     hazardousRadioButton.setSelected(false);
     scrubsRadioButton.setSelected(false);
     linensRadioButton.setSelected(false);
-    laundryRequestRoomID.setText("");
-    laundryPatientName.setText("");
-    laundryAdditionalNotes.setText("");
+    input_RoomID.setText("");
+    input_PatientName.setText("");
+    input_AdditionalNotes.setText("");
   }
 }
