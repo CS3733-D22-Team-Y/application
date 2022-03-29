@@ -53,8 +53,8 @@ public class mealRequestController {
               FXMLLoader.load(
                   Objects.requireNonNull(App.class.getResource("views/requestMenu.fxml"))));
     }
-    App.getInstance().setScene(requestMenu); // Returns to request menu
     resetAllFields();
+    App.getInstance().setScene(requestMenu); // Returns to request menu
   }
 
   // Checks if the "Special Instructions" box should be enabled.
