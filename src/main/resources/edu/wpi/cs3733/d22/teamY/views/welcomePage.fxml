@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1132.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.welcomePageController">
    <children>
-      <ImageView fitHeight="722.0" fitWidth="1145.0" layoutX="-13.0" layoutY="-14.0" opacity="0.75">
+      <ImageView fitHeight="744.0" fitWidth="1172.0" layoutX="-11.0" layoutY="-8.0" opacity="0.75">
          <image>
             <Image url="@images/do-rgb.jpg" />
          </image>
@@ -34,9 +34,9 @@
             <Font name="Microsoft Tai Le Bold" size="52.0" />
          </font>
       </Label>
-      <JFXButton layoutX="931.0" layoutY="26.0" onAction="#killApplication" prefHeight="83.0" prefWidth="187.0" style="-fx-font: 70;" text="Exit">
+      <JFXButton layoutX="974.0" layoutY="-12.0" onAction="#killApplication" prefHeight="83.0" prefWidth="187.0" style="-fx-font: 70;" text="Exit" textFill="WHITE">
          <font>
-            <Font size="44.0" />
+            <Font name="Microsoft Tai Le" size="44.0" />
          </font>
       </JFXButton>
    </children>
