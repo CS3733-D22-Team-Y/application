@@ -14,7 +14,7 @@
          <left>
             <VBox prefHeight="638.0" prefWidth="330.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label prefHeight="232.0" prefWidth="330.0" text="Map" underline="true">
+                  <Label prefHeight="300.0" prefWidth="330.0" text="Map" underline="true">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -43,7 +43,7 @@
          <center>
             <VBox prefHeight="638.0" prefWidth="330.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label prefHeight="232.0" prefWidth="500.0" text="Service" underline="true">
+                  <Label prefHeight="300.0" prefWidth="500.0" text="Service" underline="true">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -56,7 +56,7 @@
                         <Font size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="210.0" onAction="#activeRequests" prefHeight="500.0" prefWidth="500.0" text="View">
+                  <JFXButton layoutX="10.0" layoutY="210.0" onAction="#activeRequests" prefHeight="300.0" prefWidth="500.0" text="View">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -71,7 +71,7 @@
          <right>
             <VBox prefHeight="638.0" prefWidth="330.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label prefHeight="232.0" prefWidth="500.0" text="Equipment" underline="true">
+                  <Label prefHeight="300.0" prefWidth="500.0" text="Equipment" underline="true">
                      <font>
                         <Font size="24.0" />
                      </font>
