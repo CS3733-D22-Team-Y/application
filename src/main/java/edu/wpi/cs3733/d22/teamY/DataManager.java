@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/** This class manages the location data so that data is mirrored in memory and in the database. */
+/** This class manages the database data so that data is mirrored in memory and in the database. */
 public class DataManager {
   private static final HashMap<String, HashMap<String, DBObject>> data =
       new HashMap<>(); // all data stored in the database
@@ -96,12 +96,15 @@ public class DataManager {
     return true;
   }
 
-  /** Updates the local copy of the location list from the database */
-  public static void updateLocationsFromDB() {
+  /**
+   * Updates the local copy of the location list from the database
+   * NOT FUNCTIONAL YET
+   *
+   */
+  public static void updateFromDB() {
     // erases the current maps
-    for (String table : data.keySet()) {
-      data.get(table).clear();
-    }
+    cleanAll();
+
     // TODO pull stuff from db and update hashmap
   }
 
@@ -124,7 +127,7 @@ public class DataManager {
   }
 
   /**
-   * Adds a list of locations to the current list of locations
+   * Adds a list of database objects to their respective tables
    *
    * @param objects the arraylist of DBObjects to add
    * @return true if successful with entire list, false otherwise
@@ -145,7 +148,7 @@ public class DataManager {
    * Gets a location from the list of locations
    *
    * @param key the key attribute of the DBObject to get
-   * @return the DBObject object with the given key or null if no such location exists
+   * @return the DBObject object with the given key or null if no such key exists
    */
   private static DBObject getDBObject(String tableName, String key) {
     HashMap<String, DBObject> table = getTable(tableName);
@@ -156,11 +159,14 @@ public class DataManager {
   }
 
   /**
-   * Returns a copy of a location from the list of locations
+   * Returns a copy of a location from the list of locations<br>
+   *
+   * Example: Location loc = DataManager.get(Location.TABLE_NAME, "UH500");
    *
    * @param tableName the tableName attribute of the DBObject to get
    * @param key the key attribute of the DBObject to get
    * @return a copy of the DB object with the given key or null if no such location exists
+   *
    */
   @SuppressWarnings("unchecked")
   public static <T extends DBObject> T get(String tableName, String key) {
