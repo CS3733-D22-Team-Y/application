@@ -5,13 +5,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 /** This class manages the location data so that data is mirrored in memory and in the database. */
 public class DataManager {
-  private static final HashMap<String, HashMap<String, DBObject>> data = new HashMap<>(); // all data stored in the database
+  private static final HashMap<String, HashMap<String, DBObject>> data =
+      new HashMap<>(); // all data stored in the database
   private static Connection dbConnection; // database connection
-
 
   /**
    * Initializes the data manager.
@@ -19,14 +18,14 @@ public class DataManager {
    * @param connection the database connection
    * @param tables the table names to initialize
    */
-  public static void init(Connection connection, String... tables){
+  public static void init(Connection connection, String... tables) {
     dbConnection = connection;
     for (String table : tables) {
       data.put(table, new HashMap<>());
     }
   }
 
-  private static  HashMap<String, DBObject> getTable(String tableName) {
+  private static HashMap<String, DBObject> getTable(String tableName) {
     HashMap<String, DBObject> list = data.get(tableName);
     if (list == null) {
       System.out.println("No table '" + tableName + "' found");
@@ -45,8 +44,8 @@ public class DataManager {
     if (table == null) {
       return false;
     }
-    //table has been found
-    //now try adding the object to the database
+    // table has been found
+    // now try adding the object to the database
     try {
       Statement stmt = dbConnection.createStatement();
       stmt.executeUpdate("INSERT INTO " + object.tableName + " " + object.getInsertQuery());
@@ -55,8 +54,8 @@ public class DataManager {
       e.printStackTrace();
       return false;
     }
-    //at this point, the table has been found and the object has been added to the database
-    //can safely add to the hashmap
+    // at this point, the table has been found and the object has been added to the database
+    // can safely add to the hashmap
     table.put(object.getKey(), object);
 
     return true;
@@ -73,10 +72,10 @@ public class DataManager {
     if (table == null) {
       return false;
     }
-    //table has been found
+    // table has been found
     DBObject toRemove = table.get(key);
     if (toRemove == null) {
-      System.out.println("Location " + key + " not found");
+      System.out.println("Object of key: '" + key + "' was not found in table '" + tableName + "'");
       return false;
     }
 
@@ -91,7 +90,8 @@ public class DataManager {
       return false;
     }
 
-    table.remove(key); //this should never fail because we already got the 'toRemove' object in the hashmap
+    table.remove(
+        key); // this should never fail because we already got the 'toRemove' object in the hashmap
 
     return true;
   }
@@ -99,7 +99,7 @@ public class DataManager {
   /** Updates the local copy of the location list from the database */
   public static void updateLocationsFromDB() {
     // erases the current maps
-    for(HashMap<String, DBObject> table : data.values()){
+    for (String table : data.keySet()) {
       data.get(table).clear();
     }
     // TODO pull stuff from db and update hashmap
@@ -141,8 +141,6 @@ public class DataManager {
     return ok;
   }
 
-
-
   /**
    * Gets a location from the list of locations
    *
@@ -159,16 +157,18 @@ public class DataManager {
 
   /**
    * Returns a copy of a location from the list of locations
+   *
    * @param tableName the tableName attribute of the DBObject to get
    * @param key the key attribute of the DBObject to get
    * @return a copy of the DB object with the given key or null if no such location exists
    */
-  public static <T extends DBObject> T getDBObjectCopy(String tableName, String key) {
+  @SuppressWarnings("unchecked")
+  public static <T extends DBObject> T get(String tableName, String key) {
     DBObject object = getDBObject(tableName, key);
     if (object != null) {
       return (T) object.getClone();
     }
-      return null;
+    return null;
   }
 
   /**
@@ -178,19 +178,19 @@ public class DataManager {
    * @return true if successful, false otherwise
    */
   public static boolean replace(DBObject newObject) {
-    if(newObject == null) {
+    if (newObject == null) {
       return false;
     }
     DBObject oldObject = getDBObject(newObject.tableName, newObject.getKey());
-    if(oldObject == null) {
+    if (oldObject == null) {
       return false;
     }
-    //object has been found
-    if(!remove(newObject.tableName, newObject.getKey())){
+    // object has been found
+    if (!remove(newObject.tableName, newObject.getKey())) {
       return false;
     }
-    //remove was successful
-    if(!add(newObject)){
+    // remove was successful
+    if (!add(newObject)) {
       return false;
     }
 
@@ -202,17 +202,20 @@ public class DataManager {
    *
    * @return return an arraylist of elements in the table cast to the type of the table
    */
-  public static <T extends DBObject>  ArrayList<T> getAll(String tableName) {
+  @SuppressWarnings("unchecked")
+  public static <T extends DBObject> ArrayList<T> getAll(String tableName) {
     ArrayList<T> locationsCopy = new ArrayList<>();
     HashMap<String, DBObject> table = getTable(tableName);
     if (table == null) {
       return null;
     }
-    //here we have a valid table
+    // here we have a valid table
     for (DBObject obj : table.values()) {
-      locationsCopy.add((T) obj.getClone()); //casts the object to an extension DBObject which can be implicitly cast
+      locationsCopy.add(
+          (T) obj.getClone()); // casts the object to an extension DBObject which can be implicitly
+      // cast
     }
-    //return a list of elements in the table cast to the type of the table
+    // return a list of elements in the table cast to the type of the table
 
     return locationsCopy;
   }
@@ -235,7 +238,7 @@ public class DataManager {
   }
 
   public static void cleanAll() {
-    for(String table : data.keySet()) {
+    for (String table : data.keySet()) {
       cleanTable(table);
     }
   }

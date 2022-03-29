@@ -11,7 +11,7 @@ public class Locations2CSV {
     File csvFile = new File(fileName + ".csv");
     FileWriter fileWriter = new FileWriter(csvFile);
     ArrayList<Location> arrayList = new ArrayList<>();
-    arrayList = LocationDataManager.getLocations();
+    arrayList = DataManager.getAll(Location.TABLE_NAME);
     String[][] stringArray = new String[arrayList.size()][8];
     int ctr = 0;
     for (Location L : arrayList) {

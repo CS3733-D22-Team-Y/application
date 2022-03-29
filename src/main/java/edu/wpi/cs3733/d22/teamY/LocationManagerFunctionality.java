@@ -36,7 +36,7 @@ public class LocationManagerFunctionality {
    * @param locationType new location type
    */
   public static boolean replaceNodeVals(String ID, String floor, String locationType) {
-    Location toChange = DataManager.getDBObjectCopy(Location.TABLE_NAME, ID);
+    Location toChange = DataManager.get(Location.TABLE_NAME, ID);
     if (toChange == null) {
       System.out.println("Could not get Node " + ID + " for replacement.");
       return false;
@@ -63,7 +63,7 @@ public class LocationManagerFunctionality {
    * @param ID Node ID
    */
   public static boolean deleteNode(String ID) {
-    return DataManager.remove(Location.TABLE_NAME,ID);
+    return DataManager.remove(Location.TABLE_NAME, ID);
   }
 
   /**
