@@ -34,5 +34,10 @@
             <Font name="Microsoft Tai Le Bold" size="52.0" />
          </font>
       </Label>
+      <JFXButton layoutX="931.0" layoutY="26.0" onAction="#killApplication" prefHeight="83.0" prefWidth="187.0" style="-fx-font: 70;" text="Exit">
+         <font>
+            <Font size="44.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
