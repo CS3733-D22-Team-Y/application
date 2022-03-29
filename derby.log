@@ -1,14 +1,10 @@
 ----------------------------------------------------------------
-Tue Mar 29 14:44:37 EDT 2022D001 : [0] The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585), [1] a816c00e-017f-d6fe-7e75-00000ec84948, [2] C:\Users\Emily\Documents\GitHub\prototypeY\LocationDB, [3] jdk.internal.loader.ClassLoaders$AppClassLoader@6ea6d14e, [4] file:/C:/Users/Emily/.gradle/caches/modules-2/files-2.1/org.apache.derby/derby/10.15.2.0/b64da6681994f33ba5783ffae55cdb44885b9e70/derby-10.15.2.0.jar
+Tue Mar 29 15:05:35 EDT 2022D001 : [0] The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585), [1] a816c00e-017f-d711-b2c5-00000f3018c0, [2] /Users/bjschmitt/Documents/YYY/prototypeY/LocationDB, [3] jdk.internal.loader.ClassLoaders$AppClassLoader@17d99928, [4] file:/Users/bjschmitt/.gradle/caches/modules-2/files-2.1/org.apache.derby/derby/10.15.2.0/b64da6681994f33ba5783ffae55cdb44885b9e70/derby-10.15.2.0.jar
 java.vendor=Microsoft
-java.runtime.version=11.0.14.1+1-LTS
-user.dir=C:\Users\Emily\Documents\GitHub\prototypeY
-os.name=Windows 10
-os.arch=amd64
-os.version=10.0
+java.runtime.version=11.0.14+9-LTS
+user.dir=/Users/bjschmitt/Documents/YYY/prototypeY
+os.name=Mac OS X
+os.arch=x86_64
+os.version=12.3
 derby.system.home=null
-L001
-L018 : [0] C:\Users\Emily\Documents\GitHub\prototypeY\LocationDB\log\log3.dat
-L002
-L009 : [0] C:\Users\Emily\Documents\GitHub\prototypeY\LocationDB\log\log1.dat
 C005 : [0] 
