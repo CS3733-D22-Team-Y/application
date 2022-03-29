@@ -12,20 +12,16 @@ public class Main {
     Connection db_conn = locationDB.connection; // establishes connection to database
 
     // creating dataManager class that manages database
-    LocationDataManager dataManager = new LocationDataManager(db_conn);
-    dataManager.cleanTable("locations");
+    DataManager.init(db_conn, "locations");
+    DataManager.cleanAll(); // cleans database
 
     // function set to read in CSV
     ReadIn input = new ReadIn();
-    ArrayList<Location> locationArray = new ArrayList<Location>();
+    ArrayList<Location> locationArray = new ArrayList<>();
     locationArray = input.readCSV();
 
-    // add ArrayList locations so that Datamanager can access all values
-    dataManager.addLocations(locationArray);
+    DataManager.addObjects(locationArray);
 
-    // create locationManager to run console loop
-    // LocationManagerInterface locationManagerInterface = new LocationManagerInterface();
-    // locationManagerInterface.start();
     App.launch(App.class, args);
 
     // once ended, shuts off the database

@@ -1,6 +1,8 @@
 package edu.wpi.cs3733.d22.teamY;
 
-public class Location {
+
+public class Location extends DBObject {
+  public static final String TABLE_NAME = "locations";
   String nodeID;
   int xCoord, yCoord;
   String floor;
@@ -10,14 +12,15 @@ public class Location {
   String shortName;
 
   public Location(
-      String nodeID,
-      int xCoord,
-      int yCoord,
-      String floor,
-      String building,
-      String nodeType,
-      String longName,
-      String shortName) {
+          String nodeID,
+          int xCoord,
+          int yCoord,
+          String floor,
+          String building,
+          String nodeType,
+          String longName,
+          String shortName) {
+    super(TABLE_NAME, "nodeID");
     this.nodeID = nodeID;
     this.xCoord = xCoord;
     this.yCoord = yCoord;
@@ -29,6 +32,7 @@ public class Location {
   }
 
   public Location(String id) {
+    super(TABLE_NAME, "nodeID");
     nodeID = id;
     xCoord = 0;
     yCoord = 0;
@@ -37,6 +41,42 @@ public class Location {
     nodeType = "";
     longName = "";
     shortName = "";
+  }
+
+  public String getKey() {
+    return nodeID;
+  }
+
+  public String getInsertQuery() {
+    return "VALUES("
+            + "'"
+            + this.nodeID
+            + "'"
+            + ", "
+            + this.xCoord
+            + ", "
+            + this.yCoord
+            + ", "
+            + "'"
+            + this.floor
+            + "'"
+            + ", "
+            + "'"
+            + this.building
+            + "'"
+            + ", "
+            + "'"
+            + this.nodeType
+            + "'"
+            + ", "
+            + "'"
+            + this.longName
+            + "'"
+            + ", "
+            + "'"
+            + this.shortName
+            + "'"
+            + ")";
   }
 
   public Location getClone() {
