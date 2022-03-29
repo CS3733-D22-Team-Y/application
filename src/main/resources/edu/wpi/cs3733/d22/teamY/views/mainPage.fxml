@@ -8,31 +8,31 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.mainPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.mainPageController">
    <children>
-      <BorderPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #297BCE;">
+      <BorderPane prefHeight="706.0" prefWidth="1102.0" style="-fx-background-color: #297BCE;">
          <left>
-            <VBox prefHeight="400.0" prefWidth="190.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="638.0" prefWidth="330.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label prefHeight="500.0" prefWidth="500.0" text="Map" underline="true">
+                  <Label prefHeight="232.0" prefWidth="330.0" text="Map" underline="true">
                      <font>
                         <Font size="24.0" />
                      </font>
                      <padding>
-                        <Insets left="70.0" />
+                        <Insets left="140.0" />
                      </padding>
                   </Label>
-                  <JFXButton prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: red;" text="Path Finder">
+                  <JFXButton prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: red;" text="Path Finder">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="75.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: red;" text="View Map">
+                  <JFXButton layoutX="10.0" layoutY="75.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: red;" text="View Map">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="145.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: red;" text="Edit Map">
+                  <JFXButton layoutX="10.0" layoutY="145.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: red;" text="Edit Map">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -41,17 +41,17 @@
             </VBox>
          </left>
          <center>
-            <VBox prefHeight="400.0" prefWidth="202.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="638.0" prefWidth="330.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label prefHeight="450.0" prefWidth="500.0" text="Service" underline="true">
+                  <Label prefHeight="232.0" prefWidth="500.0" text="Service" underline="true">
                      <font>
                         <Font size="24.0" />
                      </font>
                      <padding>
-                        <Insets left="70.0" />
+                        <Insets left="175.0" />
                      </padding>
                   </Label>
-                  <JFXButton onAction="#requestMenu" prefHeight="500.0" prefWidth="500.0" text="Create">
+                  <JFXButton onAction="#requestMenu" prefHeight="300.0" prefWidth="500.0" text="Create">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -60,31 +60,39 @@
                      <font>
                         <Font size="24.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </JFXButton>
+                  <Label prefHeight="300.0" prefWidth="500.0" />
                </children>
             </VBox>
          </center>
          <right>
-            <VBox prefHeight="400.0" prefWidth="197.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="638.0" prefWidth="330.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label prefHeight="450.0" prefWidth="203.0" text="Equipment" underline="true">
+                  <Label prefHeight="232.0" prefWidth="500.0" text="Equipment" underline="true">
                      <font>
                         <Font size="24.0" />
                      </font>
                      <padding>
-                        <Insets left="50.0" />
+                        <Insets left="120.0" />
                      </padding>
                   </Label>
-                  <JFXButton prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: red;" text="View Locations">
+                  <JFXButton prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: red;" text="View Locations">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="39.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: red;" text="View Catalogs">
+                  <JFXButton layoutX="10.0" layoutY="39.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: red;" text="View Catalogs">
                      <font>
                         <Font size="24.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </JFXButton>
+                  <Label prefHeight="300.0" prefWidth="500.0" />
                </children>
             </VBox>
          </right>
