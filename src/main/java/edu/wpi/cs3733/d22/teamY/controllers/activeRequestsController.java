@@ -9,15 +9,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
 public class activeRequestsController {
-
-  private Scene requestMenu =
-      new Scene(
-          FXMLLoader.load(Objects.requireNonNull(App.class.getResource("views/requestMenu.fxml"))));
+  Scene mainMenu = null;
 
   public activeRequestsController() throws IOException {}
 
   @FXML
-  void backToRequestMenu(ActionEvent event) throws IOException {
-    App.getInstance().setScene(requestMenu); // Returns to request menu
+  void mainMenu(ActionEvent event) throws IOException {
+    mainMenu =
+        new Scene(
+            FXMLLoader.load(Objects.requireNonNull(App.class.getResource("views/mainPage.fxml"))));
+
+    App.getInstance().setScene(mainMenu); // Returns to request menu
   }
 }

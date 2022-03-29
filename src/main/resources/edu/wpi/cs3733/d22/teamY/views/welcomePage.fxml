@@ -9,30 +9,30 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1132.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.welcomePageController">
    <children>
-      <ImageView fitHeight="722.0" fitWidth="1145.0" layoutX="-13.0" layoutY="-14.0">
+      <ImageView fitHeight="722.0" fitWidth="1145.0" layoutX="-13.0" layoutY="-14.0" opacity="0.75">
          <image>
             <Image url="@images/do-rgb.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="21.0" layoutY="13.0" text="W e l c o m e" textFill="WHITE">
+      <Label layoutX="21.0" layoutY="13.0" text="Welcome" textFill="WHITE">
          <font>
-            <Font name="Malgun Gothic Semilight" size="52.0" />
+            <Font name="Microsoft Tai Le Bold" size="52.0" />
          </font>
       </Label>
-      <Label layoutX="26.0" layoutY="81.0" text="D r." textFill="WHITE">
+      <Label layoutX="26.0" layoutY="81.0" text="Dr." textFill="WHITE">
          <font>
-            <Font name="Malgun Gothic Semilight" size="52.0" />
+            <Font name="Microsoft Tai Le Bold" size="52.0" />
          </font>
       </Label>
-      <Label layoutX="28.0" layoutY="148.0" text="Y o s h i" textFill="WHITE">
-         <font>
-            <Font name="Malgun Gothic Semilight" size="52.0" />
-         </font>
-      </Label>
-      <JFXButton layoutX="518.0" layoutY="587.0" text=". . ." textAlignment="CENTER" textFill="WHITE">
+      <JFXButton layoutX="518.0" layoutY="587.0" onAction="#mainPage" text=". . ." textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="56.0" />
          </font>
       </JFXButton>
+      <Label layoutX="26.0" layoutY="154.0" text="Yoshi" textFill="WHITE">
+         <font>
+            <Font name="Microsoft Tai Le Bold" size="52.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

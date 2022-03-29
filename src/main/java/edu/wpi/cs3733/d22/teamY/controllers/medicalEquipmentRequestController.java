@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.Objects;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -20,7 +19,7 @@ public class medicalEquipmentRequestController {
   @FXML private JFXRadioButton xrayRadioButton;
   @FXML private JFXRadioButton infusionPumpRadioButton;
   @FXML private JFXRadioButton reclinerRadioButton;
-  
+
   private Scene requestMenu = null;
 
   public medicalEquipmentRequestController() throws IOException {}

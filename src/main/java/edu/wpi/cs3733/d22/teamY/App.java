@@ -14,7 +14,9 @@ public class App extends Application {
   private Stage primaryStage;
 
   // changes active scene
-  public void setScene(Scene scene) {primaryStage.setScene(scene);}
+  public void setScene(Scene scene) {
+    primaryStage.setScene(scene);
+  }
 
   private static App instance;
   // Summons instances for scene change implementation
@@ -33,7 +35,7 @@ public class App extends Application {
     this.primaryStage = primaryStage;
     // Sets the primary scene (currently request menu) and displays it
     Parent root =
-        FXMLLoader.load(Objects.requireNonNull(getClass().getResource("views/requestMenu.fxml")));
+        FXMLLoader.load(Objects.requireNonNull(getClass().getResource("views/welcomePage.fxml")));
     Scene scene = new Scene(root);
     primaryStage.setScene(scene);
     primaryStage.show();
