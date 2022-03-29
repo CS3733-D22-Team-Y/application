@@ -22,7 +22,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label alignment="CENTER" layoutX="157.0" layoutY="15.0" prefHeight="80.0" prefWidth="882.0" text="Floral Delivery" textFill="#297bce">
+      <Label alignment="CENTER" layoutX="157.0" layoutY="15.0" prefHeight="80.0" prefWidth="882.0" text="Floral Delivery" textFill="#012d5a">
          <font>
             <Font name="Microsoft Tai Le Bold" size="54.0" />
          </font>
