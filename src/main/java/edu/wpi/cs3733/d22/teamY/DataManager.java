@@ -226,6 +226,12 @@ public class DataManager {
    * @param tableName String of table name to clear
    */
   public static void cleanTable(String tableName) {
+    HashMap<String, DBObject> table = getTable(tableName);
+    if (table == null) {
+      throw new IllegalArgumentException("Table `" + tableName + "` does not exist");
+    }
+    table.clear();
+
     String sql_string = "DELETE FROM " + tableName;
 
     try {

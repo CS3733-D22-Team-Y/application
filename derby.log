@@ -1,5 +1,8 @@
 ----------------------------------------------------------------
-Tue Mar 29 02:57:10 EDT 2022D001 : [0] The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585), [1] a816c00e-017f-d476-ccf7-00001ef06598, [2] C:\Users\npoll\IdeaProjects\prototypeY\LocationDB, [3] jdk.internal.loader.ClassLoaders$AppClassLoader@6ea6d14e, [4] file:/C:/Users/npoll/.gradle/caches/modules-2/files-2.1/org.apache.derby/derby/10.15.2.0/b64da6681994f33ba5783ffae55cdb44885b9e70/derby-10.15.2.0.jar
+Tue Mar 29 11:44:38 EDT 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-017f-d659-b72f-00001889a008 
+on database directory C:\Users\npoll\IdeaProjects\prototypeY\LocationDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@14899482 
+Loaded from file:/C:/Users/npoll/.gradle/caches/modules-2/files-2.1/org.apache.derby/derby/10.15.2.0/b64da6681994f33ba5783ffae55cdb44885b9e70/derby-10.15.2.0.jar
 java.vendor=Amazon.com Inc.
 java.runtime.version=11.0.14.1+10-LTS
 user.dir=C:\Users\npoll\IdeaProjects\prototypeY
@@ -7,4 +10,4 @@ os.name=Windows 11
 os.arch=amd64
 os.version=10.0
 derby.system.home=null
-C005 : [0] 
+Database Class Loader started - derby.database.classpath=''
