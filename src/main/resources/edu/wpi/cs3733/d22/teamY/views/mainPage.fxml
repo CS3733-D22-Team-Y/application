@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.mainPageController">
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #297BCE;">
+         <left>
+            <VBox prefHeight="400.0" prefWidth="190.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label prefHeight="500.0" prefWidth="500.0" text="Map" underline="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets left="70.0" />
+                     </padding>
+                  </Label>
+                  <JFXButton prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: red;" text="Path Finder">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="10.0" layoutY="75.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: red;" text="View Map">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="10.0" layoutY="145.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: red;" text="Edit Map">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="400.0" prefWidth="202.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label prefHeight="450.0" prefWidth="500.0" text="Service" underline="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets left="70.0" />
+                     </padding>
+                  </Label>
+                  <JFXButton onAction="#createServiceRequest" prefHeight="500.0" prefWidth="500.0" text="Create">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="10.0" layoutY="210.0" onAction="#viewServiceRequest" prefHeight="500.0" prefWidth="500.0" text="View">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </center>
+         <right>
+            <VBox prefHeight="400.0" prefWidth="197.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label prefHeight="450.0" prefWidth="203.0" text="Equipment" underline="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </Label>
+                  <JFXButton prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: red;" text="View Locations">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="10.0" layoutY="39.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: red;" text="View Catalogs">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </right>
+         <top>
+            <JFXButton onAction="#backToWelcomePage" prefHeight="52.0" prefWidth="84.0" text="^" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </JFXButton>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

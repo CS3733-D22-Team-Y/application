@@ -14,9 +14,7 @@ public class App extends Application {
   private Stage primaryStage;
 
   // changes active scene
-  public void setScene(Scene scene) {
-    primaryStage.setScene(scene);
-  }
+  public void setScene(Scene scene) {primaryStage.setScene(scene);}
 
   private static App instance;
   // Summons instances for scene change implementation
