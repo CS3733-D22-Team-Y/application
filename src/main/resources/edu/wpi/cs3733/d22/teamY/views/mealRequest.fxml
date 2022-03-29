@@ -10,6 +10,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -29,25 +30,6 @@
             <Font name="Microsoft Tai Le Bold" size="54.0" />
          </font>
       </Label>
-      <Text layoutX="24.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room:">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
-      <Text layoutX="26.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Name:">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
-      <TextField fx:id="input_RoomID" layoutX="279.0" layoutY="108.0" prefHeight="56.0" prefWidth="250.0">
-         <font>
-            <Font size="24.0" />
-         </font></TextField>
-      <TextField fx:id="input_PatientName" layoutX="278.0" layoutY="189.0" prefHeight="56.0" prefWidth="250.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </TextField>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <JFXButton alignment="CENTER" layoutX="903.0" layoutY="601.0" prefHeight="68.0" prefWidth="150.0" style="-fx-background-color: #012d5a;" text="Submit" textFill="WHITE">
          <font>
@@ -57,13 +39,8 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TextArea fx:id="input_AdditionalNotes" layoutX="25.0" layoutY="278.0" prefHeight="298.0" prefWidth="504.0" promptText="Additional Notes..." wrapText="true">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </TextArea>
       <VBox layoutX="748.0" layoutY="97.0" />
-      <Group layoutX="747.0" layoutY="166.0">
+      <Group layoutX="717.0" layoutY="166.0">
          <children>
             <JFXRadioButton fx:id="pizzaRadioButton" layoutX="12.0" layoutY="12.0" text="Pizza">
                <font>
@@ -85,27 +62,27 @@
             </JFXRadioButton>
          </children>
       </Group>
-      <Text layoutX="760.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dietary Restrictions" wrappingWidth="223.541015625">
+      <Text layoutX="720.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dietary Restrictions" wrappingWidth="223.541015625">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TextArea fx:id="input_SpecialInstructions" disable="true" layoutX="760.0" layoutY="397.0" prefHeight="190.0" prefWidth="293.0" promptText="Special Instructions..." wrapText="true">
+      <TextArea fx:id="input_SpecialInstructions" disable="true" layoutX="718.0" layoutY="397.0" prefHeight="190.0" prefWidth="336.0" promptText="Special Instructions..." wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </TextArea>
-      <Text layoutX="768.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Main">
+      <Text layoutX="748.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Main">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Text layoutX="926.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Side">
+      <Text layoutX="906.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Side">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Group layoutX="908.0" layoutY="166.0">
+      <Group layoutX="878.0" layoutY="166.0">
          <children>
             <JFXRadioButton fx:id="riceRadioButton" layoutX="12.0" layoutY="12.0" text="Rice">
                <font>
@@ -127,7 +104,7 @@
             </JFXRadioButton>
          </children>
       </Group>
-      <JFXComboBox fx:id="dietaryRestrictionsSelectionBox" layoutX="761.0" layoutY="355.0" onAction="#checkSpecialInstructionsEnable" prefHeight="26.0" prefWidth="150.0" promptText="None" style="-fx-background-color: ddd;" />
+      <JFXComboBox fx:id="dietaryRestrictionsSelectionBox" layoutX="721.0" layoutY="355.0" onAction="#checkSpecialInstructionsEnable" prefHeight="26.0" prefWidth="150.0" promptText="None" style="-fx-background-color: ddd;" />
       <JFXButton alignment="CENTER" layoutX="720.0" layoutY="601.0" onAction="#resetAllFields" prefHeight="68.0" prefWidth="150.0" style="-fx-background-color: #012d5a;" text="Reset" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -136,5 +113,62 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
+      <HBox layoutX="42.0" layoutY="119.0" spacing="20.0">
+         <children>
+            <VBox alignment="TOP_RIGHT" spacing="25.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Room:">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Name:">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Assigned Nurse:">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Request Status:">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <VBox spacing="20.0">
+               <children>
+                  <TextField fx:id="input_RoomID" prefHeight="56.0" prefWidth="250.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="input_PatientName" prefHeight="56.0" prefWidth="250.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="input_AssignedNurse" prefHeight="56.0" prefWidth="250.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="input_RequestStatus" prefHeight="56.0" prefWidth="250.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <TextArea fx:id="input_AdditionalNotes" layoutX="52.0" layoutY="414.0" prefHeight="262.0" prefWidth="518.0" promptText="Additional Notes...">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextArea>
    </children>
 </AnchorPane>
