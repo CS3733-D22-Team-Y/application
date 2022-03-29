@@ -21,6 +21,8 @@ public class Main {
     locationArray = input.readCSV();
 
     DataManager.addObjects(locationArray);
+
+    //TESTING STARTS HERE ======================================================
     Location l = new Location("Kilroy Was Here");
     DataManager.add(l);
     l.floor = "69";
@@ -44,6 +46,7 @@ public class Main {
     if (kilroy2 != null) {
       System.out.println(kilroy2.floor);
     }
+    //TESTING ENDS HERE ========================================================
 
     App.launch(App.class, args);
 

@@ -2,6 +2,7 @@ package edu.wpi.cs3733.d22.teamY;
 
 public class Location extends DBObject {
   public static final String TABLE_NAME = "locations";
+  public static final String KEY_ATTRIBUTE_NAME = "nodeID";
   String nodeID;
   int xCoord, yCoord;
   String floor;
@@ -19,7 +20,7 @@ public class Location extends DBObject {
       String nodeType,
       String longName,
       String shortName) {
-    super(TABLE_NAME, "nodeID");
+    super(TABLE_NAME, KEY_ATTRIBUTE_NAME);
     this.nodeID = nodeID;
     this.xCoord = xCoord;
     this.yCoord = yCoord;
@@ -31,7 +32,7 @@ public class Location extends DBObject {
   }
 
   public Location(String id) {
-    super(TABLE_NAME, "nodeID");
+    super(TABLE_NAME, KEY_ATTRIBUTE_NAME);
     nodeID = id;
     xCoord = 0;
     yCoord = 0;
