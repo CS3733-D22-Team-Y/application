@@ -51,12 +51,12 @@
                         <Insets left="70.0" />
                      </padding>
                   </Label>
-                  <JFXButton onAction="#createServiceRequest" prefHeight="500.0" prefWidth="500.0" text="Create">
+                  <JFXButton onAction="#requestMenu" prefHeight="500.0" prefWidth="500.0" text="Create">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="210.0" onAction="#viewServiceRequest" prefHeight="500.0" prefWidth="500.0" text="View">
+                  <JFXButton layoutX="10.0" layoutY="210.0" onAction="#activeRequests" prefHeight="500.0" prefWidth="500.0" text="View">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -89,7 +89,7 @@
             </VBox>
          </right>
          <top>
-            <JFXButton onAction="#backToWelcomePage" prefHeight="52.0" prefWidth="84.0" text="^" BorderPane.alignment="CENTER">
+            <JFXButton onAction="#welcomePage" prefHeight="52.0" prefWidth="84.0" text="^" BorderPane.alignment="CENTER">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>

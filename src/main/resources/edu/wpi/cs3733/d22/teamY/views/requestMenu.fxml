@@ -76,6 +76,10 @@
             </Label>
          </top>
       </BorderPane>
-      <JFXButton layoutX="489.0" layoutY="754.0" onAction="#activeRequests" text="view active requests" />
+      <JFXButton alignment="CENTER" layoutX="29.0" layoutY="23.0" onAction="#mainMenu" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #012d5a;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
