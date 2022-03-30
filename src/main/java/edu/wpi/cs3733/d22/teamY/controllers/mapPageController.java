@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 
-public class mapPageController {
+public class mapPageController extends AbsGlobalControllerFuncs {
   // Base pane for displaying new scenes
   @FXML private Pane mapPane;
 
@@ -47,9 +47,7 @@ public class mapPageController {
     try {
       Pane newPane = FXMLLoader.load(App.class.getResource(toLoad));
       // Remove loaded scene
-      if (mapPane.getChildren().size() != 0) {
-        mapPane.getChildren().remove(0);
-      }
+      mapPane.getChildren().clear();
       // Add new scene
       mapPane.getChildren().add(newPane);
     } catch (IOException e) {

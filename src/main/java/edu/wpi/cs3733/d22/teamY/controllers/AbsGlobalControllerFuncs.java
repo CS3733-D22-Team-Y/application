@@ -16,14 +16,18 @@ public class AbsGlobalControllerFuncs {
   }
 
   void loadSidebar(Pane sidebarPane) throws IOException {
-    // Add new scene if scene is not already loaded
-    if (sidebarPane.getChildren().size() == 0) {
-      Pane newPane = FXMLLoader.load(App.class.getResource("views/sideBar.fxml"));
-      sidebarPane.getChildren().add(newPane);
-    }
-    // Remove loaded scene
-    else {
-      sidebarPane.getChildren().clear();
-    }
+    loadSceneInPane(sidebarPane, "views/sideBar.fxml");
+  }
+
+  void removeSidebar(Pane sidebarPane) {
+    sidebarPane.getChildren().clear();
+  }
+
+  void loadSceneInPane(Pane paneToLoadInto, String path) throws IOException {
+    Pane paneToLoad = FXMLLoader.load(App.class.getResource(path));
+    // Optional, but good to include just to be safe. Removes all other scenes in the pane/
+    paneToLoadInto.getChildren().clear();
+    // Add the new pane
+    paneToLoadInto.getChildren().add(paneToLoad);
   }
 }

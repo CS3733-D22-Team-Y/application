@@ -21,7 +21,11 @@ public class activeServiceRequestController extends AbsGlobalControllerFuncs {
 
   // Sidebar
   @FXML
-  void openSidebar() throws IOException {
-    loadSidebar(sidebarPane);
+  void autoOpenCloseSidebar() throws IOException {
+    if (sidebarPane.getChildren().size() == 0) {
+      loadSidebar(sidebarPane);
+    } else {
+      removeSidebar(sidebarPane);
+    }
   }
 }

@@ -16,7 +16,7 @@
             <Font name="Microsoft Tai Le Bold" size="54.0" />
          </font>
       </Text>
-      <JFXHamburger layoutX="14.0" layoutY="14.0" onMouseClicked="#openSidebar" />
+      <JFXHamburger layoutX="14.0" layoutY="14.0" onMouseClicked="#autoOpenCloseSidebar" />
       <Group layoutX="374.0" layoutY="96.0">
          <children>
             <JFXButton layoutX="15.0" layoutY="11.0" prefHeight="25.0" prefWidth="216.0" style="-fx-background-color: fff;" text="Security">
