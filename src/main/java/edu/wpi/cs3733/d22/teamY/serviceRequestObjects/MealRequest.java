@@ -1,4 +1,4 @@
-package edu.wpi.cs3733.d22.teamY.objects;
+package edu.wpi.cs3733.d22.teamY.serviceRequestObjects;
 
 public class MealRequest extends AbsServiceRequest {
   String mainOrder;

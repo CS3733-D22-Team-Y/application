@@ -28,7 +28,7 @@ public class Main {
     System.out.println(DataManager.getAll(MedEquip.TABLE_NAME).size());
     System.out.println(DataManager.getAll(MedEquipReq.TABLE_NAME).size());
 
-    //    App.launch(App.class, args);
+    App.launch(App.class, args);
 
     // once ended, shuts off the database
     System.out.println("Shutting down database...");
