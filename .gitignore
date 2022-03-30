@@ -9,7 +9,7 @@ bin/
 
 #Ignore auto generated export csv's
 locations_export.csv
-medEqupment_export.csv
+medEquipment_export.csv
 medEquipRequests_export.csv
 
 #Mac Specific
