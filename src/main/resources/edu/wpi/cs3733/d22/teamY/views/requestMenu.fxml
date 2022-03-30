@@ -1,54 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestMenuController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#autoOpenCloseSidebar" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: eee;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestMenuController">
    <children>
-      <BorderPane prefHeight="700.0" prefWidth="1100.0">
-         <left>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="528.0" prefWidth="486.0" spacing="50.0" BorderPane.alignment="CENTER">
+      <JFXButton alignment="CENTER" layoutX="253.0" layoutY="18.0" onAction="#mainMenu" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #012d5a;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="412.0" layoutY="12.0" prefHeight="84.0" prefWidth="694.0" text="Request A Service" textAlignment="CENTER" textFill="#021d5a" textOverrun="CLIP">
+         <font>
+            <Font name="System Bold" size="54.0" />
+         </font>
+      </Label>
+      <HBox layoutX="248.0" layoutY="126.0" spacing="50.0">
+         <children>
+            <VBox spacing="50.0">
                <children>
-                  <JFXButton alignment="CENTER" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#securityServices" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 40; -fx-background-radius: 15;" text="Security Services" textFill="WHITE">
+                  <JFXButton alignment="CENTER" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#securityServices" prefHeight="100.0" prefWidth="375.0" style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 36; -fx-background-radius: 15;" text="Security Services" textFill="WHITE">
                      <font>
-                        <Font size="81.0" />
+                        <Font size="36.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#medicalEquipment" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 40; -fx-background-radius: 15;" text="Medical Equipment" textFill="WHITE">
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#floralDelivery" prefHeight="100.0" prefWidth="375.0" style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 36; -fx-background-radius: 15;" text="Floral Delivery" textFill="WHITE">
                      <font>
-                        <Font size="81.0" />
+                        <Font size="36.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#floralDelivery" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 40; -fx-background-radius: 15;" text="Floral Delivery" textFill="WHITE">
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#medicalEquipment" prefHeight="100.0" prefWidth="375.0" style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 36; -fx-background-radius: 15;" text="Medical Equipment" textFill="WHITE">
                      <font>
-                        <Font size="81.0" />
+                        <Font size="36.0" />
                      </font>
                   </JFXButton>
                </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" top="30.0" />
-               </padding>
             </VBox>
-         </left>
-         <right>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="550.0" prefWidth="400.0" spacing="50.0" BorderPane.alignment="CENTER">
+            <VBox spacing="50.0">
                <children>
-                  <JFXButton alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#mealDelivery" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #021D5A; -fx-font-size: 40; -fx-background-radius: 15;" text="Meal Delivery" textFill="WHITE">
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#mealDelivery" prefHeight="100.0" prefWidth="375.0" style="-fx-background-color: #021D5A; -fx-font-size: 36; -fx-background-radius: 15;" text="Meal Delivery" textFill="WHITE">
                      <font>
-                        <Font size="46.0" />
+                        <Font size="36.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#laundryServices" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 40; -fx-background-radius: 15;" text="Laundry Services" textFill="WHITE">
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#laundryServices" prefHeight="100.0" prefWidth="375.0" style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 36; -fx-background-radius: 15;" text="Laundry Services" textFill="WHITE">
                      <font>
-                        <Font size="81.0" />
+                        <Font size="36.0" />
                      </font>
                   </JFXButton>
                   <Label prefHeight="100.0" prefWidth="400.0" text="More to come..." textFill="#021d5a">
@@ -60,26 +64,10 @@
                      </padding>
                   </Label>
                </children>
-               <BorderPane.margin>
-                  <Insets right="50.0" />
-               </BorderPane.margin>
-               <padding>
-                  <Insets top="30.0" />
-               </padding>
             </VBox>
-         </right>
-         <top>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="627.0" text="Request A Service" textAlignment="CENTER" textFill="#021d5a" textOverrun="CLIP" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="54.0" />
-               </font>
-            </Label>
-         </top>
-      </BorderPane>
-      <JFXButton alignment="CENTER" layoutX="29.0" layoutY="23.0" onAction="#mainMenu" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #012d5a;" text="Back" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </JFXButton>
+         </children>
+      </HBox>
+      <JFXHamburger layoutX="13.0" layoutY="11.0" />
+      <Pane fx:id="sidebarPane" layoutX="24.0" layoutY="40.0" prefHeight="650.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

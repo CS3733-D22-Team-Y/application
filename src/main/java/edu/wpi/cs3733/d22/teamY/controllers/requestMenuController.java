@@ -1,14 +1,12 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
-import edu.wpi.cs3733.d22.teamY.App;
 import java.awt.*;
 import java.io.IOException;
-import java.util.Objects;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 
-public class requestMenuController {
+public class requestMenuController extends AbsGlobalControllerFuncs {
+  @FXML Pane sidebarPane;
 
   public requestMenuController() throws IOException {}
 
@@ -17,64 +15,41 @@ public class requestMenuController {
 
   @FXML
   void mainMenu() throws IOException {
-    Scene securityRequest =
-        new Scene(
-            FXMLLoader.load(Objects.requireNonNull(App.class.getResource("views/mainPage.fxml"))));
-
-    App.getInstance().setScene(securityRequest);
+    loadScene("views/mainPage.fxml");
   }
 
   @FXML
   void securityServices() throws IOException {
-    Scene securityRequest =
-        new Scene(
-            FXMLLoader.load(
-                Objects.requireNonNull(
-                    App.class.getResource("views/requestTypes/securityServicesRequest.fxml"))));
-
-    App.getInstance().setScene(securityRequest);
+    loadScene("views/requestTypes/securityServicesRequest.fxml");
   }
 
   @FXML
   void medicalEquipment() throws IOException {
-    Scene medicalRequest =
-        new Scene(
-            FXMLLoader.load(
-                Objects.requireNonNull(
-                    App.class.getResource("views/requestTypes/medicalEquipmentRequest.fxml"))));
-
-    App.getInstance().setScene(medicalRequest);
+    loadScene("views/requestTypes/medicalEquipmentRequest.fxml");
   }
 
   @FXML
   void floralDelivery() throws IOException {
-    Scene floralRequest =
-        new Scene(
-            FXMLLoader.load(
-                Objects.requireNonNull(
-                    App.class.getResource("views/requestTypes/floralRequest.fxml"))));
-
-    App.getInstance().setScene(floralRequest);
+    loadScene("views/requestTypes/floralRequest.fxml");
   }
 
   @FXML
   void laundryServices() throws IOException {
-    Scene laundryRequest =
-        new Scene(
-            FXMLLoader.load(
-                Objects.requireNonNull(
-                    App.class.getResource("views/requestTypes/laundryRequest.fxml"))));
-
-    App.getInstance().setScene(laundryRequest);
+    loadScene("views/requestTypes/laundryRequest.fxml");
   }
 
   @FXML
   void mealDelivery() throws IOException {
-    Scene mealRequest =
-        new Scene(
-            FXMLLoader.load(
-                Objects.requireNonNull(
-                    App.class.getResource("views/requestTypes/mealRequest.fxml"))));
-    App.getInstance().setScene(mealRequest);
+    loadScene("views/requestTypes/mealRequest.fxml");
+  }
+
+  // Sidebar
+  @FXML
+  void autoOpenCloseSidebar() throws IOException {
+    if (sidebarPane.getChildren().size() == 0) {
+      loadSidebar(sidebarPane);
+    } else {
+      removeSidebar(sidebarPane);
+    }
   }
 }
