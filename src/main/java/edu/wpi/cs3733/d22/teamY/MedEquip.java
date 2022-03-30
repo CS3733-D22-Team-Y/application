@@ -28,6 +28,7 @@ public class MedEquip extends DBObject{
 
     public MedEquip(
             String equipID, String equipType, String equipLocId, boolean isClean) {
+        super(TABLE_NAME, KEY_ATTRIBUTE_NAME);
         this.equipID = equipID;
         this.equipType = equipType;
         this.equipLocId = equipLocId;
@@ -38,6 +39,26 @@ public class MedEquip extends DBObject{
 
     public String getID() {
         return equipID;
+    }
+
+    @Override
+    public String getKey() {
+        return equipID;
+    }
+
+    @Override
+    public String getInsertQuery() {
+        return "VALUES("
+                + "'"
+                + this.equipID
+                + "'"
+                + ", "
+                + this.equipType
+                + ", "
+                + "'"
+                + this.equipLocId
+                + "'"
+                + ")";
     }
 
     public MedEquip getClone() {
