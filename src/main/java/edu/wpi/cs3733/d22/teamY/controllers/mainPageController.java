@@ -11,6 +11,7 @@ public class mainPageController {
   Scene welcomePage = null;
   Scene requestMenu = null;
   Scene activeRequests = null;
+  Scene viewMap = null;
 
   @FXML
   void welcomePage() throws IOException {
@@ -39,5 +40,14 @@ public class mainPageController {
             FXMLLoader.load(
                 Objects.requireNonNull(App.class.getResource("views/activeRequests.fxml"))));
     App.getInstance().setScene(activeRequests);
+  }
+
+  @FXML
+  void viewMap() throws IOException {
+    // Sets scene to view service request
+    viewMap =
+        new Scene(
+            FXMLLoader.load(Objects.requireNonNull(App.class.getResource("views/mapPage.fxml"))));
+    App.getInstance().setScene(viewMap);
   }
 }

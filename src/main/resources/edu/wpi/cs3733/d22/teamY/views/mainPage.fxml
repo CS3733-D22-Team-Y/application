@@ -27,7 +27,7 @@
                         <Font size="24.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="75.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: red;" text="View Map">
+                  <JFXButton layoutX="10.0" layoutY="75.0" onAction="#viewMap" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: red;" text="View Map">
                      <font>
                         <Font size="24.0" />
                      </font>
