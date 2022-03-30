@@ -6,25 +6,25 @@ public class LocationManagerFunctionality {
 
   /** In-between for displaying the list of database nodes. */
   public static void displayNodes() {
-    ArrayList<Location> locs = LocationDataManager.getLocations();
+    ArrayList<Location> locs = DataManager.getAll(Location.TABLE_NAME);
 
     for (Location l : locs) {
       System.out.println(
-          l.nodeID
+          l.getKey()
               + ": ("
-              + l.xCoord
+              + l.getXCoord()
               + ", "
-              + l.yCoord
+              + l.getYCoord()
               + "),"
-              + l.building
+              + l.getBuilding()
               + " Floor "
-              + l.floor
+              + l.getFloor()
               + ". "
-              + l.shortName
+              + l.getShortName()
               + " ["
-              + l.longName
+              + l.getLongName()
               + "] "
-              + l.nodeType);
+              + l.getNodeType());
     }
   }
 
@@ -36,15 +36,15 @@ public class LocationManagerFunctionality {
    * @param locationType new location type
    */
   public static boolean replaceNodeVals(String ID, String floor, String locationType) {
-    Location toChange = LocationDataManager.getLocationCopy(ID);
+    Location toChange = DataManager.get(Location.TABLE_NAME, ID);
     if (toChange == null) {
       System.out.println("Could not get Node " + ID + " for replacement.");
       return false;
     }
 
-    toChange.floor = floor;
-    toChange.nodeType = locationType;
-    return LocationDataManager.replaceLocation(ID, toChange);
+    toChange.setFloor(floor);
+    toChange.setNodeType(locationType);
+    return DataManager.replace(toChange);
   }
 
   /**
@@ -54,7 +54,7 @@ public class LocationManagerFunctionality {
    */
   public static boolean newNode(String ID) {
     Location newLoc = new Location(ID);
-    return LocationDataManager.addLocation(newLoc);
+    return DataManager.add(newLoc);
   }
 
   /**
@@ -63,7 +63,7 @@ public class LocationManagerFunctionality {
    * @param ID Node ID
    */
   public static boolean deleteNode(String ID) {
-    return LocationDataManager.removeLocation(ID);
+    return DataManager.remove(Location.TABLE_NAME, ID);
   }
 
   /**
@@ -73,7 +73,7 @@ public class LocationManagerFunctionality {
    */
   public static boolean writeDbToCSV(String fileLoc) {
     try {
-      Locations2CSV.generateCSV(fileLoc);
+      Java2CSV.locations2CSV(fileLoc);
     } catch (Exception e) {
       System.out.println("CSV generation failed. See below:");
       e.printStackTrace();

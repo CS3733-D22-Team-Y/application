@@ -38,7 +38,7 @@ public class mainPageController {
     activeRequests =
         new Scene(
             FXMLLoader.load(
-                Objects.requireNonNull(App.class.getResource("views/activeRequests.fxml"))));
+                Objects.requireNonNull(App.class.getResource("views/activeServiceRequest.fxml"))));
     App.getInstance().setScene(activeRequests);
   }
 

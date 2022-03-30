@@ -1,30 +1,26 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import java.io.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ReadIn {
 
-  // ArrayList that stores all the location values from the CSV file
-  ArrayList<Location> locationList = new ArrayList<Location>();
-
-  // returns the ArrayList
-  public ArrayList<Location> getLocationList() {
-    return locationList;
-  }
+  public ReadIn() {}
 
   // function that reads in CSV file and stores all its values in an ArrayList locationList
-  public ArrayList<Location> readCSV() {
+  public ArrayList<Location> readLocationCSV(String Filename) {
 
     // ArrayList created to store values from CSV output
     ArrayList<String> csvOutputs = new ArrayList<String>();
+    ArrayList<Location> LocationOutput = new ArrayList<Location>();
 
     // try-catch in order to avoid File not Found error
     try {
 
       // creates scanner object
-      Scanner sc = new Scanner(new File("TowerLocations.csv"));
+      Scanner sc = new Scanner(new File(Filename));
 
       while (sc.hasNextLine()) // returns a boolean value
       {
@@ -40,7 +36,7 @@ public class ReadIn {
       sc.close(); // closes scanner
     } catch (java.io.FileNotFoundException e) {
       System.out.println("File not found."); // accounts for File not Found
-      return locationList;
+      return new ArrayList<>();
     }
 
     // adds each location value into the ArrayList
@@ -61,10 +57,103 @@ public class ReadIn {
             new Location(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
 
         // adding Location
-        locationList.add(iLocation);
+        LocationOutput.add(iLocation);
       }
     }
+    return LocationOutput;
+  }
 
-    return locationList;
+  // function that reads in CSV file and stores all its values in an ArrayList locationList
+  public ArrayList<MedEquip> readMedEquipCSV(String Filename) {
+
+    // ArrayList created to store values from CSV output
+    ArrayList<String> csvOutputs = new ArrayList<String>();
+    ArrayList<MedEquip> MedEquipList = new ArrayList<MedEquip>();
+    // try-catch in order to avoid File not Found error
+    try {
+
+      // creates scanner object
+      Scanner sc = new Scanner(new File(Filename));
+
+      while (sc.hasNextLine()) // returns a boolean value
+      {
+        String s = sc.nextLine(); // takes line of input with commas
+
+        String[] vals = s.split(","); // divides the CSV data by commas
+
+        // adds all values into csvOutputs
+        for (int i = 0; i < vals.length; i++) {
+          csvOutputs.add(vals[i]);
+        }
+      }
+      sc.close(); // closes scanner
+    } catch (java.io.FileNotFoundException e) {
+      System.out.println("File not found."); // accounts for File not Found
+      return new ArrayList<>();
+    }
+
+    // adds each location value into the ArrayList
+    for (int i = 0; i < csvOutputs.size(); i += 4) {
+
+      if (i >= 4) { // checks in batches of 4
+        String requestNum = csvOutputs.get(i);
+        String equipmentType = csvOutputs.get(i + 1);
+        String equipmentLocationID = csvOutputs.get(i + 2);
+        boolean isClean = Boolean.parseBoolean(csvOutputs.get(i + 3));
+        // creating MedEquip
+        MedEquip medEquip = new MedEquip(requestNum, equipmentType, equipmentLocationID, isClean);
+        // adding Location
+        MedEquipList.add(medEquip);
+      }
+    }
+    return MedEquipList;
+  }
+
+  // function that reads in CSV file and stores all its values in an ArrayList locationList
+  public ArrayList<MedEquipReq> ReadMedReqCSV(String filename) {
+
+    // ArrayList created to store values from CSV output
+    ArrayList<String> csvOutputs = new ArrayList<String>();
+    ArrayList<MedEquipReq> MedEquipRequestsOutputs = new ArrayList<MedEquipReq>();
+
+    // try-catch in order to avoid File not Found error
+    try {
+
+      // creates scanner object
+      Scanner sc = new Scanner(new File(filename));
+
+      while (sc.hasNextLine()) // returns a boolean value
+      {
+        String s = sc.nextLine(); // takes line of input with commas
+
+        String[] vals = s.split(","); // divides the CSV data by commas
+
+        // adds all values into csvOutputs
+        for (int i = 0; i < vals.length; i++) {
+          csvOutputs.add(vals[i]);
+        }
+      }
+      sc.close(); // closes scanner
+    } catch (java.io.FileNotFoundException e) {
+      System.out.println("File not found."); // accounts for File not Found
+      return new ArrayList<>();
+    }
+
+    // adds each location value into the ArrayList
+    for (int i = 0; i < csvOutputs.size(); i += 3) {
+
+      if (i >= 3) { // checks in batches of 8
+        String equipmentID = /*Integer.parseInt(*/ csvOutputs.get(i) /*)*/;
+        String equipmentType = csvOutputs.get(i + 1);
+        String targetLocationID = csvOutputs.get(i + 2);
+
+        // creating MedEquip
+        MedEquipReq medEquipR = new MedEquipReq(equipmentID, equipmentType, targetLocationID);
+
+        // adding Location
+        MedEquipRequestsOutputs.add(medEquipR);
+      }
+    }
+    return MedEquipRequestsOutputs;
   }
 }

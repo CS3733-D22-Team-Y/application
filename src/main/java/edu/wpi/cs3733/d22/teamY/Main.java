@@ -7,28 +7,31 @@ public class Main {
 
   public static void main(String[] args) {
 
-    // creates database
-    Database locationDB = new Database("LocationDB");
-    Connection db_conn = locationDB.connection; // establishes connection to database
-
     // creating dataManager class that manages database
-    LocationDataManager dataManager = new LocationDataManager(db_conn);
-    dataManager.cleanTable("locations");
+    DataManager.init("LocationDB");
+    DataManager.cleanAll(); // cleans database
 
     // function set to read in CSV
     ReadIn input = new ReadIn();
-    ArrayList<Location> locationArray = new ArrayList<Location>();
-    locationArray = input.readCSV();
+    ArrayList<Location> locationArray = new ArrayList<>();
+    locationArray = input.readLocationCSV("TowerLocations.csv");
+    ArrayList<MedEquip> medEquipArray = new ArrayList<>();
+    medEquipArray = input.readMedEquipCSV("MedEquip.csv");
+    ArrayList<MedEquipReq> medEquipRequestArray = new ArrayList<>();
+    medEquipRequestArray = input.ReadMedReqCSV("MedEquipReq.csv");
 
-    // add ArrayList locations so that Datamanager can access all values
-    dataManager.addLocations(locationArray);
+    DataManager.addObjects(locationArray);
+    DataManager.addObjects(medEquipArray);
+    DataManager.addObjects(medEquipRequestArray);
 
-    // create locationManager to run console loop
-    // LocationManagerInterface locationManagerInterface = new LocationManagerInterface();
-    // locationManagerInterface.start();
-    App.launch(App.class, args);
+    System.out.println(DataManager.getAll(Location.TABLE_NAME).size());
+    System.out.println(DataManager.getAll(MedEquip.TABLE_NAME).size());
+    System.out.println(DataManager.getAll(MedEquipReq.TABLE_NAME).size());
+
+    //    App.launch(App.class, args);
 
     // once ended, shuts off the database
-    locationDB.shutdown_db();
+    System.out.println("Shutting down database...");
+    DataManager.shutdownDB();
   }
 }
