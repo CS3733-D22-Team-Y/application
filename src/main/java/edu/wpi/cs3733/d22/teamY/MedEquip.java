@@ -23,6 +23,22 @@ public class MedEquip extends DBObject {
     return isClean;
   }
 
+  public void setEquipID(String equipID) {
+    this.equipID = equipID;
+  }
+
+  public void setEquipType(String equipType) {
+    this.equipType = equipType;
+  }
+
+  public void setEquipLocId(String equipLocId) {
+    this.equipLocId = equipLocId;
+  }
+
+  public void setClean(boolean isClean) {
+    this.isClean = isClean;
+  }
+
   private boolean isClean;
 
   public MedEquip(String equipID, String equipType, String equipLocId, boolean isClean) {
@@ -49,12 +65,34 @@ public class MedEquip extends DBObject {
         + this.equipID
         + "'"
         + ", "
+        + "'"
         + this.equipType
+        + "'"
         + ", "
         + "'"
         + this.equipLocId
         + "'"
+        + ", "
+        + "'"
+        + this.isClean
+        + "'"
         + ")";
+  }
+
+  public String toString() {
+    return "MedEquip{"
+        + "equipID='"
+        + equipID
+        + '\''
+        + ", equipType='"
+        + equipType
+        + '\''
+        + ", equipLocId='"
+        + equipLocId
+        + '\''
+        + ", isClean="
+        + isClean
+        + '}';
   }
 
   public MedEquip getClone() {
