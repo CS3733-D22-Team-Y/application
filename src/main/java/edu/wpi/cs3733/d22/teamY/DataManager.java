@@ -11,14 +11,14 @@ public class DataManager {
   private static final HashMap<String, HashMap<String, DBObject>> data =
       new HashMap<>(); // all data stored in the database
   private static Connection dbConnection; // database connection
+  private static final String[] tables = {"medequiprequest", "medequip", "locations"};
 
   /**
    * Initializes the data manager.
    *
    * @param connection the database connection
-   * @param tables the table names to initialize
    */
-  public static void init(Connection connection, String... tables) {
+  public static void init(Connection connection) {
     dbConnection = connection;
     for (String table : tables) {
       data.put(table, new HashMap<>());
@@ -230,7 +230,6 @@ public class DataManager {
     if (table == null) {
       throw new IllegalArgumentException("Table `" + tableName + "` does not exist");
     }
-    table.clear();
 
     String sql_string = "DELETE FROM " + tableName;
 
@@ -241,10 +240,11 @@ public class DataManager {
       System.out.println("Clearing table failed, check console");
       e.printStackTrace();
     }
+    table.clear();
   }
 
   public static void cleanAll() {
-    for (String table : data.keySet()) {
+    for (String table : tables) {
       cleanTable(table);
     }
   }

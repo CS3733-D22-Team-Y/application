@@ -48,7 +48,7 @@ public class Java2CSV {
     arrayList = DataManager.getAll(MedEquip.TABLE_NAME);
     String[][] stringArray = new String[arrayList.size()][8];
     int ctr = 0;
-    for (MedEquip L : arrayList) { //equipID,equipType,equipLocID,isClean
+    for (MedEquip L : arrayList) { // equipID,equipType,equipLocID,isClean
       stringArray[ctr][0] = L.getKey();
       stringArray[ctr][1] = String.valueOf(L.getEquipID());
       stringArray[ctr][2] = String.valueOf(L.getEquipType());

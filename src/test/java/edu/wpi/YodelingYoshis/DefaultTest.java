@@ -4,10 +4,7 @@
 
 package edu.wpi.YodelingYoshis;
 
-import edu.wpi.cs3733.d22.teamY.DataManager;
-import edu.wpi.cs3733.d22.teamY.Database;
-import edu.wpi.cs3733.d22.teamY.Location;
-import edu.wpi.cs3733.d22.teamY.ReadIn;
+import edu.wpi.cs3733.d22.teamY.*;
 import java.sql.Connection;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
@@ -52,6 +49,28 @@ public class DefaultTest {
   }
 
   @Test
+  public void testAddAndGetMedEquip() {
+    Database db = init();
+    MedEquip testLoc = new MedEquip("TestEquip", "TestTypeyeyeHere", "yPATI01703", false);
+    DataManager.add(testLoc);
+    MedEquip l2 = DataManager.get(MedEquip.TABLE_NAME, "TestEquip");
+    if (l2 == null) {
+      assert false;
+    }
+    assert (l2.toString().equals(testLoc.toString()));
+    // now we set the cloned location to have a different attribute should not affect the original
+    l2.setClean(true);
+    MedEquip getLoc = DataManager.get(MedEquip.TABLE_NAME, "TestEquip"); // should still be the same
+    if (getLoc == null) {
+      assert false;
+    }
+    assert (getLoc.toString().equals(testLoc.toString()));
+    // once ended, shuts off the database
+    System.out.println("Shutting down database...");
+    db.shutdown_db();
+  }
+
+  @Test
   public void testGetAll() {
     Database db = init();
     ArrayList<Location> locationArray = new ArrayList<>();
@@ -59,6 +78,7 @@ public class DefaultTest {
     if (locationArray == null) {
       assert false;
     }
+    System.out.println(locationArray.size());
     assert (locationArray.size() == 151);
 
     for (Location l : locationArray) {
@@ -214,6 +234,12 @@ public class DefaultTest {
     db.shutdown_db();
   }
 
+  @Test
+  public void initTest() {
+    Database db = init();
+    db.shutdown_db();
+  }
+
   // helper function to start the database and populate it with data from the csv file
   public Database init() {
     // creates database
@@ -221,15 +247,17 @@ public class DefaultTest {
     Connection db_conn = Database.connection; // establishes connection to database
 
     // creating dataManager class that manages database
-    DataManager.init(db_conn, "locations");
+    DataManager.init(db_conn);
     DataManager.cleanAll(); // cleans database
 
     // function set to read in CSV
     ReadIn input = new ReadIn();
-    ArrayList<Location> locationArray = new ArrayList<>();
-    locationArray = input.readCSV();
+    ArrayList<Location> locations = new ArrayList<Location>();
+    locations = input.readLocationCSV("TowerLocations.csv");
+    DataManager.addObjects(locations);
+    //    DataManager.addObjects(input.readMedEquipCSV("MedEquip.csv"));
+    //    DataManager.addObjects(input.ReadMedReqCSV("MedEquipRequest.csv"));
 
-    DataManager.addObjects(locationArray);
     return locationDB;
   }
 }
