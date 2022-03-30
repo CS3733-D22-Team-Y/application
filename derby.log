@@ -1,13 +1,10 @@
 ----------------------------------------------------------------
-Tue Mar 29 11:44:38 EDT 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-017f-d659-b72f-00001889a008 
-on database directory C:\Users\npoll\IdeaProjects\prototypeY\LocationDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@14899482 
-Loaded from file:/C:/Users/npoll/.gradle/caches/modules-2/files-2.1/org.apache.derby/derby/10.15.2.0/b64da6681994f33ba5783ffae55cdb44885b9e70/derby-10.15.2.0.jar
-java.vendor=Amazon.com Inc.
-java.runtime.version=11.0.14.1+10-LTS
-user.dir=C:\Users\npoll\IdeaProjects\prototypeY
-os.name=Windows 11
-os.arch=amd64
-os.version=10.0
+Tue Mar 29 17:26:44 EDT 2022D001 : [0] The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585), [1] a816c00e-017f-d792-e9e8-00000f3018c0, [2] /Users/bjschmitt/Documents/YYY/prototypeY/LocationDB, [3] jdk.internal.loader.ClassLoaders$AppClassLoader@17d99928, [4] file:/Users/bjschmitt/.gradle/caches/modules-2/files-2.1/org.apache.derby/derby/10.15.2.0/b64da6681994f33ba5783ffae55cdb44885b9e70/derby-10.15.2.0.jar
+java.vendor=Microsoft
+java.runtime.version=11.0.14+9-LTS
+user.dir=/Users/bjschmitt/Documents/YYY/prototypeY
+os.name=Mac OS X
+os.arch=x86_64
+os.version=12.3
 derby.system.home=null
-Database Class Loader started - derby.database.classpath=''
+C005 : [0] 
