@@ -4,11 +4,10 @@ import java.io.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class ReadIn {
 
-  public ReadIn(){
-
-  }
+  public ReadIn() {}
 
   // function that reads in CSV file and stores all its values in an ArrayList locationList
   public ArrayList<Location> readLocationCSV(String Filename) {
@@ -55,7 +54,7 @@ public class ReadIn {
 
         // creating Location
         Location iLocation =
-                new Location(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
+            new Location(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
 
         // adding Location
         LocationOutput.add(iLocation);
@@ -65,7 +64,7 @@ public class ReadIn {
   }
 
   // function that reads in CSV file and stores all its values in an ArrayList locationList
-  public ArrayList<MedEquip> readMedEquipCSV(String Filename){
+  public ArrayList<MedEquip> readMedEquipCSV(String Filename) {
 
     // ArrayList created to store values from CSV output
     ArrayList<String> csvOutputs = new ArrayList<String>();
@@ -99,10 +98,10 @@ public class ReadIn {
       if (i >= 4) { // checks in batches of 4
         String requestNum = csvOutputs.get(i);
         String equipmentType = csvOutputs.get(i + 1);
-        String equipmentLocationID =csvOutputs.get(i + 2);
+        String equipmentLocationID = csvOutputs.get(i + 2);
         boolean isClean = Boolean.parseBoolean(csvOutputs.get(i + 3));
         // creating MedEquip
-        MedEquip medEquip = new MedEquip(requestNum ,equipmentType, equipmentLocationID, isClean);
+        MedEquip medEquip = new MedEquip(requestNum, equipmentType, equipmentLocationID, isClean);
         // adding Location
         MedEquipList.add(medEquip);
       }
@@ -110,14 +109,12 @@ public class ReadIn {
     return MedEquipList;
   }
 
-
   // function that reads in CSV file and stores all its values in an ArrayList locationList
   public ArrayList<MedEquipReq> ReadMedReqCSV(String filename) {
 
     // ArrayList created to store values from CSV output
     ArrayList<String> csvOutputs = new ArrayList<String>();
     ArrayList<MedEquipReq> MedEquipRequestsOutputs = new ArrayList<MedEquipReq>();
-
 
     // try-catch in order to avoid File not Found error
     try {
@@ -146,15 +143,12 @@ public class ReadIn {
     for (int i = 0; i < csvOutputs.size(); i += 3) {
 
       if (i >= 3) { // checks in batches of 8
-        int equipmentID = Integer.parseInt(csvOutputs.get(i));
+        String equipmentID = /*Integer.parseInt(*/ csvOutputs.get(i) /*)*/;
         String equipmentType = csvOutputs.get(i + 1);
-        String targetLocationID =csvOutputs.get(i + 2);
-
-
+        String targetLocationID = csvOutputs.get(i + 2);
 
         // creating MedEquip
-        MedEquipReq medEquipR = new MedEquipReq(equipmentID, equipmentType ,targetLocationID);
-
+        MedEquipReq medEquipR = new MedEquipReq(equipmentID, equipmentType, targetLocationID);
 
         // adding Location
         MedEquipRequestsOutputs.add(medEquipR);

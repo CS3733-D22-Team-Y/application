@@ -12,7 +12,7 @@ public class Main {
     Connection db_conn = Database.connection; // establishes connection to database
 
     // creating dataManager class that manages database
-    DataManager.init(db_conn, "locations","medequip","medequiprequest");
+    DataManager.init(db_conn, "locations", "medequip", "medequiprequest");
     DataManager.cleanAll(); // cleans database
 
     // function set to read in CSV

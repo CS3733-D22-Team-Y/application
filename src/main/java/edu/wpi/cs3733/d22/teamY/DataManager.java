@@ -96,11 +96,7 @@ public class DataManager {
     return true;
   }
 
-  /**
-   * Updates the local copy of the location list from the database
-   * NOT FUNCTIONAL YET
-   *
-   */
+  /** Updates the local copy of the location list from the database NOT FUNCTIONAL YET */
   public static void updateFromDB() {
     // erases the current maps
     cleanAll();
@@ -160,13 +156,11 @@ public class DataManager {
 
   /**
    * Returns a copy of a location from the list of locations<br>
-   *
    * Example: Location loc = DataManager.get(Location.TABLE_NAME, "UH500");
    *
    * @param tableName the tableName attribute of the DBObject to get
    * @param key the key attribute of the DBObject to get
    * @return a copy of the DB object with the given key or null if no such location exists
-   *
    */
   @SuppressWarnings("unchecked")
   public static <T extends DBObject> T get(String tableName, String key) {
