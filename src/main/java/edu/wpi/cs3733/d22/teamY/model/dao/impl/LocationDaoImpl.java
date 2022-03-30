@@ -42,6 +42,31 @@ public class LocationDaoImpl implements LocationDao {
   }
 
   @Override
+  public List<Location> getLocationsOnFloor(String floor) throws DaoGetException {
+    List<Location> locations = new ArrayList<>();
+    try {
+      PreparedStatement s = conn.prepareStatement("SELECT * FROM LOCATIONS WHERE FLOOR = ?");
+      s.setString(1, floor);
+      ResultSet rs = s.executeQuery();
+      while (rs.next()) {
+        locations.add(
+            new Location(
+                rs.getString("NODEID"),
+                rs.getInt("XCOORD"),
+                rs.getInt("YCOORD"),
+                rs.getString("FLOOR"),
+                rs.getString("BUILDING"),
+                rs.getString("NODETYPE"),
+                rs.getString("LONGNAME"),
+                rs.getString("SHORTNAME")));
+      }
+      return locations;
+    } catch (SQLException e) {
+      throw new DaoGetException(e);
+    }
+  }
+
+  @Override
   public Location getLocation(String nodeID) throws DaoGetException {
     try {
       PreparedStatement s = conn.prepareStatement("SELECT * FROM LOCATIONS WHERE NODEID = ?");

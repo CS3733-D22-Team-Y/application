@@ -10,6 +10,8 @@ import java.util.List;
 public interface LocationDao {
   List<Location> getAllLocations() throws DaoGetException;
 
+  List<Location> getLocationsOnFloor(String floor) throws DaoGetException;
+
   Location getLocation(String nodeID) throws DaoGetException;
 
   void addLocation(Location location) throws DaoAddException;
