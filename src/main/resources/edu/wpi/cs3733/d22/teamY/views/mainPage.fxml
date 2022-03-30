@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.mainPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.mainPageController">
    <children>
       <BorderPane prefHeight="706.0" prefWidth="1102.0" style="-fx-background-color: #297BCE;">
          <left>
@@ -22,7 +20,7 @@
                         <Insets left="140.0" />
                      </padding>
                   </Label>
-                  <JFXButton prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: red;" text="Path Finder">
+                  <JFXButton prefHeight="300.0" prefWidth="330.0" style="-fx-background-color: red;" text="Path Finder">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -92,7 +90,7 @@
                         <Insets />
                      </VBox.margin>
                   </JFXButton>
-                  <Label prefHeight="300.0" prefWidth="500.0" />
+                  <JFXButton fx:id="tableButton" mnemonicParsing="false" onAction="#onTableButton" text="table!" />
                </children>
             </VBox>
          </right>

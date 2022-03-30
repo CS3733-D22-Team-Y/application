@@ -12,10 +12,7 @@ public class mapPageController {
   @FXML private Pane mapPane;
   Canvas canvas;
 
-  public mapPageController(){
-
-
-  }
+  public mapPageController() {}
 
   // Loading maps
   @FXML
