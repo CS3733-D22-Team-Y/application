@@ -18,7 +18,7 @@ public class Main {
     // function set to read in CSV
     ReadIn input = new ReadIn();
     ArrayList<Location> locationArray = new ArrayList<>();
-    locationArray = input.readCSV();
+    locationArray = input.readLocationCSV("java/edu/wpi/cs3733/d22/teamY/TowerLocations.csv");
 
     DataManager.addObjects(locationArray);
 
