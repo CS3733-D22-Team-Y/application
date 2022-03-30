@@ -30,7 +30,7 @@ public class requestMenuController {
         new Scene(
             FXMLLoader.load(
                 Objects.requireNonNull(
-                    App.class.getResource("views/securityServicesRequest.fxml"))));
+                    App.class.getResource("views/requestTypes/securityServicesRequest.fxml"))));
 
     App.getInstance().setScene(securityRequest);
   }
@@ -41,7 +41,7 @@ public class requestMenuController {
         new Scene(
             FXMLLoader.load(
                 Objects.requireNonNull(
-                    App.class.getResource("views/medicalEquipmentRequest.fxml"))));
+                    App.class.getResource("views/requestTypes/medicalEquipmentRequest.fxml"))));
 
     App.getInstance().setScene(medicalRequest);
   }
@@ -51,7 +51,8 @@ public class requestMenuController {
     Scene floralRequest =
         new Scene(
             FXMLLoader.load(
-                Objects.requireNonNull(App.class.getResource("views/floralRequest.fxml"))));
+                Objects.requireNonNull(
+                    App.class.getResource("views/requestTypes/floralRequest.fxml"))));
 
     App.getInstance().setScene(floralRequest);
   }
@@ -61,7 +62,8 @@ public class requestMenuController {
     Scene laundryRequest =
         new Scene(
             FXMLLoader.load(
-                Objects.requireNonNull(App.class.getResource("views/laundryRequest.fxml"))));
+                Objects.requireNonNull(
+                    App.class.getResource("views/requestTypes/laundryRequest.fxml"))));
 
     App.getInstance().setScene(laundryRequest);
   }
@@ -71,7 +73,8 @@ public class requestMenuController {
     Scene mealRequest =
         new Scene(
             FXMLLoader.load(
-                Objects.requireNonNull(App.class.getResource("views/mealRequest.fxml"))));
+                Objects.requireNonNull(
+                    App.class.getResource("views/requestTypes/mealRequest.fxml"))));
     App.getInstance().setScene(mealRequest);
   }
 }

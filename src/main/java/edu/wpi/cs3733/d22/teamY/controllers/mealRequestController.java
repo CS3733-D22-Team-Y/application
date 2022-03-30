@@ -17,6 +17,8 @@ public class mealRequestController {
   @FXML private TextField input_RoomID;
   @FXML private TextField input_PatientName;
   @FXML private TextArea input_AdditionalNotes;
+  @FXML private TextField input_AssignedNurse;
+  @FXML private TextField input_RequestStatus;
 
   @FXML private TextArea input_SpecialInstructions;
   // Radio button main course
@@ -74,6 +76,9 @@ public class mealRequestController {
     // Input text fields
     input_RoomID.setText("");
     input_PatientName.setText("");
+    input_AssignedNurse.setText("");
+    input_RequestStatus.setText("");
+
     input_AdditionalNotes.setText("");
     input_SpecialInstructions.setText("");
     // Mains
