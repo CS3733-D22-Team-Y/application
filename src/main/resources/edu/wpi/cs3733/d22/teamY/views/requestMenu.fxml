@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#autoOpenCloseSidebar" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: eee;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestMenuController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: eee;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestMenuController">
    <children>
       <JFXButton alignment="CENTER" layoutX="253.0" layoutY="18.0" onAction="#mainMenu" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #012d5a;" text="Back" textFill="WHITE">
          <font>
@@ -67,7 +67,7 @@
             </VBox>
          </children>
       </HBox>
-      <JFXHamburger layoutX="13.0" layoutY="11.0" />
+      <JFXHamburger layoutX="13.0" layoutY="11.0" onMouseClicked="#autoOpenCloseSidebar" />
       <Pane fx:id="sidebarPane" layoutX="24.0" layoutY="40.0" prefHeight="650.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
