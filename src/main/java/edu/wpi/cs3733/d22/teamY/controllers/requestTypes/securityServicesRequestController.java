@@ -1,36 +1,38 @@
-package edu.wpi.cs3733.d22.teamY.controllers;
+package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXRadioButton;
 import edu.wpi.cs3733.d22.teamY.App;
 import java.io.IOException;
 import java.util.Objects;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class medicalEquipmentRequestController {
-  // Text Inputs
+public class securityServicesRequestController {
+  // Text input
   @FXML private TextField input_RoomID;
   @FXML private TextField input_PatientName;
   @FXML private TextField input_AssignedNurse;
   @FXML private TextField input_RequestStatus;
 
   @FXML private TextArea input_AdditionalNotes;
-  // Radio Buttons
-  @FXML private JFXRadioButton bedRadioButton;
-  @FXML private JFXRadioButton xrayRadioButton;
-  @FXML private JFXRadioButton infusionPumpRadioButton;
-  @FXML private JFXRadioButton reclinerRadioButton;
+  // Radio buttons
+  @FXML private JFXRadioButton unwantedGuestRadioButton;
+  @FXML private JFXRadioButton disruptionRadioButton;
+  @FXML private JFXRadioButton theftRadioButton;
+
+  @FXML private JFXRadioButton mostUrgentRadioButton;
+  @FXML private JFXRadioButton urgentRadioButton;
+  @FXML private JFXRadioButton lowPriorityRadioButton;
 
   private Scene requestMenu = null;
 
-  public medicalEquipmentRequestController() throws IOException {}
+  public securityServicesRequestController() throws IOException {}
 
   @FXML
-  void backToRequestMenu(ActionEvent event) throws IOException {
+  void backToRequestMenu() throws IOException {
     if (requestMenu == null) {
       requestMenu =
           new Scene(
@@ -51,10 +53,13 @@ public class medicalEquipmentRequestController {
     input_RequestStatus.setText("");
 
     input_AdditionalNotes.setText("");
-    // Radio buttons
-    bedRadioButton.setSelected(false);
-    xrayRadioButton.setSelected(false);
-    infusionPumpRadioButton.setSelected(false);
-    reclinerRadioButton.setSelected(false);
+    // Report type radio buttons
+    unwantedGuestRadioButton.setSelected(false);
+    disruptionRadioButton.setSelected(false);
+    theftRadioButton.setSelected(false);
+    // Priority radio buttons
+    mostUrgentRadioButton.setSelected(false);
+    urgentRadioButton.setSelected(false);
+    lowPriorityRadioButton.setSelected(false);
   }
 }
