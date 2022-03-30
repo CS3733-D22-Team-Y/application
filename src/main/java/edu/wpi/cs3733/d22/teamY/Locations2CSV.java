@@ -15,14 +15,14 @@ public class Locations2CSV {
     String[][] stringArray = new String[arrayList.size()][8];
     int ctr = 0;
     for (Location L : arrayList) {
-      stringArray[ctr][0] = L.nodeID;
-      stringArray[ctr][1] = String.valueOf(L.xCoord);
-      stringArray[ctr][2] = String.valueOf(L.yCoord);
-      stringArray[ctr][3] = L.floor;
-      stringArray[ctr][4] = L.building;
-      stringArray[ctr][5] = L.nodeType;
-      stringArray[ctr][6] = L.longName;
-      stringArray[ctr][7] = L.shortName;
+      stringArray[ctr][0] = L.getKey();
+      stringArray[ctr][1] = String.valueOf(L.getXCoord());
+      stringArray[ctr][2] = String.valueOf(L.getYCoord());
+      stringArray[ctr][3] = L.getFloor();
+      stringArray[ctr][4] = L.getBuilding();
+      stringArray[ctr][5] = L.getNodeType();
+      stringArray[ctr][6] = L.getLongName();
+      stringArray[ctr][7] = L.getShortName();
       ctr = ctr + 1;
     }
     for (String[] data : stringArray) {
