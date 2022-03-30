@@ -4,11 +4,18 @@ import edu.wpi.cs3733.d22.teamY.App;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.Pane;
 
 public class mapPageController {
   // Base pane for displaying new scenes
   @FXML private Pane mapPane;
+  Canvas canvas;
+
+  public mapPageController(){
+
+
+  }
 
   // Loading maps
   @FXML
