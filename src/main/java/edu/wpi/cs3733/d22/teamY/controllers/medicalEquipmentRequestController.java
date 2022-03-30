@@ -12,9 +12,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class medicalEquipmentRequestController {
+  // Text Inputs
   @FXML private TextField input_RoomID;
   @FXML private TextField input_PatientName;
+  @FXML private TextField input_AssignedNurse;
+  @FXML private TextField input_RequestStatus;
+
   @FXML private TextArea input_AdditionalNotes;
+  // Radio Buttons
   @FXML private JFXRadioButton bedRadioButton;
   @FXML private JFXRadioButton xrayRadioButton;
   @FXML private JFXRadioButton infusionPumpRadioButton;
@@ -42,6 +47,9 @@ public class medicalEquipmentRequestController {
     // Text input
     input_RoomID.setText("");
     input_PatientName.setText("");
+    input_AssignedNurse.setText("");
+    input_RequestStatus.setText("");
+
     input_AdditionalNotes.setText("");
     // Radio buttons
     bedRadioButton.setSelected(false);

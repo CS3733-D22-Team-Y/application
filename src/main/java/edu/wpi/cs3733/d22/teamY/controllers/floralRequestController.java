@@ -12,11 +12,16 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class floralRequestController {
+  // Radio Buttons
   @FXML private JFXRadioButton getWellSoonBouquetRadioButton;
   @FXML private JFXRadioButton newBabyRadioButton;
   @FXML private JFXRadioButton bouquetOfTheDayRadioButton;
+  // Input fields
   @FXML private TextField input_RoomID;
   @FXML private TextField input_PatientName;
+  @FXML private TextField input_AssignedNurse;
+  @FXML private TextField input_RequestStatus;
+  // Additional Notes
   @FXML private TextArea input_AdditionalNotes;
 
   private Scene requestMenu = null;
@@ -43,6 +48,8 @@ public class floralRequestController {
     bouquetOfTheDayRadioButton.setSelected(false);
     input_RoomID.setText("");
     input_PatientName.setText("");
+    input_AssignedNurse.setText("");
+    input_RequestStatus.setText("");
     input_AdditionalNotes.setText("");
   }
 }
