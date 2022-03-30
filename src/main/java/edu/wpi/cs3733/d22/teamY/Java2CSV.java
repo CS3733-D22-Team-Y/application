@@ -46,7 +46,7 @@ public class Java2CSV {
     FileWriter fileWriter = new FileWriter(csvFile);
     ArrayList<MedEquip> arrayList = new ArrayList<>();
     arrayList = DataManager.getAll(MedEquip.TABLE_NAME);
-    String[][] stringArray = new String[arrayList.size()][8];
+    String[][] stringArray = new String[arrayList.size()][5];
     int ctr = 0;
     for (MedEquip L : arrayList) { // equipID,equipType,equipLocID,isClean
       stringArray[ctr][0] = L.getKey();
@@ -77,7 +77,7 @@ public class Java2CSV {
     FileWriter fileWriter = new FileWriter(csvFile);
     ArrayList<MedEquipReq> arrayList = new ArrayList<>();
     arrayList = DataManager.getAll(MedEquipReq.TABLE_NAME);
-    String[][] stringArray = new String[arrayList.size()][8];
+    String[][] stringArray = new String[arrayList.size()][3];
     int ctr = 0;
     for (MedEquipReq L : arrayList) {
       stringArray[ctr][0] = L.getKey();
