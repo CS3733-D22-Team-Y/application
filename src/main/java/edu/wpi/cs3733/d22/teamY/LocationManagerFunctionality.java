@@ -10,21 +10,21 @@ public class LocationManagerFunctionality {
 
     for (Location l : locs) {
       System.out.println(
-          l.nodeID
+          l.getKey()
               + ": ("
-              + l.xCoord
+              + l.getXCoord()
               + ", "
-              + l.yCoord
+              + l.getYCoord()
               + "),"
-              + l.building
+              + l.getBuilding()
               + " Floor "
-              + l.floor
+              + l.getFloor()
               + ". "
-              + l.shortName
+              + l.getShortName()
               + " ["
-              + l.longName
+              + l.getLongName()
               + "] "
-              + l.nodeType);
+              + l.getNodeType());
     }
   }
 
@@ -42,8 +42,8 @@ public class LocationManagerFunctionality {
       return false;
     }
 
-    toChange.floor = floor;
-    toChange.nodeType = locationType;
+    toChange.setFloor(floor);
+    toChange.setNodeType(locationType);
     return DataManager.replace(toChange);
   }
 

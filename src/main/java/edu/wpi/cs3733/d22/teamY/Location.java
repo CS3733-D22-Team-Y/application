@@ -3,13 +3,13 @@ package edu.wpi.cs3733.d22.teamY;
 public class Location extends DBObject {
   public static final String TABLE_NAME = "locations";
   public static final String KEY_ATTRIBUTE_NAME = "nodeID";
-  String nodeID;
-  int xCoord, yCoord;
-  String floor;
-  String building;
-  String nodeType;
-  String longName;
-  String shortName;
+  private String nodeID;
+  private int xCoord, yCoord;
+  private String floor;
+  private String building;
+  private String nodeType;
+  private String longName;
+  private String shortName;
 
   public Location(
       String nodeID,
