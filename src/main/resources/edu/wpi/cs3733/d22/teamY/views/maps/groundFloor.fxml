@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="700.0" maxWidth="700.0" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.groundFloorController">
+<AnchorPane maxHeight="700.0" maxWidth="700.0" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.maps.groundFloorController">
    <children>
       <Label layoutX="336.0" layoutY="152.0" text="Ground Floor" />
    </children>
