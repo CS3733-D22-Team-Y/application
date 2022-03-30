@@ -7,12 +7,8 @@ public class Main {
 
   public static void main(String[] args) {
 
-    // creates database
-    Database locationDB = new Database("LocationDB");
-    Connection db_conn = Database.connection; // establishes connection to database
-
     // creating dataManager class that manages database
-    DataManager.init(db_conn);
+    DataManager.init("LocationDB");
     DataManager.cleanAll(); // cleans database
 
     // function set to read in CSV
@@ -36,6 +32,6 @@ public class Main {
 
     // once ended, shuts off the database
     System.out.println("Shutting down database...");
-    locationDB.shutdown_db();
+    DataManager.shutdownDB();
   }
 }

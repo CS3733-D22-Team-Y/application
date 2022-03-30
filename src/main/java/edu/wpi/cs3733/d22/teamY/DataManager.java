@@ -1,10 +1,13 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import java.io.IOException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /** This class manages the database data so that data is mirrored in memory and in the database. */
 public class DataManager {
@@ -14,14 +17,58 @@ public class DataManager {
   private static final String[] tables = {"medequiprequest", "medequip", "locations"};
 
   /**
-   * Initializes the data manager.
+   * Initializes the data manager and DB connection
    *
-   * @param connection the database connection
+   * @param db_name the database name
    */
-  public static void init(Connection connection) {
-    dbConnection = connection;
+  public static void init(String db_name) {
+    try {
+      Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+    } catch (ClassNotFoundException e) {
+      System.out.println("Apache Derby Driver Not found!");
+      e.printStackTrace();
+      return;
+    }
+
+    // Connect to existing DB in root folder
+    try {
+      dbConnection = DriverManager.getConnection("jdbc:derby:" + db_name);
+
+    } catch (SQLException e) {
+      System.out.println("Connection Failed");
+      e.printStackTrace();
+      return;
+    }
+    System.out.println("Connection Successful");
+
     for (String table : tables) {
       data.put(table, new HashMap<>());
+    }
+  }
+
+  /** shutDown the currently connected DB. Will Export Data to CSV's. */
+  public static void shutdownDB() {
+    List<String> export_list = new ArrayList<>();
+    export_list.add("locations_export");
+    export_list.add("medEquipment_export");
+    export_list.add("medEquipRequests_export");
+    try {
+      Java2CSV.locations2CSV(export_list.get(0));
+      Java2CSV.medEquip2CSV(export_list.get(1));
+      Java2CSV.medEquipReq2CSV(export_list.get(2));
+      System.out.print("Export Completed, file names: " + export_list + "\n");
+    } catch (IOException e) {
+      System.out.println("Export Failed, check console");
+      e.printStackTrace();
+    }
+
+    try {
+      dbConnection.close();
+      System.out.println("Connection Closed.");
+
+    } catch (SQLException e) {
+      System.out.println("Failed to shutdown");
+      e.printStackTrace();
     }
   }
 

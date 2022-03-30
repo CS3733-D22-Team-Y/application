@@ -5,7 +5,6 @@
 package edu.wpi.YodelingYoshis;
 
 import edu.wpi.cs3733.d22.teamY.*;
-import java.sql.Connection;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +17,7 @@ public class DefaultTest {
 
   @Test
   public void testAddAndGet() {
-    Database db = init();
+    DataManager.init("LocationDB");
     Location testLoc =
         new Location(
             "TESTLOCATION",
@@ -45,12 +44,12 @@ public class DefaultTest {
     assert (getLoc.toString().equals(testLoc.toString()));
     // once ended, shuts off the database
     System.out.println("Shutting down database...");
-    db.shutdown_db();
+    DataManager.shutdownDB();
   }
 
   @Test
   public void testAddAndGetMedEquip() {
-    Database db = init();
+    DataManager.init("LocationDB");
     MedEquip testLoc = new MedEquip("TestEquip", "TestTypeyeyeHere", "yPATI01703", false);
     DataManager.add(testLoc);
     MedEquip l2 = DataManager.get(MedEquip.TABLE_NAME, "TestEquip");
@@ -67,12 +66,12 @@ public class DefaultTest {
     assert (getLoc.toString().equals(testLoc.toString()));
     // once ended, shuts off the database
     System.out.println("Shutting down database...");
-    db.shutdown_db();
+    DataManager.shutdownDB();
   }
 
   @Test
   public void testGetAll() {
-    Database db = init();
+    DataManager.init("LocationDB");
     ArrayList<Location> locationArray = new ArrayList<>();
     locationArray = DataManager.getAll(Location.TABLE_NAME);
     if (locationArray == null) {
@@ -86,12 +85,12 @@ public class DefaultTest {
     }
 
     System.out.println("Shutting down database...");
-    db.shutdown_db();
+    DataManager.shutdownDB();
   }
 
   @Test
   public void testRemoveObject() {
-    Database db = init();
+    DataManager.init("LocationDB");
     Location testLoc =
         new Location(
             "TESTLOCATION",
@@ -118,12 +117,12 @@ public class DefaultTest {
     assert true;
 
     System.out.println("Shutting down database...");
-    db.shutdown_db();
+    DataManager.shutdownDB();
   }
 
   @Test
   public void testReplaceObject() {
-    Database db = init();
+    DataManager.init("LocationDB");
     Location testLoc =
         new Location(
             "TESTLOCATION",
@@ -159,12 +158,12 @@ public class DefaultTest {
     assert (getLoc.toString().equals(newLoc.toString()));
 
     System.out.println("Shutting down database...");
-    db.shutdown_db();
+    DataManager.shutdownDB();
   }
 
   @Test
   public void testBadReplace() {
-    Database db = init();
+    DataManager.init("LocationDB");
     Location testLoc =
         new Location(
             "TESTLOCATION",
@@ -180,12 +179,12 @@ public class DefaultTest {
     Location loc = DataManager.get(Location.TABLE_NAME, "TESTLOCATION"); // should not work
     assert (loc == null);
     System.out.println("Shutting down database...");
-    db.shutdown_db();
+    DataManager.shutdownDB();
   }
 
   @Test
   public void testCleanTable() {
-    Database db = init();
+    DataManager.init("LocationDB");
     assert (DataManager.getAll(Location.TABLE_NAME).size() == 151);
     DataManager.cleanTable(Location.TABLE_NAME);
     assert (DataManager.getAll(Location.TABLE_NAME).size() == 0);
@@ -205,12 +204,12 @@ public class DefaultTest {
     assert (DataManager.getAll(Location.TABLE_NAME).size() == 1);
 
     System.out.println("Shutting down database...");
-    db.shutdown_db();
+    DataManager.shutdownDB();
   }
 
   @Test
   public void testCleanAll() {
-    Database db = init();
+    DataManager.init("LocationDB");
 
     assert (DataManager.getAll(Location.TABLE_NAME).size() == 151);
     DataManager.cleanAll();
@@ -231,23 +230,19 @@ public class DefaultTest {
     assert (DataManager.getAll(Location.TABLE_NAME).size() == 1);
 
     System.out.println("Shutting down database...");
-    db.shutdown_db();
+    DataManager.shutdownDB();
   }
 
   @Test
   public void initTest() {
-    Database db = init();
-    db.shutdown_db();
+    DataManager.init("LocationDB");
+    DataManager.cleanAll();
   }
 
   // helper function to start the database and populate it with data from the csv file
-  public Database init() {
-    // creates database
-    Database locationDB = new Database("LocationDB");
-    Connection db_conn = Database.connection; // establishes connection to database
-
+  public void init() {
     // creating dataManager class that manages database
-    DataManager.init(db_conn);
+    DataManager.init("LocationDB");
     DataManager.cleanAll(); // cleans database
 
     // function set to read in CSV
@@ -258,6 +253,5 @@ public class DefaultTest {
     //    DataManager.addObjects(input.readMedEquipCSV("MedEquip.csv"));
     //    DataManager.addObjects(input.ReadMedReqCSV("MedEquipRequest.csv"));
 
-    return locationDB;
   }
 }
