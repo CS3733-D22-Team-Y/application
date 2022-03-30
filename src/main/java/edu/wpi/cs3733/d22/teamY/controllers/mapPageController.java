@@ -9,6 +9,8 @@ import javafx.scene.layout.Pane;
 public class mapPageController extends AbsGlobalControllerFuncs {
   // Base pane for displaying new scenes
   @FXML private Pane mapPane;
+  // Sidebar pane
+  @FXML private Pane sidebarPane;
 
   // Loading maps
   @FXML
@@ -52,6 +54,16 @@ public class mapPageController extends AbsGlobalControllerFuncs {
       mapPane.getChildren().add(newPane);
     } catch (IOException e) {
       e.printStackTrace();
+    }
+  }
+
+  // Sidebar
+  @FXML
+  void autoOpenCloseSidebar() throws IOException {
+    if (sidebarPane.getChildren().size() == 0) {
+      loadSidebar(sidebarPane);
+    } else {
+      removeSidebar(sidebarPane);
     }
   }
 }
