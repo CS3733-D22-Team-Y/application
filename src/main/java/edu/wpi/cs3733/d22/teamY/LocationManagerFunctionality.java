@@ -73,7 +73,7 @@ public class LocationManagerFunctionality {
    */
   public static boolean writeDbToCSV(String fileLoc) {
     try {
-      Locations2CSV.generateCSV(fileLoc);
+      Java2CSV.locations2CSV(fileLoc);
     } catch (Exception e) {
       System.out.println("CSV generation failed. See below:");
       e.printStackTrace();
