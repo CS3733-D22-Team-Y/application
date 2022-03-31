@@ -23,4 +23,34 @@ public class sideBarController extends AbsGlobalControllerFuncs {
   void loadViewServiceRequests() throws IOException {
     loadScene("views/activeServiceRequest.fxml");
   }
+
+  @FXML
+  void loadLaundryRequest() throws IOException {
+    loadScene("views/requestTypes/laundryRequest.fxml");
+  }
+
+  @FXML
+  void loadMedicalEquipment() throws IOException {
+    loadScene("views/requestTypes/medicalEquipmentRequest.fxml");
+  }
+
+  @FXML
+  void loadMealDelivery() throws IOException {
+    loadScene("views/requestTypes/mealRequest.fxml");
+  }
+
+  @FXML
+  void loadFloralDelivery() throws IOException {
+    loadScene("views/requestTypes/floralRequest.fxml");
+  }
+
+  @FXML
+  void loadSecurity() throws IOException {
+    loadScene("views/requestTypes/securityServicesRequest.fxml");
+  }
+
+  @FXML
+  void loadLab() throws IOException {
+    loadScene("views/requestTypes/labRequest.fxml");
+  }
 }
