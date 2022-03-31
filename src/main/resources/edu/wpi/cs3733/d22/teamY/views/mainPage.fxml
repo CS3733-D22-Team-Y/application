@@ -1,106 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.mainPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: eee;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.mainPageController">
    <children>
-      <BorderPane prefHeight="706.0" prefWidth="1102.0" style="-fx-background-color: #297BCE;">
-         <left>
-            <VBox prefHeight="638.0" prefWidth="330.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label prefHeight="300.0" prefWidth="330.0" text="Map" underline="true">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <padding>
-                        <Insets left="140.0" />
-                     </padding>
-                  </Label>
-                  <JFXButton prefHeight="300.0" prefWidth="330.0" style="-fx-background-color: red;" text="Path Finder">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="75.0" onAction="#viewMap" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: red;" text="View Map">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="145.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: red;" text="Edit Map">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-            </VBox>
-         </left>
-         <center>
-            <VBox prefHeight="638.0" prefWidth="330.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label prefHeight="300.0" prefWidth="500.0" text="Service" underline="true">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <padding>
-                        <Insets left="175.0" />
-                     </padding>
-                  </Label>
-                  <JFXButton onAction="#requestMenu" prefHeight="300.0" prefWidth="500.0" text="Create">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="210.0" onAction="#activeRequests" prefHeight="300.0" prefWidth="500.0" text="View">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </JFXButton>
-                  <Label prefHeight="300.0" prefWidth="500.0" />
-               </children>
-            </VBox>
-         </center>
-         <right>
-            <VBox prefHeight="638.0" prefWidth="330.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label prefHeight="300.0" prefWidth="500.0" text="Equipment" underline="true">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <padding>
-                        <Insets left="120.0" />
-                     </padding>
-                  </Label>
-                  <JFXButton prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: red;" text="View Locations">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton layoutX="10.0" layoutY="39.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: red;" text="View Catalogs">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </JFXButton>
-                  <JFXButton fx:id="tableButton" mnemonicParsing="false" onAction="#onTableButton" text="table!" />
-               </children>
-            </VBox>
-         </right>
-         <top>
-            <JFXButton onAction="#welcomePage" prefHeight="52.0" prefWidth="84.0" text="^" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="36.0" />
-               </font>
-            </JFXButton>
-         </top>
-      </BorderPane>
+      <Label layoutX="477.0" layoutY="14.0" text="Menu" textFill="#297bce">
+         <font>
+            <Font name="Microsoft Tai Le Bold" size="54.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="50.0" arcWidth="5.0" fill="WHITE" height="575.0" layoutX="400.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 50;" width="300.0" />
+      <Rectangle arcHeight="50.0" arcWidth="5.0" fill="WHITE" height="575.0" layoutX="750.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 50;" width="300.0" />
+      <Rectangle arcHeight="50.0" arcWidth="5.0" fill="WHITE" height="575.0" layoutX="50.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 50;" width="300.0" />
+      <Label layoutX="162.0" layoutY="110.0" text="Map" textFill="#021d5a">
+         <font>
+            <Font name="Microsoft Tai Le Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="490.0" layoutY="110.0" text="Service" textFill="#021d5a">
+         <font>
+            <Font name="Microsoft Tai Le Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="808.0" layoutY="110.0" text="Equipment" textFill="#021d5a">
+         <font>
+            <Font name="Microsoft Tai Le Bold" size="36.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="131.0" layoutY="180.0" onAction="#viewMap" text="View Map" textFill="#021d5a" underline="true">
+         <font>
+            <Font name="Microsoft Tai Le" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="449.0" layoutY="180.0" onAction="#requestMenu" text="Make a Request" textFill="#021d5a" underline="true">
+         <font>
+            <Font name="Microsoft Tai Le" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="422.0" layoutY="231.0" onAction="#activeRequest" text="View Active Requests" textFill="#021d5a" underline="true">
+         <font>
+            <Font name="Microsoft Tai Le" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="80.0" layoutY="27.0" onAction="#onTableButton" text="Secret Table Button" textFill="#021d5a" underline="true">
+         <font>
+            <Font name="Microsoft Tai Le" size="24.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
