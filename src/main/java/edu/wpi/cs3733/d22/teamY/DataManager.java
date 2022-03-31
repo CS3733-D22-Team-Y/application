@@ -1,7 +1,9 @@
 package edu.wpi.cs3733.d22.teamY;
 
 import edu.wpi.cs3733.d22.teamY.model.dao.LocationDao;
+import edu.wpi.cs3733.d22.teamY.model.dao.MedEquipReqDao;
 import edu.wpi.cs3733.d22.teamY.model.dao.impl.LocationDaoImpl;
+import edu.wpi.cs3733.d22.teamY.model.dao.impl.MedEquipReqDaoImpl;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,9 +21,14 @@ public class DataManager {
   private static final String[] tables = {"MEDEQUIPREQUEST", "MEDEQUIP", "LOCATIONS"};
 
   private static LocationDao locationDao;
+  private static MedEquipReqDao medEquipReqDao;
 
   public static LocationDao getLocationDao() {
     return locationDao;
+  }
+
+  public static MedEquipReqDao getMedEquipReqDao() {
+    return medEquipReqDao;
   }
 
   /**
@@ -54,6 +61,7 @@ public class DataManager {
     }
 
     locationDao = new LocationDaoImpl(dbConnection);
+    medEquipReqDao = new MedEquipReqDaoImpl(dbConnection);
   }
 
   /** shutDown the currently connected DB. Will Export Data to CSV's. */
@@ -65,7 +73,7 @@ public class DataManager {
     try {
       Java2CSV.locations2CSV(export_list.get(0));
       Java2CSV.medEquip2CSV(export_list.get(1));
-      // Java2CSV.medEquipReq2CSV(export_list.get(2));
+      Java2CSV.medEquipReq2CSV(export_list.get(2));
       System.out.print("Export Completed, file names: " + export_list + "\n");
     } catch (IOException e) {
       System.out.println("Export Failed, check console");

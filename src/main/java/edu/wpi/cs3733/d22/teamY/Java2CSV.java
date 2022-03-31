@@ -71,7 +71,7 @@ public class Java2CSV {
     }
     fileWriter.close();
   }
-  /*
+
   public static void medEquipReq2CSV(String fileName) throws IOException {
     File csvFile = new File(fileName + ".csv");
     FileWriter fileWriter = new FileWriter(csvFile);
@@ -100,5 +100,4 @@ public class Java2CSV {
     }
     fileWriter.close();
   }
-   */
 }

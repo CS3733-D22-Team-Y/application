@@ -22,11 +22,11 @@ public class Main {
 
     DataManager.addObjects(locationArray);
     DataManager.addObjects(medEquipArray);
-    // DataManager.addObjects(medEquipRequestArray);
+    DataManager.addObjects(medEquipRequestArray);
 
     System.out.println(DataManager.getAll(Location.TABLE_NAME).size());
     System.out.println(DataManager.getAll(MedEquip.TABLE_NAME).size());
-    // System.out.println(DataManager.getAll(MedEquipReq.TABLE_NAME).size());
+    System.out.println(DataManager.getAll(MedEquipReq.TABLE_NAME).size());
 
     App.launch(App.class, args);
 
