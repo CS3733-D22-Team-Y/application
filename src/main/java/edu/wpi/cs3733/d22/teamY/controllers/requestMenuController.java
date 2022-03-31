@@ -11,7 +11,6 @@ import javafx.scene.layout.Pane;
 
 public class requestMenuController extends AbsGlobalControllerFuncs {
   @FXML Pane sidebarPane;
-  // Test
 
   public requestMenuController() throws IOException {}
 
