@@ -34,7 +34,7 @@ public class mainPageController {
   }
 
   @FXML
-  void activeRequests() throws IOException {
+  void activeRequest() throws IOException {
     // Sets scene to view service request
     activeRequests =
         new Scene(
