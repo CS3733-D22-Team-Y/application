@@ -1,12 +1,10 @@
 package edu.wpi.cs3733.d22.teamY.model.dao;
 
 import edu.wpi.cs3733.d22.teamY.MedEquipReq;
-import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoDeleteException;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoGetException;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoUpdateException;
-
 import java.util.List;
 
 public interface MedEquipReqDao {

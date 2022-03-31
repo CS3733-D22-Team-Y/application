@@ -1,14 +1,11 @@
 package edu.wpi.cs3733.d22.teamY.model.dao.impl;
 
 import edu.wpi.cs3733.d22.teamY.MedEquipReq;
-import edu.wpi.cs3733.d22.teamY.model.Location;
-import edu.wpi.cs3733.d22.teamY.model.dao.LocationDao;
 import edu.wpi.cs3733.d22.teamY.model.dao.MedEquipReqDao;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoDeleteException;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoGetException;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoUpdateException;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +26,8 @@ public class MedEquipReqDaoImpl implements MedEquipReqDao {
       while (rs.next()) {
         medEquipReqs.add(
             new MedEquipReq(
-                    Integer.toString(rs.getInt("REQUESTNUM")), //TODO fix type mismatch in class and table?
+                Integer.toString(
+                    rs.getInt("REQUESTNUM")), // TODO fix type mismatch in class and table?
                 rs.getString("EQUIPID"),
                 rs.getString("TARGETNODEID")));
       }
@@ -42,16 +40,18 @@ public class MedEquipReqDaoImpl implements MedEquipReqDao {
   @Override
   public MedEquipReq getMedEquipReq(String requestNum) throws DaoGetException {
     try {
-      PreparedStatement s = conn.prepareStatement("SELECT * FROM MEDEQUIPREQUEST WHERE REQUESTNUM = ?");
+      PreparedStatement s =
+          conn.prepareStatement("SELECT * FROM MEDEQUIPREQUEST WHERE REQUESTNUM = ?");
       s.setInt(1, Integer.parseInt(requestNum));
       ResultSet rs = s.executeQuery();
       if (rs.next()) {
         return new MedEquipReq(
-                Integer.toString(rs.getInt("REQUESTNUM")), //TODO fix type mismatch in class and table?
-                rs.getString("EQUIPID"),
-                rs.getString("TARGETNODEID"));
+            Integer.toString(rs.getInt("REQUESTNUM")), // TODO fix type mismatch in class and table?
+            rs.getString("EQUIPID"),
+            rs.getString("TARGETNODEID"));
       } else {
-        throw new DaoGetException(new Exception("No Medical Equipment Request with Request Number = " + requestNum));
+        throw new DaoGetException(
+            new Exception("No Medical Equipment Request with Request Number = " + requestNum));
       }
 
     } catch (SQLException e) {
@@ -92,7 +92,8 @@ public class MedEquipReqDaoImpl implements MedEquipReqDao {
   @Override
   public void deleteMedEquipReq(MedEquipReq mreq) throws DaoDeleteException {
     try {
-      PreparedStatement s = conn.prepareStatement("DELETE FROM MEDEQUIPREQUEST WHERE REQUESTNUM = ?");
+      PreparedStatement s =
+          conn.prepareStatement("DELETE FROM MEDEQUIPREQUEST WHERE REQUESTNUM = ?");
       s.setString(1, mreq.getRequestNum());
       s.executeUpdate();
     } catch (SQLException e) {

@@ -65,7 +65,7 @@ public class DataManager {
     try {
       Java2CSV.locations2CSV(export_list.get(0));
       Java2CSV.medEquip2CSV(export_list.get(1));
-      Java2CSV.medEquipReq2CSV(export_list.get(2));
+      // Java2CSV.medEquipReq2CSV(export_list.get(2));
       System.out.print("Export Completed, file names: " + export_list + "\n");
     } catch (IOException e) {
       System.out.println("Export Failed, check console");
