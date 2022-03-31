@@ -1,5 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXHamburger;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.DataManager;
 import edu.wpi.cs3733.d22.teamY.model.Location;
@@ -27,6 +29,13 @@ public class mapPageController extends AbsGlobalControllerFuncs {
   @FXML private Pane mapPane;
   // Sidebar pane
   @FXML private Pane sidebarPane;
+  // Hamburger that opens the sidebar
+  @FXML private JFXHamburger hamburger;
+  // Menu of buttons
+  @FXML private VBox buttonBox;
+  // Temp button
+  @FXML JFXButton tempSidebarButton;
+
   private static final int CIRCLE_RADIUS_PX = 10;
   private static final Paint CIRCLE_PAINT = Color.RED;
 
@@ -252,5 +261,21 @@ public class mapPageController extends AbsGlobalControllerFuncs {
     } else {
       removeSidebar(sidebarPane);
     }
+  }
+
+  @FXML
+  void showSidebar() throws IOException {
+    hamburger.setVisible(false);
+    buttonBox.setLayoutX(250);
+    tempSidebarButton.setVisible(true);
+    loadSidebar(sidebarPane);
+  }
+
+  @FXML
+  void hideSidebar() {
+    hamburger.setVisible(true);
+    buttonBox.setLayoutX(150);
+    tempSidebarButton.setVisible(false);
+    removeSidebar(sidebarPane);
   }
 }

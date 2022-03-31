@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
 import java.io.IOException;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 
 public class sideBarController extends AbsGlobalControllerFuncs {
@@ -52,5 +53,20 @@ public class sideBarController extends AbsGlobalControllerFuncs {
   @FXML
   void loadLab() throws IOException {
     loadScene("views/requestTypes/labRequest.fxml");
+  }
+
+  @FXML
+  void loadLocationTable() throws IOException {
+    loadScene("views/locTablePage.fxml");
+  }
+
+  @FXML
+  void loadMedEquipmentRequests() throws IOException {
+    loadScene("views/medEquipReqTablePage.fxml");
+  }
+
+  @FXML
+  void killApplication() {
+    Platform.exit();
   }
 }

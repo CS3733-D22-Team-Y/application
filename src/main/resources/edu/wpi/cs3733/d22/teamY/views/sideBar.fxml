@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="650.0" prefWidth="200.0" style="-fx-background-color: #021D5A;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.sideBarController">
+<AnchorPane prefHeight="700.0" prefWidth="185.0" style="-fx-background-color: #021D5A;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.sideBarController">
    <children>
       <TextField layoutX="12.0" layoutY="18.0" prefHeight="25.0" prefWidth="126.0" text="search...">
          <font>
@@ -81,7 +81,7 @@
             <Font name="Microsoft Tai Le Bold" size="24.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="11.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment Catalog">
+      <Text fill="WHITE" layoutX="11.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medical Equipment Requests">
          <font>
             <Font name="Microsoft Tai Le" size="12.0" />
          </font>
@@ -92,46 +92,46 @@
          </font>
       </Text>
       <JFXButton layoutX="11.0" layoutY="377.0" prefHeight="25.0" prefWidth="123.0" text="Equipment Hidden Button" textFill="TRANSPARENT" />
-      <JFXButton layoutX="11.0" layoutY="407.0" prefHeight="25.0" prefWidth="101.0" text="Equipment Catalog Hidden Button" textFill="TRANSPARENT" />
-      <JFXButton layoutX="11.0" layoutY="429.0" prefHeight="25.0" prefWidth="106.0" text="Eqiupment Location" textFill="TRANSPARENT" />
-      <Text fill="WHITE" layoutX="34.0" layoutY="604.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inbox">
+      <JFXButton layoutX="11.0" layoutY="407.0" onAction="#loadMedEquipmentRequests" prefHeight="26.0" prefWidth="154.0" text="Equipment Catalog Hidden Button" textFill="TRANSPARENT" />
+      <JFXButton layoutX="11.0" layoutY="429.0" onAction="#loadLocationTable" prefHeight="25.0" prefWidth="106.0" text="Eqiupment Location" textFill="TRANSPARENT" />
+      <Text fill="WHITE" layoutX="34.0" layoutY="654.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inbox">
          <font>
             <Font name="Microsoft Tai Le Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="33.0" layoutY="578.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
+      <Text fill="WHITE" layoutX="33.0" layoutY="628.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
          <font>
             <Font name="Microsoft Tai Le Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="33.0" layoutY="631.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logout">
+      <Text fill="WHITE" layoutX="33.0" layoutY="681.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logout">
          <font>
             <Font name="Microsoft Tai Le Bold" size="14.0" />
          </font>
       </Text>
-      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="10.0" layoutY="591.0">
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="10.0" layoutY="641.0">
          <image>
             <Image url="@images/mailIcon.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="9.0" layoutY="564.0">
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="9.0" layoutY="614.0">
          <image>
             <Image url="@images/HouseIcon.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="18.0" fitWidth="12.0" layoutX="13.0" layoutY="618.0">
+      <ImageView fitHeight="18.0" fitWidth="12.0" layoutX="13.0" layoutY="668.0">
          <image>
             <Image url="@images/LogoutIcon.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="8.0" layoutY="561.0" onAction="#loadMainPage" prefHeight="25.0" prefWidth="65.0" text="Home Hidden Button" textFill="TRANSPARENT" />
-      <JFXButton layoutX="8.0" layoutY="587.0" prefHeight="25.0" prefWidth="65.0" text="Inbox Hidden Button" textFill="TRANSPARENT" />
-      <JFXButton layoutX="12.0" layoutY="614.0" prefHeight="25.0" prefWidth="72.0" text="Logout Hidden button" textFill="TRANSPARENT" />
+      <JFXButton layoutX="8.0" layoutY="611.0" onAction="#loadMainPage" prefHeight="25.0" prefWidth="65.0" text="Home Hidden Button" textFill="TRANSPARENT" />
+      <JFXButton layoutX="8.0" layoutY="637.0" prefHeight="25.0" prefWidth="65.0" text="Inbox Hidden Button" textFill="TRANSPARENT" />
+      <JFXButton layoutX="12.0" layoutY="664.0" onAction="#killApplication" prefHeight="25.0" prefWidth="72.0" text="Logout Hidden button" textFill="TRANSPARENT" />
       <Text fill="WHITE" layoutX="11.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Active Service Requests">
          <font>
             <Font name="Microsoft Tai Le" size="12.0" />
          </font>
       </Text>
-      <JFXButton layoutX="11.0" layoutY="347.0" onAction="#loadLab" prefHeight="26.0" prefWidth="153.0" text="Lab Request Hidden Button" textFill="TRANSPARENT" />
+      <JFXButton layoutX="11.0" layoutY="347.0" onAction="#loadViewServiceRequests" prefHeight="26.0" prefWidth="153.0" text="Lab Request Hidden Button" textFill="TRANSPARENT" />
    </children>
 </AnchorPane>

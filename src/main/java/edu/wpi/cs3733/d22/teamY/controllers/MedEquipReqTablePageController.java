@@ -12,9 +12,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 
 public class MedEquipReqTablePageController extends AbsGlobalControllerFuncs {
   @FXML private TableView<MedEquipReq> medEquipReqTableView;
+
+  @FXML Pane sidebarPane;
 
   public void initialize() {
     List<MedEquipReq> medEquipReqs;
@@ -45,5 +48,15 @@ public class MedEquipReqTablePageController extends AbsGlobalControllerFuncs {
   @FXML
   void mainMenu() throws IOException {
     loadScene("views/mainPage.fxml");
+  }
+
+  // Sidebar
+  @FXML
+  void autoOpenCloseSidebar() throws IOException {
+    if (sidebarPane.getChildren().size() == 0) {
+      loadSidebar(sidebarPane);
+    } else {
+      removeSidebar(sidebarPane);
+    }
   }
 }

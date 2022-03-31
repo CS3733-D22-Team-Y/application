@@ -2,6 +2,9 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXRadioButton;
 import edu.wpi.cs3733.d22.teamY.App;
+import edu.wpi.cs3733.d22.teamY.DataManager;
+import edu.wpi.cs3733.d22.teamY.MedEquipReq;
+import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import java.io.IOException;
 import java.util.Objects;
 import javafx.event.ActionEvent;
@@ -56,5 +59,12 @@ public class medicalEquipmentRequestController {
     xrayRadioButton.setSelected(false);
     infusionPumpRadioButton.setSelected(false);
     reclinerRadioButton.setSelected(false);
+  }
+
+  @FXML
+  void submitData() throws DaoAddException {
+    MedEquipReq submission =
+        new MedEquipReq("1422", input_AdditionalNotes.getText(), input_RoomID.getText());
+    DataManager.getMedEquipReqDao().addMedEquipReq(submission);
   }
 }

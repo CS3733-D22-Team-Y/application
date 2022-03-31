@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.locTablePageController">
@@ -19,5 +21,7 @@
             <Font name="Microsoft Tai Le Bold" size="24.0" />
          </font>
       </JFXButton>
+      <JFXHamburger layoutX="14.0" layoutY="17.0" onMouseClicked="#autoOpenCloseSidebar" />
+      <Pane fx:id="sidebarPane" layoutX="18.0" layoutY="43.0" prefHeight="650.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

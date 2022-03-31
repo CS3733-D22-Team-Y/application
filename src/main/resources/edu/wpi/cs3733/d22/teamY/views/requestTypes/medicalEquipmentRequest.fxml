@@ -29,7 +29,7 @@
          </font>
       </Label>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <JFXButton alignment="CENTER" layoutX="903.0" layoutY="601.0" prefHeight="68.0" prefWidth="150.0" style="-fx-background-color: #012d5a;" text="Submit" textFill="WHITE">
+      <JFXButton alignment="CENTER" layoutX="903.0" layoutY="601.0" onAction="#submitData" prefHeight="68.0" prefWidth="150.0" style="-fx-background-color: #012d5a;" text="Submit" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
