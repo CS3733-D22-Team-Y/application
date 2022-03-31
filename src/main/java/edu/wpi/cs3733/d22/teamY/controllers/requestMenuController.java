@@ -57,14 +57,4 @@ public class requestMenuController extends AbsGlobalControllerFuncs {
       removeSidebar(sidebarPane);
     }
   }
-
-  @FXML
-  void labResults() throws IOException {
-    Scene labResults =
-        new Scene(
-            FXMLLoader.load(
-                Objects.requireNonNull(
-                    App.class.getResource("views/requestTypes/labRequest.fxml"))));
-    App.getInstance().setScene(labResults);
-  }
 }
