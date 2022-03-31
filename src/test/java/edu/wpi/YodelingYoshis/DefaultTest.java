@@ -6,7 +6,7 @@ package edu.wpi.YodelingYoshis;
 
 import edu.wpi.cs3733.d22.teamY.*;
 import java.util.ArrayList;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class DefaultTest {
 
