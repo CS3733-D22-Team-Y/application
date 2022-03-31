@@ -77,4 +77,14 @@ public class requestMenuController {
                     App.class.getResource("views/requestTypes/mealRequest.fxml"))));
     App.getInstance().setScene(mealRequest);
   }
+
+  @FXML
+  void labResults() throws IOException {
+    Scene labResults =
+        new Scene(
+            FXMLLoader.load(
+                Objects.requireNonNull(
+                    App.class.getResource("views/requestTypes/labRequest.fxml"))));
+    App.getInstance().setScene(labResults);
+  }
 }
