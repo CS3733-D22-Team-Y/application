@@ -35,7 +35,7 @@ public class App extends Application {
     this.primaryStage = primaryStage;
     // Sets the primary scene (currently request menu) and displays it
     Parent root =
-        FXMLLoader.load(Objects.requireNonNull(getClass().getResource("views/requestMenu.fxml")));
+        FXMLLoader.load(Objects.requireNonNull(getClass().getResource("views/welcomePage.fxml")));
     Scene scene = new Scene(root);
     primaryStage.setScene(scene);
     primaryStage.show();

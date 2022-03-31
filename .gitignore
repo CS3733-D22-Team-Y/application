@@ -7,7 +7,14 @@ bin/
 *.xml
 *.log
 
-#Ignore DB
-LocationDB/
+#Ignore Derby.log
+derby.log
+*.log
+
+#Ignore auto generated export csv's
+locations_export.csv
+medEquipment_export.csv
+medEquipRequests_export.csv
+
 #Mac Specific
 .DS_Store
