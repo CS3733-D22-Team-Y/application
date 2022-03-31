@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MedEquipReqTablePageController">
+<AnchorPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MedEquipReqTablePageController">
    <children>
-      <TableView fx:id="medEquipReqTableView" prefHeight="400.0" prefWidth="606.0" />
+      <TableView fx:id="medEquipReqTableView" layoutX="386.0" layoutY="73.0" prefHeight="600.0" prefWidth="700.0" />
+      <Label layoutX="431.0" layoutY="7.0" prefHeight="66.0" prefWidth="611.0" text="Hospital Equipment Table" textFill="#297bce">
+         <font>
+            <Font name="System Bold" size="54.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="258.0" layoutY="15.0" onAction="#mainMenu" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #021D5A;" text="Back" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
