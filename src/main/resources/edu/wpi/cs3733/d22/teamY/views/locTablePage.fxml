@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.locTablePageController">
+   <children>
+      <TableView fx:id="tableView" layoutX="386.0" layoutY="104.0" prefHeight="550.0" prefWidth="700.0" />
+      <Label layoutX="425.0" layoutY="14.0" text="Hospital Locations Table" textFill="#297bce">
+         <font>
+            <Font name="Microsoft Tai Le Bold" size="54.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="257.0" layoutY="27.0" onAction="#mainMenu" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #021d5a;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Microsoft Tai Le Bold" size="24.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

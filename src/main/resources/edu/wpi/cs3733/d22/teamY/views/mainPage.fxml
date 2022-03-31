@@ -46,7 +46,7 @@
             <Font name="Microsoft Tai Le" size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="80.0" layoutY="27.0" onAction="#onTableButton" text="Secret Table Button" textFill="#021d5a" underline="true">
+      <JFXButton layoutX="107.0" layoutY="231.0" onAction="#locationTable" text="Location Table" textFill="#021d5a" underline="true">
          <font>
             <Font name="Microsoft Tai Le" size="24.0" />
          </font>

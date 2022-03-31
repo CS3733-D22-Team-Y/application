@@ -3,6 +3,7 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 import edu.wpi.cs3733.d22.teamY.DataManager;
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoGetException;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import javafx.collections.FXCollections;
@@ -12,7 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class TablePageController {
+public class locTablePageController extends AbsGlobalControllerFuncs {
   @FXML private TableView<Location> tableView;
 
   public void initialize() {
@@ -50,5 +51,11 @@ public class TablePageController {
     tableView.getColumns().add(longName);
     tableView.getColumns().add(shortName);
     tableView.setItems(locationsObservable);
+  }
+
+  // back button
+  @FXML
+  void mainMenu() throws IOException {
+    loadScene("views/mainPage.fxml");
   }
 }
