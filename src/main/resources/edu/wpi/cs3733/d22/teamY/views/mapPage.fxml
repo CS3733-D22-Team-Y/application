@@ -6,8 +6,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: eee;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.mapPageController">
+
+<AnchorPane prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: eee;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.mapPageController">
    <children>
       <Pane fx:id="mapPane" layoutX="400.0" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: ccc;" />
       <VBox layoutX="250.0" layoutY="32.0" spacing="30.0">
@@ -42,6 +47,7 @@
                   <Font size="36.0" />
                </font>
             </JFXButton>
+            <Label text="Double click to add a new location" />
          </children>
       </VBox>
       <JFXHamburger layoutX="4.0" layoutY="9.0" onMouseClicked="#autoOpenCloseSidebar" prefHeight="31.0" prefWidth="47.0" />

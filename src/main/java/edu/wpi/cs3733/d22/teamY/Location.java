@@ -1,8 +1,8 @@
 package edu.wpi.cs3733.d22.teamY;
 
 public class Location extends DBObject {
-  public static final String TABLE_NAME = "locations";
-  public static final String KEY_ATTRIBUTE_NAME = "nodeID";
+  public static final String TABLE_NAME = "LOCATIONS";
+  public static final String KEY_ATTRIBUTE_NAME = "NODEID";
   private String nodeID;
   private int xCoord, yCoord;
   private String floor;

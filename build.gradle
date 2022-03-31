@@ -33,7 +33,6 @@ dependencies {
             [group: 'org.apache.derby',name: 'derby', version: '10.15.2.0'],
             [group: 'org.apache.derby',name: 'derbytools', version: '10.15.2.0'],
             [group: 'org.apache.derby',name: 'derbyclient', version: '10.15.2.0'],
-
             'org.slf4j:slf4j-api:1.7.30',
             'org.slf4j:slf4j-simple:1.7.30',
     )
