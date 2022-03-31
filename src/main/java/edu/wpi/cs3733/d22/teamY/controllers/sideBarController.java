@@ -1,5 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import java.io.IOException;
+import javafx.fxml.FXML;
 
 public class sideBarController extends AbsGlobalControllerFuncs {
   @FXML
@@ -21,5 +23,4 @@ public class sideBarController extends AbsGlobalControllerFuncs {
   void loadViewServiceRequests() throws IOException {
     loadScene("views/activeServiceRequest.fxml");
   }
-
 }
