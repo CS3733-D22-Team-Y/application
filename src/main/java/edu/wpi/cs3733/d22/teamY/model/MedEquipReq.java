@@ -1,8 +1,6 @@
-package edu.wpi.cs3733.d22.teamY;
+package edu.wpi.cs3733.d22.teamY.model;
 
-public class MedEquipReq extends DBObject {
-  public static final String TABLE_NAME = "MEDEQUIPREQUEST";
-  public static final String KEY_ATTRIBUTE_NAME = "REQUESTNUM";
+public class MedEquipReq {
   private String requestNum;
   private String equipID;
   private String targetLocID;
@@ -24,24 +22,9 @@ public class MedEquipReq extends DBObject {
   }
 
   public MedEquipReq(String requestNum, String equipID, String targetLocID) {
-    super(TABLE_NAME, KEY_ATTRIBUTE_NAME);
     this.requestNum = requestNum;
     this.equipID = equipID;
     this.targetLocID = targetLocID;
-  }
-
-  public String getInsertQuery() {
-    return "VALUES("
-        + Integer.parseInt(this.requestNum)
-        + ", "
-        + "'"
-        + this.equipID
-        + "'"
-        + ", "
-        + "'"
-        + this.targetLocID
-        + "'"
-        + ")";
   }
 
   public MedEquipReq getClone() {

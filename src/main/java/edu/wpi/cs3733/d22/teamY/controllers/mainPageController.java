@@ -29,7 +29,7 @@ public class mainPageController {
     requestMenu =
         new Scene(
             FXMLLoader.load(
-                Objects.requireNonNull(App.class.getResource("views/requestMenu.fxml"))));
+                Objects.requireNonNull(App.class.getResource("views/medEquipReqTablePage.fxml"))));
     App.getInstance().setScene(requestMenu);
   }
 
