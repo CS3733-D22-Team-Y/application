@@ -7,6 +7,10 @@ bin/
 *.xml
 *.log
 
+#Ignore Derby.log
+derby.log
+*.log
+
 #Ignore auto generated export csv's
 locations_export.csv
 medEquipment_export.csv
