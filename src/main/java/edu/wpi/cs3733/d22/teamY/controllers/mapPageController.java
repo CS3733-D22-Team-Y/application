@@ -7,6 +7,7 @@ import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoDeleteException;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoGetException;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoUpdateException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Optional;
 import javafx.fxml.FXML;
@@ -21,9 +22,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
-
-public class mapPageController extends AbsGlobalControllerFuncs{
-// Base pane for displaying new scenes
+public class mapPageController extends AbsGlobalControllerFuncs {
+  // Base pane for displaying new scenes
   @FXML private Pane mapPane;
   // Sidebar pane
   @FXML private Pane sidebarPane;
@@ -48,7 +48,7 @@ public class mapPageController extends AbsGlobalControllerFuncs{
   private Floors lastFloor = Floors.FIRST_FLOOR;
 
   // Base pane for displaying new scenes
-  @FXML private Pane mapPane;
+  // @FXML private Pane mapPane;
   private final ImageView imageView = new ImageView();
 
   private final HashMap<Floors, Image> floorImages = new HashMap<>();
@@ -238,7 +238,6 @@ public class mapPageController extends AbsGlobalControllerFuncs{
   void loadFloor3Map() {
 
     switchFloor(Floors.THIRD_FLOOR);
-
   }
 
   // Sidebar
