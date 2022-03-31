@@ -208,6 +208,11 @@ public class mapPageController extends AbsGlobalControllerFuncs {
     switchFloor(lastFloor);
   }
 
+  // back button
+  @FXML
+  void mainMenu() throws IOException {
+    loadScene("views/mainPage.fxml");
+  }
   // Loading maps
   @FXML
   void loadGroundFloorMap() {
@@ -239,7 +244,6 @@ public class mapPageController extends AbsGlobalControllerFuncs {
 
     switchFloor(Floors.THIRD_FLOOR);
   }
-
   // Sidebar
   @FXML
   void autoOpenCloseSidebar() throws IOException {
