@@ -55,14 +55,11 @@
                         <Font size="36.0" />
                      </font>
                   </JFXButton>
-                  <Label prefHeight="100.0" prefWidth="400.0" text="More to come..." textFill="#021d5a">
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#labResults" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 40; -fx-background-radius: 15;" text="Lab Results" textFill="WHITE">
                      <font>
-                        <Font size="40.0" />
+                        <Font size="81.0" />
                      </font>
-                     <padding>
-                        <Insets left="40.0" />
-                     </padding>
-                  </Label>
+                  </JFXButton>
                </children>
             </VBox>
          </children>
