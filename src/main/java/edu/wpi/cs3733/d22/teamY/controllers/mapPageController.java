@@ -21,7 +21,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
-public class mapPageController {
+
+public class mapPageController extends AbsGlobalControllerFuncs{
+// Base pane for displaying new scenes
+  @FXML private Pane mapPane;
+  // Sidebar pane
+  @FXML private Pane sidebarPane;
   private static final int CIRCLE_RADIUS_PX = 10;
   private static final Paint CIRCLE_PAINT = Color.RED;
 
@@ -231,6 +236,18 @@ public class mapPageController {
 
   @FXML
   void loadFloor3Map() {
+
     switchFloor(Floors.THIRD_FLOOR);
+
+  }
+
+  // Sidebar
+  @FXML
+  void autoOpenCloseSidebar() throws IOException {
+    if (sidebarPane.getChildren().size() == 0) {
+      loadSidebar(sidebarPane);
+    } else {
+      removeSidebar(sidebarPane);
+    }
   }
 }

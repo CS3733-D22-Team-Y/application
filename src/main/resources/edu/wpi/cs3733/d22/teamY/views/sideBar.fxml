@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="650.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.sideBarController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="-3.0" layoutY="48.0" spacing="30.0">
+         <children>
+            <JFXButton onAction="#loadViewMap" prefHeight="34.0" prefWidth="113.0" style="-fx-background-color: fff;" text="View Map" />
+            <JFXButton onAction="#loadCreateServiceRequest" prefHeight="34.0" prefWidth="152.0" style="-fx-background-color: fff;" text="Create a Service Request" />
+            <JFXButton onAction="#loadViewServiceRequests" prefHeight="34.0" prefWidth="152.0" style="-fx-background-color: fff;" text="View Service Requests" />
+            <JFXButton prefHeight="34.0" prefWidth="194.0" style="-fx-background-color: fff;" text="View Equipment Locations" />
+            <JFXButton prefHeight="34.0" prefWidth="194.0" style="-fx-background-color: fff;" text="View Equipment Catalogs" />
+            <JFXButton prefHeight="34.0" prefWidth="113.0" style="-fx-background-color: fff;" text="Edit Map" />
+            <JFXButton onAction="#loadMainPage" prefHeight="34.0" prefWidth="113.0" style="-fx-background-color: fff;" text="Main Page" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
