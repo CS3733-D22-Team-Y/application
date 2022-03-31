@@ -1,5 +1,7 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import edu.wpi.cs3733.d22.teamY.model.dao.LocationDao;
+import edu.wpi.cs3733.d22.teamY.model.dao.impl.LocationDaoImpl;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,7 +16,13 @@ public class DataManager {
   private static final HashMap<String, HashMap<String, DBObject>> data =
       new HashMap<>(); // all data stored in the database
   private static Connection dbConnection; // database connection
-  private static final String[] tables = {"medequiprequest", "medequip", "locations"};
+  private static final String[] tables = {"MEDEQUIPREQUEST", "MEDEQUIP", "LOCATIONS"};
+
+  private static LocationDao locationDao;
+
+  public static LocationDao getLocationDao() {
+    return locationDao;
+  }
 
   /**
    * Initializes the data manager and DB connection
@@ -44,6 +52,8 @@ public class DataManager {
     for (String table : tables) {
       data.put(table, new HashMap<>());
     }
+
+    locationDao = new LocationDaoImpl(dbConnection);
   }
 
   /** shutDown the currently connected DB. Will Export Data to CSV's. */

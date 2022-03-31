@@ -1,8 +1,8 @@
 package edu.wpi.cs3733.d22.teamY;
 
 public class MedEquip extends DBObject {
-  public static final String TABLE_NAME = "medequip";
-  public static final String KEY_ATTRIBUTE_NAME = "equipID";
+  public static final String TABLE_NAME = "MEDEQUIP";
+  public static final String KEY_ATTRIBUTE_NAME = "EQUIPID";
   private String equipID;
   private String equipType;
   private String equipLocId;

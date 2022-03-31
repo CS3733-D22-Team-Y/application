@@ -12,6 +12,7 @@ public class mainPageController {
   Scene requestMenu = null;
   Scene activeRequests = null;
   Scene viewMap = null;
+  Scene table;
 
   @FXML
   void welcomePage() throws IOException {
@@ -49,5 +50,13 @@ public class mainPageController {
         new Scene(
             FXMLLoader.load(Objects.requireNonNull(App.class.getResource("views/mapPage.fxml"))));
     App.getInstance().setScene(viewMap);
+  }
+
+  @FXML
+  void onTableButton() throws IOException {
+    if (table == null) {
+      table = new Scene(FXMLLoader.load(App.class.getResource("views/tablePage.fxml")));
+    }
+    App.getInstance().setScene(table);
   }
 }
