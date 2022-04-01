@@ -1,19 +1,18 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXRadioButton;
-import edu.wpi.cs3733.d22.teamY.App;
-import edu.wpi.cs3733.d22.teamY.DataManager;
-import edu.wpi.cs3733.d22.teamY.MedEquipReq;
+import edu.wpi.cs3733.d22.teamY.DaoManager;
+import edu.wpi.cs3733.d22.teamY.controllers.AbsGlobalControllerFuncs;
+import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import java.io.IOException;
 import java.util.Objects;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class medicalEquipmentRequestController {
+public class medicalEquipmentRequestController extends AbsGlobalControllerFuncs {
   // Text Inputs
   @FXML private TextField input_RoomID;
   @FXML private TextField input_PatientName;
@@ -98,15 +97,9 @@ public class medicalEquipmentRequestController {
   }
 
   @FXML
-  void backToRequestMenu() throws IOException {
-    if (requestMenu == null) {
-      requestMenu =
-          new Scene(
-              FXMLLoader.load(
-                  Objects.requireNonNull(App.class.getResource("views/requestMenu.fxml"))));
-    }
+  void backToRequestMenu(ActionEvent event) throws IOException {
+    loadScene("views/requestMenu.fxml");
     resetAllFields();
-    App.getInstance().setScene(requestMenu); // Returns to request menu
   }
 
   //  Reset button functionality
@@ -125,6 +118,6 @@ public class medicalEquipmentRequestController {
   void submitData() throws DaoAddException {
     MedEquipReq submission =
         new MedEquipReq("1422", input_AdditionalNotes.getText(), input_RoomID.getText());
-    DataManager.getMedEquipReqDao().addMedEquipReq(submission);
+    DaoManager.getMedEquipReqDao().addMedEquipReq(submission);
   }
 }

@@ -6,13 +6,13 @@ import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import java.io.IOException;
 import java.util.Objects;
+import edu.wpi.cs3733.d22.teamY.controllers.AbsGlobalControllerFuncs;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class mealRequestController {
+public class mealRequestController extends AbsGlobalControllerFuncs {
   // Text input
   @FXML private TextField input_RoomID;
   @FXML private TextField input_PatientName;
@@ -48,8 +48,6 @@ public class mealRequestController {
   private final String textGF = "glutenFree";
   private final String vegetarianText = "vegetarian";
   private final String veganText = "vegan";
-
-  private Scene requestMenu = null;
 
   public mealRequestController() throws IOException {}
 
@@ -138,15 +136,9 @@ public class mealRequestController {
   }
 
   @FXML
-  void backToRequestMenu() throws IOException {
-    if (requestMenu == null) {
-      requestMenu =
-          new Scene(
-              FXMLLoader.load(
-                  Objects.requireNonNull(App.class.getResource("views/requestMenu.fxml"))));
-    }
+  void backToRequestMenu(ActionEvent event) throws IOException {
+    loadScene("views/requestMenu.fxml");
     resetAllFields();
-    App.getInstance().setScene(requestMenu); // Returns to request menu
   }
 
   // Checks if the "Special Instructions" box should be enabled.

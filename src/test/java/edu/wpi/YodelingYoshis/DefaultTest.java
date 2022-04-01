@@ -5,11 +5,9 @@
 package edu.wpi.YodelingYoshis;
 
 import edu.wpi.cs3733.d22.teamY.*;
-import java.util.ArrayList;
-import org.junit.Test;
 
 public class DefaultTest {
-
+  /*
   @Test
   public void test() {
     assert true;
@@ -120,7 +118,7 @@ public class DefaultTest {
       System.out.println("Shutting down database...");
       DataManager.shutdownDB();
     }
-  */
+
   @Test
   public void testReplaceObject() {
     DataManager.init("LocationDB");
@@ -234,7 +232,7 @@ public class DefaultTest {
       DataManager.shutdownDB();
     }
 
-  */
+
   @Test
   public void initTest() {
     DataManager.init("LocationDB");
@@ -251,9 +249,10 @@ public class DefaultTest {
     ReadIn input = new ReadIn();
     ArrayList<Location> locations = new ArrayList<Location>();
     locations = input.readLocationCSV("TowerLocations.csv");
-    DataManager.addObjects(locations);
+    //DataManager.addObjects(locations);
     //    DataManager.addObjects(input.readMedEquipCSV("MedEquip.csv"));
     //    DataManager.addObjects(input.ReadMedReqCSV("MedEquipRequest.csv"));
 
   }
+  */
 }

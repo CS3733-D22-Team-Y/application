@@ -52,7 +52,7 @@
             <Font name="Microsoft Tai Le" size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="788.0" layoutY="180.0" onAction="#equipmentTable" text="Equipment Table" textAlignment="CENTER" textFill="#021d5a" underline="true">
+      <JFXButton layoutX="419.0" layoutY="282.0" onAction="#serviceTable" text="Active Requests Table" textAlignment="CENTER" textFill="#021d5a" underline="true">
          <font>
             <Font name="Microsoft Tai Le" size="24.0" />
          </font>
