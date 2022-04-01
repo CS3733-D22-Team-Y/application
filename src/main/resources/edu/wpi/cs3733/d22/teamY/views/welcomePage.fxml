@@ -24,7 +24,7 @@
             <Font name="Microsoft Tai Le Bold" size="52.0" />
          </font>
       </Label>
-      <JFXButton layoutX="515.0" layoutY="549.0" onAction="#mainPage" text=". . ." textAlignment="CENTER" textFill="WHITE">
+      <JFXButton layoutX="441.0" layoutY="562.0" onAction="#mainPage" text="Home" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="56.0" />
          </font>
@@ -34,11 +34,10 @@
             <Font name="Microsoft Tai Le Bold" size="52.0" />
          </font>
       </Label>
-      <JFXButton layoutX="881.0" layoutY="-8.0" onAction="#killApplication" prefHeight="83.0" prefWidth="187.0" style="-fx-font: 70;" text="Exit" textFill="WHITE">
+      <JFXButton layoutX="941.0" layoutY="9.0" style="-fx-background-color: #012d5a;" text="Exit" textFill="WHITE">
          <font>
-            <Font name="Microsoft Tai Le" size="44.0" />
+            <Font name="Microsoft Tai Le Bold" size="46.0" />
          </font>
       </JFXButton>
    </children>
 </AnchorPane>
-
