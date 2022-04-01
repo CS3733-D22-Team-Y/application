@@ -76,6 +76,10 @@ public class DaoManager {
     return medEquipReqDao;
   }
 
+  public static MedEquipDaoImpl getMedEquipDao() {
+    return medEquipDao;
+  }
+
   public void shutdownDB() {
     // TODO Export to CSV
     try {

@@ -26,7 +26,7 @@ public class MedEquipDaoImpl implements MedEquipDao {
             new MedEquip(
                 rs.getString("equipID"),
                 rs.getString("equipType"),
-                rs.getString("equipLocId"),
+                rs.getString("nodeID"),
                 rs.getString("isClean")));
       }
       return medEquips;
@@ -46,7 +46,7 @@ public class MedEquipDaoImpl implements MedEquipDao {
         return new MedEquip(
             rs.getString("equipID"),
             rs.getString("equipType"),
-            rs.getString("equipLocId"),
+            rs.getString("nodeID"),
             rs.getString("isClean"));
       } else {
         throw new DaoGetException(new Exception("No Equipment with equipID = " + equipID));
