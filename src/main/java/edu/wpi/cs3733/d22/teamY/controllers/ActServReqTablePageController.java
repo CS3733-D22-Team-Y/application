@@ -14,7 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
-public class MedEquipReqTablePageController extends AbsGlobalControllerFuncs {
+public class ActServReqTablePageController extends AbsGlobalControllerFuncs {
   @FXML private TableView<MedEquipReq> medEquipReqTableView;
 
   @FXML Pane sidebarPane;

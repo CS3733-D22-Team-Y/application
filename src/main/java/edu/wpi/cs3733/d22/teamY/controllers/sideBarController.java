@@ -62,7 +62,7 @@ public class sideBarController extends AbsGlobalControllerFuncs {
 
   @FXML
   void loadMedEquipmentRequests() throws IOException {
-    loadScene("views/MedEquipReqTablePage.fxml");
+    loadScene("views/ActServReqTablePage.fxml");
   }
 
   @FXML
