@@ -28,7 +28,7 @@ public class floralRequestController {
 
   private Scene requestMenu = null;
 
-  //Bouquet types text
+  //Bouquet types text. These should be changed depending on what the names in the database are.
   private static String getWellSoonBouquetText = "getWellSoon";
   private static String newBabyBouquetText = "newBaby";
   private static String bouquetOfTheDayText = "bouquetOfDay";
