@@ -35,8 +35,6 @@ public class medicalEquipmentRequestController {
 
   private Scene requestMenu = null;
 
-  // Currently  the submit button is tied to submitData, when it should be tied to submitButton.
-
   public medicalEquipmentRequestController() throws IOException {}
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
@@ -60,7 +58,9 @@ public class medicalEquipmentRequestController {
       String additionalNotes,
       String equipmentTypeSelected)
       throws DaoAddException {
-    // Code to add the fields to the database goes here.
+    // Temporary code from the prototype, commented out for safety
+    //MedEquipReq submission = new MedEquipReq("1422", equipmentTypeSelected, roomID);
+    //DataManager.getMedEquipReqDao().addMedEquipReq(submission);
   }
 
   // Called when the submit button is pressed.
