@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MedEquipReqTablePageController">
+<AnchorPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ActServReqTablePageController">
    <children>
       <TableView fx:id="medEquipReqTableView" layoutX="388.0" layoutY="93.0" prefHeight="550.0" prefWidth="700.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="393.0" layoutY="7.0" prefHeight="80.0" prefWidth="700.0" text="Active Requests Table" textAlignment="RIGHT" textFill="#297bce">
