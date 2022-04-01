@@ -80,7 +80,7 @@ public class labRequestController {
     }
   }
 
-  // Retuens the database name of the selected radio button.
+  // Returns the database name of the selected radio button.
   private String getResultType() {
     if (antibodiesRadioButton.isSelected()) return antibodiesText;
     if (allergiesRadioButton.isSelected()) return allergiesText;
