@@ -64,7 +64,7 @@ public class MedEquipDaoImpl implements MedEquipDao {
               "INSERT INTO MEDEQUIP (EQUIPID, EQUIPTYPE, NODEID, ISCLEAN) values (?, ?, ?, ?)");
       stmt.setString(1, medEquip.getEquipID());
       stmt.setString(2, medEquip.getEquipType());
-      stmt.setString(3, medEquip.getEquipLocID());
+      stmt.setString(3, medEquip.getID());
       stmt.setString(4, medEquip.isClean());
       stmt.executeUpdate();
     } catch (SQLException e) {
@@ -79,7 +79,7 @@ public class MedEquipDaoImpl implements MedEquipDao {
           conn.prepareStatement(
               "UPDATE MEDEQUIP SET EQUIPTYPE = ?, NODEID = ?, ISCLEAN = ? WHERE EQUIPID = ?");
       stmt.setString(1, medEquip.getEquipType());
-      stmt.setString(2, medEquip.getEquipType());
+      stmt.setString(2, medEquip.getEquipLocId());
       stmt.setString(3, medEquip.isClean());
       stmt.executeUpdate();
     } catch (SQLException e) {

@@ -15,7 +15,9 @@ public class DaoManager {
   static LocationDaoImpl locationDao = new LocationDaoImpl();
   static MedEquipReqDaoImpl medEquipReqDao = new MedEquipReqDaoImpl();
   static MedEquipDaoImpl medEquipDao = new MedEquipDaoImpl();
+
   Connection dbConnection = DatabaseConnection.getConnection();
+
   private static final String[] tables = {"MEDEQUIPREQUEST", "MEDEQUIP", "LOCATIONS"};
 
   public void init() throws DaoAddException {
@@ -30,7 +32,7 @@ public class DaoManager {
   }
 
   public void addAllLocations() throws DaoAddException {
-    ArrayList<Location> locationList = ReadIn.readLocationCSV("TowerLocations.csv");
+    ArrayList<Location> locationList = ReadIn.readCSV("TowerLocations.csv", entryType.LOCATION);
     for (Location location : locationList) {
       try {
         locationDao.addLocation(location);
@@ -41,9 +43,10 @@ public class DaoManager {
   }
 
   public void addAllMedEquip() throws DaoAddException {
-    ArrayList<MedEquip> medEquipList = ReadIn.readMedEquipCSV("MedEquip.csv");
+    ArrayList<MedEquip> medEquipList = ReadIn.readCSV("MedEquip.csv", entryType.MED_EQUIP);
     for (MedEquip equip : medEquipList) {
       try {
+        System.out.println(equip.getID());
         medEquipDao.addMedEquip(equip);
       } catch (DaoAddException e) {
         throw new DaoAddException(e);

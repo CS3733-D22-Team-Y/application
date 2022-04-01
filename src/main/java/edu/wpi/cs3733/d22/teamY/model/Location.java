@@ -25,8 +25,7 @@ public class Location {
       String building,
       String nodeType,
       String longName,
-      String shortName)
-  {
+      String shortName) {
     this.nodeID = nodeID;
     this.xCoord = xCoord;
     this.yCoord = yCoord;
@@ -37,18 +36,16 @@ public class Location {
     this.shortName = shortName;
   }
 
-  public Location(List<String> csv)
-  {
+  public Location(List<String> csv) {
     this(
-            csv.get(0),
-            Integer.parseInt(csv.get(1)),
-            Integer.parseInt(csv.get(2)),
-            csv.get(3),
-            csv.get(4),
-            csv.get(5),
-            csv.get(6),
-            csv.get(7)
-    );
+        csv.get(0),
+        Integer.parseInt(csv.get(1)),
+        Integer.parseInt(csv.get(2)),
+        csv.get(3),
+        csv.get(4),
+        csv.get(5),
+        csv.get(6),
+        csv.get(7));
   }
 
   public String getNodeID() {

@@ -1,8 +1,5 @@
 package edu.wpi.cs3733.d22.teamY;
 
-import edu.wpi.cs3733.d22.teamY.model.Location;
-import edu.wpi.cs3733.d22.teamY.model.MedEquip;
-import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +8,7 @@ import java.util.Scanner;
 public class ReadIn {
 
   // function that reads in CSV file and stores all its values in an ArrayList locationList
-  public <T> ArrayList<T> readCSV(String filename, entryType type) {
+  public static <T> ArrayList<T> readCSV(String filename, entryType type) {
 
     // ArrayList created to store values from CSV output
     ArrayList<String> csvOutputs = new ArrayList<>();
@@ -42,9 +39,8 @@ public class ReadIn {
 
     // adds each location value into the ArrayList
     for (int i = size; i < csvOutputs.size(); i += size) {
-      output.add((T) type.newNode(csvOutputs.subList(i, i+size)));
+      output.add((T) type.newNode(csvOutputs.subList(i, i + size)));
     }
     return output;
   }
-
 }

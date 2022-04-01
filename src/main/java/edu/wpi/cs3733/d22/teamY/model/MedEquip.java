@@ -6,6 +6,7 @@ public class MedEquip {
   private String equipID;
   private String equipType;
   private String equipLocId;
+  private String isClean;
 
   public String getEquipID() {
     return equipID;
@@ -19,7 +20,7 @@ public class MedEquip {
     return equipLocId;
   }
 
-  public boolean isClean() {
+  public String isClean() {
     return isClean;
   }
 
@@ -35,28 +36,19 @@ public class MedEquip {
     this.equipLocId = equipLocId;
   }
 
-  public void setClean(boolean isClean) {
+  public void setClean(String isClean) {
     this.isClean = isClean;
   }
 
-  private boolean isClean;
-
-  public MedEquip(String equipID, String equipType, String equipLocId, boolean isClean)
-  {
+  public MedEquip(String equipID, String equipType, String equipLocId, String isClean) {
     this.equipID = equipID;
     this.equipType = equipType;
     this.equipLocId = equipLocId;
     this.isClean = isClean;
   }
 
-  public MedEquip(List<String> csv)
-  {
-    this(
-            csv.get(0),
-            csv.get(1),
-            csv.get(2),
-            Boolean.parseBoolean(csv.get(3))
-    );
+  public MedEquip(List<String> csv) {
+    this(csv.get(0), csv.get(1), csv.get(2), csv.get(3));
   }
 
   public String getID() {
