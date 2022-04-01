@@ -1,43 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1132.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.welcomePageController">
+<AnchorPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.welcomePageController">
    <children>
-      <ImageView fitHeight="744.0" fitWidth="1172.0" opacity="0.75">
+      <ImageView fitHeight="700.0" fitWidth="1100.0" opacity="0.75">
          <image>
             <Image url="@images/do-rgb.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="21.0" layoutY="13.0" text="Welcome" textFill="WHITE">
+      <Rectangle height="265.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1100.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.2831439393939398">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.003921568859368563" green="0.1764705926179886" blue="0.3529411852359772" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle height="265.0" layoutY="434.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-rotate: 180;" width="1100.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.2831439393939398">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.003921568859368563" green="0.1764705926179886" blue="0.3529411852359772" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label layoutX="21.0" layoutY="13.0" text="Welcome, Dr. Yoshi" textFill="WHITE">
          <font>
             <Font name="Microsoft Tai Le Bold" size="52.0" />
          </font>
       </Label>
-      <Label layoutX="26.0" layoutY="81.0" text="Dr." textFill="WHITE">
+      <JFXButton layoutX="974.0" layoutY="7.0" onAction="#killApplication" text="Exit" textFill="WHITE">
          <font>
-            <Font name="Microsoft Tai Le Bold" size="52.0" />
+            <Font name="Microsoft Tai Le Bold" size="36.0" />
          </font>
-      </Label>
-      <JFXButton layoutX="518.0" layoutY="587.0" onAction="#mainPage" text=". . ." textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font size="56.0" />
-         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
-      <Label layoutX="26.0" layoutY="154.0" text="Yoshi" textFill="WHITE">
-         <font>
-            <Font name="Microsoft Tai Le Bold" size="52.0" />
-         </font>
-      </Label>
-      <JFXButton layoutX="974.0" layoutY="-12.0" onAction="#killApplication" prefHeight="83.0" prefWidth="187.0" style="-fx-font: 70;" text="Exit" textFill="WHITE">
-         <font>
-            <Font name="Microsoft Tai Le" size="44.0" />
-         </font>
-      </JFXButton>
+      <Polygon fill="WHITE" layoutX="549.0" layoutY="656.0" onMouseClicked="#mainPage" points="-50.0, 40.0, 50.0, 40.0, 0.0, -60.0" stroke="BLACK" strokeType="INSIDE" style="-fx-rotate: 180; -fx-scale-x: .6; -fx-scale-y: .5;" />
+      <Rectangle height="125.0" layoutY="575.0" onMouseClicked="#mainPage" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1100.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.2831439393939398">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.007000000216066837" green="0.1784999966621399" blue="0.3499999940395355" opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11999999731779099" green="0.5746666789054871" blue="1.0" opacity="0.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
    </children>
 </AnchorPane>

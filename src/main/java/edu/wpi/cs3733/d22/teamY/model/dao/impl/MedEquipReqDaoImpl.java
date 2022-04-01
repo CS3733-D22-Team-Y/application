@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.model.dao.impl;
 
+import edu.wpi.cs3733.d22.teamY.DatabaseConnection;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import edu.wpi.cs3733.d22.teamY.model.dao.MedEquipReqDao;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
@@ -11,11 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MedEquipReqDaoImpl implements MedEquipReqDao {
-  private final Connection conn;
-
-  public MedEquipReqDaoImpl(Connection conn) {
-    this.conn = conn;
-  }
+  static Connection conn = DatabaseConnection.getConnection();
 
   @Override
   public List<MedEquipReq> getAllMedEquipReq() throws DaoGetException {
