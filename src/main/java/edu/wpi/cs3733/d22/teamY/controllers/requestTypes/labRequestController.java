@@ -12,7 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class labRequestController extends AbsRequestController {
+public class labRequestController {
   private Scene requestMenu = null;
 
   // Input fields
@@ -32,7 +32,7 @@ public class labRequestController extends AbsRequestController {
   private final String allergiesText = "allergies";
   private final String diagnosisText = "diagnosis";
 
-  // THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
+  // BACKEND PEOPLE,THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
   /**
    * Submits a service request.
    *
@@ -60,7 +60,8 @@ public class labRequestController extends AbsRequestController {
   @FXML
   void submitButton() {
     // Checks if a lab result choice has been made.
-    if (isRadioButtonSelected(allergiesRadioButton, antibodiesRadioButton, diagnosisRadioButton)) {
+    if (RequestControllerUtil.isRadioButtonSelected(
+        allergiesRadioButton, antibodiesRadioButton, diagnosisRadioButton)) {
       try {
         submitRequest(
             input_RoomID.getText(),
@@ -103,8 +104,10 @@ public class labRequestController extends AbsRequestController {
   // Reset button functionality
   @FXML
   void resetAllFields() {
-    resetRadioButtons(antibodiesRadioButton, allergiesRadioButton, diagnosisRadioButton);
-    resetTextFields(input_RoomID, input_PatientName, input_AssignedNurse, input_RequestStatus);
+    RequestControllerUtil.resetRadioButtons(
+        antibodiesRadioButton, allergiesRadioButton, diagnosisRadioButton);
+    RequestControllerUtil.resetTextFields(
+        input_RoomID, input_PatientName, input_AssignedNurse, input_RequestStatus);
     input_AdditionalNotes.setText("");
   }
 }

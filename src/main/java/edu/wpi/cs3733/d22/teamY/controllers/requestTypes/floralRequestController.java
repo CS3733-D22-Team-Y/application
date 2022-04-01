@@ -12,7 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class floralRequestController extends AbsRequestController {
+public class floralRequestController {
   // Radio Buttons
   @FXML private JFXRadioButton getWellSoonBouquetRadioButton;
   @FXML private JFXRadioButton newBabyRadioButton;
@@ -32,9 +32,9 @@ public class floralRequestController extends AbsRequestController {
   private final String newBabyBouquetText = "newBaby";
   private final String bouquetOfTheDayText = "bouquetOfDay";
 
-  public floralRequestController() throws IOException {}
+  public floralRequestController() {}
 
-  // THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
+  // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
   /**
    * Submits a service request.
    *
@@ -74,7 +74,7 @@ public class floralRequestController extends AbsRequestController {
   @FXML
   void submitButton() {
     // Checks if a bouquet choice has been made
-    if (isRadioButtonSelected(
+    if (RequestControllerUtil.isRadioButtonSelected(
         getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton)) {
       try {
         submitRequest(
@@ -106,9 +106,10 @@ public class floralRequestController extends AbsRequestController {
   // Reset button functionality
   @FXML
   void resetAllFields() {
-    resetRadioButtons(
+    RequestControllerUtil.resetRadioButtons(
         getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton);
-    resetTextFields(input_RoomID, input_PatientName, input_AssignedNurse, input_RequestStatus);
+    RequestControllerUtil.resetTextFields(
+        input_RoomID, input_PatientName, input_AssignedNurse, input_RequestStatus);
     input_AdditionalNotes.setText("");
   }
 }
