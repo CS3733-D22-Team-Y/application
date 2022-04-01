@@ -1,12 +1,8 @@
 package edu.wpi.cs3733.d22.teamY;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-
 /** LocationsToCSV takes no parameters returns void creates a CSV file */
 public class Java2CSV {
+  /*
   public static void locations2CSV(String fileName) throws IOException {
     File csvFile = new File(fileName + ".csv");
     FileWriter fileWriter = new FileWriter(csvFile);
@@ -100,4 +96,6 @@ public class Java2CSV {
     }
     fileWriter.close();
   }
+
+   */
 }

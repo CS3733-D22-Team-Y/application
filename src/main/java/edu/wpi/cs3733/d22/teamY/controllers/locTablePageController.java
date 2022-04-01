@@ -1,6 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
-import edu.wpi.cs3733.d22.teamY.DataManager;
+import edu.wpi.cs3733.d22.teamY.DaoManager;
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoGetException;
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class locTablePageController extends AbsGlobalControllerFuncs {
   public void initialize() {
     List<Location> locations;
     try {
-      locations = DataManager.getLocationDao().getAllLocations();
+      locations = DaoManager.getLocationDao().getAllLocations();
     } catch (DaoGetException e) {
       e.printStackTrace();
       locations = Collections.emptyList();

@@ -1,5 +1,8 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import edu.wpi.cs3733.d22.teamY.model.Location;
+import edu.wpi.cs3733.d22.teamY.model.MedEquip;
+import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import java.io.*;
 import java.io.File;
 import java.util.ArrayList;
@@ -10,7 +13,7 @@ public class ReadIn {
   public ReadIn() {}
 
   // function that reads in CSV file and stores all its values in an ArrayList locationList
-  public ArrayList<Location> readLocationCSV(String Filename) {
+  public static ArrayList<Location> readLocationCSV(String Filename) {
 
     // ArrayList created to store values from CSV output
     ArrayList<String> csvOutputs = new ArrayList<String>();
@@ -64,7 +67,7 @@ public class ReadIn {
   }
 
   // function that reads in CSV file and stores all its values in an ArrayList locationList
-  public ArrayList<MedEquip> readMedEquipCSV(String Filename) {
+  public static ArrayList<MedEquip> readMedEquipCSV(String Filename) {
 
     // ArrayList created to store values from CSV output
     ArrayList<String> csvOutputs = new ArrayList<String>();
@@ -99,7 +102,7 @@ public class ReadIn {
         String requestNum = csvOutputs.get(i);
         String equipmentType = csvOutputs.get(i + 1);
         String equipmentLocationID = csvOutputs.get(i + 2);
-        boolean isClean = Boolean.parseBoolean(csvOutputs.get(i + 3));
+        String isClean = csvOutputs.get(i + 3);
         // creating MedEquip
         MedEquip medEquip = new MedEquip(requestNum, equipmentType, equipmentLocationID, isClean);
         // adding Location
@@ -110,7 +113,7 @@ public class ReadIn {
   }
 
   // function that reads in CSV file and stores all its values in an ArrayList locationList
-  public ArrayList<MedEquipReq> ReadMedReqCSV(String filename) {
+  public static ArrayList<MedEquipReq> ReadMedReqCSV(String filename) {
 
     // ArrayList created to store values from CSV output
     ArrayList<String> csvOutputs = new ArrayList<String>();

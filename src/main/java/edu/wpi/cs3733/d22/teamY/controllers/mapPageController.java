@@ -3,7 +3,7 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXHamburger;
 import edu.wpi.cs3733.d22.teamY.App;
-import edu.wpi.cs3733.d22.teamY.DataManager;
+import edu.wpi.cs3733.d22.teamY.DaoManager;
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoDeleteException;
@@ -123,7 +123,7 @@ public class mapPageController extends AbsGlobalControllerFuncs {
 
     // Load new locations from DB and create shapes for each
     try {
-      DataManager.getLocationDao()
+      DaoManager.getLocationDao()
           .getLocationsOnFloor(newFloor.dbKey)
           .forEach(
               (l) -> {
@@ -140,7 +140,7 @@ public class mapPageController extends AbsGlobalControllerFuncs {
                     e -> {
                       if (showEditDialog(l)) {
                         try {
-                          DataManager.getLocationDao().updateLocation(l);
+                          DaoManager.getLocationDao().updateLocation(l);
                         } catch (DaoUpdateException ex) {
                           ex.printStackTrace();
                         }
@@ -150,7 +150,7 @@ public class mapPageController extends AbsGlobalControllerFuncs {
                 deleteItem.setOnAction(
                     e -> {
                       try {
-                        DataManager.getLocationDao().deleteLocation(l);
+                        DaoManager.getLocationDao().deleteLocation(l);
                       } catch (DaoDeleteException ex) {
                         ex.printStackTrace();
                       }
@@ -178,7 +178,7 @@ public class mapPageController extends AbsGlobalControllerFuncs {
             if (created != null) {
               // The element was created
               try {
-                DataManager.getLocationDao().addLocation(created);
+                DaoManager.getLocationDao().addLocation(created);
               } catch (DaoAddException ex) {
                 ex.printStackTrace();
               }
