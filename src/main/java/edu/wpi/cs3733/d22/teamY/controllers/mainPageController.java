@@ -27,7 +27,7 @@ public class mainPageController extends AbsGlobalControllerFuncs {
   }
 
   @FXML
-  void equipmentTable() throws IOException {
+  void serviceTable() throws IOException {
     loadScene("views/medEquipReqTablePage.fxml");
   }
 
