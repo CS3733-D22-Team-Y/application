@@ -6,9 +6,9 @@ import edu.wpi.cs3733.d22.teamY.controllers.AbsGlobalControllerFuncs;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import java.io.IOException;
-import java.util.Objects;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -58,8 +58,8 @@ public class medicalEquipmentRequestController extends AbsGlobalControllerFuncs 
       String equipmentTypeSelected)
       throws DaoAddException {
     // Temporary code from the prototype, commented out for safety
-    //MedEquipReq submission = new MedEquipReq("1422", equipmentTypeSelected, roomID);
-    //DataManager.getMedEquipReqDao().addMedEquipReq(submission);
+    // MedEquipReq submission = new MedEquipReq("1422", equipmentTypeSelected, roomID);
+    // DataManager.getMedEquipReqDao().addMedEquipReq(submission);
   }
 
   // Called when the submit button is pressed.

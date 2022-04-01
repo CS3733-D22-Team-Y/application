@@ -2,11 +2,9 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXRadioButton;
-import edu.wpi.cs3733.d22.teamY.App;
+import edu.wpi.cs3733.d22.teamY.controllers.AbsGlobalControllerFuncs;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import java.io.IOException;
-import java.util.Objects;
-import edu.wpi.cs3733.d22.teamY.controllers.AbsGlobalControllerFuncs;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
