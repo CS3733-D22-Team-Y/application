@@ -65,13 +65,13 @@ public class mainPageController {
   }
 
   @FXML
-  void equipmentTable() throws IOException {
+  void serviceTable() throws IOException {
     if (table == null) {
       table =
           new Scene(
               FXMLLoader.load(
                   Objects.requireNonNull(
-                      App.class.getResource("views/medEquipReqTablePage.fxml"))));
+                      App.class.getResource("views/ActiveServiceReqTablePage.fxml"))));
     }
     App.getInstance().setScene(table);
   }
