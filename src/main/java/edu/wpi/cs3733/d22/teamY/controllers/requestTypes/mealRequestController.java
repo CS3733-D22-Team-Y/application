@@ -73,7 +73,8 @@ public class mealRequestController {
    * @param mainChoice The choice for the main meal.
    * @param sideChoice The choice for the side.
    * @param allergies Any allergies to be considered.
-   * @param specialInstructions Any special instructions to be considered (only if "other" is checked)
+   * @param specialInstructions Any special instructions to be considered (only if "other" is
+   *     checked)
    * @throws DaoAddException if there is an error adding something to the database (one of the
    *     fields is invalid)
    */
