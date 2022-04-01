@@ -191,7 +191,8 @@ public class mapPageController extends AbsGlobalControllerFuncs {
     imageView.setImage(floorImages.get(newFloor));
   }
 
-  public void initialize() {
+  public void initialize() throws IOException {
+    // Load floors
     floorImages.put(
         Floors.FIRST_FLOOR,
         new Image(App.class.getResource("views/images/firstfloor.png").toString()));
@@ -215,6 +216,9 @@ public class mapPageController extends AbsGlobalControllerFuncs {
 
     // Load initial floor
     switchFloor(lastFloor);
+
+    // Load sidebar
+    loadSidebar(sidebarPane);
   }
 
   // back button

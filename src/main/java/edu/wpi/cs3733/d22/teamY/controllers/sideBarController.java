@@ -3,8 +3,11 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 import java.io.IOException;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.layout.AnchorPane;
 
 public class sideBarController extends AbsGlobalControllerFuncs {
+  @FXML AnchorPane mainPane;
+
   @FXML
   void loadMainPage() throws IOException {
     loadScene("views/mainPage.fxml");
@@ -68,5 +71,15 @@ public class sideBarController extends AbsGlobalControllerFuncs {
   @FXML
   void killApplication() {
     Platform.exit();
+  }
+
+  @FXML
+  void loadSidebar() {
+    mainPane.setVisible(true);
+  }
+
+  @FXML
+  void hideSidebar() {
+    mainPane.setVisible(false);
   }
 }

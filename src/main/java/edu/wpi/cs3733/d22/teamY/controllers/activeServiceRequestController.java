@@ -8,17 +8,13 @@ public class activeServiceRequestController extends AbsGlobalControllerFuncs {
   @FXML private Pane sidebarPane;
 
   @FXML
-  void mainMenu() throws IOException {
-    loadScene("views/mainPage.fxml");
+  void initialize() throws IOException {
+    // Show sidebar
+    loadSidebar(sidebarPane);
   }
 
-  // Sidebar
   @FXML
-  void autoOpenCloseSidebar() throws IOException {
-    if (sidebarPane.getChildren().size() == 0) {
-      loadSidebar(sidebarPane);
-    } else {
-      removeSidebar(sidebarPane);
-    }
+  void mainMenu() throws IOException {
+    loadScene("views/mainPage.fxml");
   }
 }

@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.welcomePageController">
+<AnchorPane maxHeight="700.0" maxWidth="100.0" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.welcomePageController">
    <children>
       <ImageView fitHeight="700.0" fitWidth="1100.0" opacity="0.75">
          <image>
@@ -70,7 +70,7 @@
          </cursor>
       </JFXButton>
       <Polygon fill="WHITE" layoutX="549.0" layoutY="656.0" onMouseClicked="#mainPage" points="-50.0, 40.0, 50.0, 40.0, 0.0, -60.0" stroke="BLACK" strokeType="INSIDE" style="-fx-rotate: 180; -fx-scale-x: .6; -fx-scale-y: .5;" />
-      <Rectangle height="125.0" layoutY="575.0" onMouseClicked="#mainPage" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1100.0">
+      <Rectangle height="125.0" layoutY="573.0" onMouseClicked="#mainPage" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1100.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.2831439393939398">
                <stops>

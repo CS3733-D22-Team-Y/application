@@ -19,7 +19,7 @@ public class locTablePageController extends AbsGlobalControllerFuncs {
 
   @FXML Pane sidebarPane;
 
-  public void initialize() {
+  public void initialize() throws IOException {
     List<Location> locations;
     try {
       locations = DaoManager.getLocationDao().getAllLocations();
@@ -54,6 +54,9 @@ public class locTablePageController extends AbsGlobalControllerFuncs {
     tableView.getColumns().add(longName);
     tableView.getColumns().add(shortName);
     tableView.setItems(locationsObservable);
+
+    // Show sidebar
+    loadSidebar(sidebarPane);
   }
 
   // back button

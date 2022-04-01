@@ -10,6 +10,12 @@ public class requestMenuController extends AbsGlobalControllerFuncs {
 
   public requestMenuController() throws IOException {}
 
+  @FXML
+  void initialize() throws IOException {
+    // Show sidebar
+    loadSidebar(sidebarPane);
+  }
+
   // All below methods call corresponding scene setting methods in an instance of app
   // These are called by the corresponding button in the Request Menu (requestMenu.fxml)
 

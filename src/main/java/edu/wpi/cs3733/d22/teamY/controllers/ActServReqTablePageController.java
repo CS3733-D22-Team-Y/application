@@ -19,7 +19,7 @@ public class ActServReqTablePageController extends AbsGlobalControllerFuncs {
 
   @FXML Pane sidebarPane;
 
-  public void initialize() {
+  public void initialize() throws IOException {
     List<MedEquipReq> medEquipReqs;
     try {
       medEquipReqs = DaoManager.getMedEquipReqDao().getAllMedEquipReq();
@@ -42,6 +42,9 @@ public class ActServReqTablePageController extends AbsGlobalControllerFuncs {
     medEquipReqTableView.getColumns().add(equipID);
     medEquipReqTableView.getColumns().add(targetNodeID);
     medEquipReqTableView.setItems(locationsObservable);
+
+    // Show sidebar
+    loadSidebar(sidebarPane);
   }
 
   // back button
