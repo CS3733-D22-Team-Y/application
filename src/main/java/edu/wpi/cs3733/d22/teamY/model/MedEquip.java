@@ -1,5 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
+import java.util.List;
+
 public class MedEquip {
   private String equipID;
   private String equipType;
@@ -39,11 +41,22 @@ public class MedEquip {
 
   private boolean isClean;
 
-  public MedEquip(String equipID, String equipType, String equipLocId, boolean isClean) {
+  public MedEquip(String equipID, String equipType, String equipLocId, boolean isClean)
+  {
     this.equipID = equipID;
     this.equipType = equipType;
     this.equipLocId = equipLocId;
     this.isClean = isClean;
+  }
+
+  public MedEquip(List<String> csv)
+  {
+    this(
+            csv.get(0),
+            csv.get(1),
+            csv.get(2),
+            Boolean.parseBoolean(csv.get(3))
+    );
   }
 
   public String getID() {

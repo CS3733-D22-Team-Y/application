@@ -1,5 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
+import java.util.List;
+
 /**
  * Entity class for elements in the locations table in the database. An instance of this class
  * represents a single row in the database. Instances can be used along with the DAO to add, update,
@@ -23,7 +25,8 @@ public class Location {
       String building,
       String nodeType,
       String longName,
-      String shortName) {
+      String shortName)
+  {
     this.nodeID = nodeID;
     this.xCoord = xCoord;
     this.yCoord = yCoord;
@@ -32,6 +35,20 @@ public class Location {
     this.nodeType = nodeType;
     this.longName = longName;
     this.shortName = shortName;
+  }
+
+  public Location(List<String> csv)
+  {
+    this(
+            csv.get(0),
+            Integer.parseInt(csv.get(1)),
+            Integer.parseInt(csv.get(2)),
+            csv.get(3),
+            csv.get(4),
+            csv.get(5),
+            csv.get(6),
+            csv.get(7)
+    );
   }
 
   public String getNodeID() {
