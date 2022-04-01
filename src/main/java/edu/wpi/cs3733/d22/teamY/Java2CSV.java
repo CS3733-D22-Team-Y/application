@@ -1,5 +1,8 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import edu.wpi.cs3733.d22.teamY.model.Location;
+import edu.wpi.cs3733.d22.teamY.model.MedEquip;
+import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,12 +13,12 @@ public class Java2CSV {
   public static void locations2CSV(String fileName) throws IOException {
     File csvFile = new File(fileName + ".csv");
     FileWriter fileWriter = new FileWriter(csvFile);
-    ArrayList<LocationDBO> arrayList = new ArrayList<>();
-    arrayList = DataManager.getAll(LocationDBO.TABLE_NAME);
+    ArrayList<Location> arrayList = new ArrayList<>();
+    // arrayList = DataManager.getAll(Location.TABLE_NAME);
     String[][] stringArray = new String[arrayList.size()][8];
     int ctr = 0;
-    for (LocationDBO L : arrayList) {
-      stringArray[ctr][0] = L.getKey();
+    for (Location L : arrayList) {
+      stringArray[ctr][0] = L.getNodeID();
       stringArray[ctr][1] = String.valueOf(L.getXCoord());
       stringArray[ctr][2] = String.valueOf(L.getYCoord());
       stringArray[ctr][3] = L.getFloor();
@@ -44,12 +47,12 @@ public class Java2CSV {
   public static void medEquip2CSV(String fileName) throws IOException {
     File csvFile = new File(fileName + ".csv");
     FileWriter fileWriter = new FileWriter(csvFile);
-    ArrayList<MedEquipDBO> arrayList = new ArrayList<>();
-    arrayList = DataManager.getAll(MedEquipDBO.TABLE_NAME);
+    ArrayList<MedEquip> arrayList = new ArrayList<>();
+    // arrayList = DataManager.getAll(MedEquip.TABLE_NAME);
     String[][] stringArray = new String[arrayList.size()][5];
     int ctr = 0;
-    for (MedEquipDBO L : arrayList) { // equipID,equipType,equipLocID,isClean
-      stringArray[ctr][0] = L.getKey();
+    for (MedEquip L : arrayList) { // equipID,equipType,equipLocID,isClean
+      stringArray[ctr][0] = L.getEquipID();
       stringArray[ctr][1] = String.valueOf(L.getEquipID());
       stringArray[ctr][2] = String.valueOf(L.getEquipType());
       stringArray[ctr][3] = L.getEquipLocId();
@@ -75,11 +78,11 @@ public class Java2CSV {
   public static void medEquipReq2CSV(String fileName) throws IOException {
     File csvFile = new File(fileName + ".csv");
     FileWriter fileWriter = new FileWriter(csvFile);
-    ArrayList<MedEquipReqDBO> arrayList = new ArrayList<>();
-    arrayList = DataManager.getAll(MedEquipReqDBO.TABLE_NAME);
+    ArrayList<MedEquipReq> arrayList = new ArrayList<>();
+    // arrayList = DataManager.getAll(MedEquipReq.TABLE_NAME);
     String[][] stringArray = new String[arrayList.size()][3];
     int ctr = 0;
-    for (MedEquipReqDBO L : arrayList) {
+    for (MedEquipReq L : arrayList) {
       stringArray[ctr][0] = L.getKey();
       stringArray[ctr][1] = String.valueOf(L.getEquipID());
       stringArray[ctr][2] = String.valueOf(L.getTargetLocID());
