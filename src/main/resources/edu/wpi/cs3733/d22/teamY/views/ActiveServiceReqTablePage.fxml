@@ -10,8 +10,8 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MedEquipReqTablePageController">
    <children>
-      <TableView fx:id="medEquipReqTableView" layoutX="386.0" layoutY="73.0" prefHeight="600.0" prefWidth="700.0" />
-      <Label layoutX="383.0" layoutY="7.0" prefHeight="80.0" prefWidth="710.0" text="Hospital Equipment Table" textAlignment="CENTER" textFill="#297bce">
+      <TableView fx:id="medEquipReqTableView" layoutX="388.0" layoutY="93.0" prefHeight="550.0" prefWidth="700.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="393.0" layoutY="7.0" prefHeight="80.0" prefWidth="700.0" text="Active Requests Table" textAlignment="RIGHT" textFill="#297bce">
          <font>
             <Font name="System Bold" size="54.0" />
          </font>
