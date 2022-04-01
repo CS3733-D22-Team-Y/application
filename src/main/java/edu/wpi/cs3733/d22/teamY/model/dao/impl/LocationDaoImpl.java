@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.model.dao.impl;
 
+import edu.wpi.cs3733.d22.teamY.DatabaseConnection;
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.dao.LocationDao;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
@@ -11,11 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LocationDaoImpl implements LocationDao {
-  private final Connection conn;
-
-  public LocationDaoImpl(Connection conn) {
-    this.conn = conn;
-  }
+  static Connection conn = DatabaseConnection.getConnection();
 
   @Override
   public List<Location> getAllLocations() throws DaoGetException {
