@@ -5,9 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="700.0" prefWidth="185.0" style="-fx-background-color: #021D5A;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.sideBarController">
    <children>
@@ -16,99 +14,28 @@
             <Font name="Microsoft Tai Le" size="12.0" />
          </font>
       </TextField>
-      <Text fill="WHITE" layoutX="14.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Services">
+      <JFXButton layoutX="-9.0" layoutY="55.0" onAction="#loadViewMap" prefHeight="51.0" prefWidth="91.0" text="Map" textFill="WHITE">
          <font>
             <Font name="Microsoft Tai Le Bold" size="24.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="12.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Map">
+         </font></JFXButton>
+      <JFXButton layoutX="-11.0" layoutY="156.0" onAction="#loadCreateServiceRequest" prefHeight="51.0" prefWidth="134.0" text="Services" textFill="WHITE">
          <font>
             <Font name="Microsoft Tai Le Bold" size="24.0" />
-         </font>
-      </Text>
-      <JFXButton layoutX="12.0" layoutY="66.0" onAction="#loadViewMap" text="Map Hidden Button" textFill="TRANSPARENT" />
-      <JFXButton layoutX="13.0" layoutY="169.0" onAction="#loadCreateServiceRequest" prefHeight="25.0" prefWidth="91.0" text="Services Hidden Button" textFill="TRANSPARENT" />
-      <Text fill="WHITE" layoutX="14.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Map">
-         <font>
-            <Font name="Microsoft Tai Le" size="12.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="14.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Map">
-         <font>
-            <Font name="Microsoft Tai Le" size="12.0" />
-         </font>
-      </Text>
-      <JFXButton layoutX="12.0" layoutY="97.0" onAction="#loadViewMap" prefHeight="6.0" prefWidth="59.0" text="View Map Hidden Button" textFill="TRANSPARENT" />
-      <JFXButton layoutX="12.0" layoutY="125.0" onAction="#loadViewMap" prefHeight="26.0" prefWidth="75.0" text="Edit Map Hidden Button" textFill="TRANSPARENT" />
-      <Text fill="WHITE" layoutX="12.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Laundry">
-         <font>
-            <Font name="Microsoft Tai Le" size="12.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="12.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medical Equipment">
-         <font>
-            <Font name="Microsoft Tai Le" size="12.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="12.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Meal Delivery">
-         <font>
-            <Font name="Microsoft Tai Le" size="12.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="12.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Floral Delivery">
-         <font>
-            <Font name="Microsoft Tai Le" size="12.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="12.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Security">
-         <font>
-            <Font name="Microsoft Tai Le" size="12.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="12.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lab Request">
-         <font>
-            <Font name="Microsoft Tai Le" size="12.0" />
-         </font>
-      </Text>
-      <JFXButton layoutX="12.0" layoutY="202.0" onAction="#loadLaundryRequest" prefHeight="25.0" prefWidth="42.0" text="Laundry Hidden Button" textFill="TRANSPARENT" />
-      <JFXButton layoutX="12.0" layoutY="228.0" onAction="#loadMedicalEquipment" prefHeight="25.0" prefWidth="102.0" text="Medical Equipment Hidden Button" textFill="#d9454500" />
-      <JFXButton layoutX="12.0" layoutY="254.0" onAction="#loadMealDelivery" prefHeight="25.0" prefWidth="72.0" text="Meal Delivery Hidden Button" textFill="TRANSPARENT" />
-      <JFXButton layoutX="12.0" layoutY="279.0" onAction="#loadFloralDelivery" prefHeight="25.0" prefWidth="75.0" text="Floral Delivery Hidden Button" textFill="TRANSPARENT" />
-      <JFXButton layoutX="12.0" layoutY="302.0" onAction="#loadSecurity" prefHeight="25.0" prefWidth="42.0" text="Secuity Hidden Button" textFill="TRANSPARENT" />
-      <JFXButton layoutX="12.0" layoutY="324.0" onAction="#loadLab" prefHeight="25.0" prefWidth="65.0" text="Lab Request Hidden Button" textFill="TRANSPARENT" />
-      <Text fill="WHITE" layoutX="11.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment">
+         </font></JFXButton>
+      <JFXButton layoutX="12.0" layoutY="97.0" onAction="#loadViewMap" prefHeight="26.0" prefWidth="75.0" text="View Map" textFill="WHITE" />
+      <JFXButton layoutX="12.0" layoutY="125.0" onAction="#loadViewMap" prefHeight="26.0" prefWidth="75.0" text="Edit Map" textFill="WHITE" />
+      <JFXButton layoutX="12.0" layoutY="202.0" onAction="#loadLaundryRequest" prefHeight="26.0" prefWidth="59.0" text="Laundry" textFill="WHITE" />
+      <JFXButton layoutX="12.0" layoutY="228.0" onAction="#loadMedicalEquipment" prefHeight="26.0" prefWidth="121.0" text="Medical Equipment" textFill="WHITE" />
+      <JFXButton layoutX="12.0" layoutY="254.0" onAction="#loadMealDelivery" prefHeight="26.0" prefWidth="91.0" text="Meal Delivery" textFill="WHITE" />
+      <JFXButton layoutX="12.0" layoutY="279.0" onAction="#loadFloralDelivery" prefHeight="26.0" prefWidth="91.0" text="Floral Delivery" textFill="WHITE" />
+      <JFXButton layoutX="12.0" layoutY="302.0" onAction="#loadSecurity" prefHeight="26.0" prefWidth="59.0" text="Security" textFill="WHITE" />
+      <JFXButton layoutX="1.0" layoutY="324.0" onAction="#loadLab" prefHeight="26.0" prefWidth="91.0" text="Lab Results" textFill="WHITE" />
+      <JFXButton layoutX="-10.0" layoutY="363.0" prefHeight="51.0" prefWidth="161.0" text="Equipment" textFill="WHITE">
          <font>
             <Font name="Microsoft Tai Le Bold" size="24.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="11.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medical Equipment Requests">
-         <font>
-            <Font name="Microsoft Tai Le" size="12.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="11.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment Location">
-         <font>
-            <Font name="Microsoft Tai Le" size="12.0" />
-         </font>
-      </Text>
-      <JFXButton layoutX="11.0" layoutY="377.0" prefHeight="25.0" prefWidth="123.0" text="Equipment Hidden Button" textFill="TRANSPARENT" />
-      <JFXButton layoutX="11.0" layoutY="407.0" onAction="#loadMedEquipmentRequests" prefHeight="26.0" prefWidth="154.0" text="Equipment Catalog Hidden Button" textFill="TRANSPARENT" />
-      <JFXButton layoutX="11.0" layoutY="429.0" onAction="#loadLocationTable" prefHeight="25.0" prefWidth="106.0" text="Eqiupment Location" textFill="TRANSPARENT" />
-      <Text fill="WHITE" layoutX="34.0" layoutY="654.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inbox">
-         <font>
-            <Font name="Microsoft Tai Le Bold" size="14.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="33.0" layoutY="628.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
-         <font>
-            <Font name="Microsoft Tai Le Bold" size="14.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="33.0" layoutY="681.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logout">
-         <font>
-            <Font name="Microsoft Tai Le Bold" size="14.0" />
-         </font>
-      </Text>
+         </font></JFXButton>
+      <JFXButton layoutX="1.0" layoutY="406.0" onAction="#loadMedEquipmentRequests" prefHeight="26.0" prefWidth="169.0" text="Medical Equipment Requests" textFill="WHITE" />
+      <JFXButton layoutY="429.0" onAction="#loadLocationTable" prefHeight="26.0" prefWidth="126.0" text="Eqiupment Location" textFill="WHITE" />
       <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="10.0" layoutY="641.0">
          <image>
             <Image url="@images/mailIcon.png" />
@@ -124,14 +51,19 @@
             <Image url="@images/LogoutIcon.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="8.0" layoutY="611.0" onAction="#loadMainPage" prefHeight="25.0" prefWidth="65.0" text="Home Hidden Button" textFill="TRANSPARENT" />
-      <JFXButton layoutX="8.0" layoutY="637.0" prefHeight="25.0" prefWidth="65.0" text="Inbox Hidden Button" textFill="TRANSPARENT" />
-      <JFXButton layoutX="12.0" layoutY="664.0" onAction="#killApplication" prefHeight="25.0" prefWidth="72.0" text="Logout Hidden button" textFill="TRANSPARENT" />
-      <Text fill="WHITE" layoutX="11.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Active Service Requests">
+      <JFXButton layoutX="22.0" layoutY="610.0" onAction="#loadMainPage" prefHeight="30.0" prefWidth="59.0" text="Home" textFill="WHITE">
          <font>
-            <Font name="Microsoft Tai Le" size="12.0" />
-         </font>
-      </Text>
-      <JFXButton layoutX="11.0" layoutY="347.0" onAction="#loadViewServiceRequests" prefHeight="26.0" prefWidth="153.0" text="Lab Request Hidden Button" textFill="TRANSPARENT" />
+            <Font name="Microsoft Tai Le Bold" size="14.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="23.0" layoutY="636.0" prefHeight="30.0" prefWidth="59.0" text="Inbox" textFill="WHITE">
+         <font>
+            <Font name="Microsoft Tai Le Bold" size="14.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="22.0" layoutY="662.0" onAction="#killApplication" prefHeight="30.0" prefWidth="67.0" text="Logout" textFill="WHITE">
+         <font>
+            <Font name="Microsoft Tai Le Bold" size="14.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="2.0" layoutY="347.0" onAction="#loadViewServiceRequests" prefHeight="26.0" prefWidth="170.0" text="View Active Service Requests" textFill="WHITE" />
+      <JFXButton layoutX="140.0" layoutY="18.0" text="Back" textFill="WHITE" />
    </children>
 </AnchorPane>
