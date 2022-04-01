@@ -5,6 +5,7 @@
 package edu.wpi.YodelingYoshis;
 
 import edu.wpi.cs3733.d22.teamY.*;
+import edu.wpi.cs3733.d22.teamY.model.Location;
 import java.util.ArrayList;
 import org.junit.Test;
 
@@ -124,8 +125,8 @@ public class DefaultTest {
   @Test
   public void testReplaceObject() {
     DataManager.init("LocationDB");
-    Location testLoc =
-        new Location(
+    LocationDBO testLoc =
+        new LocationDBO(
             "TESTLOCATION",
             55,
             40,
@@ -135,14 +136,14 @@ public class DefaultTest {
             "LONGName",
             "SHORTNAME");
     DataManager.add(testLoc);
-    Location l2 = DataManager.get(Location.TABLE_NAME, "TESTLOCATION");
+    LocationDBO l2 = DataManager.get(LocationDBO.TABLE_NAME, "TESTLOCATION");
     if (l2 == null) {
       assert false;
       return;
     }
     assert (l2.toString().equals(testLoc.toString()));
-    Location newLoc =
-        new Location(
+    LocationDBO newLoc =
+        new LocationDBO(
             "TESTLOCATION",
             99,
             99,
@@ -152,7 +153,7 @@ public class DefaultTest {
             "LONGName",
             "SHORTNAME");
     DataManager.replace(newLoc);
-    Location getLoc = DataManager.get(Location.TABLE_NAME, "TESTLOCATION");
+    LocationDBO getLoc = DataManager.get(LocationDBO.TABLE_NAME, "TESTLOCATION");
     if (getLoc == null) {
       assert false;
     }
@@ -165,8 +166,8 @@ public class DefaultTest {
   @Test
   public void testBadReplace() {
     DataManager.init("LocationDB");
-    Location testLoc =
-        new Location(
+    LocationDBO testLoc =
+        new LocationDBO(
             "TESTLOCATION",
             55,
             40,
@@ -177,7 +178,7 @@ public class DefaultTest {
             "SHORTNAME");
     boolean replace = DataManager.replace(testLoc); // should not work
     assert (!replace);
-    Location loc = DataManager.get(Location.TABLE_NAME, "TESTLOCATION"); // should not work
+    LocationDBO loc = DataManager.get(LocationDBO.TABLE_NAME, "TESTLOCATION"); // should not work
     assert (loc == null);
     System.out.println("Shutting down database...");
     DataManager.shutdownDB();
@@ -251,7 +252,7 @@ public class DefaultTest {
     ReadIn input = new ReadIn();
     ArrayList<Location> locations = new ArrayList<Location>();
     locations = input.readLocationCSV("TowerLocations.csv");
-    DataManager.addObjects(locations);
+    //    DataManager.addObjects(locations);
     //    DataManager.addObjects(input.readMedEquipCSV("MedEquip.csv"));
     //    DataManager.addObjects(input.ReadMedReqCSV("MedEquipRequest.csv"));
 

@@ -1,6 +1,6 @@
 package edu.wpi.cs3733.d22.teamY;
 
-public class MedEquip extends DBObject {
+public class MedEquipDBO extends DBObject {
   public static final String TABLE_NAME = "MEDEQUIP";
   public static final String KEY_ATTRIBUTE_NAME = "EQUIPID";
   private String equipID;
@@ -41,7 +41,7 @@ public class MedEquip extends DBObject {
 
   private boolean isClean;
 
-  public MedEquip(String equipID, String equipType, String equipLocId, boolean isClean) {
+  public MedEquipDBO(String equipID, String equipType, String equipLocId, boolean isClean) {
     super(TABLE_NAME, KEY_ATTRIBUTE_NAME);
     this.equipID = equipID;
     this.equipType = equipType;
@@ -95,7 +95,7 @@ public class MedEquip extends DBObject {
         + '}';
   }
 
-  public MedEquip getClone() {
-    return new MedEquip(equipID, equipType, equipLocId, isClean);
+  public MedEquipDBO getClone() {
+    return new MedEquipDBO(equipID, equipType, equipLocId, isClean);
   }
 }

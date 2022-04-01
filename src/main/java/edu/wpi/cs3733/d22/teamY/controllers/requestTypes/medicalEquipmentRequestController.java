@@ -3,7 +3,7 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 import com.jfoenix.controls.JFXRadioButton;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.DataManager;
-import edu.wpi.cs3733.d22.teamY.MedEquipReq;
+import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import java.io.IOException;
 import java.util.Objects;

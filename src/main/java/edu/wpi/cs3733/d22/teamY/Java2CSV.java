@@ -10,11 +10,11 @@ public class Java2CSV {
   public static void locations2CSV(String fileName) throws IOException {
     File csvFile = new File(fileName + ".csv");
     FileWriter fileWriter = new FileWriter(csvFile);
-    ArrayList<Location> arrayList = new ArrayList<>();
-    arrayList = DataManager.getAll(Location.TABLE_NAME);
+    ArrayList<LocationDBO> arrayList = new ArrayList<>();
+    arrayList = DataManager.getAll(LocationDBO.TABLE_NAME);
     String[][] stringArray = new String[arrayList.size()][8];
     int ctr = 0;
-    for (Location L : arrayList) {
+    for (LocationDBO L : arrayList) {
       stringArray[ctr][0] = L.getKey();
       stringArray[ctr][1] = String.valueOf(L.getXCoord());
       stringArray[ctr][2] = String.valueOf(L.getYCoord());
@@ -44,11 +44,11 @@ public class Java2CSV {
   public static void medEquip2CSV(String fileName) throws IOException {
     File csvFile = new File(fileName + ".csv");
     FileWriter fileWriter = new FileWriter(csvFile);
-    ArrayList<MedEquip> arrayList = new ArrayList<>();
-    arrayList = DataManager.getAll(MedEquip.TABLE_NAME);
+    ArrayList<MedEquipDBO> arrayList = new ArrayList<>();
+    arrayList = DataManager.getAll(MedEquipDBO.TABLE_NAME);
     String[][] stringArray = new String[arrayList.size()][5];
     int ctr = 0;
-    for (MedEquip L : arrayList) { // equipID,equipType,equipLocID,isClean
+    for (MedEquipDBO L : arrayList) { // equipID,equipType,equipLocID,isClean
       stringArray[ctr][0] = L.getKey();
       stringArray[ctr][1] = String.valueOf(L.getEquipID());
       stringArray[ctr][2] = String.valueOf(L.getEquipType());
@@ -75,11 +75,11 @@ public class Java2CSV {
   public static void medEquipReq2CSV(String fileName) throws IOException {
     File csvFile = new File(fileName + ".csv");
     FileWriter fileWriter = new FileWriter(csvFile);
-    ArrayList<MedEquipReq> arrayList = new ArrayList<>();
-    arrayList = DataManager.getAll(MedEquipReq.TABLE_NAME);
+    ArrayList<MedEquipReqDBO> arrayList = new ArrayList<>();
+    arrayList = DataManager.getAll(MedEquipReqDBO.TABLE_NAME);
     String[][] stringArray = new String[arrayList.size()][3];
     int ctr = 0;
-    for (MedEquipReq L : arrayList) {
+    for (MedEquipReqDBO L : arrayList) {
       stringArray[ctr][0] = L.getKey();
       stringArray[ctr][1] = String.valueOf(L.getEquipID());
       stringArray[ctr][2] = String.valueOf(L.getTargetLocID());

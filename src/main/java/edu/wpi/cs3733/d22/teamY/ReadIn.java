@@ -1,8 +1,11 @@
 package edu.wpi.cs3733.d22.teamY;
 
-import java.io.*;
+import edu.wpi.cs3733.d22.teamY.model.Location;
+import edu.wpi.cs3733.d22.teamY.model.MedEquip;
+import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ReadIn {
@@ -29,9 +32,7 @@ public class ReadIn {
         String[] vals = s.split(","); // divides the CSV data by commas
 
         // adds all values into csvOutputs
-        for (int i = 0; i < vals.length; i++) {
-          csvOutputs.add(vals[i]);
-        }
+        csvOutputs.addAll(Arrays.asList(vals));
       }
       sc.close(); // closes scanner
     } catch (java.io.FileNotFoundException e) {
@@ -82,9 +83,7 @@ public class ReadIn {
         String[] vals = s.split(","); // divides the CSV data by commas
 
         // adds all values into csvOutputs
-        for (int i = 0; i < vals.length; i++) {
-          csvOutputs.add(vals[i]);
-        }
+        csvOutputs.addAll(Arrays.asList(vals));
       }
       sc.close(); // closes scanner
     } catch (java.io.FileNotFoundException e) {
@@ -129,9 +128,7 @@ public class ReadIn {
         String[] vals = s.split(","); // divides the CSV data by commas
 
         // adds all values into csvOutputs
-        for (int i = 0; i < vals.length; i++) {
-          csvOutputs.add(vals[i]);
-        }
+        csvOutputs.addAll(Arrays.asList(vals));
       }
       sc.close(); // closes scanner
     } catch (java.io.FileNotFoundException e) {

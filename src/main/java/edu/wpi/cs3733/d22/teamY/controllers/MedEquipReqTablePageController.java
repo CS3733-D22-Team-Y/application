@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
 import edu.wpi.cs3733.d22.teamY.DataManager;
-import edu.wpi.cs3733.d22.teamY.MedEquipReq;
+import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoGetException;
 import java.io.IOException;
 import java.util.Collections;

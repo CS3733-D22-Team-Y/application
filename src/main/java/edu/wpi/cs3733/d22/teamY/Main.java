@@ -1,6 +1,8 @@
 package edu.wpi.cs3733.d22.teamY;
 
-import java.sql.*;
+import edu.wpi.cs3733.d22.teamY.model.Location;
+import edu.wpi.cs3733.d22.teamY.model.MedEquip;
+import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import java.util.ArrayList;
 
 public class Main {
@@ -20,13 +22,13 @@ public class Main {
     ArrayList<MedEquipReq> medEquipRequestArray = new ArrayList<>();
     medEquipRequestArray = input.ReadMedReqCSV("MedEquipReq.csv");
 
-    DataManager.addObjects(locationArray);
+    /*DataManager.addObjects(locationArray);
     DataManager.addObjects(medEquipArray);
-    DataManager.addObjects(medEquipRequestArray);
+    DataManager.addObjects(medEquipRequestArray);*/
 
-    System.out.println(DataManager.getAll(Location.TABLE_NAME).size());
-    System.out.println(DataManager.getAll(MedEquip.TABLE_NAME).size());
-    System.out.println(DataManager.getAll(MedEquipReq.TABLE_NAME).size());
+    System.out.println(DataManager.getAll(LocationDBO.TABLE_NAME).size());
+    System.out.println(DataManager.getAll(MedEquipDBO.TABLE_NAME).size());
+    System.out.println(DataManager.getAll(MedEquipReqDBO.TABLE_NAME).size());
 
     App.launch(App.class, args);
 

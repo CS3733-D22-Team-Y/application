@@ -1,6 +1,6 @@
 package edu.wpi.cs3733.d22.teamY;
 
-public class Location extends DBObject {
+public class LocationDBO extends DBObject {
   public static final String TABLE_NAME = "LOCATIONS";
   public static final String KEY_ATTRIBUTE_NAME = "NODEID";
   private String nodeID;
@@ -11,7 +11,7 @@ public class Location extends DBObject {
   private String longName;
   private String shortName;
 
-  public Location(
+  public LocationDBO(
       String nodeID,
       int xCoord,
       int yCoord,
@@ -31,7 +31,7 @@ public class Location extends DBObject {
     this.shortName = shortName;
   }
 
-  public Location(String id) {
+  public LocationDBO(String id) {
     super(TABLE_NAME, KEY_ATTRIBUTE_NAME);
     nodeID = id;
     xCoord = 0;
@@ -163,7 +163,7 @@ public class Location extends DBObject {
         + ")";
   }
 
-  public Location getClone() {
-    return new Location(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
+  public LocationDBO getClone() {
+    return new LocationDBO(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
   }
 }
