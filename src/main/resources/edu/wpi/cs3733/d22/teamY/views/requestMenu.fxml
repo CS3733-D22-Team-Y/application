@@ -59,7 +59,7 @@
       </JFXButton>
       <ImageView fitHeight="60.0" fitWidth="70.0" layoutX="552.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/icons/Security.jpg" />
+            <Image url="@images/icons/Security.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="70.0" layoutX="548.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
@@ -74,17 +74,17 @@
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="78.0" layoutX="1018.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/icons/flowersIcon.jpeg" />
+            <Image url="@images/icons/flowersIcon.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="57.0" layoutX="1018.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/icons/medicalIcon.jpeg" />
+            <Image url="@images/icons/medicalIcon.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="57.0" layoutX="1018.0" layoutY="475.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/icons/testTubeIcon.jpeg" />
+            <Image url="@images/icons/testTubeIcon.png" />
          </image>
       </ImageView>
    </children>
