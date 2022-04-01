@@ -5,7 +5,6 @@ import edu.wpi.cs3733.d22.teamY.controllers.AbsGlobalControllerFuncs;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
