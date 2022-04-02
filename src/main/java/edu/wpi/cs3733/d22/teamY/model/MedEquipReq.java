@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
-import edu.wpi.cs3733.d22.teamY.StringArrayConv;
 import java.util.List;
 
 public class MedEquipReq implements StringArrayConv {

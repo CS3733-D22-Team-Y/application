@@ -1,8 +1,11 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import edu.wpi.cs3733.d22.teamY.lambdaInterfaces.DaoGetter;
+import edu.wpi.cs3733.d22.teamY.lambdaInterfaces.EntryMaker;
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.MedEquip;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
+import edu.wpi.cs3733.d22.teamY.model.StringArrayConv;
 import edu.wpi.cs3733.d22.teamY.model.dao.Dao;
 import java.util.List;
 
