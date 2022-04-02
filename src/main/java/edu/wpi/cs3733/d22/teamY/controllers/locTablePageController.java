@@ -1,5 +1,8 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXHamburger;
+import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.DaoManager;
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoGetException;
@@ -9,15 +12,21 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
-public class locTablePageController extends AbsGlobalControllerFuncs {
+public class locTablePageController {
   @FXML private TableView<Location> tableView;
 
   @FXML Pane sidebarPane;
+  @FXML private JFXButton closeSidebarHiddenButton;
+  @FXML private JFXHamburger sidebarHamburger;
+
+  AnchorPane sidebar = null;
 
   public void initialize() throws IOException {
     List<Location> locations;
@@ -55,23 +64,29 @@ public class locTablePageController extends AbsGlobalControllerFuncs {
     tableView.getColumns().add(shortName);
     tableView.setItems(locationsObservable);
 
-    // Show sidebar
-    loadSidebar(sidebarPane);
+    Pane paneToLoad = FXMLLoader.load(App.class.getResource("views/sideBar.fxml"));
+    sidebar = (AnchorPane) paneToLoad.lookup("#mainPane");
+    sidebarPane.getChildren().clear();
+    sidebarPane.getChildren().add(paneToLoad);
   }
 
   // back button
   @FXML
   void mainMenu() throws IOException {
-    loadScene("views/mainPage.fxml");
+    SceneLoadingUtil.loadScene("views/mainPage.fxml");
   }
 
-  // Sidebar
   @FXML
-  void autoOpenCloseSidebar() throws IOException {
-    if (sidebarPane.getChildren().size() == 0) {
-      loadSidebar(sidebarPane);
-    } else {
-      removeSidebar(sidebarPane);
-    }
+  void openSidebarLayout() {
+    sidebarHamburger.setVisible(false);
+    closeSidebarHiddenButton.setVisible(true);
+    sidebar.setVisible(true);
+  }
+
+  @FXML
+  void closeSidebarLayout() {
+    sidebarHamburger.setVisible(true);
+    closeSidebarHiddenButton.setVisible(false);
+    sidebar.setVisible(false);
   }
 }

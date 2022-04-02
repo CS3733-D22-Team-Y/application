@@ -4,31 +4,31 @@ import java.io.IOException;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 
-public class mainPageController extends AbsGlobalControllerFuncs {
+public class mainPageController {
 
   @FXML
   void requestMenu() throws IOException {
-    loadScene("views/requestMenu.fxml");
+    SceneLoadingUtil.loadScene("views/requestMenu.fxml");
   }
 
   @FXML
   void activeRequest() throws IOException {
-    loadScene("views/activeServiceRequest.fxml");
+    SceneLoadingUtil.loadScene("views/activeServiceRequest.fxml");
   }
 
   @FXML
   void viewMap() throws IOException {
-    loadScene("views/mapPage.fxml");
+    SceneLoadingUtil.loadScene("views/mapPage.fxml");
   }
 
   @FXML
   void locationTable() throws IOException {
-    loadScene("views/locTablePage.fxml");
+    SceneLoadingUtil.loadScene("views/locTablePage.fxml");
   }
 
   @FXML
   void serviceTable() throws IOException {
-    loadScene("views/ActServReqTablePage.fxml");
+    SceneLoadingUtil.loadScene("views/ActServReqTablePage.fxml");
   }
 
   @FXML

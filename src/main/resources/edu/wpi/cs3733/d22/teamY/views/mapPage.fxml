@@ -10,8 +10,8 @@
 
 <AnchorPane maxHeight="700.0" maxWidth="1100.0" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: eee;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.mapPageController">
    <children>
-      <Pane fx:id="sidebarPane" prefHeight="700.0" prefWidth="200.0" />
-      <VBox fx:id="buttonBox" layoutX="250.0" layoutY="-17.0" prefHeight="716.0" prefWidth="150.0" spacing="30.0">
+      <Pane fx:id="mapPane" layoutX="400.0" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: ccc;" />
+      <VBox fx:id="buttonBox" layoutX="150.0" layoutY="-17.0" prefHeight="716.0" prefWidth="150.0" spacing="30.0">
          <children>
             <JFXButton onAction="#mainMenu" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #021D5A;" text="Back" textFill="WHITE">
                <VBox.margin>
@@ -50,8 +50,8 @@
             </JFXButton>
          </children>
       </VBox>
-      <JFXHamburger fx:id="hamburger" layoutX="4.0" layoutY="9.0" onMouseClicked="#showSidebar" prefHeight="31.0" prefWidth="47.0" visible="false" />
-      <Pane fx:id="mapPane" layoutX="400.0" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: ccc;" />
-      <JFXButton fx:id="tempSidebarButton" layoutX="269.0" layoutY="55.0" onAction="#hideSidebar" text="Hide the sidebar" visible="false" />
+      <Pane fx:id="sidebarPane" prefHeight="700.0" prefWidth="200.0" />
+      <JFXHamburger fx:id="sidebarHamburger" layoutX="10.0" layoutY="10.0" onMouseClicked="#openSidebarLayout" />
+      <JFXButton fx:id="closeSidebarHiddenButton" layoutX="151.0" layoutY="14.0" onAction="#closeSidebarLayout" prefHeight="30.0" prefWidth="31.0" text="closeSidebarHiddenButton" textFill="TRANSPARENT" visible="false" />
    </children>
 </AnchorPane>

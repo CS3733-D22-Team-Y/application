@@ -5,7 +5,7 @@ import javafx.scene.control.TextField;
 
 public class RequestControllerUtil {
   // Checks if any of the given radio buttons are selected.
-  public static boolean isRadioButtonSelected(JFXRadioButton... buttons) {
+  protected static boolean isRadioButtonSelected(JFXRadioButton... buttons) {
     for (JFXRadioButton currButton : buttons) {
       if (currButton.isSelected()) return true;
     }
@@ -13,14 +13,14 @@ public class RequestControllerUtil {
   }
 
   // Resets all the given radio buttons so they are  no longer selected.
-  public static void resetRadioButtons(JFXRadioButton... buttons) {
+  protected static void resetRadioButtons(JFXRadioButton... buttons) {
     for (JFXRadioButton currButton : buttons) {
       currButton.setSelected(false);
     }
   }
 
   // Resets all the given text fields to nothing.
-  public static void resetTextFields(TextField... text) {
+  protected static void resetTextFields(TextField... text) {
     for (TextField currField : text) {
       currField.setText("");
     }

@@ -5,81 +5,74 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
-public class sideBarController extends AbsGlobalControllerFuncs {
+public class sideBarController {
   @FXML AnchorPane mainPane;
+
+  // private Scene scene;
+  // private Pane testPane;
 
   @FXML
   void loadMainPage() throws IOException {
-    loadScene("views/mainPage.fxml");
+    SceneLoadingUtil.loadScene("views/mainPage.fxml");
   }
 
   @FXML
   void loadViewMap() throws IOException {
-    loadScene("views/mapPage.fxml");
+    SceneLoadingUtil.loadScene("views/mapPage.fxml");
   }
 
   @FXML
   void loadCreateServiceRequest() throws IOException {
-    loadScene("views/requestMenu.fxml");
+    SceneLoadingUtil.loadScene("views/requestMenu.fxml");
   }
 
   @FXML
   void loadViewServiceRequests() throws IOException {
-    loadScene("views/activeServiceRequest.fxml");
+    SceneLoadingUtil.loadScene("views/activeServiceRequest.fxml");
   }
 
   @FXML
   void loadLaundryRequest() throws IOException {
-    loadScene("views/requestTypes/laundryRequest.fxml");
+    SceneLoadingUtil.loadScene("views/requestTypes/laundryRequest.fxml");
   }
 
   @FXML
   void loadMedicalEquipment() throws IOException {
-    loadScene("views/requestTypes/medicalEquipmentRequest.fxml");
+    SceneLoadingUtil.loadScene("views/requestTypes/medicalEquipmentRequest.fxml");
   }
 
   @FXML
   void loadMealDelivery() throws IOException {
-    loadScene("views/requestTypes/mealRequest.fxml");
+    SceneLoadingUtil.loadScene("views/requestTypes/mealRequest.fxml");
   }
 
   @FXML
   void loadFloralDelivery() throws IOException {
-    loadScene("views/requestTypes/floralRequest.fxml");
+    SceneLoadingUtil.loadScene("views/requestTypes/floralRequest.fxml");
   }
 
   @FXML
   void loadSecurity() throws IOException {
-    loadScene("views/requestTypes/securityServicesRequest.fxml");
+    SceneLoadingUtil.loadScene("views/requestTypes/securityServicesRequest.fxml");
   }
 
   @FXML
   void loadLab() throws IOException {
-    loadScene("views/requestTypes/labRequest.fxml");
+    SceneLoadingUtil.loadScene("views/requestTypes/labRequest.fxml");
   }
 
   @FXML
   void loadLocationTable() throws IOException {
-    loadScene("views/locTablePage.fxml");
+    SceneLoadingUtil.loadScene("views/locTablePage.fxml");
   }
 
   @FXML
   void loadMedEquipmentRequests() throws IOException {
-    loadScene("views/ActServReqTablePage.fxml");
+    SceneLoadingUtil.loadScene("views/ActServReqTablePage.fxml");
   }
 
   @FXML
   void killApplication() {
     Platform.exit();
-  }
-
-  @FXML
-  void loadSidebar() {
-    mainPane.setVisible(true);
-  }
-
-  @FXML
-  void hideSidebar() {
-    mainPane.setVisible(false);
   }
 }

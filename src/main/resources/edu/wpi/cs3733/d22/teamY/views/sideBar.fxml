@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -14,10 +13,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="185.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.sideBarController">
    <children>
-      <JFXHamburger fx:id="openHamburger" layoutX="10.0" layoutY="10.0" onMouseClicked="#loadSidebar">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></JFXHamburger>
       <AnchorPane fx:id="mainPane" maxHeight="700.0" maxWidth="185.0" prefHeight="700.0" prefWidth="185.0" style="-fx-background-color: #021D5A;" visible="false">
          <children>
             <TextField layoutX="12.0" layoutY="18.0" prefHeight="25.0" prefWidth="126.0" promptText="Search...">
@@ -110,7 +105,7 @@
                   </JFXButton>
                </children>
             </Pane>
-            <ImageView fitHeight="31.0" fitWidth="30.0" layoutX="151.0" layoutY="14.0" onMouseClicked="#hideSidebar" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="31.0" fitWidth="30.0" layoutX="151.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/icons/collapseLeftIcon.png" />
                </image>
