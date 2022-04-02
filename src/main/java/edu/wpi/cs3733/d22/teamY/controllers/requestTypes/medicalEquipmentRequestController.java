@@ -120,5 +120,4 @@ public class medicalEquipmentRequestController extends AbsGlobalControllerFuncs 
         new MedEquipReq("1422", input_AdditionalNotes.getText(), input_RoomID.getText());
     DBManager.save(submission);
   }
-
 }

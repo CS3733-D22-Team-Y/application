@@ -24,6 +24,7 @@ public class DBManager {
     } catch (Exception e) {
       s.getTransaction().rollback();
       s.close();
+      System.out.println(e.getMessage());
     }
   }
 
@@ -52,6 +53,7 @@ public class DBManager {
     } catch (Exception e) {
       s.getTransaction().rollback();
       s.close();
+      System.out.println(e.getMessage());
     }
   }
 
@@ -70,6 +72,7 @@ public class DBManager {
     } catch (Exception e) {
       s.getTransaction().rollback();
       s.close();
+      System.out.println(e.getMessage());
     }
   }
 
@@ -90,6 +93,7 @@ public class DBManager {
     } catch (Exception e) {
       s.getTransaction().rollback();
       s.close();
+      System.out.println(e.getMessage());
     }
   }
 
@@ -110,6 +114,7 @@ public class DBManager {
     } catch (Exception e) {
       s.getTransaction().rollback();
       s.close();
+      System.out.println(e.getMessage());
     }
   }
 
@@ -132,6 +137,7 @@ public class DBManager {
     } catch (Exception e) {
       s.getTransaction().rollback();
       s.close();
+      System.out.println(e.getMessage());
       return null;
     }
   }
