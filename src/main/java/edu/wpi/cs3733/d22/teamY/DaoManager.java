@@ -1,7 +1,5 @@
 package edu.wpi.cs3733.d22.teamY;
 
-import edu.wpi.cs3733.d22.teamY.model.Location;
-import edu.wpi.cs3733.d22.teamY.model.MedEquip;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import edu.wpi.cs3733.d22.teamY.model.dao.impl.LocationDaoImpl;
 import edu.wpi.cs3733.d22.teamY.model.dao.impl.MedEquipDaoImpl;
@@ -31,11 +29,11 @@ public class DaoManager {
   }
 
   public void addAllLocations() throws DaoAddException {
-    CSVBackup.loadFromCSV(Location.class);
+    CSVBackup.loadFromCSV(entryType.LOCATION);
   }
 
   public void addAllMedEquip() throws DaoAddException {
-    CSVBackup.loadFromCSV(MedEquip.class);
+    CSVBackup.loadFromCSV(entryType.MED_EQUIP);
   }
 
   public void cleanAllTables() {
@@ -68,7 +66,10 @@ public class DaoManager {
   }
 
   public void shutdownDB() {
-    // TODO Export to CSV
+    CSVBackup.saveToCSV(entryType.LOCATION);
+    CSVBackup.saveToCSV(entryType.MED_EQUIP);
+    CSVBackup.saveToCSV(entryType.MED_EQUIP_REQ);
+
     try {
       dbConnection.close();
       System.out.println("DB Connection Closed");

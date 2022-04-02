@@ -16,7 +16,7 @@ public class CSVBackup {
   // Function that reads in CSV file for the corresponding entry type and
   // adds them to the proper DAO.
   // Also returns all its values as an ArrayList of entries.
-  public static ArrayList<?> loadFromCSV(entryType type) {
+  public static ArrayList<? extends StringArrayConv> loadFromCSV(entryType type) {
     return loadFromCSV(type.getEntryClass());
   }
 
