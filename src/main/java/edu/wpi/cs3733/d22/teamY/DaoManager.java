@@ -29,11 +29,11 @@ public class DaoManager {
   }
 
   public void addAllLocations() throws DaoAddException {
-    CSVBackup.loadFromCSV(entryType.LOCATION);
+    CSVBackup.loadFromCSV(EntryType.LOCATION);
   }
 
   public void addAllMedEquip() throws DaoAddException {
-    CSVBackup.loadFromCSV(entryType.MED_EQUIP);
+    CSVBackup.loadFromCSV(EntryType.MED_EQUIP);
   }
 
   public void cleanAllTables() {
@@ -66,9 +66,9 @@ public class DaoManager {
   }
 
   public void shutdownDB() {
-    CSVBackup.saveToCSV(entryType.LOCATION);
-    CSVBackup.saveToCSV(entryType.MED_EQUIP);
-    CSVBackup.saveToCSV(entryType.MED_EQUIP_REQ);
+    CSVBackup.saveToCSV(EntryType.LOCATION);
+    CSVBackup.saveToCSV(EntryType.MED_EQUIP);
+    CSVBackup.saveToCSV(EntryType.MED_EQUIP_REQ);
 
     try {
       dbConnection.close();

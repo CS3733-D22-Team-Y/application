@@ -9,7 +9,7 @@ import edu.wpi.cs3733.d22.teamY.model.StringArrayConv;
 import edu.wpi.cs3733.d22.teamY.model.dao.Dao;
 import java.util.List;
 
-public enum entryType {
+public enum EntryType {
 
   // Place all new entry types here.
   // In order: specify number of columns, CSV import path, CSV export path,
@@ -42,7 +42,7 @@ public enum entryType {
       MedEquipReq::new,
       DaoManager::getMedEquipReqDao),
 
-// region Enum Data / Methods
+// region Enum Data / Methods (don't touch probably)
 /* Enum specification begins below... */ ;
 
   private final int columns;
@@ -53,7 +53,7 @@ public enum entryType {
   private final EntryMaker<? extends StringArrayConv> entryGenerator;
   private final DaoGetter<? extends StringArrayConv> daoGetter;
 
-  <T extends StringArrayConv> entryType(
+  <T extends StringArrayConv> EntryType(
       int cols, String inPath, String outPath, Class<T> cls, EntryMaker<T> em, DaoGetter<T> dg) {
     columns = cols;
     csvInLocation = inPath;
@@ -87,8 +87,8 @@ public enum entryType {
     return type;
   }
 
-  public static entryType getFromClass(Class<?> cls) {
-    for (entryType et : entryType.values()) {
+  public static EntryType getFromClass(Class<?> cls) {
+    for (EntryType et : EntryType.values()) {
       if (et.getEntryClass() == cls) {
         return et;
       }

@@ -16,7 +16,7 @@ public class CSVBackup {
   // Function that reads in CSV file for the corresponding entry type and
   // adds them to the proper DAO.
   // Also returns all its values as an ArrayList of entries.
-  public static ArrayList<? extends StringArrayConv> loadFromCSV(entryType type) {
+  public static ArrayList<? extends StringArrayConv> loadFromCSV(EntryType type) {
     return loadFromCSV(type.getEntryClass());
   }
 
@@ -26,7 +26,7 @@ public class CSVBackup {
   @SuppressWarnings("unchecked")
   public static <T extends StringArrayConv> ArrayList<T> loadFromCSV(Class<T> entryClass) {
 
-    entryType type = entryType.getFromClass(entryClass);
+    EntryType type = EntryType.getFromClass(entryClass);
     if (type == null) {
       System.out.println(
           "CSV read failed: Class \"" + entryClass.getName() + "\" is not a valid entry type.");
@@ -77,7 +77,7 @@ public class CSVBackup {
   // Function that backs up all entries of the specified class
   // from DAO to the proper CSV output file.
   public static <T extends StringArrayConv> void saveToCSV(Class<T> entryClass) {
-    entryType type = entryType.getFromClass(entryClass);
+    EntryType type = EntryType.getFromClass(entryClass);
     if (type == null) {
       System.out.println(
           "CSV write failed: Class \"" + entryClass.getName() + "\" is not a valid entry type.");
@@ -90,7 +90,7 @@ public class CSVBackup {
   // Function that backs up all entries of the specified type
   // from DAO to the proper CSV output file.
   @SuppressWarnings("unchecked")
-  public static void saveToCSV(entryType type) {
+  public static void saveToCSV(EntryType type) {
 
     File csvFile = new File(type.getCsvOutputLocation() + ".csv");
     List<StringArrayConv> list;
