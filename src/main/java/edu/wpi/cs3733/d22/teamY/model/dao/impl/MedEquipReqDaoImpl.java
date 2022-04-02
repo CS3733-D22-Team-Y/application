@@ -11,8 +11,18 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MedEquipReqDaoImpl implements MedEquipReqDao {
+public class MedEquipReqDaoImpl extends MedEquipReqDao {
   static Connection conn = DatabaseConnection.getConnection();
+
+  @Override
+  public List<MedEquipReq> getAll() throws DaoGetException {
+    return getAllMedEquipReq();
+  }
+
+  @Override
+  public void add(MedEquipReq r) throws DaoAddException {
+    addMedEquipReq(r);
+  }
 
   @Override
   public List<MedEquipReq> getAllMedEquipReq() throws DaoGetException {

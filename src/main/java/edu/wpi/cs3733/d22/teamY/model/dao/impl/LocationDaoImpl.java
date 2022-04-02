@@ -11,8 +11,18 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LocationDaoImpl implements LocationDao {
+public class LocationDaoImpl extends LocationDao {
   static Connection conn = DatabaseConnection.getConnection();
+
+  @Override
+  public List<Location> getAll() throws DaoGetException {
+    return getAllLocations();
+  }
+
+  @Override
+  public void add(Location l) throws DaoAddException {
+    addLocation(l);
+  }
 
   @Override
   public List<Location> getAllLocations() throws DaoGetException {

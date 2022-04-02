@@ -1,12 +1,28 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
+import edu.wpi.cs3733.d22.teamY.StringArrayConv;
 import java.util.List;
 
-public class MedEquip {
+public class MedEquip implements StringArrayConv {
   private String equipID;
   private String equipType;
   private String equipLocId;
   private String isClean;
+
+  public MedEquip(String equipID, String equipType, String equipLocId, String isClean) {
+    this.equipID = equipID;
+    this.equipType = equipType;
+    this.equipLocId = equipLocId;
+    this.isClean = isClean;
+  }
+
+  public MedEquip(List<String> csv) {
+    this(csv.get(0), csv.get(1), csv.get(2), csv.get(3));
+  }
+
+  public String[] toStringArray() {
+    return new String[] {equipID, equipType, equipLocId, isClean};
+  }
 
   public String getEquipID() {
     return equipID;
@@ -38,20 +54,5 @@ public class MedEquip {
 
   public void setClean(String isClean) {
     this.isClean = isClean;
-  }
-
-  public MedEquip(String equipID, String equipType, String equipLocId, String isClean) {
-    this.equipID = equipID;
-    this.equipType = equipType;
-    this.equipLocId = equipLocId;
-    this.isClean = isClean;
-  }
-
-  public MedEquip(List<String> csv) {
-    this(csv.get(0), csv.get(1), csv.get(2), csv.get(3));
-  }
-
-  public String getID() {
-    return equipID;
   }
 }

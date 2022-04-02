@@ -32,7 +32,7 @@ public class DaoManager {
   }
 
   public void addAllLocations() throws DaoAddException {
-    ArrayList<Location> locationList = ReadIn.readCSV("TowerLocations.csv", entryType.LOCATION);
+    ArrayList<Location> locationList = CSVBackup.loadFromCSV(Location.class);
     for (Location location : locationList) {
       try {
         locationDao.addLocation(location);
@@ -43,10 +43,9 @@ public class DaoManager {
   }
 
   public void addAllMedEquip() throws DaoAddException {
-    ArrayList<MedEquip> medEquipList = ReadIn.readCSV("MedEquip.csv", entryType.MED_EQUIP);
+    ArrayList<MedEquip> medEquipList = CSVBackup.loadFromCSV(MedEquip.class);
     for (MedEquip equip : medEquipList) {
       try {
-        System.out.println(equip.getID());
         medEquipDao.addMedEquip(equip);
       } catch (DaoAddException e) {
         throw new DaoAddException(e);

@@ -7,16 +7,17 @@ import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoGetException;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoUpdateException;
 import java.util.List;
 
-public interface LocationDao {
-  List<Location> getAllLocations() throws DaoGetException;
+public abstract class LocationDao extends Dao<Location> {
 
-  List<Location> getLocationsOnFloor(String floor) throws DaoGetException;
+  public abstract List<Location> getAllLocations() throws DaoGetException;
 
-  Location getLocation(String nodeID) throws DaoGetException;
+  public abstract List<Location> getLocationsOnFloor(String floor) throws DaoGetException;
 
-  void addLocation(Location location) throws DaoAddException;
+  public abstract Location getLocation(String nodeID) throws DaoGetException;
 
-  void updateLocation(Location location) throws DaoUpdateException;
+  public abstract void addLocation(Location location) throws DaoAddException;
 
-  void deleteLocation(Location location) throws DaoDeleteException;
+  public abstract void updateLocation(Location location) throws DaoUpdateException;
+
+  public abstract void deleteLocation(Location location) throws DaoDeleteException;
 }

@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
+import edu.wpi.cs3733.d22.teamY.StringArrayConv;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  * represents a single row in the database. Instances can be used along with the DAO to add, update,
  * and delete rows in the table.
  */
-public class Location {
+public class Location implements StringArrayConv {
   private final String nodeID;
   private int xCoord;
   private int yCoord;
@@ -46,6 +47,19 @@ public class Location {
         csv.get(5),
         csv.get(6),
         csv.get(7));
+  }
+
+  public String[] toStringArray() {
+    return new String[] {
+      nodeID,
+      String.valueOf(xCoord),
+      String.valueOf(yCoord),
+      floor,
+      building,
+      nodeType,
+      longName,
+      shortName
+    };
   }
 
   public String getNodeID() {

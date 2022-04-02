@@ -7,14 +7,14 @@ import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoGetException;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoUpdateException;
 import java.util.List;
 
-public interface MedEquipDao {
-  List<MedEquip> getAllMedEquip() throws DaoGetException;
+public abstract class MedEquipDao extends Dao<MedEquip> {
+  public abstract List<MedEquip> getAllMedEquip() throws DaoGetException;
 
-  MedEquip getMedEquip(String equipID) throws DaoGetException;
+  public abstract MedEquip getMedEquip(String equipID) throws DaoGetException;
 
-  void addMedEquip(MedEquip medEquip) throws DaoAddException;
+  public abstract void addMedEquip(MedEquip medEquip) throws DaoAddException;
 
-  void updateMedEquip(MedEquip medEquip) throws DaoUpdateException;
+  public abstract void updateMedEquip(MedEquip medEquip) throws DaoUpdateException;
 
-  void deleteMedEquip(MedEquip medEquip) throws DaoDeleteException;
+  public abstract void deleteMedEquip(MedEquip medEquip) throws DaoDeleteException;
 }

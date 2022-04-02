@@ -1,14 +1,25 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
+import edu.wpi.cs3733.d22.teamY.StringArrayConv;
 import java.util.List;
 
-public class MedEquipReq {
+public class MedEquipReq implements StringArrayConv {
   private String requestNum;
   private String equipID;
   private String targetLocID;
 
-  public String getKey() {
-    return requestNum;
+  public MedEquipReq(String requestNum, String equipID, String targetLocID) {
+    this.requestNum = requestNum;
+    this.equipID = equipID;
+    this.targetLocID = targetLocID;
+  }
+
+  public String[] toStringArray() {
+    return new String[] {requestNum, equipID, targetLocID};
+  }
+
+  public MedEquipReq(List<String> csv) {
+    this(csv.get(0), csv.get(1), csv.get(2));
   }
 
   public String getRequestNum() {
@@ -21,19 +32,5 @@ public class MedEquipReq {
 
   public String getTargetLocID() {
     return targetLocID;
-  }
-
-  public MedEquipReq(String requestNum, String equipID, String targetLocID) {
-    this.requestNum = requestNum;
-    this.equipID = equipID;
-    this.targetLocID = targetLocID;
-  }
-
-  public MedEquipReq(List<String> csv) {
-    this(csv.get(0), csv.get(1), csv.get(2));
-  }
-
-  public MedEquipReq getClone() {
-    return new MedEquipReq(requestNum, equipID, targetLocID);
   }
 }

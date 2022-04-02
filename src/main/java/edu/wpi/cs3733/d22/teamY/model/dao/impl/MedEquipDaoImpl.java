@@ -12,8 +12,18 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MedEquipDaoImpl implements MedEquipDao {
+public class MedEquipDaoImpl extends MedEquipDao {
   static Connection conn = DatabaseConnection.getConnection();
+
+  @Override
+  public List<MedEquip> getAll() throws DaoGetException {
+    return getAllMedEquip();
+  }
+
+  @Override
+  public void add(MedEquip e) throws DaoAddException {
+    addMedEquip(e);
+  }
 
   @Override
   public List<MedEquip> getAllMedEquip() throws DaoGetException {
@@ -64,7 +74,7 @@ public class MedEquipDaoImpl implements MedEquipDao {
               "INSERT INTO MEDEQUIP (EQUIPID, EQUIPTYPE, NODEID, ISCLEAN) values (?, ?, ?, ?)");
       stmt.setString(1, medEquip.getEquipID());
       stmt.setString(2, medEquip.getEquipType());
-      stmt.setString(3, medEquip.getID());
+      stmt.setString(3, medEquip.getEquipLocId());
       stmt.setString(4, medEquip.isClean());
       stmt.executeUpdate();
     } catch (SQLException e) {
