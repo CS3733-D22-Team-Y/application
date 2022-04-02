@@ -2,7 +2,6 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXRadioButton;
 import edu.wpi.cs3733.d22.teamY.controllers.AbsGlobalControllerFuncs;
-import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,8 +46,7 @@ public class labRequestController extends AbsGlobalControllerFuncs {
       String assignedNurse,
       String requestStatus,
       String additionalNotes,
-      String resultTypeSelected)
-      throws DaoAddException {
+      String resultTypeSelected) {
     // Code to add the fields to the database goes here.
   }
 
@@ -58,19 +56,13 @@ public class labRequestController extends AbsGlobalControllerFuncs {
     // Checks if a lab result choice has been made.
     if (RequestControllerUtil.isRadioButtonSelected(
         allergiesRadioButton, antibodiesRadioButton, diagnosisRadioButton)) {
-      try {
-        submitRequest(
-            input_RoomID.getText(),
-            input_PatientName.getText(),
-            input_AssignedNurse.getText(),
-            input_RequestStatus.getText(),
-            input_AdditionalNotes.getText(),
-            getResultType());
-      }
-      // Thrown if one of the fields in submitRequest is invalid.
-      catch (DaoAddException e) {
-        System.out.println("One of more fields was invalid.");
-      }
+      submitRequest(
+          input_RoomID.getText(),
+          input_PatientName.getText(),
+          input_AssignedNurse.getText(),
+          input_RequestStatus.getText(),
+          input_AdditionalNotes.getText(),
+          getResultType());
     } else {
       System.out.println("Please select a result type.");
     }

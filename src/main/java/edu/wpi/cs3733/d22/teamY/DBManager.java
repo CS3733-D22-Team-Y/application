@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import edu.wpi.cs3733.d22.teamY.model.StringArrayConv;
 import java.util.List;
 import org.hibernate.Session;
 
@@ -127,7 +128,7 @@ public class DBManager {
    * @return A list of objects of the given class.
    */
   @SuppressWarnings({"unchecked"})
-  public static <T> List<T> getAll(Class<?> c) {
+  public static <T extends StringArrayConv> List<T> getAll(Class<?> c) {
     Session s = SessionManager.getSession();
     try {
       s.beginTransaction();

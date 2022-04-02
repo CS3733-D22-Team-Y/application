@@ -6,10 +6,14 @@ public class Main {
 
   public static void main(String[] args) throws Exception {
 
-    DBManager.saveList(ReadIn.readLocationCSV("TowerLocations.csv"));
-    DBManager.saveList(ReadIn.readMedEquipCSV("MedEquip.csv"));
-    DBManager.saveList(ReadIn.ReadMedReqCSV("MedEquipReq.csv"));
+    CSVBackup.loadFromCSV(EntryType.LOCATION);
+    CSVBackup.loadFromCSV(EntryType.MED_EQUIP);
+    CSVBackup.loadFromCSV(EntryType.MED_EQUIP_REQ);
 
     App.launch(App.class, args);
+
+    CSVBackup.saveToCSV(EntryType.LOCATION);
+    CSVBackup.saveToCSV(EntryType.MED_EQUIP);
+    CSVBackup.saveToCSV(EntryType.MED_EQUIP_REQ);
   }
 }

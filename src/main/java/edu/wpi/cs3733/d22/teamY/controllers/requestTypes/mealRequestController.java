@@ -3,7 +3,6 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXRadioButton;
 import edu.wpi.cs3733.d22.teamY.controllers.AbsGlobalControllerFuncs;
-import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -71,8 +70,6 @@ public class mealRequestController extends AbsGlobalControllerFuncs {
    * @param allergies Any allergies to be considered.
    * @param specialInstructions Any special instructions to be considered (only if "other" is
    *     checked)
-   * @throws DaoAddException if there is an error adding something to the database (one of the
-   *     fields is invalid)
    */
   private void submitRequest(
       String roomID,
@@ -83,8 +80,7 @@ public class mealRequestController extends AbsGlobalControllerFuncs {
       String mainChoice,
       String sideChoice,
       String allergies,
-      String specialInstructions)
-      throws DaoAddException {
+      String specialInstructions) {
     // Code to add the fields to the database goes here.
   }
 
@@ -96,22 +92,16 @@ public class mealRequestController extends AbsGlobalControllerFuncs {
             pizzaRadioButton, burgerRadioButton, saladRadioButton)
         && RequestControllerUtil.isRadioButtonSelected(
             riceRadioButton, peasRadioButton, appleRadioButton)) {
-      try {
-        submitRequest(
-            input_RoomID.getText(),
-            input_PatientName.getText(),
-            input_AssignedNurse.getText(),
-            input_RequestStatus.getText(),
-            input_AdditionalNotes.getText(),
-            getMainChoice(),
-            getSideChoice(),
-            dietaryRestrictionsSelectionBox.getValue(),
-            input_SpecialInstructions.getText());
-      }
-      // Thrown if one of the fields in submitRequest is invalid.
-      catch (DaoAddException e) {
-        System.out.println("One of more fields was invalid.");
-      }
+      submitRequest(
+          input_RoomID.getText(),
+          input_PatientName.getText(),
+          input_AssignedNurse.getText(),
+          input_RequestStatus.getText(),
+          input_AdditionalNotes.getText(),
+          getMainChoice(),
+          getSideChoice(),
+          dietaryRestrictionsSelectionBox.getValue(),
+          input_SpecialInstructions.getText());
     } else {
       System.out.println("Please select meal and side options.");
     }

@@ -2,7 +2,6 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXRadioButton;
 import edu.wpi.cs3733.d22.teamY.controllers.AbsGlobalControllerFuncs;
-import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -63,8 +62,7 @@ public class securityServicesRequestController extends AbsGlobalControllerFuncs 
       String requestStatus,
       String additionalNotes,
       String requestTypeSelected,
-      String requestPriority)
-      throws DaoAddException {
+      String requestPriority) {
     // Code to add the fields to the database goes here.
   }
 
@@ -76,20 +74,14 @@ public class securityServicesRequestController extends AbsGlobalControllerFuncs 
             disruptionRadioButton, theftRadioButton, unwantedGuestRadioButton)
         && RequestControllerUtil.isRadioButtonSelected(
             urgentRadioButton, mostUrgentRadioButton, lowPriorityRadioButton)) {
-      try {
-        submitRequest(
-            input_RoomID.getText(),
-            input_PatientName.getText(),
-            input_AssignedNurse.getText(),
-            input_RequestStatus.getText(),
-            input_AdditionalNotes.getText(),
-            getRequestType(),
-            getRequestPriority());
-      }
-      // Thrown if one of the fields in submitRequest is invalid.
-      catch (DaoAddException e) {
-        System.out.println("One of more fields was invalid.");
-      }
+      submitRequest(
+          input_RoomID.getText(),
+          input_PatientName.getText(),
+          input_AssignedNurse.getText(),
+          input_RequestStatus.getText(),
+          input_AdditionalNotes.getText(),
+          getRequestType(),
+          getRequestPriority());
     } else {
       System.out.println("Please select a request type and priority.");
     }

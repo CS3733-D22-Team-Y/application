@@ -1,11 +1,11 @@
 package edu.wpi.cs3733.d22.teamY;
 
 import edu.wpi.cs3733.d22.teamY.model.StringArrayConv;
-import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
-import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoGetException;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +30,7 @@ public class CSVBackup {
     if (type == null) {
       System.out.println(
           "CSV read failed: Class \"" + entryClass.getName() + "\" is not a valid entry type.");
-      return new ArrayList<>();
+      return null;
     }
 
     // ArrayList created to store values from CSV output
@@ -55,21 +55,36 @@ public class CSVBackup {
       sc.close(); // closes scanner
     } catch (java.io.FileNotFoundException e) {
       System.out.println("CSV read failed: File not found."); // accounts for File not Found
-      return new ArrayList<>();
+      return null;
     }
 
     int size = type.getColumns();
+    Constructor<? extends StringArrayConv> cons;
 
     // adds each location value into the ArrayList
-    for (int i = size; i < csvOutputs.size(); i += size) {
-      output.add((T) type.newNode(csvOutputs.subList(i, i + size)));
+    try {
+      cons = type.getEntryClass().getConstructor();
+    } catch (NoSuchMethodException e) {
+      System.out.println(
+          "CSV read failed: Class \"" + entryClass.getName() + "\" has no valid constructor.");
+      return null;
     }
 
-    try {
-      type.getDao().addAll((List<StringArrayConv>) output);
-    } catch (DaoAddException e) {
-      System.out.println("CSV read failed: Could not add values to DAO.");
+    for (int i = size; i < csvOutputs.size(); i += size) {
+      try {
+        String[] sa = csvOutputs.subList(i, i + size).toArray(String[]::new);
+        StringArrayConv conv = cons.newInstance();
+        conv.fromStringArray(sa);
+
+        output.add((T) conv);
+      } catch (InvocationTargetException | InstantiationException | IllegalAccessException e) {
+        System.out.println(
+            "CSV read failed: Could not instantiate class \"" + entryClass.getName() + "\".");
+        return null;
+      }
     }
+
+    DBManager.saveList(output);
 
     return output;
   }
@@ -89,21 +104,21 @@ public class CSVBackup {
 
   // Function that backs up all entries of the specified type
   // from DAO to the proper CSV output file.
-  @SuppressWarnings("unchecked")
   public static void saveToCSV(EntryType type) {
-
     File csvFile = new File(type.getCsvOutputLocation() + ".csv");
     List<StringArrayConv> list;
     FileWriter fileWriter;
 
     try {
       fileWriter = new FileWriter(csvFile);
-      list = (List<StringArrayConv>) type.getDao().getAll();
-    } catch (DaoGetException e) {
-      System.out.println("CSV write failed: DAO get failed.");
-      return;
+      list = DBManager.getAll(type.getEntryClass());
     } catch (IOException e) {
       System.out.println("CSV write failed: Could not open file.");
+      return;
+    }
+
+    if (list == null) {
+      System.out.println("CSV write failed: Null list retrieved.");
       return;
     }
 
@@ -117,9 +132,9 @@ public class CSVBackup {
       try {
         StringBuilder line = new StringBuilder();
         for (int i = 0; i < data.length; i++) {
-          line.append("\"");
+          // line.append("\"");
           line.append(data[i].replaceAll("\"", "\"\""));
-          line.append("\"");
+          // line.append("\"");
           if (i != data.length - 1) {
             line.append(',');
           }

@@ -4,23 +4,27 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import java.util.List;
-
+@Entity
+@Table(name = "medequiprequest")
 public class MedEquipReq implements StringArrayConv {
-  @Entity
-  @Table(name = "medequiprequest")
   @Id private String requestNum;
   private String equipID;
   private String targetLocID;
 
-  public MedEquipReq(String requestNum, String equipID, String targetLocID) {
+  public void init(String requestNum, String equipID, String targetLocID) {
     this.requestNum = requestNum;
     this.equipID = equipID;
     this.targetLocID = targetLocID;
   }
 
-  public MedEquipReq(List<String> csv) {
-    this(csv.get(0), csv.get(1), csv.get(2));
+  public MedEquipReq() {}
+
+  public MedEquipReq(String requestNum, String equipID, String targetLocID) {
+    init(requestNum, equipID, targetLocID);
+  }
+
+  public void fromStringArray(String[] args) {
+    init(args[0], args[1], args[2]);
   }
 
   public String[] toStringArray() {

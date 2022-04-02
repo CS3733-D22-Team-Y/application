@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,9 +9,9 @@ import javax.persistence.Table;
  * represents a single row in the database. Instances can be used along with the DAO to add, update,
  * and delete rows in the table.
  */
+@Entity
+@Table(name = "locations")
 public class Location implements StringArrayConv {
-  @Entity
-  @Table(name = "locations")
   @Id private String nodeID;
   private int xCoord;
   private int yCoord;
@@ -22,9 +21,7 @@ public class Location implements StringArrayConv {
   private String longName;
   private String shortName;
 
-  public Location() {}
-
-  public Location(
+  private void init(
       String nodeID,
       int xCoord,
       int yCoord,
@@ -43,16 +40,18 @@ public class Location implements StringArrayConv {
     this.shortName = shortName;
   }
 
-  public Location(List<String> csv) {
-    this(
-        csv.get(0),
-        Integer.parseInt(csv.get(1)),
-        Integer.parseInt(csv.get(2)),
-        csv.get(3),
-        csv.get(4),
-        csv.get(5),
-        csv.get(6),
-        csv.get(7));
+  public Location() {}
+
+  public Location(
+      String nodeID,
+      int xCoord,
+      int yCoord,
+      String floor,
+      String building,
+      String nodeType,
+      String longName,
+      String shortName) {
+    init(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
   }
 
   public String[] toStringArray() {
@@ -66,6 +65,18 @@ public class Location implements StringArrayConv {
       longName,
       shortName
     };
+  }
+
+  public void fromStringArray(String[] args) {
+    init(
+        args[0],
+        Integer.parseInt(args[1]),
+        Integer.parseInt(args[2]),
+        args[3],
+        args[4],
+        args[5],
+        args[6],
+        args[7]);
   }
 
   public String getNodeID() {

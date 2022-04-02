@@ -4,9 +4,7 @@ import edu.wpi.cs3733.d22.teamY.model.Location;
 import java.util.List;
 import org.hibernate.Session;
 
-/**
- * This class is used to create specific queries for the database.
- */
+/** This class is used to create specific queries for the database. */
 public class DBUtils {
 
   private DBUtils() {}
