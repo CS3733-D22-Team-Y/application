@@ -266,17 +266,13 @@ public class mapPageController {
 
   @FXML
   void openSidebarLayout() {
-    sidebarHamburger.setVisible(false);
-    closeSidebarHiddenButton.setVisible(true);
-    sidebar.setVisible(true);
+    SceneLoadingUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
     buttonBox.setLayoutX(250);
   }
 
   @FXML
   void closeSidebarLayout() {
-    sidebarHamburger.setVisible(true);
-    closeSidebarHiddenButton.setVisible(false);
-    sidebar.setVisible(false);
+    SceneLoadingUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
     buttonBox.setLayoutX(150);
   }
 }

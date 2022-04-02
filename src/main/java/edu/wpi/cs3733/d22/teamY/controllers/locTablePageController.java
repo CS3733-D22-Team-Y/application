@@ -2,7 +2,6 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXHamburger;
-import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.DaoManager;
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoGetException;
@@ -12,7 +11,6 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -64,10 +62,7 @@ public class locTablePageController {
     tableView.getColumns().add(shortName);
     tableView.setItems(locationsObservable);
 
-    Pane paneToLoad = FXMLLoader.load(App.class.getResource("views/sideBar.fxml"));
-    sidebar = (AnchorPane) paneToLoad.lookup("#mainPane");
-    sidebarPane.getChildren().clear();
-    sidebarPane.getChildren().add(paneToLoad);
+    sidebar = SceneLoadingUtil.initializeSidebar(sidebarPane);
   }
 
   // back button
@@ -78,15 +73,11 @@ public class locTablePageController {
 
   @FXML
   void openSidebarLayout() {
-    sidebarHamburger.setVisible(false);
-    closeSidebarHiddenButton.setVisible(true);
-    sidebar.setVisible(true);
+    SceneLoadingUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
   }
 
   @FXML
   void closeSidebarLayout() {
-    sidebarHamburger.setVisible(true);
-    closeSidebarHiddenButton.setVisible(false);
-    sidebar.setVisible(false);
+    SceneLoadingUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
   }
 }

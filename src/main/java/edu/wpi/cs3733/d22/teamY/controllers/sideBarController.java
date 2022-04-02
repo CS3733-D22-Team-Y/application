@@ -8,9 +8,6 @@ import javafx.scene.layout.AnchorPane;
 public class sideBarController {
   @FXML AnchorPane mainPane;
 
-  // private Scene scene;
-  // private Pane testPane;
-
   @FXML
   void loadMainPage() throws IOException {
     SceneLoadingUtil.loadScene("views/mainPage.fxml");
