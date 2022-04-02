@@ -9,7 +9,6 @@ import edu.wpi.cs3733.d22.teamY.model.dao.impl.MedEquipReqDaoImpl;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 public class DaoManager {
   static LocationDaoImpl locationDao = new LocationDaoImpl();
@@ -32,25 +31,11 @@ public class DaoManager {
   }
 
   public void addAllLocations() throws DaoAddException {
-    ArrayList<Location> locationList = CSVBackup.loadFromCSV(Location.class);
-    for (Location location : locationList) {
-      try {
-        locationDao.addLocation(location);
-      } catch (DaoAddException e) {
-        throw new DaoAddException(e);
-      }
-    }
+    CSVBackup.loadFromCSV(Location.class);
   }
 
   public void addAllMedEquip() throws DaoAddException {
-    ArrayList<MedEquip> medEquipList = CSVBackup.loadFromCSV(MedEquip.class);
-    for (MedEquip equip : medEquipList) {
-      try {
-        medEquipDao.addMedEquip(equip);
-      } catch (DaoAddException e) {
-        throw new DaoAddException(e);
-      }
-    }
+    CSVBackup.loadFromCSV(MedEquip.class);
   }
 
   public void cleanAllTables() {

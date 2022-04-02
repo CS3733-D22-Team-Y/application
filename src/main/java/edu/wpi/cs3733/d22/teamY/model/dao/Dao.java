@@ -1,20 +1,22 @@
 package edu.wpi.cs3733.d22.teamY.model.dao;
 
+import edu.wpi.cs3733.d22.teamY.model.StringArrayConv;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoGetException;
 import java.util.List;
 
-public abstract class Dao<T> {
+public abstract class Dao<T extends StringArrayConv> {
 
   public abstract List<T> getAll() throws DaoGetException;
 
   public abstract void add(T t) throws DaoAddException;
 
-  public void addAll(List<T> l) throws DaoAddException {
-    for (T t : l) {
+  @SuppressWarnings("unchecked")
+  public void addAll(List<StringArrayConv> l) throws DaoAddException {
+    for (StringArrayConv t : l) {
       try {
-        add(t);
-      } catch (DaoAddException e) {
+        add((T) t);
+      } catch (DaoAddException | ClassCastException e) {
         throw new DaoAddException(e);
       }
     }

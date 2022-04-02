@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.d22.teamY;
 
 import edu.wpi.cs3733.d22.teamY.model.StringArrayConv;
+import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoGetException;
 import java.io.File;
 import java.io.FileWriter;
@@ -12,16 +13,18 @@ import java.util.Scanner;
 
 public class CSVBackup {
 
-  // function that reads in CSV file for the corresponding entry type and
-  // returns all its values as a wildcard ArrayList.
+  // Function that reads in CSV file for the corresponding entry type and
+  // adds them to the proper DAO.
+  // Also returns all its values as an ArrayList of entries.
   public static ArrayList<?> loadFromCSV(entryType type) {
     return loadFromCSV(type.getEntryClass());
   }
 
-  // function that reads in CSV file for the corresponding class and
-  // stores all its values as an ArrayList of entries.
+  // Function that reads in CSV file for the corresponding class and
+  // adds them to the proper DAO.
+  // Also returns all its values as an ArrayList of entries.
   @SuppressWarnings("unchecked")
-  public static <T> ArrayList<T> loadFromCSV(Class<T> entryClass) {
+  public static <T extends StringArrayConv> ArrayList<T> loadFromCSV(Class<T> entryClass) {
 
     entryType type = entryType.getFromClass(entryClass);
     if (type == null) {
@@ -61,11 +64,18 @@ public class CSVBackup {
     for (int i = size; i < csvOutputs.size(); i += size) {
       output.add((T) type.newNode(csvOutputs.subList(i, i + size)));
     }
+
+    try {
+      type.getDao().addAll((List<StringArrayConv>) output);
+    } catch (DaoAddException e) {
+      System.out.println("CSV read failed: Could not add values to DAO.");
+    }
+
     return output;
   }
 
-  // function that backs up all entries of the specified class
-  // to its default CSV output file.
+  // Function that backs up all entries of the specified class
+  // from DAO to the proper CSV output file.
   public static <T extends StringArrayConv> void saveToCSV(Class<T> entryClass) {
     entryType type = entryType.getFromClass(entryClass);
     if (type == null) {
@@ -77,8 +87,8 @@ public class CSVBackup {
     saveToCSV(type);
   }
 
-  // function that backs up all entries of the specified type
-  // to its default CSV output file.
+  // Function that backs up all entries of the specified type
+  // from DAO to the proper CSV output file.
   @SuppressWarnings("unchecked")
   public static void saveToCSV(entryType type) {
 
