@@ -9,15 +9,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ReadIn {
-  public final String[] csvFiles = {"TowerLocations.csv", "MedEquip.csv"};
 
-  public ReadIn() {}
-
-  public void addCSVsToDB() {
-    for (String csvFile : csvFiles) {
-      DBManager.save(readLocationCSV(csvFile));
-    }
-  }
+  private ReadIn() {}
 
   // function that reads in CSV file and stores all its values in an ArrayList locationList
   public static ArrayList<Location> readLocationCSV(String Filename) {

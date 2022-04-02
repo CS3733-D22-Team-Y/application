@@ -6,8 +6,9 @@ public class Main {
 
   public static void main(String[] args) throws Exception {
 
-    ReadIn csvReader = new ReadIn();
-    csvReader.addCSVsToDB();
+    DBManager.save(ReadIn.readLocationCSV("TowerLocations.csv"));
+    DBManager.save(ReadIn.readMedEquipCSV("MedEquip.csv"));
+    DBManager.save(ReadIn.ReadMedReqCSV("MedEquipReq.csv"));
 
     App.launch(App.class, args);
   }
