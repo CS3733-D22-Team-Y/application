@@ -1,8 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
-import edu.wpi.cs3733.d22.teamY.DaoManager;
+import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
-import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoGetException;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -20,12 +19,11 @@ public class ActServReqTablePageController extends AbsGlobalControllerFuncs {
   @FXML Pane sidebarPane;
 
   public void initialize() {
-    List<MedEquipReq> medEquipReqs;
+    List<MedEquipReq> medEquipReqs = Collections.emptyList();
     try {
-      medEquipReqs = DaoManager.getMedEquipReqDao().getAllMedEquipReq();
-    } catch (DaoGetException e) {
+      medEquipReqs = DBManager.getAll(MedEquipReq.class);
+    } catch (Exception e) {
       e.printStackTrace();
-      medEquipReqs = Collections.emptyList();
     }
 
     ObservableList<MedEquipReq> locationsObservable = FXCollections.observableList(medEquipReqs);

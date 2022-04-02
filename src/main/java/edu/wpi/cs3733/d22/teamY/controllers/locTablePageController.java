@@ -1,8 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
-import edu.wpi.cs3733.d22.teamY.DaoManager;
+import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.model.Location;
-import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoGetException;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -20,12 +19,11 @@ public class locTablePageController extends AbsGlobalControllerFuncs {
   @FXML Pane sidebarPane;
 
   public void initialize() {
-    List<Location> locations;
+    List<Location> locations = Collections.emptyList();
     try {
-      locations = DaoManager.getLocationDao().getAllLocations();
-    } catch (DaoGetException e) {
+      locations = DBManager.getAll(Location.class);
+    } catch (Exception e) {
       e.printStackTrace();
-      locations = Collections.emptyList();
     }
 
     ObservableList<Location> locationsObservable = FXCollections.observableList(locations);

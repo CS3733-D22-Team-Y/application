@@ -1,6 +1,9 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Entity class for elements in the locations table in the database. An instance of this class
@@ -8,7 +11,9 @@ import java.util.List;
  * and delete rows in the table.
  */
 public class Location implements StringArrayConv {
-  private final String nodeID;
+  @Entity
+  @Table(name = "locations")
+  @Id private String nodeID;
   private int xCoord;
   private int yCoord;
   private String floor;
@@ -16,6 +21,8 @@ public class Location implements StringArrayConv {
   private String nodeType;
   private String longName;
   private String shortName;
+
+  public Location() {}
 
   public Location(
       String nodeID,

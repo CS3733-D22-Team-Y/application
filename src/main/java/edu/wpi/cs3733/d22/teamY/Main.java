@@ -6,17 +6,10 @@ public class Main {
 
   public static void main(String[] args) throws Exception {
 
-    // creating dataManager class that manages database
-    // DataManager.init("LocationDB");
-    // DataManager.cleanAll(); // cleans database
-
-    DaoManager daoManager = new DaoManager();
-    daoManager.init();
+    DBManager.saveList(ReadIn.readLocationCSV("TowerLocations.csv"));
+    DBManager.saveList(ReadIn.readMedEquipCSV("MedEquip.csv"));
+    DBManager.saveList(ReadIn.ReadMedReqCSV("MedEquipReq.csv"));
 
     App.launch(App.class, args);
-
-    // once ended, shuts off the database
-    System.out.println("Shutting down database...");
-    daoManager.shutdownDB();
   }
 }
