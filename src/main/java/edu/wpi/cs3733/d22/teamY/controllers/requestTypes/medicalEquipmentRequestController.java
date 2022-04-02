@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXRadioButton;
-import edu.wpi.cs3733.d22.teamY.DaoManager;
+import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.controllers.AbsGlobalControllerFuncs;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
@@ -118,6 +118,7 @@ public class medicalEquipmentRequestController extends AbsGlobalControllerFuncs 
   void submitData() throws DaoAddException {
     MedEquipReq submission =
         new MedEquipReq("1422", input_AdditionalNotes.getText(), input_RoomID.getText());
-    DaoManager.getMedEquipReqDao().addMedEquipReq(submission);
+    DBManager.save(submission);
   }
+
 }
