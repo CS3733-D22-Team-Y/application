@@ -59,7 +59,7 @@ public class medicalEquipmentRequestController extends AbsGlobalControllerFuncs 
       throws DaoAddException {
     // Temporary code from the prototype, commented out for safety
     // MedEquipReq submission = new MedEquipReq("1422", equipmentTypeSelected, roomID);
-    // DataManager.getMedEquipReqDao().addMedEquipReq(submission);
+    // DBManager.save(submission);
   }
 
   // Called when the submit button is pressed.

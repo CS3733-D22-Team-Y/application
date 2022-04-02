@@ -33,7 +33,8 @@ public class DBManager {
    *
    * @param objects The list of objects to save.
    */
-  public static void save(List<Object> objects) {
+  public static <T> void saveList(List<T> objects) {
+    System.out.println("Saving " + objects.size() + " objects");
     for (Object obj : objects) {
       save(obj);
     }
