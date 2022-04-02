@@ -1,12 +1,18 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Entity class for elements in the locations table in the database. An instance of this class
  * represents a single row in the database. Instances can be used along with the DAO to add, update,
  * and delete rows in the table.
  */
+@Entity
+@Table(name = "locations")
 public class Location {
-  private final String nodeID;
+  @Id private String nodeID;
   private int xCoord;
   private int yCoord;
   private String floor;
@@ -14,6 +20,8 @@ public class Location {
   private String nodeType;
   private String longName;
   private String shortName;
+
+  public Location() {}
 
   public Location(
       String nodeID,

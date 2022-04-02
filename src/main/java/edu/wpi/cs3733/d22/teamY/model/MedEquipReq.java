@@ -1,9 +1,17 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "medequiprequest")
 public class MedEquipReq {
-  private String requestNum;
+  @Id private String requestNum;
   private String equipID;
   private String targetLocID;
+
+  public MedEquipReq() {}
 
   public String getKey() {
     return requestNum;

@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class ReadIn {
 
-  public ReadIn() {}
+  private ReadIn() {}
 
   // function that reads in CSV file and stores all its values in an ArrayList locationList
   public static ArrayList<Location> readLocationCSV(String Filename) {
