@@ -33,12 +33,12 @@ public class mainPageController extends AbsGlobalControllerFuncs {
 
   @FXML
   void changeTheme() throws IOException {
-    // loadScene("views/changeTheme.fxml");
+    loadScene("views/changeTheme.fxml");
   }
 
   @FXML
   void personalSettings() throws IOException {
-    // loadScene("views/personalSettings.fxml");
+    loadScene("views/personalSettings.fxml");
   }
 
   @FXML
