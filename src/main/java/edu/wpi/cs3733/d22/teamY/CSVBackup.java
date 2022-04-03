@@ -14,14 +14,14 @@ import java.util.Scanner;
 public class CSVBackup {
 
   // Function that reads in CSV file for the corresponding entry type and
-  // adds them to the proper DAO.
+  // adds them to the DBManager.
   // Also returns all its values as an ArrayList of entries.
   public static ArrayList<? extends StringArrayConv> loadFromCSV(EntryType type) {
     return loadFromCSV(type.getEntryClass());
   }
 
   // Function that reads in CSV file for the corresponding class and
-  // adds them to the proper DAO.
+  // adds them to the DBManager.
   // Also returns all its values as an ArrayList of entries.
   @SuppressWarnings("unchecked")
   public static <T extends StringArrayConv> ArrayList<T> loadFromCSV(Class<T> entryClass) {
@@ -90,7 +90,7 @@ public class CSVBackup {
   }
 
   // Function that backs up all entries of the specified class
-  // from DAO to the proper CSV output file.
+  // from the DBManager to the proper CSV output file.
   public static <T extends StringArrayConv> void saveToCSV(Class<T> entryClass) {
     EntryType type = EntryType.getFromClass(entryClass);
     if (type == null) {
@@ -103,7 +103,7 @@ public class CSVBackup {
   }
 
   // Function that backs up all entries of the specified type
-  // from DAO to the proper CSV output file.
+  // from the DBManager to the proper CSV output file.
   public static void saveToCSV(EntryType type) {
     File csvFile = new File(type.getCsvOutputLocation() + ".csv");
     List<StringArrayConv> list;
@@ -123,7 +123,6 @@ public class CSVBackup {
     }
 
     String[][] stringMatrix = new String[list.size()][type.getColumns()];
-    int ctr = 0;
     for (int i = 0; i < list.size(); i++) {
       stringMatrix[i] = list.get(i).toStringArray();
     }

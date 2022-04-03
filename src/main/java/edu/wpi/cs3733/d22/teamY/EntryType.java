@@ -9,7 +9,7 @@ public enum EntryType {
 
   // Place all new entry types here.
   // In order: specify number of columns, CSV import path, CSV export path,
-  // actual entry class, (List<String>-compatible) constructor, and DAO getter.
+  // and actual entry class.
 
   // Remember! For something to qualify as an entry, it must implement StringArrayConv
   // as this ensures that it's a type that can be properly formatted for CSV.
