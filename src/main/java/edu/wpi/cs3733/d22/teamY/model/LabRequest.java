@@ -4,6 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Entity class for elements in the LabRequests table in the database. An instance of this class
+ * represents a single row in the database. Instances can be used along with the DAO to add, update,
+ * and delete rows in the table.
+ */
 @Entity
 @Table(name = "LabRequests")
 public class LabRequest implements StringArrayConv {
