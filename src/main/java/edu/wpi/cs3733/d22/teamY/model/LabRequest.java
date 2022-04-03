@@ -20,13 +20,13 @@ public class LabRequest implements StringArrayConv {
   private String additionalNotes;
   private String resultType;
 
-  /*public final String REQUEST_NUM = "REQUESTNUM";
-  public final String ADDITIONAL_NOTES = "ADDITIONALNOTES";
-  public final String ASSIGNED_NURSE = "ASSIGNEDNURSE";
-  public final String PATIENT_NAME = "PATIENTNAME";
-  public final String REQUEST_STATUS = "REQUEST_STATUS";
-  public final String RESULT_TYPE = "RESULTTYPE";
-  public final String ROOM_ID = "ROOMID";*/
+  public static final String REQUEST_NUM = "REQUESTNUM";
+  public static final String ADDITIONAL_NOTES = "ADDITIONALNOTES";
+  public static final String ASSIGNED_NURSE = "ASSIGNEDNURSE";
+  public static final String PATIENT_NAME = "PATIENTNAME";
+  public static final String REQUEST_STATUS = "REQUEST_STATUS";
+  public static final String RESULT_TYPE = "RESULTTYPE";
+  public static final String ROOM_ID = "ROOMID";
 
   private void init(
       String requestNum,

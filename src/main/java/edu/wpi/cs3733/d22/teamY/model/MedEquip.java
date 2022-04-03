@@ -17,10 +17,10 @@ public class MedEquip implements StringArrayConv {
   private String equipLocId;
   private String isClean;
 
-  /*public final String EQUIP_ID = "EQUIPID";
-  public final String EQUIP_LOC_ID = "EQUIPLOCID";
-  public final String EQUIP_TYPE = "EQUIPTYPE";
-  public final String IS_CLEAN = "ISCLEAN";*/
+  public static final String EQUIP_ID = "EQUIPID";
+  public static final String EQUIP_LOC_ID = "EQUIPLOCID";
+  public static final String EQUIP_TYPE = "EQUIPTYPE";
+  public static final String IS_CLEAN = "ISCLEAN";
 
   private void init(String eID, String eType, String eLocId, String clean) {
     equipID = eID;

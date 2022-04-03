@@ -16,9 +16,9 @@ public class MedEquipReq implements StringArrayConv {
   private String equipID;
   private String targetLocID;
 
-  /*public final String REQUEST_NUM = "REQUESTNUM";
-  public final String EQUIP_ID = "EQUIPID";
-  public final String TARGET_LOC_ID = "TARGETLOCID";*/
+  public static final String REQUEST_NUM = "REQUESTNUM";
+  public static final String EQUIP_ID = "EQUIPID";
+  public static final String TARGET_LOC_ID = "TARGETLOCID";
 
   public void init(String requestNum, String equipID, String targetLocID) {
     this.requestNum = requestNum;

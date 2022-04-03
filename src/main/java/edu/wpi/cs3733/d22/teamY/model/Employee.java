@@ -18,11 +18,11 @@ public class Employee implements StringArrayConv {
   private String access;
   private String floor;
 
-  /*public final String ID_NUMBER = "IDNUMBER";
-  public final String ACCESS = "ACCESS";
-  public final String FLOOR = "FLOOR";
-  public final String NAME = "NAME";
-  public final String ROLE = "ROLE";*/
+  public static final String ID_NUMBER = "IDNUMBER";
+  public static final String ACCESS = "ACCESS";
+  public static final String FLOOR = "FLOOR";
+  public static final String NAME = "NAME";
+  public static final String ROLE = "ROLE";
 
   private void init(String id, String nm, String rl, String acc, String flr) {
     IDNumber = id;
