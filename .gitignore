@@ -20,3 +20,4 @@ labRequests_export.csv
 
 #Mac Specific
 .DS_Store
+/employees_export.csv

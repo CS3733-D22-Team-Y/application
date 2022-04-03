@@ -52,14 +52,12 @@ public class LabRequest implements StringArrayConv {
         requestNum, roomID, patientName, requestStatus, assignedNurse, additionalNotes, resultType);
   }
 
-  @Override
   public String[] toStringArray() {
     return new String[] {
       requestNum, roomID, patientName, requestStatus, assignedNurse, additionalNotes, resultType
     };
   }
 
-  @Override
   public void fromStringArray(String[] args) {
     init(args[0], args[1], args[2], args[3], args[4], args[5], args[6]);
   }

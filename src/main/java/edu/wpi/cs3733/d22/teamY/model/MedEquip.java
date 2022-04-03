@@ -12,11 +12,11 @@ public class MedEquip implements StringArrayConv {
   private String equipLocId;
   private String isClean;
 
-  private void init(String equipID, String equipType, String equipLocId, String isClean) {
-    this.equipID = equipID;
-    this.equipType = equipType;
-    this.equipLocId = equipLocId;
-    this.isClean = isClean;
+  private void init(String eID, String eType, String eLocId, String clean) {
+    equipID = eID;
+    equipType = eType;
+    equipLocId = eLocId;
+    isClean = clean;
   }
 
   public MedEquip() {}
@@ -49,19 +49,19 @@ public class MedEquip implements StringArrayConv {
     return isClean;
   }
 
-  public void setEquipID(String equipID) {
-    this.equipID = equipID;
+  public void setEquipID(String eID) {
+    equipID = eID;
   }
 
-  public void setEquipType(String equipType) {
-    this.equipType = equipType;
+  public void setEquipType(String eType) {
+    equipType = eType;
   }
 
-  public void setEquipLocId(String equipLocId) {
-    this.equipLocId = equipLocId;
+  public void setEquipLocId(String eLocId) {
+    equipLocId = eLocId;
   }
 
-  public void setClean(String isClean) {
-    this.isClean = isClean;
+  public void setClean(String clean) {
+    isClean = clean;
   }
 }

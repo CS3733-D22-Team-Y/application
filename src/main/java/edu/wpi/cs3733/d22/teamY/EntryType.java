@@ -17,7 +17,9 @@ public enum EntryType {
 
   MED_EQUIP_REQ(3, "MedEquipReq", "medEquipRequests_export", MedEquipReq.class),
 
-  LAB_REQUESTS(7, "LabRequests", "labRequests_export", LabRequest.class),
+  LAB_REQUEST(7, "LabRequests", "labRequests_export", LabRequest.class),
+
+  EMPLOYEE(5, "Employees", "employees_export", Employee.class),
 
 // region Enum Data / Methods (don't touch probably)
 /* Enum specification begins below... */ ;
