@@ -4,6 +4,7 @@ public class Main {
 
   public static void main(String[] args) throws Exception {
 
+    // Load all tables with values from CSV
     CSVBackup.loadFromCSV(EntryType.LOCATION);
     CSVBackup.loadFromCSV(EntryType.MED_EQUIP);
     CSVBackup.loadFromCSV(EntryType.MED_EQUIP_REQ);
@@ -12,6 +13,7 @@ public class Main {
 
     App.launch(App.class, args);
 
+    // Backup all tables to CSV on shutdown
     CSVBackup.saveToCSV(EntryType.LOCATION);
     CSVBackup.saveToCSV(EntryType.MED_EQUIP);
     CSVBackup.saveToCSV(EntryType.MED_EQUIP_REQ);
