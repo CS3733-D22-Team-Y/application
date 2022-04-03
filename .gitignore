@@ -16,6 +16,7 @@ derby.log
 locations_export.csv
 medEquipment_export.csv
 medEquipRequests_export.csv
+labRequests_export.csv
 
 #Mac Specific
 .DS_Store
