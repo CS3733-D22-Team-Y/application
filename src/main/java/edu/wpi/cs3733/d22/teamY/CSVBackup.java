@@ -17,15 +17,13 @@ public class CSVBackup {
   // adds them to the DBManager.
   // Also returns all its values as an ArrayList of entries.
   public static ArrayList<? extends StringArrayConv> loadFromCSV(EntryType type) {
-    return loadFromCSV(type.getEntryClass());
+    return loadHelper(type, type.getEntryClass());
   }
 
   // Function that reads in CSV file for the corresponding class and
   // adds them to the DBManager.
   // Also returns all its values as an ArrayList of entries.
-  @SuppressWarnings("unchecked")
   public static <T extends StringArrayConv> ArrayList<T> loadFromCSV(Class<T> entryClass) {
-
     EntryType type = EntryType.getFromClass(entryClass);
     if (type == null) {
       System.out.println(
@@ -33,6 +31,12 @@ public class CSVBackup {
       return null;
     }
 
+    return loadHelper(type, entryClass);
+  }
+
+  @SuppressWarnings("unchecked")
+  private static <T extends StringArrayConv> ArrayList<T> loadHelper(
+      EntryType type, Class<T> entryClass) {
     // ArrayList created to store values from CSV output
     ArrayList<String> csvOutputs = new ArrayList<>();
     ArrayList<T> output = new ArrayList<>();
@@ -63,7 +67,7 @@ public class CSVBackup {
 
     // adds each location value into the ArrayList
     try {
-      cons = type.getEntryClass().getConstructor();
+      cons = entryClass.getConstructor();
     } catch (NoSuchMethodException e) {
       System.out.println(
           "CSV read failed: Class \"" + entryClass.getName() + "\" has no valid constructor.");
