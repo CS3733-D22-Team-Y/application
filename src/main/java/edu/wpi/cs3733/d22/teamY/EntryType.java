@@ -21,7 +21,7 @@ public enum EntryType {
 
   EMPLOYEE(5, "Employees", "employees_export", Employee.class),
 
-// region Enum Data / Methods (don't touch probably)
+// region Enum Data / Methods
 /* Enum specification begins below... */ ;
 
   private final int columns;
@@ -36,23 +36,28 @@ public enum EntryType {
     type = cls;
   }
 
+  // Returns number of columns in this type.
   public int getColumns() {
     return columns;
   }
 
+  // Returns CSV input path for this type.
   public String getCsvInputLocation() {
     return csvInLocation;
   }
 
+  // Returns CSV output path for this type.
   public String getCsvOutputLocation() {
     return csvOutLocation;
   }
 
+  // Returns actual class for this type.
   public Class<? extends StringArrayConv> getEntryClass() {
     return type;
   }
 
-  public static EntryType getFromClass(Class<?> cls) {
+  // Returns the entry type tied to the input class (if any).
+  public static EntryType getFromClass(Class<? extends StringArrayConv> cls) {
     for (EntryType et : EntryType.values()) {
       if (et.getEntryClass() == cls) {
         return et;

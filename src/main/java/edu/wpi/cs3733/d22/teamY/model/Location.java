@@ -6,8 +6,8 @@ import javax.persistence.Table;
 
 /**
  * Entity class for elements in the locations table in the database. An instance of this class
- * represents a single row in the database. Instances can be used along with the DAO to add, update,
- * and delete rows in the table.
+ * represents a single row in the database. Instances can be used along with the DBManager to add,
+ * update, and delete rows in the table.
  */
 @Entity
 @Table(name = "locations")
@@ -20,6 +20,15 @@ public class Location implements StringArrayConv {
   private String nodeType;
   private String longName;
   private String shortName;
+
+  /*public static final String NODE_ID = "NODEID";
+  public static final String X_COORD = "XCOORD";
+  public static final String Y_COORD = "YCOORD";
+  public static final String FLOOR = "FLOOR";
+  public static final String BUILDING = "BUILDING";
+  public static final String NODE_TYPE = "NODETYPE";
+  public static final String LONG_NAME = "LONGNAME";
+  public static final String SHORT_NAME = "SHORTNAME";*/
 
   private void init(
       String nodeID,

@@ -4,6 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Entity class for elements in the employee table in the database. An instance of this class
+ * represents a single row in the database. Instances can be used along with the DBManager to add,
+ * update, and delete rows in the table.
+ */
 @Entity
 @Table(name = "Employees")
 public class Employee implements StringArrayConv {
@@ -12,6 +17,12 @@ public class Employee implements StringArrayConv {
   private String role;
   private String access;
   private String floor;
+
+  /*public final String ID_NUMBER = "IDNUMBER";
+  public final String ACCESS = "ACCESS";
+  public final String FLOOR = "FLOOR";
+  public final String NAME = "NAME";
+  public final String ROLE = "ROLE";*/
 
   private void init(String id, String nm, String rl, String acc, String flr) {
     IDNumber = id;
@@ -35,6 +46,7 @@ public class Employee implements StringArrayConv {
     init(args[0], args[1], args[2], args[3], args[4]);
   }
 
+  // region Getters/Setters
   public String getIDNumber() {
     return IDNumber;
   }
@@ -74,4 +86,5 @@ public class Employee implements StringArrayConv {
   public void setFloor(String flr) {
     floor = flr;
   }
+  // endregion
 }

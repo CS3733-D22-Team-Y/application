@@ -5,14 +5,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Entity class for elements in the LabRequests table in the database. An instance of this class
+ * Entity class for elements in the lab request table in the database. An instance of this class
  * represents a single row in the database. Instances can be used along with the DAO to add, update,
  * and delete rows in the table.
  */
 @Entity
 @Table(name = "LabRequests")
 public class LabRequest implements StringArrayConv {
-
   @Id private String requestNum;
   private String roomID;
   private String patientName;
@@ -20,6 +19,14 @@ public class LabRequest implements StringArrayConv {
   private String assignedNurse;
   private String additionalNotes;
   private String resultType;
+
+  /*public final String REQUEST_NUM = "REQUESTNUM";
+  public final String ADDITIONAL_NOTES = "ADDITIONALNOTES";
+  public final String ASSIGNED_NURSE = "ASSIGNEDNURSE";
+  public final String PATIENT_NAME = "PATIENTNAME";
+  public final String REQUEST_STATUS = "REQUEST_STATUS";
+  public final String RESULT_TYPE = "RESULTTYPE";
+  public final String ROOM_ID = "ROOMID";*/
 
   private void init(
       String requestNum,
@@ -62,6 +69,7 @@ public class LabRequest implements StringArrayConv {
     init(args[0], args[1], args[2], args[3], args[4], args[5], args[6]);
   }
 
+  // region Getters/Setters
   public String getRequestNum() {
     return requestNum;
   }
@@ -117,4 +125,5 @@ public class LabRequest implements StringArrayConv {
   public void setResultTypeSelected(String resultType) {
     this.resultType = resultType;
   }
+  // endregion
 }

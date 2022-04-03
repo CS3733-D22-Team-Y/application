@@ -4,6 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Entity class for elements in the medical equipment table in the database. An instance of this
+ * class represents a single row in the database. Instances can be used along with the DBManager to
+ * add, update, and delete rows in the table.
+ */
 @Entity
 @Table(name = "medequip")
 public class MedEquip implements StringArrayConv {
@@ -11,6 +16,11 @@ public class MedEquip implements StringArrayConv {
   private String equipType;
   private String equipLocId;
   private String isClean;
+
+  /*public final String EQUIP_ID = "EQUIPID";
+  public final String EQUIP_LOC_ID = "EQUIPLOCID";
+  public final String EQUIP_TYPE = "EQUIPTYPE";
+  public final String IS_CLEAN = "ISCLEAN";*/
 
   private void init(String eID, String eType, String eLocId, String clean) {
     equipID = eID;
@@ -33,6 +43,7 @@ public class MedEquip implements StringArrayConv {
     return new String[] {equipID, equipType, equipLocId, isClean};
   }
 
+  // region Getters/Setters
   public String getEquipID() {
     return equipID;
   }
@@ -64,4 +75,5 @@ public class MedEquip implements StringArrayConv {
   public void setClean(String clean) {
     isClean = clean;
   }
+  // endregion
 }
