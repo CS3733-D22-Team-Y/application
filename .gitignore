@@ -17,7 +17,7 @@ locations_export.csv
 medEquipment_export.csv
 medEquipRequests_export.csv
 labRequests_export.csv
+employees_export.csv
 
 #Mac Specific
 .DS_Store
-/employees_export.csv
