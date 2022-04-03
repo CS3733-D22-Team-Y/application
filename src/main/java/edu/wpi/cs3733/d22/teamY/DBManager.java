@@ -106,7 +106,7 @@ public class DBManager {
    * @param eT The entry type of the object to delete.
    * @param id The id of the object to delete.
    */
-  public static void delete(EntryType eT, String id) {
+  public static void delete(EntryType eT, Serializable id) {
     delete(eT.getEntryClass(), id);
   }
 
