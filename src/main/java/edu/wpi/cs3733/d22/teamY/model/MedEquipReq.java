@@ -10,7 +10,7 @@ import javax.persistence.Table;
  * add, update, and delete rows in the table.
  */
 @Entity
-@Table(name = "medequiprequest")
+@Table(name = "MEDEQUIPREQUEST")
 public class MedEquipReq implements StringArrayConv {
   @Id private String requestNum;
   private String equipID;

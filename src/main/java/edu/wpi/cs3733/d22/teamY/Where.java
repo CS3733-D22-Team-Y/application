@@ -2,12 +2,12 @@ package edu.wpi.cs3733.d22.teamY;
 
 import java.io.Serializable;
 
-public class Where<T extends Serializable> {
+public class Where {
 
   private final String dbField;
-  private final T dbValue;
+  private final Serializable dbValue;
 
-  public Where(String field, T value) {
+  public Where(String field, Serializable value) {
     dbField = field;
     dbValue = value;
   }
@@ -16,7 +16,7 @@ public class Where<T extends Serializable> {
     return dbField;
   }
 
-  public T getValue() {
+  public Serializable getValue() {
     return dbValue;
   }
 }

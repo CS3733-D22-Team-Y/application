@@ -118,25 +118,25 @@ public class DBManager {
    * @return A list of objects of the given class.
    */
   @SuppressWarnings("unchecked")
-  public static <T extends StringArrayConv> List<T> getAll(Class<?> c, Where<?>... wheres) {
+  public static <T extends StringArrayConv> List<T> getAll(Class<?> c, Where... wheres) {
     Session s = SessionManager.getSession();
     try {
       s.beginTransaction();
       StringBuilder q = new StringBuilder("from " + c.getName());
-      /*if (wheres.length > 0) {
+      if (wheres.length > 0) {
         boolean whereAdded = false;
-        for (Where<?> w : wheres) {
+        for (Where w : wheres) {
           q.append(whereAdded ? " and " : " where ");
           q.append(w.getField()).append(" = :").append(w.getField());
 
           whereAdded = true;
         }
-      }*/
+      }
 
       org.hibernate.query.Query<T> query = s.createQuery(q.toString());
-      /*for (Where<?> w : wheres) {
+      for (Where w : wheres) {
         query.setParameter(w.getField(), w.getValue());
-      }*/
+      }
 
       List<T> list = query.list();
       s.getTransaction().commit();
@@ -156,7 +156,7 @@ public class DBManager {
    * @param eT The entry type of the objects to return.
    * @return A list of objects of the given class (as Object).
    */
-  public static <T extends StringArrayConv> List<T> getAll(EntryType eT, Where<?>... wheres) {
+  public static <T extends StringArrayConv> List<T> getAll(EntryType eT, Where... wheres) {
     return getAll(eT.getEntryClass(), wheres);
   }
 }

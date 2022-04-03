@@ -13,6 +13,8 @@ import java.util.Scanner;
 
 public class CSVBackup {
 
+  private CSVBackup() {}
+
   // Function that reads in CSV file for the corresponding entry type and
   // adds them to the DBManager.
   // Also returns all its values as an ArrayList of entries.

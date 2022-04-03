@@ -10,7 +10,7 @@ import javax.persistence.Table;
  * update, and delete rows in the table.
  */
 @Entity
-@Table(name = "locations")
+@Table(name = "LOCATIONS")
 public class Location implements StringArrayConv {
   @Id private String nodeID;
   private int xCoord;
