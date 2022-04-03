@@ -115,6 +115,7 @@ public class DBManager {
    *
    * @param c The class of the objects to return.
    * @param <T> The type of the objects to return.
+   * @param wheres 0 or more WHERE clauses for the SQL request.
    * @return A list of objects of the given class.
    */
   @SuppressWarnings("unchecked")
@@ -154,6 +155,7 @@ public class DBManager {
    * Returns a list of objects of the given class.
    *
    * @param eT The entry type of the objects to return.
+   * @param wheres 0 or more WHERE clauses for the SQL request.
    * @return A list of objects of the given class (as Object).
    */
   public static <T extends StringArrayConv> List<T> getAll(EntryType eT, Where... wheres) {
