@@ -4,11 +4,11 @@ import java.io.IOException;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 
-public class welcomePageController extends AbsGlobalControllerFuncs {
+public class welcomePageController {
 
   @FXML
   void mainPage() throws IOException {
-    loadScene("views/mainPage.fxml");
+    SceneLoading.loadScene("views/mainPage.fxml");
   }
 
   @FXML

@@ -17,7 +17,6 @@
             <Font name="Microsoft Tai Le Bold" size="54.0" />
          </font>
       </Text>
-      <JFXHamburger layoutX="14.0" layoutY="14.0" onMouseClicked="#autoOpenCloseSidebar" />
       <VBox layoutX="200.0" layoutY="107.0" spacing="15.0">
          <children>
             <Group>
@@ -117,12 +116,14 @@
             </Group>
          </children>
       </VBox>
-      <JFXButton layoutX="197.0" layoutY="18.0" onAction="#mainMenu" prefHeight="51.0" prefWidth="95.0" style="-fx-background-color: #021D5A;" text="Back" textFill="WHITE">
+      <JFXButton fx:id="backButton" layoutX="234.0" layoutY="19.0" onAction="#mainMenu" prefHeight="51.0" prefWidth="95.0" style="-fx-background-color: #021D5A;" text="Back" textFill="WHITE">
          <font>
             <Font name="Microsoft Tai Le" size="24.0" />
          </font>
       </JFXButton>
-      <Pane layoutX="598.0" layoutY="98.0" prefHeight="535.0" prefWidth="400.0" style="-fx-background-color: white; -fx-background-radius: 15;" />
-      <Pane fx:id="sidebarPane" layoutX="4.0" layoutY="44.0" prefHeight="650.0" prefWidth="200.0" />
+      <Pane fx:id="test" layoutX="704.0" layoutY="98.0" onMouseClicked="#openSidebarLayout" prefHeight="535.0" prefWidth="294.0" style="-fx-background-color: white; -fx-background-radius: 15;" />
+      <Pane fx:id="sidebarPane" prefHeight="700.0" prefWidth="185.0" />
+      <JFXHamburger fx:id="sidebarHamburger" layoutX="10.0" layoutY="10.0" onMouseClicked="#openSidebarLayout" />
+      <JFXButton fx:id="closeSidebarHiddenButton" layoutX="151.0" layoutY="14.0" onAction="#closeSidebarLayout" prefHeight="30.0" prefWidth="31.0" text="closeSidebarHiddenButton" textFill="TRANSPARENT" visible="false" />
    </children>
 </AnchorPane>
