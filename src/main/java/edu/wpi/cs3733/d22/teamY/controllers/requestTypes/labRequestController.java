@@ -87,7 +87,6 @@ public class labRequestController {
     RequestControllerUtil.resetRadioButtons(
         antibodiesRadioButton, allergiesRadioButton, diagnosisRadioButton);
     RequestControllerUtil.resetTextFields(
-        input_RoomID, input_PatientName, input_AssignedNurse, input_RequestStatus);
-    input_AdditionalNotes.setText("");
+        input_RoomID, input_PatientName, input_AssignedNurse, input_RequestStatus, input_AdditionalNotes);
   }
 }

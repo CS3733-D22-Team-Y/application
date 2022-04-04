@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXRadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputControl;
 
 public class RequestControllerUtil {
   // Checks if any of the given radio buttons are selected.
@@ -20,8 +20,8 @@ public class RequestControllerUtil {
   }
 
   // Resets all the given text fields to nothing.
-  protected static void resetTextFields(TextField... text) {
-    for (TextField currField : text) {
+  protected static void resetTextFields(TextInputControl... text) {
+    for (TextInputControl currField : text) {
       currField.setText("");
     }
   }
