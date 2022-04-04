@@ -114,7 +114,11 @@ public class securityServicesRequestController {
   void resetAllFields() {
     // Text input
     RequestControllerUtil.resetTextFields(
-        input_RoomID, input_PatientName, input_AssignedNurse, input_RequestStatus, input_AdditionalNotes);
+        input_RoomID,
+        input_PatientName,
+        input_AssignedNurse,
+        input_RequestStatus,
+        input_AdditionalNotes);
     // Report type radio buttons
     RequestControllerUtil.resetRadioButtons(
         unwantedGuestRadioButton,

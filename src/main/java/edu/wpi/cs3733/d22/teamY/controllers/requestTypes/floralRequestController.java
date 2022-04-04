@@ -91,6 +91,10 @@ public class floralRequestController {
     RequestControllerUtil.resetRadioButtons(
         getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton);
     RequestControllerUtil.resetTextFields(
-        input_RoomID, input_PatientName, input_AssignedNurse, input_RequestStatus, input_AdditionalNotes);
+        input_RoomID,
+        input_PatientName,
+        input_AssignedNurse,
+        input_RequestStatus,
+        input_AdditionalNotes);
   }
 }

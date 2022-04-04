@@ -145,7 +145,12 @@ public class mealRequestController {
   void resetAllFields() {
     // Input text fields
     RequestControllerUtil.resetTextFields(
-        input_RoomID, input_PatientName, input_AssignedNurse, input_RequestStatus, input_AdditionalNotes, input_SpecialInstructions);
+        input_RoomID,
+        input_PatientName,
+        input_AssignedNurse,
+        input_RequestStatus,
+        input_AdditionalNotes,
+        input_SpecialInstructions);
     // Mains
     RequestControllerUtil.resetRadioButtons(
         pizzaRadioButton,

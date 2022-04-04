@@ -69,34 +69,34 @@ public class ActServReqTablePageController {
     SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
   }
 
-    public static class ChangeTheme {
-      // Base pane for displaying new scenes
-      @FXML private Pane mapPane;
-      // Sidebar
-      @FXML private Pane sidebarPane;
-      @FXML private JFXButton closeSidebarHiddenButton;
-      @FXML private JFXHamburger sidebarHamburger;
-      AnchorPane sidebar = null;
+  public static class ChangeTheme {
+    // Base pane for displaying new scenes
+    @FXML private Pane mapPane;
+    // Sidebar
+    @FXML private Pane sidebarPane;
+    @FXML private JFXButton closeSidebarHiddenButton;
+    @FXML private JFXHamburger sidebarHamburger;
+    AnchorPane sidebar = null;
 
-      @FXML
-      void initialize() throws IOException {
-        sidebar = SidebarUtil.initializeSidebar(sidebarPane);
-      }
-
-      @FXML
-      void mainMenu() throws IOException {
-        SceneLoading.loadScene("views/mainPage.fxml");
-      }
-
-      // Sidebar
-      @FXML
-      void openSidebarLayout() {
-        SidebarUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
-      }
-
-      @FXML
-      void closeSidebarLayout() {
-        SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
-      }
+    @FXML
+    void initialize() throws IOException {
+      sidebar = SidebarUtil.initializeSidebar(sidebarPane);
     }
+
+    @FXML
+    void mainMenu() throws IOException {
+      SceneLoading.loadScene("views/mainPage.fxml");
+    }
+
+    // Sidebar
+    @FXML
+    void openSidebarLayout() {
+      SidebarUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
+    }
+
+    @FXML
+    void closeSidebarLayout() {
+      SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
+    }
+  }
 }
