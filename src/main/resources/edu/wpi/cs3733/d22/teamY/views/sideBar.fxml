@@ -32,7 +32,7 @@
                         <VBox>
                            <children>
                               <JFXButton onAction="#loadViewMap" prefHeight="26.0" prefWidth="69.0" text="View Map" textFill="WHITE" />
-                              <JFXButton onAction="#loadLocationTable" prefHeight="26.0" prefWidth="66.0" text="Locations" textFill="WHITE" />
+                              <JFXButton alignment="BOTTOM_LEFT" onAction="#loadLocationTable" prefHeight="26.0" prefWidth="145.0" text="Locations" textFill="WHITE" />
                            </children>
                         </VBox>
                      </children>
@@ -49,10 +49,10 @@
                               <JFXButton onAction="#loadMedicalEquipment" prefHeight="26.0" prefWidth="165.0" text="Medical Equipment Delivery" textFill="WHITE" />
                               <JFXButton onAction="#loadFloralDelivery" prefHeight="26.0" prefWidth="91.0" text="Floral Delivery" textFill="WHITE" />
                               <JFXButton onAction="#loadMealDelivery" prefHeight="26.0" prefWidth="88.0" text="Meal Delivery" textFill="WHITE" />
-                              <JFXButton onAction="#loadLaundryRequest" prefHeight="26.0" prefWidth="58.0" text="Laundry" textFill="WHITE" />
+                              <JFXButton alignment="BOTTOM_LEFT" onAction="#loadLaundryRequest" prefHeight="26.0" prefWidth="157.0" text="Laundry" textFill="WHITE" />
                               <JFXButton onAction="#loadSecurity" prefHeight="26.0" prefWidth="104.0" text="Security Services" textFill="WHITE" />
                               <JFXButton onAction="#loadLab" prefHeight="26.0" prefWidth="76.0" text="Lab Results" textFill="WHITE" />
-                              <JFXButton onAction="#loadCreateServiceRequest" prefHeight="26.0" prefWidth="54.0" text="Other..." textFill="WHITE" />
+                              <JFXButton alignment="BOTTOM_LEFT" onAction="#loadCreateServiceRequest" prefHeight="26.0" prefWidth="157.0" text="Other Requests" textFill="WHITE" />
                               <JFXButton onAction="#loadViewServiceRequests" prefHeight="26.0" prefWidth="60.0" text="fillerSpace" textFill="#ffffff00" />
                               <JFXButton onAction="#loadViewServiceRequests" prefHeight="26.0" prefWidth="169.0" text="View Active Service Requests" textFill="WHITE" />
                            </children>
