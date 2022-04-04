@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXRadioButton;
-import edu.wpi.cs3733.d22.teamY.controllers.AbsGlobalControllerFuncs;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class laundryRequestController extends AbsGlobalControllerFuncs {
+public class laundryRequestController {
   // Radio Buttons
   @FXML private JFXRadioButton hazardousRadioButton;
   @FXML private JFXRadioButton scrubsRadioButton;
@@ -40,8 +40,6 @@ public class laundryRequestController extends AbsGlobalControllerFuncs {
    * @param requestStatus The request status.
    * @param additionalNotes Any additional notes.
    * @param laundryTypeSelected The type of result selected.
-   * @throws DaoAddException if there is an error adding something to the database (one of the
-   *     fields is invalid)
    */
   private void submitRequest(
       String roomID,
@@ -82,7 +80,7 @@ public class laundryRequestController extends AbsGlobalControllerFuncs {
 
   @FXML
   void backToRequestMenu(ActionEvent event) throws IOException {
-    loadScene("views/requestMenu.fxml");
+    SceneLoading.loadScene("views/requestMenu.fxml");
     resetAllFields();
   }
 

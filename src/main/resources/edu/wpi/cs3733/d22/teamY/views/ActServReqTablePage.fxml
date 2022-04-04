@@ -21,7 +21,8 @@
             <Font size="24.0" />
          </font>
       </JFXButton>
-      <JFXHamburger layoutX="20.0" layoutY="15.0" onMouseClicked="#autoOpenCloseSidebar" />
-      <Pane fx:id="sidebarPane" layoutX="18.0" layoutY="43.0" prefHeight="650.0" prefWidth="200.0" />
+      <Pane fx:id="sidebarPane" prefHeight="700.0" prefWidth="185.0" />
+      <JFXHamburger fx:id="sidebarHamburger" layoutX="10.0" layoutY="10.0" onMouseClicked="#openSidebarLayout" />
+      <JFXButton fx:id="closeSidebarHiddenButton" layoutX="151.0" layoutY="14.0" onAction="#closeSidebarLayout" prefHeight="30.0" prefWidth="31.0" text="closeSidebarHiddenButton" textFill="TRANSPARENT" visible="false" />
    </children>
 </AnchorPane>

@@ -32,8 +32,7 @@
             <Font name="System Bold" size="54.0" />
          </font>
       </Label>
-      <JFXHamburger layoutX="13.0" layoutY="11.0" onMouseClicked="#autoOpenCloseSidebar" />
-      <Pane fx:id="sidebarPane" layoutX="24.0" layoutY="40.0" prefHeight="650.0" prefWidth="200.0" />
+      <Pane fx:id="sidebarPane" prefHeight="700.0" prefWidth="185.0" />
       <JFXButton alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="225.0" layoutY="162.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#securityServices" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 36; -fx-background-radius: 15;" text="Security Services" textFill="WHITE">
          <font>
             <Font size="36.0" />
@@ -87,5 +86,7 @@
             <Image url="@images/icons/testTubeIcon.png" />
          </image>
       </ImageView>
+      <JFXHamburger fx:id="sidebarHamburger" layoutX="10.0" layoutY="10.0" onMouseClicked="#openSidebarLayout" />
+      <JFXButton fx:id="closeSidebarHiddenButton" layoutX="151.0" layoutY="14.0" onAction="#closeSidebarLayout" prefHeight="30.0" prefWidth="31.0" text="closeSidebarHiddenButton" textFill="TRANSPARENT" visible="false" />
    </children>
 </AnchorPane>

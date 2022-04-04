@@ -4,33 +4,36 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXHamburger;
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
-public class ChangeTheme extends AbsGlobalControllerFuncs {
+public class ChangeTheme {
   // Base pane for displaying new scenes
   @FXML private Pane mapPane;
-  // Sidebar pane
+  // Sidebar
   @FXML private Pane sidebarPane;
-  // Hamburger that opens the sidebar
-  @FXML private JFXHamburger hamburger;
-  // Menu of buttons
-  @FXML private VBox buttonBox;
-  // Temp button
-  @FXML JFXButton tempSidebarButton;
+  @FXML private JFXButton closeSidebarHiddenButton;
+  @FXML private JFXHamburger sidebarHamburger;
+  AnchorPane sidebar = null;
+
+  @FXML
+  void initialize() throws IOException {
+    sidebar = SidebarUtil.initializeSidebar(sidebarPane);
+  }
 
   @FXML
   void mainMenu() throws IOException {
-    loadScene("views/mainPage.fxml");
+    SceneLoading.loadScene("views/mainPage.fxml");
   }
 
   // Sidebar
   @FXML
-  void autoOpenCloseSidebar() throws IOException {
-    if (sidebarPane.getChildren().size() == 0) {
-      loadSidebar(sidebarPane);
-    } else {
-      removeSidebar(sidebarPane);
-    }
+  void openSidebarLayout() {
+    SidebarUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
+  }
+
+  @FXML
+  void closeSidebarLayout() {
+    SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
   }
 }

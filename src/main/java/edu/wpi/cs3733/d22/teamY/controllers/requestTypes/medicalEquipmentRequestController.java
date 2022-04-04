@@ -2,7 +2,7 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXRadioButton;
 import edu.wpi.cs3733.d22.teamY.DBManager;
-import edu.wpi.cs3733.d22.teamY.controllers.AbsGlobalControllerFuncs;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import java.io.IOException;
 import javafx.event.ActionEvent;
@@ -11,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class medicalEquipmentRequestController extends AbsGlobalControllerFuncs {
+public class medicalEquipmentRequestController {
   // Text Inputs
   @FXML private TextField input_RoomID;
   @FXML private TextField input_PatientName;
@@ -45,8 +45,6 @@ public class medicalEquipmentRequestController extends AbsGlobalControllerFuncs 
    * @param requestStatus The request status.
    * @param additionalNotes Any additional notes.
    * @param equipmentTypeSelected The type of bouquet selected.
-   * @throws DaoAddException if there is an error adding something to the database (one of the
-   *     fields is invalid)
    */
   private void submitRequest(
       String roomID,
@@ -90,7 +88,7 @@ public class medicalEquipmentRequestController extends AbsGlobalControllerFuncs 
 
   @FXML
   void backToRequestMenu(ActionEvent event) throws IOException {
-    loadScene("views/requestMenu.fxml");
+    SceneLoading.loadScene("views/requestMenu.fxml");
     resetAllFields();
   }
 

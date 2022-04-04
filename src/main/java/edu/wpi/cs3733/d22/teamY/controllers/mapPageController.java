@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -21,7 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
-public class mapPageController extends AbsGlobalControllerFuncs {
+public class mapPageController {
   // Base pane for displaying new scenes
   @FXML private Pane mapPane;
   // Sidebar pane
@@ -30,8 +31,10 @@ public class mapPageController extends AbsGlobalControllerFuncs {
   @FXML private JFXHamburger hamburger;
   // Menu of buttons
   @FXML private VBox buttonBox;
-  // Temp button
-  @FXML JFXButton tempSidebarButton;
+  @FXML private JFXButton closeSidebarHiddenButton;
+  @FXML private JFXHamburger sidebarHamburger;
+
+  AnchorPane sidebar = null;
 
   private static final int CIRCLE_RADIUS_PX = 10;
   private static final Paint CIRCLE_PAINT = Color.RED;
@@ -187,7 +190,8 @@ public class mapPageController extends AbsGlobalControllerFuncs {
     imageView.setImage(floorImages.get(newFloor));
   }
 
-  public void initialize() {
+  public void initialize() throws IOException {
+    // Load floors
     floorImages.put(
         Floors.FIRST_FLOOR,
         new Image(App.class.getResource("views/images/firstfloor.png").toString()));
@@ -211,12 +215,15 @@ public class mapPageController extends AbsGlobalControllerFuncs {
 
     // Load initial floor
     switchFloor(lastFloor);
+
+    // Load sidebar
+    sidebar = SidebarUtil.initializeSidebar(sidebarPane);
   }
 
   // back button
   @FXML
   void mainMenu() throws IOException {
-    loadScene("views/mainPage.fxml");
+    SceneLoading.loadScene("views/mainPage.fxml");
   }
   // Loading maps
   @FXML
@@ -251,27 +258,14 @@ public class mapPageController extends AbsGlobalControllerFuncs {
   }
   // Sidebar
   @FXML
-  void autoOpenCloseSidebar() throws IOException {
-    if (sidebarPane.getChildren().size() == 0) {
-      loadSidebar(sidebarPane);
-    } else {
-      removeSidebar(sidebarPane);
-    }
-  }
-
-  @FXML
-  void showSidebar() throws IOException {
-    hamburger.setVisible(false);
+  void openSidebarLayout() {
+    SidebarUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
     buttonBox.setLayoutX(250);
-    tempSidebarButton.setVisible(true);
-    loadSidebar(sidebarPane);
   }
 
   @FXML
-  void hideSidebar() {
-    hamburger.setVisible(true);
+  void closeSidebarLayout() {
+    SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
     buttonBox.setLayoutX(150);
-    tempSidebarButton.setVisible(false);
-    removeSidebar(sidebarPane);
   }
 }
