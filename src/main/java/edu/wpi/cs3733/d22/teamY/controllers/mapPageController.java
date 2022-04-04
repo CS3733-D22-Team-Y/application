@@ -39,6 +39,12 @@ public class mapPageController {
   private static final int CIRCLE_RADIUS_PX = 10;
   private static final Paint CIRCLE_PAINT = Color.RED;
 
+  // Screen size constants
+  private static final int MAP_XMIN = 0;
+  private static final int MAP_YMIN = 0;
+  private static final int MAP_XMAX = 700;
+  private static final int MAP_YMAX = 700;
+
   enum Floors {
     GROUND_FLOOR("GG"),
     FIRST_FLOOR("1"),
@@ -113,6 +119,14 @@ public class mapPageController {
     return null;
   }
 
+  // Checks if the location is in bounds
+  private Boolean isValidPlacement(Location l) {
+    return !(l.getXCoord() > MAP_XMAX
+        || l.getXCoord() < MAP_XMIN
+        || l.getYCoord() > MAP_YMAX
+        || l.getYCoord() < MAP_YMIN);
+  }
+
   private void switchFloor(Floors newFloor) {
     lastFloor = newFloor;
     // Remove all loaded shapes from the pane
@@ -126,42 +140,46 @@ public class mapPageController {
       DBUtils.getLocationsOnFloor(newFloor.dbKey)
           .forEach(
               (l) -> {
-                // Create the circle for this location and add context menu handlers to it
-                Circle c = new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
+                // Checks if the point is in a valid position
+                if (isValidPlacement(l)) {
+                  // Create the circle for this location and add context menu handlers to it
+                  Circle c =
+                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
 
-                // Create context menu for shape
-                ContextMenu rightClickMenu = new ContextMenu();
-                MenuItem editItem = new MenuItem("Edit");
-                MenuItem deleteItem = new MenuItem("Delete");
+                  // Create context menu for shape
+                  ContextMenu rightClickMenu = new ContextMenu();
+                  MenuItem editItem = new MenuItem("Edit");
+                  MenuItem deleteItem = new MenuItem("Delete");
 
-                rightClickMenu.getItems().addAll(editItem, deleteItem);
-                editItem.setOnAction(
-                    e -> {
-                      if (showEditDialog(l)) {
+                  rightClickMenu.getItems().addAll(editItem, deleteItem);
+                  editItem.setOnAction(
+                      e -> {
+                        if (showEditDialog(l)) {
+                          try {
+                            DBManager.update(l);
+                          } catch (Exception ex) {
+                            ex.printStackTrace();
+                          }
+                        }
+                      });
+
+                  deleteItem.setOnAction(
+                      e -> {
                         try {
-                          DBManager.update(l);
+                          DBManager.delete(l);
                         } catch (Exception ex) {
                           ex.printStackTrace();
                         }
-                      }
-                    });
 
-                deleteItem.setOnAction(
-                    e -> {
-                      try {
-                        DBManager.delete(l);
-                      } catch (Exception ex) {
-                        ex.printStackTrace();
-                      }
+                        // Reload data from DB to prevent desync
+                        switchFloor(lastFloor);
+                      });
 
-                      // Reload data from DB to prevent desync
-                      switchFloor(lastFloor);
-                    });
-
-                c.setOnContextMenuRequested(
-                    e -> rightClickMenu.show(c, e.getScreenX(), e.getScreenY()));
-                loadedShapes.put(l, c);
-                mapPane.getChildren().add(c);
+                  c.setOnContextMenuRequested(
+                      e -> rightClickMenu.show(c, e.getScreenX(), e.getScreenY()));
+                  loadedShapes.put(l, c);
+                  mapPane.getChildren().add(c);
+                }
               });
     } catch (Exception e) {
       e.printStackTrace();
