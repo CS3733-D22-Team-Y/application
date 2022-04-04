@@ -5,19 +5,15 @@ public class Main {
   public static void main(String[] args) throws Exception {
 
     // Load all tables with values from CSV
-    CSVBackup.loadFromCSV(EntryType.LOCATION);
-    CSVBackup.loadFromCSV(EntryType.MED_EQUIP);
-    CSVBackup.loadFromCSV(EntryType.MED_EQUIP_REQ);
-    CSVBackup.loadFromCSV(EntryType.LAB_REQUEST);
-    CSVBackup.loadFromCSV(EntryType.EMPLOYEE);
+    for (EntryType e : EntryType.values()) {
+      CSVBackup.loadFromCSV(e);
+    }
 
     App.launch(App.class, args);
 
     // Backup all tables to CSV on shutdown
-    CSVBackup.saveToCSV(EntryType.LOCATION);
-    CSVBackup.saveToCSV(EntryType.MED_EQUIP);
-    CSVBackup.saveToCSV(EntryType.MED_EQUIP_REQ);
-    CSVBackup.saveToCSV(EntryType.LAB_REQUEST);
-    CSVBackup.saveToCSV(EntryType.EMPLOYEE);
+    for (EntryType e : EntryType.values()) {
+      CSVBackup.saveToCSV(e);
+    }
   }
 }
