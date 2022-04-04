@@ -14,45 +14,46 @@
             <Font name="Microsoft Tai Le Bold" size="54.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="50.0" arcWidth="5.0" fill="WHITE" height="575.0" layoutX="400.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 50;" width="300.0" />
-      <Rectangle arcHeight="50.0" arcWidth="5.0" fill="WHITE" height="575.0" layoutX="750.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 50;" width="300.0" />
-      <Rectangle arcHeight="50.0" arcWidth="5.0" fill="WHITE" height="575.0" layoutX="50.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 50;" width="300.0" />
-      <Label layoutX="162.0" layoutY="110.0" text="Map" textFill="#021d5a">
+      <Rectangle arcHeight="50.0" arcWidth="5.0" fill="WHITE" height="575.0" layoutX="388.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 50;" width="325.0" />
+      <Rectangle arcHeight="50.0" arcWidth="5.0" fill="WHITE" height="275.0" layoutX="738.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 50;" width="325.0" />
+      <Rectangle arcHeight="50.0" arcWidth="5.0" fill="WHITE" height="575.0" layoutX="38.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 50;" width="325.0" />
+      <Rectangle arcHeight="50.0" arcWidth="5.0" fill="WHITE" height="275.0" layoutX="738.0" layoutY="390.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-width: 50;" width="325.0" />
+      <Label layoutX="162.0" layoutY="90.0" text="Map" textFill="#021d5a">
          <font>
             <Font name="Microsoft Tai Le Bold" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="490.0" layoutY="110.0" text="Service" textFill="#021d5a">
+      <Label layoutX="490.0" layoutY="90.0" text="Service" textFill="#021d5a">
          <font>
             <Font name="Microsoft Tai Le Bold" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="808.0" layoutY="110.0" text="Equipment" textFill="#021d5a">
+      <Label layoutX="808.0" layoutY="90.0" text="Equipment" textFill="#021d5a">
          <font>
             <Font name="Microsoft Tai Le Bold" size="36.0" />
          </font>
       </Label>
-      <JFXButton layoutX="131.0" layoutY="180.0" onAction="#viewMap" text="View Map" textFill="#021d5a" underline="true">
+      <JFXButton alignment="TOP_LEFT" layoutX="38.0" layoutY="155.0" onAction="#viewMap" prefWidth="325.0" text="View Map" textFill="#021d5a" underline="true">
          <font>
             <Font name="Microsoft Tai Le" size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="449.0" layoutY="180.0" onAction="#requestMenu" text="Make a Request" textFill="#021d5a" underline="true">
+      <JFXButton alignment="TOP_LEFT" layoutX="388.0" layoutY="155.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#requestMenu" prefHeight="51.0" prefWidth="325.0" text="Make a Request" textFill="#021d5a" underline="true">
          <font>
             <Font name="Microsoft Tai Le" size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="422.0" layoutY="231.0" onAction="#activeRequest" text="View Active Requests" textFill="#021d5a" underline="true">
+      <JFXButton alignment="TOP_LEFT" layoutX="388.0" layoutY="202.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#activeRequest" prefWidth="325.0" text="View Active Requests" textFill="#021d5a" underline="true">
          <font>
             <Font name="Microsoft Tai Le" size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="107.0" layoutY="231.0" onAction="#locationTable" text="Location Table" textFill="#021d5a" underline="true">
+      <JFXButton alignment="TOP_LEFT" layoutX="38.0" layoutY="206.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#locationTable" prefWidth="325.0" text="Location Table" textFill="#021d5a" underline="true">
          <font>
             <Font name="Microsoft Tai Le" size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="419.0" layoutY="282.0" onAction="#serviceTable" text="Active Requests Table" textAlignment="CENTER" textFill="#021d5a" underline="true">
+      <JFXButton alignment="TOP_LEFT" layoutX="388.0" layoutY="257.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#serviceTable" prefWidth="325.0" text="Active Requests Table" textFill="#021d5a" underline="true">
          <font>
             <Font name="Microsoft Tai Le" size="24.0" />
          </font>
@@ -64,6 +65,21 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+      </JFXButton>
+      <Label alignment="CENTER" layoutX="832.0" layoutY="390.0" text="Settings" textFill="#021d5a">
+         <font>
+            <Font name="Microsoft Tai Le Bold" size="36.0" />
+         </font>
+      </Label>
+      <JFXButton alignment="TOP_LEFT" layoutX="739.0" layoutY="441.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#changeTheme" prefWidth="325.0" text="Change Theme" textFill="#021d5a" underline="true">
+         <font>
+            <Font name="Microsoft Tai Le" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton alignment="TOP_LEFT" layoutX="739.0" layoutY="492.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#personalSettings" prefWidth="325.0" text="Personal Settings" textFill="#021d5a" underline="true">
+         <font>
+            <Font name="Microsoft Tai Le" size="24.0" />
+         </font>
       </JFXButton>
    </children>
 </AnchorPane>

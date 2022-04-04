@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ChangeTheme">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="393.0" layoutY="7.0" prefHeight="80.0" prefWidth="700.0" text="Change Theme" textAlignment="RIGHT" textFill="#297bce">
+         <font>
+            <Font name="System Bold" size="54.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="258.0" layoutY="15.0" onAction="#mainMenu" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #021D5A;" text="Back" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXHamburger layoutX="20.0" layoutY="15.0" onMouseClicked="#autoOpenCloseSidebar" />
+      <Pane fx:id="sidebarPane" layoutX="18.0" layoutY="43.0" prefHeight="650.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>
