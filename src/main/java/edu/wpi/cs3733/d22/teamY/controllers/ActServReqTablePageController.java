@@ -2,9 +2,8 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXHamburger;
-import edu.wpi.cs3733.d22.teamY.DaoManager;
+import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
-import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoGetException;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -29,8 +28,8 @@ public class ActServReqTablePageController {
   public void initialize() throws IOException {
     List<MedEquipReq> medEquipReqs;
     try {
-      medEquipReqs = DaoManager.getMedEquipReqDao().getAllMedEquipReq();
-    } catch (DaoGetException e) {
+      medEquipReqs = DBManager.getAll(MedEquipReq.class);
+    } catch (Exception e) {
       e.printStackTrace();
       medEquipReqs = Collections.emptyList();
     }

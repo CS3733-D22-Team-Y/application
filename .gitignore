@@ -5,6 +5,7 @@ build/
 bin/
 .config/
 *.xml
+!src/main/resources/edu/wpi/cs3733/hibernate.cfg.xml
 *.log
 
 #Ignore Derby.log

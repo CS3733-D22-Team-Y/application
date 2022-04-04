@@ -1,10 +1,18 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "medequip")
 public class MedEquip {
-  private String equipID;
+  @Id private String equipID;
   private String equipType;
   private String equipLocID;
   private String isClean;
+
+  public MedEquip() {}
 
   public MedEquip(String equipID, String equipType, String equipLocId, String isClean) {
     this.equipID = equipID;

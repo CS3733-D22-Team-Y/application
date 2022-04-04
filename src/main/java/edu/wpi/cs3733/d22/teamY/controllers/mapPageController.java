@@ -3,12 +3,9 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXHamburger;
 import edu.wpi.cs3733.d22.teamY.App;
-import edu.wpi.cs3733.d22.teamY.DaoManager;
+import edu.wpi.cs3733.d22.teamY.DBManager;
+import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.model.Location;
-import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
-import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoDeleteException;
-import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoGetException;
-import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoUpdateException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Optional;
@@ -125,8 +122,7 @@ public class mapPageController {
 
     // Load new locations from DB and create shapes for each
     try {
-      DaoManager.getLocationDao()
-          .getLocationsOnFloor(newFloor.dbKey)
+      DBUtils.getLocationsOnFloor(newFloor.dbKey)
           .forEach(
               (l) -> {
                 // Create the circle for this location and add context menu handlers to it
@@ -142,8 +138,8 @@ public class mapPageController {
                     e -> {
                       if (showEditDialog(l)) {
                         try {
-                          DaoManager.getLocationDao().updateLocation(l);
-                        } catch (DaoUpdateException ex) {
+                          DBManager.update(l);
+                        } catch (Exception ex) {
                           ex.printStackTrace();
                         }
                       }
@@ -152,8 +148,8 @@ public class mapPageController {
                 deleteItem.setOnAction(
                     e -> {
                       try {
-                        DaoManager.getLocationDao().deleteLocation(l);
-                      } catch (DaoDeleteException ex) {
+                        DBManager.delete(l);
+                      } catch (Exception ex) {
                         ex.printStackTrace();
                       }
 
@@ -166,7 +162,7 @@ public class mapPageController {
                 loadedShapes.put(l, c);
                 mapPane.getChildren().add(c);
               });
-    } catch (DaoGetException e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
 
@@ -180,8 +176,8 @@ public class mapPageController {
             if (created != null) {
               // The element was created
               try {
-                DaoManager.getLocationDao().addLocation(created);
-              } catch (DaoAddException ex) {
+                DBManager.save(created);
+              } catch (Exception ex) {
                 ex.printStackTrace();
               }
               switchFloor(lastFloor);
