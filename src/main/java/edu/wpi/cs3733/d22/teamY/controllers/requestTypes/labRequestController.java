@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXRadioButton;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneLoadingUtil;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import java.io.IOException;
 import javafx.event.ActionEvent;
@@ -87,7 +87,7 @@ public class labRequestController {
 
   @FXML
   void backToRequestMenu(ActionEvent event) throws IOException {
-    SceneLoadingUtil.loadScene("views/requestMenu.fxml");
+    SceneLoading.loadScene("views/requestMenu.fxml");
     resetAllFields();
   }
 

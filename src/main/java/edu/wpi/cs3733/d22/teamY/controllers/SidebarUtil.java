@@ -4,18 +4,11 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXHamburger;
 import edu.wpi.cs3733.d22.teamY.App;
 import java.io.IOException;
-import java.util.Objects;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
-public class SceneLoadingUtil {
-  public static void loadScene(String path) throws IOException {
-    Scene sceneToLoad =
-        new Scene(FXMLLoader.load(Objects.requireNonNull(App.class.getResource(path))));
-    App.getInstance().setScene(sceneToLoad);
-  }
+public class SidebarUtil {
 
   /**
    * Initializes the sidebar. Should be called in the initialize() function of any screen that has a

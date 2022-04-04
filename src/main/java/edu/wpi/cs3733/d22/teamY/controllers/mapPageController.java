@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Optional;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -221,16 +220,13 @@ public class mapPageController {
     switchFloor(lastFloor);
 
     // Load sidebar
-    Pane paneToLoad = FXMLLoader.load(App.class.getResource("views/sideBar.fxml"));
-    sidebar = (AnchorPane) paneToLoad.lookup("#mainPane");
-    sidebarPane.getChildren().clear();
-    sidebarPane.getChildren().add(paneToLoad);
+    sidebar = SidebarUtil.initializeSidebar(sidebarPane);
   }
 
   // back button
   @FXML
   void mainMenu() throws IOException {
-    SceneLoadingUtil.loadScene("views/mainPage.fxml");
+    SceneLoading.loadScene("views/mainPage.fxml");
   }
   // Loading maps
   @FXML
@@ -266,13 +262,13 @@ public class mapPageController {
 
   @FXML
   void openSidebarLayout() {
-    SceneLoadingUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
+    SidebarUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
     buttonBox.setLayoutX(250);
   }
 
   @FXML
   void closeSidebarLayout() {
-    SceneLoadingUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
+    SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
     buttonBox.setLayoutX(150);
   }
 }

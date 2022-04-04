@@ -8,27 +8,27 @@ public class mainPageController {
 
   @FXML
   void requestMenu() throws IOException {
-    SceneLoadingUtil.loadScene("views/requestMenu.fxml");
+    SceneLoading.loadScene("views/requestMenu.fxml");
   }
 
   @FXML
   void activeRequest() throws IOException {
-    SceneLoadingUtil.loadScene("views/activeServiceRequest.fxml");
+    SceneLoading.loadScene("views/activeServiceRequest.fxml");
   }
 
   @FXML
   void viewMap() throws IOException {
-    SceneLoadingUtil.loadScene("views/mapPage.fxml");
+    SceneLoading.loadScene("views/mapPage.fxml");
   }
 
   @FXML
   void locationTable() throws IOException {
-    SceneLoadingUtil.loadScene("views/locTablePage.fxml");
+    SceneLoading.loadScene("views/locTablePage.fxml");
   }
 
   @FXML
   void serviceTable() throws IOException {
-    SceneLoadingUtil.loadScene("views/ActServReqTablePage.fxml");
+    SceneLoading.loadScene("views/ActServReqTablePage.fxml");
   }
 
   @FXML

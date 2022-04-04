@@ -8,7 +8,7 @@ public class welcomePageController {
 
   @FXML
   void mainPage() throws IOException {
-    SceneLoadingUtil.loadScene("views/mainPage.fxml");
+    SceneLoading.loadScene("views/mainPage.fxml");
   }
 
   @FXML

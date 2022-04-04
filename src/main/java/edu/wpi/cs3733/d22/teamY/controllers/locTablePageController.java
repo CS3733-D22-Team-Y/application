@@ -62,22 +62,22 @@ public class locTablePageController {
     tableView.getColumns().add(shortName);
     tableView.setItems(locationsObservable);
 
-    sidebar = SceneLoadingUtil.initializeSidebar(sidebarPane);
+    sidebar = SidebarUtil.initializeSidebar(sidebarPane);
   }
 
   // back button
   @FXML
   void mainMenu() throws IOException {
-    SceneLoadingUtil.loadScene("views/mainPage.fxml");
+    SceneLoading.loadScene("views/mainPage.fxml");
   }
 
   @FXML
   void openSidebarLayout() {
-    SceneLoadingUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
+    SidebarUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
   }
 
   @FXML
   void closeSidebarLayout() {
-    SceneLoadingUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
+    SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
   }
 }
