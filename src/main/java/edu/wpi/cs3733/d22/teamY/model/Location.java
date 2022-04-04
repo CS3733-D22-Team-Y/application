@@ -6,12 +6,12 @@ import javax.persistence.Table;
 
 /**
  * Entity class for elements in the locations table in the database. An instance of this class
- * represents a single row in the database. Instances can be used along with the DAO to add, update,
- * and delete rows in the table.
+ * represents a single row in the database. Instances can be used along with the DBManager to add,
+ * update, and delete rows in the table.
  */
 @Entity
-@Table(name = "locations")
-public class Location {
+@Table(name = "LOCATIONS")
+public class Location implements StringArrayConv {
   @Id private String nodeID;
   private int xCoord;
   private int yCoord;
@@ -21,9 +21,16 @@ public class Location {
   private String longName;
   private String shortName;
 
-  public Location() {}
+  public static final String NODE_ID = "NODEID";
+  public static final String X_COORD = "XCOORD";
+  public static final String Y_COORD = "YCOORD";
+  public static final String FLOOR = "FLOOR";
+  public static final String BUILDING = "BUILDING";
+  public static final String NODE_TYPE = "NODETYPE";
+  public static final String LONG_NAME = "LONGNAME";
+  public static final String SHORT_NAME = "SHORTNAME";
 
-  public Location(
+  private void init(
       String nodeID,
       int xCoord,
       int yCoord,
@@ -40,6 +47,45 @@ public class Location {
     this.nodeType = nodeType;
     this.longName = longName;
     this.shortName = shortName;
+  }
+
+  public Location() {}
+
+  public Location(
+      String nodeID,
+      int xCoord,
+      int yCoord,
+      String floor,
+      String building,
+      String nodeType,
+      String longName,
+      String shortName) {
+    init(nodeID, xCoord, yCoord, floor, building, nodeType, longName, shortName);
+  }
+
+  public String[] toStringArray() {
+    return new String[] {
+      nodeID,
+      String.valueOf(xCoord),
+      String.valueOf(yCoord),
+      floor,
+      building,
+      nodeType,
+      longName,
+      shortName
+    };
+  }
+
+  public void fromStringArray(String[] args) {
+    init(
+        args[0],
+        Integer.parseInt(args[1]),
+        Integer.parseInt(args[2]),
+        args[3],
+        args[4],
+        args[5],
+        args[6],
+        args[7]);
   }
 
   public String getNodeID() {

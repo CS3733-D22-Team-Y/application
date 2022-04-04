@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXRadioButton;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.controllers.AbsGlobalControllerFuncs;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
-import edu.wpi.cs3733.d22.teamY.model.dao.exception.DaoAddException;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -55,8 +54,7 @@ public class medicalEquipmentRequestController extends AbsGlobalControllerFuncs 
       String assignedNurse,
       String requestStatus,
       String additionalNotes,
-      String equipmentTypeSelected)
-      throws DaoAddException {
+      String equipmentTypeSelected) {
     // Temporary code from the prototype, commented out for safety
     // MedEquipReq submission = new MedEquipReq("1422", equipmentTypeSelected, roomID);
     // DBManager.save(submission);
@@ -68,19 +66,13 @@ public class medicalEquipmentRequestController extends AbsGlobalControllerFuncs 
     // Checks if a bouquet choice has been made
     if (RequestControllerUtil.isRadioButtonSelected(
         reclinerRadioButton, infusionPumpRadioButton, xrayRadioButton, bedRadioButton)) {
-      try {
-        submitRequest(
-            input_RoomID.getText(),
-            input_PatientName.getText(),
-            input_AssignedNurse.getText(),
-            input_RequestStatus.getText(),
-            input_AdditionalNotes.getText(),
-            getEquipmentType());
-      }
-      // Thrown if one of the fields in submitRequest is invalid.
-      catch (DaoAddException e) {
-        System.out.println("One of more fields was invalid.");
-      }
+      submitRequest(
+          input_RoomID.getText(),
+          input_PatientName.getText(),
+          input_AssignedNurse.getText(),
+          input_RequestStatus.getText(),
+          input_AdditionalNotes.getText(),
+          getEquipmentType());
     } else {
       System.out.println("Please select an equipment option.");
     }
@@ -115,7 +107,7 @@ public class medicalEquipmentRequestController extends AbsGlobalControllerFuncs 
   }
 
   @FXML
-  void submitData() throws DaoAddException {
+  void submitData() {
     MedEquipReq submission =
         new MedEquipReq("1422", input_AdditionalNotes.getText(), input_RoomID.getText());
     DBManager.save(submission);
