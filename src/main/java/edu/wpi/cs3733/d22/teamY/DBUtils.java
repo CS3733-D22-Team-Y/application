@@ -2,9 +2,8 @@ package edu.wpi.cs3733.d22.teamY;
 
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.MedEquip;
-import javafx.util.Pair;
-
 import java.util.List;
+import javafx.util.Pair;
 
 /** This class is used to create specific queries for the database. */
 public class DBUtils {
@@ -15,7 +14,7 @@ public class DBUtils {
     return DBManager.getAll(Location.class, new Where(Location.FLOOR, floor));
   }
 
-  public static Pair<Integer,Integer> getAvailableEquipment(String equipType) {
+  public static Pair<Integer, Integer> getAvailableEquipment(String equipType) {
     List<MedEquip> equipment =
         DBManager.getAll(MedEquip.class, new Where(MedEquip.EQUIP_TYPE, equipType));
 
