@@ -239,11 +239,6 @@ public class mapPageController {
     openSidebarLayout();
   }
 
-  // back button
-  @FXML
-  void mainMenu() throws IOException {
-    SceneLoading.loadScene("views/mainPage.fxml");
-  }
   // Loading maps
   @FXML
   void loadGroundFloorMap() {

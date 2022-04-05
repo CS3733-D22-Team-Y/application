@@ -13,7 +13,7 @@
       <Pane fx:id="sidebarPane" prefHeight="700.0" prefWidth="200.0" />
       <JFXHamburger fx:id="sidebarHamburger" layoutX="10.0" layoutY="10.0" onMouseClicked="#openSidebarLayout" />
       <JFXButton fx:id="closeSidebarHiddenButton" layoutX="151.0" layoutY="14.0" onAction="#closeSidebarLayout" prefHeight="30.0" prefWidth="31.0" text="closeSidebarHiddenButton" textFill="TRANSPARENT" visible="false" />
-      <Pane fx:id="buttonBox" layoutX="225.0" layoutY="90.0">
+      <Pane fx:id="buttonBox" layoutX="225.0" layoutY="50.0">
          <children>
             <Circle fill="#297bce" layoutX="65.0" layoutY="42.0" radius="38.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <Circle fill="#297bce" layoutX="65.0" layoutY="142.0" radius="38.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
@@ -53,10 +53,5 @@
             </JFXButton>
          </children>
       </Pane>
-      <JFXButton layoutX="245.0" layoutY="19.0" onAction="#mainMenu" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #021D5A;" text="Back" textFill="WHITE">
-         <font>
-            <Font name="Microsoft Tai Le Bold" size="24.0" />
-         </font>
-      </JFXButton>
    </children>
 </AnchorPane>
