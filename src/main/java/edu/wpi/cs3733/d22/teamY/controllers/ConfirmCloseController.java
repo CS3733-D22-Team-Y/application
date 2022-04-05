@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.application.Platform;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
@@ -10,8 +10,11 @@ public class ConfirmCloseController {
   @FXML private JFXButton stayButton;
 
   @FXML
-  void logOut() {
-    Platform.exit();
+  void logOut() throws IOException {
+    SceneLoading.loadScene("views/welcomePage.fxml");
+    Stage stage;
+    stage = (Stage) stayButton.getScene().getWindow();
+    stage.close();
   }
 
   @FXML
