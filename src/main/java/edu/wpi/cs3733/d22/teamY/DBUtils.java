@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import edu.wpi.cs3733.d22.teamY.model.Employee;
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.MedEquip;
 import java.util.List;
@@ -35,6 +36,7 @@ public class DBUtils {
     return returnPair;
   }
 
+
   // find MedEquip object
   public static void updateCleanStatus(String equipType, String locationID) {
     Session s = SessionManager.getSession();
@@ -54,5 +56,25 @@ public class DBUtils {
     thisEquip.setClean("0");
 
     DBManager.update(thisEquip);
+}
+  /**
+   * Returns if a valid login was made.
+   *
+   * @param username the username of the employee
+   * @param password the password of the employee
+   * @return true if the employee had valid credentials, false otherwise
+   */
+  @SuppressWarnings("unchecked")
+  public static boolean isValidLogin(String username, String password) {
+    Session s = SessionManager.getSession();
+    // search for the employee with the given username and password
+    List<Employee> employees =
+        s.createQuery("from Employee where username = :username and password = :password")
+            .setParameter("username", username)
+            .setParameter("password", password)
+            .list();
+    s.close();
+    return employees.size() == 1;
+
   }
 }
