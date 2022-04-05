@@ -43,6 +43,7 @@ public class DBUtils {
    * @param password the password of the employee
    * @return true if the employee had valid credentials, false otherwise
    */
+  @SuppressWarnings("unchecked")
   public static boolean isValidLogin(String username, String password) {
     Session s = SessionManager.getSession();
     // search for the employee with the given username and password
