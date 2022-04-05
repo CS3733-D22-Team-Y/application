@@ -17,33 +17,40 @@ public class Employee implements StringArrayConv {
   private String role;
   private String access;
   private String floor;
+  private String username;
+  private String password;
 
   public static final String ID_NUMBER = "IDNUMBER";
   public static final String ACCESS = "ACCESS";
   public static final String FLOOR = "FLOOR";
   public static final String NAME = "NAME";
   public static final String ROLE = "ROLE";
+  public static final String USERNAME = "USERNAME";
+  public static final String PASSWORD = "PASSWORD";
 
-  private void init(String id, String nm, String rl, String acc, String flr) {
+  private void init(
+      String id, String nm, String rl, String acc, String flr, String usr, String pwd) {
     IDNumber = id;
     name = nm;
     role = rl;
     access = acc;
     floor = flr;
+    username = usr;
+    password = pwd;
   }
 
   public Employee() {}
 
-  public Employee(String id, String nm, String rl, String acc, String flr) {
-    init(id, nm, rl, acc, flr);
+  public Employee(String id, String nm, String rl, String acc, String flr, String usr, String pwd) {
+    init(id, nm, rl, acc, flr, usr, pwd);
   }
 
   public String[] toStringArray() {
-    return new String[] {IDNumber, name, role, access, floor};
+    return new String[] {IDNumber, name, role, access, floor, username, password};
   }
 
   public void fromStringArray(String[] args) {
-    init(args[0], args[1], args[2], args[3], args[4]);
+    init(args[0], args[1], args[2], args[3], args[4], args[5], args[6]);
   }
 
   // region Getters/Setters
