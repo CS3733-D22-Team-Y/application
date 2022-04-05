@@ -90,11 +90,14 @@ public class mealRequestController {
   // Called when the submit button is pressed.
   @FXML
   void submitButton() {
+    Boolean mealSelected =
+        RequestControllerUtil.isRadioButtonSelected(
+            pizzaRadioButton, burgerRadioButton, saladRadioButton);
+    Boolean sideSelected =
+        RequestControllerUtil.isRadioButtonSelected(
+            riceRadioButton, peasRadioButton, appleRadioButton);
     // Checks if a bouquet choice has been made
-    if (RequestControllerUtil.isRadioButtonSelected(
-            pizzaRadioButton, burgerRadioButton, saladRadioButton)
-        && RequestControllerUtil.isRadioButtonSelected(
-            riceRadioButton, peasRadioButton, appleRadioButton)) {
+    if (mealSelected && sideSelected) {
       submitRequest(
           input_RoomID.getText(),
           input_PatientName.getText(),
@@ -107,7 +110,13 @@ public class mealRequestController {
           input_SpecialInstructions.getText());
       RequestControllerUtil.resetLabels(errorLabel);
     } else {
-      errorLabel.setText("Please select meal and side options.");
+      if (mealSelected) {
+        errorLabel.setText("Please select a side option.");
+      } else if (sideSelected) {
+        errorLabel.setText("Please select a meal option.");
+      } else {
+        errorLabel.setText("Please select meal and side options.");
+      }
     }
   }
 
