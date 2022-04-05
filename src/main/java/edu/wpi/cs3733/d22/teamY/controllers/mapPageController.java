@@ -11,20 +11,14 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 
 public class mapPageController {
   // Base pane for displaying new scenes
@@ -48,6 +42,20 @@ public class mapPageController {
   private static final int MAP_YMIN = 0;
   private static final int MAP_XMAX = 700;
   private static final int MAP_YMAX = 700;
+  private static final int iconDim = 26;
+  private static final int logoDim = 20;
+  public static final Map<String, String> equipNames =
+      Map.of(
+          "BED", "Bed",
+          "PUMP", "Infusion Pump",
+          "RECLINER", "Recliner");
+
+  final Map<String, String> dotIcons =
+      Map.of(
+          "BED", "bedlogo.png",
+          "PUMP", "pumplogo.png",
+          "RECLINER", "reclinerlogo.png",
+          "none", "emptylogo.png");
 
   enum Floors {
     GROUND_FLOOR("GG"),
@@ -71,6 +79,18 @@ public class mapPageController {
   private final ImageView imageView = new ImageView();
 
   private final HashMap<Floors, Image> floorImages = new HashMap<>();
+
+  private String iconDecider(Set<String> equipTypes) {
+    if (equipTypes.contains("PUMP")) {
+      return dotIcons.get("PUMP");
+    } else if (equipTypes.contains("RECLINER")) {
+      return dotIcons.get("RECLINER");
+    } else if (equipTypes.contains("BED")) {
+      return dotIcons.get("BED");
+    } else {
+      return dotIcons.get("none");
+    }
+  }
 
   /**
    * Shows an edit dialog. Updates the contents of l if the ok button is clicked, otherwise does
@@ -133,21 +153,9 @@ public class mapPageController {
   private void switchFloor(Floors newFloor) {
     lastFloor = newFloor;
     // Remove all loaded shapes from the pane
-    List<Node> shapes =
-        mapPane.getChildren().stream()
-            .filter((c) -> c instanceof Shape)
-            .collect(Collectors.toList());
-    mapPane.getChildren().removeAll(shapes);
-
-    // Creates a shape
-    Rectangle r = new Rectangle(50, 50, 50, 50);
-    r.setFill(Color.GREEN);
-
-    // Do something when the shape is clicked
-    r.setOnMouseClicked((e) -> System.out.println("yeah yeah woo"));
-
-    // Add the shape to the map
-    mapPane.getChildren().add(r);
+    mapPane.getChildren().clear();
+    // Re-add image pane to mapPane
+    mapPane.getChildren().add(imageView);
 
     // Load new locations from DB and create shapes for each
     try {
@@ -174,13 +182,41 @@ public class mapPageController {
                       new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
                   mapPane.getChildren().add(c);
 
+                  Pane i = new Pane();
+                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.BLACK);
+
+                  i.setPrefWidth(iconDim);
+                  i.setPrefHeight(iconDim);
+                  i.setTranslateX(l.getXCoord() - iconDim / 2);
+                  i.setTranslateY(l.getYCoord() - iconDim / 2);
+                  mapPane.getChildren().add(i);
+                  i.getChildren().add(frame);
+
+                  Image icon =
+                      new Image(
+                          App.class
+                              .getResource("views/images/icons/" + iconDecider(equipTypes))
+                              .toString(),
+                          logoDim,
+                          logoDim,
+                          false,
+                          false);
+
+                  ImageView iconView = new ImageView(icon);
+                  iconView.setTranslateX((Integer) ((iconDim - logoDim) / 2));
+                  iconView.setTranslateY((Integer) ((iconDim - logoDim) / 2));
+                  i.getChildren().add(iconView);
                   // Create context menu for shape
                   ContextMenu rightClickMenu = new ContextMenu();
                   MenuItem editItem = new MenuItem("Edit");
                   MenuItem deleteItem = new MenuItem("Delete");
                   MenuItem showEquipment = new MenuItem("Show Equipment");
 
-                  rightClickMenu.getItems().addAll(editItem, deleteItem, showEquipment);
+                  if (hasEquipment) {
+                    rightClickMenu.getItems().addAll(editItem, deleteItem, showEquipment);
+                  } else {
+                    rightClickMenu.getItems().addAll(editItem, deleteItem);
+                  }
                   editItem.setOnAction(
                       e -> {
                         if (showEditDialog(l)) {
@@ -198,13 +234,23 @@ public class mapPageController {
                   showEquipment.setOnAction(
                       e -> {
                         // TODO do something better with this
+
                         Alert a = new Alert(Alert.AlertType.INFORMATION);
                         a.setContentText(equip.toString());
+                        a.setHeaderText("Equipment at this location");
                         a.show();
+                        //                        ContextMenu equipmentAtLocation = new
+                        // ContextMenu();
+                        //                        for (MedEquip med : equip) {
+                        //                          equipmentAtLocation.getItems().addAll(new
+                        // MenuItem(med.toString()));
+                        //                        }
+                        //                        equipmentAtLocation.show(i, e.getScreenX(),
+                        // e.getScreenY());
                       });
 
-                  c.setOnContextMenuRequested(
-                      e -> rightClickMenu.show(c, e.getScreenX(), e.getScreenY()));
+                  i.setOnContextMenuRequested(
+                      e -> rightClickMenu.show(i, e.getScreenX(), e.getScreenY()));
                 }
               });
     } catch (Exception e) {

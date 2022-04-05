@@ -103,7 +103,7 @@
                   <Font size="20.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="password" layoutX="67.0" layoutY="162.0" prefHeight="50.0" prefWidth="236.0" promptText="Password">
+            <PasswordField fx:id="password" layoutX="67.0" layoutY="162.0" prefHeight="50.0" prefWidth="236.0" promptText="Password" onAction="#loginToMainPage">
                <font>
                   <Font size="20.0" />
                </font>
