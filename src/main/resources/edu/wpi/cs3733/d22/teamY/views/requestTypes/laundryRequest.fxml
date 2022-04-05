@@ -128,7 +128,7 @@
       </TextArea>
       <Label fx:id="errorLabel" alignment="CENTER_RIGHT" layoutX="720.0" layoutY="570.0" prefHeight="18.0" prefWidth="336.0" textFill="RED">
          <font>
-            <Font name="Microsoft Tai Le" size="14.0" />
+            <Font name="Microsoft Tai Le" size="18.0" />
          </font>
       </Label>
    </children>

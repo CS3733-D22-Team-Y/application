@@ -4,6 +4,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -37,26 +38,41 @@
          <font>
             <Font name="Microsoft Tai Le" size="24.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <JFXButton alignment="TOP_LEFT" layoutX="388.0" layoutY="155.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#requestMenu" prefHeight="51.0" prefWidth="325.0" text="Make a Request" textFill="#021d5a" underline="true">
          <font>
             <Font name="Microsoft Tai Le" size="24.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
-      <JFXButton alignment="TOP_LEFT" layoutX="388.0" layoutY="202.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#activeRequest" prefWidth="325.0" text="View Active Requests" textFill="#021d5a" underline="true">
+      <JFXButton alignment="TOP_LEFT" layoutX="388.0" layoutY="465.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#activeRequest" prefWidth="325.0" text="View Active Requests" textFill="#021d5a" underline="true">
          <font>
             <Font name="Microsoft Tai Le" size="24.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
-      <JFXButton alignment="TOP_LEFT" layoutX="38.0" layoutY="206.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#locationTable" prefWidth="325.0" text="Location Table" textFill="#021d5a" underline="true">
+      <JFXButton alignment="TOP_LEFT" layoutX="38.0" layoutY="205.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#locationTable" prefWidth="325.0" text="Location Table" textFill="#021d5a" underline="true">
          <font>
             <Font name="Microsoft Tai Le" size="24.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
-      <JFXButton alignment="TOP_LEFT" layoutX="388.0" layoutY="257.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#serviceTable" prefWidth="325.0" text="Active Requests Table" textFill="#021d5a" underline="true">
+      <JFXButton alignment="TOP_LEFT" layoutX="388.0" layoutY="415.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#serviceTable" prefWidth="325.0" text="Active Requests Table" textFill="#021d5a" underline="true">
          <font>
             <Font name="Microsoft Tai Le" size="24.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <JFXButton alignment="CENTER" layoutX="19.0" layoutY="13.0" onAction="#killApplication" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #012d5a;" text="Exit" textFill="WHITE">
          <font>
@@ -75,11 +91,69 @@
          <font>
             <Font name="Microsoft Tai Le" size="24.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
-      <JFXButton alignment="TOP_LEFT" layoutX="739.0" layoutY="492.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#personalSettings" prefWidth="325.0" text="Personal Settings" textFill="#021d5a" underline="true">
+      <JFXButton alignment="TOP_LEFT" layoutX="739.0" layoutY="491.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#personalSettings" prefWidth="325.0" text="Personal Settings" textFill="#021d5a" underline="true">
          <font>
             <Font name="Microsoft Tai Le" size="24.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
+      <VBox layoutX="394.0" layoutY="199.0">
+         <children>
+            <JFXButton alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" onAction="#medRequest" prefHeight="0.0" prefWidth="326.0" text="Request Medical Equipment" textFill="#021d5a" underline="true">
+               <font>
+                  <Font name="Microsoft Tai Le" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" onAction="#labRequest" prefHeight="0.0" prefWidth="326.0" text="Request Lab Results" textFill="#021d5a" underline="true">
+               <font>
+                  <Font name="Microsoft Tai Le" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" onAction="#mealRequest" prefHeight="4.0" prefWidth="326.0" text="Meal Delivery" textFill="#021d5a" underline="true">
+               <font>
+                  <Font name="Microsoft Tai Le" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" onAction="#laundryRequest" prefHeight="0.0" prefWidth="326.0" text="Laundry" textFill="#021d5a" underline="true">
+               <font>
+                  <Font name="Microsoft Tai Le" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" onAction="#floralRequest" prefHeight="0.0" prefWidth="326.0" text="Floral Delivery" textFill="#021d5a" underline="true">
+               <font>
+                  <Font name="Microsoft Tai Le" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" onAction="#securityRequest" prefHeight="21.0" prefWidth="326.0" text="Security Services" textFill="#021d5a" underline="true">
+               <font>
+                  <Font name="Microsoft Tai Le" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
