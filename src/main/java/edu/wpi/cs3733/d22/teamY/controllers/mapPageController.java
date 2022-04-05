@@ -6,10 +6,12 @@ import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.model.Location;
+import edu.wpi.cs3733.d22.teamY.model.MedEquip;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,6 +23,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 
 public class mapPageController {
   // Base pane for displaying new scenes
@@ -67,7 +71,6 @@ public class mapPageController {
   private final ImageView imageView = new ImageView();
 
   private final HashMap<Floors, Image> floorImages = new HashMap<>();
-  private final HashMap<Location, Circle> loadedShapes = new HashMap<>();
 
   /**
    * Shows an edit dialog. Updates the contents of l if the ok button is clicked, otherwise does
@@ -130,55 +133,78 @@ public class mapPageController {
   private void switchFloor(Floors newFloor) {
     lastFloor = newFloor;
     // Remove all loaded shapes from the pane
-    loadedShapes.forEach((l, c) -> mapPane.getChildren().remove(c));
+    List<Node> shapes =
+        mapPane.getChildren().stream()
+            .filter((c) -> c instanceof Shape)
+            .collect(Collectors.toList());
+    mapPane.getChildren().removeAll(shapes);
 
-    // Clear the list of loaded locations and shapes
-    loadedShapes.clear();
+    // Creates a shape
+    Rectangle r = new Rectangle(50, 50, 50, 50);
+    r.setFill(Color.GREEN);
+
+    // Do something when the shape is clicked
+    r.setOnMouseClicked((e) -> System.out.println("yeah yeah woo"));
+
+    // Add the shape to the map
+    mapPane.getChildren().add(r);
 
     // Load new locations from DB and create shapes for each
     try {
+      // Gets all locations on the newly selected floor
       DBUtils.getLocationsOnFloor(newFloor.dbKey)
+          // And iterates over them
           .forEach(
               (l) -> {
+                List<MedEquip> equip = DBUtils.getEquipmentAtLocation(l);
+                Set<String> equipTypes =
+                    equip.stream().map(MedEquip::getEquipType).collect(Collectors.toSet());
+
+                boolean hasEquipment = equip.size() > 0;
+
+                // equipTypes: list of equipment types in the location.  if room has multiple of one
+                // type, only 1 element is in the list still
+                // equip: list of all equipment objects in the location
+                // hasEquipment: true if there is 1 or more equipment in location
+
                 // Checks if the point is in a valid position
                 if (isValidPlacement(l)) {
                   // Create the circle for this location and add context menu handlers to it
                   Circle c =
                       new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
+                  mapPane.getChildren().add(c);
 
                   // Create context menu for shape
                   ContextMenu rightClickMenu = new ContextMenu();
                   MenuItem editItem = new MenuItem("Edit");
                   MenuItem deleteItem = new MenuItem("Delete");
+                  MenuItem showEquipment = new MenuItem("Show Equipment");
 
-                  rightClickMenu.getItems().addAll(editItem, deleteItem);
+                  rightClickMenu.getItems().addAll(editItem, deleteItem, showEquipment);
                   editItem.setOnAction(
                       e -> {
                         if (showEditDialog(l)) {
-                          try {
-                            DBManager.update(l);
-                          } catch (Exception ex) {
-                            ex.printStackTrace();
-                          }
+                          DBManager.update(l);
                         }
                       });
 
                   deleteItem.setOnAction(
                       e -> {
-                        try {
-                          DBManager.delete(l);
-                        } catch (Exception ex) {
-                          ex.printStackTrace();
-                        }
-
+                        DBManager.delete(l);
                         // Reload data from DB to prevent desync
                         switchFloor(lastFloor);
                       });
 
+                  showEquipment.setOnAction(
+                      e -> {
+                        // TODO do something better with this
+                        Alert a = new Alert(Alert.AlertType.INFORMATION);
+                        a.setContentText(equip.toString());
+                        a.show();
+                      });
+
                   c.setOnContextMenuRequested(
                       e -> rightClickMenu.show(c, e.getScreenX(), e.getScreenY()));
-                  loadedShapes.put(l, c);
-                  mapPane.getChildren().add(c);
                 }
               });
     } catch (Exception e) {

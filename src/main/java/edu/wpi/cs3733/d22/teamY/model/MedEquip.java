@@ -43,6 +43,24 @@ public class MedEquip implements StringArrayConv {
     return new String[] {equipID, equipType, equipLocId, isClean};
   }
 
+  @Override
+  public String toString() {
+    return "MedEquip{"
+        + "equipID='"
+        + equipID
+        + '\''
+        + ", equipType='"
+        + equipType
+        + '\''
+        + ", equipLocId='"
+        + equipLocId
+        + '\''
+        + ", isClean='"
+        + isClean
+        + '\''
+        + '}';
+  }
+
   // region Getters/Setters
   public String getEquipID() {
     return equipID;
