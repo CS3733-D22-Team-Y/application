@@ -2,6 +2,7 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXRadioButton;
 import edu.wpi.cs3733.d22.teamY.DBManager;
+import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import java.io.IOException;
@@ -35,6 +36,26 @@ public class medicalEquipmentRequestController {
 
   public medicalEquipmentRequestController() throws IOException {}
 
+  @FXML
+  private void initialize() {
+    bedRadioButton.setText(
+        DBUtils.getAvailableEquipment("BED").getKey().toString()
+            + " available out of "
+            + DBUtils.getAvailableEquipment("BED").getValue().toString());
+    xrayRadioButton.setText(
+        DBUtils.getAvailableEquipment("XRAY").getKey().toString()
+            + " available out of "
+            + DBUtils.getAvailableEquipment("XRAY").getValue().toString());
+    infusionPumpRadioButton.setText(
+        DBUtils.getAvailableEquipment("PUMP").getKey().toString()
+            + " available out of "
+            + DBUtils.getAvailableEquipment("PUMP").getValue().toString());
+    reclinerRadioButton.setText(
+        DBUtils.getAvailableEquipment("RECLINER").getKey().toString()
+            + " available out of "
+            + DBUtils.getAvailableEquipment("RECLINER").getValue().toString());
+  }
+
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
   /**
    * Submits a service request.
@@ -53,9 +74,7 @@ public class medicalEquipmentRequestController {
       String requestStatus,
       String additionalNotes,
       String equipmentTypeSelected) {
-    // Temporary code from the prototype, commented out for safety
-    // MedEquipReq submission = new MedEquipReq("1422", equipmentTypeSelected, roomID);
-    // DBManager.save(submission);
+    DBManager.save(new MedEquipReq("1", equipmentTypeSelected, roomID));
   }
 
   // Called when the submit button is pressed.
