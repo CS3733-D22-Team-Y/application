@@ -89,7 +89,10 @@ public class laundryRequestController {
     RequestControllerUtil.resetRadioButtons(
         scrubsRadioButton, linensRadioButton, hazardousRadioButton);
     RequestControllerUtil.resetTextFields(
-        input_RoomID, input_RequestStatus, input_AssignedNurse, input_PatientName);
-    input_AdditionalNotes.setText("");
+        input_RoomID,
+        input_RequestStatus,
+        input_AssignedNurse,
+        input_PatientName,
+        input_AdditionalNotes);
   }
 }

@@ -96,9 +96,11 @@ public class medicalEquipmentRequestController {
   @FXML
   void resetAllFields() {
     RequestControllerUtil.resetTextFields(
-        input_RoomID, input_PatientName, input_AssignedNurse, input_RequestStatus);
-
-    input_AdditionalNotes.setText("");
+        input_RoomID,
+        input_PatientName,
+        input_AssignedNurse,
+        input_RequestStatus,
+        input_AdditionalNotes);
     // Radio buttons
     RequestControllerUtil.resetRadioButtons(
         bedRadioButton, xrayRadioButton, infusionPumpRadioButton, reclinerRadioButton);
