@@ -28,9 +28,9 @@ public class mapPageController {
   // Hamburger that opens the sidebar
   @FXML private JFXHamburger hamburger;
   // Menu of buttons
-  @FXML private VBox buttonBox;
   @FXML private JFXButton closeSidebarHiddenButton;
   @FXML private JFXHamburger sidebarHamburger;
+  @FXML private Pane buttonBox;
 
   AnchorPane sidebar = null;
 
@@ -308,13 +308,9 @@ public class mapPageController {
 
     // Load sidebar
     sidebar = SidebarUtil.initializeSidebar(sidebarPane);
+    openSidebarLayout();
   }
 
-  // back button
-  @FXML
-  void mainMenu() throws IOException {
-    SceneLoading.loadScene("views/mainPage.fxml");
-  }
   // Loading maps
   @FXML
   void loadGroundFloorMap() {

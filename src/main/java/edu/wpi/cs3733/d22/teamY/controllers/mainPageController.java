@@ -40,6 +40,37 @@ public class mainPageController {
     SceneLoading.loadScene("views/PersonalSettings.fxml");
   }
 
+  // Specific Request Types
+  @FXML
+  void medRequest() throws IOException {
+    SceneLoading.loadScene("views/requestTypes/medicalEquipmentRequest.fxml");
+  }
+
+  @FXML
+  void labRequest() throws IOException {
+    SceneLoading.loadScene("views/requestTypes/labRequest.fxml");
+  }
+
+  @FXML
+  void mealRequest() throws IOException {
+    SceneLoading.loadScene("views/requestTypes/mealRequest.fxml");
+  }
+
+  @FXML
+  void laundryRequest() throws IOException {
+    SceneLoading.loadScene("views/requestTypes/laundryRequest.fxml");
+  }
+
+  @FXML
+  void floralRequest() throws IOException {
+    SceneLoading.loadScene("views/requestTypes/floralRequest.fxml");
+  }
+
+  @FXML
+  void securityRequest() throws IOException {
+    SceneLoading.loadScene("views/requestTypes/securityServicesRequest.fxml");
+  }
+
   @FXML
   void killApplication() throws IOException {
     System.out.println("pressed button");

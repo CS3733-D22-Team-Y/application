@@ -78,5 +78,42 @@ public class DBUtils {
             .list();
     s.close();
     return employees.size() == 1;
+    
+  /**
+   * Changes an employee's password.
+   *
+   * @param username the username of the employee
+   * @param oldPassword the old password of the employee
+   * @param newPassword the new password of the employee
+   * @return String relating to the success of the change
+   */
+  public static String changePassword(String username, String oldPassword, String newPassword) {
+    Session s = SessionManager.getSession();
+    List<Employee> employees =
+        s.createQuery("from Employee where username = :username")
+            .setParameter("username", username)
+            .list();
+    s.close();
+    // if the employee exists
+    if (employees.size() != 1) {
+      return "Error: Invalid username.";
+    }
+
+    Employee employee = employees.get(0);
+
+    // check validity of old password and new password
+    if (!employee.getPassword().equals(oldPassword)) {
+      return "Error: Invalid old password.";
+    }
+    if (oldPassword.equals(newPassword)) {
+      return "Error: New password cannot be the same as old password.";
+    }
+    if (!Employee.isValidNewPassword(newPassword)) {
+      return "Error: New password must be at least 5 characters long and contain at least one number, one letter, and one special character.";
+    }
+
+    employee.setPassword(newPassword);
+    DBManager.update(employee);
+    return "Successfully changed password.";
   }
 }

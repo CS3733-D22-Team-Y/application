@@ -6,6 +6,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -25,6 +26,8 @@ public class securityServicesRequestController {
   @FXML private JFXRadioButton mostUrgentRadioButton;
   @FXML private JFXRadioButton urgentRadioButton;
   @FXML private JFXRadioButton lowPriorityRadioButton;
+  // Error Label
+  @FXML private Label errorLabel;
 
   private Scene requestMenu = null;
 
@@ -67,11 +70,14 @@ public class securityServicesRequestController {
   // Called when the submit button is pressed.
   @FXML
   void submitButton() {
+    Boolean typeSelected =
+        RequestControllerUtil.isRadioButtonSelected(
+            disruptionRadioButton, theftRadioButton, unwantedGuestRadioButton);
+    Boolean prioritySelected =
+        RequestControllerUtil.isRadioButtonSelected(
+            urgentRadioButton, mostUrgentRadioButton, lowPriorityRadioButton);
     // Checks if a bouquet choice has been made
-    if (RequestControllerUtil.isRadioButtonSelected(
-            disruptionRadioButton, theftRadioButton, unwantedGuestRadioButton)
-        && RequestControllerUtil.isRadioButtonSelected(
-            urgentRadioButton, mostUrgentRadioButton, lowPriorityRadioButton)) {
+    if (typeSelected && prioritySelected) {
       submitRequest(
           input_RoomID.getText(),
           input_PatientName.getText(),
@@ -80,8 +86,16 @@ public class securityServicesRequestController {
           input_AdditionalNotes.getText(),
           getRequestType(),
           getRequestPriority());
+      RequestControllerUtil.resetLabels(errorLabel);
     } else {
-      System.out.println("Please select a request type and priority.");
+      // Print error messages
+      if (typeSelected) {
+        errorLabel.setText("Please select a priority.");
+      } else if (prioritySelected) {
+        errorLabel.setText("Please select a request type.");
+      } else {
+        errorLabel.setText("Please select a request type and priority.");
+      }
     }
   }
 
@@ -127,5 +141,6 @@ public class securityServicesRequestController {
         mostUrgentRadioButton,
         urgentRadioButton,
         lowPriorityRadioButton);
+    RequestControllerUtil.resetLabels(errorLabel);
   }
 }

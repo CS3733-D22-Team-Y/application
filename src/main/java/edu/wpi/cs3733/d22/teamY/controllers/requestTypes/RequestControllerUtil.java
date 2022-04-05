@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXRadioButton;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.TextInputControl;
 
 public class RequestControllerUtil {
@@ -23,6 +24,13 @@ public class RequestControllerUtil {
   protected static void resetTextFields(TextInputControl... text) {
     for (TextInputControl currField : text) {
       currField.setText("");
+    }
+  }
+
+  // Resets all labels to nothing.
+  protected static void resetLabels(Labeled... labels) {
+    for (Labeled currLabel : labels) {
+      currLabel.setText("");
     }
   }
 }

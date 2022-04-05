@@ -6,6 +6,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -21,6 +22,8 @@ public class laundryRequestController {
   @FXML private TextField input_RequestStatus;
   // Additional  Notes
   @FXML private TextArea input_AdditionalNotes;
+  // Error Label
+  @FXML private Label errorLabel;
 
   private Scene requestMenu = null;
 
@@ -64,8 +67,9 @@ public class laundryRequestController {
           input_RequestStatus.getText(),
           input_AdditionalNotes.getText(),
           getResultType());
+      RequestControllerUtil.resetLabels(errorLabel);
     } else {
-      System.out.println("Please select the type of laundry.");
+      errorLabel.setText("Please select the type of laundry.");
     }
   }
 
@@ -94,5 +98,6 @@ public class laundryRequestController {
         input_AssignedNurse,
         input_PatientName,
         input_AdditionalNotes);
+    RequestControllerUtil.resetLabels(errorLabel);
   }
 }

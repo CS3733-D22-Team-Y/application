@@ -6,6 +6,7 @@ import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -28,6 +29,8 @@ public class mealRequestController {
   @FXML private JFXRadioButton appleRadioButton;
   // Dropdown menu
   @FXML private JFXComboBox<String> dietaryRestrictionsSelectionBox;
+  // Error Label
+  @FXML private Label errorLabel;
 
   // Combobox text items
   private final String textOther = "Other (specify)";
@@ -87,11 +90,14 @@ public class mealRequestController {
   // Called when the submit button is pressed.
   @FXML
   void submitButton() {
+    Boolean mealSelected =
+        RequestControllerUtil.isRadioButtonSelected(
+            pizzaRadioButton, burgerRadioButton, saladRadioButton);
+    Boolean sideSelected =
+        RequestControllerUtil.isRadioButtonSelected(
+            riceRadioButton, peasRadioButton, appleRadioButton);
     // Checks if a bouquet choice has been made
-    if (RequestControllerUtil.isRadioButtonSelected(
-            pizzaRadioButton, burgerRadioButton, saladRadioButton)
-        && RequestControllerUtil.isRadioButtonSelected(
-            riceRadioButton, peasRadioButton, appleRadioButton)) {
+    if (mealSelected && sideSelected) {
       submitRequest(
           input_RoomID.getText(),
           input_PatientName.getText(),
@@ -102,8 +108,15 @@ public class mealRequestController {
           getSideChoice(),
           dietaryRestrictionsSelectionBox.getValue(),
           input_SpecialInstructions.getText());
+      RequestControllerUtil.resetLabels(errorLabel);
     } else {
-      System.out.println("Please select meal and side options.");
+      if (mealSelected) {
+        errorLabel.setText("Please select a side option.");
+      } else if (sideSelected) {
+        errorLabel.setText("Please select a meal option.");
+      } else {
+        errorLabel.setText("Please select meal and side options.");
+      }
     }
   }
 
@@ -161,5 +174,6 @@ public class mealRequestController {
         appleRadioButton);
     // Selection box
     dietaryRestrictionsSelectionBox.setValue(textNone);
+    RequestControllerUtil.resetLabels(errorLabel);
   }
 }

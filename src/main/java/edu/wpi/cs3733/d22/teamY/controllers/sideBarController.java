@@ -9,7 +9,7 @@ public class sideBarController {
 
   @FXML
   void loadMainPage() throws IOException {
-    SceneLoading.loadScene("views/mainPage.fxml");
+    SceneLoading.loadScene("views/mapPage.fxml");
   }
 
   @FXML
@@ -69,7 +69,6 @@ public class sideBarController {
 
   @FXML
   void killApplication() throws IOException {
-    System.out.println("pressed button");
     SceneLoading.loadPopup("views/ConfirmClose.fxml", "views/sideBar.fxml");
   }
 }

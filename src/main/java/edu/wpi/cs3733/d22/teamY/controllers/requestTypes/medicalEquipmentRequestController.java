@@ -9,6 +9,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -25,6 +26,7 @@ public class medicalEquipmentRequestController {
   @FXML private JFXRadioButton xrayRadioButton;
   @FXML private JFXRadioButton infusionPumpRadioButton;
   @FXML private JFXRadioButton reclinerRadioButton;
+  @FXML private Label errorLabel;
 
   // Equipment types text. These should be changed depending on what the names in the database are.
   private final String bedText = "BED";
@@ -91,8 +93,9 @@ public class medicalEquipmentRequestController {
           input_RequestStatus.getText(),
           input_AdditionalNotes.getText(),
           getEquipmentType());
+      RequestControllerUtil.resetLabels(errorLabel);
     } else {
-      System.out.println("Please select an equipment option.");
+      errorLabel.setText("Please select an equipment option.");
     }
   }
 
@@ -124,12 +127,6 @@ public class medicalEquipmentRequestController {
     // Radio buttons
     RequestControllerUtil.resetRadioButtons(
         bedRadioButton, xrayRadioButton, infusionPumpRadioButton, reclinerRadioButton);
-  }
-
-  @FXML
-  void submitData() {
-    MedEquipReq submission =
-        new MedEquipReq("1422", input_AdditionalNotes.getText(), input_RoomID.getText());
-    DBManager.save(submission);
+    RequestControllerUtil.resetLabels(errorLabel);
   }
 }

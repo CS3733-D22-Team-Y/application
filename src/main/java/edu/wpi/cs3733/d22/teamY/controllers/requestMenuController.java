@@ -27,7 +27,7 @@ public class requestMenuController {
 
   @FXML
   void mainMenu() throws IOException {
-    SceneLoading.loadScene("views/mainPage.fxml");
+    SceneLoading.loadScene("views/mapPage.fxml");
   }
 
   @FXML

@@ -93,5 +93,22 @@ public class Employee implements StringArrayConv {
   public void setFloor(String flr) {
     floor = flr;
   }
+
+  public void setPassword(String newPassword) {
+    password = newPassword;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public static boolean isValidNewPassword(String password) {
+    // password must be at least 5 characters long, and contain at least one number and one letter
+    // and one special character
+    return password.length() >= 5
+        && password.matches(".*[0-9].*")
+        && (password.matches(".*[A-Z].*") || password.matches(".*[a-z].*"))
+        && password.matches(".*[!@#$%^&*()_+].*");
+  }
   // endregion
 }
