@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
+import edu.wpi.cs3733.d22.teamY.controllers.mapPageController;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -41,6 +42,32 @@ public class MedEquip implements StringArrayConv {
 
   public String[] toStringArray() {
     return new String[] {equipID, equipType, equipLocId, isClean};
+  }
+
+  @Override
+  public String toString() {
+    //    return "MedEquip{"
+    //        + "equipID='"
+    //        + equipID
+    //        + '\''
+    //        + ", equipType='"
+    //        + equipType
+    //        + '\''
+    //        + ", equipLocId='"
+    //        + equipLocId
+    //        + '\''
+    //        + ", isClean='"
+    //        + isClean
+    //        + '\''
+    //        + '}';
+    String clean;
+    if (Integer.parseInt(isClean) == 1) {
+      clean = "Clean";
+    } else {
+      clean = "Dirty";
+    }
+    // return equipNames.get(equipType) + " : " + equipID + " : " + clean;
+    return "\n" + mapPageController.equipNames.get(equipType) + " : " + equipID + " : " + clean;
   }
 
   // region Getters/Setters

@@ -16,6 +16,10 @@ public class DBUtils {
     return DBManager.getAll(Location.class, new Where(Location.FLOOR, floor));
   }
 
+  public static List<MedEquip> getEquipmentAtLocation(Location location) {
+    return DBManager.getAll(MedEquip.class, new Where(MedEquip.EQUIP_LOC_ID, location.getNodeID()));
+  }
+
   public static Pair<Integer, Integer> getAvailableEquipment(String equipType) {
     List<MedEquip> equipment =
         DBManager.getAll(MedEquip.class, new Where(MedEquip.EQUIP_TYPE, equipType));
@@ -74,8 +78,7 @@ public class DBUtils {
             .list();
     s.close();
     return employees.size() == 1;
-  }
-
+    
   /**
    * Changes an employee's password.
    *
