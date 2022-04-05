@@ -12,4 +12,13 @@ public class SceneLoading {
         new Scene(FXMLLoader.load(Objects.requireNonNull(App.class.getResource(path))));
     App.getInstance().setScene(sceneToLoad);
   }
+
+  public static void loadScene(String path, String theme) throws IOException {
+    Scene sceneToLoad =
+        new Scene(FXMLLoader.load(Objects.requireNonNull(App.class.getResource(path))));
+    sceneToLoad
+        .getStylesheets()
+        .add(Objects.requireNonNull(App.class.getResource(theme)).toExternalForm());
+    App.getInstance().setScene(sceneToLoad);
+  }
 }
