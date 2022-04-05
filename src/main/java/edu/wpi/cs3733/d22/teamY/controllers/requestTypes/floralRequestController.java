@@ -6,6 +6,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -21,6 +22,8 @@ public class floralRequestController {
   @FXML private TextField input_RequestStatus;
   // Additional Notes
   @FXML private TextArea input_AdditionalNotes;
+  // Error Label
+  @FXML private Label errorLabel;
 
   private Scene requestMenu = null;
 
@@ -71,8 +74,9 @@ public class floralRequestController {
           input_RequestStatus.getText(),
           input_AdditionalNotes.getText(),
           getBouquetType());
+      RequestControllerUtil.resetLabels(errorLabel);
     } else {
-      System.out.println("Please select a bouquet option.");
+      errorLabel.setText("Please select a bouquet option.");
     }
   }
 
@@ -96,5 +100,6 @@ public class floralRequestController {
         input_AssignedNurse,
         input_RequestStatus,
         input_AdditionalNotes);
+    RequestControllerUtil.resetLabels(errorLabel);
   }
 }
