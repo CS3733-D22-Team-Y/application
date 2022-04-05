@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
 import java.io.IOException;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
@@ -69,7 +68,8 @@ public class sideBarController {
   }
 
   @FXML
-  void killApplication() {
-    Platform.exit();
+  void killApplication() throws IOException {
+    System.out.println("pressed button");
+    SceneLoading.loadPopup("views/ConfirmClose.fxml", "views/sideBar.fxml");
   }
 }
