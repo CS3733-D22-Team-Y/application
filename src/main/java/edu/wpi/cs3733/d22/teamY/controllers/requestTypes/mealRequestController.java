@@ -6,6 +6,7 @@ import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -28,6 +29,8 @@ public class mealRequestController {
   @FXML private JFXRadioButton appleRadioButton;
   // Dropdown menu
   @FXML private JFXComboBox<String> dietaryRestrictionsSelectionBox;
+  // Error Label
+  @FXML private Label errorLabel;
 
   // Combobox text items
   private final String textOther = "Other (specify)";
@@ -102,8 +105,9 @@ public class mealRequestController {
           getSideChoice(),
           dietaryRestrictionsSelectionBox.getValue(),
           input_SpecialInstructions.getText());
+      RequestControllerUtil.resetLabels(errorLabel);
     } else {
-      System.out.println("Please select meal and side options.");
+      errorLabel.setText("Please select meal and side options.");
     }
   }
 
@@ -161,5 +165,6 @@ public class mealRequestController {
         appleRadioButton);
     // Selection box
     dietaryRestrictionsSelectionBox.setValue(textNone);
+    RequestControllerUtil.resetLabels(errorLabel);
   }
 }

@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXRadioButton;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -22,6 +23,8 @@ public class labRequestController {
   @FXML private JFXRadioButton xrayRadioButton;
   @FXML private JFXRadioButton catScanRadioButton;
   @FXML private JFXRadioButton mriRadioButton;
+  // Error Label
+  @FXML private Label errorLabel;
 
   // Result types text. These should be changed depending on what the names in the database are.
   private final String bloodSampleText = "bloodSample";
@@ -64,8 +67,9 @@ public class labRequestController {
           input_RequestStatus.getText(),
           input_AdditionalNotes.getText(),
           getResultType());
+      RequestControllerUtil.resetLabels(errorLabel);
     } else {
-      System.out.println("Please select a result type.");
+      errorLabel.setText("Please select a result type.");
     }
   }
 
@@ -97,5 +101,6 @@ public class labRequestController {
         input_AssignedNurse,
         input_RequestStatus,
         input_AdditionalNotes);
+    RequestControllerUtil.resetLabels(errorLabel);
   }
 }
