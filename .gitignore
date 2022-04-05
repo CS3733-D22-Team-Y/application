@@ -11,7 +11,6 @@ bin/
 #Ignore Derby.log
 derby.log
 *.log
-LocationDB/log
 
 #Ignore auto generated export csv's
 locations_export.csv
