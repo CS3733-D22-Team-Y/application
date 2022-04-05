@@ -27,10 +27,10 @@ public class medicalEquipmentRequestController {
   @FXML private JFXRadioButton reclinerRadioButton;
 
   // Equipment types text. These should be changed depending on what the names in the database are.
-  private final String bedText = "bed";
-  private final String xrayText = "xray";
-  private final String infusionPumpText = "infusionPump";
-  private final String reclinerText = "recliner";
+  private final String bedText = "BED";
+  private final String xrayText = "XRAY";
+  private final String infusionPumpText = "PUMP";
+  private final String reclinerText = "RECLINER";
 
   private Scene requestMenu = null;
 
@@ -74,7 +74,8 @@ public class medicalEquipmentRequestController {
       String requestStatus,
       String additionalNotes,
       String equipmentTypeSelected) {
-    DBManager.save(new MedEquipReq("1", equipmentTypeSelected, roomID));
+    DBManager.save(new MedEquipReq(patientName, equipmentTypeSelected, roomID));
+    DBUtils.updateCleanStatus(equipmentTypeSelected, roomID);
   }
 
   // Called when the submit button is pressed.

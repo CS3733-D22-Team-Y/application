@@ -36,6 +36,27 @@ public class DBUtils {
     return returnPair;
   }
 
+
+  // find MedEquip object
+  public static void updateCleanStatus(String equipType, String locationID) {
+    Session s = SessionManager.getSession();
+    List<MedEquip> equipment =
+        s.createQuery("from MedEquip where equipType = :equipType and isClean = '1'")
+            .setParameter("equipType", equipType)
+            .list();
+    s.close();
+
+    if (equipment.size() == 0) {
+      return;
+    }
+
+    MedEquip thisEquip = equipment.get(0);
+
+    thisEquip.setEquipLocId(locationID);
+    thisEquip.setClean("0");
+
+    DBManager.update(thisEquip);
+}
   /**
    * Returns if a valid login was made.
    *
@@ -54,5 +75,6 @@ public class DBUtils {
             .list();
     s.close();
     return employees.size() == 1;
+
   }
 }
