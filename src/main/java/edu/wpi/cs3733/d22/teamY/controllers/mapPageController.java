@@ -30,7 +30,7 @@ public class mapPageController {
   // Menu of buttons
   @FXML private JFXButton closeSidebarHiddenButton;
   @FXML private JFXHamburger sidebarHamburger;
-  @FXML private Pane buttonBox;
+  @FXML private VBox buttonBox;
 
   AnchorPane sidebar = null;
 
