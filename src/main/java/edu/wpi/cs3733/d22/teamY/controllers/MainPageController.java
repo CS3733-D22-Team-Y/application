@@ -74,6 +74,6 @@ public class MainPageController {
   @FXML
   void killApplication() throws IOException {
     System.out.println("pressed button");
-    SceneLoading.loadPopup("views/ConfirmClose.fxml", "views/mainPage.fxml");
+    SceneLoading.loadPopup("views/ConfirmClose.fxml", "views/MainPage.fxml");
   }
 }
