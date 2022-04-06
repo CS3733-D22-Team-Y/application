@@ -60,6 +60,23 @@ public class DBUtils {
 
     DBManager.update(thisEquip);
   }
+
+  // find MedEquip object
+  public static String getNameFromID(String id) {
+    Session s = SessionManager.getSession();
+    List<Employee> people =
+        s.createQuery("from Employee where username = :id").setParameter("id", id).list();
+    s.close();
+
+    if (people.size() == 0) {
+      return "Guest";
+    }
+
+    Employee thePerson = people.get(0);
+
+    return thePerson.getName();
+  }
+
   /**
    * Returns if a valid login was made.
    *

@@ -60,7 +60,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Label layoutX="21.0" layoutY="13.0" text="Welcome, Dr. Yoshi" textFill="WHITE">
+      <Label fx:id="Welcome" layoutX="21.0" layoutY="13.0" text="Welcome" textFill="WHITE">
          <font>
             <Font name="Microsoft Tai Le Bold" size="52.0" />
          </font>
@@ -103,7 +103,7 @@
                   <Font size="20.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="password" layoutX="67.0" layoutY="162.0" prefHeight="50.0" prefWidth="236.0" promptText="Password" onAction="#loginToMainPage">
+            <PasswordField fx:id="password" layoutX="67.0" layoutY="162.0" onAction="#loginToMainPage" prefHeight="50.0" prefWidth="236.0" promptText="Password">
                <font>
                   <Font size="20.0" />
                </font>
@@ -129,5 +129,6 @@
             <Font name="Microsoft Tai Le Bold" size="28.0" />
          </font>
       </Text>
+      <Pane fx:id="loading" layoutX="69.0" layoutY="49.0" prefHeight="601.0" prefWidth="959.0" visible="false" />
    </children>
 </AnchorPane>
