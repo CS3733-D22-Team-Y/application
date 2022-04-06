@@ -1,7 +1,5 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
-import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
