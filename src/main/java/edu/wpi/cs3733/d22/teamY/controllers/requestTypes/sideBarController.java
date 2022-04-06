@@ -1,5 +1,6 @@
-package edu.wpi.cs3733.d22.teamY.controllers;
+package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
+import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
@@ -65,6 +66,16 @@ public class sideBarController {
   @FXML
   void loadMedEquipmentRequests() throws IOException {
     SceneLoading.loadScene("views/ActServReqTablePage.fxml");
+  }
+
+  @FXML
+  void loadChangeTheme() throws IOException {
+    SceneLoading.loadScene("views/ChangeTheme.fxml");
+  }
+
+  @FXML
+  void loadPersonalSettings() throws IOException {
+    SceneLoading.loadScene("views/personalSettings.fxml");
   }
 
   @FXML

@@ -26,7 +26,7 @@
                 <Font name="Microsoft Tai Le Bold" size="24.0" />
             </font>
         </JFXButton>
-        <JFXHamburger layoutX="20.0" layoutY="15.0" onMouseClicked="#autoOpenCloseSidebar" />
+        <JFXHamburger layoutX="20.0" layoutY="15.0" />
         <Pane fx:id="sidebarPane" layoutX="20.0" layoutY="35.0" prefHeight="650.0" prefWidth="200.0" />
         <Text fill="#7b7777" layoutX="380.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Profile">
             <font>
