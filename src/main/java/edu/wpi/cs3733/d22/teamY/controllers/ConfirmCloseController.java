@@ -11,7 +11,7 @@ public class ConfirmCloseController {
 
   @FXML
   void logOut() throws IOException {
-    SceneLoading.loadScene("views/WelcomePage.fxml");
+    SceneLoading.loadScene("views/Welcome.fxml");
     Stage stage;
     stage = (Stage) stayButton.getScene().getWindow();
     stage.close();

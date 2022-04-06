@@ -19,12 +19,12 @@ public class SideBarController {
 
   @FXML
   void loadMainPage() throws IOException {
-    SceneLoading.loadScene("views/MapPage.fxml");
+    SceneLoading.loadScene("views/Map.fxml");
   }
 
   @FXML
   void loadViewMap() throws IOException {
-    SceneLoading.loadScene("views/MapPage.fxml");
+    SceneLoading.loadScene("views/Map.fxml");
   }
 
   @FXML
@@ -69,12 +69,12 @@ public class SideBarController {
 
   @FXML
   void loadLocationTable() throws IOException {
-    SceneLoading.loadScene("views/LocTablePage.fxml");
+    SceneLoading.loadScene("views/LocTable.fxml");
   }
 
   @FXML
   void loadMedEquipmentRequests() throws IOException {
-    SceneLoading.loadScene("views/ActServReqTablePage.fxml");
+    SceneLoading.loadScene("views/ActServReqTable.fxml");
   }
 
   @FXML

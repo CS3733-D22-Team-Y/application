@@ -38,7 +38,7 @@ public class WelcomePageController {
 
   @FXML
   void mainPage() throws IOException {
-    SceneLoading.loadScene("views/MapPage.fxml");
+    SceneLoading.loadScene("views/Map.fxml");
   }
 
   @FXML
