@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="185.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.sideBarController">
    <children>
-      <AnchorPane fx:id="mainPane" maxHeight="700.0" maxWidth="185.0" prefHeight="700.0" prefWidth="185.0" style="-fx-background-color: #021D5A;" visible="false">
+      <AnchorPane fx:id="mainPane" maxHeight="700.0" maxWidth="185.0" prefHeight="700.0" prefWidth="185.0" style="-fx-background-color: #021D5A;">
          <children>
             <TextField layoutX="12.0" layoutY="18.0" prefHeight="25.0" prefWidth="126.0" promptText="Search...">
                <font>
@@ -67,6 +67,17 @@
                            </font>
                         </Text>
                         <JFXButton onAction="#loadMedEquipmentRequests" prefHeight="26.0" prefWidth="170.0" text="Medical Equipment Requests" textFill="WHITE" />
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Text fill="WHITE" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" text=" Settings" wrappingWidth="137.0836181640625">
+                                 <font>
+                                    <Font name="Microsoft Tai Le Bold" size="24.0" />
+                                 </font>
+                              </Text>
+                              <JFXButton alignment="BOTTOM_LEFT" onAction="#loadChangeTheme" prefHeight="26.0" prefWidth="170.0" text="Change Theme" textFill="WHITE" />
+                              <JFXButton alignment="BOTTOM_LEFT" onAction="#loadPersonalSettings" prefHeight="26.0" prefWidth="170.0" text="Personal Settings" textFill="WHITE" />
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
                </children>
