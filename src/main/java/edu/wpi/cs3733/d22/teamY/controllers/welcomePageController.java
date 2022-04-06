@@ -91,7 +91,7 @@ public class welcomePageController {
             new KeyFrame(Duration.seconds(0.01), (e) -> loginPane.setVisible(false)),
             new KeyFrame(Duration.seconds(0.02), (e) -> loading.setVisible(true)),
             new KeyFrame(
-                Duration.seconds(3),
+                Duration.seconds(1),
                 (e) -> {
                   try {
                     mainPage();
