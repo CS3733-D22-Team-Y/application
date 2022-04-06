@@ -13,7 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class medicalEquipmentRequestController {
+public class MedicalEquipmentRequestController {
   // Text Inputs
   @FXML private TextField input_RoomID;
   @FXML private TextField input_PatientName;
@@ -36,7 +36,7 @@ public class medicalEquipmentRequestController {
 
   private Scene requestMenu = null;
 
-  public medicalEquipmentRequestController() throws IOException {}
+  public MedicalEquipmentRequestController() throws IOException {}
 
   @FXML
   private void initialize() {

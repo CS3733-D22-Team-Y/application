@@ -10,7 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class securityServicesRequestController {
+public class SecurityServicesRequestController {
   // Text input
   @FXML private TextField input_RoomID;
   @FXML private TextField input_PatientName;
@@ -42,7 +42,7 @@ public class securityServicesRequestController {
   private final String urgentText = "urgent";
   private final String lowPriorityText = "lowPriority";
 
-  public securityServicesRequestController() throws IOException {}
+  public SecurityServicesRequestController() throws IOException {}
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
   /**

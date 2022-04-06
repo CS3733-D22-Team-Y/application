@@ -10,7 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class mealRequestController {
+public class MealRequestController {
   // Text input
   @FXML private TextField input_RoomID;
   @FXML private TextField input_PatientName;
@@ -49,7 +49,7 @@ public class mealRequestController {
   private final String vegetarianText = "vegetarian";
   private final String veganText = "vegan";
 
-  public mealRequestController() throws IOException {}
+  public MealRequestController() throws IOException {}
 
   @FXML
   public void initialize() {

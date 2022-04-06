@@ -3,35 +3,35 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 import com.jfoenix.controls.JFXRadioButton;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class labRequestController {
-
-  // Input fields
+public class LaundryRequestController {
+  // Radio Buttons
+  @FXML private JFXRadioButton hazardousRadioButton;
+  @FXML private JFXRadioButton scrubsRadioButton;
+  @FXML private JFXRadioButton linensRadioButton;
+  // Text inputs
   @FXML private TextField input_RoomID;
   @FXML private TextField input_PatientName;
   @FXML private TextField input_AssignedNurse;
   @FXML private TextField input_RequestStatus;
-  // Additional Notes
+  // Additional  Notes
   @FXML private TextArea input_AdditionalNotes;
-  // Radio buttons
-  @FXML private JFXRadioButton bloodRadioButton;
-  @FXML private JFXRadioButton urineRadioButton;
-  @FXML private JFXRadioButton xrayRadioButton;
-  @FXML private JFXRadioButton catScanRadioButton;
-  @FXML private JFXRadioButton mriRadioButton;
   // Error Label
   @FXML private Label errorLabel;
 
-  // Result types text. These should be changed depending on what the names in the database are.
-  private final String bloodSampleText = "bloodSample";
-  private final String urineSampleText = "urineSample";
-  private final String xrayText = "xray";
-  private final String catScanText = "catScan";
-  private final String mriText = "mri";
+  private Scene requestMenu = null;
+
+  private final String hazardousText = "hazardous";
+  private final String scrubsText = "scrubs";
+  private final String linensText = "linens";
+
+  public LaundryRequestController() throws IOException {}
 
   // BACKEND PEOPLE,THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
   /**
@@ -42,7 +42,7 @@ public class labRequestController {
    * @param assignedNurse The assigned nurse.
    * @param requestStatus The request status.
    * @param additionalNotes Any additional notes.
-   * @param resultTypeSelected The type of result selected.
+   * @param laundryTypeSelected The type of result selected.
    */
   private void submitRequest(
       String roomID,
@@ -50,7 +50,7 @@ public class labRequestController {
       String assignedNurse,
       String requestStatus,
       String additionalNotes,
-      String resultTypeSelected) {
+      String laundryTypeSelected) {
     // Code to add the fields to the database goes here.
   }
 
@@ -59,7 +59,7 @@ public class labRequestController {
   void submitButton() {
     // Checks if a lab result choice has been made.
     if (RequestControllerUtil.isRadioButtonSelected(
-        bloodRadioButton, urineRadioButton, xrayRadioButton, catScanRadioButton, mriRadioButton)) {
+        hazardousRadioButton, linensRadioButton, scrubsRadioButton)) {
       submitRequest(
           input_RoomID.getText(),
           input_PatientName.getText(),
@@ -69,37 +69,34 @@ public class labRequestController {
           getResultType());
       RequestControllerUtil.resetLabels(errorLabel);
     } else {
-      errorLabel.setText("Please select a result type.");
+      errorLabel.setText("Please select the type of laundry.");
     }
   }
 
   // Returns the database name of the selected radio button.
   private String getResultType() {
-    if (bloodRadioButton.isSelected()) return bloodSampleText;
-    if (urineRadioButton.isSelected()) return urineSampleText;
-    if (xrayRadioButton.isSelected()) return xrayText;
-    if (catScanRadioButton.isSelected()) return catScanText;
-    if (mriRadioButton.isSelected()) return mriText;
+    if (hazardousRadioButton.isSelected()) return hazardousText;
+    if (linensRadioButton.isSelected()) return linensText;
+    if (scrubsRadioButton.isSelected()) return scrubsText;
     // Will never be used
     return "";
   }
 
   @FXML
-  void backToRequestMenu() throws IOException {
+  void backToRequestMenu(ActionEvent event) throws IOException {
     SceneLoading.loadScene("views/requestMenu.fxml");
     resetAllFields();
   }
 
-  // Reset button functionality
   @FXML
   void resetAllFields() {
     RequestControllerUtil.resetRadioButtons(
-        bloodRadioButton, urineRadioButton, xrayRadioButton, catScanRadioButton, mriRadioButton);
+        scrubsRadioButton, linensRadioButton, hazardousRadioButton);
     RequestControllerUtil.resetTextFields(
         input_RoomID,
-        input_PatientName,
-        input_AssignedNurse,
         input_RequestStatus,
+        input_AssignedNurse,
+        input_PatientName,
         input_AdditionalNotes);
     RequestControllerUtil.resetLabels(errorLabel);
   }

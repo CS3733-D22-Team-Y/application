@@ -10,30 +10,31 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class laundryRequestController {
+public class FloralRequestController {
   // Radio Buttons
-  @FXML private JFXRadioButton hazardousRadioButton;
-  @FXML private JFXRadioButton scrubsRadioButton;
-  @FXML private JFXRadioButton linensRadioButton;
-  // Text inputs
+  @FXML private JFXRadioButton getWellSoonBouquetRadioButton;
+  @FXML private JFXRadioButton newBabyRadioButton;
+  @FXML private JFXRadioButton bouquetOfTheDayRadioButton;
+  // Input fields
   @FXML private TextField input_RoomID;
   @FXML private TextField input_PatientName;
   @FXML private TextField input_AssignedNurse;
   @FXML private TextField input_RequestStatus;
-  // Additional  Notes
+  // Additional Notes
   @FXML private TextArea input_AdditionalNotes;
   // Error Label
   @FXML private Label errorLabel;
 
   private Scene requestMenu = null;
 
-  private final String hazardousText = "hazardous";
-  private final String scrubsText = "scrubs";
-  private final String linensText = "linens";
+  // Bouquet types text. These should be changed depending on what the names in the database are.
+  private final String getWellSoonBouquetText = "getWellSoon";
+  private final String newBabyBouquetText = "newBaby";
+  private final String bouquetOfTheDayText = "bouquetOfDay";
 
-  public laundryRequestController() throws IOException {}
+  public FloralRequestController() {}
 
-  // BACKEND PEOPLE,THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
+  // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
   /**
    * Submits a service request.
    *
@@ -42,7 +43,7 @@ public class laundryRequestController {
    * @param assignedNurse The assigned nurse.
    * @param requestStatus The request status.
    * @param additionalNotes Any additional notes.
-   * @param laundryTypeSelected The type of result selected.
+   * @param bouquetTypeSelected The type of bouquet selected.
    */
   private void submitRequest(
       String roomID,
@@ -50,36 +51,8 @@ public class laundryRequestController {
       String assignedNurse,
       String requestStatus,
       String additionalNotes,
-      String laundryTypeSelected) {
+      String bouquetTypeSelected) {
     // Code to add the fields to the database goes here.
-  }
-
-  // Called when the submit button is pressed.
-  @FXML
-  void submitButton() {
-    // Checks if a lab result choice has been made.
-    if (RequestControllerUtil.isRadioButtonSelected(
-        hazardousRadioButton, linensRadioButton, scrubsRadioButton)) {
-      submitRequest(
-          input_RoomID.getText(),
-          input_PatientName.getText(),
-          input_AssignedNurse.getText(),
-          input_RequestStatus.getText(),
-          input_AdditionalNotes.getText(),
-          getResultType());
-      RequestControllerUtil.resetLabels(errorLabel);
-    } else {
-      errorLabel.setText("Please select the type of laundry.");
-    }
-  }
-
-  // Returns the database name of the selected radio button.
-  private String getResultType() {
-    if (hazardousRadioButton.isSelected()) return hazardousText;
-    if (linensRadioButton.isSelected()) return linensText;
-    if (scrubsRadioButton.isSelected()) return scrubsText;
-    // Will never be used
-    return "";
   }
 
   @FXML
@@ -88,15 +61,44 @@ public class laundryRequestController {
     resetAllFields();
   }
 
+  // Called when the submit button is pressed.
+  @FXML
+  void submitButton() {
+    // Checks if a bouquet choice has been made
+    if (RequestControllerUtil.isRadioButtonSelected(
+        getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton)) {
+      submitRequest(
+          input_RoomID.getText(),
+          input_PatientName.getText(),
+          input_AssignedNurse.getText(),
+          input_RequestStatus.getText(),
+          input_AdditionalNotes.getText(),
+          getBouquetType());
+      RequestControllerUtil.resetLabels(errorLabel);
+    } else {
+      errorLabel.setText("Please select a bouquet option.");
+    }
+  }
+
+  // Returns the database name of the selected radio button.
+  private String getBouquetType() {
+    if (getWellSoonBouquetRadioButton.isSelected()) return getWellSoonBouquetText;
+    if (newBabyRadioButton.isSelected()) return newBabyBouquetText;
+    if (bouquetOfTheDayRadioButton.isSelected()) return bouquetOfTheDayText;
+    // Should never happen
+    return ("");
+  }
+
+  // Reset button functionality
   @FXML
   void resetAllFields() {
     RequestControllerUtil.resetRadioButtons(
-        scrubsRadioButton, linensRadioButton, hazardousRadioButton);
+        getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton);
     RequestControllerUtil.resetTextFields(
         input_RoomID,
-        input_RequestStatus,
-        input_AssignedNurse,
         input_PatientName,
+        input_AssignedNurse,
+        input_RequestStatus,
         input_AdditionalNotes);
     RequestControllerUtil.resetLabels(errorLabel);
   }
