@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
-public class sideBarController {
+public class SideBarController {
   @FXML AnchorPane mainPane;
   @FXML private Label nameLabel;
   @FXML private Label accessLevel;

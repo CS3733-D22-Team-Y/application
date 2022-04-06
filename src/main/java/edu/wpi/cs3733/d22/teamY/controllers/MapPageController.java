@@ -20,7 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
-public class mapPageController {
+public class MapPageController {
   // Base pane for displaying new scenes
   @FXML private Pane mapPane;
   // Sidebar pane

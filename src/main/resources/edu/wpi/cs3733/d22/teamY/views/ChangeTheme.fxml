@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.changeThemeController">
+<AnchorPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ChangeThemeController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="393.0" layoutY="7.0" prefHeight="80.0" prefWidth="700.0" text="Change Theme" textAlignment="RIGHT" textFill="#297bce">
          <font>

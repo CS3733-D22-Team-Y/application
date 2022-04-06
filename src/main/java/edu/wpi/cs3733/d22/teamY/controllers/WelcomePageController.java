@@ -16,7 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
-public class welcomePageController {
+public class WelcomePageController {
 
   @FXML private TextField username;
   @FXML private PasswordField password;

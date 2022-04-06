@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
-public class changeThemeController {
+public class ChangeThemeController {
   // Base pane for displaying new scenes
   @FXML private Pane mapPane;
   // Sidebar

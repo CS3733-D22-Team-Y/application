@@ -17,7 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
-public class locTablePageController {
+public class LocTablePageController {
   @FXML private TableView<Location> tableView;
 
   @FXML Pane sidebarPane;

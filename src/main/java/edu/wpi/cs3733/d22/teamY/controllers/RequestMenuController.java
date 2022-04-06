@@ -7,14 +7,14 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
-public class requestMenuController {
+public class RequestMenuController {
   @FXML Pane sidebarPane;
   @FXML private JFXButton closeSidebarHiddenButton;
   @FXML private JFXHamburger sidebarHamburger;
 
   AnchorPane sidebar = null;
 
-  public requestMenuController() throws IOException {}
+  public RequestMenuController() throws IOException {}
 
   @FXML
   void initialize() throws IOException {

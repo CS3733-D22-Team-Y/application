@@ -3,7 +3,7 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 import java.io.IOException;
 import javafx.fxml.FXML;
 
-public class mainPageController {
+public class MainPageController {
 
   @FXML
   void requestMenu() throws IOException {
