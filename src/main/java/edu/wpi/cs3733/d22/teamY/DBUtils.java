@@ -3,6 +3,7 @@ package edu.wpi.cs3733.d22.teamY;
 import edu.wpi.cs3733.d22.teamY.model.Employee;
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.MedEquip;
+import edu.wpi.cs3733.d22.teamY.model.StringArrayConv;
 import java.util.List;
 import javafx.util.Pair;
 import org.hibernate.Session;
@@ -18,6 +19,25 @@ public class DBUtils {
 
   public static List<MedEquip> getEquipmentAtLocation(Location location) {
     return DBManager.getAll(MedEquip.class, new Where(MedEquip.EQUIP_LOC_ID, location.getNodeID()));
+  }
+
+  /** Refresh Location Table when Called. Returns nothing */
+  public static void refreshLocationsFromCSV() {
+    // Reinitialize
+    CSVBackup.loadFromCSV(EntryType.LOCATION);
+  }
+
+  public static void deleteLocations() {
+    List<StringArrayConv> list = DBManager.getAll(EntryType.LOCATION.getEntryClass());
+    // Check if null
+    if (list == null) {
+      return;
+    }
+    // Delete All from Location List
+    for (StringArrayConv o : list) {
+      DBManager.delete(o);
+    }
+    System.out.println("deleted all");
   }
 
   public static Pair<Integer, Integer> getAvailableEquipment(String equipType) {
