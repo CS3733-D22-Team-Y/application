@@ -66,6 +66,16 @@ public class sideBarController extends AbsGlobalControllerFuncs {
   }
 
   @FXML
+  void loadPersonalSettings() throws IOException {
+    loadScene("views/requestTypes/personalSettings.fxml");
+  }
+
+  @FXML
+  void loadChangeTheme() throws IOException {
+    loadScene("views/ChangeTheme.fxml");
+  }
+
+  @FXML
   void killApplication() {
     Platform.exit();
   }
