@@ -183,7 +183,7 @@ public class mapPageController {
                   mapPane.getChildren().add(c);
 
                   Pane i = new Pane();
-                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.BLACK);
+                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
 
                   i.setPrefWidth(iconDim);
                   i.setPrefHeight(iconDim);
