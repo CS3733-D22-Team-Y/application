@@ -39,32 +39,32 @@ public class SideBarController {
 
   @FXML
   void loadLaundryRequest() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/laundryRequest.fxml");
+    SceneLoading.loadScene("views/requestTypes/LaundryRequest.fxml");
   }
 
   @FXML
   void loadMedicalEquipment() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/medicalEquipmentRequest.fxml");
+    SceneLoading.loadScene("views/requestTypes/MedicalEquipmentRequest.fxml");
   }
 
   @FXML
   void loadMealDelivery() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/mealRequest.fxml");
+    SceneLoading.loadScene("views/requestTypes/MealRequest.fxml");
   }
 
   @FXML
   void loadFloralDelivery() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/floralRequest.fxml");
+    SceneLoading.loadScene("views/requestTypes/FloralRequest.fxml");
   }
 
   @FXML
   void loadSecurity() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/securityServicesRequest.fxml");
+    SceneLoading.loadScene("views/requestTypes/SecurityServicesRequest.fxml");
   }
 
   @FXML
   void loadLab() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/labRequest.fxml");
+    SceneLoading.loadScene("views/requestTypes/LabRequest.fxml");
   }
 
   @FXML

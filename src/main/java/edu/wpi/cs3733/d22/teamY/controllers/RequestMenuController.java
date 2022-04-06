@@ -33,32 +33,32 @@ public class RequestMenuController {
 
   @FXML
   void securityServices() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/securityServicesRequest.fxml");
+    SceneLoading.loadScene("views/requestTypes/SecurityServicesRequest.fxml");
   }
 
   @FXML
   void medicalEquipment() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/medicalEquipmentRequest.fxml");
+    SceneLoading.loadScene("views/requestTypes/MedicalEquipmentRequest.fxml");
   }
 
   @FXML
   void floralDelivery() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/floralRequest.fxml");
+    SceneLoading.loadScene("views/requestTypes/FloralRequest.fxml");
   }
 
   @FXML
   void laundryServices() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/laundryRequest.fxml");
+    SceneLoading.loadScene("views/requestTypes/LaundryRequest.fxml");
   }
 
   @FXML
   void mealDelivery() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/mealRequest.fxml");
+    SceneLoading.loadScene("views/requestTypes/MealRequest.fxml");
   }
 
   @FXML
   void labResults() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/labRequest.fxml");
+    SceneLoading.loadScene("views/requestTypes/LabRequest.fxml");
   }
 
   // Sidebar
