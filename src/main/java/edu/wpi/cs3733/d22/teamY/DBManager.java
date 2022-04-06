@@ -80,6 +80,33 @@ public class DBManager {
   }
 
   /**
+   * Refresh Location Table when Called.
+   * Returns nothing
+   */
+  public static void refreshLocationsFromCSV() {
+    Session s = SessionManager.getSession();
+    List<StringArrayConv> list = DBManager.getAll(EntryType.LOCATION.getEntryClass());
+
+    //Check if null
+    if(list == null){
+      return;
+    }
+
+    try {
+      for (StringArrayConv o : list) {
+        delete(o);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    try {
+      CSVBackup.loadFromCSV(EntryType.LOCATION);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
    * Deletes an object of the given class.
    *
    * @param c The class of the object to delete.
