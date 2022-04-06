@@ -20,6 +20,7 @@ public class requestMenuController {
   void initialize() throws IOException {
     // Show sidebar
     sidebar = SidebarUtil.initializeSidebar(sidebarPane);
+    openSidebarLayout();
   }
 
   // All below methods call corresponding scene setting methods in an instance of app

@@ -22,6 +22,7 @@ public class PersonalSettings {
   @FXML
   void initialize() throws IOException {
     sidebar = SidebarUtil.initializeSidebar(sidebarPane);
+    openSidebarLayout();
   }
 
   @FXML

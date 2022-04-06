@@ -26,8 +26,8 @@
                 <Font name="Microsoft Tai Le Bold" size="24.0" />
             </font>
         </JFXButton>
-        <JFXHamburger layoutX="20.0" layoutY="15.0" />
-        <Pane fx:id="sidebarPane" layoutX="20.0" layoutY="35.0" prefHeight="650.0" prefWidth="200.0" />
+        <Pane fx:id="sidebarPane" prefHeight="700.0" prefWidth="185.0" />
+        <JFXHamburger fx:id="sidebarHamburger" layoutX="10.0" layoutY="10.0" onMouseClicked="#openSidebarLayout" />
         <Text fill="#7b7777" layoutX="380.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Profile">
             <font>
                 <Font name="Microsoft Tai Le" size="16.0" />
@@ -122,5 +122,6 @@
          </font>
       </Text>
       <JFXToggleButton layoutX="754.0" layoutY="489.0" text="   " toggleColor="#021d5a" toggleLineColor="#297bce" />
+      <JFXButton fx:id="closeSidebarHiddenButton" layoutX="151.0" layoutY="14.0" onAction="#closeSidebarLayout" prefHeight="30.0" prefWidth="31.0" text="closeSidebarHiddenButton" textFill="TRANSPARENT" visible="false" />
     </children>
 </AnchorPane>

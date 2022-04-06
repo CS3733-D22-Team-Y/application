@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="185.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.sideBarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="185.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.sideBarController">
    <children>
       <AnchorPane fx:id="mainPane" maxHeight="700.0" maxWidth="185.0" prefHeight="700.0" prefWidth="185.0" style="-fx-background-color: #021D5A;">
          <children>
@@ -21,7 +21,7 @@
                   <Font name="Microsoft Tai Le" size="12.0" />
                </font>
             </TextField>
-            <VBox layoutX="5.0" layoutY="60.0" spacing="20.0">
+            <VBox layoutX="5.0" layoutY="60.0" spacing="5.0">
                <children>
                   <VBox>
                      <children>
@@ -83,7 +83,7 @@
                   </VBox>
                </children>
             </VBox>
-            <Pane layoutX="9.0" layoutY="608.0">
+            <Pane layoutX="9.0" layoutY="614.0">
                <children>
                   <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="1.0" layoutY="33.0">
                      <image>
@@ -125,14 +125,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label fx:id="accessLevel" layoutX="12.0" layoutY="588.0" prefHeight="20.0" prefWidth="126.0" text="Access Level" textFill="WHITE">
+            <Label fx:id="accessLevel" layoutX="12.0" layoutY="595.0" prefHeight="20.0" prefWidth="126.0" text="Access Level" textFill="WHITE">
                <font>
-                  <Font name="Microsoft Tai Le" size="14.0" />
+                  <Font name="Microsoft Tai Le" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="nameLabel" layoutX="12.0" layoutY="568.0" prefHeight="20.0" prefWidth="126.0" text="Name" textFill="WHITE">
+            <Label fx:id="nameLabel" layoutX="12.0" layoutY="575.0" prefHeight="20.0" prefWidth="126.0" text="Name" textFill="WHITE">
                <font>
-                  <Font name="Microsoft Tai Le" size="14.0" />
+                  <Font name="Microsoft Tai Le" size="12.0" />
                </font>
             </Label>
          </children>
