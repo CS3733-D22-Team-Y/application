@@ -286,9 +286,6 @@ public class mapPageController {
         Floors.FIRST_FLOOR,
         new Image(App.class.getResource("views/images/firstfloor.png").toString()));
     floorImages.put(
-        Floors.GROUND_FLOOR,
-        new Image(App.class.getResource("views/images/groundfloor.png").toString()));
-    floorImages.put(
         Floors.LOWER_LEVEL_1,
         new Image(App.class.getResource("views/images/lowerlevel1.png").toString()));
     floorImages.put(
@@ -312,10 +309,6 @@ public class mapPageController {
   }
 
   // Loading maps
-  @FXML
-  void loadGroundFloorMap() {
-    switchFloor(Floors.GROUND_FLOOR);
-  }
 
   @FXML
   void loadBasement1Map() {

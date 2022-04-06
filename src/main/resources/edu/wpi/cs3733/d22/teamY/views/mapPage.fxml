@@ -13,40 +13,34 @@
       <Pane fx:id="sidebarPane" prefHeight="700.0" prefWidth="200.0" />
       <JFXHamburger fx:id="sidebarHamburger" layoutX="10.0" layoutY="10.0" onMouseClicked="#openSidebarLayout" />
       <JFXButton fx:id="closeSidebarHiddenButton" layoutX="151.0" layoutY="14.0" onAction="#closeSidebarLayout" prefHeight="30.0" prefWidth="31.0" text="closeSidebarHiddenButton" textFill="TRANSPARENT" visible="false" />
-      <Pane fx:id="buttonBox" layoutX="225.0" layoutY="50.0">
+      <Pane fx:id="buttonBox" layoutX="246.0" layoutY="109.0">
          <children>
             <Circle fill="#297bce" layoutX="65.0" layoutY="42.0" radius="38.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <Circle fill="#297bce" layoutX="65.0" layoutY="142.0" radius="38.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <Circle fill="#297bce" layoutX="65.0" layoutY="242.0" radius="38.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <Circle fill="#297bce" layoutX="65.0" layoutY="342.0" radius="38.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <Circle fill="#297bce" layoutX="65.0" layoutY="442.0" radius="38.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-            <Circle fill="#297bce" layoutX="65.0" layoutY="542.0" radius="38.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-            <JFXButton layoutX="1.0" onAction="#loadBasement2Map" prefHeight="80.0" prefWidth="125.0" style="-fx-background-color: transparent;" text="B2F" textAlignment="CENTER">
+            <JFXButton layoutX="3.0" layoutY="2.0" onAction="#loadFloor3Map" prefHeight="80.0" prefWidth="125.0" style="-fx-background-color: transparent;" text="3" textAlignment="CENTER">
                <font>
                   <Font name="Microsoft Tai Le Bold" size="36.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutY="100.0" onAction="#loadBasement1Map" prefHeight="80.0" prefWidth="125.0" style="-fx-background-color: transparent;" text="B1F" textAlignment="CENTER">
+            <JFXButton layoutX="3.0" layoutY="102.0" onAction="#loadFloor2Map" prefHeight="80.0" prefWidth="125.0" style="-fx-background-color: transparent;" text="2" textAlignment="CENTER">
                <font>
                   <Font name="Microsoft Tai Le Bold" size="36.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutY="200.0" onAction="#loadGroundFloorMap" prefHeight="80.0" prefWidth="125.0" style="-fx-background-color: transparent;" text="G" textAlignment="CENTER">
+            <JFXButton layoutX="3.0" layoutY="202.0" onAction="#loadFloor1Map" prefHeight="80.0" prefWidth="125.0" style="-fx-background-color: transparent;" text="1" textAlignment="CENTER">
                <font>
                   <Font name="Microsoft Tai Le Bold" size="36.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutY="300.0" onAction="#loadFloor1Map" prefHeight="80.0" prefWidth="125.0" style="-fx-background-color: transparent;" text="1" textAlignment="CENTER">
+            <JFXButton layoutX="3.0" layoutY="402.0" onAction="#loadBasement2Map" prefHeight="80.0" prefWidth="125.0" style="-fx-background-color: transparent;" text="LL2" textAlignment="CENTER">
                <font>
                   <Font name="Microsoft Tai Le Bold" size="36.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutY="400.0" onAction="#loadFloor2Map" prefHeight="80.0" prefWidth="125.0" style="-fx-background-color: transparent;" text="2" textAlignment="CENTER">
-               <font>
-                  <Font name="Microsoft Tai Le Bold" size="36.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutY="500.0" onAction="#loadFloor3Map" prefHeight="80.0" prefWidth="125.0" style="-fx-background-color: transparent;" text="3" textAlignment="CENTER">
+            <JFXButton layoutX="3.0" layoutY="302.0" onAction="#loadBasement1Map" prefHeight="80.0" prefWidth="125.0" style="-fx-background-color: transparent;" text="LL1" textAlignment="CENTER">
                <font>
                   <Font name="Microsoft Tai Le Bold" size="36.0" />
                </font>
