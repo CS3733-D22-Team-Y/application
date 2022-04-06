@@ -3,10 +3,10 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -23,90 +23,104 @@
         </Label>
         <JFXButton layoutX="258.0" layoutY="15.0" onAction="#mainMenu" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #021D5A;" text="Back" textFill="WHITE">
             <font>
-                <Font size="24.0" />
+                <Font name="Microsoft Tai Le Bold" size="24.0" />
             </font>
         </JFXButton>
         <JFXHamburger layoutX="20.0" layoutY="15.0" onMouseClicked="#autoOpenCloseSidebar" />
-        <Pane fx:id="sidebarPane" layoutX="-107.0" layoutY="7.0" prefHeight="650.0" prefWidth="200.0" />
+        <Pane fx:id="sidebarPane" layoutX="20.0" layoutY="35.0" prefHeight="650.0" prefWidth="200.0" />
         <Text fill="#7b7777" layoutX="380.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Profile">
             <font>
                 <Font name="Microsoft Tai Le" size="16.0" />
             </font>
         </Text>
-        <Text layoutX="606.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prefered Name:">
+        <Text layoutX="592.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preferred Name:">
             <font>
-                <Font size="20.0" />
+                <Font size="24.0" />
             </font>
         </Text>
-        <Text layoutX="606.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Legal Name:">
+        <Text layoutX="593.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Legal Name:">
             <font>
-                <Font size="20.0" />
+                <Font size="24.0" />
             </font>
         </Text>
-        <JFXTextArea layoutX="293.0" layoutY="373.0" prefHeight="259.0" prefWidth="289.0" style="-fx-background-color: white;" text="   Bio">
+        <JFXTextArea layoutX="322.0" layoutY="373.0" prefHeight="259.0" prefWidth="260.0" style="-fx-background-color: white;" text="   Bio">
             <font>
                 <Font name="Microsoft Tai Le" size="16.0" />
             </font>
         </JFXTextArea>
-        <TextField layoutX="761.0" layoutY="140.0" prefHeight="25.0" prefWidth="247.0" />
-        <TextField layoutX="761.0" layoutY="193.0" prefHeight="25.0" prefWidth="245.0" />
-        <Text layoutX="606.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Text>
-        <Text layoutX="858.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Text>
-        <TextField layoutX="930.0" layoutY="307.0" />
-        <TextField layoutX="670.0" layoutY="309.0" />
-      <JFXButton layoutX="961.0" layoutY="626.0" style="-fx-background-color: #021D5A;" text="Confirm" textFill="WHITE">
-         <font>
-            <Font name="Microsoft Tai Le" size="24.0" />
-         </font>
-      </JFXButton>
-      <Text layoutX="606.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:">
-         <font>
-            <Font name="Microsoft Tai Le" size="20.0" />
-         </font>
-      </Text>
-      <TextField layoutX="760.0" layoutY="248.0" prefHeight="25.0" prefWidth="247.0" />
-      <ImageView fitHeight="188.0" fitWidth="194.0" layoutX="330.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true" />
-      <Text layoutX="606.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:">
+        <TextField layoutX="775.0" layoutY="125.0" prefHeight="43.0" prefWidth="275.0">
          <font>
             <Font size="20.0" />
+         </font></TextField>
+        <TextField layoutX="775.0" layoutY="188.0" prefHeight="43.0" prefWidth="275.0">
+         <font>
+            <Font size="20.0" />
+         </font></TextField>
+        <Text layoutX="592.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+        <Text layoutX="592.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+        <TextField layoutX="775.0" layoutY="379.0" prefHeight="35.0" prefWidth="275.0">
+         <font>
+            <Font size="20.0" />
+         </font></TextField>
+        <TextField layoutX="775.0" layoutY="317.0" prefHeight="43.0" prefWidth="275.0">
+         <font>
+            <Font size="20.0" />
+         </font></TextField>
+      <JFXButton layoutX="961.0" layoutY="626.0" style="-fx-background-color: #021D5A;" text="Confirm" textFill="WHITE">
+         <font>
+            <Font name="Microsoft Tai Le Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <Text layoutX="593.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:">
+         <font>
+            <Font size="24.0" />
          </font>
       </Text>
-      <RadioButton layoutX="724.0" layoutY="369.0" mnemonicParsing="false" text="F">
+      <TextField layoutX="775.0" layoutY="252.0" prefHeight="43.0" prefWidth="275.0">
          <font>
-            <Font size="14.0" />
+            <Font size="20.0" />
+         </font></TextField>
+      <ImageView fitHeight="216.0" fitWidth="226.0" layoutX="325.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true" />
+      <Text layoutX="592.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <RadioButton layoutX="699.0" layoutY="453.0" mnemonicParsing="false" text="F">
+         <font>
+            <Font size="16.0" />
          </font>
          <toggleGroup>
             <ToggleGroup fx:id="Gender" />
          </toggleGroup>
       </RadioButton>
-      <ToggleButton accessibleText="Changes notification settings" layoutX="758.0" layoutY="426.0" mnemonicParsing="false" selected="true" text="On">
+      <RadioButton layoutX="754.0" layoutY="453.0" mnemonicParsing="false" text="M" toggleGroup="$Gender">
          <font>
-            <Font name="Microsoft Tai Le" size="14.0" />
-         </font>
-      </ToggleButton>
-      <RadioButton layoutX="790.0" layoutY="369.0" mnemonicParsing="false" text="M" toggleGroup="$Gender">
-         <font>
-            <Font name="Microsoft Tai Le" size="14.0" />
+            <Font size="16.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="856.0" layoutY="368.0" mnemonicParsing="false" text="Other:" toggleGroup="$Gender">
+      <RadioButton layoutX="822.0" layoutY="453.0" mnemonicParsing="false" text="Other:" toggleGroup="$Gender">
          <font>
-            <Font name="Microsoft Tai Le" size="14.0" />
+            <Font size="16.0" />
          </font>
       </RadioButton>
-      <TextField layoutX="929.0" layoutY="364.0" />
-      <Text layoutX="606.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notifications:">
+      <TextField layoutX="913.0" layoutY="444.0" prefHeight="43.0" prefWidth="140.0">
          <font>
             <Font size="20.0" />
+         </font></TextField>
+      <Text layoutX="592.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notifications:">
+         <font>
+            <Font size="24.0" />
          </font>
       </Text>
+      <JFXToggleButton layoutX="754.0" layoutY="489.0" text="   " toggleColor="#021d5a" toggleLineColor="#297bce" />
     </children>
 </AnchorPane>
