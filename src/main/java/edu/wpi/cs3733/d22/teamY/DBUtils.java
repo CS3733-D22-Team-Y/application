@@ -73,8 +73,8 @@ public class DBUtils {
     // search for the employee with the given username and password
     List<Employee> employees =
         s.createQuery("from Employee where username = :username and password = :password")
-            .setParameter("username", username)
-            .setParameter("password", password)
+            .setParameter("username", username.hashCode() + "")
+            .setParameter("password", password.hashCode() + "")
             .list();
     s.close();
     return employees.size() == 1;
