@@ -2,6 +2,7 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXHamburger;
+import edu.wpi.cs3733.d22.teamY.model.Employee;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
@@ -15,6 +16,8 @@ public class PersonalSettings {
   @FXML private JFXButton closeSidebarHiddenButton;
   @FXML private JFXHamburger sidebarHamburger;
   AnchorPane sidebar = null;
+  public static Employee currentEmployee =
+      new Employee("-1", "Guest", "Guest", "Guest", "Guest", "Guest", "Guest", 0);
 
   @FXML
   void initialize() throws IOException {
@@ -23,7 +26,7 @@ public class PersonalSettings {
 
   @FXML
   void mainMenu() throws IOException {
-    SceneLoading.loadScene("views/mainPage.fxml");
+    SceneLoading.loadScene("views/mapPage.fxml");
   }
 
   // Sidebar

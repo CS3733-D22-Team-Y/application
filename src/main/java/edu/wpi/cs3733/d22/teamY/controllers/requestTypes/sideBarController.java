@@ -1,11 +1,22 @@
-package edu.wpi.cs3733.d22.teamY.controllers;
+package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
+import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 public class sideBarController {
   @FXML AnchorPane mainPane;
+  @FXML private Label nameLabel;
+  @FXML private Label accessLevel;
+
+  @FXML
+  void initialize() {
+    accessLevel.setText("Access Level: " + PersonalSettings.currentEmployee.getAccessLevel());
+    nameLabel.setText(PersonalSettings.currentEmployee.getName());
+  }
 
   @FXML
   void loadMainPage() throws IOException {
@@ -65,6 +76,16 @@ public class sideBarController {
   @FXML
   void loadMedEquipmentRequests() throws IOException {
     SceneLoading.loadScene("views/ActServReqTablePage.fxml");
+  }
+
+  @FXML
+  void loadChangeTheme() throws IOException {
+    SceneLoading.loadScene("views/ChangeTheme.fxml");
+  }
+
+  @FXML
+  void loadPersonalSettings() throws IOException {
+    SceneLoading.loadScene("views/personalSettings.fxml");
   }
 
   @FXML
