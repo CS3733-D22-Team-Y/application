@@ -19,22 +19,22 @@ public class SideBarController {
 
   @FXML
   void loadMainPage() throws IOException {
-    SceneLoading.loadScene("views/mapPage.fxml");
+    SceneLoading.loadScene("views/MapPage.fxml");
   }
 
   @FXML
   void loadViewMap() throws IOException {
-    SceneLoading.loadScene("views/mapPage.fxml");
+    SceneLoading.loadScene("views/MapPage.fxml");
   }
 
   @FXML
   void loadCreateServiceRequest() throws IOException {
-    SceneLoading.loadScene("views/requestMenu.fxml");
+    SceneLoading.loadScene("views/RequestMenu.fxml");
   }
 
   @FXML
   void loadViewServiceRequests() throws IOException {
-    SceneLoading.loadScene("views/activeServiceRequest.fxml");
+    SceneLoading.loadScene("views/ActiveServiceRequest.fxml");
   }
 
   @FXML
@@ -69,7 +69,7 @@ public class SideBarController {
 
   @FXML
   void loadLocationTable() throws IOException {
-    SceneLoading.loadScene("views/locTablePage.fxml");
+    SceneLoading.loadScene("views/LocTablePage.fxml");
   }
 
   @FXML
@@ -84,11 +84,11 @@ public class SideBarController {
 
   @FXML
   void loadPersonalSettings() throws IOException {
-    SceneLoading.loadScene("views/personalSettings.fxml");
+    SceneLoading.loadScene("views/PersonalSettings.fxml");
   }
 
   @FXML
   void killApplication() throws IOException {
-    SceneLoading.loadPopup("views/ConfirmClose.fxml", "views/sideBar.fxml");
+    SceneLoading.loadPopup("views/ConfirmClose.fxml", "views/SideBar.fxml");
   }
 }

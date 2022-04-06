@@ -24,11 +24,11 @@ public class RequestMenuController {
   }
 
   // All below methods call corresponding scene setting methods in an instance of app
-  // These are called by the corresponding button in the Request Menu (requestMenu.fxml)
+  // These are called by the corresponding button in the Request Menu (RequestMenu.fxml)
 
   @FXML
   void mainMenu() throws IOException {
-    SceneLoading.loadScene("views/mapPage.fxml");
+    SceneLoading.loadScene("views/MapPage.fxml");
   }
 
   @FXML

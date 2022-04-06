@@ -69,7 +69,7 @@ public class LocTablePageController {
   // back button
   @FXML
   void mainMenu() throws IOException {
-    SceneLoading.loadScene("views/mapPage.fxml");
+    SceneLoading.loadScene("views/MapPage.fxml");
   }
 
   // Sidebar
@@ -86,12 +86,12 @@ public class LocTablePageController {
   @FXML
   void refreshLocations() throws IOException {
     DBUtils.refreshLocationsFromCSV();
-    SceneLoading.loadScene("views/locTablePage.fxml");
+    SceneLoading.loadScene("views/LocTablePage.fxml");
   }
 
   @FXML
   void deleteLocations() throws IOException {
     DBUtils.deleteLocations();
-    SceneLoading.loadScene("views/locTablePage.fxml");
+    SceneLoading.loadScene("views/LocTablePage.fxml");
   }
 }

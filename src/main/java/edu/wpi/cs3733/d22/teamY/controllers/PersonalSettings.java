@@ -27,7 +27,7 @@ public class PersonalSettings {
 
   @FXML
   void mainMenu() throws IOException {
-    SceneLoading.loadScene("views/mapPage.fxml");
+    SceneLoading.loadScene("views/MapPage.fxml");
   }
 
   // Sidebar

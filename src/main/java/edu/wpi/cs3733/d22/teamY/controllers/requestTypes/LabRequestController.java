@@ -86,7 +86,7 @@ public class LabRequestController {
 
   @FXML
   void backToRequestMenu() throws IOException {
-    SceneLoading.loadScene("views/requestMenu.fxml");
+    SceneLoading.loadScene("views/RequestMenu.fxml");
     resetAllFields();
   }
 

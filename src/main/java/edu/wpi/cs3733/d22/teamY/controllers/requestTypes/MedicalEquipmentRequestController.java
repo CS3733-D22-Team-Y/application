@@ -111,7 +111,7 @@ public class MedicalEquipmentRequestController {
 
   @FXML
   void backToRequestMenu(ActionEvent event) throws IOException {
-    SceneLoading.loadScene("views/requestMenu.fxml");
+    SceneLoading.loadScene("views/RequestMenu.fxml");
     resetAllFields();
   }
 

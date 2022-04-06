@@ -23,7 +23,7 @@ public class ActiveServiceRequestController {
 
   @FXML
   void mainMenu() throws IOException {
-    SceneLoading.loadScene("views/mapPage.fxml");
+    SceneLoading.loadScene("views/MapPage.fxml");
   }
 
   @FXML

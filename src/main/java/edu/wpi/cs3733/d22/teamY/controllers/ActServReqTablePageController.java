@@ -56,7 +56,7 @@ public class ActServReqTablePageController {
   // back button
   @FXML
   void mainMenu() throws IOException {
-    SceneLoading.loadScene("views/mapPage.fxml");
+    SceneLoading.loadScene("views/MapPage.fxml");
   }
 
   // Sidebar
@@ -87,7 +87,7 @@ public class ActServReqTablePageController {
 
     @FXML
     void mainMenu() throws IOException {
-      SceneLoading.loadScene("views/mapPage.fxml");
+      SceneLoading.loadScene("views/MapPage.fxml");
     }
 
     // Sidebar

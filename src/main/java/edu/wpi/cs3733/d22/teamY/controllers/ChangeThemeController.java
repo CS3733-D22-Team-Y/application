@@ -29,7 +29,7 @@ public class ChangeThemeController {
 
   @FXML
   void mainMenu() throws IOException {
-    SceneLoading.loadScene("views/mapPage.fxml");
+    SceneLoading.loadScene("views/MapPage.fxml");
   }
 
   // Sidebar
