@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -32,8 +33,7 @@ public class welcomePageController {
 
   @FXML
   void killApplication() throws IOException {
-    System.out.println("pressed button");
-    SceneLoading.loadPopup("views/ConfirmClose.fxml", "views/welcomePage.fxml");
+    Platform.exit();
   }
 
   @FXML
