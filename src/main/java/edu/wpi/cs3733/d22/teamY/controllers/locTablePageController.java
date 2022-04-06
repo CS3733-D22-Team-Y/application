@@ -63,6 +63,7 @@ public class locTablePageController {
     tableView.setItems(locationsObservable);
 
     sidebar = SidebarUtil.initializeSidebar(sidebarPane);
+    openSidebarLayout();
   }
 
   // back button

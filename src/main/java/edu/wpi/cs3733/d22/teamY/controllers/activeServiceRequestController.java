@@ -18,6 +18,7 @@ public class activeServiceRequestController {
   @FXML
   void initialize() throws IOException {
     sidebar = SidebarUtil.initializeSidebar(sidebarPane);
+    openSidebarLayout();
   }
 
   @FXML

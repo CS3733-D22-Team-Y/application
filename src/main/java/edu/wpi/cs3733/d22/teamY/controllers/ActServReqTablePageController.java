@@ -50,6 +50,7 @@ public class ActServReqTablePageController {
     medEquipReqTableView.setItems(locationsObservable);
 
     sidebar = SidebarUtil.initializeSidebar(sidebarPane);
+    openSidebarLayout();
   }
 
   // back button
@@ -81,6 +82,7 @@ public class ActServReqTablePageController {
     @FXML
     void initialize() throws IOException {
       sidebar = SidebarUtil.initializeSidebar(sidebarPane);
+      openSidebarLayout();
     }
 
     @FXML
