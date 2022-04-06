@@ -7,7 +7,7 @@
 
   <session-factory>
 
-    <property name="connection.url">jdbc:derby:LocationDB</property>
+    <property name="connection.url">jdbc:derby:LocationDB;create=true;</property>
     <property name="connection.driver_class">org.apache.derby.jdbc.EmbeddedDriver</property>
 
 
