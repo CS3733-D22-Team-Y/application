@@ -85,24 +85,16 @@ public class DBManager {
    */
   public static void refreshLocationsFromCSV() {
     List<StringArrayConv> list = DBManager.getAll(EntryType.LOCATION.getEntryClass());
-
     //Check if null
     if(list == null){
       return;
     }
-
-    try {
-      for (StringArrayConv o : list) {
-        delete(o);
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
+    //Delete All from Location List
+    for (StringArrayConv o : list) {
+      delete(o);
     }
-    try {
-      CSVBackup.loadFromCSV(EntryType.LOCATION);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+    //Reinitialize
+    CSVBackup.loadFromCSV(EntryType.LOCATION);
   }
 
   /**
