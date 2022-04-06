@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
 import edu.wpi.cs3733.d22.teamY.model.Employee;
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.MedEquip;
@@ -85,7 +86,9 @@ public class DBUtils {
   public static String getNameFromID(String id) {
     Session s = SessionManager.getSession();
     List<Employee> people =
-        s.createQuery("from Employee where username = :id").setParameter("id", id).list();
+        s.createQuery("from Employee where username = :id")
+            .setParameter("id", id.hashCode() + "")
+            .list();
     s.close();
 
     if (people.size() == 0) {
@@ -93,6 +96,7 @@ public class DBUtils {
     }
 
     Employee thePerson = people.get(0);
+    PersonalSettings.currentEmployee = thePerson; //TODO change
 
     return thePerson.getName();
   }
@@ -125,6 +129,7 @@ public class DBUtils {
    * @return String relating to the success of the change
    */
   public static String changePassword(String username, String oldPassword, String newPassword) {
+    newPassword = newPassword.hashCode() + "";
     Session s = SessionManager.getSession();
     List<Employee> employees =
         s.createQuery("from Employee where username = :username")
