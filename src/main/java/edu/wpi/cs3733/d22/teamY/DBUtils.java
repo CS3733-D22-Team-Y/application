@@ -62,6 +62,7 @@ public class DBUtils {
   }
 
   // find MedEquip object
+  @SuppressWarnings("unchecked")
   public static void updateCleanStatus(String equipType, String locationID) {
     Session s = SessionManager.getSession();
     List<MedEquip> equipment =
@@ -83,6 +84,7 @@ public class DBUtils {
   }
 
   // find MedEquip object
+  @SuppressWarnings("unchecked")
   public static String getNameFromID(String id) {
     Session s = SessionManager.getSession();
     List<Employee> people =
@@ -96,7 +98,7 @@ public class DBUtils {
     }
 
     Employee thePerson = people.get(0);
-    PersonalSettings.currentEmployee = thePerson; //TODO change
+    PersonalSettings.currentEmployee = thePerson; // TODO change
 
     return thePerson.getName();
   }
@@ -128,6 +130,7 @@ public class DBUtils {
    * @param newPassword the new password of the employee
    * @return String relating to the success of the change
    */
+  @SuppressWarnings("unchecked")
   public static String changePassword(String username, String oldPassword, String newPassword) {
     newPassword = newPassword.hashCode() + "";
     Session s = SessionManager.getSession();
