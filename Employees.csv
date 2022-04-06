@@ -1,12 +1,12 @@
-﻿idNumber,name,role,access,floor,username,password
-00561,Pamela Saperstein,Neurosurgeon,OPERATING,L1,psaperstein,password
-00043,Leonard Gabriel,Radiologist,RADIOLOGY,2,lgabriel,password
-07715,Truman S. Harry,Nurse,WARD,3,tsharry,password
-89433,Evelyn Pomegranate,Records Clerk,RECORDS,L1,epomegranate,password
-99990,Clark X. Ray,Dietician,GIFTSHOP,2,cxray,password
-00001,Jessie Firedepartment,IT Specialist,BASIC,3,jfiredepartment,password
-00478,Gabriel Leonard,Radiographer,RADIOGRAPHY,L2,gleonard,password
-00666,Denise Renesme-Brie,Pharmacist,PHARMACEUTICALS,1,drenesmebrie,password
-04902,Holly Barry,HR Manager,FULL,1,hbarry,password
-01011,Doc M.D. Medicine,Custodial Worker,BASIC,L2,dmedicine,password
-00000,Admin,Admin,ADMIN,1,admin,admin
+﻿idNumber,name,role,access,floor,username,password,accesslevel
+00561,Pamela Saperstein,Neurosurgeon,OPERATING,L1,psaperstein,password,1
+00043,Leonard Gabriel,Radiologist,RADIOLOGY,2,lgabriel,password,1
+07715,Truman S. Harry,Nurse,WARD,3,tsharry,password,1
+89433,Evelyn Pomegranate,Records Clerk,RECORDS,L1,epomegranate,password,1
+99990,Clark X. Ray,Dietician,GIFTSHOP,2,cxray,password,1
+00001,Jessie Firedepartment,IT Specialist,BASIC,3,jfiredepartment,password,1
+00478,Gabriel Leonard,Radiographer,RADIOGRAPHY,L2,gleonard,password,1
+00666,Denise Renesme-Brie,Pharmacist,PHARMACEUTICALS,1,drenesmebrie,password,1
+04902,Holly Barry,HR Manager,FULL,1,hbarry,password,1
+01011,Doc M.D. Medicine,Custodial Worker,BASIC,L2,dmedicine,password,1
+00000,Admin,Admin,ADMIN,1,admin,admin,5

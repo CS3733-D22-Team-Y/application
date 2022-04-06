@@ -79,21 +79,18 @@ public class DBManager {
     }
   }
 
-  /**
-   * Refresh Location Table when Called.
-   * Returns nothing
-   */
+  /** Refresh Location Table when Called. Returns nothing */
   public static void refreshLocationsFromCSV() {
     List<StringArrayConv> list = DBManager.getAll(EntryType.LOCATION.getEntryClass());
-    //Check if null
-    if(list == null){
+    // Check if null
+    if (list == null) {
       return;
     }
-    //Delete All from Location List
+    // Delete All from Location List
     for (StringArrayConv o : list) {
       delete(o);
     }
-    //Reinitialize
+    // Reinitialize
     CSVBackup.loadFromCSV(EntryType.LOCATION);
   }
 
