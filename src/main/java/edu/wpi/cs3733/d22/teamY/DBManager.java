@@ -84,7 +84,6 @@ public class DBManager {
    * Returns nothing
    */
   public static void refreshLocationsFromCSV() {
-    Session s = SessionManager.getSession();
     List<StringArrayConv> list = DBManager.getAll(EntryType.LOCATION.getEntryClass());
 
     //Check if null
