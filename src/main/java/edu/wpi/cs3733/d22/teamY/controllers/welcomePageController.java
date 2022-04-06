@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import java.io.IOException;
 import javafx.animation.FadeTransition;
@@ -10,6 +11,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
@@ -20,11 +23,18 @@ public class welcomePageController {
   @FXML private Pane loginPane;
   @FXML private Pane failedLoginPane;
   @FXML private Label attemptsRemaining;
+  @FXML private Label Welcome;
+  @FXML Pane loading;
 
   private boolean lockOut = false;
 
   int maxAttempts = 5;
   int attCount = 0;
+
+  void initialize() throws IOException {
+    loginPane.setVisible(true);
+    loading.setVisible(false);
+  }
 
   @FXML
   void mainPage() throws IOException {
@@ -39,7 +49,7 @@ public class welcomePageController {
   @FXML
   void loginToMainPage() throws IOException, InterruptedException {
     if (DBUtils.isValidLogin(username.getText(), password.getText()) && !lockOut) {
-      mainPage();
+      loginAnimation();
     } else {
       failedLoginPane.setOpacity(0.0);
       failedLoginPane.setVisible(true);
@@ -64,5 +74,31 @@ public class welcomePageController {
       tl.play();
       attCount++;
     }
+  }
+
+  @FXML
+  void loginAnimation() throws IOException {
+    Image loadingGif =
+        new Image(
+            App.class.getResource("views/images/loading.gif").toString(), 959, 601, false, false);
+    ImageView ugh = new ImageView(loadingGif);
+    loading.getChildren().add(ugh);
+    Timeline loginTimeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(0),
+                (e) -> Welcome.setText("Welcome, " + DBUtils.getNameFromID(username.getText()))),
+            new KeyFrame(Duration.seconds(0.01), (e) -> loginPane.setVisible(false)),
+            new KeyFrame(Duration.seconds(0.02), (e) -> loading.setVisible(true)),
+            new KeyFrame(
+                Duration.seconds(3),
+                (e) -> {
+                  try {
+                    mainPage();
+                  } catch (IOException ex) {
+                    ex.printStackTrace();
+                  }
+                }));
+    loginTimeline.play();
   }
 }

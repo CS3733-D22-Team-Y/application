@@ -60,6 +60,11 @@
             </LinearGradient>
          </fill>
       </Rectangle>
+      <Label fx:id="Welcome" layoutX="21.0" layoutY="13.0" text="Welcome" textFill="WHITE">
+         <font>
+            <Font name="Microsoft Tai Le Bold" size="52.0" />
+         </font>
+      </Label>
       <JFXButton layoutX="974.0" layoutY="7.0" onAction="#killApplication" text="Exit" textFill="WHITE">
          <font>
             <Font name="Microsoft Tai Le Bold" size="36.0" />
@@ -124,5 +129,6 @@
             <Font name="Microsoft Tai Le Bold" size="28.0" />
          </font>
       </Text>
+      <Pane fx:id="loading" layoutX="69.0" layoutY="49.0" prefHeight="601.0" prefWidth="959.0" visible="false" />
    </children>
 </AnchorPane>
