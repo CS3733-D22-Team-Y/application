@@ -9,8 +9,6 @@ public class Main {
       CSVBackup.loadFromCSV(e);
     }
 
-    System.out.println(DBUtils.getNameFromID("00043"));
-
     App.launch(App.class, args);
 
     // Backup all tables to CSV on shutdown
