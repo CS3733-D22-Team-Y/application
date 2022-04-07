@@ -23,13 +23,17 @@ public class SessionManager {
   /**
    * Changes Type of Derby Server
    *
-   * @param type 0 For Embedded, 1 for Client-Server
+   * @param type false For Embedded, true for Client-Server
    */
-  public static void switchType(int type) {
-    if (type == 0) {
+  public static void switchType(boolean type) {
+    if (type == false) {
+      System.out.println("Switching to Embedded...");
+      sf.close();
       sf = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
     }
-    if (type == 1) {
+    if (type == true) {
+      System.out.println("Switching to Client-Server...");
+      sf.close();
       sf = new Configuration().configure("hibernate_server.cfg.xml").buildSessionFactory();
     }
   }

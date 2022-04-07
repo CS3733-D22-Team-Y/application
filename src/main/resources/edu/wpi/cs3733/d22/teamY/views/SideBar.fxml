@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -137,5 +138,6 @@
             </Label>
          </children>
       </AnchorPane>
+      <JFXToggleButton fx:id="dbToggle" layoutX="133.0" layoutY="669.0" onAction="#dbSwitcherToggle" size="5.0" />
    </children>
 </AnchorPane>
