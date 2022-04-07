@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import kong.unirest.Unirest;
 
 public class WelcomePageController {
 
@@ -100,5 +101,15 @@ public class WelcomePageController {
                   }
                 }));
     loginTimeline.play();
+  }
+
+  public static void test() {
+    String keycloakConfig = null;
+    keycloakConfig =
+        Unirest.get(
+                "https://api.yubico.com/wsapi/2.0/verify?otp=cccccbbhdcgdbibickrfdbdlljdvteekcghjcrbucbhv&id=73695&nonce=7389ksjdismytiokblsuet")
+            .header("status", "application/json")
+            .toString();
+    System.out.println(keycloakConfig);
   }
 }

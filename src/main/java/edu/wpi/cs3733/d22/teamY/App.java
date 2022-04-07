@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import edu.wpi.cs3733.d22.teamY.controllers.WelcomePageController;
 import java.io.IOException;
 import java.util.Objects;
 import javafx.application.Application;
@@ -39,6 +40,7 @@ public class App extends Application {
     Scene scene = new Scene(root);
     primaryStage.setScene(scene);
     primaryStage.show();
+    WelcomePageController.test();
   }
 
   @Override
