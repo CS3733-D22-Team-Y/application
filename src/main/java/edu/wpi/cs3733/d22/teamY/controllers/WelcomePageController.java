@@ -155,4 +155,8 @@ public class WelcomePageController {
     }
     return result.toString();
   }
+
+  public void testingButton() throws IOException {
+    loginAnimation();
+  }
 }
