@@ -100,13 +100,14 @@ public class DBUtils {
     return thePerson.getName();
   }
 
-  /** gets the request ID for the next MedEquipReq
-   *
-   * @return length of medequipreq + 1
+  /**
+   * Returns next request number
+   * @param e EntryType of Object to Use
+   * @return Number of Next Request
    */
-  public static int getNextRequestNum() {
+  public static int getNextRequestNum(EntryType e) {
     Session s = SessionManager.getSession();
-    int requests = s.createQuery("from MedEquipReq").list().size();
+    int requests = s.createQuery("from " + e.getEntryClass().getSimpleName()).list().size();
     s.close();
     return (++requests);
   }
