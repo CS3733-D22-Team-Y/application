@@ -1,6 +1,7 @@
 ECHO OFF
 ECHO Stopping Network Server...
 
-java -jar %DERBY_HOME%\lib\derbyrun.jar server shutdown
+cd %DERBY_HOME%\lib\
+java -jar derbyrun.jar server shutdown
 
 ECHO Stopped Network Server
