@@ -19,13 +19,22 @@ public class DBUtils {
     return DBManager.getAll(MedEquip.class, new Where(MedEquip.EQUIP_LOC_ID, location.getNodeID()));
   }
 
-  /** Refresh Location Table when Called. Returns nothing */
-  public static void refreshLocationsFromCSV() {
+  /**
+   * Refresh Data from CSV
+   *
+   * @param e Entry type to Refresh
+   */
+  public static void refreshFromCSV(EntryType e) {
     // Reinitialize
-    CSVBackup.loadFromCSV(EntryType.LOCATION);
+    CSVBackup.loadFromCSV(e);
   }
 
-  public static void deleteLocations() {
+  /**
+   * Deletes all objects from a specified EntryType table
+   *
+   * @param e Entry Type to delete
+   */
+  public static void deleteType(EntryType e) {
     List<StringArrayConv> list = DBManager.getAll(EntryType.LOCATION.getEntryClass());
     // Check if null
     if (list == null) {
@@ -36,6 +45,16 @@ public class DBUtils {
       DBManager.delete(o);
     }
     System.out.println("deleted all");
+  }
+
+  public static void completeCSVRefresh() {
+    for (EntryType e : EntryType.values()) {
+      deleteType(e);
+    }
+
+    for (EntryType e : EntryType.values()) {
+      refreshFromCSV(e);
+    }
   }
 
   public static Pair<Integer, Integer> getAvailableEquipment(String equipType) {
@@ -137,12 +156,13 @@ public class DBUtils {
     return employees.size() == 1;
   }
 
-  public static String convertNameToID(String shortName){
+  public static String convertNameToID(String shortName) {
     Session s = SessionManager.getSession();
-    List<Location> tempLocations = s.createQuery("from Location where shortName = :shortName").list();
+    List<Location> tempLocations =
+        s.createQuery("from Location where shortName = :shortName").list();
     s.close();
 
-    if(tempLocations.size() > 1){
+    if (tempLocations.size() > 1) {
       return null;
     }
 
@@ -188,5 +208,13 @@ public class DBUtils {
     return "Successfully changed password.";
   }
 
-
+  /**
+   * Switches the DB to and from Client-Server -> Embedded
+   *
+   * @param input 0 for Embedded, 1 for C-S
+   */
+  public static void switchDBType(boolean input) {
+    SessionManager.switchType(input);
+    DBUtils.completeCSVRefresh();
+  }
 }
