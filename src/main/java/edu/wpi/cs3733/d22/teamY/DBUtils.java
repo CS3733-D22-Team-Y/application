@@ -1,10 +1,7 @@
 package edu.wpi.cs3733.d22.teamY;
 
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
-import edu.wpi.cs3733.d22.teamY.model.Employee;
-import edu.wpi.cs3733.d22.teamY.model.Location;
-import edu.wpi.cs3733.d22.teamY.model.MedEquip;
-import edu.wpi.cs3733.d22.teamY.model.StringArrayConv;
+import edu.wpi.cs3733.d22.teamY.model.*;
 import java.util.List;
 import javafx.util.Pair;
 import org.hibernate.Session;
@@ -101,6 +98,17 @@ public class DBUtils {
     PersonalSettings.currentEmployee = thePerson; // TODO change
 
     return thePerson.getName();
+  }
+
+  /** gets the request ID for the next MedEquipReq
+   *
+   * @return length of medequipreq + 1
+   */
+  public static int getNextRequestNum() {
+    Session s = SessionManager.getSession();
+    int requests = s.createQuery("from MedEquipReq").list().size();
+    s.close();
+    return (++requests);
   }
 
   /**
