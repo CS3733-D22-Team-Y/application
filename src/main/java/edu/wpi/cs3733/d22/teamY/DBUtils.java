@@ -102,14 +102,19 @@ public class DBUtils {
 
   /**
    * Returns next request number
+   *
    * @param e EntryType of Object to Use
    * @return Number of Next Request
    */
   public static int getNextRequestNum(EntryType e) {
     Session s = SessionManager.getSession();
-    int requests = s.createQuery("from " + e.getEntryClass().getSimpleName()).list().size();
+    int count =
+        ((Long)
+                s.createQuery("select count(*) from " + e.getEntryClass().getSimpleName())
+                    .uniqueResult())
+            .intValue();
     s.close();
-    return (++requests);
+    return (++count);
   }
 
   /**
