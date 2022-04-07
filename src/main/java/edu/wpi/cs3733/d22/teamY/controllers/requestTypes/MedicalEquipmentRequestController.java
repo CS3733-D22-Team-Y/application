@@ -41,19 +41,23 @@ public class MedicalEquipmentRequestController {
   @FXML
   private void initialize() {
     bedRadioButton.setText(
-        DBUtils.getAvailableEquipment("BED").getKey().toString()
+        "Beds: "
+            + DBUtils.getAvailableEquipment("BED").getKey().toString()
             + " available out of "
             + DBUtils.getAvailableEquipment("BED").getValue().toString());
     xrayRadioButton.setText(
-        DBUtils.getAvailableEquipment("XRAY").getKey().toString()
+        "X-ray: "
+            + DBUtils.getAvailableEquipment("XRAY").getKey().toString()
             + " available out of "
             + DBUtils.getAvailableEquipment("XRAY").getValue().toString());
     infusionPumpRadioButton.setText(
-        DBUtils.getAvailableEquipment("PUMP").getKey().toString()
+        "Pumps: "
+            + DBUtils.getAvailableEquipment("PUMP").getKey().toString()
             + " available out of "
             + DBUtils.getAvailableEquipment("PUMP").getValue().toString());
     reclinerRadioButton.setText(
-        DBUtils.getAvailableEquipment("RECLINER").getKey().toString()
+        "Recliners: "
+            + DBUtils.getAvailableEquipment("RECLINER").getKey().toString()
             + " available out of "
             + DBUtils.getAvailableEquipment("RECLINER").getValue().toString());
   }
