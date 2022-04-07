@@ -20,6 +20,7 @@ public class Employee implements StringArrayConv {
   private String username;
   private String password;
   private int accessLevel;
+  private String authString;
 
   public static final String ID_NUMBER = "IDNUMBER";
   public static final String ACCESS = "ACCESS";
@@ -29,6 +30,7 @@ public class Employee implements StringArrayConv {
   public static final String USERNAME = "USERNAME";
   public static final String PASSWORD = "PASSWORD";
   public static final String ACCESS_LEVEL = "ACCESSLEVEL";
+  public static final String AUTH_STRING = "AUTHSTRING";
 
   private void init(
       String id,
@@ -38,7 +40,8 @@ public class Employee implements StringArrayConv {
       String flr,
       String usr,
       String pwd,
-      int accessLevel) {
+      int accessLevel,
+      String authString) {
     IDNumber = id;
     name = nm;
     role = rl;
@@ -47,6 +50,7 @@ public class Employee implements StringArrayConv {
     username = usr;
     password = pwd;
     this.accessLevel = accessLevel;
+    this.authString = authString;
   }
 
   public Employee() {}
@@ -59,18 +63,36 @@ public class Employee implements StringArrayConv {
       String flr,
       String usr,
       String pwd,
-      int accessLevel) {
-    init(id, nm, rl, acc, flr, usr, pwd, accessLevel);
+      int accessLevel,
+      String authString) {
+    init(id, nm, rl, acc, flr, usr, pwd, accessLevel, authString);
   }
 
   public String[] toStringArray() {
     return new String[] {
-      IDNumber, name, role, access, floor, username, password, Integer.toString(accessLevel)
+      IDNumber,
+      name,
+      role,
+      access,
+      floor,
+      username,
+      password,
+      Integer.toString(accessLevel),
+      authString
     };
   }
 
   public void fromStringArray(String[] args) {
-    init(args[0], args[1], args[2], args[3], args[4], args[5], args[6], Integer.parseInt(args[7]));
+    init(
+        args[0],
+        args[1],
+        args[2],
+        args[3],
+        args[4],
+        args[5],
+        args[6],
+        Integer.parseInt(args[7]),
+        args[8]);
   }
 
   // region Getters/Setters
@@ -128,6 +150,14 @@ public class Employee implements StringArrayConv {
 
   public void setAccessLevel(int newAccessLevel) {
     accessLevel = newAccessLevel;
+  }
+
+  public String getAuthString() {
+    return authString;
+  }
+
+  public void setAuthString(String authString) {
+    this.authString = authString;
   }
 
   public static boolean isValidNewPassword(String password) {

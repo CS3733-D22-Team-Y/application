@@ -17,7 +17,7 @@ public class PersonalSettings {
   @FXML private JFXHamburger sidebarHamburger;
   AnchorPane sidebar = null;
   public static Employee currentEmployee =
-      new Employee("-1", "Guest", "Guest", "Guest", "Guest", "Guest", "Guest", 0);
+      new Employee("-1", "Guest", "Guest", "Guest", "Guest", "Guest", "Guest", 0, "none");
 
   @FXML
   void initialize() throws IOException {

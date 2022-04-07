@@ -51,7 +51,7 @@ public class WelcomePageController {
   void loginToMainPage() throws IOException, InterruptedException {
     if (DBUtils.isValidLogin(username.getText(), password.getText())
         && !lockOut
-        && Auth.doPushBulletAuth()) {
+        && Auth.doAuth(username.getText())) {
       loginAnimation();
     } else {
       failedLoginPane.setOpacity(0.0);
