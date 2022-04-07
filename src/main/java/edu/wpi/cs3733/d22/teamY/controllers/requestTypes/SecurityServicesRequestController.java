@@ -70,7 +70,8 @@ public class SecurityServicesRequestController {
       String requestTypeSelected,
       String requestPriority) {
 
-    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.MEAL_REQUEST));
+    String nextRequest =
+        String.valueOf(DBUtils.getNextRequestNum(EntryType.SECURITY_SERVICE_REQUEST));
     DBManager.save(
         new SecurityServiceRequest(
             nextRequest,

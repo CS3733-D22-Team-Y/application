@@ -55,7 +55,7 @@ public class LabRequestController {
       String requestStatus,
       String additionalNotes,
       String resultTypeSelected) {
-    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.FLORAL_REQUEST));
+    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.LAB_REQUEST));
     DBManager.save(
         new LabRequest(
             nextRequest,

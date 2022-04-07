@@ -3,6 +3,7 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 import com.jfoenix.controls.JFXRadioButton;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import java.io.IOException;
@@ -80,7 +81,17 @@ public class MedicalEquipmentRequestController {
       String requestStatus,
       String additionalNotes,
       String equipmentTypeSelected) {
-    DBManager.save(new MedEquipReq(patientName, equipmentTypeSelected, roomID));
+
+    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.MED_EQUIP_REQ));
+    DBManager.save(
+        new MedEquipReq(
+            nextRequest,
+            roomID,
+            patientName,
+            assignedNurse,
+            requestStatus,
+            additionalNotes,
+            equipmentTypeSelected));
     DBUtils.updateCleanStatus(equipmentTypeSelected, roomID);
   }
 

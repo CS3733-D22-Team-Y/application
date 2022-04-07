@@ -56,7 +56,7 @@ public class LaundryRequestController {
       String additionalNotes,
       String laundryTypeSelected) {
 
-    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.FLORAL_REQUEST));
+    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.LAUNDRY_REQUEST));
     DBManager.save(
         new LaundryRequest(
             nextRequest,

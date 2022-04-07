@@ -88,4 +88,84 @@ public class MealRequest implements StringArrayConv {
   public void fromStringArray(String[] args) {
     init(args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8], args[9]);
   }
+
+  public String getRequestNum() {
+    return requestNum;
+  }
+
+  public void setRequestNum(String requestNum) {
+    this.requestNum = requestNum;
+  }
+
+  public String getRoomID() {
+    return roomID;
+  }
+
+  public void setRoomID(String roomID) {
+    this.roomID = roomID;
+  }
+
+  public String getPatientName() {
+    return patientName;
+  }
+
+  public void setPatientName(String patientName) {
+    this.patientName = patientName;
+  }
+
+  public String getAssignedNurse() {
+    return assignedNurse;
+  }
+
+  public void setAssignedNurse(String assignedNurse) {
+    this.assignedNurse = assignedNurse;
+  }
+
+  public String getRequestStatus() {
+    return requestStatus;
+  }
+
+  public void setRequestStatus(String requestStatus) {
+    this.requestStatus = requestStatus;
+  }
+
+  public String getAdditionalNotes() {
+    return additionalNotes;
+  }
+
+  public void setAdditionalNotes(String additionalNotes) {
+    this.additionalNotes = additionalNotes;
+  }
+
+  public String getMainChoice() {
+    return mainChoice;
+  }
+
+  public void setMainChoice(String mainChoice) {
+    this.mainChoice = mainChoice;
+  }
+
+  public String getSideChoice() {
+    return sideChoice;
+  }
+
+  public void setSideChoice(String sideChoice) {
+    this.sideChoice = sideChoice;
+  }
+
+  public String getAllergies() {
+    return allergies;
+  }
+
+  public void setAllergies(String allergies) {
+    this.allergies = allergies;
+  }
+
+  public String getSpecialInstructions() {
+    return specialInstructions;
+  }
+
+  public void setSpecialInstructions(String specialInstructions) {
+    this.specialInstructions = specialInstructions;
+  }
 }
