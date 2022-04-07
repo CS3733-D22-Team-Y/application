@@ -1,7 +1,3 @@
 .root{
-    -fx-background-color: black;
-}
-
-.button{
-    -fx-background-color: lightBlue;
+    -fx-background-color: #444;
 }
