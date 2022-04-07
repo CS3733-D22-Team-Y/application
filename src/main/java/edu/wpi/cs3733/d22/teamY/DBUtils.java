@@ -211,7 +211,7 @@ public class DBUtils {
   /**
    * Switches the DB to and from Client-Server -> Embedded
    *
-   * @param input 0 for Embedded, 1 for C-S
+   * @param input false for Embedded, true for C-S
    */
   public static void switchDBType(boolean input) {
     SessionManager.switchType(input);
