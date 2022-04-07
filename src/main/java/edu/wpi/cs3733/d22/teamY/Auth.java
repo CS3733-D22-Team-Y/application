@@ -1,5 +1,7 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
 import edu.wpi.cs3733.d22.teamY.model.Employee;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -10,8 +12,7 @@ import java.util.Random;
 import javafx.scene.control.TextInputDialog;
 
 /**
- * This class is used to authenticate users.
- * hopefully this will be replaced with something better?
+ * This class is used to authenticate users. hopefully this will be replaced with something better?
  */
 public class Auth {
 
@@ -38,10 +39,19 @@ public class Auth {
         return true;
       case "pushbullet":
         return doPushBulletAuth(auth[1]);
+      case "twilio":
+        return doTwilioAuth(auth[1]);
       default: // if unrecoginzed auth type return false
         System.out.println("Unrecognized auth type: " + authType);
         return false;
     }
+  }
+
+  public static boolean checkPopUp(String code) {
+    TextInputDialog nodeDialog = new TextInputDialog();
+    nodeDialog.setHeaderText("Enter Auth Code");
+    Optional<String> result = nodeDialog.showAndWait();
+    return result.filter(code::equals).isPresent();
   }
 
   /**
@@ -66,16 +76,24 @@ public class Auth {
       connection.setRequestProperty("accept", "application/json");
 
       InputStream responseStream = connection.getInputStream();
-
-      TextInputDialog nodeDialog = new TextInputDialog();
-      nodeDialog.setHeaderText("Enter Auth Code");
-      Optional<String> result = nodeDialog.showAndWait();
-      if (result.isPresent()) {
-        return code.equals(result.get());
-      }
+      return checkPopUp(code);
     } catch (Exception e) {
-      System.out.println("Error: " + e);
+      System.out.println("Error: " + e.getMessage());
     }
     return false;
+  }
+
+  // TODO move api key out of plain text
+  // maybe move on a worker server
+  public static boolean doTwilioAuth(String number) {
+    String code = String.format("%06d", new Random().nextInt(999999));
+    Twilio.init("AC3a7833108f9d83910c973e3e6bf5cf85", "a7ffa173d7aabf10f8706747e18b44c5");
+    Message message =
+        Message.creator(
+                new com.twilio.type.PhoneNumber(number),
+                new com.twilio.type.PhoneNumber("+17579822979"),
+                "Auth Code: \n" + code)
+            .create();
+    return checkPopUp(code);
   }
 }
