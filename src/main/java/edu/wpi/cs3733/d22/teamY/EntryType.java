@@ -15,11 +15,20 @@ public enum EntryType {
 
   MED_EQUIP(4, "MedEquip", "medEquipment_export", MedEquip.class),
 
-  MED_EQUIP_REQ(3, "MedEquipReq", "medEquipRequests_export", MedEquipReq.class),
+  MED_EQUIP_REQ(7, "MedEquipReq", "medEquipRequests_export", MedEquipReq.class),
 
   LAB_REQUEST(7, "LabRequests", "labRequests_export", LabRequest.class),
 
   EMPLOYEE(8, "Employees", "employees_export", Employee.class),
+
+  FLORAL_REQUEST(7, "FloralRequests", "floralRequests_export", FloralRequest.class),
+
+  LAUNDRY_REQUEST(7, "LaundryRequests", "laundryRequests_export", FloralRequest.class),
+
+  MEAL_REQUEST(10, "MealRequests", "mealRequests_export", MealRequest.class),
+
+  SECURITY_SERVICE_REQUEST(
+      8, "SecurityServiceRequests", "securityServiceRequests_export", SecurityServiceRequest.class),
 
 // region Enum Data / Methods
 /* Enum specification begins below... */ ;
