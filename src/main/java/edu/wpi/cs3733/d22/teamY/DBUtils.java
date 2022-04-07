@@ -136,6 +136,18 @@ public class DBUtils {
     s.close();
     return employees.size() == 1;
   }
+
+  public static String convertNameToID(String shortName){
+    Session s = SessionManager.getSession();
+    List<Location> tempLocations = s.createQuery("from Location where shortName = :shortName").list();
+    s.close();
+
+    if(tempLocations.size() > 1){
+      return null;
+    }
+
+    return (tempLocations.get(0).getNodeID());
+  }
   /**
    * Changes an employee's password.
    *
@@ -175,4 +187,6 @@ public class DBUtils {
     DBManager.update(employee);
     return "Successfully changed password.";
   }
+
+
 }
