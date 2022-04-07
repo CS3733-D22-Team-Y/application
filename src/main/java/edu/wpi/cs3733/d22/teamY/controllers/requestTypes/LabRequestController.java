@@ -1,7 +1,11 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXRadioButton;
+import edu.wpi.cs3733.d22.teamY.DBManager;
+import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
+import edu.wpi.cs3733.d22.teamY.model.LabRequest;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -51,7 +55,16 @@ public class LabRequestController {
       String requestStatus,
       String additionalNotes,
       String resultTypeSelected) {
-    // Code to add the fields to the database goes here.
+    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.FLORAL_REQUEST));
+    DBManager.save(
+        new LabRequest(
+            nextRequest,
+            roomID,
+            patientName,
+            assignedNurse,
+            requestStatus,
+            additionalNotes,
+            resultTypeSelected));
   }
 
   // Called when the submit button is pressed.

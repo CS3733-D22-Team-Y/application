@@ -1,7 +1,11 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXRadioButton;
+import edu.wpi.cs3733.d22.teamY.DBManager;
+import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
+import edu.wpi.cs3733.d22.teamY.model.SecurityServiceRequest;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,6 +49,7 @@ public class SecurityServicesRequestController {
   public SecurityServicesRequestController() throws IOException {}
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
+
   /**
    * Submits a service request.
    *
@@ -64,7 +69,18 @@ public class SecurityServicesRequestController {
       String additionalNotes,
       String requestTypeSelected,
       String requestPriority) {
-    // Code to add the fields to the database goes here.
+
+    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.MEAL_REQUEST));
+    DBManager.save(
+        new SecurityServiceRequest(
+            nextRequest,
+            roomID,
+            patientName,
+            assignedNurse,
+            requestStatus,
+            additionalNotes,
+            requestTypeSelected,
+            requestPriority));
   }
 
   // Called when the submit button is pressed.

@@ -21,6 +21,14 @@ public enum EntryType {
 
   EMPLOYEE(8, "Employees", "employees_export", Employee.class),
 
+  FLORAL_REQUEST(7, "FloralRequests", "floralRequests_export", FloralRequest.class),
+
+  LAUNDRY_REQUEST(7, "LaundryRequests", "laundryRequests_export", FloralRequest.class),
+
+  MEAL_REQUEST(10, "MealRequests", "mealRequests_export", MealRequest.class),
+
+  SECURITY_SERVICE_REQUEST(8, "SecurityServiceRequests", "securityServiceRequests_export", SecurityServiceRequest.class),
+
 // region Enum Data / Methods
 /* Enum specification begins below... */ ;
 

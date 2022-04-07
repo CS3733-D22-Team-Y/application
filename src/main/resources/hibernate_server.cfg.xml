@@ -3,6 +3,7 @@
     "-//Hibernate/Hibernate Configuration DTD//EN"
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
+<!--suppress HibernateConfigDomFacetInspection -->
 <hibernate-configuration>
 
   <session-factory>
@@ -25,6 +26,10 @@
       <mapping class="edu.wpi.cs3733.d22.teamY.model.MedEquipReq" />
       <mapping class="edu.wpi.cs3733.d22.teamY.model.LabRequest" />
       <mapping class="edu.wpi.cs3733.d22.teamY.model.Employee" />
+      <mapping class="edu.wpi.cs3733.d22.teamY.model.FloralRequest" />
+      <mapping class="edu.wpi.cs3733.d22.teamY.model.LaundryRequest" />
+      <mapping class="edu.wpi.cs3733.d22.teamY.model.MealRequest" />
+      <mapping class="edu.wpi.cs3733.d22.teamY.model.SecurityServiceRequest" />
 
   </session-factory>
 </hibernate-configuration>
