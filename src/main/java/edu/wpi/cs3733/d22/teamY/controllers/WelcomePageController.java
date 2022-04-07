@@ -1,8 +1,14 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import static org.apache.commons.lang3.RandomStringUtils.*;
+
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
+import java.io.*;
 import java.io.IOException;
+import java.net.*;
+import java.util.Locale;
+import java.util.UUID;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -15,7 +21,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
-import kong.unirest.Unirest;
 
 public class WelcomePageController {
 
@@ -26,6 +31,8 @@ public class WelcomePageController {
   @FXML private Label attemptsRemaining;
   @FXML private Label Welcome;
   @FXML Pane loading;
+  @FXML Pane yubikeyPane;
+  @FXML TextField yubikeyEntry;
 
   private boolean lockOut = false;
 
@@ -35,6 +42,7 @@ public class WelcomePageController {
   void initialize() throws IOException {
     loginPane.setVisible(true);
     loading.setVisible(false);
+    yubikeyPane.setVisible(false);
   }
 
   @FXML
@@ -50,7 +58,7 @@ public class WelcomePageController {
   @FXML
   void loginToMainPage() throws IOException, InterruptedException {
     if (DBUtils.isValidLogin(username.getText(), password.getText()) && !lockOut) {
-      loginAnimation();
+      yubikeyPrompt();
     } else {
       failedLoginPane.setOpacity(0.0);
       failedLoginPane.setVisible(true);
@@ -74,6 +82,22 @@ public class WelcomePageController {
               new KeyFrame(Duration.seconds(5), (e) -> ft2.play()));
       tl.play();
       attCount++;
+    }
+  }
+
+  void yubikeyPrompt() {
+    loginPane.setVisible(false);
+    yubikeyPane.setVisible(true);
+    yubikeyEntry.requestFocus();
+  }
+
+  @FXML
+  void yubikeyDone() throws Exception {
+    if (vaildYubikey(yubikeyEntry.getText())) {
+      yubikeyPane.setVisible(false);
+      loginAnimation();
+    } else {
+      System.out.println(yubikeyEntry.toString());
     }
   }
 
@@ -103,13 +127,32 @@ public class WelcomePageController {
     loginTimeline.play();
   }
 
-  public static void test() {
-    String keycloakConfig = null;
-    keycloakConfig =
-        Unirest.get(
-                "https://api.yubico.com/wsapi/2.0/verify?otp=cccccbbhdcgdbibickrfdbdlljdvteekcghjcrbucbhv&id=73695&nonce=7389ksjdismytiokblsuet")
-            .header("status", "application/json")
-            .toString();
-    System.out.println(keycloakConfig);
+  public static boolean vaildYubikey(String key) throws Exception {
+    Boolean valid = false;
+    UUID randomUUID = UUID.randomUUID();
+    String query =
+        "https://api.yubico.com/wsapi/2.0/verify?otp="
+            + key
+            + "&id=73695&nonce="
+            + randomAlphabetic(20).toUpperCase(Locale.ROOT);
+    if (getHTML(query).equals("OK")) {
+      return true;
+    }
+    return false;
+  }
+
+  public static String getHTML(String urlToRead) throws Exception {
+    StringBuilder result = new StringBuilder();
+    URL url = new URL(urlToRead);
+    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+    conn.setRequestMethod("GET");
+    try (BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+      for (String line; (line = reader.readLine()) != null; ) {
+        if (line.contains("status")) {
+          result.append(line.replaceAll("status=", ""));
+        }
+      }
+    }
+    return result.toString();
   }
 }

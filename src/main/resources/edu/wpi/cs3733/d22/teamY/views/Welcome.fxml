@@ -95,10 +95,21 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Rectangle>
+      <Pane fx:id="yubikeyPane" layoutX="364.0" layoutY="222.0" visible="false">
+         <children>
+            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="256.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="370.0" />
+            <Label layoutX="48.0" layoutY="98.0" text="Please verify using your Yubikey" textFill="#464646">
+               <font>
+                  <Font name="Microsoft Tai Le Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="yubikeyEntry" layoutX="110.0" layoutY="142.0" onAction="#yubikeyDone" opacity="0.0" />
+         </children>
+      </Pane>
       <Pane fx:id="loginPane" layoutX="364.0" layoutY="222.0">
          <children>
             <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="256.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="370.0" />
-            <TextField fx:id="username" layoutX="67.0" layoutY="43.0" prefHeight="50.0" prefWidth="236.0" promptText="Username">
+            <TextField fx:id="username" layoutX="67.0" layoutY="43.0" onAction="#loginToMainPage" prefHeight="50.0" prefWidth="236.0" promptText="Username">
                <font>
                   <Font size="20.0" />
                </font>
