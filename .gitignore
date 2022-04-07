@@ -21,6 +21,11 @@ medEquipment_export.csv
 medEquipRequests_export.csv
 labRequests_export.csv
 employees_export.csv
+floralRequests_export.csv
+laundryRequests_export.csv
+mealRequests_export.csv
+securityServiceRequests_export.csv
+
 
 #Mac Specific
 .DS_Store
