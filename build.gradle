@@ -59,6 +59,9 @@ dependencies {
 
     implementation 'org.apache.logging.log4j:log4j-core:2.3.2'
     implementation 'com.twilio.sdk:twilio:8.28.0'
+
+
+    implementation 'com.sun.mail:jakarta.mail:1.6.7'
 }
 
 

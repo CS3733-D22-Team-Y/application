@@ -16,6 +16,10 @@ import javafx.scene.control.TextInputDialog;
  */
 public class Auth {
 
+  public static String getCode() {
+    return String.format("%06d", new Random().nextInt(999999));
+  }
+
   public static boolean doAuth(String userName) {
     // get user with userName
     List<Employee> emps =
@@ -41,6 +45,8 @@ public class Auth {
         return doPushBulletAuth(auth[1]);
       case "twilio":
         return doTwilioAuth(auth[1]);
+      case "mail":
+        return doMailAuth(auth[1]);
       default: // if unrecoginzed auth type return false
         System.out.println("Unrecognized auth type: " + authType);
         return false;
@@ -63,7 +69,7 @@ public class Auth {
    */
   public static boolean doPushBulletAuth(String apiKey) {
     try {
-      String code = String.format("%06d", new Random().nextInt(999999));
+      String code = getCode();
       ;
       URL url =
           new URL(
@@ -86,7 +92,7 @@ public class Auth {
   // TODO move api key out of plain text
   // maybe move on a worker server
   public static boolean doTwilioAuth(String number) {
-    String code = String.format("%06d", new Random().nextInt(999999));
+    String code = getCode();
     Twilio.init("AC3a7833108f9d83910c973e3e6bf5cf85", "a7ffa173d7aabf10f8706747e18b44c5");
     Message message =
         Message.creator(
@@ -94,6 +100,15 @@ public class Auth {
                 new com.twilio.type.PhoneNumber("+17579822979"),
                 "Auth Code: \n" + code)
             .create();
+    return checkPopUp(code);
+  }
+
+  public static boolean doMailAuth(String toEmail) {
+    String code = getCode();
+    MailService.sendMessage(
+        toEmail,
+        "Auth Code",
+        "Use the following code to login:\n" + code + "\n\n" + "Thank you, \n" + "Team Y");
     return checkPopUp(code);
   }
 }
