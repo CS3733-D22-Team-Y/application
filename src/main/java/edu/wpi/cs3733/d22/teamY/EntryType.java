@@ -19,7 +19,7 @@ public enum EntryType {
 
   LAB_REQUEST(7, "LabRequests", "labRequests_export", LabRequest.class),
 
-  EMPLOYEE(5, "Employees", "employees_export", Employee.class),
+  EMPLOYEE(8, "Employees", "employees_export", Employee.class),
 
 // region Enum Data / Methods
 /* Enum specification begins below... */ ;

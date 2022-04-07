@@ -50,12 +50,13 @@ public class ActServReqTablePageController {
     medEquipReqTableView.setItems(locationsObservable);
 
     sidebar = SidebarUtil.initializeSidebar(sidebarPane);
+    openSidebarLayout();
   }
 
   // back button
   @FXML
   void mainMenu() throws IOException {
-    SceneLoading.loadScene("views/mainPage.fxml");
+    SceneLoading.loadScene("views/Map.fxml");
   }
 
   // Sidebar
@@ -67,5 +68,37 @@ public class ActServReqTablePageController {
   @FXML
   void closeSidebarLayout() {
     SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
+  }
+
+  public static class ChangeTheme {
+    // Base pane for displaying new scenes
+    @FXML private Pane mapPane;
+    // Sidebar
+    @FXML private Pane sidebarPane;
+    @FXML private JFXButton closeSidebarHiddenButton;
+    @FXML private JFXHamburger sidebarHamburger;
+    AnchorPane sidebar = null;
+
+    @FXML
+    void initialize() throws IOException {
+      sidebar = SidebarUtil.initializeSidebar(sidebarPane);
+      openSidebarLayout();
+    }
+
+    @FXML
+    void mainMenu() throws IOException {
+      SceneLoading.loadScene("views/Map.fxml");
+    }
+
+    // Sidebar
+    @FXML
+    void openSidebarLayout() {
+      SidebarUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
+    }
+
+    @FXML
+    void closeSidebarLayout() {
+      SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
+    }
   }
 }

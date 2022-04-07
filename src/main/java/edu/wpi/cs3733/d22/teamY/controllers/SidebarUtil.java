@@ -19,7 +19,7 @@ public class SidebarUtil {
    * @throws IOException
    */
   protected static AnchorPane initializeSidebar(Pane sidebarPane) throws IOException {
-    Pane paneToLoad = FXMLLoader.load(App.class.getResource("views/sideBar.fxml"));
+    Pane paneToLoad = FXMLLoader.load(App.class.getResource("views/SideBar.fxml"));
     AnchorPane sidebar = (AnchorPane) paneToLoad.lookup("#mainPane");
     sidebarPane.getChildren().clear();
     sidebarPane.getChildren().add(paneToLoad);

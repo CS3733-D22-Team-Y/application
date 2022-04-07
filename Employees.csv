@@ -1,11 +1,16 @@
-﻿idNumber,name,role,access,floor
-00561,Pamela Saperstein,Neurosurgeon,OPERATING,L1
-00043,Leonard Gabriel,Radiologist,RADIOLOGY,2
-07715,Truman S. Harry,Nurse,WARD,3
-89433,Evelyn Pomegranate,Records Clerk,RECORDS,L1
-99990,Clark X. Ray,Dietician,GIFTSHOP,2
-00001,Jessie Firedepartment,IT Specialist,BASIC,3
-00478,Gabriel Leonard,Radiographer,RADIOGRAPHY,L2
-00666,Denise Renesme-Brie,Pharmacist,PHARMACEUTICALS,1
-04902,Holly Barry,HR Manager,FULL,1
-01011,Doc M.D. Medicine,Custodial Worker,BASIC,L2
+﻿idNumber,name,role,access,floor,username,password,accesslevel
+00561,Pamela Saperstein,Neurosurgeon,OPERATING,L1,694575114,1216985755,1
+00043,Leonard Gabriel,Radiologist,RADIOLOGY,2,-960413190,1216985755,1
+07715,Truman S. Harry,Nurse,WARD,3,-1032353919,1216985755,1
+89433,Evelyn Pomegranate,Records Clerk,RECORDS,L1,1185622014,1216985755,1
+99990,Clark X. Ray,Dietician,GIFTSHOP,2,95116181,1216985755,1
+00001,Jessie Firedepartment,IT Specialist,BASIC,3,1692036338,1216985755,1
+00478,Gabriel Leonard,Radiographer,RADIOGRAPHY,L2,-815583244,1216985755,1
+00666,Denise Renesme-Brie,Pharmacist,PHARMACEUTICALS,1,-459366423,1216985755,1
+04902,Holly Barry,HR Manager,FULL,1,-1224027598,1216985755,1
+01011,Doc M.D. Medicine,Custodial Worker,BASIC,L2,-1257524578,1216985755,1
+00000,Admin,Admin,ADMIN,1,92668751,92668751,5
+24350,Ben,ass lead,all,2,97419,97419,5
+07470,Emily,ass lead,all,2,3240,3240,5
+12211,connor,lead man,all,2,94637158,-1223368297,5
+69420,Yoshi,dinosaur,all,2,85614014,1964548561,5
