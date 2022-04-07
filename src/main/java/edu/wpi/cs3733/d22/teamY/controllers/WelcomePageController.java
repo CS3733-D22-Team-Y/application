@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
 import edu.wpi.cs3733.d22.teamY.App;
+import edu.wpi.cs3733.d22.teamY.Auth;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import java.io.IOException;
 import javafx.animation.FadeTransition;
@@ -48,7 +49,9 @@ public class WelcomePageController {
 
   @FXML
   void loginToMainPage() throws IOException, InterruptedException {
-    if (DBUtils.isValidLogin(username.getText(), password.getText()) && !lockOut) {
+    if (DBUtils.isValidLogin(username.getText(), password.getText())
+        && !lockOut
+        && Auth.doPushBulletAuth()) {
       loginAnimation();
     } else {
       failedLoginPane.setOpacity(0.0);
