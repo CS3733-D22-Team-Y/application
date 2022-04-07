@@ -6,7 +6,8 @@ import org.hibernate.cfg.Configuration;
 
 /** This class is used to manage the Hibernate session. */
 public class SessionManager {
-  private static final SessionFactory sf = new Configuration().configure().buildSessionFactory();
+  private static SessionFactory sf =
+      new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 
   private SessionManager() {}
 
@@ -17,5 +18,19 @@ public class SessionManager {
    */
   public static Session getSession() {
     return sf.openSession();
+  }
+
+  /**
+   * Changes Type of Derby Server
+   *
+   * @param type 0 For Embedded, 1 for Client-Server
+   */
+  public static void switchType(int type) {
+    if (type == 0) {
+      sf = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+    }
+    if (type == 1) {
+      sf = new Configuration().configure("hibernate_server.cfg.xml").buildSessionFactory();
+    }
   }
 }

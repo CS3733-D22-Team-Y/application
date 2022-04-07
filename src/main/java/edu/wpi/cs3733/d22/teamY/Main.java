@@ -8,7 +8,7 @@ public class Main {
     for (EntryType e : EntryType.values()) {
       CSVBackup.loadFromCSV(e);
     }
-    
+
     App.launch(App.class, args);
 
     // Backup all tables to CSV on shutdown

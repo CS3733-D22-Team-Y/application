@@ -12,6 +12,7 @@ bin/
 derby.log
 *.log
 /LocationDB
+/Database
 
 #Ignore auto generated export csv's
 locations_export.csv
