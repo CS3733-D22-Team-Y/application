@@ -5,22 +5,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="262.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ConfirmCloseController">
-   <children>
-      <JFXButton layoutX="286.0" layoutY="139.0" onAction="#logOut" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #012d5a;" text="Yes, log me out" textFill="WHITE">
-         <font>
-            <Font name="Microsoft Tai Le Bold" size="16.0" />
-         </font>
-      </JFXButton>
-      <JFXButton fx:id="stayButton" layoutX="46.0" layoutY="139.0" onAction="#stayIn" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #012d5a;" text="No, keep me logged in" textFill="WHITE">
-         <font>
-            <Font name="Microsoft Tai Le Bold" size="16.0" />
-         </font>
-      </JFXButton>
-      <Label layoutX="46.0" layoutY="74.0" text="You are about to log out, are you sure?">
-         <font>
-            <Font name="Microsoft Tai Le Bold" size="24.0" />
-         </font>
-      </Label>
-   </children>
+<AnchorPane prefHeight="262.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ConfirmCloseController">
+    <children>
+        <JFXButton layoutX="286.0" layoutY="139.0" onAction="#logOut" prefHeight="50.0" prefWidth="200.0"
+                   style="-fx-background-color: #012d5a;" text="Yes, log me out" textFill="WHITE">
+            <font>
+                <Font name="Microsoft Tai Le Bold" size="16.0"/>
+            </font>
+        </JFXButton>
+        <JFXButton fx:id="stayButton" layoutX="46.0" layoutY="139.0" onAction="#stayIn" prefHeight="50.0"
+                   prefWidth="200.0" style="-fx-background-color: #012d5a;" text="No, keep me logged in"
+                   textFill="WHITE">
+            <font>
+                <Font name="Microsoft Tai Le Bold" size="16.0"/>
+            </font>
+        </JFXButton>
+        <Label layoutX="46.0" layoutY="74.0" text="You are about to log out, are you sure?">
+            <font>
+                <Font name="Microsoft Tai Le Bold" size="24.0"/>
+            </font>
+        </Label>
+    </children>
 </AnchorPane>
