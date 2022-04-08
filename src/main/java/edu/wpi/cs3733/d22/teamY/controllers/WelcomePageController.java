@@ -24,6 +24,7 @@ import javafx.util.Duration;
 
 public class WelcomePageController {
 
+
   @FXML private TextField username;
   @FXML private PasswordField password;
   @FXML private Pane loginPane;
@@ -35,10 +36,12 @@ public class WelcomePageController {
   @FXML TextField yubikeyEntry;
   @FXML Label yubikeyInstruct;
 
-  private boolean lockOut = false;
 
-  int maxAttempts = 5;
-  int attCount = 0;
+	private boolean lockOut = false;
+
+	int maxAttempts = 5;
+	int attCount = 0;
+
 
   void initialize() throws IOException {
     loginPane.setVisible(true);
@@ -46,15 +49,18 @@ public class WelcomePageController {
     yubikeyPane.setVisible(false);
   }
 
-  @FXML
-  void mainPage() throws IOException {
-    SceneLoading.loadScene("views/Map.fxml");
-  }
 
-  @FXML
-  void killApplication() throws IOException {
-    Platform.exit();
-  }
+
+	@FXML
+	void mainPage() throws IOException {
+		SceneLoading.loadScene("views/Map.fxml");
+	}
+
+	@FXML
+	void killApplication() throws IOException {
+		Platform.exit();
+	}
+
 
   @FXML
   void loginToMainPage() throws IOException, InterruptedException {
@@ -175,4 +181,5 @@ public class WelcomePageController {
   public void testingButton() throws IOException {
     loginAnimation();
   }
+
 }

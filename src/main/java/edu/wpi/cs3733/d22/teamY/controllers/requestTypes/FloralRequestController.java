@@ -15,105 +15,105 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class FloralRequestController {
-  // Radio Buttons
-  @FXML private JFXRadioButton getWellSoonBouquetRadioButton;
-  @FXML private JFXRadioButton newBabyRadioButton;
-  @FXML private JFXRadioButton bouquetOfTheDayRadioButton;
-  // Input fields
-  @FXML private TextField input_RoomID;
-  @FXML private TextField input_PatientName;
-  @FXML private TextField input_AssignedNurse;
-  @FXML private TextField input_RequestStatus;
-  // Additional Notes
-  @FXML private TextArea input_AdditionalNotes;
-  // Error Label
-  @FXML private Label errorLabel;
+	// Radio Buttons
+	@FXML private JFXRadioButton getWellSoonBouquetRadioButton;
+	@FXML private JFXRadioButton newBabyRadioButton;
+	@FXML private JFXRadioButton bouquetOfTheDayRadioButton;
+	// Input fields
+	@FXML private TextField input_RoomID;
+	@FXML private TextField input_PatientName;
+	@FXML private TextField input_AssignedNurse;
+	@FXML private TextField input_RequestStatus;
+	// Additional Notes
+	@FXML private TextArea input_AdditionalNotes;
+	// Error Label
+	@FXML private Label errorLabel;
 
-  private Scene requestMenu = null;
+	private Scene requestMenu = null;
 
-  // Bouquet types text. These should be changed depending on what the names in the database are.
-  private final String getWellSoonBouquetText = "getWellSoon";
-  private final String newBabyBouquetText = "newBaby";
-  private final String bouquetOfTheDayText = "bouquetOfDay";
+	// Bouquet types text. These should be changed depending on what the names in the database are.
+	private final String getWellSoonBouquetText = "getWellSoon";
+	private final String newBabyBouquetText = "newBaby";
+	private final String bouquetOfTheDayText = "bouquetOfDay";
 
-  public FloralRequestController() {}
+	public FloralRequestController() {}
 
-  // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
-  /**
-   * Submits a service request.
-   *
-   * @param roomID The room ID.
-   * @param patientName The patient name.
-   * @param assignedNurse The assigned nurse.
-   * @param requestStatus The request status.
-   * @param additionalNotes Any additional notes.
-   * @param bouquetTypeSelected The type of bouquet selected.
-   */
-  private void submitRequest(
-      String roomID,
-      String patientName,
-      String assignedNurse,
-      String requestStatus,
-      String additionalNotes,
-      String bouquetTypeSelected) {
-    // Get request Num
-    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.FLORAL_REQUEST));
-    DBManager.save(
-        new FloralRequest(
-            nextRequest,
-            roomID,
-            patientName,
-            assignedNurse,
-            requestStatus,
-            additionalNotes,
-            bouquetTypeSelected));
-  }
+	// BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
+	/**
+	* Submits a service request.
+	*
+	* @param roomID The room ID.
+	* @param patientName The patient name.
+	* @param assignedNurse The assigned nurse.
+	* @param requestStatus The request status.
+	* @param additionalNotes Any additional notes.
+	* @param bouquetTypeSelected The type of bouquet selected.
+	*/
+	private void submitRequest(
+			String roomID,
+			String patientName,
+			String assignedNurse,
+			String requestStatus,
+			String additionalNotes,
+			String bouquetTypeSelected) {
+		// Get request Num
+		String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.FLORAL_REQUEST));
+		DBManager.save(
+				new FloralRequest(
+						nextRequest,
+						roomID,
+						patientName,
+						assignedNurse,
+						requestStatus,
+						additionalNotes,
+						bouquetTypeSelected));
+	}
 
-  @FXML
-  void backToRequestMenu(ActionEvent event) throws IOException {
-    SceneLoading.loadScene("views/RequestMenu.fxml");
-    resetAllFields();
-  }
+	@FXML
+	void backToRequestMenu(ActionEvent event) throws IOException {
+		SceneLoading.loadScene("views/RequestMenu.fxml");
+		resetAllFields();
+	}
 
-  // Called when the submit button is pressed.
-  @FXML
-  void submitButton() {
-    // Checks if a bouquet choice has been made
-    if (RequestControllerUtil.isRadioButtonSelected(
-        getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton)) {
-      submitRequest(
-          input_RoomID.getText(),
-          input_PatientName.getText(),
-          input_AssignedNurse.getText(),
-          input_RequestStatus.getText(),
-          input_AdditionalNotes.getText(),
-          getBouquetType());
-      RequestControllerUtil.resetLabels(errorLabel);
-    } else {
-      errorLabel.setText("Please select a bouquet option.");
-    }
-  }
+	// Called when the submit button is pressed.
+	@FXML
+	void submitButton() {
+		// Checks if a bouquet choice has been made
+		if (RequestControllerUtil.isRadioButtonSelected(
+				getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton)) {
+			submitRequest(
+					input_RoomID.getText(),
+					input_PatientName.getText(),
+					input_AssignedNurse.getText(),
+					input_RequestStatus.getText(),
+					input_AdditionalNotes.getText(),
+					getBouquetType());
+			RequestControllerUtil.resetLabels(errorLabel);
+		} else {
+			errorLabel.setText("Please select a bouquet option.");
+		}
+	}
 
-  // Returns the database name of the selected radio button.
-  private String getBouquetType() {
-    if (getWellSoonBouquetRadioButton.isSelected()) return getWellSoonBouquetText;
-    if (newBabyRadioButton.isSelected()) return newBabyBouquetText;
-    if (bouquetOfTheDayRadioButton.isSelected()) return bouquetOfTheDayText;
-    // Should never happen
-    return ("");
-  }
+	// Returns the database name of the selected radio button.
+	private String getBouquetType() {
+		if (getWellSoonBouquetRadioButton.isSelected()) return getWellSoonBouquetText;
+		if (newBabyRadioButton.isSelected()) return newBabyBouquetText;
+		if (bouquetOfTheDayRadioButton.isSelected()) return bouquetOfTheDayText;
+		// Should never happen
+		return ("");
+	}
 
-  // Reset button functionality
-  @FXML
-  void resetAllFields() {
-    RequestControllerUtil.resetRadioButtons(
-        getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton);
-    RequestControllerUtil.resetTextFields(
-        input_RoomID,
-        input_PatientName,
-        input_AssignedNurse,
-        input_RequestStatus,
-        input_AdditionalNotes);
-    RequestControllerUtil.resetLabels(errorLabel);
-  }
+	// Reset button functionality
+	@FXML
+	void resetAllFields() {
+		RequestControllerUtil.resetRadioButtons(
+				getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton);
+		RequestControllerUtil.resetTextFields(
+				input_RoomID,
+				input_PatientName,
+				input_AssignedNurse,
+				input_RequestStatus,
+				input_AdditionalNotes);
+		RequestControllerUtil.resetLabels(errorLabel);
+	}
 }
