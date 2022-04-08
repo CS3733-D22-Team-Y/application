@@ -3,6 +3,7 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 import static org.apache.commons.lang3.RandomStringUtils.*;
 
 import edu.wpi.cs3733.d22.teamY.App;
+import edu.wpi.cs3733.d22.teamY.Auth;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import java.io.*;
 import java.io.IOException;
@@ -64,6 +65,10 @@ public class WelcomePageController {
 
   @FXML
   void loginToMainPage() throws IOException, InterruptedException {
+//     if (DBUtils.isValidLogin(username.getText(), password.getText())
+//         && !lockOut
+//         && Auth.doAuth(username.getText())) {
+//       loginAnimation();
     if (DBUtils.isValidLogin(username.getText(), password.getText()) && !lockOut) {
       yubikeyPrompt();
     } else {
