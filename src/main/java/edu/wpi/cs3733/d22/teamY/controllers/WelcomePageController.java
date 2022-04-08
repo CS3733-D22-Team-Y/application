@@ -152,7 +152,7 @@ public class WelcomePageController {
     }
     if (Arrays.asList(auth).contains("sms")) {
       faSmsButton.setVisible(true);
-      faSmsButton.setOpacity(1);
+      faSmsPane.setOpacity(1);
     }
 
     loginPane.setVisible(false);
