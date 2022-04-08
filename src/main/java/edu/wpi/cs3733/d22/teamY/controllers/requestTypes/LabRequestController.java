@@ -42,7 +42,6 @@ public class LabRequestController {
 	* Submits a service request.
 	*
 	* @param roomID The room ID.
-	* @param patientName The patient name.
 	* @param assignedNurse The assigned nurse.
 	* @param requestStatus The request status.
 	* @param additionalNotes Any additional notes.
@@ -50,7 +49,6 @@ public class LabRequestController {
 	*/
 	private void submitRequest(
 			String roomID,
-			String patientName,
 			String assignedNurse,
 			String requestStatus,
 			String additionalNotes,
@@ -60,11 +58,11 @@ public class LabRequestController {
 				new LabRequest(
 						nextRequest,
 						roomID,
-						patientName,
 						assignedNurse,
 						requestStatus,
 						additionalNotes,
 						resultTypeSelected));
+		System.out.println("Saved LabRequest");
 	}
 
 	// Called when the submit button is pressed.
@@ -75,7 +73,6 @@ public class LabRequestController {
 				bloodRadioButton, urineRadioButton, xrayRadioButton, catScanRadioButton, mriRadioButton)) {
 			submitRequest(
 					input_RoomID.getText(),
-					input_PatientName.getText(),
 					input_AssignedNurse.getText(),
 					input_RequestStatus.getText(),
 					input_AdditionalNotes.getText(),
@@ -109,11 +106,7 @@ public class LabRequestController {
 		RequestControllerUtil.resetRadioButtons(
 				bloodRadioButton, urineRadioButton, xrayRadioButton, catScanRadioButton, mriRadioButton);
 		RequestControllerUtil.resetTextFields(
-				input_RoomID,
-				input_PatientName,
-				input_AssignedNurse,
-				input_RequestStatus,
-				input_AdditionalNotes);
+				input_RoomID, input_AssignedNurse, input_RequestStatus, input_AdditionalNotes);
 		RequestControllerUtil.resetLabels(errorLabel);
 	}
 }

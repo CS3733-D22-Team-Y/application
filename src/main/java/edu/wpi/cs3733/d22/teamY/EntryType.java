@@ -15,20 +15,20 @@ public enum EntryType {
 
 	MED_EQUIP(4, "MedEquip", "medEquipment_export", MedEquip.class),
 
-	MED_EQUIP_REQ(7, "MedEquipReq", "medEquipRequests_export", MedEquipReq.class),
+	MED_EQUIP_REQ(6, "MedEquipReq", "medEquipRequests_export", MedEquipReq.class),
 
-	LAB_REQUEST(7, "LabRequests", "labRequests_export", LabRequest.class),
+	LAB_REQUEST(6, "LabRequests", "labRequests_export", LabRequest.class),
 
-	EMPLOYEE(8, "Employees", "employees_export", Employee.class),
+	EMPLOYEE(9, "Employees", "employees_export", Employee.class),
 
-	FLORAL_REQUEST(7, "FloralRequests", "floralRequests_export", FloralRequest.class),
+	FLORAL_REQUEST(6, "FloralRequests", "floralRequests_export", FloralRequest.class),
 
-	LAUNDRY_REQUEST(7, "LaundryRequests", "laundryRequests_export", FloralRequest.class),
+	LAUNDRY_REQUEST(6, "LaundryRequests", "laundryRequests_export", LaundryRequest.class),
 
-	MEAL_REQUEST(10, "MealRequests", "mealRequests_export", MealRequest.class),
+	MEAL_REQUEST(9, "MealRequests", "mealRequests_export", MealRequest.class),
 
 	SECURITY_SERVICE_REQUEST(
-			8, "SecurityServiceRequests", "securityServiceRequests_export", SecurityServiceRequest.class),
+			7, "SecurityServiceRequests", "securityServiceRequests_export", SecurityServiceRequest.class),
 
 // region Enum Data / Methods
 /* Enum specification begins below... */ ;

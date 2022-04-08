@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.d22.teamY;
 
-import java.io.IOException;
 import java.util.Objects;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +29,7 @@ public class App extends Application {
 	}
 
 	@Override
-	public void start(Stage primaryStage) throws IOException {
+	public void start(Stage primaryStage) throws Exception {
 		instance = this; // instantiates instance
 		this.primaryStage = primaryStage;
 		// Sets the primary scene (currently request menu) and displays it

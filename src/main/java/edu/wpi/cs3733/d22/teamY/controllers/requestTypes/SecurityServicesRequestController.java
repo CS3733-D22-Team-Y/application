@@ -54,7 +54,6 @@ public class SecurityServicesRequestController {
 	* Submits a service request.
 	*
 	* @param roomID The room ID.
-	* @param patientName The patient name.
 	* @param assignedNurse The assigned nurse.
 	* @param requestStatus The request status.
 	* @param additionalNotes Any additional notes.
@@ -63,7 +62,6 @@ public class SecurityServicesRequestController {
 	*/
 	private void submitRequest(
 			String roomID,
-			String patientName,
 			String assignedNurse,
 			String requestStatus,
 			String additionalNotes,
@@ -76,12 +74,12 @@ public class SecurityServicesRequestController {
 				new SecurityServiceRequest(
 						nextRequest,
 						roomID,
-						patientName,
 						assignedNurse,
 						requestStatus,
 						additionalNotes,
 						requestTypeSelected,
 						requestPriority));
+		System.out.println("Saved SecurityServiceRequest");
 	}
 
 	// Called when the submit button is pressed.
@@ -97,7 +95,6 @@ public class SecurityServicesRequestController {
 		if (typeSelected && prioritySelected) {
 			submitRequest(
 					input_RoomID.getText(),
-					input_PatientName.getText(),
 					input_AssignedNurse.getText(),
 					input_RequestStatus.getText(),
 					input_AdditionalNotes.getText(),
@@ -145,11 +142,7 @@ public class SecurityServicesRequestController {
 	void resetAllFields() {
 		// Text input
 		RequestControllerUtil.resetTextFields(
-				input_RoomID,
-				input_PatientName,
-				input_AssignedNurse,
-				input_RequestStatus,
-				input_AdditionalNotes);
+				input_RoomID, input_AssignedNurse, input_RequestStatus, input_AdditionalNotes);
 		// Report type radio buttons
 		RequestControllerUtil.resetRadioButtons(
 				unwantedGuestRadioButton,

@@ -19,6 +19,7 @@ public class CSVBackup {
 	// adds them to the DBManager.
 	// Also returns all its values as an ArrayList of entries.
 	public static ArrayList<? extends StringArrayConv> loadFromCSV(EntryType type) {
+		System.out.println("Loading from " + type.getEntryClass().getSimpleName());
 		return loadHelper(type, type.getEntryClass());
 	}
 

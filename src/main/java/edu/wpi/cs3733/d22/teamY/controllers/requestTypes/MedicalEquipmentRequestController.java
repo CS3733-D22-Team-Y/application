@@ -68,7 +68,6 @@ public class MedicalEquipmentRequestController {
 	* Submits a service request.
 	*
 	* @param roomID The room ID.
-	* @param patientName The patient name.
 	* @param assignedNurse The assigned nurse.
 	* @param requestStatus The request status.
 	* @param additionalNotes Any additional notes.
@@ -76,7 +75,6 @@ public class MedicalEquipmentRequestController {
 	*/
 	private void submitRequest(
 			String roomID,
-			String patientName,
 			String assignedNurse,
 			String requestStatus,
 			String additionalNotes,
@@ -87,12 +85,12 @@ public class MedicalEquipmentRequestController {
 				new MedEquipReq(
 						nextRequest,
 						roomID,
-						patientName,
 						assignedNurse,
 						requestStatus,
 						additionalNotes,
 						equipmentTypeSelected));
 		DBUtils.updateCleanStatus(equipmentTypeSelected, roomID);
+		System.out.println("Saved MedEquipRequest");
 	}
 
 	// Called when the submit button is pressed.
@@ -130,7 +128,6 @@ public class MedicalEquipmentRequestController {
 		if (!failed) {
 			submitRequest(
 					input_RoomID.getText(),
-					input_PatientName.getText(),
 					input_AssignedNurse.getText(),
 					input_RequestStatus.getText(),
 					input_AdditionalNotes.getText(),
@@ -161,11 +158,7 @@ public class MedicalEquipmentRequestController {
 	@FXML
 	void resetAllFields() {
 		RequestControllerUtil.resetTextFields(
-				input_RoomID,
-				input_PatientName,
-				input_AssignedNurse,
-				input_RequestStatus,
-				input_AdditionalNotes);
+				input_RoomID, input_AssignedNurse, input_RequestStatus, input_AdditionalNotes);
 		// Radio buttons
 		RequestControllerUtil.resetRadioButtons(
 				bedRadioButton, xrayRadioButton, infusionPumpRadioButton, reclinerRadioButton);

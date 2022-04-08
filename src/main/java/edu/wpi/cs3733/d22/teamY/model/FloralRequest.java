@@ -15,7 +15,6 @@ public class FloralRequest implements StringArrayConv {
 
 	@Id private String requestNum;
 	private String roomID;
-	private String patientName;
 	private String requestStatus;
 	private String assignedNurse;
 
@@ -27,14 +26,12 @@ public class FloralRequest implements StringArrayConv {
 	private void init(
 			String requestNum,
 			String roomID,
-			String patientName,
 			String assignedNurse,
 			String requestStatus,
 			String additionalNotes,
 			String bouquetTypeSelected) {
 		this.requestNum = requestNum;
 		this.roomID = roomID;
-		this.patientName = patientName;
 		this.assignedNurse = assignedNurse;
 		this.requestStatus = requestStatus;
 		this.additionalNotes = additionalNotes;
@@ -46,37 +43,23 @@ public class FloralRequest implements StringArrayConv {
 	public FloralRequest(
 			String requestNum,
 			String roomID,
-			String patientName,
 			String assignedNurse,
 			String requestStatus,
 			String additionalNotes,
 			String bouquetTypeSelected) {
-		init(
-				requestNum,
-				roomID,
-				patientName,
-				assignedNurse,
-				requestStatus,
-				additionalNotes,
-				bouquetTypeSelected);
+		init(requestNum, roomID, assignedNurse, requestStatus, additionalNotes, bouquetTypeSelected);
 	}
 
 	@Override
 	public String[] toStringArray() {
 		return new String[] {
-			requestNum,
-			roomID,
-			patientName,
-			assignedNurse,
-			requestStatus,
-			additionalNotes,
-			bouquetTypeSelected
+			requestNum, roomID, assignedNurse, requestStatus, additionalNotes, bouquetTypeSelected
 		};
 	}
 
 	@Override
 	public void fromStringArray(String[] args) {
-		init(args[0], args[1], args[2], args[3], args[4], args[5], args[7]);
+		init(args[0], args[1], args[2], args[3], args[4], args[5]);
 	}
 
 	public String getRequestNum() {
@@ -93,14 +76,6 @@ public class FloralRequest implements StringArrayConv {
 
 	public void setRoomID(String roomID) {
 		this.roomID = roomID;
-	}
-
-	public String getPatientName() {
-		return patientName;
-	}
-
-	public void setPatientName(String patientName) {
-		this.patientName = patientName;
 	}
 
 	public String getRequestStatus() {

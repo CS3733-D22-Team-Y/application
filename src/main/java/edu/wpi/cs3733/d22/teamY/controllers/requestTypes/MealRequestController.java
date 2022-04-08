@@ -68,7 +68,6 @@ public class MealRequestController {
 	* Submits a service request.
 	*
 	* @param roomID The room ID.
-	* @param patientName The patient name.
 	* @param assignedNurse The assigned nurse.
 	* @param requestStatus The request status.
 	* @param additionalNotes Any additional notes.
@@ -80,7 +79,6 @@ public class MealRequestController {
 	*/
 	private void submitRequest(
 			String roomID,
-			String patientName,
 			String assignedNurse,
 			String requestStatus,
 			String additionalNotes,
@@ -93,7 +91,6 @@ public class MealRequestController {
 				new MealRequest(
 						nextRequest,
 						roomID,
-						patientName,
 						assignedNurse,
 						requestStatus,
 						additionalNotes,
@@ -101,6 +98,7 @@ public class MealRequestController {
 						sideChoice,
 						allergies,
 						specialInstructions));
+		System.out.println("Saved MealRequest");
 	}
 
 	// Called when the submit button is pressed.
@@ -116,7 +114,6 @@ public class MealRequestController {
 		if (mealSelected && sideSelected) {
 			submitRequest(
 					input_RoomID.getText(),
-					input_PatientName.getText(),
 					input_AssignedNurse.getText(),
 					input_RequestStatus.getText(),
 					input_AdditionalNotes.getText(),
@@ -175,7 +172,6 @@ public class MealRequestController {
 		// Input text fields
 		RequestControllerUtil.resetTextFields(
 				input_RoomID,
-				input_PatientName,
 				input_AssignedNurse,
 				input_RequestStatus,
 				input_AdditionalNotes,
