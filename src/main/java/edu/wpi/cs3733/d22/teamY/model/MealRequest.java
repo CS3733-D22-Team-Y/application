@@ -4,53 +4,57 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
-* Entity class for elements in the equipment request table in the database. An instance of this
-* class represents a single row in the database. Instances can be used along with the DBManager to
-* add, update, and delete rows in the table.
-*/
 @Entity
-@Table(name = "MEDEQUIPREQUEST")
-public class MedEquipReq implements StringArrayConv {
+@Table(name = "MEALREQUESTS")
+public class MealRequest implements StringArrayConv {
+
 	@Id private String requestNum;
 	private String roomID;
 	private String patientName;
 	private String assignedNurse;
 	private String requestStatus;
 	private String additionalNotes;
-	private String equipmentTypeSelected;
+	private String mainChoice;
+	private String sideChoice;
+	private String allergies;
+	private String specialInstructions;
 
-	public static final String REQUEST_NUM = "REQUESTNUM";
-	public static final String EQUIP_ID = "EQUIPID";
-	public static final String TARGET_LOC_ID = "TARGETLOCID";
+	public MealRequest() {}
 
-	public void init(
+	private void init(
 			String requestNum,
 			String roomID,
 			String patientName,
 			String assignedNurse,
 			String requestStatus,
 			String additionalNotes,
-			String equipmentTypeSelected) {
+			String mainChoice,
+			String sideChoice,
+			String allergies,
+			String specialInstructions) {
 		this.requestNum = requestNum;
 		this.roomID = roomID;
 		this.patientName = patientName;
 		this.assignedNurse = assignedNurse;
 		this.requestStatus = requestStatus;
 		this.additionalNotes = additionalNotes;
-		this.equipmentTypeSelected = equipmentTypeSelected;
+		this.mainChoice = mainChoice;
+		this.sideChoice = sideChoice;
+		this.allergies = allergies;
+		this.specialInstructions = specialInstructions;
 	}
 
-	public MedEquipReq() {}
-
-	public MedEquipReq(
+	public MealRequest(
 			String requestNum,
 			String roomID,
 			String patientName,
 			String assignedNurse,
 			String requestStatus,
 			String additionalNotes,
-			String equipmentTypeSelected) {
+			String mainChoice,
+			String sideChoice,
+			String allergies,
+			String specialInstructions) {
 		init(
 				requestNum,
 				roomID,
@@ -58,23 +62,31 @@ public class MedEquipReq implements StringArrayConv {
 				assignedNurse,
 				requestStatus,
 				additionalNotes,
-				equipmentTypeSelected);
+				mainChoice,
+				sideChoice,
+				allergies,
+				specialInstructions);
 	}
 
-	public void fromStringArray(String[] args) {
-		init(args[0], args[1], args[2], args[3], args[4], args[5], args[6]);
-	}
-
+	@Override
 	public String[] toStringArray() {
 		return new String[] {
-			this.requestNum,
-			this.roomID,
-			this.patientName,
-			this.assignedNurse,
-			this.requestStatus,
-			this.additionalNotes,
-			this.equipmentTypeSelected
+			requestNum,
+			roomID,
+			patientName,
+			assignedNurse,
+			requestStatus,
+			additionalNotes,
+			mainChoice,
+			sideChoice,
+			allergies,
+			specialInstructions
 		};
+	}
+
+	@Override
+	public void fromStringArray(String[] args) {
+		init(args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8], args[9]);
 	}
 
 	public String getRequestNum() {
@@ -125,13 +137,35 @@ public class MedEquipReq implements StringArrayConv {
 		this.additionalNotes = additionalNotes;
 	}
 
-	public String getEquipmentTypeSelected() {
-		return equipmentTypeSelected;
+	public String getMainChoice() {
+		return mainChoice;
 	}
 
-	public void setEquipmentTypeSelected(String equipmentTypeSelected) {
-		this.equipmentTypeSelected = equipmentTypeSelected;
+	public void setMainChoice(String mainChoice) {
+		this.mainChoice = mainChoice;
 	}
 
-	// endregion
+	public String getSideChoice() {
+		return sideChoice;
+	}
+
+	public void setSideChoice(String sideChoice) {
+		this.sideChoice = sideChoice;
+	}
+
+	public String getAllergies() {
+		return allergies;
+	}
+
+	public void setAllergies(String allergies) {
+		this.allergies = allergies;
+	}
+
+	public String getSpecialInstructions() {
+		return specialInstructions;
+	}
+
+	public void setSpecialInstructions(String specialInstructions) {
+		this.specialInstructions = specialInstructions;
+	}
 }

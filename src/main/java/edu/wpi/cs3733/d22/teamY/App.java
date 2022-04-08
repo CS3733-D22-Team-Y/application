@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.d22.teamY;
 
-import java.io.IOException;
 import java.util.Objects;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,26 +10,27 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class App extends Application {
-  private Stage primaryStage;
+	private Stage primaryStage;
 
-  // changes active scene
-  public void setScene(Scene scene) {
-    primaryStage.setScene(scene);
-  }
+	// changes active scene
+	public void setScene(Scene scene) {
+		primaryStage.setScene(scene);
+	}
 
-  private static App instance;
-  // Summons instances for scene change implementation
-  public static App getInstance() {
-    return instance;
-  }
+	private static App instance;
+	// Summons instances for scene change implementation
+	public static App getInstance() {
+		return instance;
+	}
+
+	@Override
+	public void init() {
+		log.info("Starting Up");
+	}
+
 
   @Override
-  public void init() {
-    log.info("Starting Up");
-  }
-
-  @Override
-  public void start(Stage primaryStage) throws IOException {
+  public void start(Stage primaryStage) throws Exception {
     instance = this; // instantiates instance
     this.primaryStage = primaryStage;
     // Sets the primary scene (currently request menu) and displays it
@@ -41,8 +41,9 @@ public class App extends Application {
     primaryStage.show();
   }
 
-  @Override
-  public void stop() {
-    log.info("Shutting Down");
-  }
+
+	@Override
+	public void stop() {
+		log.info("Shutting Down");
+	}
 }

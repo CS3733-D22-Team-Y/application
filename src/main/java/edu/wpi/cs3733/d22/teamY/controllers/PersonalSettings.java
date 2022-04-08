@@ -19,25 +19,25 @@ public class PersonalSettings {
   public static Employee currentEmployee =
       new Employee("-1", "Guest", "Guest", "Guest", "Guest", "Guest", "Guest", 0, "none");
 
-  @FXML
-  void initialize() throws IOException {
-    sidebar = SidebarUtil.initializeSidebar(sidebarPane);
-    openSidebarLayout();
-  }
+	@FXML
+	void initialize() throws IOException {
+		sidebar = SidebarUtil.initializeSidebar(sidebarPane);
+		openSidebarLayout();
+	}
 
-  @FXML
-  void mainMenu() throws IOException {
-    SceneLoading.loadScene("views/Map.fxml");
-  }
+	@FXML
+	void mainMenu() throws IOException {
+		SceneLoading.loadScene("views/Map.fxml");
+	}
 
-  // Sidebar
-  @FXML
-  void openSidebarLayout() {
-    SidebarUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
-  }
+	// Sidebar
+	@FXML
+	void openSidebarLayout() {
+		SidebarUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
+	}
 
-  @FXML
-  void closeSidebarLayout() {
-    SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
-  }
+	@FXML
+	void closeSidebarLayout() {
+		SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
+	}
 }

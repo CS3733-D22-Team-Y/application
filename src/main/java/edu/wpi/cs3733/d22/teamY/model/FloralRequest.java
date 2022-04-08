@@ -5,52 +5,52 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
-* Entity class for elements in the equipment request table in the database. An instance of this
-* class represents a single row in the database. Instances can be used along with the DBManager to
-* add, update, and delete rows in the table.
+* Entity class for elements in the floral request table in the database. An instance of this class
+* represents a single row in the database. Instances can be used along with the DAO to add, update,
+* and delete rows in the table.
 */
 @Entity
-@Table(name = "MEDEQUIPREQUEST")
-public class MedEquipReq implements StringArrayConv {
+@Table(name = "FLORALREQUESTS")
+public class FloralRequest implements StringArrayConv {
+
 	@Id private String requestNum;
 	private String roomID;
 	private String patientName;
-	private String assignedNurse;
 	private String requestStatus;
+	private String assignedNurse;
+
+	// GetwellSoon, newBaby, bouquet otd
+	private String bouquetTypeSelected;
+	// Additional Notes
 	private String additionalNotes;
-	private String equipmentTypeSelected;
 
-	public static final String REQUEST_NUM = "REQUESTNUM";
-	public static final String EQUIP_ID = "EQUIPID";
-	public static final String TARGET_LOC_ID = "TARGETLOCID";
-
-	public void init(
+	private void init(
 			String requestNum,
 			String roomID,
 			String patientName,
 			String assignedNurse,
 			String requestStatus,
 			String additionalNotes,
-			String equipmentTypeSelected) {
+			String bouquetTypeSelected) {
 		this.requestNum = requestNum;
 		this.roomID = roomID;
 		this.patientName = patientName;
 		this.assignedNurse = assignedNurse;
 		this.requestStatus = requestStatus;
 		this.additionalNotes = additionalNotes;
-		this.equipmentTypeSelected = equipmentTypeSelected;
+		this.bouquetTypeSelected = bouquetTypeSelected;
 	}
 
-	public MedEquipReq() {}
+	public FloralRequest() {}
 
-	public MedEquipReq(
+	public FloralRequest(
 			String requestNum,
 			String roomID,
 			String patientName,
 			String assignedNurse,
 			String requestStatus,
 			String additionalNotes,
-			String equipmentTypeSelected) {
+			String bouquetTypeSelected) {
 		init(
 				requestNum,
 				roomID,
@@ -58,23 +58,25 @@ public class MedEquipReq implements StringArrayConv {
 				assignedNurse,
 				requestStatus,
 				additionalNotes,
-				equipmentTypeSelected);
+				bouquetTypeSelected);
 	}
 
-	public void fromStringArray(String[] args) {
-		init(args[0], args[1], args[2], args[3], args[4], args[5], args[6]);
-	}
-
+	@Override
 	public String[] toStringArray() {
 		return new String[] {
-			this.requestNum,
-			this.roomID,
-			this.patientName,
-			this.assignedNurse,
-			this.requestStatus,
-			this.additionalNotes,
-			this.equipmentTypeSelected
+			requestNum,
+			roomID,
+			patientName,
+			assignedNurse,
+			requestStatus,
+			additionalNotes,
+			bouquetTypeSelected
 		};
+	}
+
+	@Override
+	public void fromStringArray(String[] args) {
+		init(args[0], args[1], args[2], args[3], args[4], args[5], args[7]);
 	}
 
 	public String getRequestNum() {
@@ -101,6 +103,14 @@ public class MedEquipReq implements StringArrayConv {
 		this.patientName = patientName;
 	}
 
+	public String getRequestStatus() {
+		return requestStatus;
+	}
+
+	public void setRequestStatus(String requestStatus) {
+		this.requestStatus = requestStatus;
+	}
+
 	public String getAssignedNurse() {
 		return assignedNurse;
 	}
@@ -109,12 +119,12 @@ public class MedEquipReq implements StringArrayConv {
 		this.assignedNurse = assignedNurse;
 	}
 
-	public String getRequestStatus() {
-		return requestStatus;
+	public String getBouquetTypeSelected() {
+		return bouquetTypeSelected;
 	}
 
-	public void setRequestStatus(String requestStatus) {
-		this.requestStatus = requestStatus;
+	public void setBouquetTypeSelected(String bouquetTypeSelected) {
+		this.bouquetTypeSelected = bouquetTypeSelected;
 	}
 
 	public String getAdditionalNotes() {
@@ -124,14 +134,4 @@ public class MedEquipReq implements StringArrayConv {
 	public void setAdditionalNotes(String additionalNotes) {
 		this.additionalNotes = additionalNotes;
 	}
-
-	public String getEquipmentTypeSelected() {
-		return equipmentTypeSelected;
-	}
-
-	public void setEquipmentTypeSelected(String equipmentTypeSelected) {
-		this.equipmentTypeSelected = equipmentTypeSelected;
-	}
-
-	// endregion
 }
