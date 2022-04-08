@@ -1,5 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
+import edu.wpi.cs3733.d22.teamY.AuthTypes;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -169,5 +171,11 @@ public class Employee implements StringArrayConv {
 				&& password.matches(".*[!@#$%^&*()_+].*");
 	}
 	// endregion
+	public void addAuthMode(AuthTypes type, String[] args) {
+		if(type.getArgs() != args.length) {
+			throw new IllegalArgumentException("Invalid number of arguments for auth type");
+		}
+		this.authString +=  (type.name() + ":" + String.join(":", args) + ";");
+	}
 
 }
