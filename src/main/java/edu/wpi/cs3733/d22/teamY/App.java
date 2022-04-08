@@ -27,7 +27,7 @@ public class App extends Application {
   public void init() {
     log.info("Starting Up");
   }
-
+//test
   @Override
   public void start(Stage primaryStage) throws Exception {
     instance = this; // instantiates instance
