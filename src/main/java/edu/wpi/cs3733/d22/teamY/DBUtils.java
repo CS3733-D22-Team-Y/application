@@ -100,7 +100,8 @@ public class DBUtils {
     return thePerson.getName();
   }
 
-  /** gets the request ID for the next MedEquipReq
+  /**
+   * gets the request ID for the next MedEquipReq
    *
    * @return length of medequipreq + 1
    */
