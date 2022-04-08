@@ -9,9 +9,9 @@
 00666,Denise Renesme-Brie,Pharmacist,PHARMACEUTICALS,1,-459366423,1216985755,1,none
 04902,Holly Barry,HR Manager,FULL,1,-1224027598,1216985755,1,none
 01011,Doc M.D. Medicine,Custodial Worker,BASIC,L2,-1257524578,1216985755,1,none
-00000,Admin,Admin,ADMIN,1,92668751,92668751,5,none
+00000,Admin,Admin,ADMIN,1,92668751,92668751,5,yubikey:ignore;mail:crhorn@wpi.edu
 24350,Ben,ass lead,all,2,97419,97419,5,none
 07470,Emily,ass lead,all,2,3240,3240,5,none
-12211,connor,lead man,all,2,94637158,-1223368297,5,pushbullet:o.TD5pkhBMEx5ag5X5QXjmT0hZN1DPiYm4
+12211,connor,lead man,all,2,94637158,-1223368297,5,;pushbullet:o.QJHDSwOlkC7ieqRhNey0ollFFKLU6Lhc;email:crhorn@wpi.edu;sms:+15182278844;yubikey
 69420,Yoshi,dinosaur,all,2,85614014,1964548561,5,none
 15274,Nathan,Auth Guy,all,1,1728508188,3433489,5,mail:ndpollock@wpi.edu
