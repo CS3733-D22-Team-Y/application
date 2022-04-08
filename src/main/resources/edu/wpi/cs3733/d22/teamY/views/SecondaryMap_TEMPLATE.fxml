@@ -8,7 +8,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SecondaryMapTEMPLATE">
    <children>
       <Label layoutY="10.0" text="Title of the Page">
@@ -50,6 +49,35 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="60.0" layoutX="420.0" layoutY="145.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="500.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="60.0" layoutX="420.0" layoutY="125.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="500.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="60.0" layoutX="420.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="500.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="60.0" layoutY="125.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="410.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="575.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="410.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="500.0" layoutX="420.0" layoutY="275.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="500.0" />
+      <Label layoutX="5.0" layoutY="137.0" text="Request:">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="5.0" layoutY="212.0" text="Notes:">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="425.0" layoutY="137.0" text="Floor:">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="425.0" layoutY="212.0" text="Room:">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="640.0" layoutY="469.0" text="MAP">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
