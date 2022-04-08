@@ -17,7 +17,7 @@ public class PersonalSettings {
   @FXML private JFXHamburger sidebarHamburger;
   AnchorPane sidebar = null;
   public static Employee currentEmployee =
-      new Employee("-1", "Guest", "Guest", "Guest", "Guest", "Guest", "Guest", 0);
+      new Employee("-1", "Guest", "Guest", "Guest", "Guest", "Guest", "Guest", "dark", 0);
 
   @FXML
   void initialize() throws IOException {
@@ -39,5 +39,10 @@ public class PersonalSettings {
   @FXML
   void closeSidebarLayout() {
     SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
+  }
+
+  @FXML
+  void setDarkMode() throws IOException {
+    SceneLoading.setCurrentTheme("dark");
   }
 }

@@ -19,6 +19,7 @@ public class Employee implements StringArrayConv {
   private String floor;
   private String username;
   private String password;
+  private String theme;
   private int accessLevel;
 
   public static final String ID_NUMBER = "IDNUMBER";
@@ -28,6 +29,7 @@ public class Employee implements StringArrayConv {
   public static final String ROLE = "ROLE";
   public static final String USERNAME = "USERNAME";
   public static final String PASSWORD = "PASSWORD";
+  public static final String THEME = "THEME";
   public static final String ACCESS_LEVEL = "ACCESSLEVEL";
 
   private void init(
@@ -38,6 +40,7 @@ public class Employee implements StringArrayConv {
       String flr,
       String usr,
       String pwd,
+      String themeName,
       int accessLevel) {
     IDNumber = id;
     name = nm;
@@ -47,6 +50,7 @@ public class Employee implements StringArrayConv {
     username = usr;
     password = pwd;
     this.accessLevel = accessLevel;
+    this.theme = themeName;
   }
 
   public Employee() {}
@@ -59,21 +63,40 @@ public class Employee implements StringArrayConv {
       String flr,
       String usr,
       String pwd,
+      String thm,
       int accessLevel) {
-    init(id, nm, rl, acc, flr, usr, pwd, accessLevel);
+    init(id, nm, rl, acc, flr, usr, pwd, thm, accessLevel);
   }
 
   public String[] toStringArray() {
     return new String[] {
-      IDNumber, name, role, access, floor, username, password, Integer.toString(accessLevel)
+      IDNumber, name, role, access, floor, username, password, theme, Integer.toString(accessLevel)
     };
   }
 
   public void fromStringArray(String[] args) {
-    init(args[0], args[1], args[2], args[3], args[4], args[5], args[6], Integer.parseInt(args[7]));
+    init(
+        args[0],
+        args[1],
+        args[2],
+        args[3],
+        args[4],
+        args[5],
+        args[6],
+        args[7],
+        Integer.parseInt(args[8]));
   }
 
   // region Getters/Setters
+
+  public String getTheme() {
+    return theme;
+  }
+
+  public void setTheme(String theme) {
+    this.theme = theme;
+  }
+
   public String getIDNumber() {
     return IDNumber;
   }
