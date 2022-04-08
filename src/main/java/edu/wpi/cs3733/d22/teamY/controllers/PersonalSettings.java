@@ -9,15 +9,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 public class PersonalSettings {
-	// Base pane for displaying new scenes
-	@FXML private Pane mapPane;
-	// Sidebar
-	@FXML private Pane sidebarPane;
-	@FXML private JFXButton closeSidebarHiddenButton;
-	@FXML private JFXHamburger sidebarHamburger;
-	AnchorPane sidebar = null;
-	public static Employee currentEmployee =
-			new Employee("-1", "Guest", "Guest", "Guest", "Guest", "Guest", "Guest", 0);
+  // Base pane for displaying new scenes
+  @FXML private Pane mapPane;
+  // Sidebar
+  @FXML private Pane sidebarPane;
+  @FXML private JFXButton closeSidebarHiddenButton;
+  @FXML private JFXHamburger sidebarHamburger;
+  AnchorPane sidebar = null;
+  public static Employee currentEmployee =
+      new Employee("-1", "Guest", "Guest", "Guest", "Guest", "Guest", "Guest", 0, "none");
 
 	@FXML
 	void initialize() throws IOException {
