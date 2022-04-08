@@ -115,6 +115,8 @@ public class WelcomePageController {
     }
   }
 
+  void display2FAOptions() {}
+
   @FXML
   void loginAnimation() throws IOException {
     Image loadingGif =
