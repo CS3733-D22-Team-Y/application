@@ -5,66 +5,63 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
-* Entity class for elements in the lab request table in the database. An instance of this class
+* Entity class for elements in the floral request table in the database. An instance of this class
 * represents a single row in the database. Instances can be used along with the DAO to add, update,
 * and delete rows in the table.
 */
 @Entity
-@Table(name = "LABREQUESTS")
-public class LabRequest implements StringArrayConv {
+@Table(name = "FLORALREQUESTS")
+public class FloralRequest implements StringArrayConv {
+
 	@Id private String requestNum;
 	private String roomID;
 	private String requestStatus;
 	private String assignedNurse;
-	private String additionalNotes;
-	private String resultType;
 
-	public static final String REQUEST_NUM = "REQUESTNUM";
-	public static final String ADDITIONAL_NOTES = "ADDITIONALNOTES";
-	public static final String ASSIGNED_NURSE = "ASSIGNEDNURSE";
-	public static final String PATIENT_NAME = "PATIENTNAME";
-	public static final String REQUEST_STATUS = "REQUEST_STATUS";
-	public static final String RESULT_TYPE = "RESULTTYPE";
-	public static final String ROOM_ID = "ROOMID";
+	// GetwellSoon, newBaby, bouquet otd
+	private String bouquetTypeSelected;
+	// Additional Notes
+	private String additionalNotes;
 
 	private void init(
 			String requestNum,
 			String roomID,
-			String requestStatus,
 			String assignedNurse,
+			String requestStatus,
 			String additionalNotes,
-			String resultType) {
+			String bouquetTypeSelected) {
 		this.requestNum = requestNum;
 		this.roomID = roomID;
-		this.requestStatus = requestStatus;
 		this.assignedNurse = assignedNurse;
+		this.requestStatus = requestStatus;
 		this.additionalNotes = additionalNotes;
-		this.resultType = resultType;
+		this.bouquetTypeSelected = bouquetTypeSelected;
 	}
 
-	public LabRequest() {}
+	public FloralRequest() {}
 
-	public LabRequest(
+	public FloralRequest(
 			String requestNum,
 			String roomID,
-			String requestStatus,
 			String assignedNurse,
+			String requestStatus,
 			String additionalNotes,
-			String resultType) {
-		init(requestNum, roomID, requestStatus, assignedNurse, additionalNotes, resultType);
+			String bouquetTypeSelected) {
+		init(requestNum, roomID, assignedNurse, requestStatus, additionalNotes, bouquetTypeSelected);
 	}
 
+	@Override
 	public String[] toStringArray() {
 		return new String[] {
-			requestNum, roomID, requestStatus, assignedNurse, additionalNotes, resultType
+			requestNum, roomID, assignedNurse, requestStatus, additionalNotes, bouquetTypeSelected
 		};
 	}
 
+	@Override
 	public void fromStringArray(String[] args) {
 		init(args[0], args[1], args[2], args[3], args[4], args[5]);
 	}
 
-	// region Getters/Setters
 	public String getRequestNum() {
 		return requestNum;
 	}
@@ -97,6 +94,14 @@ public class LabRequest implements StringArrayConv {
 		this.assignedNurse = assignedNurse;
 	}
 
+	public String getBouquetTypeSelected() {
+		return bouquetTypeSelected;
+	}
+
+	public void setBouquetTypeSelected(String bouquetTypeSelected) {
+		this.bouquetTypeSelected = bouquetTypeSelected;
+	}
+
 	public String getAdditionalNotes() {
 		return additionalNotes;
 	}
@@ -104,13 +109,4 @@ public class LabRequest implements StringArrayConv {
 	public void setAdditionalNotes(String additionalNotes) {
 		this.additionalNotes = additionalNotes;
 	}
-
-	public String getResultType() {
-		return resultType;
-	}
-
-	public void setResultTypeSelected(String resultType) {
-		this.resultType = resultType;
-	}
-	// endregion
 }

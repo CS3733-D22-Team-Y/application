@@ -4,65 +4,54 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
-* Entity class for elements in the equipment request table in the database. An instance of this
-* class represents a single row in the database. Instances can be used along with the DBManager to
-* add, update, and delete rows in the table.
-*/
 @Entity
-@Table(name = "MEDEQUIPREQUEST")
-public class MedEquipReq implements StringArrayConv {
+@Table(name = "LAUNDRYREQUESTS")
+public class LaundryRequest implements StringArrayConv {
+
 	@Id private String requestNum;
 	private String roomID;
 	private String assignedNurse;
 	private String requestStatus;
 	private String additionalNotes;
-	private String equipmentTypeSelected;
+	private String laundryTypeSelected;
 
-	public static final String REQUEST_NUM = "REQUESTNUM";
-	public static final String EQUIP_ID = "EQUIPID";
-	public static final String TARGET_LOC_ID = "TARGETLOCID";
+	public LaundryRequest() {}
 
-	public void init(
+	private void init(
 			String requestNum,
 			String roomID,
 			String assignedNurse,
 			String requestStatus,
 			String additionalNotes,
-			String equipmentTypeSelected) {
+			String laundryTypeSelected) {
 		this.requestNum = requestNum;
 		this.roomID = roomID;
 		this.assignedNurse = assignedNurse;
 		this.requestStatus = requestStatus;
 		this.additionalNotes = additionalNotes;
-		this.equipmentTypeSelected = equipmentTypeSelected;
+		this.laundryTypeSelected = laundryTypeSelected;
 	}
 
-	public MedEquipReq() {}
-
-	public MedEquipReq(
+	public LaundryRequest(
 			String requestNum,
 			String roomID,
 			String assignedNurse,
 			String requestStatus,
 			String additionalNotes,
-			String equipmentTypeSelected) {
-		init(requestNum, roomID, assignedNurse, requestStatus, additionalNotes, equipmentTypeSelected);
+			String laundryTypeSelected) {
+		init(requestNum, roomID, assignedNurse, requestStatus, additionalNotes, laundryTypeSelected);
 	}
 
-	public void fromStringArray(String[] args) {
-		init(args[0], args[1], args[2], args[3], args[4], args[5]);
-	}
-
+	@Override
 	public String[] toStringArray() {
 		return new String[] {
-			this.requestNum,
-			this.roomID,
-			this.assignedNurse,
-			this.requestStatus,
-			this.additionalNotes,
-			this.equipmentTypeSelected
+			requestNum, roomID, assignedNurse, requestStatus, additionalNotes, laundryTypeSelected
 		};
+	}
+
+	@Override
+	public void fromStringArray(String[] args) {
+		init(args[0], args[1], args[2], args[3], args[4], args[5]);
 	}
 
 	public String getRequestNum() {
@@ -105,13 +94,11 @@ public class MedEquipReq implements StringArrayConv {
 		this.additionalNotes = additionalNotes;
 	}
 
-	public String getEquipmentTypeSelected() {
-		return equipmentTypeSelected;
+	public String getLaundryTypeSelected() {
+		return laundryTypeSelected;
 	}
 
-	public void setEquipmentTypeSelected(String equipmentTypeSelected) {
-		this.equipmentTypeSelected = equipmentTypeSelected;
+	public void setLaundryTypeSelected(String laundryTypeSelected) {
+		this.laundryTypeSelected = laundryTypeSelected;
 	}
-
-	// endregion
 }
