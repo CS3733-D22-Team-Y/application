@@ -55,7 +55,7 @@
                               <JFXButton onAction="#loadSecurity" prefHeight="26.0" prefWidth="104.0" text="Security Services" textFill="WHITE" />
                               <JFXButton onAction="#loadLab" prefHeight="26.0" prefWidth="76.0" text="Lab Results" textFill="WHITE" />
                               <JFXButton alignment="BOTTOM_LEFT" onAction="#loadCreateServiceRequest" prefHeight="26.0" prefWidth="157.0" text="Other Requests" textFill="WHITE" />
-                              <JFXButton onAction="#loadViewServiceRequests" prefHeight="26.0" prefWidth="60.0" text="fillerSpace" textFill="#ffffff00" />
+                              <JFXButton onAction="#hiddenButton" prefHeight="26.0" prefWidth="60.0" text="fillerSpace" textFill="#ffffff00" />
                               <JFXButton onAction="#loadViewServiceRequests" prefHeight="26.0" prefWidth="169.0" text="View Active Service Requests" textFill="WHITE" />
                            </children>
                         </VBox>

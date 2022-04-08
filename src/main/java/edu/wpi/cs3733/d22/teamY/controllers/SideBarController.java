@@ -76,6 +76,11 @@ public class SideBarController {
   }
 
   @FXML
+  void hiddenButton() throws IOException {
+    SceneLoading.loadScene("views/SecondaryMap_TEMPLATE.fxml");
+  }
+
+  @FXML
   void loadMedEquipmentRequests() throws IOException {
     SceneLoading.loadScene("views/ActServReqTable.fxml");
   }
