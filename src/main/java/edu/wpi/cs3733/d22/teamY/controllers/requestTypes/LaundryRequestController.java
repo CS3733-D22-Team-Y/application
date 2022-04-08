@@ -42,7 +42,6 @@ public class LaundryRequestController {
 	* Submits a service request.
 	*
 	* @param roomID The room ID.
-	* @param patientName The patient name.
 	* @param assignedNurse The assigned nurse.
 	* @param requestStatus The request status.
 	* @param additionalNotes Any additional notes.
@@ -50,7 +49,6 @@ public class LaundryRequestController {
 	*/
 	private void submitRequest(
 			String roomID,
-			String patientName,
 			String assignedNurse,
 			String requestStatus,
 			String additionalNotes,
@@ -60,7 +58,6 @@ public class LaundryRequestController {
 				new LaundryRequest(
 						nextRequest,
 						roomID,
-						patientName,
 						assignedNurse,
 						requestStatus,
 						additionalNotes,
@@ -76,7 +73,6 @@ public class LaundryRequestController {
 				hazardousRadioButton, linensRadioButton, scrubsRadioButton)) {
 			submitRequest(
 					input_RoomID.getText(),
-					input_PatientName.getText(),
 					input_AssignedNurse.getText(),
 					input_RequestStatus.getText(),
 					input_AdditionalNotes.getText(),
@@ -107,11 +103,7 @@ public class LaundryRequestController {
 		RequestControllerUtil.resetRadioButtons(
 				scrubsRadioButton, linensRadioButton, hazardousRadioButton);
 		RequestControllerUtil.resetTextFields(
-				input_RoomID,
-				input_RequestStatus,
-				input_AssignedNurse,
-				input_PatientName,
-				input_AdditionalNotes);
+				input_RoomID, input_RequestStatus, input_AssignedNurse, input_AdditionalNotes);
 		RequestControllerUtil.resetLabels(errorLabel);
 	}
 }

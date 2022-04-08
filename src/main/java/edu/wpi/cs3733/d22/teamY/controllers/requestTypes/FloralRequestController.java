@@ -21,7 +21,6 @@ public class FloralRequestController {
 	@FXML private JFXRadioButton bouquetOfTheDayRadioButton;
 	// Input fields
 	@FXML private TextField input_RoomID;
-	@FXML private TextField input_PatientName;
 	@FXML private TextField input_AssignedNurse;
 	@FXML private TextField input_RequestStatus;
 	// Additional Notes
@@ -43,7 +42,6 @@ public class FloralRequestController {
 	* Submits a service request.
 	*
 	* @param roomID The room ID.
-	* @param patientName The patient name.
 	* @param assignedNurse The assigned nurse.
 	* @param requestStatus The request status.
 	* @param additionalNotes Any additional notes.
@@ -51,7 +49,6 @@ public class FloralRequestController {
 	*/
 	private void submitRequest(
 			String roomID,
-			String patientName,
 			String assignedNurse,
 			String requestStatus,
 			String additionalNotes,
@@ -62,7 +59,6 @@ public class FloralRequestController {
 				new FloralRequest(
 						nextRequest,
 						roomID,
-						patientName,
 						assignedNurse,
 						requestStatus,
 						additionalNotes,
@@ -84,7 +80,6 @@ public class FloralRequestController {
 				getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton)) {
 			submitRequest(
 					input_RoomID.getText(),
-					input_PatientName.getText(),
 					input_AssignedNurse.getText(),
 					input_RequestStatus.getText(),
 					input_AdditionalNotes.getText(),
@@ -110,11 +105,7 @@ public class FloralRequestController {
 		RequestControllerUtil.resetRadioButtons(
 				getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton);
 		RequestControllerUtil.resetTextFields(
-				input_RoomID,
-				input_PatientName,
-				input_AssignedNurse,
-				input_RequestStatus,
-				input_AdditionalNotes);
+				input_RoomID, input_AssignedNurse, input_RequestStatus, input_AdditionalNotes);
 		RequestControllerUtil.resetLabels(errorLabel);
 	}
 }

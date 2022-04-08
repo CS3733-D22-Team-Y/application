@@ -10,7 +10,6 @@ public class MealRequest implements StringArrayConv {
 
 	@Id private String requestNum;
 	private String roomID;
-	private String patientName;
 	private String assignedNurse;
 	private String requestStatus;
 	private String additionalNotes;
@@ -24,7 +23,6 @@ public class MealRequest implements StringArrayConv {
 	private void init(
 			String requestNum,
 			String roomID,
-			String patientName,
 			String assignedNurse,
 			String requestStatus,
 			String additionalNotes,
@@ -34,7 +32,6 @@ public class MealRequest implements StringArrayConv {
 			String specialInstructions) {
 		this.requestNum = requestNum;
 		this.roomID = roomID;
-		this.patientName = patientName;
 		this.assignedNurse = assignedNurse;
 		this.requestStatus = requestStatus;
 		this.additionalNotes = additionalNotes;
@@ -47,7 +44,6 @@ public class MealRequest implements StringArrayConv {
 	public MealRequest(
 			String requestNum,
 			String roomID,
-			String patientName,
 			String assignedNurse,
 			String requestStatus,
 			String additionalNotes,
@@ -58,7 +54,6 @@ public class MealRequest implements StringArrayConv {
 		init(
 				requestNum,
 				roomID,
-				patientName,
 				assignedNurse,
 				requestStatus,
 				additionalNotes,
@@ -73,7 +68,6 @@ public class MealRequest implements StringArrayConv {
 		return new String[] {
 			requestNum,
 			roomID,
-			patientName,
 			assignedNurse,
 			requestStatus,
 			additionalNotes,
@@ -86,7 +80,7 @@ public class MealRequest implements StringArrayConv {
 
 	@Override
 	public void fromStringArray(String[] args) {
-		init(args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8], args[9]);
+		init(args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8]);
 	}
 
 	public String getRequestNum() {
@@ -103,14 +97,6 @@ public class MealRequest implements StringArrayConv {
 
 	public void setRoomID(String roomID) {
 		this.roomID = roomID;
-	}
-
-	public String getPatientName() {
-		return patientName;
-	}
-
-	public void setPatientName(String patientName) {
-		this.patientName = patientName;
 	}
 
 	public String getAssignedNurse() {
