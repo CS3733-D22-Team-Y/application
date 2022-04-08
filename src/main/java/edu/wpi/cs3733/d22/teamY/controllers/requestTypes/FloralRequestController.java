@@ -67,6 +67,7 @@ public class FloralRequestController {
 						requestStatus,
 						additionalNotes,
 						bouquetTypeSelected));
+		System.out.println("Saved FloralRequest");
 	}
 
 	@FXML

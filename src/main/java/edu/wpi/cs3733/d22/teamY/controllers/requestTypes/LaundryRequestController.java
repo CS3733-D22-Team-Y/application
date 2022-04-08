@@ -55,7 +55,6 @@ public class LaundryRequestController {
 			String requestStatus,
 			String additionalNotes,
 			String laundryTypeSelected) {
-
 		String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.LAUNDRY_REQUEST));
 		DBManager.save(
 				new LaundryRequest(
@@ -66,6 +65,7 @@ public class LaundryRequestController {
 						requestStatus,
 						additionalNotes,
 						laundryTypeSelected));
+		System.out.println("Saved Laundry Request");
 	}
 
 	// Called when the submit button is pressed.

@@ -93,6 +93,7 @@ public class MedicalEquipmentRequestController {
 						additionalNotes,
 						equipmentTypeSelected));
 		DBUtils.updateCleanStatus(equipmentTypeSelected, roomID);
+		System.out.println("Saved MedEquipRequest");
 	}
 
 	// Called when the submit button is pressed.

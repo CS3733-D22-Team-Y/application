@@ -101,6 +101,7 @@ public class MealRequestController {
 						sideChoice,
 						allergies,
 						specialInstructions));
+		System.out.println("Saved MealRequest");
 	}
 
 	// Called when the submit button is pressed.

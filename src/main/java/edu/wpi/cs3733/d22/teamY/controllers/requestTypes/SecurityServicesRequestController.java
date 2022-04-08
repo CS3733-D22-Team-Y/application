@@ -82,6 +82,7 @@ public class SecurityServicesRequestController {
 						additionalNotes,
 						requestTypeSelected,
 						requestPriority));
+		System.out.println("Saved SecurityServiceRequest");
 	}
 
 	// Called when the submit button is pressed.

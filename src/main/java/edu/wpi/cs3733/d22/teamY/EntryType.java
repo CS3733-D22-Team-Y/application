@@ -23,7 +23,7 @@ public enum EntryType {
 
 	FLORAL_REQUEST(7, "FloralRequests", "floralRequests_export", FloralRequest.class),
 
-	LAUNDRY_REQUEST(7, "LaundryRequests", "laundryRequests_export", FloralRequest.class),
+	LAUNDRY_REQUEST(7, "LaundryRequests", "laundryRequests_export", LaundryRequest.class),
 
 	MEAL_REQUEST(10, "MealRequests", "mealRequests_export", MealRequest.class),
 

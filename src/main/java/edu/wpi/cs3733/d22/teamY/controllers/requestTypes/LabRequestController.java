@@ -65,6 +65,7 @@ public class LabRequestController {
 						requestStatus,
 						additionalNotes,
 						resultTypeSelected));
+		System.out.println("Saved LabRequest");
 	}
 
 	// Called when the submit button is pressed.
