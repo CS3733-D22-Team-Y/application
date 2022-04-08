@@ -14,7 +14,6 @@ import javax.persistence.Table;
 public class LabRequest implements StringArrayConv {
 	@Id private String requestNum;
 	private String roomID;
-	private String patientName;
 	private String requestStatus;
 	private String assignedNurse;
 	private String additionalNotes;
@@ -31,14 +30,12 @@ public class LabRequest implements StringArrayConv {
 	private void init(
 			String requestNum,
 			String roomID,
-			String patientName,
 			String requestStatus,
 			String assignedNurse,
 			String additionalNotes,
 			String resultType) {
 		this.requestNum = requestNum;
 		this.roomID = roomID;
-		this.patientName = patientName;
 		this.requestStatus = requestStatus;
 		this.assignedNurse = assignedNurse;
 		this.additionalNotes = additionalNotes;
@@ -50,23 +47,21 @@ public class LabRequest implements StringArrayConv {
 	public LabRequest(
 			String requestNum,
 			String roomID,
-			String patientName,
 			String requestStatus,
 			String assignedNurse,
 			String additionalNotes,
 			String resultType) {
-		init(
-				requestNum, roomID, patientName, requestStatus, assignedNurse, additionalNotes, resultType);
+		init(requestNum, roomID, requestStatus, assignedNurse, additionalNotes, resultType);
 	}
 
 	public String[] toStringArray() {
 		return new String[] {
-			requestNum, roomID, patientName, requestStatus, assignedNurse, additionalNotes, resultType
+			requestNum, roomID, requestStatus, assignedNurse, additionalNotes, resultType
 		};
 	}
 
 	public void fromStringArray(String[] args) {
-		init(args[0], args[1], args[2], args[3], args[4], args[5], args[6]);
+		init(args[0], args[1], args[2], args[3], args[4], args[5]);
 	}
 
 	// region Getters/Setters
@@ -84,14 +79,6 @@ public class LabRequest implements StringArrayConv {
 
 	public void setRoomID(String roomID) {
 		this.roomID = roomID;
-	}
-
-	public String getPatientName() {
-		return patientName;
-	}
-
-	public void setPatientName(String patientName) {
-		this.patientName = patientName;
 	}
 
 	public String getRequestStatus() {

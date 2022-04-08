@@ -1,3 +1,3 @@
-requestNum,roomID,patientName,requestStatus,assignedNurse,additionalNotes,resultType
-001,room01,Bob Smith,active,98981,none,bloodwork
-002,room02,Barb Smith,inactive,07715,test,antibody
+requestNum,roomID,requestStatus,assignedNurse,additionalNotes,resultType
+001,room01,active,98981,none,bloodwork
+002,room02,inactive,07715,test,antibody
