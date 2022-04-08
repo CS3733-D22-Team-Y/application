@@ -19,9 +19,7 @@ public class SceneLoading {
     sceneToLoad.getStylesheets().clear();
     sceneToLoad
         .getStylesheets()
-        .add(
-            Objects.requireNonNull(App.class.getResource("views/css/NormalTheme.css"))
-                .toExternalForm());
+        .add(Objects.requireNonNull(App.class.getResource(getCurrentTheme())).toExternalForm());
   }
 
   public static void loadPopup(String popPath, String parentPath) throws IOException {

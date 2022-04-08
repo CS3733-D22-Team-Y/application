@@ -75,6 +75,8 @@
             <MFXTextField layoutX="748.0" layoutY="37.0" prefHeight="50.0" prefWidth="156.0" />
             <MFXTextField layoutX="750.0" layoutY="110.0" prefHeight="50.0" prefWidth="154.0" />
             <MFXTextField layoutX="751.0" layoutY="189.0" prefHeight="50.0" prefWidth="153.0" />
+            <MFXButton layoutX="763.0" layoutY="279.0" onAction="#setDarkMode" text="DarkMode" />
+            <MFXButton layoutX="595.0" layoutY="292.0" onAction="#mainMenu" text="back" />
          </children>
       </Pane>
       <Label layoutX="374.0" layoutY="305.0" text="Change Profile">
