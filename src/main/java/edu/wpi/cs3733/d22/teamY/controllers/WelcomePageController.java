@@ -33,6 +33,7 @@ public class WelcomePageController {
   @FXML Pane loading;
   @FXML Pane yubikeyPane;
   @FXML TextField yubikeyEntry;
+  @FXML Label yubikeyInstruct;
 
   private boolean lockOut = false;
 
@@ -97,7 +98,20 @@ public class WelcomePageController {
       yubikeyPane.setVisible(false);
       loginAnimation();
     } else {
-      System.out.println(yubikeyEntry.toString());
+      Timeline tl =
+          new Timeline(
+              new KeyFrame(
+                  Duration.seconds(0), (e) -> yubikeyInstruct.setText("Yubikey Login Failed")),
+              new KeyFrame(
+                  Duration.seconds(2),
+                  (e) -> {
+                    try {
+                      SceneLoading.loadScene("views/Welcome.fxml");
+                    } catch (IOException ex) {
+                      ex.printStackTrace();
+                    }
+                  }));
+      tl.play();
     }
   }
 
