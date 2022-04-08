@@ -42,7 +42,7 @@ public class ActServReqTablePageController {
 		TableColumn<MedEquipReq, String> assignedNurse = new TableColumn<>("Assigned Nurse");
 		TableColumn<MedEquipReq, String> requestStatus = new TableColumn<>("Request Status");
 		TableColumn<MedEquipReq, String> additionalNotes = new TableColumn<>("Additional Notes");
-		TableColumn<MedEquipReq, String> equipmentTypeSelected = new TableColumn<>("Additional Notes");
+		TableColumn<MedEquipReq, String> equipmentTypeSelected = new TableColumn<>("Equipment Type");
 
 		requestNum.setCellValueFactory(new PropertyValueFactory<>("requestNum"));
 		roomID.setCellValueFactory(new PropertyValueFactory<>("roomID"));

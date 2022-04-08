@@ -99,21 +99,7 @@ public class MedicalEquipmentRequestController {
 	@FXML
 	void submitButton() {
 		// Checks if a bouquet choice has been made
-		boolean availableEquip = true;
-		/*
-		if (DBUtils.getAvailableEquipment("BED").getKey() == 0) {
-			availableEquip = false;
-		}
-		if (DBUtils.getAvailableEquipment("XRAY").getKey() == 0) {
-			availableEquip = false;
-		}
-		if (DBUtils.getAvailableEquipment("PUMP").getKey() == 0) {
-			availableEquip = false;
-		}
-		if (DBUtils.getAvailableEquipment("RECLINER").getKey() == 0) {
-			availableEquip = false;
-		}
-		*/
+
 
 		boolean failed = false;
 		if (RequestControllerUtil.isRadioButtonSelected(reclinerRadioButton)) {
@@ -151,23 +137,7 @@ public class MedicalEquipmentRequestController {
 					getEquipmentType());
 			RequestControllerUtil.resetLabels(errorLabel);
 		}
-		/*
-		if (RequestControllerUtil.isRadioButtonSelected(
-						reclinerRadioButton, infusionPumpRadioButton, xrayRadioButton, bedRadioButton)) {
-			submitRequest(
-					input_RoomID.getText(),
-					input_PatientName.getText(),
-					input_AssignedNurse.getText(),
-					input_RequestStatus.getText(),
-					input_AdditionalNotes.getText(),
-					getEquipmentType());
-			RequestControllerUtil.resetLabels(errorLabel);
-		} else if (availableEquip == false) {
-			errorLabel.setText("Equipment of the selected type not available.");
-		} else {
-			errorLabel.setText("Please select an equipment option.");
-		}
-		*/
+
 
 	}
 
