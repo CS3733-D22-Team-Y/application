@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.d22.teamY;
 
-import java.io.IOException;
 import java.util.Objects;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -29,17 +28,19 @@ public class App extends Application {
 		log.info("Starting Up");
 	}
 
-	@Override
-	public void start(Stage primaryStage) throws IOException {
-		instance = this; // instantiates instance
-		this.primaryStage = primaryStage;
-		// Sets the primary scene (currently request menu) and displays it
-		Parent root =
-				FXMLLoader.load(Objects.requireNonNull(getClass().getResource("views/Welcome.fxml")));
-		Scene scene = new Scene(root);
-		primaryStage.setScene(scene);
-		primaryStage.show();
-	}
+
+  @Override
+  public void start(Stage primaryStage) throws Exception {
+    instance = this; // instantiates instance
+    this.primaryStage = primaryStage;
+    // Sets the primary scene (currently request menu) and displays it
+    Parent root =
+        FXMLLoader.load(Objects.requireNonNull(getClass().getResource("views/Welcome.fxml")));
+    Scene scene = new Scene(root);
+    primaryStage.setScene(scene);
+    primaryStage.show();
+  }
+
 
 	@Override
 	public void stop() {
