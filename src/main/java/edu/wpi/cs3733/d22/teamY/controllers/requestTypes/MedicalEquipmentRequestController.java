@@ -99,8 +99,49 @@ public class MedicalEquipmentRequestController {
 	@FXML
 	void submitButton() {
 		// Checks if a bouquet choice has been made
-		if (RequestControllerUtil.isRadioButtonSelected(
-				reclinerRadioButton, infusionPumpRadioButton, xrayRadioButton, bedRadioButton)) {
+		boolean availableEquip = true;
+		/*
+		if (DBUtils.getAvailableEquipment("BED").getKey() == 0) {
+			availableEquip = false;
+		}
+		if (DBUtils.getAvailableEquipment("XRAY").getKey() == 0) {
+			availableEquip = false;
+		}
+		if (DBUtils.getAvailableEquipment("PUMP").getKey() == 0) {
+			availableEquip = false;
+		}
+		if (DBUtils.getAvailableEquipment("RECLINER").getKey() == 0) {
+			availableEquip = false;
+		}
+		*/
+
+		boolean failed = false;
+		if (RequestControllerUtil.isRadioButtonSelected(reclinerRadioButton)) {
+			if (DBUtils.getAvailableEquipment("RECLINER").getKey() == 0) {
+				errorLabel.setText("Equipment Not available.");
+				failed = true;
+			}
+		} else if (RequestControllerUtil.isRadioButtonSelected(infusionPumpRadioButton)) {
+			if (DBUtils.getAvailableEquipment("PUMP").getKey() == 0) {
+				errorLabel.setText("Equipment Not available.");
+				failed = true;
+			}
+		} else if (RequestControllerUtil.isRadioButtonSelected(xrayRadioButton)) {
+			if (DBUtils.getAvailableEquipment("XRAY").getKey() == 0) {
+				errorLabel.setText("Equipment Not available.");
+				failed = true;
+			}
+		} else if (RequestControllerUtil.isRadioButtonSelected(bedRadioButton)) {
+			if (DBUtils.getAvailableEquipment("BED").getKey() == 0) {
+				errorLabel.setText("Equipment Not available.");
+				failed = true;
+			}
+		} else {
+			errorLabel.setText("Please select an equipment option.");
+			failed = true;
+		}
+
+		if (!failed) {
 			submitRequest(
 					input_RoomID.getText(),
 					input_PatientName.getText(),
@@ -109,9 +150,25 @@ public class MedicalEquipmentRequestController {
 					input_AdditionalNotes.getText(),
 					getEquipmentType());
 			RequestControllerUtil.resetLabels(errorLabel);
+		}
+		/*
+		if (RequestControllerUtil.isRadioButtonSelected(
+						reclinerRadioButton, infusionPumpRadioButton, xrayRadioButton, bedRadioButton)) {
+			submitRequest(
+					input_RoomID.getText(),
+					input_PatientName.getText(),
+					input_AssignedNurse.getText(),
+					input_RequestStatus.getText(),
+					input_AdditionalNotes.getText(),
+					getEquipmentType());
+			RequestControllerUtil.resetLabels(errorLabel);
+		} else if (availableEquip == false) {
+			errorLabel.setText("Equipment of the selected type not available.");
 		} else {
 			errorLabel.setText("Please select an equipment option.");
 		}
+		*/
+
 	}
 
 	// Returns the database name of the selected radio button.
