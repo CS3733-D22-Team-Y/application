@@ -199,7 +199,7 @@
       <Pane fx:id="codeEntryPane" layoutX="364.0" layoutY="222.0" prefHeight="256.0" prefWidth="370.0" visible="false">
          <children>
             <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="256.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="370.0" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="7.0" prefHeight="113.0" prefWidth="299.0" text="Please enter the code that was sent to your device" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="codeEntryLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="7.0" prefHeight="113.0" prefWidth="299.0" text="Please enter the code that was sent to your device" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Microsoft Tai Le Bold" size="23.0" />
                </font>

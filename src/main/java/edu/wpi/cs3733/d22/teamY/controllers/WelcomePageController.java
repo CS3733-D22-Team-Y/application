@@ -47,7 +47,7 @@ public class WelcomePageController {
   @FXML JFXButton faEmailButton;
   @FXML Pane faSmsPane;
   @FXML JFXButton faSmsButton;
-
+  @FXML Label codeEntryLabel;
   private boolean lockOut = false;
 
   int maxAttempts = 5;
@@ -185,6 +185,7 @@ public class WelcomePageController {
 
   @FXML
   public void codePrompt() {
+    faPane.setVisible(false);
     codeEntryPane.setVisible(true);
   }
 
@@ -193,6 +194,21 @@ public class WelcomePageController {
     if (codeEntryField.getText().equals(universalCode)) {
       codeEntryPane.setVisible(false);
       loginAnimation();
+    } else {
+      codeEntryField.setText("");
+      Timeline failed2FA =
+          new Timeline(
+              new KeyFrame(Duration.seconds(0), (e) -> codeEntryLabel.setText("Incorrect Code")),
+              new KeyFrame(
+                  Duration.seconds(2),
+                  (e) -> {
+                    try {
+                      SceneLoading.loadScene("views/Welcome.fxml");
+                    } catch (IOException ex) {
+                      ex.printStackTrace();
+                    }
+                  }));
+      failed2FA.play();
     }
   }
 
