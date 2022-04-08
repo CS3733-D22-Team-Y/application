@@ -2,11 +2,7 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXRadioButton;
-import edu.wpi.cs3733.d22.teamY.DBManager;
-import edu.wpi.cs3733.d22.teamY.DBUtils;
-import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
-import edu.wpi.cs3733.d22.teamY.model.MealRequest;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -86,19 +82,19 @@ public class MealRequestController {
       String sideChoice,
       String allergies,
       String specialInstructions) {
-    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.MEAL_REQUEST));
-    DBManager.save(
-        new MealRequest(
-            nextRequest,
-            roomID,
-            assignedNurse,
-            requestStatus,
-            additionalNotes,
-            mainChoice,
-            sideChoice,
-            allergies,
-            specialInstructions));
-    System.out.println("Saved MealRequest");
+      String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.MEAL_REQUEST));
+      DBManager.save(
+          new MealRequest(
+              nextRequest,
+              roomID,
+              assignedNurse,
+              requestStatus,
+              additionalNotes,
+              mainChoice,
+              sideChoice,
+              allergies,
+              specialInstructions));
+      System.out.println("Saved MealRequest");
   }
 
   // Called when the submit button is pressed.

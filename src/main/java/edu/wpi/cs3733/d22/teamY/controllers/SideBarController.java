@@ -1,17 +1,14 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
-import edu.wpi.cs3733.d22.teamY.DBUtils;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 
 public class SideBarController {
   @FXML AnchorPane mainPane;
   @FXML private Label nameLabel;
   @FXML private Label accessLevel;
-  @FXML private ToggleButton dbToggle;
 
   @FXML
   void initialize() {
@@ -93,11 +90,5 @@ public class SideBarController {
   @FXML
   void killApplication() throws IOException {
     SceneLoading.loadPopup("views/ConfirmClose.fxml", "views/SideBar.fxml");
-  }
-
-  @FXML
-  void dbSwitcherToggle() {
-    boolean state = dbToggle.isSelected();
-    DBUtils.switchDBType(state);
   }
 }

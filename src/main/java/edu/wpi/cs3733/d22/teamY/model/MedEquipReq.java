@@ -18,6 +18,9 @@ public class MedEquipReq implements StringArrayConv {
   private String requestStatus;
   private String additionalNotes;
   private String equipmentTypeSelected;
+  private String equipID;
+  private String targetLocID;
+
 
   public static final String REQUEST_NUM = "REQUESTNUM";
   public static final String EQUIP_ID = "EQUIPID";
@@ -65,7 +68,8 @@ public class MedEquipReq implements StringArrayConv {
     };
   }
 
-  public String getRequestNum() {
+  // region Getters/Setters
+  public String getKey() {
     return requestNum;
   }
 
@@ -105,13 +109,12 @@ public class MedEquipReq implements StringArrayConv {
     this.additionalNotes = additionalNotes;
   }
 
-  public String getEquipmentTypeSelected() {
-    return equipmentTypeSelected;
+  public String getEquipID() {
+    return equipID;
   }
 
-  public void setEquipmentTypeSelected(String equipmentTypeSelected) {
-    this.equipmentTypeSelected = equipmentTypeSelected;
+  public String getTargetLocID() {
+    return targetLocID;
   }
-
   // endregion
 }

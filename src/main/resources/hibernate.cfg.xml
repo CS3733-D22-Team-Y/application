@@ -7,7 +7,7 @@
 
   <session-factory>
 
-    <property name="connection.url">jdbc:derby:Database;create=true;</property>
+    <property name="connection.url">jdbc:derby:LocationDB;create=true;</property>
     <property name="connection.driver_class">org.apache.derby.jdbc.EmbeddedDriver</property>
 
 
@@ -25,9 +25,6 @@
       <mapping class="edu.wpi.cs3733.d22.teamY.model.MedEquipReq" />
       <mapping class="edu.wpi.cs3733.d22.teamY.model.LabRequest" />
       <mapping class="edu.wpi.cs3733.d22.teamY.model.Employee" />
-      <mapping class="edu.wpi.cs3733.d22.teamY.model.FloralRequest" />
-      <mapping class="edu.wpi.cs3733.d22.teamY.model.LaundryRequest" />
-      <mapping class="edu.wpi.cs3733.d22.teamY.model.MealRequest" />
-      <mapping class="edu.wpi.cs3733.d22.teamY.model.SecurityServiceRequest" />
+
   </session-factory>
 </hibernate-configuration>
