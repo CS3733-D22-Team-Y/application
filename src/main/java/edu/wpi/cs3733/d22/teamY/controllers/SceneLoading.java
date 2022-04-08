@@ -9,21 +9,21 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class SceneLoading {
-	public static void loadScene(String path) throws IOException {
-		Scene sceneToLoad =
-				new Scene(FXMLLoader.load(Objects.requireNonNull(App.class.getResource(path))));
-		App.getInstance().setScene(sceneToLoad);
-	}
+  public static void loadScene(String path) throws IOException {
+    Scene sceneToLoad =
+        new Scene(FXMLLoader.load(Objects.requireNonNull(App.class.getResource(path))));
+    App.getInstance().setScene(sceneToLoad);
+  }
 
-	public static void loadPopup(String popPath, String parentPath) throws IOException {
-		Stage stage = new Stage();
-		Scene sceneToLoad =
-				new Scene(FXMLLoader.load(Objects.requireNonNull(App.class.getResource(popPath))));
-		Scene parentScene =
-				new Scene(FXMLLoader.load(Objects.requireNonNull(App.class.getResource(parentPath))));
-		stage.setScene(sceneToLoad);
-		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.initOwner(parentScene.getWindow());
-		stage.showAndWait();
-	}
+  public static void loadPopup(String popPath, String parentPath) throws IOException {
+    Stage stage = new Stage();
+    Scene sceneToLoad =
+        new Scene(FXMLLoader.load(Objects.requireNonNull(App.class.getResource(popPath))));
+    Scene parentScene =
+        new Scene(FXMLLoader.load(Objects.requireNonNull(App.class.getResource(parentPath))));
+    stage.setScene(sceneToLoad);
+    stage.initModality(Modality.APPLICATION_MODAL);
+    stage.initOwner(parentScene.getWindow());
+    stage.showAndWait();
+  }
 }
