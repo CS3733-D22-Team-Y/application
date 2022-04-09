@@ -2,8 +2,11 @@
 
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXRadioButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -14,7 +17,7 @@
 <AnchorPane maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle fx:id="mainPane" arcHeight="20.0" arcWidth="20.0" fill="#ffffff80" height="780.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="920.0" />
-       <Label layoutY="10.0" text="Service Request">
+       <Label layoutY="10.0" text="Laundry Request">
            <textFill>
                <LinearGradient endX="1.0" endY="1.0">
                    <stops>
@@ -35,35 +38,17 @@
                <Font name="Arial Rounded MT Bold" size="60.0" />
            </font>
        </Label>
-       <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
-           <fill>
-               <LinearGradient endX="1.0" endY="1.0">
-                   <stops>
-                       <Stop>
-                           <color>
-                               <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
-                           </color>
-                       </Stop>
-                       <Stop offset="1.0">
-                           <color>
-                               <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
-                           </color>
-                       </Stop>
-                   </stops>
-               </LinearGradient>
-           </fill>
-       </Rectangle>
-      <Label layoutX="15.0" layoutY="150.0" text="Patient ID:">
+      <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="150.0" prefHeight="35.0" prefWidth="134.0" text="Patient ID:" textAlignment="CENTER">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="15.0" layoutY="225.0" text="Nurse:">
+      <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="225.0" prefHeight="35.0" prefWidth="133.0" text="Nurse:" textAlignment="CENTER">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="15.0" layoutY="300.0" text="Room:">
+      <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="300.0" prefHeight="35.0" prefWidth="133.0" text="Room:" textAlignment="CENTER">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
@@ -119,7 +104,14 @@
             <Font name="Arial Rounded MT Bold" size="45.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="620.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0">
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+         <effect>
+            <DropShadow height="15.85" offsetX="-3.0" offsetY="2.0" radius="8.8875" width="21.7">
+               <color>
+                  <Color red="0.08190000057220459" green="0.24621999263763428" blue="0.38999998569488525" opacity="0.3767123222351074" />
+               </color>
+            </DropShadow>
+         </effect>
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -137,5 +129,48 @@
             </LinearGradient>
          </fill>
       </Rectangle>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="620.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0">
+         <effect>
+            <DropShadow height="15.85" offsetX="-3.0" offsetY="2.0" radius="8.8875" width="21.7">
+               <color>
+                  <Color red="0.08190000057220459" green="0.24621999263763428" blue="0.38999998569488525" opacity="0.3767123222351074" />
+               </color>
+            </DropShadow>
+         </effect>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <MFXRadioButton layoutX="650.0" layoutY="230.0" radius="12.0" text="Linens">
+         <font>
+            <Font name="Calibri" size="30.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="laundry_options" />
+         </toggleGroup>
+      </MFXRadioButton>
+      <MFXRadioButton layoutX="650.0" layoutY="275.0" radius="12.0" text="Scrubs" toggleGroup="$laundry_options">
+         <font>
+            <Font name="Calibri" size="30.0" />
+         </font>
+      </MFXRadioButton>
+      <MFXRadioButton layoutX="650.0" layoutY="320.0" radius="12.0" text="Hazardous" toggleGroup="$laundry_options">
+         <font>
+            <Font name="Calibri" size="30.0" />
+         </font>
+      </MFXRadioButton>
    </children>
 </AnchorPane>
