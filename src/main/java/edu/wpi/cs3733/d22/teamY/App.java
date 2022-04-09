@@ -1,5 +1,7 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.WebcamUtils;
 import java.util.Objects;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -39,6 +41,9 @@ public class App extends Application {
     Scene scene = new Scene(root);
     primaryStage.setScene(scene);
     primaryStage.show();
+    Webcam webcam = Webcam.getDefault();
+    webcam.open();
+    WebcamUtils.capture(webcam, "selfie.jpg");
   }
 
   @Override

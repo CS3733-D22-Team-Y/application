@@ -66,6 +66,7 @@ dependencies {
 
     implementation 'com.sun.mail:jakarta.mail:1.6.7'
     compile "org.apache.commons:commons-lang3:3.3.2"
+    compile group: 'com.github.sarxos', name: 'webcam-capture', version: '0.3.12'
 
 }
 
