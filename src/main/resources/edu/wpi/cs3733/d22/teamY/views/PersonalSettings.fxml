@@ -1,142 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXHamburger?>
-<?import com.jfoenix.controls.JFXTextArea?>
-<?import com.jfoenix.controls.JFXToggleButton?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings">
+<AnchorPane maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController">
     <children>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="393.0" layoutY="7.0" prefHeight="80.0"
-               prefWidth="700.0" text="Change Personal Settings" textAlignment="RIGHT" textFill="#297bce">
+        <Label layoutY="10.0" text="My Profile" textFill="#20758b">
             <font>
-                <Font name="System Bold" size="54.0"/>
+                <Font name="Arial Rounded MT Bold" size="60.0" />
             </font>
         </Label>
-        <JFXButton layoutX="258.0" layoutY="15.0" onAction="#mainMenu" prefHeight="50.0" prefWidth="100.0"
-                   style="-fx-background-color: #021D5A;" text="Back" textFill="WHITE">
-            <font>
-                <Font name="Microsoft Tai Le Bold" size="24.0"/>
-            </font>
-        </JFXButton>
-        <Pane fx:id="sidebarPane" prefHeight="700.0" prefWidth="185.0"/>
-        <JFXHamburger fx:id="sidebarHamburger" layoutX="10.0" layoutY="10.0" onMouseClicked="#openSidebarLayout"/>
-        <Text fill="#7b7777" layoutX="380.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="Change Profile">
-            <font>
-                <Font name="Microsoft Tai Le" size="16.0"/>
-            </font>
-        </Text>
-        <Text layoutX="592.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preferred Name:">
-            <font>
-                <Font size="24.0"/>
-            </font>
-        </Text>
-        <Text layoutX="593.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Legal Name:">
-            <font>
-                <Font size="24.0"/>
-            </font>
-        </Text>
-        <JFXTextArea layoutX="322.0" layoutY="373.0" prefHeight="259.0" prefWidth="260.0"
-                     style="-fx-background-color: white;" text="   Bio">
-            <font>
-                <Font name="Microsoft Tai Le" size="16.0"/>
-            </font>
-        </JFXTextArea>
-        <TextField layoutX="775.0" layoutY="125.0" prefHeight="43.0" prefWidth="275.0">
-            <font>
-                <Font size="20.0"/>
-            </font>
-        </TextField>
-        <TextField layoutX="775.0" layoutY="188.0" prefHeight="43.0" prefWidth="275.0">
-            <font>
-                <Font size="20.0"/>
-            </font>
-        </TextField>
-        <Text layoutX="592.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
-            <font>
-                <Font size="24.0"/>
-            </font>
-        </Text>
-        <Text layoutX="592.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:">
-            <font>
-                <Font size="24.0"/>
-            </font>
-        </Text>
-        <TextField layoutX="775.0" layoutY="379.0" prefHeight="35.0" prefWidth="275.0">
-            <font>
-                <Font size="20.0"/>
-            </font>
-        </TextField>
-        <TextField layoutX="775.0" layoutY="317.0" prefHeight="43.0" prefWidth="275.0">
-            <font>
-                <Font size="20.0"/>
-            </font>
-        </TextField>
-        <JFXButton layoutX="961.0" layoutY="626.0" style="-fx-background-color: #021D5A;" text="Confirm"
-                   textFill="WHITE">
-            <font>
-                <Font name="Microsoft Tai Le Bold" size="24.0"/>
-            </font>
-        </JFXButton>
-        <Text layoutX="593.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:">
-            <font>
-                <Font size="24.0"/>
-            </font>
-        </Text>
-        <TextField layoutX="775.0" layoutY="252.0" prefHeight="43.0" prefWidth="275.0">
-            <font>
-                <Font size="20.0"/>
-            </font>
-        </TextField>
-        <ImageView fitHeight="216.0" fitWidth="226.0" layoutX="325.0" layoutY="133.0" pickOnBounds="true"
-                   preserveRatio="true"/>
-        <Text layoutX="592.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:">
-            <font>
-                <Font size="24.0"/>
-            </font>
-        </Text>
-        <RadioButton layoutX="699.0" layoutY="453.0" mnemonicParsing="false" text="F">
-            <font>
-                <Font size="16.0"/>
-            </font>
-            <toggleGroup>
-                <ToggleGroup fx:id="Gender"/>
-            </toggleGroup>
-        </RadioButton>
-        <RadioButton layoutX="754.0" layoutY="453.0" mnemonicParsing="false" text="M" toggleGroup="$Gender">
-            <font>
-                <Font size="16.0"/>
-            </font>
-        </RadioButton>
-        <RadioButton layoutX="822.0" layoutY="453.0" mnemonicParsing="false" text="Other:" toggleGroup="$Gender">
-            <font>
-                <Font size="16.0"/>
-            </font>
-        </RadioButton>
-        <TextField layoutX="913.0" layoutY="444.0" prefHeight="43.0" prefWidth="140.0">
-            <font>
-                <Font size="20.0"/>
-            </font>
-        </TextField>
-        <Text layoutX="592.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notifications:">
-            <font>
-                <Font size="24.0"/>
-            </font>
-        </Text>
-        <JFXToggleButton layoutX="754.0" layoutY="489.0" text="   " toggleColor="#021d5a" toggleLineColor="#297bce"/>
-        <JFXButton fx:id="closeSidebarHiddenButton" layoutX="151.0" layoutY="14.0" onAction="#closeSidebarLayout"
-                   prefHeight="30.0" prefWidth="31.0" text="closeSidebarHiddenButton" textFill="TRANSPARENT"
-                   visible="false"/>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+        <Circle centerX="395.0" centerY="120.0" fill="#20758b" layoutX="65.0" layoutY="126.0" radius="100.0" stroke="#20758b" strokeType="INSIDE" />
+        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="360.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#c2c2c280" height="400.0" layoutY="390.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="920.0" />
+      <Label layoutX="10.0" layoutY="440.0" text="Legal Name:">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="10.0" layoutY="515.0" text="Preferred Name:">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="10.0" layoutY="590.0" text="Title:">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="10.0" layoutY="665.0" text="Email:">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </Label>
+      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </MFXTextField>
+      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </MFXTextField>
+      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </MFXTextField>
+      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="661.0" prefHeight="42.0" prefWidth="220.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </MFXTextField>
+      <Label layoutX="470.0" layoutY="440.0" text="Date of Birth:">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="470.0" layoutY="515.0" text="Pronouns:">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="470.0" layoutY="590.0" text="Phone:">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </Label>
+      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </MFXTextField>
+      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </MFXTextField>
+      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </MFXTextField>
+      <MFXButton layoutX="810.0" layoutY="730.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" text="Apply" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+      </MFXButton>
+      <MFXButton layoutX="700.0" layoutY="730.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+      </MFXButton>
     </children>
 </AnchorPane>

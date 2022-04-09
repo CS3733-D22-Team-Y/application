@@ -15,8 +15,9 @@ public class SideBarController {
 
   @FXML
   void initialize() {
-    accessLevel.setText("Access Level: " + PersonalSettings.currentEmployee.getAccessLevel());
-    nameLabel.setText(PersonalSettings.currentEmployee.getName());
+    accessLevel.setText(
+        "Access Level: " + PersonalSettingsController.currentEmployee.getAccessLevel());
+    nameLabel.setText(PersonalSettingsController.currentEmployee.getName());
     mainPane.setVisible(true);
   }
 
