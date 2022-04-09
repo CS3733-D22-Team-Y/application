@@ -9,35 +9,35 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 public class PersonalSettings {
-	// Base pane for displaying new scenes
-	@FXML private Pane mapPane;
-	// Sidebar
-	@FXML private Pane sidebarPane;
-	@FXML private JFXButton closeSidebarHiddenButton;
-	@FXML private JFXHamburger sidebarHamburger;
-	AnchorPane sidebar = null;
-	public static Employee currentEmployee =
-			new Employee("-1", "Guest", "Guest", "Guest", "Guest", "Guest", "Guest", 0, "none");
+  // Base pane for displaying new scenes
+  @FXML private Pane mapPane;
+  // Sidebar
+  @FXML private Pane sidebarPane;
+  @FXML private JFXButton closeSidebarHiddenButton;
+  @FXML private JFXHamburger sidebarHamburger;
+  AnchorPane sidebar = null;
+  public static Employee currentEmployee =
+      new Employee("-1", "Guest", "Guest", "Guest", "Guest", "Guest", "Guest", 0, "none");
 
-	@FXML
-	void initialize() throws IOException {
-		sidebar = SidebarUtil.initializeSidebar(sidebarPane);
-		openSidebarLayout();
-	}
+  @FXML
+  void initialize() throws IOException {
+    sidebar = SidebarUtil.initializeSidebar(sidebarPane);
+    openSidebarLayout();
+  }
 
-	@FXML
-	void mainMenu() throws IOException {
-		SceneLoading.loadScene("views/Map.fxml");
-	}
+  @FXML
+  void mainMenu() throws IOException {
+    SceneLoading.loadScene("views/Map.fxml");
+  }
 
-	// Sidebar
-	@FXML
-	void openSidebarLayout() {
-		SidebarUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
-	}
+  // Sidebar
+  @FXML
+  void openSidebarLayout() {
+    SidebarUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
+  }
 
-	@FXML
-	void closeSidebarLayout() {
-		SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
-	}
+  @FXML
+  void closeSidebarLayout() {
+    SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
+  }
 }

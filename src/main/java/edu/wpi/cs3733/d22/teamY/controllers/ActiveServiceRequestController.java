@@ -8,31 +8,31 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 public class ActiveServiceRequestController {
-	@FXML private Pane sidebarPane;
+  @FXML private Pane sidebarPane;
 
-	@FXML private JFXButton backButton;
-	@FXML private JFXButton closeSidebarHiddenButton;
-	@FXML private JFXHamburger sidebarHamburger;
-	AnchorPane sidebar = null;
+  @FXML private JFXButton backButton;
+  @FXML private JFXButton closeSidebarHiddenButton;
+  @FXML private JFXHamburger sidebarHamburger;
+  AnchorPane sidebar = null;
 
-	@FXML
-	void initialize() throws IOException {
-		sidebar = SidebarUtil.initializeSidebar(sidebarPane);
-		openSidebarLayout();
-	}
+  @FXML
+  void initialize() throws IOException {
+    sidebar = SidebarUtil.initializeSidebar(sidebarPane);
+    openSidebarLayout();
+  }
 
-	@FXML
-	void mainMenu() throws IOException {
-		SceneLoading.loadScene("views/Map.fxml");
-	}
+  @FXML
+  void mainMenu() throws IOException {
+    SceneLoading.loadScene("views/Map.fxml");
+  }
 
-	@FXML
-	void openSidebarLayout() {
-		SidebarUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
-	}
+  @FXML
+  void openSidebarLayout() {
+    SidebarUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
+  }
 
-	@FXML
-	void closeSidebarLayout() {
-		SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
-	}
+  @FXML
+  void closeSidebarLayout() {
+    SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
+  }
 }

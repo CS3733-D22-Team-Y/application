@@ -7,10 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
-* Entity class for elements in the employee table in the database. An instance of this class
-* represents a single row in the database. Instances can be used along with the DBManager to add,
-* update, and delete rows in the table.
-*/
+ * Entity class for elements in the employee table in the database. An instance of this class
+ * represents a single row in the database. Instances can be used along with the DBManager to add,
+ * update, and delete rows in the table.
+ */
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee implements StringArrayConv {
