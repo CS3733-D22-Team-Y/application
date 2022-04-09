@@ -1,6 +1,6 @@
 package edu.wpi.cs3733.d22.teamY;
 
-import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
+import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController;
 import edu.wpi.cs3733.d22.teamY.model.*;
 import java.util.List;
 import javafx.util.Pair;
@@ -114,7 +114,7 @@ public class DBUtils {
     }
 
     Employee thePerson = people.get(0);
-    PersonalSettings.currentEmployee = thePerson; // TODO change
+    PersonalSettingsController.currentEmployee = thePerson; // TODO change
 
     return thePerson.getName();
   }
@@ -168,6 +168,7 @@ public class DBUtils {
 
     return (tempLocations.get(0).getNodeID());
   }
+
   /**
    * Changes an employee's password.
    *

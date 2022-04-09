@@ -7,40 +7,51 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="700.0" maxWidth="1100.0" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: eee;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MapPageController">
-   <children>
-      <Pane fx:id="mapPane" layoutX="400.0" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: ccc;" />
-      <Pane fx:id="sidebarPane" prefHeight="700.0" prefWidth="200.0" />
-      <JFXHamburger fx:id="sidebarHamburger" layoutX="10.0" layoutY="10.0" onMouseClicked="#openSidebarLayout" />
-      <JFXButton fx:id="closeSidebarHiddenButton" layoutX="151.0" layoutY="14.0" onAction="#closeSidebarLayout" prefHeight="30.0" prefWidth="31.0" text="closeSidebarHiddenButton" textFill="TRANSPARENT" visible="false" />
-      <VBox fx:id="buttonBox" layoutX="240.0" layoutY="18.0" spacing="40.0">
-         <children>
-            <JFXButton onAction="#loadFloor3Map" prefHeight="100.0" prefWidth="130.0" style="-fx-background-color: #021D5A; -fx-background-radius: 25;" text="3" textFill="WHITE">
-               <font>
-                  <Font name="Microsoft Tai Le Bold" size="36.0" />
-               </font>
-            </JFXButton>
-            <JFXButton onAction="#loadFloor2Map" prefHeight="100.0" prefWidth="130.0" style="-fx-background-color: #021D5A; -fx-background-radius: 25;" text="2" textFill="WHITE">
-               <font>
-                  <Font name="Microsoft Tai Le Bold" size="36.0" />
-               </font>
-            </JFXButton>
-            <JFXButton onAction="#loadFloor1Map" prefHeight="100.0" prefWidth="130.0" style="-fx-background-color: #021D5A; -fx-background-radius: 25;" text="1" textFill="WHITE">
-               <font>
-                  <Font name="Microsoft Tai Le Bold" size="36.0" />
-               </font>
-            </JFXButton>
-            <JFXButton onAction="#loadBasement1Map" prefHeight="100.0" prefWidth="130.0" style="-fx-background-color: #021D5A; -fx-background-radius: 25;" text="LL1" textFill="WHITE">
-               <font>
-                  <Font name="Microsoft Tai Le Bold" size="36.0" />
-               </font>
-            </JFXButton>
-            <JFXButton onAction="#loadBasement2Map" prefHeight="100.0" prefWidth="130.0" style="-fx-background-color: #021D5A; -fx-background-radius: 25;" text="LL2" textFill="WHITE">
-               <font>
-                  <Font name="Microsoft Tai Le Bold" size="36.0" />
-               </font>
-            </JFXButton>
-         </children>
-      </VBox>
-   </children>
+<AnchorPane maxHeight="700.0" maxWidth="1100.0" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: eee;"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MapPageController">
+    <children>
+        <Pane fx:id="mapPane" layoutX="400.0" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: ccc;"/>
+        <Pane fx:id="sidebarPane" prefHeight="700.0" prefWidth="200.0"/>
+        <JFXHamburger fx:id="sidebarHamburger" layoutX="10.0" layoutY="10.0" onMouseClicked="#openSidebarLayout"/>
+        <JFXButton fx:id="closeSidebarHiddenButton" layoutX="151.0" layoutY="14.0" onAction="#closeSidebarLayout"
+                   prefHeight="30.0" prefWidth="31.0" text="closeSidebarHiddenButton" textFill="TRANSPARENT"
+                   visible="false"/>
+        <VBox fx:id="buttonBox" layoutX="240.0" layoutY="18.0" spacing="40.0">
+            <children>
+                <JFXButton onAction="#loadFloor3Map" prefHeight="100.0" prefWidth="130.0"
+                           style="-fx-background-color: #021D5A; -fx-background-radius: 25;" text="3" textFill="WHITE">
+                    <font>
+                        <Font name="Microsoft Tai Le Bold" size="36.0"/>
+                    </font>
+                </JFXButton>
+                <JFXButton onAction="#loadFloor2Map" prefHeight="100.0" prefWidth="130.0"
+                           style="-fx-background-color: #021D5A; -fx-background-radius: 25;" text="2" textFill="WHITE">
+                    <font>
+                        <Font name="Microsoft Tai Le Bold" size="36.0"/>
+                    </font>
+                </JFXButton>
+                <JFXButton onAction="#loadFloor1Map" prefHeight="100.0" prefWidth="130.0"
+                           style="-fx-background-color: #021D5A; -fx-background-radius: 25;" text="1" textFill="WHITE">
+                    <font>
+                        <Font name="Microsoft Tai Le Bold" size="36.0"/>
+                    </font>
+                </JFXButton>
+                <JFXButton onAction="#loadBasement1Map" prefHeight="100.0" prefWidth="130.0"
+                           style="-fx-background-color: #021D5A; -fx-background-radius: 25;" text="LL1"
+                           textFill="WHITE">
+                    <font>
+                        <Font name="Microsoft Tai Le Bold" size="36.0"/>
+                    </font>
+                </JFXButton>
+                <JFXButton onAction="#loadBasement2Map" prefHeight="100.0" prefWidth="130.0"
+                           style="-fx-background-color: #021D5A; -fx-background-radius: 25;" text="LL2"
+                           textFill="WHITE">
+                    <font>
+                        <Font name="Microsoft Tai Le Bold" size="36.0"/>
+                    </font>
+                </JFXButton>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

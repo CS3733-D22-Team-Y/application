@@ -335,6 +335,7 @@ public class MapPageController {
 
     switchFloor(Floors.THIRD_FLOOR);
   }
+
   // Sidebar
   @FXML
   void openSidebarLayout() {

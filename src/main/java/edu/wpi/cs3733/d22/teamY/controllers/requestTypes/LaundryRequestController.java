@@ -38,6 +38,7 @@ public class LaundryRequestController {
   public LaundryRequestController() throws IOException {}
 
   // BACKEND PEOPLE,THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
+
   /**
    * Submits a service request.
    *

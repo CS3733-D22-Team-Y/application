@@ -64,6 +64,7 @@ public class MedicalEquipmentRequestController {
   }
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
+
   /**
    * Submits a service request.
    *

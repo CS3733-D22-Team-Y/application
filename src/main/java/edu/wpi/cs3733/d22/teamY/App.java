@@ -18,6 +18,7 @@ public class App extends Application {
   }
 
   private static App instance;
+
   // Summons instances for scene change implementation
   public static App getInstance() {
     return instance;

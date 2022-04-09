@@ -2,13 +2,15 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 
 import static org.apache.commons.lang3.RandomStringUtils.*;
 
+import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.d22.teamY.App;
+import edu.wpi.cs3733.d22.teamY.Auth;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import java.io.*;
 import java.io.IOException;
 import java.net.*;
-import java.util.Locale;
-import java.util.UUID;
+import java.util.Arrays;
+import java.util.Random;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -34,13 +36,25 @@ public class WelcomePageController {
   @FXML Pane yubikeyPane;
   @FXML TextField yubikeyEntry;
   @FXML Label yubikeyInstruct;
-
+  @FXML Pane faYubikeyPane;
+  @FXML Pane faPane;
+  @FXML JFXButton faYubikeyButton;
+  @FXML TextField codeEntryField;
+  @FXML Pane codeEntryPane;
+  @FXML Pane faPushPane;
+  @FXML JFXButton faPushButton;
+  @FXML Pane faEmailPane;
+  @FXML JFXButton faEmailButton;
+  @FXML Pane faSmsPane;
+  @FXML JFXButton faSmsButton;
+  @FXML Label codeEntryLabel;
   private boolean lockOut = false;
 
   int maxAttempts = 5;
   int attCount = 0;
 
-  @FXML
+  String universalCode;
+
   void initialize() throws IOException {
     loginPane.setVisible(true);
     loading.setVisible(false);
@@ -49,7 +63,7 @@ public class WelcomePageController {
 
   @FXML
   void mainPage() throws IOException {
-    SceneLoading.loadScene("views/SideBar.fxml");
+    SceneLoading.loadScene("views/Map.fxml");
   }
 
   @FXML
@@ -64,7 +78,7 @@ public class WelcomePageController {
     //         && Auth.doAuth(username.getText())) {
     //       loginAnimation();
     if (DBUtils.isValidLogin(username.getText(), password.getText()) && !lockOut) {
-      yubikeyPrompt();
+      display2FAOptions();
     } else {
       failedLoginPane.setOpacity(0.0);
       failedLoginPane.setVisible(true);
@@ -91,15 +105,17 @@ public class WelcomePageController {
     }
   }
 
-  void yubikeyPrompt() {
+  public void yubikeyPrompt() {
+    faPane.setVisible(false);
+    faYubikeyPane.setVisible(false);
     loginPane.setVisible(false);
     yubikeyPane.setVisible(true);
     yubikeyEntry.requestFocus();
   }
 
   @FXML
-  void yubikeyDone() throws Exception {
-    if (vaildYubikey(yubikeyEntry.getText())) {
+  public void yubikeyDone() throws Exception {
+    if (Auth.vaildYubikey(yubikeyEntry.getText())) {
       yubikeyPane.setVisible(false);
       loginAnimation();
     } else {
@@ -120,7 +136,81 @@ public class WelcomePageController {
     }
   }
 
-  void display2FAOptions() {}
+  void display2FAOptions() {
+    String[] auth = Auth.getKeys(username.getText());
+    if (Arrays.asList(auth).contains("yubikey")) {
+      faYubikeyButton.setVisible(true);
+      faYubikeyPane.setOpacity(1);
+    }
+    if (Arrays.asList(auth).contains("pushbullet")) {
+      faPushButton.setVisible(true);
+      faPushPane.setOpacity(1);
+    }
+    if (Arrays.asList(auth).contains("email")) {
+      faEmailButton.setVisible(true);
+      faEmailPane.setOpacity(1);
+    }
+    if (Arrays.asList(auth).contains("sms")) {
+      faSmsButton.setVisible(true);
+      faSmsPane.setOpacity(1);
+    }
+
+    loginPane.setVisible(false);
+    faPane.setVisible(true);
+  }
+
+  @FXML
+  public void sendPushBullet() {
+    String code = getCode();
+    universalCode = code;
+    Auth.doPushBulletAuth(code, Auth.getAtts("pushbullet", username.getText())[0]);
+    codePrompt();
+  }
+
+  @FXML
+  public void sendEmail() {
+    String code = getCode();
+    universalCode = code;
+    Auth.doMailAuth(code, Auth.getAtts("email", username.getText())[0]);
+    codePrompt();
+  }
+
+  @FXML
+  public void sendSms() {
+    String code = getCode();
+    universalCode = code;
+    Auth.doTwilioAuth(code, Auth.getAtts("sms", username.getText())[0]);
+    codePrompt();
+  }
+
+  @FXML
+  public void codePrompt() {
+    faPane.setVisible(false);
+    codeEntryPane.setVisible(true);
+  }
+
+  @FXML
+  public void codeChecker() throws IOException {
+    if (codeEntryField.getText().equals(universalCode)) {
+      codeEntryPane.setVisible(false);
+      loginAnimation();
+    } else {
+      codeEntryField.setText("");
+      Timeline failed2FA =
+          new Timeline(
+              new KeyFrame(Duration.seconds(0), (e) -> codeEntryLabel.setText("Incorrect Code")),
+              new KeyFrame(
+                  Duration.seconds(2),
+                  (e) -> {
+                    try {
+                      SceneLoading.loadScene("views/Welcome.fxml");
+                    } catch (IOException ex) {
+                      ex.printStackTrace();
+                    }
+                  }));
+      failed2FA.play();
+    }
+  }
 
   @FXML
   void loginAnimation() throws IOException {
@@ -148,36 +238,11 @@ public class WelcomePageController {
     loginTimeline.play();
   }
 
-  public static boolean vaildYubikey(String key) throws Exception {
-    Boolean valid = false;
-    UUID randomUUID = UUID.randomUUID();
-    String query =
-        "https://api.yubico.com/wsapi/2.0/verify?otp="
-            + key
-            + "&id=73695&nonce="
-            + randomAlphabetic(20).toUpperCase(Locale.ROOT);
-    if (getHTML(query).equals("OK")) {
-      return true;
-    }
-    return false;
-  }
-
-  public static String getHTML(String urlToRead) throws Exception {
-    StringBuilder result = new StringBuilder();
-    URL url = new URL(urlToRead);
-    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-    conn.setRequestMethod("GET");
-    try (BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
-      for (String line; (line = reader.readLine()) != null; ) {
-        if (line.contains("status")) {
-          result.append(line.replaceAll("status=", ""));
-        }
-      }
-    }
-    return result.toString();
-  }
-
   public void testingButton() throws IOException {
     loginAnimation();
+  }
+
+  public static String getCode() {
+    return String.format("%06d", new Random().nextInt(999999));
   }
 }
