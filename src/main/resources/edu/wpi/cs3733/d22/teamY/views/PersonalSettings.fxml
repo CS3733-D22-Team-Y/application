@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController">
+<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController">
     <children>
         <Label layoutY="10.0" text="My Profile" textFill="#20758b">
             <font>
@@ -39,7 +39,7 @@
       </Rectangle>
         <Circle centerX="395.0" centerY="120.0" fill="#20758b" layoutX="65.0" layoutY="126.0" radius="100.0" stroke="#20758b" strokeType="INSIDE" />
         <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="360.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" />
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#c2c2c280" height="400.0" layoutY="390.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="920.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#c2c2c2" height="400.0" layoutY="390.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="920.0" />
       <Label layoutX="10.0" layoutY="440.0" text="Legal Name:">
          <font>
             <Font name="Calibri Bold" size="30.0" />

@@ -1,26 +1,17 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
 import edu.wpi.cs3733.d22.teamY.App;
-import edu.wpi.cs3733.d22.teamY.DBUtils;
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 
 public class SideBarController {
   @FXML AnchorPane mainPane;
-  @FXML private Label nameLabel;
-  @FXML private Label accessLevel;
-  @FXML private ToggleButton dbToggle;
   @FXML Pane mainScreenPane;
 
   // Scaling
@@ -31,34 +22,46 @@ public class SideBarController {
   @FXML private Rectangle mapHiddenRect;
   @FXML private Rectangle servicesHiddenRect;
   @FXML private Rectangle equipmentHiddenRect;
+  @FXML private Rectangle tasksHiddenRect;
+  @FXML private Rectangle homeHiddenRect;
+  @FXML private Rectangle inboxHiddenRect;
+  @FXML private Rectangle profileHiddenRect;
+  @FXML private Rectangle logoutHiddenRect;
 
   private Pane mapPane;
   private Pane servicesPane;
+  private Pane tasksPane;
+  private Pane settingsPane;
 
   private AnchorPane mapAnchor;
   private AnchorPane servicesAnchor;
-  ArrayList<Pane> allPanes;
+  private AnchorPane tasksAnchor;
+  private AnchorPane settingsAnchor;
 
   @FXML
   void initialize() throws IOException {
     mapHiddenRect.setOpacity(0);
     servicesHiddenRect.setOpacity(0);
     equipmentHiddenRect.setOpacity(0);
+    tasksHiddenRect.setOpacity(0);
+    homeHiddenRect.setOpacity(0);
+    profileHiddenRect.setOpacity(0);
+    inboxHiddenRect.setOpacity(0);
+    logoutHiddenRect.setOpacity(0);
 
     mapPane = FXMLLoader.load(App.class.getResource("views/SecondaryMap_TEMPLATE.fxml"));
     servicesPane = FXMLLoader.load(App.class.getResource("views/SubMenu_TEMPLATE.fxml"));
+    tasksPane = FXMLLoader.load(App.class.getResource("views/PersonalSettings.fxml"));
+    settingsPane = FXMLLoader.load(App.class.getResource("views/PersonalSettings.fxml"));
 
     mainScreenPane.getChildren().add(mapPane);
     mainScreenPane.getChildren().add(servicesPane);
+    mainScreenPane.getChildren().add(tasksPane);
+    mainScreenPane.getChildren().add(settingsPane);
 
-    //Set the background to transparent
-    mapAnchor = (AnchorPane) mapPane.lookup("#mainPane");
-    mapAnchor.setBackground(Background.EMPTY);
-    servicesAnchor = (AnchorPane) servicesPane.lookup("#mainPane");
-    servicesAnchor.setBackground(Background.EMPTY);
+    // Set the background to transparent
+    SceneUtil.hideAllBackgrounds(mapPane, servicesPane, tasksPane, settingsPane);
 
-    allPanes.add(mapPane);
-    allPanes.add(servicesPane);
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
   }
 
@@ -112,8 +115,8 @@ public class SideBarController {
 
   @FXML
   void dbSwitcherToggle() {
-    boolean state = dbToggle.isSelected();
-    DBUtils.switchDBType(state);
+    // boolean state = dbToggle.isSelected();
+    // DBUtils.switchDBType(state);
   }
 
   @FXML
@@ -146,19 +149,72 @@ public class SideBarController {
     SceneUtil.endHover(equipmentHiddenRect);
   }
 
+  @FXML
+  void startTasksButtonHover() {
+    SceneUtil.startHover(tasksHiddenRect);
+  }
+
+  @FXML
+  void endTasksButtonHover() {
+    SceneUtil.endHover(tasksHiddenRect);
+  }
+
+  @FXML
+  void startHomeButtonHover() {
+    SceneUtil.startHover(homeHiddenRect);
+  }
+
+  @FXML
+  void endHomeButtonHover() {
+    SceneUtil.endHover(homeHiddenRect);
+  }
+
+  @FXML
+  void startInboxButtonHover() {
+    SceneUtil.startHover(inboxHiddenRect);
+  }
+
+  @FXML
+  void endInboxButtonHover() {
+    SceneUtil.endHover(inboxHiddenRect);
+  }
+
+  @FXML
+  void startProfileButtonHover() {
+    SceneUtil.startHover(profileHiddenRect);
+  }
+
+  @FXML
+  void endProfileButtonHover() {
+    SceneUtil.endHover(profileHiddenRect);
+  }
+
+  @FXML
+  void startLogoutButtonHover() {
+    SceneUtil.startHover(logoutHiddenRect);
+  }
+
+  @FXML
+  void endLogoutButtonHover() {
+    SceneUtil.endHover(logoutHiddenRect);
+  }
+
   // Placeholder/test
   @FXML
   void loadSecondaryMap() throws IOException {
-    // Pane paneToLoad = FXMLLoader.load(App.class.getResource("views/SecondaryMap_TEMPLATE.fxml"));
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mapPane.setVisible(true);
   }
 
   @FXML
   void loadViewServiceRequests() throws IOException {
-    // SceneLoading.loadScene("views/SubMenu_TEMPLATE.fxml");
-    // Pane paneToLoad = FXMLLoader.load(App.class.getResource("views/SubMenu_TEMPLATE.fxml"));
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     servicesPane.setVisible(true);
+  }
+
+  @FXML
+  void loadTasks() {
+    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    tasksPane.setVisible(true);
   }
 }

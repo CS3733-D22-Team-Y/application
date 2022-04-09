@@ -2,10 +2,10 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
-
-import java.util.ArrayList;
 
 public class SceneUtil {
   protected static void startHover(Shape s) {
@@ -17,8 +17,15 @@ public class SceneUtil {
   }
 
   protected static void hideAllPanes(ObservableList<Node> panes) {
-    for(Node thisPane : panes) {
+    for (Node thisPane : panes) {
       thisPane.setVisible(false);
+    }
+  }
+
+  protected static void hideAllBackgrounds(Pane... panes) {
+    for (Pane currPane : panes) {
+      AnchorPane currAnchor = (AnchorPane) currPane.lookup("#mainPane");
+      currAnchor.setBackground(Background.EMPTY);
     }
   }
 }
