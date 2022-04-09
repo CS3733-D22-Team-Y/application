@@ -164,5 +164,85 @@
                 <Font name="System Bold Italic" size="36.0"/>
             </font>
         </JFXButton>
+        <Pane fx:id="faPane" layoutX="217.0" layoutY="120.0" visible="false">
+            <children>
+                <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="461.0" opacity="0.72" stroke="BLACK"
+                           strokeType="INSIDE" strokeWidth="0.0" width="663.0"/>
+                <Label alignment="CENTER" layoutX="106.0" layoutY="14.0" prefHeight="75.0" prefWidth="452.0"
+                       text="2FA Selection" textAlignment="CENTER">
+                    <font>
+                        <Font name="Microsoft Tai Le Bold" size="40.0"/>
+                    </font>
+                </Label>
+                <Pane fx:id="faYubikeyPane" layoutX="44.0" layoutY="106.0" opacity="0.2" prefHeight="125.0"
+                      prefWidth="125.0">
+                    <children>
+                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutY="2.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@images/icons/Yubikeylogo.png"/>
+                            </image>
+                        </ImageView>
+                        <JFXButton fx:id="faYubikeyButton" layoutY="2.0" onAction="#yubikeyPrompt" prefHeight="125.0"
+                                   prefWidth="125.0" text=" " visible="false"/>
+                    </children>
+                </Pane>
+                <Pane fx:id="faPushPane" layoutX="270.0" layoutY="106.0" opacity="0.2" prefHeight="125.0"
+                      prefWidth="125.0">
+                    <children>
+                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutY="2.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@images/icons/notificationlogo.png"/>
+                            </image>
+                        </ImageView>
+                        <JFXButton fx:id="faPushButton" layoutY="2.0" onAction="#sendPushBullet" prefHeight="125.0"
+                                   prefWidth="125.0" text=" " visible="false"/>
+                    </children>
+                </Pane>
+                <Pane fx:id="faEmailPane" layoutX="496.0" layoutY="106.0" opacity="0.2" prefHeight="125.0"
+                      prefWidth="125.0">
+                    <children>
+                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutY="2.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@images/icons/emailogo.png"/>
+                            </image>
+                        </ImageView>
+                        <JFXButton fx:id="faEmailButton" layoutY="2.0" onAction="#sendEmail" prefHeight="125.0"
+                                   prefWidth="125.0" text=" " visible="false"/>
+                    </children>
+                </Pane>
+                <Pane fx:id="faSmsPane" layoutX="44.0" layoutY="290.0" opacity="0.2" prefHeight="125.0"
+                      prefWidth="125.0">
+                    <children>
+                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutY="2.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@images/icons/smslogo.png"/>
+                            </image>
+                        </ImageView>
+                        <JFXButton fx:id="faSmsButton" layoutY="2.0" onAction="#sendSms" prefHeight="125.0"
+                                   prefWidth="125.0" text=" " visible="false"/>
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
+        <Pane fx:id="codeEntryPane" layoutX="364.0" layoutY="222.0" prefHeight="256.0" prefWidth="370.0"
+              visible="false">
+            <children>
+                <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="256.0" opacity="0.72" stroke="BLACK"
+                           strokeType="INSIDE" strokeWidth="0.0" width="370.0"/>
+                <Label fx:id="codeEntryLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="7.0"
+                       prefHeight="113.0" prefWidth="299.0" text="Please enter the code that was sent to your device"
+                       textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font name="Microsoft Tai Le Bold" size="23.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="codeEntryField" layoutX="69.0" layoutY="162.0" onAction="#codeChecker"
+                           prefHeight="50.0" prefWidth="236.0"/>
+            </children>
+        </Pane>
     </children>
 </AnchorPane>
