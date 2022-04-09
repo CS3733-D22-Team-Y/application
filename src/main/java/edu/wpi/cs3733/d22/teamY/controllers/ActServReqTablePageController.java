@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 public class ActServReqTablePageController {
+
 	@FXML private TableView<MedEquipReq> medEquipReqTableView;
 
 	@FXML Pane sidebarPane;
@@ -113,4 +114,5 @@ public class ActServReqTablePageController {
 			SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
 		}
 	}
+
 }
