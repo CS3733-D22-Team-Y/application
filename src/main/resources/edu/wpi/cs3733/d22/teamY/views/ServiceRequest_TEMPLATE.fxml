@@ -88,15 +88,54 @@
             <Font name="Calibri" size="20.0" />
          </font>
       </MFXTextField>
-      <MFXButton layoutX="700.0" layoutY="730.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" text="Reset" textFill="WHITE">
+      <MFXButton computeRadiusMultiplier="false" layoutX="700.0" layoutY="730.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" text="Reset" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </MFXButton>
-      <MFXButton layoutX="810.0" layoutY="730.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" text="Submit" textFill="WHITE">
+      <MFXButton computeRadiusMultiplier="false" layoutX="810.0" layoutY="730.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" text="Submit" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </MFXButton>
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="140.0" prefWidth="300.0" text="Options" textAlignment="RIGHT">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Arial Rounded MT Bold" size="45.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="620.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
    </children>
 </AnchorPane>
