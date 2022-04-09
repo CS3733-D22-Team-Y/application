@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -17,7 +14,7 @@
 
 <AnchorPane maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SecondaryMapTEMPLATE">
    <children>
-      <Label layoutY="10.0" text="Make a Request">
+      <Label layoutY="10.0" text="Request Forms">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -35,10 +32,17 @@
             </LinearGradient>
          </textFill>
          <font>
-            <Font name="Arial Rounded MT Bold" size="60.0" />
+            <Font name="Arial" size="60.0" />
          </font>
       </Label>
       <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+         <effect>
+            <DropShadow height="10.0" offsetX="-5.0" offsetY="2.0" radius="7.425" width="21.7">
+               <color>
+                  <Color red="0.08190000057220459" green="0.24621999263763428" blue="0.38999998569488525" opacity="0.3767123222351074" />
+               </color>
+            </DropShadow>
+         </effect>
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -55,206 +59,72 @@
                </stops>
             </LinearGradient>
          </fill>
-         <effect>
-            <DropShadow height="10.0" offsetX="-5.0" offsetY="2.0" radius="7.425" width="21.7">
-               <color>
-                  <Color red="0.08190000057220459" green="0.24621999263763428" blue="0.38999998569488525" opacity="0.3767123222351074" />
-               </color>
-            </DropShadow>
-         </effect>
       </Rectangle>
-      <GridPane layoutX="2.0" layoutY="137.0" prefHeight="638.0" prefWidth="907.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="478.5332946777344" minWidth="10.0" prefWidth="462.5332946777344" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="471.06671142578125" minWidth="10.0" prefWidth="445.4667053222656" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Pane>
-               <children>
-                  <Label alignment="CENTER_RIGHT" layoutX="162.0" layoutY="88.0" prefHeight="42.0" prefWidth="280.0" text="Security Services" textAlignment="RIGHT">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="32.0" />
-                     </font>
-                     <textFill>
-                        <LinearGradient endX="0.49242425687385327" endY="1.0" startX="0.49621210631096">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="0.6117647290229797" green="0.20000000298023224" blue="0.12941177189350128" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="0.550000011920929" green="0.14318965375423431" blue="0.12099999934434891" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
-                  </Label>
-                  <ImageView fitHeight="114.0" fitWidth="158.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@security.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Pane GridPane.rowIndex="1">
-               <children>
-                  <ImageView fitHeight="143.0" fitWidth="183.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@equipment.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER_RIGHT" layoutX="196.0" layoutY="67.0" prefHeight="86.0" prefWidth="203.0" text="Medical&#10;Equipment" textAlignment="CENTER">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="36.0" />
-                     </font>
-                     <textFill>
-                        <LinearGradient endX="0.4583333261085279" endY="1.0" startX="0.49621210631096">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="0.5052631497383118" green="0.4939103424549103" blue="0.4566081762313843" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="0.42105263471603394" green="0.4116958975791931" blue="0.38362574577331543" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane GridPane.columnIndex="1">
-               <children>
-                  <ImageView fitHeight="173.0" fitWidth="177.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@food.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER_RIGHT" layoutX="186.0" layoutY="86.0" prefHeight="43.0" prefWidth="246.0" text="Food Delivery" textAlignment="RIGHT">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="36.0" />
-                     </font>
-                     <textFill>
-                        <LinearGradient endX="0.5000000072248054" endY="1.0" startX="0.49621210631096">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="0.7647058963775635" green="0.29019609093666077" blue="0.45098039507865906" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="0.6105263233184814" green="0.19898635149002075" blue="0.3155893385410309" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <children>
-                  <ImageView fitHeight="132.0" fitWidth="186.0" layoutX="-9.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@laundry.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER_RIGHT" layoutX="177.0" layoutY="90.0" prefHeight="42.0" prefWidth="270.0" text="Laundry Services" textAlignment="RIGHT">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="31.0" />
-                     </font>
-                     <textFill>
-                        <LinearGradient endX="0.48863636363636365" endY="1.0" startX="0.49621210631096">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="0.08235294371843338" green="0.5607843399047852" blue="0.5921568870544434" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="0.09949317574501038" green="0.4827680289745331" blue="0.6105263233184814" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane GridPane.rowIndex="2">
-               <children>
-                  <ImageView fitHeight="143.0" fitWidth="125.0" layoutX="23.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@lab.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER_RIGHT" layoutX="194.0" layoutY="81.0" prefHeight="50.0" prefWidth="203.0" text="Lab Work" textAlignment="RIGHT">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="42.0" />
-                     </font>
-                     <textFill>
-                        <LinearGradient endX="0.4848485065229011" endY="1.0" startX="0.49621210631096">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="0.0634697824716568" green="0.3079726994037628" blue="0.38947367668151855" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="0.14580896496772766" green="0.28296947479248047" blue="0.5789473652839661" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <children>
-                  <ImageView fitHeight="199.0" fitWidth="120.0" layoutX="22.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@bouquet.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER_RIGHT" layoutX="143.0" layoutY="83.0" prefHeight="44.0" prefWidth="289.0" text="Flower Delivery" textAlignment="RIGHT">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="37.0" />
-                     </font>
-                     <textFill>
-                        <LinearGradient endX="0.48863636363636365" endY="1.0" startX="0.49621210631096">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="0.48627451062202454" green="0.12156862765550613" blue="0.5215686559677124" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="0.36262378096580505" green="0.11727095395326614" blue="0.49473685026168823" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
-                  </Label>
-               </children>
-            </Pane>
-         </children>
-      </GridPane>
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#bcbcbc80" height="150.0" layoutX="120.0" layoutY="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#bcbcbc80" height="150.0" layoutX="510.0" layoutY="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#bcbcbc80" height="150.0" layoutX="120.0" layoutY="400.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#bcbcbc80" height="150.0" layoutX="120.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#bcbcbc80" height="150.0" layoutX="510.0" layoutY="400.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#bcbcbc80" height="150.0" layoutX="510.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="120.0" layoutY="200.0" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Medical Equipment " textAlignment="RIGHT" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="29.0" />
+         </font>
+      </MFXButton>
+      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="510.0" layoutY="200.0" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Security" textAlignment="RIGHT" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </MFXButton>
+      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="510.0" layoutY="400.0" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Laundry" textAlignment="RIGHT" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </MFXButton>
+      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="120.0" layoutY="400.0" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Meals" textAlignment="RIGHT" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </MFXButton>
+      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="120.0" layoutY="600.0" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Lab" textAlignment="RIGHT" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </MFXButton>
+      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="510.0" layoutY="600.0" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Floral" textAlignment="RIGHT" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </MFXButton>
+      <ImageView fitHeight="150.0" fitWidth="123.0" layoutX="120.0" layoutY="200.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/icons/securityRequestFinal.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="123.0" layoutX="510.0" layoutY="200.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/icons/mealRequestFinal.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="123.0" layoutX="120.0" layoutY="400.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/icons/medicalRequestFinal.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="123.0" layoutX="510.0" layoutY="400.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/icons/laundryRequestFinal.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="157.0" layoutX="120.0" layoutY="600.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/icons/labRequestFinal.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="123.0" layoutX="510.0" layoutY="600.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/icons/floralRequestFinal.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
