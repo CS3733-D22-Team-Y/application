@@ -38,9 +38,9 @@
                <Font name="Arial Rounded MT Bold" size="60.0" />
            </font>
          <effect>
-            <DropShadow height="21.52" offsetX="-1.0" offsetY="1.0" radius="10.305" width="21.7">
+            <DropShadow height="21.61" offsetX="-1.0" offsetY="1.0" radius="10.3275" width="21.7">
                <color>
-                  <Color red="0.08235294371843338" green="0.24705882370471954" blue="0.3803921639919281" opacity="0.3799999952316284" />
+                  <Color red="0.0835999995470047" green="0.2515600025653839" blue="0.3799999952316284" opacity="0.23000000417232513" />
                </color>
             </DropShadow>
          </effect>
@@ -113,7 +113,7 @@
          <effect>
             <DropShadow offsetX="-1.0" offsetY="1.0">
                <color>
-                  <Color red="0.0835999995470047" green="0.2515600025653839" blue="0.3799999952316284" opacity="0.3799999952316284" />
+                  <Color red="0.08510000258684158" green="0.2512916624546051" blue="0.3700000047683716" opacity="0.23000000417232513" />
                </color>
             </DropShadow>
          </effect>
