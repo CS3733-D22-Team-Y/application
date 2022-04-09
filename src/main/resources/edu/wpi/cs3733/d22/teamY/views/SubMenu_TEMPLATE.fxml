@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SecondaryMapTEMPLATE">
+<AnchorPane maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutY="10.0" text="Request Forms">
          <textFill>
@@ -96,32 +96,32 @@
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </MFXButton>
-      <ImageView fitHeight="150.0" fitWidth="123.0" layoutX="120.0" layoutY="200.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="160.0" fitWidth="130.0" layoutX="120.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/icons/securityRequestFinal.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="123.0" layoutX="510.0" layoutY="200.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="140.0" fitWidth="110.0" layoutX="517.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/icons/mealRequestFinal.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="123.0" layoutX="120.0" layoutY="400.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="123.0" layoutX="127.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/icons/medicalRequestFinal.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="123.0" layoutX="510.0" layoutY="400.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="120.0" fitWidth="110.0" layoutX="517.0" layoutY="446.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/icons/laundryRequestFinal.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="157.0" layoutX="120.0" layoutY="600.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="110.0" fitWidth="100.0" layoutX="139.0" layoutY="620.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/icons/labRequestFinal.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="123.0" layoutX="510.0" layoutY="600.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="120.0" fitWidth="100.0" layoutX="526.0" layoutY="615.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/icons/floralRequestFinal.png" />
          </image>
