@@ -19,7 +19,7 @@ public enum EntryType {
 
   LAB_REQUEST(6, "LabRequests", "labRequests_export", LabRequest.class),
 
-  EMPLOYEE(9, "Employees", "employees_export", Employee.class),
+  EMPLOYEE(14, "Employees", "employees_export", Employee.class),
 
   FLORAL_REQUEST(6, "FloralRequests", "floralRequests_export", FloralRequest.class),
 
