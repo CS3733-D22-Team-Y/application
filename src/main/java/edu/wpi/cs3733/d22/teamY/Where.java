@@ -4,19 +4,19 @@ import java.io.Serializable;
 
 public class Where {
 
-	private final String dbField;
-	private final Serializable dbValue;
+  private final String dbField;
+  private final Serializable dbValue;
 
-	public Where(String field, Serializable value) {
-		dbField = field;
-		dbValue = value;
-	}
+  public Where(String field, Serializable value) {
+    dbField = field;
+    dbValue = value;
+  }
 
-	public String getField() {
-		return dbField;
-	}
+  public String getField() {
+    return dbField;
+  }
 
-	public Serializable getValue() {
-		return dbValue;
-	}
+  public Serializable getValue() {
+    return dbValue;
+  }
 }
