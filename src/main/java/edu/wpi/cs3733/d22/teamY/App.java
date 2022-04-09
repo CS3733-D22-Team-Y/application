@@ -39,7 +39,7 @@ public class App extends Application {
     Scene scene = new Scene(root);
     primaryStage.setScene(scene);
     primaryStage.show();
-    camera.newPfp();
+    // camera.newPfp();
   }
 
   @Override
