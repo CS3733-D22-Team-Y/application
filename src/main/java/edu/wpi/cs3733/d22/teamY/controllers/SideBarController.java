@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
@@ -29,11 +30,30 @@ public class SideBarController {
   @FXML private Rectangle servicesHiddenRect;
   @FXML private Rectangle equipmentHiddenRect;
 
+  private Pane mapPane;
+  private Pane servicesPane;
+
+  private AnchorPane mapAnchor;
+  private AnchorPane servicesAnchor;
+
   @FXML
-  void initialize() {
+  void initialize() throws IOException {
     mapHiddenRect.setOpacity(0);
     servicesHiddenRect.setOpacity(0);
     equipmentHiddenRect.setOpacity(0);
+
+    mapPane = FXMLLoader.load(App.class.getResource("views/SecondaryMap_TEMPLATE.fxml"));
+    servicesPane = FXMLLoader.load(App.class.getResource("views/SubMenu_TEMPLATE.fxml"));
+
+    mainScreenPane.getChildren().add(mapPane);
+    mainScreenPane.getChildren().add(servicesPane);
+    mapPane.setVisible(false);
+    servicesPane.setVisible(false);
+
+    mapAnchor = (AnchorPane) mapPane.lookup("#mainPane");
+    mapAnchor.setBackground(Background.EMPTY);
+    servicesAnchor = (AnchorPane) servicesPane.lookup("#mainPane");
+    servicesAnchor.setBackground(Background.EMPTY);
   }
 
   @FXML
@@ -57,41 +77,6 @@ public class SideBarController {
   @FXML
   void loadCreateServiceRequest() throws IOException {
     SceneLoading.loadScene("views/RequestMenu.fxml");
-  }
-
-  @FXML
-  void loadViewServiceRequests() throws IOException {
-    SceneLoading.loadScene("views/ActiveServiceRequest.fxml");
-  }
-
-  @FXML
-  void loadLaundryRequest() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/LaundryRequest.fxml");
-  }
-
-  @FXML
-  void loadMedicalEquipment() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/MedicalEquipmentRequest.fxml");
-  }
-
-  @FXML
-  void loadMealDelivery() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/MealRequest.fxml");
-  }
-
-  @FXML
-  void loadFloralDelivery() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/FloralRequest.fxml");
-  }
-
-  @FXML
-  void loadSecurity() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/SecurityServicesRequest.fxml");
-  }
-
-  @FXML
-  void loadLab() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/LabRequest.fxml");
   }
 
   @FXML
@@ -158,8 +143,16 @@ public class SideBarController {
   // Placeholder/test
   @FXML
   void loadSecondaryMap() throws IOException {
-    Pane paneToLoad = FXMLLoader.load(App.class.getResource("views/SecondaryMap_TEMPLATE.fxml"));
-    mainScreenPane.getChildren().clear();
-    mainScreenPane.getChildren().add(paneToLoad);
+    // Pane paneToLoad = FXMLLoader.load(App.class.getResource("views/SecondaryMap_TEMPLATE.fxml"));
+    mapPane.setVisible(true);
+    servicesPane.setVisible(false);
+  }
+
+  @FXML
+  void loadViewServiceRequests() throws IOException {
+    // SceneLoading.loadScene("views/SubMenu_TEMPLATE.fxml");
+    // Pane paneToLoad = FXMLLoader.load(App.class.getResource("views/SubMenu_TEMPLATE.fxml"));
+    servicesPane.setVisible(true);
+    mapPane.setVisible(false);
   }
 }

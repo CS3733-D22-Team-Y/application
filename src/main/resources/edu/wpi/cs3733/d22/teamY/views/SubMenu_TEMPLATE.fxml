@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SecondaryMapTEMPLATE">
+<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SecondaryMapTEMPLATE">
    <children>
       <Label layoutY="10.0" text="Request Forms">
          <textFill>
@@ -60,68 +60,68 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#bcbcbc80" height="150.0" layoutX="120.0" layoutY="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#bcbcbc80" height="150.0" layoutX="510.0" layoutY="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#bcbcbc80" height="150.0" layoutX="120.0" layoutY="400.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#bcbcbc80" height="150.0" layoutX="120.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#bcbcbc80" height="150.0" layoutX="510.0" layoutY="400.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#bcbcbc80" height="150.0" layoutX="510.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="120.0" layoutY="200.0" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Medical Equipment " textAlignment="RIGHT" wrapText="true">
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="110.0" layoutY="530.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="500.0" layoutY="530.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="110.0" layoutY="330.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="110.0" layoutY="130.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="500.0" layoutY="330.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="500.0" layoutY="130.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="110.0" layoutY="130.0" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Medical Equipment " textAlignment="RIGHT" wrapText="true">
          <font>
             <Font name="Calibri Bold" size="29.0" />
          </font>
       </MFXButton>
-      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="510.0" layoutY="200.0" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Security" textAlignment="RIGHT" wrapText="true">
+      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="500.0" layoutY="130.0" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Security" textAlignment="RIGHT" wrapText="true">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </MFXButton>
-      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="510.0" layoutY="400.0" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Laundry" textAlignment="RIGHT" wrapText="true">
+      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="500.0" layoutY="330.0" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Laundry" textAlignment="RIGHT" wrapText="true">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </MFXButton>
-      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="120.0" layoutY="400.0" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Meals" textAlignment="RIGHT" wrapText="true">
+      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="110.0" layoutY="330.0" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Meals" textAlignment="RIGHT" wrapText="true">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </MFXButton>
-      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="120.0" layoutY="600.0" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Lab" textAlignment="RIGHT" wrapText="true">
+      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="110.0" layoutY="530.0" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Lab" textAlignment="RIGHT" wrapText="true">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </MFXButton>
-      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="510.0" layoutY="600.0" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Floral" textAlignment="RIGHT" wrapText="true">
+      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="500.0" layoutY="530.0" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Floral" textAlignment="RIGHT" wrapText="true">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </MFXButton>
-      <ImageView fitHeight="150.0" fitWidth="123.0" layoutX="120.0" layoutY="200.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitWidth="100.0" layoutX="520.0" layoutY="183.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/icons/securityRequestFinal.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="123.0" layoutX="510.0" layoutY="200.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="100.0" layoutX="120.0" layoutY="358.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/icons/mealRequestFinal.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="123.0" layoutX="120.0" layoutY="400.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="100.0" layoutX="120.0" layoutY="171.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/icons/medicalRequestFinal.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="123.0" layoutX="510.0" layoutY="400.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitWidth="100.0" layoutX="520.0" layoutY="379.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/icons/laundryRequestFinal.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="157.0" layoutX="120.0" layoutY="600.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="128.0" fitWidth="100.0" layoutX="120.0" layoutY="556.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/icons/labRequestFinal.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="123.0" layoutX="510.0" layoutY="600.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="520.0" layoutY="562.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/icons/floralRequestFinal.png" />
          </image>
