@@ -21,6 +21,11 @@ public class Employee implements StringArrayConv {
   private String password;
   private int accessLevel;
   private String authString;
+  private String prefName;
+  private String email;
+  private String phone;
+  private String dob;
+  private String pronouns;
 
   public static final String ID_NUMBER = "IDNUMBER";
   public static final String ACCESS = "ACCESS";
@@ -31,6 +36,11 @@ public class Employee implements StringArrayConv {
   public static final String PASSWORD = "PASSWORD";
   public static final String ACCESS_LEVEL = "ACCESSLEVEL";
   public static final String AUTH_STRING = "AUTHSTRING";
+  public static final String PREF_NAME = "PREFNAME";
+  public static final String EMAIL = "EMAIL";
+  public static final String PHONE = "PHONE";
+  public static final String DOB = "DOB";
+  public static final String PRONOUNS = "PRONOUNS";
 
   private void init(
       String id,
@@ -41,7 +51,12 @@ public class Employee implements StringArrayConv {
       String usr,
       String pwd,
       int accessLevel,
-      String authString) {
+      String authString,
+      String prefName,
+      String email,
+      String phone,
+      String dob,
+      String pronouns) {
     IDNumber = id;
     name = nm;
     role = rl;
@@ -51,6 +66,11 @@ public class Employee implements StringArrayConv {
     password = pwd;
     this.accessLevel = accessLevel;
     this.authString = authString;
+    this.prefName = prefName;
+    this.email = email;
+    this.phone = phone;
+    this.dob = dob;
+    this.pronouns = pronouns;
   }
 
   public Employee() {}
@@ -64,8 +84,27 @@ public class Employee implements StringArrayConv {
       String usr,
       String pwd,
       int accessLevel,
-      String authString) {
-    init(id, nm, rl, acc, flr, usr, pwd, accessLevel, authString);
+      String authString,
+      String prefName,
+      String email,
+      String phone,
+      String dob,
+      String pronouns) {
+    init(
+        id,
+        nm,
+        rl,
+        acc,
+        flr,
+        usr,
+        pwd,
+        accessLevel,
+        authString,
+        prefName,
+        email,
+        phone,
+        dob,
+        pronouns);
   }
 
   public String[] toStringArray() {
@@ -78,7 +117,12 @@ public class Employee implements StringArrayConv {
       username,
       password,
       Integer.toString(accessLevel),
-      authString
+      authString,
+      prefName.length() == 0 ? " " : prefName,
+      email.length() == 0 ? " " : email,
+      phone.length() == 0 ? " " : phone,
+      dob.length() == 0 ? " " : dob,
+      pronouns.length() == 0 ? " " : pronouns
     };
   }
 
@@ -92,7 +136,12 @@ public class Employee implements StringArrayConv {
         args[5],
         args[6],
         Integer.parseInt(args[7]),
-        args[8]);
+        args[8],
+        args[9],
+        args[10],
+        args[11],
+        args[12],
+        args[13]);
   }
 
   // region Getters/Setters
@@ -158,6 +207,46 @@ public class Employee implements StringArrayConv {
 
   public void setAuthString(String authString) {
     this.authString = authString;
+  }
+
+  public String getPrefName() {
+    return prefName;
+  }
+
+  public void setPrefName(String prefName) {
+    this.prefName = prefName;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public String getPhone() {
+    return phone;
+  }
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
+  public String getDOB() {
+    return dob;
+  }
+
+  public void setDOB(String dob) {
+    this.dob = dob;
+  }
+
+  public String getPronouns() {
+    return pronouns;
+  }
+
+  public void setPronouns(String pronouns) {
+    this.pronouns = pronouns;
   }
 
   public static boolean isValidNewPassword(String password) {

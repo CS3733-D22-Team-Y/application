@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsPageController">
+   <children>
+      <Label layoutX="107.0" layoutY="71.0" text="LEGAL NAME" />
+      <MFXTextField fx:id="legalName" layoutX="215.0" layoutY="55.0" onKeyReleased="#updateLegalName" />
+      <Label layoutX="87.0" layoutY="157.0" text="PREFERRED NAME" />
+      <MFXTextField fx:id="prefName" layoutX="218.0" layoutY="139.0" onKeyReleased="#updatePrefName" />
+      <MFXTextField fx:id="title" layoutX="218.0" layoutY="201.0" onKeyReleased="#updateTitle" />
+      <Label layoutX="90.0" layoutY="217.0" text="TITLE" />
+      <MFXTextField fx:id="email" layoutX="215.0" layoutY="275.0" onKeyReleased="#updateEmail" />
+      <Label layoutX="107.0" layoutY="286.0" text="EMAIL" />
+      <Label layoutX="348.0" layoutY="91.0" text="DOB" />
+      <MFXTextField fx:id="dob" layoutX="456.0" layoutY="75.0" onKeyReleased="#updateDob" />
+      <MFXTextField fx:id="pronouns" layoutX="459.0" layoutY="152.0" onKeyReleased="#updatePronouns" />
+      <Label layoutX="362.0" layoutY="157.0" text="PRONOUNS" />
+      <MFXTextField fx:id="phone" layoutX="461.0" layoutY="236.0" onKeyReleased="#updatePhone" />
+      <Label layoutX="355.0" layoutY="252.0" text="PHONE" />
+   </children>
+</AnchorPane>
