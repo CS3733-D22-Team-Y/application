@@ -136,6 +136,7 @@ compileJava.dependsOn 'spotlessApply'
 spotless {
     java {
         googleJavaFormat()
+        indentWithSpaces(2)
     }
 }
 
