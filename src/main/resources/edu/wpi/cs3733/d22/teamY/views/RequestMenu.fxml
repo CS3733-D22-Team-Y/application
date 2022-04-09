@@ -10,83 +10,119 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: eee;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.RequestMenuController">
-   <children>
-      <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutX="225.0" layoutY="300.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#mealDelivery" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #021D5A; -fx-font-size: 36; -fx-background-radius: 15;" text="Meal Delivery" textFill="WHITE">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutX="685.0" layoutY="300.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#medicalEquipment" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 36; -fx-background-radius: 15;" text="Medical Equipment" textFill="WHITE">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </JFXButton>
-      <JFXButton alignment="CENTER" layoutX="253.0" layoutY="18.0" onAction="#mainMenu" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #012d5a;" text="Back" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </JFXButton>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="412.0" layoutY="12.0" prefHeight="84.0" prefWidth="694.0" text="Request A Service" textAlignment="CENTER" textFill="#021d5a" textOverrun="CLIP">
-         <font>
-            <Font name="System Bold" size="54.0" />
-         </font>
-      </Label>
-      <Pane fx:id="sidebarPane" prefHeight="700.0" prefWidth="185.0" />
-      <JFXButton alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="225.0" layoutY="162.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#securityServices" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 36; -fx-background-radius: 15;" text="Security Services" textFill="WHITE">
-         <font>
-            <Font size="36.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutX="225.0" layoutY="453.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#laundryServices" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 36; -fx-background-radius: 15;" text="Laundry Services" textFill="WHITE">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutX="685.0" layoutY="453.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#labResults" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 40; -fx-background-radius: 15;" text="Lab Results" textFill="WHITE">
-         <font>
-            <Font size="81.0" />
-         </font>
-      </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutX="685.0" layoutY="162.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#floralDelivery" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 36; -fx-background-radius: 15;" text="Floral Delivery" textFill="WHITE">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </JFXButton>
-      <ImageView fitHeight="60.0" fitWidth="70.0" layoutX="552.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/icons/Security.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="70.0" layoutX="548.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/icons/foodIcon2.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="70.0" layoutX="547.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/icons/laundryIcon.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="78.0" layoutX="1018.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/icons/flowersIcon.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="57.0" layoutX="1018.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/icons/medicalIcon.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="57.0" layoutX="1018.0" layoutY="475.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/icons/testTubeIcon.png" />
-         </image>
-      </ImageView>
-      <JFXHamburger fx:id="sidebarHamburger" layoutX="10.0" layoutY="10.0" onMouseClicked="#openSidebarLayout" />
-      <JFXButton fx:id="closeSidebarHiddenButton" layoutX="151.0" layoutY="14.0" onAction="#closeSidebarLayout" prefHeight="30.0" prefWidth="31.0" text="closeSidebarHiddenButton" textFill="TRANSPARENT" visible="false" />
-   </children>
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1100.0"
+            style="-fx-background-color: eee;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.wpi.cs3733.d22.teamY.controllers.RequestMenuController">
+    <children>
+        <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutX="225.0" layoutY="300.0"
+                   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#mealDelivery"
+                   prefHeight="100.0" prefWidth="400.0"
+                   style="-fx-background-color: #021D5A; -fx-font-size: 36; -fx-background-radius: 15;"
+                   text="Meal Delivery" textFill="WHITE">
+            <font>
+                <Font size="36.0"/>
+            </font>
+        </JFXButton>
+        <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutX="685.0" layoutY="300.0"
+                   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#medicalEquipment"
+                   prefHeight="100.0" prefWidth="400.0"
+                   style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 36; -fx-background-radius: 15;"
+                   text="Medical Equipment" textFill="WHITE">
+            <font>
+                <Font size="36.0"/>
+            </font>
+        </JFXButton>
+        <JFXButton alignment="CENTER" layoutX="253.0" layoutY="18.0" onAction="#mainMenu" prefHeight="50.0"
+                   prefWidth="100.0" style="-fx-background-color: #012d5a;" text="Back" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="24.0"/>
+            </font>
+        </JFXButton>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="412.0" layoutY="12.0" prefHeight="84.0"
+               prefWidth="694.0" text="Request A Service" textAlignment="CENTER" textFill="#021d5a" textOverrun="CLIP">
+            <font>
+                <Font name="System Bold" size="54.0"/>
+            </font>
+        </Label>
+        <Pane fx:id="sidebarPane" prefHeight="700.0" prefWidth="185.0"/>
+        <JFXButton alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="225.0" layoutY="162.0"
+                   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#securityServices"
+                   prefHeight="100.0" prefWidth="400.0"
+                   style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 36; -fx-background-radius: 15;"
+                   text="Security Services" textFill="WHITE">
+            <font>
+                <Font size="36.0"/>
+            </font>
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+        </JFXButton>
+        <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutX="225.0" layoutY="453.0"
+                   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#laundryServices"
+                   prefHeight="100.0" prefWidth="400.0"
+                   style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 36; -fx-background-radius: 15;"
+                   text="Laundry Services" textFill="WHITE">
+            <font>
+                <Font size="36.0"/>
+            </font>
+        </JFXButton>
+        <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutX="685.0" layoutY="453.0"
+                   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#labResults"
+                   prefHeight="100.0" prefWidth="400.0"
+                   style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 40; -fx-background-radius: 15;"
+                   text="Lab Results" textFill="WHITE">
+            <font>
+                <Font size="81.0"/>
+            </font>
+        </JFXButton>
+        <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutX="685.0" layoutY="162.0"
+                   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#floralDelivery"
+                   prefHeight="100.0" prefWidth="400.0"
+                   style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 36; -fx-background-radius: 15;"
+                   text="Floral Delivery" textFill="WHITE">
+            <font>
+                <Font size="36.0"/>
+            </font>
+        </JFXButton>
+        <ImageView fitHeight="60.0" fitWidth="70.0" layoutX="552.0" layoutY="182.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@images/icons/Security.png"/>
+            </image>
+        </ImageView>
+        <ImageView fitHeight="60.0" fitWidth="70.0" layoutX="548.0" layoutY="321.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@images/icons/foodIcon2.png"/>
+            </image>
+        </ImageView>
+        <ImageView fitHeight="60.0" fitWidth="70.0" layoutX="547.0" layoutY="473.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@images/icons/laundryIcon.png"/>
+            </image>
+        </ImageView>
+        <ImageView fitHeight="60.0" fitWidth="78.0" layoutX="1018.0" layoutY="182.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@images/icons/flowersIcon.png"/>
+            </image>
+        </ImageView>
+        <ImageView fitHeight="60.0" fitWidth="57.0" layoutX="1018.0" layoutY="323.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@images/icons/medicalIcon.png"/>
+            </image>
+        </ImageView>
+        <ImageView fitHeight="60.0" fitWidth="57.0" layoutX="1018.0" layoutY="475.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@images/icons/testTubeIcon.png"/>
+            </image>
+        </ImageView>
+        <JFXHamburger fx:id="sidebarHamburger" layoutX="10.0" layoutY="10.0" onMouseClicked="#openSidebarLayout"/>
+        <JFXButton fx:id="closeSidebarHiddenButton" layoutX="151.0" layoutY="14.0" onAction="#closeSidebarLayout"
+                   prefHeight="30.0" prefWidth="31.0" text="closeSidebarHiddenButton" textFill="TRANSPARENT"
+                   visible="false"/>
+    </children>
 </AnchorPane>
