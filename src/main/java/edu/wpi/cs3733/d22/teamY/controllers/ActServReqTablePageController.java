@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 public class ActServReqTablePageController {
+
   @FXML private TableView<MedEquipReq> medEquipReqTableView;
 
   @FXML Pane sidebarPane;
@@ -30,17 +31,29 @@ public class ActServReqTablePageController {
 
     ObservableList<MedEquipReq> locationsObservable = FXCollections.observableList(medEquipReqs);
 
-    TableColumn<MedEquipReq, Integer> requestNum = new TableColumn<>("Request Number");
-    TableColumn<MedEquipReq, Integer> equipID = new TableColumn<>("Equipment ID");
-    TableColumn<MedEquipReq, Integer> targetNodeID = new TableColumn<>("Target Node ID");
+    TableColumn<MedEquipReq, String> requestNum = new TableColumn<>("Request Number");
+    TableColumn<MedEquipReq, String> roomID = new TableColumn<>("Room ID");
+    TableColumn<MedEquipReq, String> patientName = new TableColumn<>("Target Node ID");
+    TableColumn<MedEquipReq, String> assignedNurse = new TableColumn<>("Assigned Nurse");
+    TableColumn<MedEquipReq, String> requestStatus = new TableColumn<>("Request Status");
+    TableColumn<MedEquipReq, String> additionalNotes = new TableColumn<>("Additional Notes");
+    TableColumn<MedEquipReq, String> equipmentTypeSelected = new TableColumn<>("Equipment Type");
 
     requestNum.setCellValueFactory(new PropertyValueFactory<>("requestNum"));
-    equipID.setCellValueFactory(new PropertyValueFactory<>("equipID"));
-    targetNodeID.setCellValueFactory(new PropertyValueFactory<>("targetLocID"));
+    roomID.setCellValueFactory(new PropertyValueFactory<>("roomID"));
+    patientName.setCellValueFactory(new PropertyValueFactory<>("patientName"));
+    assignedNurse.setCellValueFactory(new PropertyValueFactory<>("assignedNurse"));
+    requestStatus.setCellValueFactory(new PropertyValueFactory<>("requestStatus"));
+    additionalNotes.setCellValueFactory(new PropertyValueFactory<>("additionalNotes"));
+    equipmentTypeSelected.setCellValueFactory(new PropertyValueFactory<>("equipmentTypeSelected"));
 
     medEquipReqTableView.getColumns().add(requestNum);
-    medEquipReqTableView.getColumns().add(equipID);
-    medEquipReqTableView.getColumns().add(targetNodeID);
+    medEquipReqTableView.getColumns().add(roomID);
+    medEquipReqTableView.getColumns().add(patientName);
+    medEquipReqTableView.getColumns().add(assignedNurse);
+    medEquipReqTableView.getColumns().add(requestStatus);
+    medEquipReqTableView.getColumns().add(additionalNotes);
+    medEquipReqTableView.getColumns().add(equipmentTypeSelected);
     medEquipReqTableView.setItems(locationsObservable);
 
     sidebar = SidebarUtil.initializeSidebar(sidebarPane);

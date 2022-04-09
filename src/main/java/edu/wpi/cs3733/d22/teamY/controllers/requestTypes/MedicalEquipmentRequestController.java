@@ -80,7 +80,6 @@ public class MedicalEquipmentRequestController {
       String requestStatus,
       String additionalNotes,
       String equipmentTypeSelected) {
-
     String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.MED_EQUIP_REQ));
     DBManager.save(
         new MedEquipReq(
@@ -98,8 +97,34 @@ public class MedicalEquipmentRequestController {
   @FXML
   void submitButton() {
     // Checks if a bouquet choice has been made
-    if (RequestControllerUtil.isRadioButtonSelected(
-        reclinerRadioButton, infusionPumpRadioButton, xrayRadioButton, bedRadioButton)) {
+
+    boolean failed = false;
+    if (RequestControllerUtil.isRadioButtonSelected(reclinerRadioButton)) {
+      if (DBUtils.getAvailableEquipment("RECLINER").getKey() == 0) {
+        errorLabel.setText("Equipment not available.");
+        failed = true;
+      }
+    } else if (RequestControllerUtil.isRadioButtonSelected(infusionPumpRadioButton)) {
+      if (DBUtils.getAvailableEquipment("PUMP").getKey() == 0) {
+        errorLabel.setText("Equipment not available.");
+        failed = true;
+      }
+    } else if (RequestControllerUtil.isRadioButtonSelected(xrayRadioButton)) {
+      if (DBUtils.getAvailableEquipment("XRAY").getKey() == 0) {
+        errorLabel.setText("Equipment not available.");
+        failed = true;
+      }
+    } else if (RequestControllerUtil.isRadioButtonSelected(bedRadioButton)) {
+      if (DBUtils.getAvailableEquipment("BED").getKey() == 0) {
+        errorLabel.setText("Equipment not available.");
+        failed = true;
+      }
+    } else {
+      errorLabel.setText("Please select an equipment option.");
+      failed = true;
+    }
+
+    if (!failed) {
       submitRequest(
           input_RoomID.getText(),
           input_AssignedNurse.getText(),
@@ -107,10 +132,10 @@ public class MedicalEquipmentRequestController {
           input_AdditionalNotes.getText(),
           getEquipmentType());
       RequestControllerUtil.resetLabels(errorLabel);
-    } else {
-      errorLabel.setText("Please select an equipment option.");
     }
   }
+
+  // Called when the submit button is pressed.
 
   // Returns the database name of the selected radio button.
   private String getEquipmentType() {
