@@ -1,9 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
-import edu.wpi.cs3733.d22.teamY.App;
 import java.io.IOException;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -28,6 +26,7 @@ public class SideBarController {
   @FXML private Rectangle profileHiddenRect;
   @FXML private Rectangle logoutHiddenRect;
 
+  /*
   private Pane mapPane;
   private Pane servicesPane;
   private Pane tasksPane;
@@ -37,6 +36,7 @@ public class SideBarController {
   private AnchorPane servicesAnchor;
   private AnchorPane tasksAnchor;
   private AnchorPane settingsAnchor;
+   */
 
   @FXML
   void initialize() throws IOException {
@@ -49,19 +49,37 @@ public class SideBarController {
     inboxHiddenRect.setOpacity(0);
     logoutHiddenRect.setOpacity(0);
 
-    mapPane = FXMLLoader.load(App.class.getResource("views/SecondaryMap_TEMPLATE.fxml"));
-    servicesPane = FXMLLoader.load(App.class.getResource("views/SubMenu_TEMPLATE.fxml"));
-    tasksPane = FXMLLoader.load(App.class.getResource("views/PersonalSettings.fxml"));
-    settingsPane = FXMLLoader.load(App.class.getResource("views/PersonalSettings.fxml"));
-
+    /*
     mainScreenPane.getChildren().add(mapPane);
     mainScreenPane.getChildren().add(servicesPane);
     mainScreenPane.getChildren().add(tasksPane);
     mainScreenPane.getChildren().add(settingsPane);
+    mainScreenPane:
+    [0]: map
+    [1]: services
+    [2]: active service requests
+    [3]: profile
+
+      [0]: map
+      [1]: services
+      *[2]: equipment
+      [3]: active service requests
+      [4]: home
+      *[5]: inbox
+      *[6]: profile
+     */
+
+    SceneUtil.initializePanes(
+        mainScreenPane,
+        "views/SecondaryMap_TEMPLATE.fxml",
+        "views/SubMenu_TEMPLATE.fxml",
+        "views/ActServReqTable.fxml",
+        "views/ActiveServiceRequest.fxml",
+        "views/ActiveServiceRequest.fxml",
+        "views/PersonalSettings.fxml");
 
     // Set the background to transparent
-    SceneUtil.hideAllBackgrounds(mapPane, servicesPane, tasksPane, settingsPane);
-
+    SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
   }
 
@@ -201,20 +219,53 @@ public class SideBarController {
 
   // Placeholder/test
   @FXML
-  void loadSecondaryMap() throws IOException {
+  void loadMap() throws IOException {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mapPane.setVisible(true);
+    mainScreenPane.getChildren().get(0).setVisible(true);
   }
 
   @FXML
   void loadViewServiceRequests() throws IOException {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    servicesPane.setVisible(true);
+    mainScreenPane.getChildren().get(1).setVisible(true);
+  }
+
+  @FXML
+  void loadEquipment() {
+    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    mainScreenPane.getChildren().get(2).setVisible(true);
   }
 
   @FXML
   void loadTasks() {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    tasksPane.setVisible(true);
+    mainScreenPane.getChildren().get(3).setVisible(true);
   }
+
+  @FXML
+  void loadHome() {
+    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    // mainScreenPane.getChildren().get(4).setVisible(true);
+  }
+
+  @FXML
+  void loadInbox() {
+    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    mainScreenPane.getChildren().get(4).setVisible(true);
+  }
+
+  @FXML
+  void loadProfile() {
+    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    mainScreenPane.getChildren().get(5).setVisible(true);
+  }
+  /*
+  [0]: map
+      [1]: services
+      *[2]: equipment
+      [3]: active service requests (tasks)
+      *[4]: inbox
+      *[5]: profile
+      [3-4]?: home
+   */
 }

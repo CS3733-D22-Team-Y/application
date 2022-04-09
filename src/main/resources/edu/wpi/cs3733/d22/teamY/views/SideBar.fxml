@@ -152,18 +152,18 @@
       </VBox>
       <VBox layoutX="10.0" layoutY="192.0" prefHeight="175.0" prefWidth="250.0">
          <children>
-            <Rectangle fx:id="mapButtonHitbox" fill="#2e2e2e00" height="58.0" onMouseClicked="#loadSecondaryMap" onMouseEntered="#startMapButtonHover" onMouseExited="#endMapButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="mapButtonHitbox" fill="#2e2e2e00" height="58.0" onMouseClicked="#loadMap" onMouseEntered="#startMapButtonHover" onMouseExited="#endMapButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
             <Rectangle fx:id="servicesButtonHitbox" fill="#2e2e2e00" height="58.0" onMouseClicked="#loadViewServiceRequests" onMouseEntered="#startServicesButtonHover" onMouseExited="#endServicesButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
-            <Rectangle fx:id="equipmentButtonHitbox" fill="#2e2e2e00" height="58.0" onMouseEntered="#startEquipmentButtonHover" onMouseExited="#endEquipmentButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="equipmentButtonHitbox" fill="#2e2e2e00" height="58.0" onMouseClicked="#loadEquipment" onMouseEntered="#startEquipmentButtonHover" onMouseExited="#endEquipmentButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
             <Rectangle fx:id="tasksButtonHitbox" fill="#2e2e2e00" height="58.0" onMouseClicked="#loadTasks" onMouseEntered="#startTasksButtonHover" onMouseExited="#endTasksButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
          </children>
       </VBox>
       <Pane fx:id="mainScreenPane" layoutX="270.0" onMouseMoved="#initializeScale" prefHeight="800.0" prefWidth="930.0" />
       <VBox layoutX="10.0" layoutY="603.0" prefHeight="132.0" prefWidth="250.0">
          <children>
-            <Rectangle fx:id="homeButtonHitbox" fill="#2e2e2e00" height="33.0" onMouseClicked="#loadSecondaryMap" onMouseEntered="#startHomeButtonHover" onMouseExited="#endHomeButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
-            <Rectangle fx:id="inboxButtonHitbox" fill="#2e2e2e00" height="33.0" onMouseClicked="#loadViewServiceRequests" onMouseEntered="#startInboxButtonHover" onMouseExited="#endInboxButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
-            <Rectangle fx:id="profileButtonHitbox" fill="#2e2e2e00" height="33.0" onMouseEntered="#startProfileButtonHover" onMouseExited="#endProfileButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="homeButtonHitbox" fill="#2e2e2e00" height="33.0" onMouseClicked="#loadHome" onMouseEntered="#startHomeButtonHover" onMouseExited="#endHomeButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="inboxButtonHitbox" fill="#2e2e2e00" height="33.0" onMouseClicked="#loadInbox" onMouseEntered="#startInboxButtonHover" onMouseExited="#endInboxButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="profileButtonHitbox" fill="#2e2e2e00" height="33.0" onMouseClicked="#loadProfile" onMouseEntered="#startProfileButtonHover" onMouseExited="#endProfileButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
             <Rectangle fx:id="logoutButtonHitbox" fill="#2e2e2e00" height="33.0" onMouseClicked="#killApplication" onMouseEntered="#startLogoutButtonHover" onMouseExited="#endLogoutButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
          </children>
       </VBox>
