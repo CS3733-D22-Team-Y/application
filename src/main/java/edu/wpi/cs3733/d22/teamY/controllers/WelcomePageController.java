@@ -40,6 +40,7 @@ public class WelcomePageController {
   int maxAttempts = 5;
   int attCount = 0;
 
+  @FXML
   void initialize() throws IOException {
     loginPane.setVisible(true);
     loading.setVisible(false);
@@ -48,7 +49,7 @@ public class WelcomePageController {
 
   @FXML
   void mainPage() throws IOException {
-    SceneLoading.loadScene("views/Map.fxml");
+    SceneLoading.loadScene("views/SideBar.fxml");
   }
 
   @FXML

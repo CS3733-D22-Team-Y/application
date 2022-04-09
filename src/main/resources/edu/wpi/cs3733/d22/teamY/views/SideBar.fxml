@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -85,6 +86,13 @@
             <Font size="16.0" />
          </font>
       </TextField>
+      <VBox layoutX="10.0" layoutY="192.0" prefHeight="175.0" prefWidth="250.0">
+         <children>
+            <Rectangle fx:id="mapHiddenRect" fill="#2e2e2e4f" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="servicesHiddenRect" fill="#2e2e2e4f" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="equipmentHiddenRect" fill="#2e2e2e4f" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+         </children>
+      </VBox>
       <VBox layoutX="71.0" layoutY="200.0" spacing="20.0">
          <children>
             <Label text="Map" textFill="WHITE">
@@ -126,6 +134,14 @@
                   <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
             </Label>
+         </children>
+      </VBox>
+      <Pane fx:id="mainScreenPane" layoutX="270.0" prefHeight="800.0" prefWidth="930.0" />
+      <VBox layoutX="10.0" layoutY="192.0" prefHeight="175.0" prefWidth="250.0">
+         <children>
+            <Rectangle fx:id="mapButtonHitbox" fill="#2e2e2e00" height="58.0" onMouseClicked="#loadSecondaryMap" onMouseEntered="#startMapButtonHover" onMouseExited="#endMapButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="servicesButtonHitbox" fill="#2e2e2e00" height="58.0" onMouseEntered="#startServicesButtonHover" onMouseExited="#endServicesButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="equipmentButtonHitbox" fill="#2e2e2e00" height="58.0" onMouseEntered="#startEquipmentButtonHover" onMouseExited="#endEquipmentButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
          </children>
       </VBox>
    </children>

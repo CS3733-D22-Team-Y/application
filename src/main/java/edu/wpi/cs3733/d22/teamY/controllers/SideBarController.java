@@ -1,12 +1,15 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 
@@ -15,16 +18,22 @@ public class SideBarController {
   @FXML private Label nameLabel;
   @FXML private Label accessLevel;
   @FXML private ToggleButton dbToggle;
+  @FXML Pane mainScreenPane;
 
   // Scaling
   @FXML private VBox bottomSidebarText;
   @FXML private Rectangle sidebarFrame;
 
+  // Hidden rectangles
+  @FXML private Rectangle mapHiddenRect;
+  @FXML private Rectangle servicesHiddenRect;
+  @FXML private Rectangle equipmentHiddenRect;
+
   @FXML
   void initialize() {
-    // accessLevel.setText("Access Level: " + PersonalSettings.currentEmployee.getAccessLevel());
-    // nameLabel.setText(PersonalSettings.currentEmployee.getName());
-    // mainPane.setVisible(true);
+    mapHiddenRect.setOpacity(0);
+    servicesHiddenRect.setOpacity(0);
+    equipmentHiddenRect.setOpacity(0);
   }
 
   @FXML
@@ -114,5 +123,43 @@ public class SideBarController {
   void dbSwitcherToggle() {
     boolean state = dbToggle.isSelected();
     DBUtils.switchDBType(state);
+  }
+
+  @FXML
+  void startMapButtonHover() {
+    SceneUtil.startHover(mapHiddenRect);
+  }
+
+  @FXML
+  void endMapButtonHover() {
+    SceneUtil.endHover(mapHiddenRect);
+  }
+
+  @FXML
+  void startServicesButtonHover() {
+    SceneUtil.startHover(servicesHiddenRect);
+  }
+
+  @FXML
+  void endServicesButtonHover() {
+    SceneUtil.endHover(servicesHiddenRect);
+  }
+
+  @FXML
+  void startEquipmentButtonHover() {
+    SceneUtil.startHover(equipmentHiddenRect);
+  }
+
+  @FXML
+  void endEquipmentButtonHover() {
+    SceneUtil.endHover(equipmentHiddenRect);
+  }
+
+  // Placeholder/test
+  @FXML
+  void loadSecondaryMap() throws IOException {
+    Pane paneToLoad = FXMLLoader.load(App.class.getResource("views/SecondaryMap_TEMPLATE.fxml"));
+    mainScreenPane.getChildren().clear();
+    mainScreenPane.getChildren().add(paneToLoad);
   }
 }
