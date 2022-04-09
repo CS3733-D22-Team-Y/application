@@ -3,6 +3,8 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -35,6 +37,7 @@ public class SideBarController {
 
   private AnchorPane mapAnchor;
   private AnchorPane servicesAnchor;
+  ArrayList<Pane> allPanes;
 
   @FXML
   void initialize() throws IOException {
@@ -47,13 +50,16 @@ public class SideBarController {
 
     mainScreenPane.getChildren().add(mapPane);
     mainScreenPane.getChildren().add(servicesPane);
-    mapPane.setVisible(false);
-    servicesPane.setVisible(false);
 
+    //Set the background to transparent
     mapAnchor = (AnchorPane) mapPane.lookup("#mainPane");
     mapAnchor.setBackground(Background.EMPTY);
     servicesAnchor = (AnchorPane) servicesPane.lookup("#mainPane");
     servicesAnchor.setBackground(Background.EMPTY);
+
+    allPanes.add(mapPane);
+    allPanes.add(servicesPane);
+    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
   }
 
   @FXML
@@ -144,15 +150,15 @@ public class SideBarController {
   @FXML
   void loadSecondaryMap() throws IOException {
     // Pane paneToLoad = FXMLLoader.load(App.class.getResource("views/SecondaryMap_TEMPLATE.fxml"));
+    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mapPane.setVisible(true);
-    servicesPane.setVisible(false);
   }
 
   @FXML
   void loadViewServiceRequests() throws IOException {
     // SceneLoading.loadScene("views/SubMenu_TEMPLATE.fxml");
     // Pane paneToLoad = FXMLLoader.load(App.class.getResource("views/SubMenu_TEMPLATE.fxml"));
+    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     servicesPane.setVisible(true);
-    mapPane.setVisible(false);
   }
 }
