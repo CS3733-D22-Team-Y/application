@@ -3,17 +3,18 @@
     "-//Hibernate/Hibernate Configuration DTD//EN"
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
+<!--suppress HibernateConfigDomFacetInspection -->
 <hibernate-configuration>
 
   <session-factory>
 
-    <property name="connection.url">jdbc:derby:Database;create=true;</property>
-    <property name="connection.driver_class">org.apache.derby.jdbc.EmbeddedDriver</property>
+    <property name="connection.url">jdbc:derby://localhost:1527/Database;create=true;</property>
+    <property name="connection.driver_class">org.apache.derby.jdbc.ClientDriver</property>
 
 
-<!--    <property name="dialect">org.hibernate.dialect.DerbyTenSevenDialect</property>-->
-    <!-- <property name="connection.username"/> -->
-    <!-- <property name="connection.password"/> -->
+    <property name="dialect">org.hibernate.dialect.DerbyTenSevenDialect</property>
+    <property name="connection.username">admin</property>
+    <property name="connection.password">admin</property>
 
     <!-- DB schema will be updated if needed -->
 <!--     <property name="hibernate.hbm2ddl.auto">update</property>-->
@@ -29,5 +30,6 @@
       <mapping class="edu.wpi.cs3733.d22.teamY.model.LaundryRequest" />
       <mapping class="edu.wpi.cs3733.d22.teamY.model.MealRequest" />
       <mapping class="edu.wpi.cs3733.d22.teamY.model.SecurityServiceRequest" />
+
   </session-factory>
 </hibernate-configuration>

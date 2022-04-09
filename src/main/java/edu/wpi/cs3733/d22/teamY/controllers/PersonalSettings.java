@@ -17,13 +17,13 @@ public class PersonalSettings {
   @FXML private JFXHamburger sidebarHamburger;
   AnchorPane sidebar = null;
   public static Employee currentEmployee =
-      new Employee("-1", "Guest", "Guest", "Guest", "Guest", "Guest", "Guest", "dark", 0, "none");
+      new Employee("-1", "Guest", "Guest", "Guest", "Guest", "Guest", "Guest", 0, "none");
 
-  /*@FXML
+  @FXML
   void initialize() throws IOException {
     sidebar = SidebarUtil.initializeSidebar(sidebarPane);
     openSidebarLayout();
-  }*/
+  }
 
   @FXML
   void mainMenu() throws IOException {
@@ -31,18 +31,13 @@ public class PersonalSettings {
   }
 
   // Sidebar
-  /*@FXML
+  @FXML
   void openSidebarLayout() {
     SidebarUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
-  }*/
-
-  /*@FXML
-  void closeSidebarLayout() {
-    SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
-  }*/
+  }
 
   @FXML
-  void setDarkMode() throws IOException {
-    SceneLoading.setCurrentTheme("dark");
+  void closeSidebarLayout() {
+    SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
   }
 }

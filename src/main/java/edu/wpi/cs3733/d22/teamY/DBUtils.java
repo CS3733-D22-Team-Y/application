@@ -19,13 +19,22 @@ public class DBUtils {
     return DBManager.getAll(MedEquip.class, new Where(MedEquip.EQUIP_LOC_ID, location.getNodeID()));
   }
 
-  /** Refresh Location Table when Called. Returns nothing */
-  public static void refreshLocationsFromCSV() {
+  /**
+   * Refresh Data from CSV
+   *
+   * @param e Entry type to Refresh
+   */
+  public static void refreshFromCSV(EntryType e) {
     // Reinitialize
-    CSVBackup.loadFromCSV(EntryType.LOCATION);
+    CSVBackup.loadFromCSV(e);
   }
 
-  public static void deleteLocations() {
+  /**
+   * Deletes all objects from a specified EntryType table
+   *
+   * @param e Entry Type to delete
+   */
+  public static void deleteType(EntryType e) {
     List<StringArrayConv> list = DBManager.getAll(EntryType.LOCATION.getEntryClass());
     // Check if null
     if (list == null) {
@@ -36,6 +45,16 @@ public class DBUtils {
       DBManager.delete(o);
     }
     System.out.println("deleted all");
+  }
+
+  public static void completeCSVRefresh() {
+    for (EntryType e : EntryType.values()) {
+      deleteType(e);
+    }
+
+    for (EntryType e : EntryType.values()) {
+      refreshFromCSV(e);
+    }
   }
 
   public static Pair<Integer, Integer> getAvailableEquipment(String equipType) {
@@ -101,15 +120,20 @@ public class DBUtils {
   }
 
   /**
-   * gets the request ID for the next MedEquipReq
+   * Returns next request number
    *
-   * @return length of medequipreq + 1
+   * @param e EntryType of Object to Use
+   * @return Number of Next Request
    */
-  public static int getNextRequestNum() {
+  public static int getNextRequestNum(EntryType e) {
     Session s = SessionManager.getSession();
-    int requests = s.createQuery("from MedEquipReq").list().size();
+    int count =
+        ((Long)
+                s.createQuery("select count(*) from " + e.getEntryClass().getSimpleName())
+                    .uniqueResult())
+            .intValue();
     s.close();
-    return (++requests);
+    return (++count);
   }
 
   /**
@@ -130,6 +154,19 @@ public class DBUtils {
             .list();
     s.close();
     return employees.size() == 1;
+  }
+
+  public static String convertNameToID(String shortName) {
+    Session s = SessionManager.getSession();
+    List<Location> tempLocations =
+        s.createQuery("from Location where shortName = :shortName").list();
+    s.close();
+
+    if (tempLocations.size() > 1) {
+      return null;
+    }
+
+    return (tempLocations.get(0).getNodeID());
   }
   /**
    * Changes an employee's password.
@@ -169,5 +206,15 @@ public class DBUtils {
     employee.setPassword(newPassword);
     DBManager.update(employee);
     return "Successfully changed password.";
+  }
+
+  /**
+   * Switches the DB to and from Client-Server -> Embedded
+   *
+   * @param input false for Embedded, true for C-S
+   */
+  public static void switchDBType(boolean input) {
+    SessionManager.switchType(input);
+    DBUtils.completeCSVRefresh();
   }
 }

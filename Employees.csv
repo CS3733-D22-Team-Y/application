@@ -1,17 +1,17 @@
-idNumber,name,role,access,floor,username,password,theme,accesslevel,authString
-561,Pamela Saperstein,Neurosurgeon,OPERATING,L1,694575114,1216985755,dark,1,none
-43,Leonard Gabriel,Radiologist,RADIOLOGY,2,-960413190,1216985755,dark,1,none
-7715,Truman S. Harry,Nurse,WARD,3,-1032353919,1216985755,dark,1,none
-89433,Evelyn Pomegranate,Records Clerk,RECORDS,L1,1185622014,1216985755,dark,1,none
-99990,Clark X. Ray,Dietician,GIFTSHOP,2,95116181,1216985755,dark,1,none
-1,Jessie Firedepartment,IT Specialist,BASIC,3,1692036338,1216985755,dark,1,none
-478,Gabriel Leonard,Radiographer,RADIOGRAPHY,L2,-815583244,1216985755,dark,1,none
-666,Denise Renesme-Brie,Pharmacist,PHARMACEUTICALS,1,-459366423,1216985755,dark,1,none
-4902,Holly Barry,HR Manager,FULL,1,-1224027598,1216985755,dark,1,none
-1011,Doc M.D. Medicine,Custodial Worker,BASIC,L2,-1257524578,1216985755,dark,1,none
-0,Admin,Admin,ADMIN,1,92668751,92668751,dark,5,none
-24350,Ben,ass lead,all,2,97419,97419,dark,5,none
-7470,Emily,ass lead,all,2,3240,3240,dark,5,none
-12211,connor,lead man,all,2,94637158,-1223368297,dark,5,pushbullet:o.TD5pkhBMEx5ag5X5QXjmT0hZN1DPiYm4
-69420,Yoshi,dinosaur,all,2,85614014,1964548561,dark,5,none
-15274,Nathan,Auth Guy,all,1,1728508188,3433489,dark,5,mail:ndpollock@wpi.edu
+﻿idNumber,name,role,access,floor,username,password,accesslevel,authString
+00561,Pamela Saperstein,Neurosurgeon,OPERATING,L1,694575114,1216985755,1,none
+00043,Leonard Gabriel,Radiologist,RADIOLOGY,2,-960413190,1216985755,1,none
+07715,Truman S. Harry,Nurse,WARD,3,-1032353919,1216985755,1,none
+89433,Evelyn Pomegranate,Records Clerk,RECORDS,L1,1185622014,1216985755,1,none
+99990,Clark X. Ray,Dietician,GIFTSHOP,2,95116181,1216985755,1,none
+00001,Jessie Firedepartment,IT Specialist,BASIC,3,1692036338,1216985755,1,none
+00478,Gabriel Leonard,Radiographer,RADIOGRAPHY,L2,-815583244,1216985755,1,none
+00666,Denise Renesme-Brie,Pharmacist,PHARMACEUTICALS,1,-459366423,1216985755,1,none
+04902,Holly Barry,HR Manager,FULL,1,-1224027598,1216985755,1,none
+01011,Doc M.D. Medicine,Custodial Worker,BASIC,L2,-1257524578,1216985755,1,none
+00000,Admin,Admin,ADMIN,1,92668751,92668751,5,none
+24350,Ben,ass lead,all,2,97419,97419,5,none
+07470,Emily,ass lead,all,2,3240,3240,5,none
+12211,connor,lead man,all,2,94637158,-1223368297,5,pushbullet:o.TD5pkhBMEx5ag5X5QXjmT0hZN1DPiYm4
+69420,Yoshi,dinosaur,all,2,85614014,1964548561,5,none
+15274,Nathan,Auth Guy,all,1,1728508188,3433489,5,mail:ndpollock@wpi.edu

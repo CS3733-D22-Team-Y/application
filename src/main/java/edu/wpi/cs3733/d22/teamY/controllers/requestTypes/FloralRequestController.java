@@ -1,7 +1,11 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXRadioButton;
+import edu.wpi.cs3733.d22.teamY.DBManager;
+import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
+import edu.wpi.cs3733.d22.teamY.model.FloralRequest;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,17 +53,17 @@ public class FloralRequestController {
       String requestStatus,
       String additionalNotes,
       String bouquetTypeSelected) {
-      // Get request Num
-      String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.FLORAL_REQUEST));
-      DBManager.save(
-          new FloralRequest(
-              nextRequest,
-              roomID,
-              assignedNurse,
-              requestStatus,
-              additionalNotes,
-              bouquetTypeSelected));
-      System.out.println("Saved FloralRequest");
+    // Get request Num
+    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.FLORAL_REQUEST));
+    DBManager.save(
+        new FloralRequest(
+            nextRequest,
+            roomID,
+            assignedNurse,
+            requestStatus,
+            additionalNotes,
+            bouquetTypeSelected));
+    System.out.println("Saved FloralRequest");
   }
 
   @FXML

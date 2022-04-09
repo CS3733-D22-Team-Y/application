@@ -12,6 +12,8 @@ bin/
 derby.log
 *.log
 /LocationDB
+/Database
+/DB_Scripts/Database
 
 #Ignore auto generated export csv's
 locations_export.csv
@@ -19,6 +21,11 @@ medEquipment_export.csv
 medEquipRequests_export.csv
 labRequests_export.csv
 employees_export.csv
+floralRequests_export.csv
+laundryRequests_export.csv
+mealRequests_export.csv
+securityServiceRequests_export.csv
+
 
 #Mac Specific
 .DS_Store

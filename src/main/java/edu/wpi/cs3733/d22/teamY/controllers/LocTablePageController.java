@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXHamburger;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import java.io.IOException;
 import java.util.Collections;
@@ -85,13 +86,13 @@ public class LocTablePageController {
 
   @FXML
   void refreshLocations() throws IOException {
-    DBUtils.refreshLocationsFromCSV();
+    DBUtils.refreshFromCSV(EntryType.LOCATION);
     SceneLoading.loadScene("views/LocTable.fxml");
   }
 
   @FXML
   void deleteLocations() throws IOException {
-    DBUtils.deleteLocations();
+    DBUtils.deleteType(EntryType.LOCATION);
     SceneLoading.loadScene("views/LocTable.fxml");
   }
 }
