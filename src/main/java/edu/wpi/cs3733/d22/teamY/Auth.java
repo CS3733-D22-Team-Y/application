@@ -11,8 +11,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * This class is used to authenticate users. hopefully this will be replaced with something better?
@@ -62,72 +60,36 @@ public class Auth {
         DBManager.getAll(Employee.class, new Where(Employee.USERNAME, userName.hashCode()));
     Employee emp = emps.get(0);
     String authString = emp.getAuthString();
-    String[] list = new String[Math.toIntExact(authString.chars().filter(ch -> ch == ';').count())];
-    int index = 0;
-    // Regex to extract the string
-    // between two delimiters
-    String regex = "\\;(.*?)\\:";
 
-    // Compile the Regex.
-    Pattern p = Pattern.compile(regex);
-
-    // Find match between given string
-    // and regular expression
-    // using Pattern.matcher()
-    Matcher m = p.matcher(authString);
-
-    // Get the subsequence
-    // using find() method
-    while (m.find()) {
-      System.out.println(m.group(1));
-      list[index] = m.group(1);
-      index++;
+    String[] split = authString.split(";");
+    String[] list = new String[split.length];
+    for (int i = 0; i < split.length; i++) {
+      list[i] = split[i].split(":")[0];
+      System.out.println(list[i]);
     }
 
     return list;
   }
 
-  // Please dont read
   public static String[] getAtts(String key, String userName) {
     List<Employee> emps =
         DBManager.getAll(Employee.class, new Where(Employee.USERNAME, userName.hashCode()));
     Employee emp = emps.get(0);
     String authString = emp.getAuthString();
-    try {
-      System.out.println(authString.substring(0, authString.indexOf(key)));
-    } catch (Exception e) {
+    ArrayList<String> args = new ArrayList<>();
+    String[] split = authString.split(";");
+    for (int i = 0; i < split.length; i++) {
+      String[] split2 = split[i].split(":");
+      if (split2[0].equals(key)) {
+        for (int j = 1; j < split2.length; j++) {
+          args.add(split2[j]);
+        }
+      }
     }
-    authString =
-        authString.replace(authString.substring(0, authString.indexOf(key)) + key, "") + ":";
-
-    try {
-      if (authString.contains(";"))
-        authString = authString.substring(0, authString.indexOf(";") + 1);
-    } catch (Exception e) {
+    String[] list = new String[args.size()];
+    for (int i = 0; i < args.size(); i++) {
+      list[i] = args.get(i);
     }
-    String[] list = new String[Math.toIntExact(authString.chars().filter(ch -> ch == ':').count())];
-    authString = authString.replace(";", ":");
-    authString = authString.replace(":", "][");
-    int index = 0;
-    // Regex to extract the string
-    // between two delimiters
-    String regex = "\\[(.*?)\\]";
-
-    // Compile the Regex.
-    Pattern p = Pattern.compile(regex);
-
-    // Find match between given string
-    // and regular expression
-    // using Pattern.matcher()
-    Matcher m = p.matcher(authString);
-
-    // Get the subsequence
-    // using find() method
-    while (m.find()) {
-      list[index] = m.group(1);
-      index++;
-    }
-    System.out.println(authString);
     return list;
   }
 
