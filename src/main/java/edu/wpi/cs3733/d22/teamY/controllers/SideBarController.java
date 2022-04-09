@@ -9,12 +9,22 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 
 public class SideBarController {
+  // Constant locations
+  private static final Integer MAP_LIST_LOCATION = 0;
+  private static final Integer SERVICES_LIST_LOCATION = 1;
+  private static final Integer EQUIPMENT_LIST_LOCATION = 2;
+  private static final Integer TASKS_LIST_LOCATION = 3;
+  private static final Integer INBOX_LIST_LOCATION = 4;
+  private static final Integer PROFILE_LIST_LOCATION = 5;
+
   @FXML AnchorPane mainPane;
   @FXML Pane mainScreenPane;
 
   // Scaling
   @FXML private VBox bottomSidebarText;
   @FXML private Rectangle sidebarFrame;
+  @FXML private VBox bottomSidebarHiddenButtons;
+  @FXML private VBox bottomSidebarRectangles;
 
   // Hidden rectangles
   @FXML private Rectangle mapHiddenRect;
@@ -26,48 +36,17 @@ public class SideBarController {
   @FXML private Rectangle profileHiddenRect;
   @FXML private Rectangle logoutHiddenRect;
 
-  /*
-  private Pane mapPane;
-  private Pane servicesPane;
-  private Pane tasksPane;
-  private Pane settingsPane;
-
-  private AnchorPane mapAnchor;
-  private AnchorPane servicesAnchor;
-  private AnchorPane tasksAnchor;
-  private AnchorPane settingsAnchor;
-   */
-
   @FXML
   void initialize() throws IOException {
-    mapHiddenRect.setOpacity(0);
-    servicesHiddenRect.setOpacity(0);
-    equipmentHiddenRect.setOpacity(0);
-    tasksHiddenRect.setOpacity(0);
-    homeHiddenRect.setOpacity(0);
-    profileHiddenRect.setOpacity(0);
-    inboxHiddenRect.setOpacity(0);
-    logoutHiddenRect.setOpacity(0);
-
-    /*
-    mainScreenPane.getChildren().add(mapPane);
-    mainScreenPane.getChildren().add(servicesPane);
-    mainScreenPane.getChildren().add(tasksPane);
-    mainScreenPane.getChildren().add(settingsPane);
-    mainScreenPane:
-    [0]: map
-    [1]: services
-    [2]: active service requests
-    [3]: profile
-
-      [0]: map
-      [1]: services
-      *[2]: equipment
-      [3]: active service requests
-      [4]: home
-      *[5]: inbox
-      *[6]: profile
-     */
+    SceneUtil.removeOpacity(
+        mapHiddenRect,
+        servicesHiddenRect,
+        equipmentHiddenRect,
+        tasksHiddenRect,
+        homeHiddenRect,
+        profileHiddenRect,
+        inboxHiddenRect,
+        logoutHiddenRect);
 
     SceneUtil.initializePanes(
         mainScreenPane,
@@ -87,43 +66,10 @@ public class SideBarController {
   void initializeScale() {
     Scene currScene = bottomSidebarText.getScene();
     bottomSidebarText.layoutYProperty().bind(currScene.heightProperty().subtract(200));
+    bottomSidebarHiddenButtons.layoutYProperty().bind(currScene.heightProperty().subtract(200));
+    bottomSidebarRectangles.layoutYProperty().bind(currScene.heightProperty().subtract(200));
     sidebarFrame.scaleYProperty().bind(currScene.heightProperty().divide(800));
     sidebarFrame.layoutYProperty().bind(sidebarFrame.scaleYProperty().multiply(390).subtract(380));
-  }
-
-  @FXML
-  void loadMainPage() throws IOException {
-    SceneLoading.loadScene("views/Map.fxml");
-  }
-
-  @FXML
-  void loadViewMap() throws IOException {
-    SceneLoading.loadScene("views/Map.fxml");
-  }
-
-  @FXML
-  void loadCreateServiceRequest() throws IOException {
-    SceneLoading.loadScene("views/RequestMenu.fxml");
-  }
-
-  @FXML
-  void loadLocationTable() throws IOException {
-    SceneLoading.loadScene("views/LocTable.fxml");
-  }
-
-  @FXML
-  void loadMedEquipmentRequests() throws IOException {
-    SceneLoading.loadScene("views/ActServReqTable.fxml");
-  }
-
-  @FXML
-  void loadChangeTheme() throws IOException {
-    SceneLoading.loadScene("views/ChangeTheme.fxml");
-  }
-
-  @FXML
-  void loadPersonalSettings() throws IOException {
-    SceneLoading.loadScene("views/PersonalSettings.fxml");
   }
 
   @FXML
@@ -221,25 +167,25 @@ public class SideBarController {
   @FXML
   void loadMap() throws IOException {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(0).setVisible(true);
+    mainScreenPane.getChildren().get(MAP_LIST_LOCATION).setVisible(true);
   }
 
   @FXML
   void loadViewServiceRequests() throws IOException {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(1).setVisible(true);
+    mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).setVisible(true);
   }
 
   @FXML
   void loadEquipment() {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(2).setVisible(true);
+    mainScreenPane.getChildren().get(EQUIPMENT_LIST_LOCATION).setVisible(true);
   }
 
   @FXML
   void loadTasks() {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(3).setVisible(true);
+    mainScreenPane.getChildren().get(TASKS_LIST_LOCATION).setVisible(true);
   }
 
   @FXML
@@ -251,13 +197,13 @@ public class SideBarController {
   @FXML
   void loadInbox() {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(4).setVisible(true);
+    mainScreenPane.getChildren().get(INBOX_LIST_LOCATION).setVisible(true);
   }
 
   @FXML
   void loadProfile() {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(5).setVisible(true);
+    mainScreenPane.getChildren().get(PROFILE_LIST_LOCATION).setVisible(true);
   }
   /*
   [0]: map

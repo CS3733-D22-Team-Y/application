@@ -118,7 +118,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="10.0" layoutY="603.0" prefHeight="132.0" prefWidth="250.0">
+      <VBox fx:id="bottomSidebarRectangles" layoutX="10.0" layoutY="603.0" prefHeight="132.0" prefWidth="250.0">
          <children>
             <Rectangle fx:id="homeHiddenRect" fill="#2e2e2e4f" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
             <Rectangle fx:id="inboxHiddenRect" fill="#2e2e2e4f" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
@@ -159,7 +159,7 @@
          </children>
       </VBox>
       <Pane fx:id="mainScreenPane" layoutX="270.0" onMouseMoved="#initializeScale" prefHeight="800.0" prefWidth="930.0" />
-      <VBox layoutX="10.0" layoutY="603.0" prefHeight="132.0" prefWidth="250.0">
+      <VBox fx:id="bottomSidebarHiddenButtons" layoutX="10.0" layoutY="603.0" prefHeight="132.0" prefWidth="250.0">
          <children>
             <Rectangle fx:id="homeButtonHitbox" fill="#2e2e2e00" height="33.0" onMouseClicked="#loadHome" onMouseEntered="#startHomeButtonHover" onMouseExited="#endHomeButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
             <Rectangle fx:id="inboxButtonHitbox" fill="#2e2e2e00" height="33.0" onMouseClicked="#loadInbox" onMouseEntered="#startInboxButtonHover" onMouseExited="#endInboxButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />

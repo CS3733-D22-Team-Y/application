@@ -38,4 +38,10 @@ public class SceneUtil {
       mainScreenPane.getChildren().add(currPane);
     }
   }
+
+  protected static void removeOpacity(Shape... shapes) {
+    for (Shape currShape : shapes) {
+      currShape.setOpacity(0);
+    }
+  }
 }
