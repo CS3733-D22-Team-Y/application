@@ -37,6 +37,13 @@
            <font>
                <Font name="Arial Rounded MT Bold" size="60.0" />
            </font>
+         <effect>
+            <DropShadow height="21.52" offsetX="-1.0" offsetY="1.0" radius="10.305" width="21.7">
+               <color>
+                  <Color red="0.08235294371843338" green="0.24705882370471954" blue="0.3803921639919281" opacity="0.3799999952316284" />
+               </color>
+            </DropShadow>
+         </effect>
        </Label>
       <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="150.0" prefHeight="35.0" prefWidth="134.0" text="Patient ID:" textAlignment="CENTER">
          <font>
@@ -103,12 +110,19 @@
          <font>
             <Font name="Arial Rounded MT Bold" size="45.0" />
          </font>
+         <effect>
+            <DropShadow offsetX="-1.0" offsetY="1.0">
+               <color>
+                  <Color red="0.0835999995470047" green="0.2515600025653839" blue="0.3799999952316284" opacity="0.3799999952316284" />
+               </color>
+            </DropShadow>
+         </effect>
       </Label>
       <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
          <effect>
-            <DropShadow height="15.85" offsetX="-3.0" offsetY="2.0" radius="8.8875" width="21.7">
+            <DropShadow height="20.24" offsetX="-3.0" offsetY="2.0" radius="9.985" width="21.7">
                <color>
-                  <Color red="0.08190000057220459" green="0.24621999263763428" blue="0.38999998569488525" opacity="0.3767123222351074" />
+                  <Color red="0.08235294371843338" green="0.24705882370471954" blue="0.38823530077934265" opacity="0.3799999952316284" />
                </color>
             </DropShadow>
          </effect>
