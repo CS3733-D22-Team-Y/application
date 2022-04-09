@@ -63,7 +63,7 @@ public class WelcomePageController {
 
   @FXML
   void mainPage() throws IOException {
-    SceneLoading.loadScene("views/Map.fxml");
+    SceneLoading.loadScene("views/SideBar.fxml");
   }
 
   @FXML
