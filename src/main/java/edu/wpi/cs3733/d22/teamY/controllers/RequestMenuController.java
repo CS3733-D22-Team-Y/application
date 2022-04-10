@@ -10,6 +10,7 @@ public class RequestMenuController {
   protected static final Integer FLORAL_RESULTS_INDEX = 2;
   protected static final Integer LAUNDRY_RESULTS_INDEX = 3;
   protected static final Integer TRANSLATOR_RESULTS_INDEX = 4;
+  protected static final Integer SECURITY_RESULTS_INDEX = 5;
 
   @FXML AnchorPane bgPane;
 
@@ -22,7 +23,8 @@ public class RequestMenuController {
         "views/requestTypes/LabResult.fxml",
         "views/requestTypes/FloralRequest.fxml",
         "views/requestTypes/LaundryRequest.fxml",
-        "views/requestTypes/TranslatorRequest.fxml");
+        "views/requestTypes/TranslatorRequest.fxml",
+        "views/requestTypes/SecurityRequest.fxml");
     SceneUtil.hideAllBackgrounds(bgPane.getChildren());
     SceneUtil.hideAllPanes(bgPane.getChildren());
     showMainPane();
@@ -58,7 +60,10 @@ public class RequestMenuController {
   }
 
   @FXML
-  void loadSecurityReq() {}
+  void loadSecurityReq() {
+    SceneUtil.hideAllPanes(bgPane.getChildren());
+    bgPane.getChildren().get(SECURITY_RESULTS_INDEX).setVisible(true);
+  }
 
   @FXML
   void loadTranslatorReq() {
