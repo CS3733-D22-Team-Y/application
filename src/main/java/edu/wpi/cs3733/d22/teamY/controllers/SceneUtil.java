@@ -2,6 +2,7 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 
 import edu.wpi.cs3733.d22.teamY.App;
 import java.io.IOException;
+import java.util.Objects;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -34,7 +35,7 @@ public class SceneUtil {
 
   protected static void initializePanes(Pane mainScreenPane, String... paths) throws IOException {
     for (String currPath : paths) {
-      Pane currPane = FXMLLoader.load(App.class.getResource(currPath));
+      Pane currPane = FXMLLoader.load(Objects.requireNonNull(App.class.getResource(currPath)));
       mainScreenPane.getChildren().add(currPane);
     }
   }

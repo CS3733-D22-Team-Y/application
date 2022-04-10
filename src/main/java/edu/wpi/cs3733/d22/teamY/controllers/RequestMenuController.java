@@ -1,74 +1,49 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXHamburger;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 
 public class RequestMenuController {
-  @FXML Pane sidebarPane;
-  @FXML private JFXButton closeSidebarHiddenButton;
-  @FXML private JFXHamburger sidebarHamburger;
+  private static final Integer MAIN_PAGE_INDEX = 0;
+  private static final Integer LAB_RESULTS_INDEX = 1;
 
-  AnchorPane sidebar = null;
+  @FXML AnchorPane bgPane;
 
-  public RequestMenuController() throws IOException {}
+  public RequestMenuController() {}
 
   @FXML
   void initialize() throws IOException {
-    // Show sidebar
-    sidebar = SidebarUtil.initializeSidebar(sidebarPane);
-    openSidebarLayout();
+    SceneUtil.initializePanes(bgPane, "views/requestTypes/LabResult.fxml");
+    System.out.println(bgPane.getChildren());
+    SceneUtil.hideAllBackgrounds(bgPane.getChildren());
+    SceneUtil.hideAllPanes(bgPane.getChildren());
+    showMainPane();
   }
 
-  // All below methods call corresponding scene setting methods in an instance of app
-  // These are called by the corresponding button in the Request Menu (RequestMenu.fxml)
-
-  @FXML
-  void mainMenu() throws IOException {
-    SceneLoading.loadScene("views/Map.fxml");
-  }
-
-  @FXML
-  void securityServices() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/SecurityServicesRequest.fxml");
+  private void showMainPane() {
+    SceneUtil.hideAllPanes(bgPane.getChildren());
+    bgPane.getChildren().get(MAIN_PAGE_INDEX).setVisible(true);
   }
 
   @FXML
-  void medicalEquipment() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/MedicalEquipmentRequest.fxml");
+  void loadLabReq() {
+    SceneUtil.hideAllPanes(bgPane.getChildren());
+    bgPane.getChildren().get(LAB_RESULTS_INDEX).setVisible(true);
   }
 
   @FXML
-  void floralDelivery() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/FloralRequest.fxml");
-  }
+  void loadMedEquipReq() {}
 
   @FXML
-  void laundryServices() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/LaundryRequest.fxml");
-  }
+  void loadLaundryReq() {}
 
   @FXML
-  void mealDelivery() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/MealRequest.fxml");
-  }
+  void loadMealReq() {}
 
   @FXML
-  void labResults() throws IOException {
-    SceneLoading.loadScene("views/requestTypes/LabRequest.fxml");
-  }
-
-  // Sidebar
-  @FXML
-  void openSidebarLayout() {
-    SidebarUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
-  }
+  void loadFloralReq() {}
 
   @FXML
-  void closeSidebarLayout() {
-    SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
-  }
+  void loadSecurityReq() {}
 }

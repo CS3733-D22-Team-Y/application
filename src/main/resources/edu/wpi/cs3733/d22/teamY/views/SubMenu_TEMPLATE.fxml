@@ -12,119 +12,121 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SecondaryMapTEMPLATE">
-   <children>
-      <Label layoutY="10.0" text="Request Forms">
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-         <font>
-            <Font name="Arial" size="60.0" />
-         </font>
-      </Label>
-      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
-         <effect>
-            <DropShadow height="10.0" offsetX="-5.0" offsetY="2.0" radius="7.425" width="21.7">
-               <color>
-                  <Color red="0.08190000057220459" green="0.24621999263763428" blue="0.38999998569488525" opacity="0.3767123222351074" />
-               </color>
-            </DropShadow>
-         </effect>
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="110.0" layoutY="530.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="500.0" layoutY="530.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="110.0" layoutY="330.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="110.0" layoutY="130.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="500.0" layoutY="330.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="500.0" layoutY="130.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="110.0" layoutY="130.0" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Medical Equipment " textAlignment="RIGHT" wrapText="true">
-         <font>
-            <Font name="Calibri Bold" size="29.0" />
-         </font>
-      </MFXButton>
-      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="500.0" layoutY="130.0" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Security" textAlignment="RIGHT" wrapText="true">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </MFXButton>
-      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="500.0" layoutY="330.0" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Laundry" textAlignment="RIGHT" wrapText="true">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </MFXButton>
-      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="110.0" layoutY="330.0" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Meals" textAlignment="RIGHT" wrapText="true">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </MFXButton>
-      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="110.0" layoutY="530.0" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Lab" textAlignment="RIGHT" wrapText="true">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </MFXButton>
-      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="500.0" layoutY="530.0" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Floral" textAlignment="RIGHT" wrapText="true">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </MFXButton>
-      <ImageView fitWidth="100.0" layoutX="520.0" layoutY="183.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/icons/securityRequestFinal.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="100.0" layoutX="120.0" layoutY="358.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/icons/mealRequestFinal.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="100.0" layoutX="120.0" layoutY="171.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/icons/medicalRequestFinal.png" />
-         </image>
-      </ImageView>
-      <ImageView fitWidth="100.0" layoutX="520.0" layoutY="379.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/icons/laundryRequestFinal.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="128.0" fitWidth="100.0" layoutX="120.0" layoutY="556.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/icons/labRequestFinal.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="520.0" layoutY="562.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/icons/floralRequestFinal.png" />
-         </image>
-      </ImageView>
-   </children>
+<AnchorPane fx:id="bgPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.RequestMenuController">
+   <AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+      <children>
+         <Label layoutX="20.0" layoutY="30.0" text="Request Forms">
+            <textFill>
+               <LinearGradient endX="1.0" endY="1.0">
+                  <stops>
+                     <Stop>
+                        <color>
+                           <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                        </color>
+                     </Stop>
+                     <Stop offset="1.0">
+                        <color>
+                           <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                        </color>
+                     </Stop>
+                  </stops>
+               </LinearGradient>
+            </textFill>
+            <font>
+               <Font name="Arial" size="60.0" />
+            </font>
+         </Label>
+         <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="20.0" layoutY="110.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+            <effect>
+               <DropShadow height="10.0" offsetX="-5.0" offsetY="2.0" radius="7.425" width="21.7">
+                  <color>
+                     <Color red="0.08190000057220459" green="0.24621999263763428" blue="0.38999998569488525" opacity="0.3767123222351074" />
+                  </color>
+               </DropShadow>
+            </effect>
+            <fill>
+               <LinearGradient endX="1.0" endY="1.0">
+                  <stops>
+                     <Stop>
+                        <color>
+                           <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                        </color>
+                     </Stop>
+                     <Stop offset="1.0">
+                        <color>
+                           <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                        </color>
+                     </Stop>
+                  </stops>
+               </LinearGradient>
+            </fill>
+         </Rectangle>
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="130.0" layoutY="550.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="520.0" layoutY="550.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="130.0" layoutY="350.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="130.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="520.0" layoutY="350.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="520.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="150.0" onAction="#loadMedEquipReq" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Medical Equipment " textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="29.0" />
+            </font>
+         </MFXButton>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="150.0" onAction="#loadSecurityReq" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Security" textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="30.0" />
+            </font>
+         </MFXButton>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="350.0" onAction="#loadLaundryReq" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Laundry" textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="30.0" />
+            </font>
+         </MFXButton>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="350.0" onAction="#loadMealReq" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Meals" textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="30.0" />
+            </font>
+         </MFXButton>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="550.0" onAction="#loadLabReq" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Lab" textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="30.0" />
+            </font>
+         </MFXButton>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="550.0" onAction="#loadFloralReq" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Floral" textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="30.0" />
+            </font>
+         </MFXButton>
+         <ImageView fitWidth="100.0" layoutX="540.0" layoutY="203.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/securityRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="150.0" fitWidth="100.0" layoutX="140.0" layoutY="378.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/mealRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="150.0" fitWidth="100.0" layoutX="140.0" layoutY="191.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/medicalRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitWidth="100.0" layoutX="540.0" layoutY="399.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/laundryRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="128.0" fitWidth="100.0" layoutX="140.0" layoutY="576.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/labRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="540.0" layoutY="582.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/floralRequestFinal.png" />
+            </image>
+         </ImageView>
+      </children>
+   </AnchorPane>
 </AnchorPane>

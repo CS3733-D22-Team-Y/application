@@ -10,12 +10,12 @@ import javafx.scene.shape.Rectangle;
 
 public class SideBarController {
   // Constant locations
-  private static final Integer MAP_LIST_LOCATION = 0;
-  private static final Integer SERVICES_LIST_LOCATION = 1;
-  private static final Integer EQUIPMENT_LIST_LOCATION = 2;
-  private static final Integer TASKS_LIST_LOCATION = 3;
-  private static final Integer INBOX_LIST_LOCATION = 4;
-  private static final Integer PROFILE_LIST_LOCATION = 5;
+  protected static final Integer MAP_LIST_LOCATION = 0;
+  protected static final Integer SERVICES_LIST_LOCATION = 1;
+  protected static final Integer EQUIPMENT_LIST_LOCATION = 2;
+  protected static final Integer TASKS_LIST_LOCATION = 3;
+  protected static final Integer INBOX_LIST_LOCATION = 4;
+  protected static final Integer PROFILE_LIST_LOCATION = 5;
 
   @FXML AnchorPane mainPane;
   @FXML Pane mainScreenPane;
@@ -191,7 +191,6 @@ public class SideBarController {
   @FXML
   void loadHome() {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    // mainScreenPane.getChildren().get(4).setVisible(true);
   }
 
   @FXML
@@ -205,13 +204,4 @@ public class SideBarController {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(PROFILE_LIST_LOCATION).setVisible(true);
   }
-  /*
-  [0]: map
-      [1]: services
-      *[2]: equipment
-      [3]: active service requests (tasks)
-      *[4]: inbox
-      *[5]: profile
-      [3-4]?: home
-   */
 }

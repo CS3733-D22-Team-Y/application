@@ -13,9 +13,8 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.LabRequestv2Controller">
+<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.LabRequestController">
     <children>
-        <Rectangle fx:id="mainPane" arcHeight="20.0" arcWidth="20.0" fill="#ffffff80" height="780.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="920.0" />
         <Label layoutY="10.0" text="Lab Request">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
@@ -162,13 +161,10 @@
             <Font size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton layoutX="660.0" layoutY="410.0" text="MRI">
+      <MFXRadioButton layoutX="660.0" layoutY="410.0" text="MRI" toggleGroup="$lab">
          <font>
             <Font size="30.0" />
          </font>
-         <toggleGroup>
-            <ToggleGroup fx:id="lab1" />
-         </toggleGroup>
       </MFXRadioButton>
     </children>
 </AnchorPane>
