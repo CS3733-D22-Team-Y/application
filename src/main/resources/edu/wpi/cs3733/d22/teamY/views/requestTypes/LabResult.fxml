@@ -70,26 +70,26 @@
             </font>
         </Label>
         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="400.0" layoutX="10.0" layoutY="380.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
-        <JFXTextArea fx:id="notesText" focusColor="#ffffff00" layoutX="15.0" layoutY="385.0" prefHeight="390.0" prefWidth="390.0" promptText="Additional Text..." unFocusColor="#ffffff00">
+        <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="15.0" layoutY="385.0" prefHeight="390.0" prefWidth="390.0" promptText="Additional Text..." unFocusColor="#ffffff00">
             <font>
                 <Font name="Calibri" size="20.0" />
             </font></JFXTextArea>
-        <MFXTextField fx:id="patientIDText" floatMode="DISABLED" layoutX="160.0" layoutY="146.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0">
+        <MFXTextField fx:id="input_PatientID" floatMode="DISABLED" layoutX="160.0" layoutY="146.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0">
             <font>
                 <Font name="Calibri" size="20.0" />
             </font>
         </MFXTextField>
-        <MFXTextField fx:id="nurseText" floatMode="DISABLED" layoutX="160.0" layoutY="221.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0">
+        <MFXTextField fx:id="input_AssignedNurse" floatMode="DISABLED" layoutX="160.0" layoutY="221.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0">
             <font>
                 <Font name="Calibri" size="20.0" />
             </font>
         </MFXTextField>
-        <MFXTextField fx:id="roomText" floatMode="DISABLED" layoutX="160.0" layoutY="296.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0">
+        <MFXTextField fx:id="input_RoomID" floatMode="DISABLED" layoutX="160.0" layoutY="296.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0">
             <font>
                 <Font name="Calibri" size="20.0" />
             </font>
         </MFXTextField>
-        <MFXButton computeRadiusMultiplier="false" layoutX="700.0" layoutY="730.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" text="Reset" textFill="WHITE">
+        <MFXButton computeRadiusMultiplier="false" layoutX="700.0" layoutY="730.0" onAction="#resetAllFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" text="Reset" textFill="WHITE">
             <font>
                 <Font name="Calibri Bold" size="20.0" />
             </font>
@@ -138,7 +138,7 @@
                 </LinearGradient>
             </fill>
         </Rectangle>
-      <MFXRadioButton layoutX="660.0" layoutY="230.0" text="Urine Sample">
+      <MFXRadioButton fx:id="urineRadioButton" layoutX="660.0" layoutY="230.0" text="Urine Sample">
          <toggleGroup>
             <ToggleGroup fx:id="lab" />
          </toggleGroup>
@@ -146,25 +146,30 @@
             <Font size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton layoutX="660.0" layoutY="275.0" text="Blood Sample" toggleGroup="$lab">
+      <MFXRadioButton fx:id="bloodRadioButton" layoutX="660.0" layoutY="275.0" text="Blood Sample" toggleGroup="$lab">
          <font>
             <Font size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton layoutX="660.0" layoutY="320.0" text="X-ray" toggleGroup="$lab">
+      <MFXRadioButton layoutX="660.0" layoutY="320.0" text="X-ray" toggleGroup="$lab" fx:id="xrayRadioButton">
          <font>
             <Font size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton layoutX="660.0" layoutY="365.0" text="CAT scan" toggleGroup="$lab">
+      <MFXRadioButton fx:id="catScanRadioButton" layoutX="660.0" layoutY="365.0" text="CAT scan" toggleGroup="$lab">
          <font>
             <Font size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton layoutX="660.0" layoutY="410.0" text="MRI" toggleGroup="$lab">
+      <MFXRadioButton fx:id="mriRadioButton" layoutX="660.0" layoutY="410.0" text="MRI" toggleGroup="$lab">
          <font>
             <Font size="30.0" />
          </font>
       </MFXRadioButton>
+      <Label fx:id="errorLabel" layoutX="695.0" layoutY="694.0" prefHeight="20.0" prefWidth="214.0" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

@@ -15,7 +15,6 @@ public class RequestMenuController {
   @FXML
   void initialize() throws IOException {
     SceneUtil.initializePanes(bgPane, "views/requestTypes/LabResult.fxml");
-    System.out.println(bgPane.getChildren());
     SceneUtil.hideAllBackgrounds(bgPane.getChildren());
     SceneUtil.hideAllPanes(bgPane.getChildren());
     showMainPane();
