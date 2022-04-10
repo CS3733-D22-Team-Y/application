@@ -30,15 +30,18 @@ public class RequestMenuController {
     showMainPane();
   }
 
-  private void showMainPane() {
+  private void loadRequestScreen(int index) {
     SceneUtil.hideAllPanes(bgPane.getChildren());
-    bgPane.getChildren().get(MAIN_PAGE_INDEX).setVisible(true);
+    bgPane.getChildren().get(index).setVisible(true);
+  }
+
+  private void showMainPane() {
+    loadRequestScreen(MAIN_PAGE_INDEX);
   }
 
   @FXML
   void loadLabReq() {
-    SceneUtil.hideAllPanes(bgPane.getChildren());
-    bgPane.getChildren().get(LAB_RESULTS_INDEX).setVisible(true);
+    loadRequestScreen(LAB_RESULTS_INDEX);
   }
 
   @FXML
@@ -46,8 +49,7 @@ public class RequestMenuController {
 
   @FXML
   void loadLaundryReq() {
-    SceneUtil.hideAllPanes(bgPane.getChildren());
-    bgPane.getChildren().get(LAUNDRY_RESULTS_INDEX).setVisible(true);
+    loadRequestScreen(LAUNDRY_RESULTS_INDEX);
   }
 
   @FXML
@@ -55,20 +57,17 @@ public class RequestMenuController {
 
   @FXML
   void loadFloralReq() {
-    SceneUtil.hideAllPanes(bgPane.getChildren());
-    bgPane.getChildren().get(FLORAL_RESULTS_INDEX).setVisible(true);
+    loadRequestScreen(FLORAL_RESULTS_INDEX);
   }
 
   @FXML
   void loadSecurityReq() {
-    SceneUtil.hideAllPanes(bgPane.getChildren());
-    bgPane.getChildren().get(SECURITY_RESULTS_INDEX).setVisible(true);
+    loadRequestScreen(SECURITY_RESULTS_INDEX);
   }
 
   @FXML
   void loadTranslatorReq() {
-    SceneUtil.hideAllPanes(bgPane.getChildren());
-    bgPane.getChildren().get(TRANSLATOR_RESULTS_INDEX).setVisible(true);
+    loadRequestScreen(TRANSLATOR_RESULTS_INDEX);
   }
 
   @FXML
