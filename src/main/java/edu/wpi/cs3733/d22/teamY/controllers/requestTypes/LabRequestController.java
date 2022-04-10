@@ -1,32 +1,32 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
-import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.LabRequest;
+import io.github.palexdev.materialfx.controls.MFXRadioButton;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 
 public class LabRequestController {
 
   // Input fields
-  @FXML private TextField input_RoomID;
-  @FXML private TextField input_PatientName;
-  @FXML private TextField input_AssignedNurse;
-  @FXML private TextField input_RequestStatus;
+  @FXML private MFXTextField input_RoomID;
+  @FXML private MFXTextField input_PatientID;
+  @FXML private MFXTextField input_AssignedNurse;
+  @FXML private MFXTextField input_RequestStatus;
   // Additional Notes
-  @FXML private TextArea input_AdditionalNotes;
+  @FXML private JFXTextArea input_AdditionalNotes;
   // Radio buttons
-  @FXML private JFXRadioButton bloodRadioButton;
-  @FXML private JFXRadioButton urineRadioButton;
-  @FXML private JFXRadioButton xrayRadioButton;
-  @FXML private JFXRadioButton catScanRadioButton;
-  @FXML private JFXRadioButton mriRadioButton;
+  @FXML private MFXRadioButton bloodRadioButton;
+  @FXML private MFXRadioButton urineRadioButton;
+  @FXML private MFXRadioButton xrayRadioButton;
+  @FXML private MFXRadioButton catScanRadioButton;
+  @FXML private MFXRadioButton mriRadioButton;
   // Error Label
   @FXML private Label errorLabel;
 
@@ -107,7 +107,11 @@ public class LabRequestController {
     RequestControllerUtil.resetRadioButtons(
         bloodRadioButton, urineRadioButton, xrayRadioButton, catScanRadioButton, mriRadioButton);
     RequestControllerUtil.resetTextFields(
-        input_RoomID, input_AssignedNurse, input_RequestStatus, input_AdditionalNotes);
+        input_RoomID,
+        input_AssignedNurse,
+        // input_RequestStatus,
+        input_AdditionalNotes,
+        input_PatientID);
     RequestControllerUtil.resetLabels(errorLabel);
   }
 }

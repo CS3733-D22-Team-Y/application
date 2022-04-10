@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXToggleButton?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -10,165 +7,165 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0"
-            prefWidth="185.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SideBarController">
-    <children>
-        <AnchorPane fx:id="mainPane" maxHeight="700.0" maxWidth="185.0" prefHeight="700.0" prefWidth="185.0"
-                    style="-fx-background-color: #021D5A;">
-            <children>
-                <TextField layoutX="12.0" layoutY="18.0" prefHeight="25.0" prefWidth="126.0" promptText="Search...">
-                    <font>
-                        <Font name="Microsoft Tai Le" size="12.0"/>
-                    </font>
-                </TextField>
-                <VBox layoutX="5.0" layoutY="60.0" spacing="5.0">
-                    <children>
-                        <VBox>
-                            <children>
-                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Map"
-                                      textAlignment="CENTER" wrappingWidth="62.400025606155396">
-                                    <font>
-                                        <Font name="Microsoft Tai Le Bold" size="24.0"/>
-                                    </font>
-                                </Text>
-                                <VBox>
-                                    <children>
-                                        <JFXButton onAction="#loadViewMap" prefHeight="26.0" prefWidth="69.0"
-                                                   text="View Map" textFill="WHITE"/>
-                                        <JFXButton alignment="BOTTOM_LEFT" onAction="#loadLocationTable"
-                                                   prefHeight="26.0" prefWidth="145.0" text="Locations"
-                                                   textFill="WHITE"/>
-                                    </children>
-                                </VBox>
-                            </children>
-                        </VBox>
-                        <VBox>
-                            <children>
-                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Services"
-                                      textAlignment="CENTER" wrappingWidth="104.47888135910034">
-                                    <font>
-                                        <Font name="Microsoft Tai Le Bold" size="24.0"/>
-                                    </font>
-                                </Text>
-                                <VBox>
-                                    <children>
-                                        <JFXButton onAction="#loadMedicalEquipment" prefHeight="26.0" prefWidth="165.0"
-                                                   text="Medical Equipment Delivery" textFill="WHITE"/>
-                                        <JFXButton onAction="#loadFloralDelivery" prefHeight="26.0" prefWidth="91.0"
-                                                   text="Floral Delivery" textFill="WHITE"/>
-                                        <JFXButton onAction="#loadMealDelivery" prefHeight="26.0" prefWidth="88.0"
-                                                   text="Meal Delivery" textFill="WHITE"/>
-                                        <JFXButton alignment="BOTTOM_LEFT" onAction="#loadLaundryRequest"
-                                                   prefHeight="26.0" prefWidth="157.0" text="Laundry" textFill="WHITE"/>
-                                        <JFXButton onAction="#loadSecurity" prefHeight="26.0" prefWidth="104.0"
-                                                   text="Security Services" textFill="WHITE"/>
-                                        <JFXButton onAction="#loadLab" prefHeight="26.0" prefWidth="76.0"
-                                                   text="Lab Results" textFill="WHITE"/>
-                                        <JFXButton alignment="BOTTOM_LEFT" onAction="#loadCreateServiceRequest"
-                                                   prefHeight="26.0" prefWidth="157.0" text="Other Requests"
-                                                   textFill="WHITE"/>
-                                        <JFXButton onAction="#loadViewServiceRequests" prefHeight="26.0"
-                                                   prefWidth="60.0" text="fillerSpace" textFill="#ffffff00"/>
-                                        <JFXButton onAction="#loadViewServiceRequests" prefHeight="26.0"
-                                                   prefWidth="169.0" text="View Active Service Requests"
-                                                   textFill="WHITE"/>
-                                    </children>
-                                </VBox>
-                            </children>
-                        </VBox>
-                        <VBox>
-                            <children>
-                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipment"
-                                      textAlignment="CENTER" wrappingWidth="137.0836181640625">
-                                    <font>
-                                        <Font name="Microsoft Tai Le Bold" size="24.0"/>
-                                    </font>
-                                </Text>
-                                <JFXButton onAction="#loadMedEquipmentRequests" prefHeight="26.0" prefWidth="170.0"
-                                           text="Medical Equipment Requests" textFill="WHITE"/>
-                                <VBox prefHeight="200.0" prefWidth="100.0">
-                                    <children>
-                                        <Text fill="WHITE" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE"
-                                              strokeWidth="0.0" text=" Settings" wrappingWidth="137.0836181640625">
-                                            <font>
-                                                <Font name="Microsoft Tai Le Bold" size="24.0"/>
-                                            </font>
-                                        </Text>
-                                        <JFXButton alignment="BOTTOM_LEFT" onAction="#loadChangeTheme" prefHeight="26.0"
-                                                   prefWidth="170.0" text="Change Theme" textFill="WHITE"/>
-                                        <JFXButton alignment="BOTTOM_LEFT" onAction="#loadPersonalSettings"
-                                                   prefHeight="26.0" prefWidth="170.0" text="Personal Settings"
-                                                   textFill="WHITE"/>
-                                    </children>
-                                </VBox>
-                            </children>
-                        </VBox>
-                    </children>
-                </VBox>
-                <Pane layoutX="9.0" layoutY="614.0">
-                    <children>
-                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="1.0" layoutY="33.0">
-                            <image>
-                                <Image url="@images/mailIcon.png"/>
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutY="6.0">
-                            <image>
-                                <Image url="@images/HouseIcon.png"/>
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="18.0" fitWidth="12.0" layoutX="4.0" layoutY="60.0">
-                            <image>
-                                <Image url="@images/LogoutIcon.png"/>
-                            </image>
-                        </ImageView>
-                        <JFXButton layoutX="21.0" onAction="#loadMainPage" prefHeight="30.0" prefWidth="62.0"
-                                   text="Home" textFill="WHITE">
-                            <font>
-                                <Font name="Microsoft Tai Le Bold" size="14.0"/>
-                            </font>
-                        </JFXButton>
-                        <JFXButton layoutX="21.0" layoutY="26.0" onAction="#loadViewServiceRequests" prefHeight="30.0"
-                                   prefWidth="62.0" text="Inbox" textFill="WHITE">
-                            <font>
-                                <Font name="Microsoft Tai Le Bold" size="14.0"/>
-                            </font>
-                        </JFXButton>
-                        <JFXButton layoutX="17.0" layoutY="53.0" onAction="#killApplication" prefHeight="30.0"
-                                   prefWidth="70.0" text="Logout" textFill="WHITE">
-                            <font>
-                                <Font name="Microsoft Tai Le Bold" size="14.0"/>
-                            </font>
-                        </JFXButton>
-                    </children>
-                </Pane>
-                <ImageView fitHeight="31.0" fitWidth="30.0" layoutX="151.0" layoutY="14.0" pickOnBounds="true"
-                           preserveRatio="true">
-                    <image>
-                        <Image url="@images/icons/collapseLeftIcon.png"/>
-                    </image>
-                    <cursor>
-                        <Cursor fx:constant="HAND"/>
-                    </cursor>
-                </ImageView>
-                <Label fx:id="accessLevel" layoutX="12.0" layoutY="595.0" prefHeight="20.0" prefWidth="126.0"
-                       text="Access Level" textFill="WHITE">
-                    <font>
-                        <Font name="Microsoft Tai Le" size="12.0"/>
-                    </font>
-                </Label>
-                <Label fx:id="nameLabel" layoutX="12.0" layoutY="575.0" prefHeight="20.0" prefWidth="126.0" text="Name"
-                       textFill="WHITE">
-                    <font>
-                        <Font name="Microsoft Tai Le" size="12.0"/>
-                    </font>
-                </Label>
-            </children>
-        </AnchorPane>
-        <JFXToggleButton fx:id="dbToggle" layoutX="133.0" layoutY="669.0" onAction="#dbSwitcherToggle" size="5.0"/>
-    </children>
+<AnchorPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SideBarController">
+   <children>
+      <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
+         <image>
+            <Image url="@images/do-rgb.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: .8;" width="1200.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.42222025286541415">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle fx:id="sidebarFrame" arcHeight="10.0" arcWidth="10.0" height="780.0" layoutX="10.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0">
+         <fill>
+            <LinearGradient endX="0.4015151804143732" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10196078568696976" green="0.3137255012989044" blue="0.4274509847164154" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.007680491551459294">
+                     <color>
+                        <Color red="0.125490203499794" green="0.4588235318660736" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.29791445114025766">
+                     <color>
+                        <Color red="0.12960000336170197" green="0.45792001485824585" blue="0.5400000214576721" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9969278033794164">
+                     <color>
+                        <Color red="0.10196078568696976" green="0.3137255012989044" blue="0.4274509847164154" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.10196078568696976" green="0.3137255012989044" blue="0.4274509847164154" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <ImageView fitHeight="116.0" fitWidth="200.0" layoutX="37.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/sidebarLogo.png" />
+         </image>
+      </ImageView>
+      <TextField layoutX="30.0" layoutY="140.0" prefWidth="210.0" promptText="Search...">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <VBox layoutX="10.0" layoutY="192.0" prefHeight="175.0" prefWidth="250.0">
+         <children>
+            <Rectangle fx:id="mapHiddenRect" fill="#2e2e2e4f" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="servicesHiddenRect" fill="#2e2e2e4f" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="equipmentHiddenRect" fill="#2e2e2e4f" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="tasksHiddenRect" fill="#2e2e2e4f" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+         </children>
+      </VBox>
+      <VBox layoutX="71.0" layoutY="200.0" spacing="20.0">
+         <children>
+            <Label fx:id="mapLabel" text="Map" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="32.0" />
+               </font>
+            </Label>
+            <Label fx:id="servicesLabel" text="Services" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="32.0" />
+               </font>
+            </Label>
+            <Label fx:id="equipmentLabel" graphicTextGap="0.0" text="Equipment" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="32.0" />
+               </font>
+            </Label>
+            <Label fx:id="tasksLabel" graphicTextGap="0.0" text="Tasks" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox fx:id="bottomSidebarRectangles" layoutX="10.0" layoutY="603.0" prefHeight="132.0" prefWidth="250.0">
+         <children>
+            <Rectangle fx:id="homeHiddenRect" fill="#2e2e2e4f" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="inboxHiddenRect" fill="#2e2e2e4f" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="profileHiddenRect" fill="#2e2e2e4f" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="logoutHiddenRect" fill="#2e2e2e4f" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+         </children>
+      </VBox>
+      <VBox fx:id="bottomSidebarText" layoutX="71.0" layoutY="600.0">
+         <children>
+            <Label graphicTextGap="0.0" text="Home" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="28.0" />
+               </font>
+            </Label>
+            <Label graphicTextGap="0.0" text="Inbox" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="28.0" />
+               </font>
+            </Label>
+            <Label graphicTextGap="0.0" text="My Profile" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="28.0" />
+               </font>
+            </Label>
+            <Label graphicTextGap="0.0" text="Logout" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="10.0" layoutY="192.0" prefHeight="175.0" prefWidth="250.0">
+         <children>
+            <Rectangle fx:id="mapButtonHitbox" fill="#2e2e2e00" height="58.0" onMouseClicked="#loadMap" onMouseEntered="#startMapButtonHover" onMouseExited="#endMapButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="servicesButtonHitbox" fill="#2e2e2e00" height="58.0" onMouseClicked="#loadViewServiceRequests" onMouseEntered="#startServicesButtonHover" onMouseExited="#endServicesButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="equipmentButtonHitbox" fill="#2e2e2e00" height="58.0" onMouseClicked="#loadEquipment" onMouseEntered="#startEquipmentButtonHover" onMouseExited="#endEquipmentButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="tasksButtonHitbox" fill="#2e2e2e00" height="58.0" onMouseClicked="#loadTasks" onMouseEntered="#startTasksButtonHover" onMouseExited="#endTasksButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+         </children>
+      </VBox>
+      <Pane fx:id="mainScreenPane" layoutX="270.0" prefHeight="800.0" prefWidth="930.0" />
+      <VBox fx:id="bottomSidebarHiddenButtons" layoutX="10.0" layoutY="603.0" prefHeight="132.0" prefWidth="250.0">
+         <children>
+            <Rectangle fx:id="homeButtonHitbox" fill="#2e2e2e00" height="33.0" onMouseClicked="#loadHome" onMouseEntered="#startHomeButtonHover" onMouseExited="#endHomeButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="inboxButtonHitbox" fill="#2e2e2e00" height="33.0" onMouseClicked="#loadInbox" onMouseEntered="#startInboxButtonHover" onMouseExited="#endInboxButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="profileButtonHitbox" fill="#2e2e2e00" height="33.0" onMouseClicked="#loadProfile" onMouseEntered="#startProfileButtonHover" onMouseExited="#endProfileButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="logoutButtonHitbox" fill="#2e2e2e00" height="33.0" onMouseClicked="#killApplication" onMouseEntered="#startLogoutButtonHover" onMouseExited="#endLogoutButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>

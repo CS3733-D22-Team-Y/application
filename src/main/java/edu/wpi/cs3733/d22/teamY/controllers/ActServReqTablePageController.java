@@ -2,17 +2,10 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXHamburger;
-import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -27,6 +20,7 @@ public class ActServReqTablePageController {
   AnchorPane sidebar = null;
 
   public void initialize() throws IOException {
+    /*
     List<MedEquipReq> medEquipReqs;
     try {
       medEquipReqs = DBManager.getAll(MedEquipReq.class);
@@ -64,6 +58,8 @@ public class ActServReqTablePageController {
 
     sidebar = SidebarUtil.initializeSidebar(sidebarPane);
     openSidebarLayout();
+
+     */
   }
 
   // back button

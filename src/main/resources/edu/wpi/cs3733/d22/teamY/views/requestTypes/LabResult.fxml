@@ -13,9 +13,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.FloralRequestController">
+<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.LabRequestController">
     <children>
-        <Label layoutY="10.0" text="Floral Request">
+        <Label layoutY="10.0" text="Lab Request">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -99,7 +99,7 @@
                 <Font name="Calibri Bold" size="20.0" />
             </font>
         </MFXButton>
-        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="601.0" layoutY="140.0" prefHeight="54.0" prefWidth="319.0" text="Bouquet Type" textAlignment="RIGHT">
+        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="140.0" prefWidth="300.0" text="Options" textAlignment="RIGHT">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -120,7 +120,7 @@
                 <Font name="Arial Rounded MT Bold" size="45.0" />
             </font>
         </Label>
-        <Rectangle arcHeight="10.0" arcWidth="10.0" height="8.0" layoutX="561.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="359.0">
+        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="620.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0">
             <fill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -138,22 +138,32 @@
                 </LinearGradient>
             </fill>
         </Rectangle>
-      <MFXRadioButton fx:id="newBabyRadioButton" layoutX="560.0" layoutY="275.0" radius="12.0" text="New Baby Bouquet">
+      <MFXRadioButton fx:id="urineRadioButton" layoutX="660.0" layoutY="230.0" text="Urine Sample">
          <toggleGroup>
-            <ToggleGroup fx:id="boquetOptions" />
+            <ToggleGroup fx:id="lab" />
          </toggleGroup>
          <font>
-            <Font name="Calibri" size="30.0" />
+            <Font size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="getWellSoonBouquetRadioButton" layoutX="560.0" layoutY="230.0" radius="12.0" text="Get Well Soon Bouquet" toggleGroup="$boquetOptions">
+      <MFXRadioButton fx:id="bloodRadioButton" layoutX="660.0" layoutY="275.0" text="Blood Sample" toggleGroup="$lab">
          <font>
-            <Font name="Calibri" size="30.0" />
+            <Font size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="bouquetOfTheDayRadioButton" layoutX="560.0" layoutY="320.0" radius="12.0" text="Bouquet of the Day" toggleGroup="$boquetOptions">
+      <MFXRadioButton layoutX="660.0" layoutY="320.0" text="X-ray" toggleGroup="$lab" fx:id="xrayRadioButton">
          <font>
-            <Font name="Calibri" size="30.0" />
+            <Font size="30.0" />
+         </font>
+      </MFXRadioButton>
+      <MFXRadioButton fx:id="catScanRadioButton" layoutX="660.0" layoutY="365.0" text="CAT scan" toggleGroup="$lab">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </MFXRadioButton>
+      <MFXRadioButton fx:id="mriRadioButton" layoutX="660.0" layoutY="410.0" text="MRI" toggleGroup="$lab">
+         <font>
+            <Font size="30.0" />
          </font>
       </MFXRadioButton>
       <Label fx:id="errorLabel" layoutX="695.0" layoutY="694.0" prefHeight="20.0" prefWidth="214.0" textFill="RED">
