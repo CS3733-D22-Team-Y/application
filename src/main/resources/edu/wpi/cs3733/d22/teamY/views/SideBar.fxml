@@ -96,22 +96,22 @@
       </VBox>
       <VBox layoutX="71.0" layoutY="200.0" spacing="20.0">
          <children>
-            <Label text="Map" textFill="WHITE">
+            <Label fx:id="mapLabel" text="Map" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="32.0" />
                </font>
             </Label>
-            <Label text="Services" textFill="WHITE">
+            <Label fx:id="servicesLabel" text="Services" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="32.0" />
                </font>
             </Label>
-            <Label graphicTextGap="0.0" text="Equipment" textFill="WHITE">
+            <Label fx:id="equipmentLabel" graphicTextGap="0.0" text="Equipment" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="32.0" />
                </font>
             </Label>
-            <Label graphicTextGap="0.0" text="Tasks" textFill="WHITE">
+            <Label fx:id="tasksLabel" graphicTextGap="0.0" text="Tasks" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="32.0" />
                </font>

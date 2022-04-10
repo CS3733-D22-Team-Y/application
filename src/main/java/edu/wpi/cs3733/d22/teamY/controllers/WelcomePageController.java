@@ -55,6 +55,7 @@ public class WelcomePageController {
 
   String universalCode;
 
+  @FXML
   void initialize() throws IOException {
     loginPane.setVisible(true);
     loading.setVisible(false);

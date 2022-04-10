@@ -8,6 +8,7 @@ public class RequestMenuController {
   protected static final Integer MAIN_PAGE_INDEX = 0;
   protected static final Integer LAB_RESULTS_INDEX = 1;
   protected static final Integer FLORAL_RESULTS_INDEX = 2;
+  protected static final Integer LAUNDRY_RESULTS_INDEX = 3;
 
   @FXML AnchorPane bgPane;
 
@@ -16,7 +17,10 @@ public class RequestMenuController {
   @FXML
   void initialize() throws IOException {
     SceneUtil.initializePanes(
-        bgPane, "views/requestTypes/LabResult.fxml", "views/requestTypes/FloralRequest.fxml");
+        bgPane,
+        "views/requestTypes/LabResult.fxml",
+        "views/requestTypes/FloralRequest.fxml",
+        "views/requestTypes/LaundryRequest.fxml");
     SceneUtil.hideAllBackgrounds(bgPane.getChildren());
     SceneUtil.hideAllPanes(bgPane.getChildren());
     showMainPane();
@@ -37,7 +41,10 @@ public class RequestMenuController {
   void loadMedEquipReq() {}
 
   @FXML
-  void loadLaundryReq() {}
+  void loadLaundryReq() {
+    SceneUtil.hideAllPanes(bgPane.getChildren());
+    bgPane.getChildren().get(LAUNDRY_RESULTS_INDEX).setVisible(true);
+  }
 
   @FXML
   void loadMealReq() {}

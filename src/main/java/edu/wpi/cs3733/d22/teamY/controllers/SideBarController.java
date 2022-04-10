@@ -3,10 +3,12 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 
 public class SideBarController {
   // Constant locations
@@ -25,6 +27,11 @@ public class SideBarController {
   @FXML private Rectangle sidebarFrame;
   @FXML private VBox bottomSidebarHiddenButtons;
   @FXML private VBox bottomSidebarRectangles;
+  // @FXML private VBox topSidebarText;
+  @FXML private Label mapLabel;
+  @FXML private Label servicesLabel;
+  @FXML private Label equipmentLabel;
+  @FXML private Label tasksLabel;
 
   // Hidden rectangles
   @FXML private Rectangle mapHiddenRect;
@@ -35,9 +42,19 @@ public class SideBarController {
   @FXML private Rectangle inboxHiddenRect;
   @FXML private Rectangle profileHiddenRect;
   @FXML private Rectangle logoutHiddenRect;
+  // Hitboxes
+  @FXML private Rectangle mapButtonHitbox;
+  @FXML private Rectangle servicesButtonHitbox;
+  @FXML private Rectangle equipmentButtonHitbox;
+  @FXML private Rectangle tasksButtonHitbox;
+  @FXML private Rectangle homeButtonHitbox;
+  @FXML private Rectangle inboxButtonHitbox;
+  @FXML private Rectangle profileButtonHitbox;
+  @FXML private Rectangle logoutButtonHitbox;
 
   @FXML
   void initialize() throws IOException {
+    /*
     SceneUtil.removeOpacity(
         mapHiddenRect,
         servicesHiddenRect,
@@ -47,6 +64,7 @@ public class SideBarController {
         profileHiddenRect,
         inboxHiddenRect,
         logoutHiddenRect);
+     */
 
     SceneUtil.initializePanes(
         mainScreenPane,
@@ -65,11 +83,60 @@ public class SideBarController {
   @FXML
   void initializeScale() {
     Scene currScene = bottomSidebarText.getScene();
+    // Bottom sidebar text
     bottomSidebarText.layoutYProperty().bind(currScene.heightProperty().subtract(200));
     bottomSidebarHiddenButtons.layoutYProperty().bind(currScene.heightProperty().subtract(200));
     bottomSidebarRectangles.layoutYProperty().bind(currScene.heightProperty().subtract(200));
+    // Sidebar Rectangle
     sidebarFrame.scaleYProperty().bind(currScene.heightProperty().divide(800));
     sidebarFrame.layoutYProperty().bind(sidebarFrame.scaleYProperty().multiply(390).subtract(380));
+    // Top sidebar text
+    // System.out.println(currScene.heightProperty());
+    // Sidebar label adjusting
+    sidebarTopDynamicScale(mapLabel, 150, 50);
+    sidebarTopDynamicScale(servicesLabel, 101, 40.5);
+    sidebarTopDynamicScale(equipmentLabel, 52, 31);
+    sidebarTopDynamicScale(tasksLabel, 3, 21.5);
+    // Top sidebar buttons
+    sidebarBindToHeight(
+        mapHiddenRect,
+        servicesHiddenRect,
+        equipmentHiddenRect,
+        tasksHiddenRect,
+        mapButtonHitbox,
+        servicesButtonHitbox,
+        equipmentButtonHitbox,
+        tasksButtonHitbox);
+
+    sidebarBindToLabel(mapHiddenRect, mapButtonHitbox, mapLabel);
+    sidebarBindToLabel(servicesHiddenRect, servicesButtonHitbox, servicesLabel);
+    sidebarBindToLabel(equipmentHiddenRect, equipmentButtonHitbox, equipmentLabel);
+    sidebarBindToLabel(tasksHiddenRect, tasksButtonHitbox, tasksLabel);
+  }
+
+  private void sidebarBindToHeight(Shape... shapes) {
+    Scene currScene = shapes[0].getScene();
+    for (Shape currShape : shapes) {
+      currShape.scaleYProperty().bind(currScene.heightProperty().divide(800));
+    }
+  }
+
+  private void sidebarBindToLabel(Rectangle hiddenRect, Rectangle buttonHitbox, Label label) {
+    hiddenRect.layoutYProperty().bind(label.layoutYProperty());
+    buttonHitbox.layoutYProperty().bind(label.layoutYProperty());
+  }
+
+  private void sidebarTopDynamicScale(
+      Label label, double multiplyProperty, double subtractProperty) {
+    Scene currScene = label.getScene();
+    label
+        .layoutYProperty()
+        .bind(
+            currScene
+                .heightProperty()
+                .divide(4)
+                .subtract(sidebarFrame.scaleYProperty().multiply(multiplyProperty))
+                .subtract(subtractProperty));
   }
 
   @FXML
