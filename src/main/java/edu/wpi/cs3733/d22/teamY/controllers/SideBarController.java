@@ -54,7 +54,6 @@ public class SideBarController {
 
   @FXML
   void initialize() throws IOException {
-    /*
     SceneUtil.removeOpacity(
         mapHiddenRect,
         servicesHiddenRect,
@@ -64,7 +63,6 @@ public class SideBarController {
         profileHiddenRect,
         inboxHiddenRect,
         logoutHiddenRect);
-     */
 
     SceneUtil.initializePanes(
         mainScreenPane,
