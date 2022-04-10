@@ -263,6 +263,6 @@ public class Employee implements StringArrayConv {
 		if(type.getArgs() != args.length) {
 			throw new IllegalArgumentException("Invalid number of arguments for auth type");
 		}
-		this.authString +=  (";" + type.getName() + ":" + String.join(":", args));
+		this.authString +=  (type.getName() + ":" + String.join(":", args) + ";");
 	}
 }
