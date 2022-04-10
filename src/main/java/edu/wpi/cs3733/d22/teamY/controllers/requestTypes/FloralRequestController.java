@@ -1,28 +1,28 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
-import com.jfoenix.controls.JFXRadioButton;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.FloralRequest;
+import io.github.palexdev.materialfx.controls.MFXRadioButton;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 
 public class FloralRequestController {
   // Radio Buttons
-  @FXML private JFXRadioButton getWellSoonBouquetRadioButton;
-  @FXML private JFXRadioButton newBabyRadioButton;
-  @FXML private JFXRadioButton bouquetOfTheDayRadioButton;
+  @FXML private MFXRadioButton getWellSoonBouquetRadioButton;
+  @FXML private MFXRadioButton newBabyRadioButton;
+  @FXML private MFXRadioButton bouquetOfTheDayRadioButton;
   // Input fields
-  @FXML private TextField input_RoomID;
-  @FXML private TextField input_AssignedNurse;
-  @FXML private TextField input_RequestStatus;
+  @FXML private MFXTextField input_RoomID;
+  @FXML private MFXTextField input_AssignedNurse;
+  @FXML private MFXTextField input_PatientID;
   // Additional Notes
   @FXML private TextArea input_AdditionalNotes;
   // Error Label
@@ -82,7 +82,7 @@ public class FloralRequestController {
       submitRequest(
           input_RoomID.getText(),
           input_AssignedNurse.getText(),
-          input_RequestStatus.getText(),
+          input_PatientID.getText(),
           input_AdditionalNotes.getText(),
           getBouquetType());
       RequestControllerUtil.resetLabels(errorLabel);
@@ -106,7 +106,7 @@ public class FloralRequestController {
     RequestControllerUtil.resetRadioButtons(
         getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton);
     RequestControllerUtil.resetTextFields(
-        input_RoomID, input_AssignedNurse, input_RequestStatus, input_AdditionalNotes);
+        input_RoomID, input_AssignedNurse, input_AdditionalNotes, input_PatientID);
     RequestControllerUtil.resetLabels(errorLabel);
   }
 }

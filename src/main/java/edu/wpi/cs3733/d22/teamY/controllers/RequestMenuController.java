@@ -5,8 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
 public class RequestMenuController {
-  private static final Integer MAIN_PAGE_INDEX = 0;
-  private static final Integer LAB_RESULTS_INDEX = 1;
+  protected static final Integer MAIN_PAGE_INDEX = 0;
+  protected static final Integer LAB_RESULTS_INDEX = 1;
+  protected static final Integer FLORAL_RESULTS_INDEX = 2;
 
   @FXML AnchorPane bgPane;
 
@@ -14,7 +15,8 @@ public class RequestMenuController {
 
   @FXML
   void initialize() throws IOException {
-    SceneUtil.initializePanes(bgPane, "views/requestTypes/LabResult.fxml");
+    SceneUtil.initializePanes(
+        bgPane, "views/requestTypes/LabResult.fxml", "views/requestTypes/FloralRequest.fxml");
     SceneUtil.hideAllBackgrounds(bgPane.getChildren());
     SceneUtil.hideAllPanes(bgPane.getChildren());
     showMainPane();
@@ -41,7 +43,10 @@ public class RequestMenuController {
   void loadMealReq() {}
 
   @FXML
-  void loadFloralReq() {}
+  void loadFloralReq() {
+    SceneUtil.hideAllPanes(bgPane.getChildren());
+    bgPane.getChildren().get(FLORAL_RESULTS_INDEX).setVisible(true);
+  }
 
   @FXML
   void loadSecurityReq() {}

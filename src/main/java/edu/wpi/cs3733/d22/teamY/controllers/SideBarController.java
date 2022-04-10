@@ -172,6 +172,12 @@ public class SideBarController {
 
   @FXML
   void loadViewServiceRequests() throws IOException {
+    // Reset to the main request screen
+    AnchorPane bgPane =
+        (AnchorPane) mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).lookup("#bgPane");
+    SceneUtil.hideAllPanes(bgPane.getChildren());
+    bgPane.getChildren().get(RequestMenuController.MAIN_PAGE_INDEX).setVisible(true);
+    // Main code
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).setVisible(true);
   }

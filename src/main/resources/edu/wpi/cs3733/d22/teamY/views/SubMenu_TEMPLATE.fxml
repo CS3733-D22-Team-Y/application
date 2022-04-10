@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -67,36 +68,6 @@
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="130.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="520.0" layoutY="350.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="170.0" layoutX="520.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="150.0" onAction="#loadMedEquipReq" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Medical Equipment " textAlignment="RIGHT" wrapText="true">
-            <font>
-               <Font name="Calibri Bold" size="29.0" />
-            </font>
-         </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="150.0" onAction="#loadSecurityReq" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Security" textAlignment="RIGHT" wrapText="true">
-            <font>
-               <Font name="Calibri Bold" size="30.0" />
-            </font>
-         </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="350.0" onAction="#loadLaundryReq" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Laundry" textAlignment="RIGHT" wrapText="true">
-            <font>
-               <Font name="Calibri Bold" size="30.0" />
-            </font>
-         </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="350.0" onAction="#loadMealReq" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Meals" textAlignment="RIGHT" wrapText="true">
-            <font>
-               <Font name="Calibri Bold" size="30.0" />
-            </font>
-         </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="550.0" onAction="#loadLabReq" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Lab" textAlignment="RIGHT" wrapText="true">
-            <font>
-               <Font name="Calibri Bold" size="30.0" />
-            </font>
-         </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="550.0" onAction="#loadFloralReq" prefHeight="170.0" prefWidth="300.0" style="-fx-background-color: transparent;" text="Floral" textAlignment="RIGHT" wrapText="true">
-            <font>
-               <Font name="Calibri Bold" size="30.0" />
-            </font>
-         </MFXButton>
          <ImageView fitWidth="100.0" layoutX="540.0" layoutY="203.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/securityRequestFinal.png" />
@@ -127,6 +98,54 @@
                <Image url="@images/icons/floralRequestFinal.png" />
             </image>
          </ImageView>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="150.0" onAction="#loadMedEquipReq" prefHeight="170.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Medical Equipment " textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="29.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </MFXButton>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="150.0" onAction="#loadSecurityReq" prefHeight="170.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Security" textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="30.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </MFXButton>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="350.0" onAction="#loadLaundryReq" prefHeight="170.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Laundry" textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="30.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </MFXButton>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="350.0" onAction="#loadMealReq" prefHeight="170.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Meals" textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="30.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </MFXButton>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="550.0" onAction="#loadLabReq" prefHeight="170.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Lab" textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="30.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </MFXButton>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="550.0" onAction="#loadFloralReq" prefHeight="170.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Floral" textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="30.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </MFXButton>
       </children>
    </AnchorPane>
 </AnchorPane>
