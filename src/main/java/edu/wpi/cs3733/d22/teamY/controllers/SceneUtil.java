@@ -22,6 +22,7 @@ public class SceneUtil {
 
   /**
    * Hides all the given panes.
+   *
    * @param panes The list of panes to hide.
    */
   protected static void hideAllPanes(ObservableList<Node> panes) {
@@ -31,7 +32,9 @@ public class SceneUtil {
   }
 
   /**
-   * Makes the backgrounds of all the given items transparent, provided it is an AnchorPane with fx:id "mainPane".
+   * Makes the backgrounds of all the given items transparent, provided it is an AnchorPane with
+   * fx:id "mainPane".
+   *
    * @param panes The list of all the nodes to pass through.
    */
   protected static void hideAllBackgrounds(ObservableList<javafx.scene.Node> panes) {
@@ -43,6 +46,7 @@ public class SceneUtil {
 
   /**
    * Loads all of the given panes into the children of a single pane.
+   *
    * @param mainScreenPane The pane to load everything into.
    * @param paths The paths to the FXMLs to load into the main pane.
    * @throws IOException
@@ -56,6 +60,7 @@ public class SceneUtil {
 
   /**
    * WSets the opacity of the given shapes to 0.
+   *
    * @param shapes The shapes.
    */
   protected static void removeOpacity(Shape... shapes) {

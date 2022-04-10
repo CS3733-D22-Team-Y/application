@@ -16,6 +16,8 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -64,8 +66,11 @@ public class WelcomePageController {
 
   @FXML
   void mainPage() throws IOException {
-    SceneLoading.loadScene("views/SideBar.fxml");
-  }
+    FXMLLoader root = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
+    App.getInstance().setScene(new Scene(root.load()));
+    SideBarController controller = root.getController();
+    controller.initializeScale();
+  };
 
   @FXML
   void killApplication() throws IOException {
