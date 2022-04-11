@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.LaundryRequestController">
+<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MedicalEquipmentRequestController">
    <children>
        <Label layoutY="10.0" text="Medical Equipment Request">
            <textFill>
@@ -167,20 +167,20 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <MFXRadioButton fx:id="linensRadioButton" layoutX="650.0" layoutY="230.0" radius="12.0" text="Bed">
+      <MFXRadioButton fx:id="bedRadioButton" layoutX="650.0" layoutY="240.0" radius="12.0" text="Bed">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
          <toggleGroup>
-            <ToggleGroup fx:id="laundry_options" />
+            <ToggleGroup fx:id="equipment_options" />
          </toggleGroup>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="scrubsRadioButton" layoutX="650.0" layoutY="310.0" radius="12.0" text="Portable X-Ray" toggleGroup="$laundry_options">
+      <MFXRadioButton layoutX="650.0" layoutY="340.0" radius="12.0" text="Portable X-Ray" toggleGroup="$equipment_options" fx:id="xrayRadioButton">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="hazardousRadioButton" layoutX="650.0" layoutY="400.0" radius="12.0" text="Infusion Pump" toggleGroup="$laundry_options">
+      <MFXRadioButton fx:id="infusionPumpRadioButton" layoutX="650.0" layoutY="450.0" radius="12.0" text="Infusion Pump" toggleGroup="$equipment_options">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
@@ -190,10 +190,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <MFXRadioButton fx:id="hazardousRadioButton1" layoutX="650.0" layoutY="490.0" radius="12.0" text="Recliner">
-         <toggleGroup>
-            <ToggleGroup fx:id="laundry_options1" />
-         </toggleGroup>
+      <MFXRadioButton fx:id="reclinerRadioButton" layoutX="650.0" layoutY="560.0" radius="12.0" text="Recliner" toggleGroup="$equipment_options">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>

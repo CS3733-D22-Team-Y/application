@@ -1,32 +1,31 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
-import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
+import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class MedicalEquipmentRequestController {
   // Text Inputs
-  @FXML private TextField input_RoomID;
-  @FXML private TextField input_PatientName;
+  @FXML private TextField input_PatientID;
   @FXML private TextField input_AssignedNurse;
-  @FXML private TextField input_RequestStatus;
+  @FXML private TextField input_RoomID;
 
-  @FXML private TextArea input_AdditionalNotes;
+  @FXML private JFXTextArea input_AdditionalNotes;
   // Radio Buttons
-  @FXML private JFXRadioButton bedRadioButton;
-  @FXML private JFXRadioButton xrayRadioButton;
-  @FXML private JFXRadioButton infusionPumpRadioButton;
-  @FXML private JFXRadioButton reclinerRadioButton;
+  @FXML private MFXRadioButton bedRadioButton;
+  @FXML private MFXRadioButton xrayRadioButton;
+  @FXML private MFXRadioButton infusionPumpRadioButton;
+  @FXML private MFXRadioButton reclinerRadioButton;
   @FXML private Label errorLabel;
 
   // Equipment types text. These should be changed depending on what the names in the database are.
@@ -42,25 +41,29 @@ public class MedicalEquipmentRequestController {
   @FXML
   private void initialize() {
     bedRadioButton.setText(
-        "Beds: "
+        "Beds: \n"
             + DBUtils.getAvailableEquipment("BED").getKey().toString()
-            + " available out of "
-            + DBUtils.getAvailableEquipment("BED").getValue().toString());
+            + "/"
+            + DBUtils.getAvailableEquipment("BED").getValue().toString()
+            + " available");
     xrayRadioButton.setText(
-        "X-ray: "
+        "Portable X-ray: \n"
             + DBUtils.getAvailableEquipment("XRAY").getKey().toString()
-            + " available out of "
-            + DBUtils.getAvailableEquipment("XRAY").getValue().toString());
+            + "/"
+            + DBUtils.getAvailableEquipment("XRAY").getValue().toString()
+            + " available");
     infusionPumpRadioButton.setText(
-        "Pumps: "
+        "Pumps: \n"
             + DBUtils.getAvailableEquipment("PUMP").getKey().toString()
-            + " available out of "
-            + DBUtils.getAvailableEquipment("PUMP").getValue().toString());
+            + "/"
+            + DBUtils.getAvailableEquipment("PUMP").getValue().toString()
+            + " available");
     reclinerRadioButton.setText(
-        "Recliners: "
+        "Recliners: \n"
             + DBUtils.getAvailableEquipment("RECLINER").getKey().toString()
-            + " available out of "
-            + DBUtils.getAvailableEquipment("RECLINER").getValue().toString());
+            + "/"
+            + DBUtils.getAvailableEquipment("RECLINER").getValue().toString()
+            + " available");
   }
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
@@ -128,7 +131,8 @@ public class MedicalEquipmentRequestController {
       submitRequest(
           input_RoomID.getText(),
           input_AssignedNurse.getText(),
-          input_RequestStatus.getText(),
+          "bruh"
+          /*input_RequestStatus.getText()*/ ,
           input_AdditionalNotes.getText(),
           getEquipmentType());
       RequestControllerUtil.resetLabels(errorLabel);
@@ -157,7 +161,7 @@ public class MedicalEquipmentRequestController {
   @FXML
   void resetAllFields() {
     RequestControllerUtil.resetTextFields(
-        input_RoomID, input_AssignedNurse, input_RequestStatus, input_AdditionalNotes);
+        input_PatientID, input_RoomID, input_AssignedNurse, input_AdditionalNotes);
     // Radio buttons
     RequestControllerUtil.resetRadioButtons(
         bedRadioButton, xrayRadioButton, infusionPumpRadioButton, reclinerRadioButton);
