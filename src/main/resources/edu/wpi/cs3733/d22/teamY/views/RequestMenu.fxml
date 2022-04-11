@@ -63,6 +63,46 @@
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="520.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="130.0" layoutY="570.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="520.0" layoutY="570.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <ImageView fitHeight="86.0" fitWidth="107.0" layoutX="539.0" layoutY="169.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/securityRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="108.0" fitWidth="107.0" layoutX="146.0" layoutY="296.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/mealRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="91.0" fitWidth="112.0" layoutX="142.0" layoutY="165.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/medicalRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="86.0" fitWidth="119.0" layoutX="533.0" layoutY="308.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/laundryRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="128.0" fitWidth="85.0" layoutX="157.0" layoutY="439.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/labRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="113.0" fitWidth="72.0" layoutX="559.0" layoutY="438.0" opacity="0.85" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: -25;">
+            <image>
+               <Image url="@images/icons/floralRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="108.0" fitWidth="101.0" layoutX="149.0" layoutY="576.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/translateRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="79.0" fitWidth="81.0" layoutX="555.0" layoutY="591.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/miscellaneousRequestFinal.png" />
+            </image>
+         </ImageView>
          <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="150.0" onAction="#loadMedEquipReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Medical&#10;Equipment" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="29.0" />
@@ -127,46 +167,6 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <ImageView fitHeight="86.0" fitWidth="107.0" layoutX="539.0" layoutY="169.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/icons/securityRequestFinal.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="108.0" fitWidth="107.0" layoutX="146.0" layoutY="296.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/icons/mealRequestFinal.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="91.0" fitWidth="112.0" layoutX="142.0" layoutY="165.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/icons/medicalRequestFinal.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="86.0" fitWidth="119.0" layoutX="533.0" layoutY="308.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/icons/laundryRequestFinal.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="128.0" fitWidth="85.0" layoutX="157.0" layoutY="439.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/icons/labRequestFinal.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="113.0" fitWidth="72.0" layoutX="559.0" layoutY="438.0" opacity="0.85" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: -25;">
-            <image>
-               <Image url="@images/icons/floralRequestFinal.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="108.0" fitWidth="101.0" layoutX="149.0" layoutY="576.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/icons/translateRequestFinal.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="79.0" fitWidth="81.0" layoutX="555.0" layoutY="591.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/icons/miscellaneousRequestFinal.png" />
-            </image>
-         </ImageView>
          <JFXToggleButton fx:id="creatorToggle" contentDisplay="RIGHT" layoutX="728.0" layoutY="726.0" onAction="#showCreators" size="12.0" text="Show Creator">
             <font>
                <Font name="Calibri" size="20.0" />
