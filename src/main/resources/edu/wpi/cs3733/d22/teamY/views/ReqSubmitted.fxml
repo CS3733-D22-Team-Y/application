@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="262.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ConfirmCloseController">
-    <children>
+   <children>
       <Rectangle height="262.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="532.0">
          <fill>
             <LinearGradient endX="0.7588652482269503" endY="1.0" startX="0.20330969267139481">
@@ -29,20 +29,15 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-        <JFXButton layoutX="286.0" layoutY="140.0" onAction="#logOut" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" text="Yes, log me out" textFill="#1b89a6">
-            <font>
-                <Font name="Microsoft Tai Le Bold" size="16.0" />
-            </font>
-        </JFXButton>
-        <JFXButton fx:id="stayButton" layoutX="46.0" layoutY="140.0" onAction="#stayIn" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" text="No, keep me logged in" textFill="#1b89a6">
-            <font>
-                <Font name="Microsoft Tai Le Bold" size="16.0" />
-            </font>
-        </JFXButton>
-        <Label layoutX="46.0" layoutY="50.0" text="You are about to log out, are you sure?" textFill="WHITE">
-            <font>
-                <Font name="Microsoft Tai Le Bold" size="24.0" />
-            </font>
-        </Label>
-    </children>
+      <JFXButton fx:id="stayButton" layoutX="166.0" layoutY="140.0" onAction="#stayIn" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" text="Okay" textFill="#1b89a6">
+         <font>
+            <Font name="Microsoft Tai Le Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="76.0" layoutY="50.0" text="Your request has been submitted." textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Microsoft Tai Le Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
