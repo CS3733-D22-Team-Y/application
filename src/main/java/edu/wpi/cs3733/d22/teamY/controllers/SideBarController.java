@@ -247,11 +247,24 @@ public class SideBarController {
     SceneUtil.endHover(logoutHiddenRect);
   }
 
-  // Placeholder/test
+  private void setButtonSelected(Shape toSelect) {
+    SceneUtil.removeSelection(
+        mapHiddenRect,
+        servicesHiddenRect,
+        equipmentHiddenRect,
+        tasksHiddenRect,
+        homeHiddenRect,
+        profileHiddenRect,
+        inboxHiddenRect,
+        logoutHiddenRect);
+    SceneUtil.setSelection(toSelect);
+  }
+
   @FXML
   void loadMap() throws IOException {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(MAP_LIST_LOCATION).setVisible(true);
+    setButtonSelected(mapHiddenRect);
   }
 
   @FXML
@@ -264,34 +277,54 @@ public class SideBarController {
     // Main code
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).setVisible(true);
+    setButtonSelected(servicesHiddenRect);
   }
 
   @FXML
   void loadEquipment() {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(EQUIPMENT_LIST_LOCATION).setVisible(true);
+    setButtonSelected(equipmentHiddenRect);
   }
 
   @FXML
   void loadTasks() {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(TASKS_LIST_LOCATION).setVisible(true);
+    setButtonSelected(tasksHiddenRect);
   }
 
   @FXML
   void loadHome() {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    setButtonSelected(homeHiddenRect);
   }
 
   @FXML
   void loadInbox() {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(INBOX_LIST_LOCATION).setVisible(true);
+    setButtonSelected(inboxHiddenRect);
   }
 
   @FXML
   void loadProfile() {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(PROFILE_LIST_LOCATION).setVisible(true);
+    setButtonSelected(profileHiddenRect);
+  }
+
+  @FXML
+  void loadHome_noUpdateButton() {
+    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    SceneUtil.removeSelection(
+        mapHiddenRect,
+        servicesHiddenRect,
+        equipmentHiddenRect,
+        tasksHiddenRect,
+        homeHiddenRect,
+        profileHiddenRect,
+        inboxHiddenRect,
+        logoutHiddenRect);
   }
 }
