@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXToggleButton?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -67,7 +68,7 @@
                <Image url="@images/icons/securityRequestFinal.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="150.0" fitWidth="100.0" layoutX="140.0" layoutY="300.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="150.0" fitWidth="100.0" layoutX="140.0" layoutY="305.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/mealRequestFinal.png" />
             </image>
@@ -82,12 +83,12 @@
                <Image url="@images/icons/laundryRequestFinal.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="128.0" fitWidth="85.0" layoutX="140.0" layoutY="440.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="128.0" fitWidth="85.0" layoutX="155.0" layoutY="440.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/labRequestFinal.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="540.0" layoutY="440.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="550.0" layoutY="445.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/floralRequestFinal.png" />
             </image>
@@ -156,6 +157,19 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
+         <JFXToggleButton fx:id="creatorToggle" contentDisplay="RIGHT" layoutX="728.0" layoutY="726.0" onAction="#showCreators" size="12.0" text="Show Creator">
+            <font>
+               <Font name="Calibri" size="20.0" />
+            </font>
+         </JFXToggleButton>
+         <Label fx:id="creator1" layoutX="130.0" layoutY="150.0" text="Engjell Ramadani" visible="false" />
+         <Label fx:id="creator2" layoutX="520.0" layoutY="150.0" text="Nick Heineman" visible="false" />
+         <Label fx:id="creator3" layoutX="520.0" layoutY="291.0" text="John Carrota" visible="false" />
+         <Label fx:id="creator4" layoutX="130.0" layoutY="291.0" text="Nathan Anderson" visible="false" />
+         <Label fx:id="creator5" layoutX="130.0" layoutY="570.0" text="Emily Gorelik" visible="false" />
+         <Label fx:id="creator6" layoutX="520.0" layoutY="570.0" text="Emily Gorelik" visible="false" />
+         <Label fx:id="creator7" layoutX="130.0" layoutY="431.0" text="Sky Tang" visible="false" />
+         <Label fx:id="creator8" layoutX="520.0" layoutY="431.0" text="Jake Brady" visible="false" />
       </children>
    </AnchorPane>
 </AnchorPane>
