@@ -61,6 +61,7 @@ public class MealRequestController {
     dietaryRestrictionsSelectionBox
         .getItems()
         .addAll(textNone, "Gluten Free", "Vegetarian", "Vegan", textOther);
+    dietaryRestrictionsSelectionBox.setValue(textNone);
   }
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
@@ -148,34 +149,6 @@ public class MealRequestController {
     if (appleRadioButton.isSelected()) return appleText;
     // Should never happen
     return ("");
-  }
-
-  @FXML
-  void backToRequestMenu(ActionEvent event) throws IOException {
-    SceneLoading.loadScene("views/RequestMenu.fxml");
-    resetAllFields();
-  }
-
-  // Checks if the "Special Instructions" box should be enabled.
-  // Will only enable if "Other (specify)" is selected.
-  @FXML
-  void checkSpecialInstructionsEnable() {
-    if (dietaryRestrictionsSelectionBox.getValue().equals(textOther)) {
-      input_SpecialInstructions.setDisable(false);
-    } else {
-      input_SpecialInstructions.setDisable(true);
-    }
-  }
-
-  @FXML
-  void enableMiscBox() {
-    input_SpecialInstructions.setEditable(true);
-  }
-
-  @FXML
-  void disableMiscBox() {
-    input_SpecialInstructions.setEditable(false);
-    RequestControllerUtil.resetTextFields(input_SpecialInstructions);
   }
 
   // Reset button functionality

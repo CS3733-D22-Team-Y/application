@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import io.github.palexdev.materialfx.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXRadioButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MealRequestController">
+<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MealRequestController">
     <children>
         <Label layoutY="10.0" text="Meal Request">
             <textFill>
@@ -94,7 +100,7 @@
                 <Font name="Calibri Bold" size="20.0" />
             </font>
         </MFXButton>
-        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="140.0" prefWidth="300.0" text="Main        Side " textAlignment="RIGHT">
+        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="140.0" prefWidth="300.0" text="Main" textAlignment="RIGHT">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -133,7 +139,7 @@
                 </LinearGradient>
             </fill>
         </Rectangle>
-      <MFXRadioButton fx:id="pizzaRadioButton" layoutX="619.0" layoutY="230.0" radius="12.0" text="Pizza">
+      <MFXRadioButton fx:id="pizzaRadioButton" layoutX="650.0" layoutY="230.0" radius="12.0" text="Pizza">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
@@ -141,17 +147,17 @@
             <ToggleGroup fx:id="Purpose" />
          </toggleGroup>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="burgerRadioButton" layoutX="619.0" layoutY="275.0" radius="12.0" text="Burger" toggleGroup="$Purpose">
+      <MFXRadioButton fx:id="burgerRadioButton" layoutX="650.0" layoutY="275.0" radius="12.0" text="Burger" toggleGroup="$Purpose">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="saladRadioButton" layoutX="619.0" layoutY="320.0" radius="12.0" text="Salad" toggleGroup="$Purpose">
+      <MFXRadioButton fx:id="saladRadioButton" layoutX="650.0" layoutY="320.0" radius="12.0" text="Salad" toggleGroup="$Purpose">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="riceRadioButton" layoutX="804.0" layoutY="230.0" radius="10.0" text="Rice">
+      <MFXRadioButton fx:id="riceRadioButton" layoutX="650.0" layoutY="444.0" radius="10.0" text="Rice">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
@@ -159,12 +165,12 @@
             <ToggleGroup fx:id="Problem" />
          </toggleGroup>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="peasRadioButton" layoutX="804.0" layoutY="275.0" radius="10.0" text="Peas" toggleGroup="$Problem">
+      <MFXRadioButton fx:id="peasRadioButton" layoutX="650.0" layoutY="489.0" radius="10.0" text="Peas" toggleGroup="$Problem">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="appleRadioButton" layoutX="804.0" layoutY="320.0" radius="10.0" text="Apple" toggleGroup="$Problem">
+      <MFXRadioButton fx:id="appleRadioButton" layoutX="650.0" layoutY="534.0" radius="10.0" text="Apple" toggleGroup="$Problem">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
@@ -174,11 +180,84 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextArea fx:id="input_SpecialInstructions" disable="true" layoutX="581.0" layoutY="484.0" prefHeight="166.0" prefWidth="336.0" promptText="Special Instructions..." wrapText="true">
+      <JFXComboBox fx:id="dietaryRestrictionsSelectionBox" layoutX="646.0" layoutY="671.0" prefHeight="26.0" prefWidth="135.0" />
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="360.0" prefWidth="300.0" text="Side" textAlignment="RIGHT">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
          <font>
-            <Font size="14.0" />
+            <Font name="Arial Rounded MT Bold" size="45.0" />
          </font>
-      </TextArea>
-      <JFXComboBox fx:id="dietaryRestrictionsSelectionBox" layoutX="672.0" layoutY="404.0" onAction="#checkSpecialInstructionsEnable" prefHeight="26.0" prefWidth="180.0" />
+      </Label>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="620.0" layoutY="420.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="590.0" prefWidth="300.0" text="Allergies" textAlignment="RIGHT">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Arial Rounded MT Bold" size="45.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="620.0" layoutY="650.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
     </children>
 </AnchorPane>
