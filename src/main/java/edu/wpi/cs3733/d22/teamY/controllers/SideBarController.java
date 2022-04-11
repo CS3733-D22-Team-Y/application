@@ -52,6 +52,9 @@ public class SideBarController {
   @FXML private Rectangle profileButtonHitbox;
   @FXML private Rectangle logoutButtonHitbox;
 
+  double screenWidth, screenHeight;
+  Scene currScene;
+
   @FXML
   void initialize() throws IOException {
     SceneUtil.removeOpacity(
@@ -76,17 +79,20 @@ public class SideBarController {
     // Set the background to transparent
     SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+
+    screenWidth = mainScreenPane.getWidth();
+    screenHeight = mainScreenPane.getHeight();
   }
 
   @FXML
   void initializeScale() {
-    Scene currScene = bottomSidebarText.getScene();
+    currScene = bottomSidebarText.getScene();
     // Bottom sidebar text
     bottomSidebarText.layoutYProperty().bind(currScene.heightProperty().subtract(200));
     bottomSidebarHiddenButtons.layoutYProperty().bind(currScene.heightProperty().subtract(200));
     bottomSidebarRectangles.layoutYProperty().bind(currScene.heightProperty().subtract(200));
     // Sidebar Rectangle
-    sidebarFrame.scaleYProperty().bind(currScene.heightProperty().divide(800));
+    sidebarFrame.scaleYProperty().bind(currScene.heightProperty().subtract(20).divide(780));
     sidebarFrame.layoutYProperty().bind(sidebarFrame.scaleYProperty().multiply(390).subtract(380));
     // Top sidebar text
     // System.out.println(currScene.heightProperty());
@@ -112,7 +118,20 @@ public class SideBarController {
     sidebarBindToLabel(tasksHiddenRect, tasksButtonHitbox, tasksLabel);
   }
 
+  private void resizeMainScreen() {
+    mainScreenPane.scaleYProperty().bind(currScene.heightProperty().subtract(20).divide(780));
+    mainScreenPane
+        .layoutYProperty()
+        .bind(mainScreenPane.scaleYProperty().multiply(390).subtract(380));
+
+    mainScreenPane.scaleXProperty().bind(currScene.widthProperty().subtract(280).divide(920));
+    mainScreenPane
+        .layoutXProperty()
+        .bind(mainScreenPane.scaleXProperty().multiply(460).subtract(190));
+  }
+
   private void sidebarBindToHeight(Shape... shapes) {
+    resizeMainScreen();
     Scene currScene = shapes[0].getScene();
     for (Shape currShape : shapes) {
       currShape.scaleYProperty().bind(currScene.heightProperty().divide(800));
