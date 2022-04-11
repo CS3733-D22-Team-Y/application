@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<!--suppress HibernateConfigDomFacetInspection -->
+<hibernate-configuration>
+
+  <session-factory>
+
+    <property name="connection.url">jdbc:postgresql://34.150.193.40/database</property>
+    <property name="connection.driver_class">org.postgresql.Driver</property>
+
+
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.username">ben</property>
+    <property name="hibernate.connection.password">Y0delingY0shis</property>
+
+    <!-- DB schema will be updated if needed -->
+<!--     <property name="hibernate.hbm2ddl.auto">update</property>-->
+      <property name="hibernate.hbm2ddl.auto">create-drop</property>
+      <property name="connection_pool_size">1</property>
+
+      <mapping class="edu.wpi.cs3733.d22.teamY.model.Location" />
+      <mapping class="edu.wpi.cs3733.d22.teamY.model.MedEquip" />
+      <mapping class="edu.wpi.cs3733.d22.teamY.model.MedEquipReq" />
+      <mapping class="edu.wpi.cs3733.d22.teamY.model.LabRequest" />
+      <mapping class="edu.wpi.cs3733.d22.teamY.model.Employee" />
+      <mapping class="edu.wpi.cs3733.d22.teamY.model.FloralRequest" />
+      <mapping class="edu.wpi.cs3733.d22.teamY.model.LaundryRequest" />
+      <mapping class="edu.wpi.cs3733.d22.teamY.model.MealRequest" />
+      <mapping class="edu.wpi.cs3733.d22.teamY.model.SecurityServiceRequest" />
+
+  </session-factory>
+</hibernate-configuration>

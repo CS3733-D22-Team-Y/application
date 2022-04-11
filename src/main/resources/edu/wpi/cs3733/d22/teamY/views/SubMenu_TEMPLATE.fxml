@@ -3,7 +3,6 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,7 +15,7 @@
 <AnchorPane fx:id="bgPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.RequestMenuController">
    <AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
       <children>
-         <Label layoutX="20.0" layoutY="30.0" text="Request Forms">
+         <Label text="Request Forms">
             <textFill>
                <LinearGradient endX="1.0" endY="1.0">
                   <stops>
@@ -34,17 +33,10 @@
                </LinearGradient>
             </textFill>
             <font>
-               <Font name="Arial" size="60.0" />
+               <Font name="Arial Rounded MT Bold" size="60.0" />
             </font>
          </Label>
-         <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="20.0" layoutY="110.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
-            <effect>
-               <DropShadow height="10.0" offsetX="-5.0" offsetY="2.0" radius="7.425" width="21.7">
-                  <color>
-                     <Color red="0.08190000057220459" green="0.24621999263763428" blue="0.38999998569488525" opacity="0.3767123222351074" />
-                  </color>
-               </DropShadow>
-            </effect>
+         <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
             <fill>
                <LinearGradient endX="1.0" endY="1.0">
                   <stops>

@@ -76,7 +76,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <ImageView fitHeight="116.0" fitWidth="200.0" layoutX="37.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="116.0" fitWidth="200.0" layoutX="37.0" layoutY="27.0" onMouseClicked="#loadHome_noUpdateButton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/sidebarLogo.png" />
          </image>
@@ -88,10 +88,10 @@
       </TextField>
       <VBox layoutX="10.0" layoutY="192.0" prefHeight="175.0" prefWidth="250.0">
          <children>
-            <Rectangle fx:id="mapHiddenRect" fill="#2e2e2e4f" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
-            <Rectangle fx:id="servicesHiddenRect" fill="#2e2e2e4f" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
-            <Rectangle fx:id="equipmentHiddenRect" fill="#2e2e2e4f" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
-            <Rectangle fx:id="tasksHiddenRect" fill="#2e2e2e4f" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="mapHiddenRect" fill="#2e2e2eef" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="servicesHiddenRect" fill="#2e2e2eef" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="equipmentHiddenRect" fill="#2e2e2eef" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="tasksHiddenRect" fill="#2e2e2eef" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
          </children>
       </VBox>
       <VBox layoutX="71.0" layoutY="200.0" spacing="20.0">
@@ -120,10 +120,10 @@
       </VBox>
       <VBox fx:id="bottomSidebarRectangles" layoutX="10.0" layoutY="603.0" prefHeight="132.0" prefWidth="250.0">
          <children>
-            <Rectangle fx:id="homeHiddenRect" fill="#2e2e2e4f" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
-            <Rectangle fx:id="inboxHiddenRect" fill="#2e2e2e4f" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
-            <Rectangle fx:id="profileHiddenRect" fill="#2e2e2e4f" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
-            <Rectangle fx:id="logoutHiddenRect" fill="#2e2e2e4f" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="homeHiddenRect" fill="#2e2e2eef" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="inboxHiddenRect" fill="#2e2e2eef" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="profileHiddenRect" fill="#2e2e2eef" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+            <Rectangle fx:id="logoutHiddenRect" fill="#2e2e2eef" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
          </children>
       </VBox>
       <VBox fx:id="bottomSidebarText" layoutX="71.0" layoutY="600.0">
@@ -158,7 +158,7 @@
             <Rectangle fx:id="tasksButtonHitbox" fill="#2e2e2e00" height="58.0" onMouseClicked="#loadTasks" onMouseEntered="#startTasksButtonHover" onMouseExited="#endTasksButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
          </children>
       </VBox>
-      <Pane fx:id="mainScreenPane" layoutX="270.0" prefHeight="800.0" prefWidth="930.0" />
+      <Pane fx:id="mainScreenPane" layoutX="270.0" layoutY="10.0" prefHeight="780.0" prefWidth="920.0" />
       <VBox fx:id="bottomSidebarHiddenButtons" layoutX="10.0" layoutY="603.0" prefHeight="132.0" prefWidth="250.0">
          <children>
             <Rectangle fx:id="homeButtonHitbox" fill="#2e2e2e00" height="33.0" onMouseClicked="#loadHome" onMouseEntered="#startHomeButtonHover" onMouseExited="#endHomeButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />

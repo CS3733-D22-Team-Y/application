@@ -13,11 +13,11 @@ import javafx.scene.shape.Shape;
 
 public class SceneUtil {
   protected static void startHover(Shape s) {
-    s.setOpacity(1);
+    s.setOpacity(s.getOpacity() + (.33));
   }
 
   protected static void endHover(Shape s) {
-    s.setOpacity(0);
+    s.setOpacity(s.getOpacity() - .33);
   }
 
   /**
@@ -67,5 +67,17 @@ public class SceneUtil {
     for (Shape currShape : shapes) {
       currShape.setOpacity(0);
     }
+  }
+
+  protected static void removeSelection(Shape... shapes) {
+    for (Shape currShape : shapes) {
+      if (currShape.getOpacity() > 0.5) {
+        currShape.setOpacity(currShape.getOpacity() - .66);
+      }
+    }
+  }
+
+  protected static void setSelection(Shape shape) {
+    shape.setOpacity(shape.getOpacity() + .66);
   }
 }

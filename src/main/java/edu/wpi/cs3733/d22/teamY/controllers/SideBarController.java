@@ -52,6 +52,9 @@ public class SideBarController {
   @FXML private Rectangle profileButtonHitbox;
   @FXML private Rectangle logoutButtonHitbox;
 
+  double screenWidth, screenHeight;
+  Scene currScene;
+
   @FXML
   void initialize() throws IOException {
     SceneUtil.removeOpacity(
@@ -67,7 +70,7 @@ public class SideBarController {
     SceneUtil.initializePanes(
         mainScreenPane,
         "views/SecondaryMap_TEMPLATE.fxml",
-        "views/SubMenu_TEMPLATE.fxml",
+        "views/RequestMenu.fxml",
         "views/ActServReqTable.fxml",
         "views/ActiveServiceRequest.fxml",
         "views/ActiveServiceRequest.fxml",
@@ -76,17 +79,20 @@ public class SideBarController {
     // Set the background to transparent
     SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+
+    screenWidth = mainScreenPane.getWidth();
+    screenHeight = mainScreenPane.getHeight();
   }
 
   @FXML
   void initializeScale() {
-    Scene currScene = bottomSidebarText.getScene();
+    currScene = bottomSidebarText.getScene();
     // Bottom sidebar text
     bottomSidebarText.layoutYProperty().bind(currScene.heightProperty().subtract(200));
     bottomSidebarHiddenButtons.layoutYProperty().bind(currScene.heightProperty().subtract(200));
     bottomSidebarRectangles.layoutYProperty().bind(currScene.heightProperty().subtract(200));
     // Sidebar Rectangle
-    sidebarFrame.scaleYProperty().bind(currScene.heightProperty().divide(800));
+    sidebarFrame.scaleYProperty().bind(currScene.heightProperty().subtract(20).divide(780));
     sidebarFrame.layoutYProperty().bind(sidebarFrame.scaleYProperty().multiply(390).subtract(380));
     // Top sidebar text
     // System.out.println(currScene.heightProperty());
@@ -112,7 +118,20 @@ public class SideBarController {
     sidebarBindToLabel(tasksHiddenRect, tasksButtonHitbox, tasksLabel);
   }
 
+  private void resizeMainScreen() {
+    mainScreenPane.scaleYProperty().bind(currScene.heightProperty().subtract(20).divide(780));
+    mainScreenPane
+        .layoutYProperty()
+        .bind(mainScreenPane.scaleYProperty().multiply(390).subtract(380));
+
+    mainScreenPane.scaleXProperty().bind(currScene.widthProperty().subtract(280).divide(920));
+    mainScreenPane
+        .layoutXProperty()
+        .bind(mainScreenPane.scaleXProperty().multiply(460).subtract(190));
+  }
+
   private void sidebarBindToHeight(Shape... shapes) {
+    resizeMainScreen();
     Scene currScene = shapes[0].getScene();
     for (Shape currShape : shapes) {
       currShape.scaleYProperty().bind(currScene.heightProperty().divide(800));
@@ -139,7 +158,7 @@ public class SideBarController {
 
   @FXML
   void killApplication() throws IOException {
-    SceneLoading.loadPopup("views/ConfirmClose.fxml", "views/SideBar.fxml");
+    SceneLoading.loadPopup("views/popups/ConfirmClose.fxml", "views/SideBar.fxml");
   }
 
   @FXML
@@ -228,11 +247,24 @@ public class SideBarController {
     SceneUtil.endHover(logoutHiddenRect);
   }
 
-  // Placeholder/test
+  private void setButtonSelected(Shape toSelect) {
+    SceneUtil.removeSelection(
+        mapHiddenRect,
+        servicesHiddenRect,
+        equipmentHiddenRect,
+        tasksHiddenRect,
+        homeHiddenRect,
+        profileHiddenRect,
+        inboxHiddenRect,
+        logoutHiddenRect);
+    SceneUtil.setSelection(toSelect);
+  }
+
   @FXML
   void loadMap() throws IOException {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(MAP_LIST_LOCATION).setVisible(true);
+    setButtonSelected(mapHiddenRect);
   }
 
   @FXML
@@ -245,34 +277,54 @@ public class SideBarController {
     // Main code
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).setVisible(true);
+    setButtonSelected(servicesHiddenRect);
   }
 
   @FXML
   void loadEquipment() {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(EQUIPMENT_LIST_LOCATION).setVisible(true);
+    setButtonSelected(equipmentHiddenRect);
   }
 
   @FXML
   void loadTasks() {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(TASKS_LIST_LOCATION).setVisible(true);
+    setButtonSelected(tasksHiddenRect);
   }
 
   @FXML
   void loadHome() {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    setButtonSelected(homeHiddenRect);
   }
 
   @FXML
   void loadInbox() {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(INBOX_LIST_LOCATION).setVisible(true);
+    setButtonSelected(inboxHiddenRect);
   }
 
   @FXML
   void loadProfile() {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(PROFILE_LIST_LOCATION).setVisible(true);
+    setButtonSelected(profileHiddenRect);
+  }
+
+  @FXML
+  void loadHome_noUpdateButton() {
+    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    SceneUtil.removeSelection(
+        mapHiddenRect,
+        servicesHiddenRect,
+        equipmentHiddenRect,
+        tasksHiddenRect,
+        homeHiddenRect,
+        profileHiddenRect,
+        inboxHiddenRect,
+        logoutHiddenRect);
   }
 }
