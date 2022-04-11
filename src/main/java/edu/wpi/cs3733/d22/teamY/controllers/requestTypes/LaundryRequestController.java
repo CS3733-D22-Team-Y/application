@@ -10,7 +10,6 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -26,7 +25,7 @@ public class LaundryRequestController {
   // Additional  Notes
   @FXML private TextArea input_AdditionalNotes;
   // Error Label
-  @FXML private Label errorLabel;
+  @FXML private TextArea errorLabel;
 
   private Scene requestMenu = null;
 
@@ -34,7 +33,7 @@ public class LaundryRequestController {
   private final String scrubsText = "scrubs";
   private final String linensText = "linens";
 
-  public LaundryRequestController() throws IOException {}
+  public LaundryRequestController() {}
 
   // BACKEND PEOPLE,THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
 
@@ -77,7 +76,7 @@ public class LaundryRequestController {
           input_PatientID.getText(),
           input_AdditionalNotes.getText(),
           getResultType());
-      RequestControllerUtil.resetLabels(errorLabel);
+      errorLabel.setText("");
     } else {
       errorLabel.setText("Please select the type of laundry.");
     }
@@ -104,6 +103,6 @@ public class LaundryRequestController {
         scrubsRadioButton, linensRadioButton, hazardousRadioButton);
     RequestControllerUtil.resetTextFields(
         input_RoomID, input_PatientID, input_AssignedNurse, input_AdditionalNotes);
-    RequestControllerUtil.resetLabels(errorLabel);
+    errorLabel.setText("");
   }
 }

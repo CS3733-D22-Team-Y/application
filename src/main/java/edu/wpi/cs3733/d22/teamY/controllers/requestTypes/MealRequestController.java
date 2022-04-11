@@ -8,7 +8,6 @@ import edu.wpi.cs3733.d22.teamY.model.MealRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -31,7 +30,7 @@ public class MealRequestController {
   // Dropdown menu
   @FXML private JFXComboBox<String> dietaryRestrictionsSelectionBox;
   // Error Label
-  @FXML private Label errorLabel;
+  @FXML private TextArea errorLabel;
 
   // Combobox text items
   private final String textOther = "Other (specify)";
@@ -114,13 +113,13 @@ public class MealRequestController {
       submitRequest(
           input_RoomID.getText(),
           input_AssignedNurse.getText(),
-          input_RequestStatus.getText(),
+          "temp",
           input_AdditionalNotes.getText(),
           getMainChoice(),
           getSideChoice(),
           dietaryRestrictionsSelectionBox.getValue(),
           input_AdditionalNotes.getText());
-      RequestControllerUtil.resetLabels(errorLabel);
+      errorLabel.setText("");
     } else {
       if (mealSelected) {
         errorLabel.setText("Please select a side option.");
@@ -168,6 +167,6 @@ public class MealRequestController {
         appleRadioButton);
     // Selection box
     dietaryRestrictionsSelectionBox.setValue(textNone);
-    RequestControllerUtil.resetLabels(errorLabel);
+    errorLabel.setText("");
   }
 }

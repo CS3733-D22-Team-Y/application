@@ -95,7 +95,7 @@
                 <Font name="Calibri Bold" size="20.0" />
             </font>
         </MFXButton>
-        <MFXButton fx:id="submitButton" computeRadiusMultiplier="false" layoutX="810.0" layoutY="730.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" text="Submit" textFill="WHITE">
+        <MFXButton fx:id="submitButton" computeRadiusMultiplier="false" layoutX="810.0" layoutY="730.0" onAction="#submitButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" text="Submit" textFill="WHITE">
             <font>
                 <Font name="Calibri Bold" size="20.0" />
             </font>
@@ -175,11 +175,6 @@
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <Label fx:id="errorLabel" layoutX="695.0" layoutY="704.0" prefHeight="20.0" prefWidth="214.0" textFill="RED">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
       <JFXComboBox fx:id="dietaryRestrictionsSelectionBox" layoutX="646.0" layoutY="671.0" prefHeight="26.0" prefWidth="135.0" />
       <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="360.0" prefWidth="300.0" text="Side" textAlignment="RIGHT">
          <textFill>
@@ -259,5 +254,10 @@
             </LinearGradient>
          </fill>
       </Rectangle>
+      <JFXTextArea fx:id="errorLabel" depthTest="DISABLE" disable="true" editable="false" focusColor="#ffffff00" layoutX="700.0" layoutY="700.0" opacity="0.97" prefHeight="10.0" prefWidth="243.0" style="-fx-text-fill: RED;" unFocusColor="#ffffff00">
+         <font>
+            <Font name="Calibri" size="15.0" />
+         </font>
+      </JFXTextArea>
     </children>
 </AnchorPane>
