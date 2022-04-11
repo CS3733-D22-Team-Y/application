@@ -2,8 +2,12 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import java.io.IOException;
+import java.util.Locale;
+
+import edu.wpi.cs3733.d22.teamY.utilTemp.SearchUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 
@@ -12,6 +16,7 @@ public class SideBarController {
   @FXML private Label nameLabel;
   @FXML private Label accessLevel;
   @FXML private ToggleButton dbToggle;
+  @FXML private TextField searchBar;
 
   @FXML
   void initialize() {
@@ -99,5 +104,74 @@ public class SideBarController {
   void dbSwitcherToggle() {
     boolean state = dbToggle.isSelected();
     DBUtils.switchDBType(state);
+  }
+
+  /**
+   * Performs a search given key words
+   * these words are processed through a series of RegEx's and filters to fit a standardized form
+   * these strings are then appended with other key words in order to switch to that respective page
+   * TODO: add error handling, levenshtein distance, error page, history page?
+   */
+  @FXML
+  public void doSearch() throws IOException {
+    String entry = this.searchBar.getText();
+
+    //Valid pages: !!! NEEDS TO UPDATE EVERYTIME NEW PAGE IS ADDED !!!
+    String[] pages = {"floral",
+            "lab",
+            "laundry",
+            "meal",
+            "medical",
+            "security",
+            "map",
+            "settings",
+            "menu",
+            "request"};
+
+    //The following lines of code filters and processes search request
+    entry = entry.toLowerCase();
+    entry.replaceAll(" ", "");
+    entry.replaceAll("active", "table");
+    entry.replaceAll("current", "table");
+    entry.replaceAll("equipment", "medical");
+
+    //Will see if this request exists
+    String isValid = getPage(entry, pages);
+    if(isValid == "ERROR") {
+      //TODO: Levenshtein distance computations
+    }
+    else{
+      entry = isValid;
+      SceneLoading.loadPopup(entry, "views/SideBar.fxml");
+    }
+  }
+
+  /**
+   * Helper method for doSearch
+   * Will determine if a valid page exists
+   */
+  public String getPage(String entry, String[] pages) {
+    boolean isGood = false;
+    for (int i = 0; i < pages.length; i++) {
+      if (entry.contains(pages[i])) {
+        i = pages.length;
+        if (entry.contains("medical")) {
+          entry = "MedicalEquipmentRequest.fxml";
+        } else if (entry.contains("table")) {
+          entry = "ActiveServiceRequest.fxml";
+        } else if (entry.contains("security")) {
+          entry = "SecurityServicesRequest.fxml";
+        } else {
+          entry = entry.substring(0).toUpperCase();
+          entry = entry + "Request.fxml";
+        }
+        entry = "views/" + entry;
+      }
+      isGood = true;
+    }
+    if(!isGood){
+      entry = "ERROR";
+    }
+    return entry;
   }
 }
