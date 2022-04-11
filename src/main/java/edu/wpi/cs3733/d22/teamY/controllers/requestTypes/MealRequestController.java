@@ -4,11 +4,9 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.MealRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -22,7 +20,6 @@ public class MealRequestController {
   @FXML private TextField input_AssignedNurse;
   @FXML private TextField input_RequestStatus;
 
-  @FXML private TextArea input_SpecialInstructions;
   // Radio button main course
   @FXML private MFXRadioButton pizzaRadioButton;
   @FXML private MFXRadioButton burgerRadioButton;
@@ -122,7 +119,7 @@ public class MealRequestController {
           getMainChoice(),
           getSideChoice(),
           dietaryRestrictionsSelectionBox.getValue(),
-          input_SpecialInstructions.getText());
+          input_AdditionalNotes.getText());
       RequestControllerUtil.resetLabels(errorLabel);
     } else {
       if (mealSelected) {
@@ -159,7 +156,7 @@ public class MealRequestController {
         input_RoomID,
         input_AssignedNurse,
         input_AdditionalNotes,
-        input_SpecialInstructions,
+        input_AdditionalNotes,
         input_PatientID);
     // Mains
     RequestControllerUtil.resetRadioButtons(
