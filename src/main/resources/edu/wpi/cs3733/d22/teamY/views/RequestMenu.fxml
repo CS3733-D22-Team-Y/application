@@ -63,37 +63,7 @@
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="520.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="130.0" layoutY="570.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="520.0" layoutY="570.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitWidth="100.0" layoutX="540.0" layoutY="180.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/icons/securityRequestFinal.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="150.0" fitWidth="100.0" layoutX="140.0" layoutY="305.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/icons/mealRequestFinal.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="150.0" fitWidth="100.0" layoutX="140.0" layoutY="170.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/icons/medicalRequestFinal.png" />
-            </image>
-         </ImageView>
-         <ImageView fitWidth="100.0" layoutX="540.0" layoutY="320.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/icons/laundryRequestFinal.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="128.0" fitWidth="85.0" layoutX="155.0" layoutY="440.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/icons/labRequestFinal.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="550.0" layoutY="445.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/icons/floralRequestFinal.png" />
-            </image>
-         </ImageView>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="150.0" onAction="#loadMedEquipReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Medical Equipment " textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="150.0" onAction="#loadMedEquipReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Medical&#10;Equipment" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="29.0" />
             </font>
@@ -101,7 +71,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="150.0" onAction="#loadSecurityReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Security" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="150.0" onAction="#loadSecurityReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Security&#10;Services" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -109,7 +79,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="290.0" onAction="#loadLaundryReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Laundry" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="290.0" onAction="#loadLaundryReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Laundry&#10;Services" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -117,7 +87,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="290.0" onAction="#loadMealReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Meals" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="290.0" onAction="#loadMealReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Meal&#10;Delivery" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -125,7 +95,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="430.0" onAction="#loadLabReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Lab" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="430.0" onAction="#loadLabReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Lab Work" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -133,7 +103,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="430.0" onAction="#loadFloralReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Floral" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="430.0" onAction="#loadFloralReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Bouquet&#10;Delivery" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -157,6 +127,46 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
+         <ImageView fitHeight="86.0" fitWidth="107.0" layoutX="539.0" layoutY="169.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/securityRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="108.0" fitWidth="107.0" layoutX="146.0" layoutY="296.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/mealRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="91.0" fitWidth="112.0" layoutX="142.0" layoutY="165.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/medicalRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="86.0" fitWidth="119.0" layoutX="533.0" layoutY="308.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/laundryRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="128.0" fitWidth="85.0" layoutX="157.0" layoutY="439.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/labRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="113.0" fitWidth="72.0" layoutX="559.0" layoutY="438.0" opacity="0.85" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: -25;">
+            <image>
+               <Image url="@images/icons/floralRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="108.0" fitWidth="101.0" layoutX="149.0" layoutY="576.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/translateRequestFinal.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="79.0" fitWidth="81.0" layoutX="555.0" layoutY="591.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/miscellaneousRequestFinal.png" />
+            </image>
+         </ImageView>
          <JFXToggleButton fx:id="creatorToggle" contentDisplay="RIGHT" layoutX="728.0" layoutY="726.0" onAction="#showCreators" size="12.0" text="Show Creator">
             <font>
                <Font name="Calibri" size="20.0" />
@@ -164,7 +174,7 @@
          </JFXToggleButton>
          <Label fx:id="creator1" layoutX="130.0" layoutY="150.0" text="Engjell Ramadani" visible="false" />
          <Label fx:id="creator2" layoutX="520.0" layoutY="150.0" text="Nick Heineman" visible="false" />
-         <Label fx:id="creator3" layoutX="520.0" layoutY="291.0" text="John Carrota" visible="false" />
+         <Label fx:id="creator3" layoutX="520.0" layoutY="291.0" text="John Carrotta" visible="false" />
          <Label fx:id="creator4" layoutX="130.0" layoutY="291.0" text="Nathan Anderson" visible="false" />
          <Label fx:id="creator5" layoutX="130.0" layoutY="570.0" text="Emily Gorelik" visible="false" />
          <Label fx:id="creator6" layoutX="520.0" layoutY="570.0" text="Emily Gorelik" visible="false" />
