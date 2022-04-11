@@ -2,7 +2,6 @@ package edu.wpi.cs3733.d22.teamY;
 
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController;
 import edu.wpi.cs3733.d22.teamY.model.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import javafx.util.Pair;
@@ -221,23 +220,22 @@ public class DBUtils {
     DBUtils.completeCSVRefresh();
   }
 
-  public static <T extends Requestable> List<T> getRequestsOnFloor(Class<T> requestType, String floor){
+  public static <T extends Requestable> List<T> getRequestsOnFloor(
+      Class<T> requestType, String floor) {
     List<T> requests = DBManager.getAll(requestType);
-    if(requests.size() == 0){
+    if (requests.size() == 0) {
       return requests;
     }
     List<T> filtered = new ArrayList<>();
     List<Location> locations = DBUtils.getLocationsOnFloor(floor);
-    for(T r : requests){
+    for (T r : requests) {
       String locID = r.getLocID();
-      for(Location l : locations){
-        if(l.getNodeID().equals(locID)){
+      for (Location l : locations) {
+        if (l.getNodeID().equals(locID)) {
           filtered.add(r);
         }
       }
-
     }
     return filtered;
   }
-
 }
