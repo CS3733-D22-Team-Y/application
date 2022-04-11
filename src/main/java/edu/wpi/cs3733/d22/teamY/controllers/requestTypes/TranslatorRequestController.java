@@ -3,7 +3,6 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 public class TranslatorRequestController {
@@ -22,7 +21,7 @@ public class TranslatorRequestController {
   // Additional Notes
   @FXML private TextArea input_AdditionalNotes;
   // Error Label
-  @FXML private Label errorLabel;
+  @FXML private TextArea errorLabel;
 
   // Language types text. These should be changed depending on what the names in the database are.
   private final String spanishText = "spanish";
@@ -79,7 +78,7 @@ public class TranslatorRequestController {
           input_PatientID.getText(),
           input_AdditionalNotes.getText(),
           getLanguageType());
-      RequestControllerUtil.resetLabels(errorLabel);
+      errorLabel.setText("");
     } else {
       errorLabel.setText("Please select a language option.");
     }
@@ -123,6 +122,6 @@ public class TranslatorRequestController {
         otherRadioButton);
     RequestControllerUtil.resetTextFields(
         input_RoomID, input_AssignedNurse, input_AdditionalNotes, input_PatientID);
-    RequestControllerUtil.resetLabels(errorLabel);
+    errorLabel.setText("");
   }
 }

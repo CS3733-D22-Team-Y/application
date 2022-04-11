@@ -11,7 +11,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class MedicalEquipmentRequestController {
@@ -26,7 +26,7 @@ public class MedicalEquipmentRequestController {
   @FXML private MFXRadioButton xrayRadioButton;
   @FXML private MFXRadioButton infusionPumpRadioButton;
   @FXML private MFXRadioButton reclinerRadioButton;
-  @FXML private Label errorLabel;
+  @FXML private TextArea errorLabel;
 
   // Equipment types text. These should be changed depending on what the names in the database are.
   private final String bedText = "BED";
@@ -40,6 +40,12 @@ public class MedicalEquipmentRequestController {
 
   @FXML
   private void initialize() {
+    System.out.println("HEllo");
+    updateAvailableEquip();
+  }
+
+  private void updateAvailableEquip() {
+    System.out.println("Hello???");
     bedRadioButton.setText(
         "Beds: \n"
             + DBUtils.getAvailableEquipment("BED").getKey().toString()
@@ -94,6 +100,7 @@ public class MedicalEquipmentRequestController {
             equipmentTypeSelected));
     DBUtils.updateCleanStatus(equipmentTypeSelected, roomID);
     System.out.println("Saved MedEquipRequest");
+    updateAvailableEquip();
   }
 
   // Called when the submit button is pressed.
@@ -135,7 +142,7 @@ public class MedicalEquipmentRequestController {
           /*input_RequestStatus.getText()*/ ,
           input_AdditionalNotes.getText(),
           getEquipmentType());
-      RequestControllerUtil.resetLabels(errorLabel);
+      errorLabel.setText("");
     }
   }
 
@@ -165,6 +172,6 @@ public class MedicalEquipmentRequestController {
     // Radio buttons
     RequestControllerUtil.resetRadioButtons(
         bedRadioButton, xrayRadioButton, infusionPumpRadioButton, reclinerRadioButton);
-    RequestControllerUtil.resetLabels(errorLabel);
+    errorLabel.setText("");
   }
 }
