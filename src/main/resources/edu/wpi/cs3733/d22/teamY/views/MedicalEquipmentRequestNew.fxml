@@ -16,7 +16,7 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.LaundryRequestController">
    <children>
-       <Label layoutY="10.0" text="Laundry Request">
+       <Label layoutY="10.0" text="Medical Equipment Request">
            <textFill>
                <LinearGradient endX="1.0" endY="1.0">
                    <stops>
@@ -167,7 +167,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <MFXRadioButton fx:id="linensRadioButton" layoutX="650.0" layoutY="230.0" radius="12.0" text="Linens">
+      <MFXRadioButton fx:id="linensRadioButton" layoutX="650.0" layoutY="230.0" radius="12.0" text="Bed">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
@@ -175,12 +175,12 @@
             <ToggleGroup fx:id="laundry_options" />
          </toggleGroup>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="scrubsRadioButton" layoutX="650.0" layoutY="275.0" radius="12.0" text="Scrubs" toggleGroup="$laundry_options">
+      <MFXRadioButton fx:id="scrubsRadioButton" layoutX="650.0" layoutY="310.0" radius="12.0" text="Portable X-Ray" toggleGroup="$laundry_options">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="hazardousRadioButton" layoutX="650.0" layoutY="320.0" radius="12.0" text="Hazardous" toggleGroup="$laundry_options">
+      <MFXRadioButton fx:id="hazardousRadioButton" layoutX="650.0" layoutY="400.0" radius="12.0" text="Infusion Pump" toggleGroup="$laundry_options">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
@@ -190,5 +190,13 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <MFXRadioButton fx:id="hazardousRadioButton1" layoutX="650.0" layoutY="490.0" radius="12.0" text="Recliner">
+         <toggleGroup>
+            <ToggleGroup fx:id="laundry_options1" />
+         </toggleGroup>
+         <font>
+            <Font name="Calibri" size="30.0" />
+         </font>
+      </MFXRadioButton>
    </children>
 </AnchorPane>
