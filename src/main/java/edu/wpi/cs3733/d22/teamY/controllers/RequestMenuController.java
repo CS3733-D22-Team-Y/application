@@ -37,7 +37,6 @@ public class RequestMenuController {
         "views/requestTypes/MealRequest.fxml");
     SceneUtil.hideAllBackgrounds(bgPane.getChildren());
     SceneUtil.hideAllPanes(bgPane.getChildren());
-    showMainPane();
   }
 
   private void loadRequestScreen(int index) {

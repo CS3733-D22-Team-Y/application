@@ -33,6 +33,7 @@ public class RequestControllerUtil {
   protected static void resetRadioButtons(MFXRadioButton... buttons) {
     for (MFXRadioButton currButton : buttons) {
       currButton.setSelected(false);
+      currButton.setText("");
     }
   }
 

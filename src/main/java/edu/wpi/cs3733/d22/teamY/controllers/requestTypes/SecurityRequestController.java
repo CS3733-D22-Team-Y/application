@@ -12,7 +12,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 
 public class SecurityRequestController {
   // Text input
@@ -33,7 +33,7 @@ public class SecurityRequestController {
   @FXML private MFXRadioButton urgentRadioButton;
   @FXML private MFXRadioButton lowPriorityRadioButton;
   // Error Label
-  @FXML private Label errorLabel;
+  @FXML private TextArea errorLabel;
 
   private Scene requestMenu = null;
 
@@ -103,7 +103,7 @@ public class SecurityRequestController {
           input_AdditionalNotes.getText(),
           getRequestType(),
           getRequestPriority());
-      RequestControllerUtil.resetLabels(errorLabel);
+      errorLabel.setText("");
     } else {
       // Print error messages
       if (typeSelected) {
@@ -111,7 +111,7 @@ public class SecurityRequestController {
       } else if (prioritySelected) {
         errorLabel.setText("Please select a request type.");
       } else {
-        errorLabel.setText("Please select a request type and priority.");
+        errorLabel.setText("Please select a purpose and priority.");
       }
     }
   }
@@ -169,6 +169,6 @@ public class SecurityRequestController {
         mostUrgentRadioButton,
         urgentRadioButton,
         lowPriorityRadioButton);
-    RequestControllerUtil.resetLabels(errorLabel);
+    errorLabel.setText("");
   }
 }
