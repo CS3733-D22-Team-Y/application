@@ -1,128 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXHamburger?>
-<?import javafx.geometry.Insets?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1100.0"
-            style="-fx-background-color: eee;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="edu.wpi.cs3733.d22.teamY.controllers.RequestMenuController">
-    <children>
-        <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutX="225.0" layoutY="300.0"
-                   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#mealDelivery"
-                   prefHeight="100.0" prefWidth="400.0"
-                   style="-fx-background-color: #021D5A; -fx-font-size: 36; -fx-background-radius: 15;"
-                   text="Meal Delivery" textFill="WHITE">
+<AnchorPane fx:id="bgPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.RequestMenuController">
+   <AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+      <children>
+         <Label text="Request Forms">
+            <textFill>
+               <LinearGradient endX="1.0" endY="1.0">
+                  <stops>
+                     <Stop>
+                        <color>
+                           <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                        </color>
+                     </Stop>
+                     <Stop offset="1.0">
+                        <color>
+                           <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                        </color>
+                     </Stop>
+                  </stops>
+               </LinearGradient>
+            </textFill>
             <font>
-                <Font size="36.0"/>
+               <Font name="Arial Rounded MT Bold" size="60.0" />
             </font>
-        </JFXButton>
-        <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutX="685.0" layoutY="300.0"
-                   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#medicalEquipment"
-                   prefHeight="100.0" prefWidth="400.0"
-                   style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 36; -fx-background-radius: 15;"
-                   text="Medical Equipment" textFill="WHITE">
-            <font>
-                <Font size="36.0"/>
-            </font>
-        </JFXButton>
-        <JFXButton alignment="CENTER" layoutX="253.0" layoutY="18.0" onAction="#mainMenu" prefHeight="50.0"
-                   prefWidth="100.0" style="-fx-background-color: #012d5a;" text="Back" textFill="WHITE">
-            <font>
-                <Font name="System Bold" size="24.0"/>
-            </font>
-        </JFXButton>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="412.0" layoutY="12.0" prefHeight="84.0"
-               prefWidth="694.0" text="Request A Service" textAlignment="CENTER" textFill="#021d5a" textOverrun="CLIP">
-            <font>
-                <Font name="System Bold" size="54.0"/>
-            </font>
-        </Label>
-        <Pane fx:id="sidebarPane" prefHeight="700.0" prefWidth="185.0"/>
-        <JFXButton alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="225.0" layoutY="162.0"
-                   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#securityServices"
-                   prefHeight="100.0" prefWidth="400.0"
-                   style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 36; -fx-background-radius: 15;"
-                   text="Security Services" textFill="WHITE">
-            <font>
-                <Font size="36.0"/>
-            </font>
-            <opaqueInsets>
-                <Insets/>
-            </opaqueInsets>
-        </JFXButton>
-        <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutX="225.0" layoutY="453.0"
-                   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#laundryServices"
-                   prefHeight="100.0" prefWidth="400.0"
-                   style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 36; -fx-background-radius: 15;"
-                   text="Laundry Services" textFill="WHITE">
-            <font>
-                <Font size="36.0"/>
-            </font>
-        </JFXButton>
-        <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutX="685.0" layoutY="453.0"
-                   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#labResults"
-                   prefHeight="100.0" prefWidth="400.0"
-                   style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 40; -fx-background-radius: 15;"
-                   text="Lab Results" textFill="WHITE">
-            <font>
-                <Font size="81.0"/>
-            </font>
-        </JFXButton>
-        <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" layoutX="685.0" layoutY="162.0"
-                   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#floralDelivery"
-                   prefHeight="100.0" prefWidth="400.0"
-                   style="-fx-background-color: #021D5A #021D5A; -fx-font-size: 36; -fx-background-radius: 15;"
-                   text="Floral Delivery" textFill="WHITE">
-            <font>
-                <Font size="36.0"/>
-            </font>
-        </JFXButton>
-        <ImageView fitHeight="60.0" fitWidth="70.0" layoutX="552.0" layoutY="182.0" pickOnBounds="true"
-                   preserveRatio="true">
+         </Label>
+         <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+            <fill>
+               <LinearGradient endX="1.0" endY="1.0">
+                  <stops>
+                     <Stop>
+                        <color>
+                           <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                        </color>
+                     </Stop>
+                     <Stop offset="1.0">
+                        <color>
+                           <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                        </color>
+                     </Stop>
+                  </stops>
+               </LinearGradient>
+            </fill>
+         </Rectangle>
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="130.0" layoutY="430.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="520.0" layoutY="430.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="130.0" layoutY="290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="130.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="520.0" layoutY="290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="520.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="130.0" layoutY="570.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="520.0" layoutY="570.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <ImageView fitWidth="100.0" layoutX="540.0" layoutY="180.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@images/icons/Security.png"/>
+               <Image url="@images/icons/securityRequestFinal.png" />
             </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="70.0" layoutX="548.0" layoutY="321.0" pickOnBounds="true"
-                   preserveRatio="true">
+         </ImageView>
+         <ImageView fitHeight="150.0" fitWidth="100.0" layoutX="140.0" layoutY="300.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@images/icons/foodIcon2.png"/>
+               <Image url="@images/icons/mealRequestFinal.png" />
             </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="70.0" layoutX="547.0" layoutY="473.0" pickOnBounds="true"
-                   preserveRatio="true">
+         </ImageView>
+         <ImageView fitHeight="150.0" fitWidth="100.0" layoutX="140.0" layoutY="170.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@images/icons/laundryIcon.png"/>
+               <Image url="@images/icons/medicalRequestFinal.png" />
             </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="78.0" layoutX="1018.0" layoutY="182.0" pickOnBounds="true"
-                   preserveRatio="true">
+         </ImageView>
+         <ImageView fitWidth="100.0" layoutX="540.0" layoutY="320.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@images/icons/flowersIcon.png"/>
+               <Image url="@images/icons/laundryRequestFinal.png" />
             </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="57.0" layoutX="1018.0" layoutY="323.0" pickOnBounds="true"
-                   preserveRatio="true">
+         </ImageView>
+         <ImageView fitHeight="128.0" fitWidth="85.0" layoutX="140.0" layoutY="440.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@images/icons/medicalIcon.png"/>
+               <Image url="@images/icons/labRequestFinal.png" />
             </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="57.0" layoutX="1018.0" layoutY="475.0" pickOnBounds="true"
-                   preserveRatio="true">
+         </ImageView>
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="540.0" layoutY="440.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@images/icons/testTubeIcon.png"/>
+               <Image url="@images/icons/floralRequestFinal.png" />
             </image>
-        </ImageView>
-        <JFXHamburger fx:id="sidebarHamburger" layoutX="10.0" layoutY="10.0" onMouseClicked="#openSidebarLayout"/>
-        <JFXButton fx:id="closeSidebarHiddenButton" layoutX="151.0" layoutY="14.0" onAction="#closeSidebarLayout"
-                   prefHeight="30.0" prefWidth="31.0" text="closeSidebarHiddenButton" textFill="TRANSPARENT"
-                   visible="false"/>
-    </children>
+         </ImageView>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="150.0" onAction="#loadMedEquipReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Medical Equipment " textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="29.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </MFXButton>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="150.0" onAction="#loadSecurityReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Security" textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="30.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </MFXButton>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="290.0" onAction="#loadLaundryReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Laundry" textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="30.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </MFXButton>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="290.0" onAction="#loadMealReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Meals" textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="30.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </MFXButton>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="430.0" onAction="#loadLabReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Lab" textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="30.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </MFXButton>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="430.0" onAction="#loadFloralReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Floral" textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="30.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </MFXButton>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="570.0" onAction="#loadTranslatorReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Translator" textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="30.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </MFXButton>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="570.0" onAction="#loadOtherReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Other" textAlignment="RIGHT" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="30.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </MFXButton>
+      </children>
+   </AnchorPane>
 </AnchorPane>

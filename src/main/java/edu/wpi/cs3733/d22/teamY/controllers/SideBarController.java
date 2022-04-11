@@ -70,7 +70,7 @@ public class SideBarController {
     SceneUtil.initializePanes(
         mainScreenPane,
         "views/SecondaryMap_TEMPLATE.fxml",
-        "views/SubMenu_TEMPLATE.fxml",
+        "views/RequestMenu.fxml",
         "views/ActServReqTable.fxml",
         "views/ActiveServiceRequest.fxml",
         "views/ActiveServiceRequest.fxml",
