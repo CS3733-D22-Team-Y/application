@@ -146,7 +146,7 @@
             <ToggleGroup fx:id="languages" />
          </toggleGroup>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="chineseRadioButton" layoutX="650.0" layoutY="275.0" onAction="#disableMiscBox" radius="12.0" text="Chinese" toggleGroup="$languages">
+      <MFXRadioButton fx:id="chineseRadioButton" layoutX="650.0" layoutY="275.0" onAction="#disableMiscBox" radius="12.0" text="Mandarin" toggleGroup="$languages">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
