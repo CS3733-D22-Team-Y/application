@@ -112,6 +112,9 @@ public class TranslatorRequestController {
   // Reset button functionality
   @FXML
   void resetAllFields() {
+    if (otherRadioButton.isSelected()) {
+      RequestControllerUtil.resetTextFields(input_OtherLanguage);
+    }
     RequestControllerUtil.resetRadioButtons(
         spanishRadioButton,
         chineseRadioButton,

@@ -84,7 +84,7 @@
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </MFXButton>
-      <MFXButton computeRadiusMultiplier="false" layoutX="810.0" layoutY="730.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" text="Submit" textFill="WHITE">
+      <MFXButton fx:id="submitButton" computeRadiusMultiplier="false" layoutX="810.0" layoutY="730.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" text="Submit" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
