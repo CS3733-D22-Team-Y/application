@@ -158,7 +158,7 @@ public class SideBarController {
 
   @FXML
   void killApplication() throws IOException {
-    SceneLoading.loadPopup("views/ConfirmClose.fxml", "views/SideBar.fxml");
+    SceneLoading.loadPopup("views/popups/ConfirmClose.fxml", "views/SideBar.fxml");
   }
 
   @FXML
