@@ -2,6 +2,8 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 
 public class RequestMenuController {
@@ -13,6 +15,10 @@ public class RequestMenuController {
   protected static final Integer SECURITY_RESULTS_INDEX = 5;
 
   @FXML AnchorPane bgPane;
+  @FXML private ToggleButton creatorToggle;
+
+  @FXML
+  private Label creator1, creator2, creator3, creator4, creator5, creator6, creator7, creator8;
 
   public RequestMenuController() {}
 
@@ -72,4 +78,19 @@ public class RequestMenuController {
 
   @FXML
   void loadOtherReq() {}
+
+  @FXML
+  void showCreators() {
+    boolean state = creatorToggle.isSelected();
+    System.out.println(state);
+
+    creator1.setVisible(state);
+    creator2.setVisible(state);
+    creator3.setVisible(state);
+    creator4.setVisible(state);
+    creator5.setVisible(state);
+    creator6.setVisible(state);
+    creator7.setVisible(state);
+    creator8.setVisible(state);
+  }
 }
