@@ -177,7 +177,9 @@ public class DBUtils {
   public static String convertNameToID(String shortName) {
     Session s = SessionManager.getSession();
     List<Location> tempLocations =
-        s.createQuery("from Location where shortName = :shortName").list();
+        s.createQuery("from Location where shortName =:shortName")
+            .setParameter("shortName", shortName)
+            .list();
     s.close();
 
     if (tempLocations.size() > 1) {

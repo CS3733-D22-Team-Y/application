@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.Auth;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.RequestControllerUtil;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
@@ -248,7 +249,7 @@ public class WelcomePageController {
             new KeyFrame(Duration.seconds(0.01), (e) -> loginPane.setVisible(false)),
             new KeyFrame(Duration.seconds(0.02), (e) -> loading.setVisible(true)),
             new KeyFrame(
-                Duration.seconds(4),
+                Duration.seconds(1),
                 (e) -> {
                   try {
                     mainPage();
