@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -207,5 +208,6 @@
                 <TextField fx:id="codeEntryField" layoutX="69.0" layoutY="162.0" onAction="#codeChecker" prefHeight="50.0" prefWidth="236.0" />
             </children>
         </Pane>
+      <MFXButton fx:id="createUserButton" layoutX="929.0" layoutY="648.0" onAction="#createUserButton" text="Create New Account" />
     </children>
 </AnchorPane>

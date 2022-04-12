@@ -52,7 +52,6 @@ public class SideBarController {
   @FXML private Rectangle profileButtonHitbox;
   @FXML private Rectangle logoutButtonHitbox;
 
-  double screenWidth, screenHeight;
   Scene currScene;
 
   @FXML
@@ -66,26 +65,36 @@ public class SideBarController {
         profileHiddenRect,
         inboxHiddenRect,
         logoutHiddenRect);
-
     SceneUtil.initializePanes(
         mainScreenPane,
-        "views/SecondaryMap_TEMPLATE.fxml",
+        "views/Map.fxml",
         "views/RequestMenu.fxml",
         "views/ActServReqTable.fxml",
         "views/ActiveServiceRequest.fxml",
         "views/ActiveServiceRequest.fxml",
         "views/PersonalSettings.fxml");
-
-    // Set the background to transparent
     SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+  }
 
-    screenWidth = mainScreenPane.getWidth();
-    screenHeight = mainScreenPane.getHeight();
+  public void reloadSidebar() throws IOException {
+    mainScreenPane.getChildren().clear();
+    SceneUtil.initializePanes(
+        mainScreenPane,
+        "views/Map.fxml",
+        "views/RequestMenu.fxml",
+        "views/ActServReqTable.fxml",
+        "views/ActiveServiceRequest.fxml",
+        "views/ActiveServiceRequest.fxml",
+        "views/PersonalSettings.fxml");
+    SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
+    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).setVisible(true);
   }
 
   @FXML
-  void initializeScale() {
+  void initializeScale() throws IOException {
+
     currScene = bottomSidebarText.getScene();
     // Bottom sidebar text
     bottomSidebarText.layoutYProperty().bind(currScene.heightProperty().subtract(200));

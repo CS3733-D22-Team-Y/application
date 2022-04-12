@@ -11,7 +11,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "MEDEQUIPREQUEST")
-public class MedEquipReq implements StringArrayConv {
+public class MedEquipReq implements StringArrayConv, Requestable {
   @Id private String requestNum;
   private String roomID;
   private String assignedNurse;
@@ -111,6 +111,11 @@ public class MedEquipReq implements StringArrayConv {
 
   public void setEquipmentTypeSelected(String equipmentTypeSelected) {
     this.equipmentTypeSelected = equipmentTypeSelected;
+  }
+
+  @Override
+  public String getLocID() {
+    return this.roomID;
   }
 
   // endregion

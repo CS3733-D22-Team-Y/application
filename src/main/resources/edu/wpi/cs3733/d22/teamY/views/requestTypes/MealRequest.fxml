@@ -215,7 +215,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="510.0" prefWidth="300.0" styleClass="subtitle" text="Allergies" textAlignment="RIGHT">
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="510.0" prefWidth="300.0" styleClass="subtitle" text="Restrictions" textAlignment="RIGHT">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>

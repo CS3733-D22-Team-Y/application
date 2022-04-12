@@ -304,8 +304,8 @@ public class MapPageController {
     switchFloor(lastFloor);
 
     // Load sidebar
-    sidebar = SidebarUtil.initializeSidebar(sidebarPane);
-    openSidebarLayout();
+    // sidebar = SidebarUtil.initializeSidebar(sidebarPane);
+    // openSidebarLayout();
   }
 
   // Loading maps

@@ -6,6 +6,7 @@ import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.model.FloralRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -52,7 +53,8 @@ public class FloralRequestController {
       String assignedNurse,
       String requestStatus,
       String additionalNotes,
-      String bouquetTypeSelected) {
+      String bouquetTypeSelected)
+      throws IOException {
     // Get request Num
     String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.FLORAL_REQUEST));
     DBManager.save(
@@ -68,7 +70,7 @@ public class FloralRequestController {
 
   // Called when the submit button is pressed.
   @FXML
-  void submitButton() {
+  void submitButton() throws IOException {
     // Checks if a bouquet choice has been made
     if (RequestControllerUtil.isRadioButtonSelected(
         getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton)) {
