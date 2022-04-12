@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="popup" prefHeight="262.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ConfirmCloseController">
+<AnchorPane fx:id="popup" stylesheets="@../css/Fonts.css" prefHeight="262.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ConfirmCloseController">
     <children>
       <Rectangle height="262.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="532.0">
          <fill>

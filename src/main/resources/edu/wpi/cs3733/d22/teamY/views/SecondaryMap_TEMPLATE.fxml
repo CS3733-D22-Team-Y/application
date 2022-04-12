@@ -9,9 +9,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SecondaryMapTEMPLATE">
+<AnchorPane fx:id="mainPane" stylesheets="@css/Fonts.css" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SecondaryMapTEMPLATE">
    <children>
-      <Label layoutY="10.0" text="Title of the Page">
+      <Label layoutY="10.0" text="Title of the Page" styleClass="title">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>

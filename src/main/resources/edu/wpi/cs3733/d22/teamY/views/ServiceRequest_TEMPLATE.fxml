@@ -11,10 +11,10 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane stylesheets="@css/Fonts.css" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle fx:id="mainPane" arcHeight="20.0" arcWidth="20.0" fill="#ffffff80" height="780.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="920.0" />
-       <Label layoutY="10.0" text="Service Request">
+       <Label layoutY="10.0" text="Service Request" styleClass="title">
            <textFill>
                <LinearGradient endX="1.0" endY="1.0">
                    <stops>

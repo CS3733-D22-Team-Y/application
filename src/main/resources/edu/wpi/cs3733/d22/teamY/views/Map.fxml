@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="700.0" maxWidth="1100.0" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: eee;"
+<AnchorPane stylesheets="@css/Fonts.css" maxHeight="700.0" maxWidth="1100.0" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: eee;"
             xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MapPageController">
     <children>
