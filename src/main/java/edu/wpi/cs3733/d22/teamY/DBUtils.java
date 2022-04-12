@@ -299,4 +299,16 @@ public class DBUtils {
     }
     return equipFloorCounts;
   }
+
+  public static <T extends Requestable> List<T> serviceReqsAtLocation(Class<?> type, Location l){
+    List<T> requests = DBManager.getAll(type);
+    List<T> filtered = new ArrayList<>();
+    for(T r : requests){
+      if(r.getLocID().equals(l.getNodeID())){
+        filtered.add(r);
+      }
+    }
+    return filtered;
+  }
+
 }
