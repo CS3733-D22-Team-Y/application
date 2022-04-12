@@ -1,9 +1,18 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
+import com.jfoenix.controls.JFXComboBox;
+import edu.wpi.cs3733.d22.teamY.DBManager;
+import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
+import edu.wpi.cs3733.d22.teamY.model.TranslatorRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.io.IOException;
+import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 public class TranslatorRequestController {
   // Radio Buttons
@@ -15,9 +24,9 @@ public class TranslatorRequestController {
 
   @FXML private MFXTextField input_OtherLanguage;
   // Input fields
-  @FXML private MFXTextField input_RoomID;
   @FXML private MFXTextField input_AssignedNurse;
-  @FXML private MFXTextField input_PatientID;
+  @FXML private JFXComboBox<String> roomsComboBox;
+  @FXML private TextField roomsHiddenField;
   // Additional Notes
   @FXML private TextArea input_AdditionalNotes;
   // Error Label
@@ -31,6 +40,16 @@ public class TranslatorRequestController {
   private final String otherText = "other";
 
   public TranslatorRequestController() {}
+
+  @FXML
+  void initialize() {
+    roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+  }
+
+  @FXML
+  private void setRoomText() {
+    roomsHiddenField.setText(roomsComboBox.getValue());
+  }
 
   /**
    * Submits a service request.
@@ -48,39 +67,43 @@ public class TranslatorRequestController {
       String additionalNotes,
       String languageTypeSelected) {
     // Get request Num
-    // String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.TRANSLATOR_REQUEST));
-    /*
+    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.TRANSLATOR_REQUEST));
+
     DBManager.save(
-            new TranslatorRequest(
-                    nextRequest,
-                    roomID,
-                    assignedNurse,
-                    requestStatus,
-                    additionalNotes,
-                    bouquetTypeSelected));
-     */
-    // System.out.println("Saved TranslatorRequest");
+        new TranslatorRequest(
+            nextRequest,
+            roomID,
+            assignedNurse,
+            requestStatus,
+            additionalNotes,
+            languageTypeSelected));
+
+    System.out.println("Saved TranslatorRequest");
   }
 
   // Called when the submit button is pressed.
   @FXML
-  void submitButton() {
+  void submitButton() throws IOException {
     // Checks if a bouquet choice has been made
     if (RequestControllerUtil.isRadioButtonSelected(
-        spanishRadioButton,
-        chineseRadioButton,
-        germanRadioButton,
-        arabicRadioButton,
-        otherRadioButton)) {
+            spanishRadioButton,
+            chineseRadioButton,
+            germanRadioButton,
+            arabicRadioButton,
+            otherRadioButton)
+        && !Objects.equals(roomsComboBox.getValue(), "")
+        && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
-          input_RoomID.getText(),
+          DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
-          input_PatientID.getText(),
+          "open",
           input_AdditionalNotes.getText(),
           getLanguageType());
       errorLabel.setText("");
+      SceneLoading.loadPopup(
+          "views/popups/ReqSubmitted.fxml", "views/requestTypes/TranslatorRequest.fxml");
     } else {
-      errorLabel.setText("Please select a language option.");
+      errorLabel.setText("Missing Required Fields.");
     }
   }
 
@@ -121,7 +144,8 @@ public class TranslatorRequestController {
         arabicRadioButton,
         otherRadioButton);
     RequestControllerUtil.resetTextFields(
-        input_RoomID, input_AssignedNurse, input_AdditionalNotes, input_PatientID);
+        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
     errorLabel.setText("");
+    roomsComboBox.setValue("");
   }
 }

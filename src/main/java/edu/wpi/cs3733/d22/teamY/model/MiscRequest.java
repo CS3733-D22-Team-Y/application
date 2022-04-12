@@ -4,24 +4,27 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * Entity class for elements in the floral request table in the database. An instance of this class
- * represents a single row in the database. Instances can be used along with the DAO to add, update,
- * and delete rows in the table.
- */
 @Entity
-@Table(name = "FLORALREQUESTS")
-public class FloralRequest implements StringArrayConv, Requestable {
-
+@Table(name = "MISCREQUESTS")
+public class MiscRequest implements StringArrayConv, Requestable {
   @Id private String requestNum;
   private String roomID;
-  private String requestStatus;
   private String assignedNurse;
-
-  // GetwellSoon, newBaby, bouquet otd
-  private String bouquetTypeSelected;
-  // Additional Notes
+  private String requestStatus;
   private String additionalNotes;
+  private String requestName;
+
+  public MiscRequest() {}
+
+  public MiscRequest(
+      String requestNum,
+      String roomID,
+      String assignedNurse,
+      String requestStatus,
+      String additionalNotes,
+      String requestName) {
+    init(requestNum, roomID, assignedNurse, requestStatus, additionalNotes, requestName);
+  }
 
   private void init(
       String requestNum,
@@ -29,31 +32,29 @@ public class FloralRequest implements StringArrayConv, Requestable {
       String assignedNurse,
       String requestStatus,
       String additionalNotes,
-      String bouquetTypeSelected) {
+      String requestName) {
     this.requestNum = requestNum;
     this.roomID = roomID;
     this.assignedNurse = assignedNurse;
     this.requestStatus = requestStatus;
     this.additionalNotes = additionalNotes;
-    this.bouquetTypeSelected = bouquetTypeSelected;
+    this.requestName = requestName;
   }
 
-  public FloralRequest() {}
-
-  public FloralRequest(
-      String requestNum,
-      String roomID,
-      String assignedNurse,
-      String requestStatus,
-      String additionalNotes,
-      String bouquetTypeSelected) {
-    init(requestNum, roomID, assignedNurse, requestStatus, additionalNotes, bouquetTypeSelected);
+  @Override
+  public String getLocID() {
+    return this.roomID;
   }
 
   @Override
   public String[] toStringArray() {
     return new String[] {
-      requestNum, roomID, assignedNurse, requestStatus, additionalNotes, bouquetTypeSelected
+      this.requestNum,
+      this.roomID,
+      this.assignedNurse,
+      this.requestStatus,
+      this.additionalNotes,
+      this.requestName
     };
   }
 
@@ -78,14 +79,6 @@ public class FloralRequest implements StringArrayConv, Requestable {
     this.roomID = roomID;
   }
 
-  public String getRequestStatus() {
-    return requestStatus;
-  }
-
-  public void setRequestStatus(String requestStatus) {
-    this.requestStatus = requestStatus;
-  }
-
   public String getAssignedNurse() {
     return assignedNurse;
   }
@@ -94,12 +87,12 @@ public class FloralRequest implements StringArrayConv, Requestable {
     this.assignedNurse = assignedNurse;
   }
 
-  public String getBouquetTypeSelected() {
-    return bouquetTypeSelected;
+  public String getRequestStatus() {
+    return requestStatus;
   }
 
-  public void setBouquetTypeSelected(String bouquetTypeSelected) {
-    this.bouquetTypeSelected = bouquetTypeSelected;
+  public void setRequestStatus(String requestStatus) {
+    this.requestStatus = requestStatus;
   }
 
   public String getAdditionalNotes() {
@@ -110,8 +103,11 @@ public class FloralRequest implements StringArrayConv, Requestable {
     this.additionalNotes = additionalNotes;
   }
 
-  @Override
-  public String getLocID() {
-    return this.roomID;
+  public String getRequestName() {
+    return requestName;
+  }
+
+  public void setRequestName(String requestName) {
+    this.requestName = requestName;
   }
 }

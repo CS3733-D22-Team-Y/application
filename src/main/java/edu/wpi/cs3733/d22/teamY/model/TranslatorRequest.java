@@ -5,53 +5,62 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "LAUNDRYREQUESTS")
-public class LaundryRequest implements StringArrayConv, Requestable {
-
+@Table(name = "TRANSLATORREQUESTS")
+public class TranslatorRequest implements StringArrayConv, Requestable {
   @Id private String requestNum;
   private String roomID;
   private String assignedNurse;
   private String requestStatus;
-  private String additionalNotes;
-  private String laundryTypeSelected;
+  private String additonalNotes;
+  private String languageTypeSelected;
 
-  public LaundryRequest() {}
+  public TranslatorRequest() {}
+
+  public TranslatorRequest(
+      String requestNum,
+      String roomID,
+      String assignedNurse,
+      String requestStatus,
+      String additonalNotes,
+      String languageTypeSelected) {
+    init(requestNum, roomID, assignedNurse, requestStatus, additonalNotes, languageTypeSelected);
+  }
 
   private void init(
       String requestNum,
       String roomID,
       String assignedNurse,
       String requestStatus,
-      String additionalNotes,
-      String laundryTypeSelected) {
+      String additonalNotes,
+      String languageTypeSelected) {
     this.requestNum = requestNum;
     this.roomID = roomID;
     this.assignedNurse = assignedNurse;
     this.requestStatus = requestStatus;
-    this.additionalNotes = additionalNotes;
-    this.laundryTypeSelected = laundryTypeSelected;
-  }
-
-  public LaundryRequest(
-      String requestNum,
-      String roomID,
-      String assignedNurse,
-      String requestStatus,
-      String additionalNotes,
-      String laundryTypeSelected) {
-    init(requestNum, roomID, assignedNurse, requestStatus, additionalNotes, laundryTypeSelected);
+    this.additonalNotes = additonalNotes;
+    this.languageTypeSelected = languageTypeSelected;
   }
 
   @Override
   public String[] toStringArray() {
     return new String[] {
-      requestNum, roomID, assignedNurse, requestStatus, additionalNotes, laundryTypeSelected
+      this.requestNum,
+      this.roomID,
+      this.assignedNurse,
+      this.requestStatus,
+      this.additonalNotes,
+      this.languageTypeSelected
     };
   }
 
   @Override
   public void fromStringArray(String[] args) {
     init(args[0], args[1], args[2], args[3], args[4], args[5]);
+  }
+
+  @Override
+  public String getLocID() {
+    return this.roomID;
   }
 
   public String getRequestNum() {
@@ -86,24 +95,19 @@ public class LaundryRequest implements StringArrayConv, Requestable {
     this.requestStatus = requestStatus;
   }
 
-  public String getAdditionalNotes() {
-    return additionalNotes;
+  public String getAdditonalNotes() {
+    return additonalNotes;
   }
 
-  public void setAdditionalNotes(String additionalNotes) {
-    this.additionalNotes = additionalNotes;
+  public void setAdditonalNotes(String additonalNotes) {
+    this.additonalNotes = additonalNotes;
   }
 
-  public String getLaundryTypeSelected() {
-    return laundryTypeSelected;
+  public String getLanguageTypeSelected() {
+    return languageTypeSelected;
   }
 
-  public void setLaundryTypeSelected(String laundryTypeSelected) {
-    this.laundryTypeSelected = laundryTypeSelected;
-  }
-
-  @Override
-  public String getLocID() {
-    return this.roomID;
+  public void setLanguageTypeSelected(String languageTypeSelected) {
+    this.languageTypeSelected = languageTypeSelected;
   }
 }

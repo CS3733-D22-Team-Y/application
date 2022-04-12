@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="262.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ConfirmCloseController">
+<AnchorPane prefHeight="262.0" prefWidth="532.0" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ConfirmCloseController">
    <children>
       <Rectangle height="262.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="532.0">
          <fill>
@@ -39,7 +39,7 @@
             <Font name="Microsoft Tai Le Bold" size="16.0" />
          </font>
       </JFXButton>
-      <Label layoutX="50.0" layoutY="50.0" text="Are you sure you would like to cancel?" textFill="WHITE">
+      <Label layoutY="17.0" prefHeight="116.0" prefWidth="532.0" text="You are in the middle of filling out a request, are you sure you want to leave this page?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Microsoft Tai Le Bold" size="24.0" />
          </font>

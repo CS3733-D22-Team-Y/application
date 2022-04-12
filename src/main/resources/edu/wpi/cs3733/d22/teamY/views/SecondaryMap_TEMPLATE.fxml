@@ -9,9 +9,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SecondaryMapTEMPLATE">
+<AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="780.0" minWidth="920.0" prefHeight="780.0" prefWidth="920.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SecondaryMapTEMPLATE">
    <children>
-      <Label layoutY="10.0" text="Title of the Page">
+      <Label styleClass="title" text="Title of the Page">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -32,7 +32,7 @@
             <Font name="Arial Rounded MT Bold" size="60.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -55,22 +55,22 @@
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="60.0" layoutY="125.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="410.0" />
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="575.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="410.0" />
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="500.0" layoutX="420.0" layoutY="275.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="500.0" />
-      <Label layoutX="5.0" layoutY="137.0" text="Request:">
+      <Label layoutX="5.0" layoutY="137.0" styleClass="inputLabel" text="Request:">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="5.0" layoutY="212.0" text="Notes:">
+      <Label layoutX="5.0" layoutY="212.0" styleClass="inputLabel" text="Notes:">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="425.0" layoutY="137.0" text="Floor:">
+      <Label layoutX="425.0" layoutY="137.0" styleClass="inputLabel" text="Floor:">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="425.0" layoutY="212.0" text="Room:">
+      <Label layoutX="425.0" layoutY="212.0" styleClass="inputLabel" text="Room:">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
@@ -80,22 +80,22 @@
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label fx:id="requestText" layoutX="125.0" layoutY="137.0" prefHeight="35.0" prefWidth="280.0" text="placeholder text 1">
+      <Label fx:id="requestText" layoutX="125.0" layoutY="137.0" prefHeight="35.0" prefWidth="280.0" styleClass="plainText" text="placeholder text 1">
          <font>
             <Font name="Calibri" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="notesText" alignment="TOP_LEFT" layoutX="5.0" layoutY="250.0" prefHeight="525.0" prefWidth="400.0" text="placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2" wrapText="true">
+      <Label fx:id="notesText" alignment="TOP_LEFT" layoutX="5.0" layoutY="250.0" prefHeight="525.0" prefWidth="400.0" styleClass="plainText" text="placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2placeholder text 2" wrapText="true">
          <font>
             <Font name="Calibri" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="floorText" layoutX="519.0" layoutY="137.0" prefHeight="35.0" prefWidth="280.0" text="placeholder text 3">
+      <Label fx:id="floorText" layoutX="519.0" layoutY="137.0" prefHeight="35.0" prefWidth="280.0" styleClass="plainText" text="placeholder text 3">
          <font>
             <Font name="Calibri" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="roomText" layoutX="519.0" layoutY="212.0" prefHeight="35.0" prefWidth="280.0" text="placeholder text 4">
+      <Label fx:id="roomText" layoutX="519.0" layoutY="212.0" prefHeight="35.0" prefWidth="280.0" styleClass="plainText" text="placeholder text 4">
          <font>
             <Font name="Calibri" size="24.0" />
          </font>

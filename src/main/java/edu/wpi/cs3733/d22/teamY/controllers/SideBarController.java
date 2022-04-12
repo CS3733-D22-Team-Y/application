@@ -1,10 +1,10 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
-import java.awt.*;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -33,6 +33,10 @@ public class SideBarController {
   @FXML private Label servicesLabel;
   @FXML private Label equipmentLabel;
   @FXML private Label tasksLabel;
+  @FXML private Label homeLabel;
+  @FXML private Label inboxLabel;
+  @FXML private Label profileLabel;
+  @FXML private Label logoutLabel;
 
   // Hidden rectangles
   @FXML private Rectangle mapHiddenRect;
@@ -52,13 +56,11 @@ public class SideBarController {
   @FXML private Rectangle inboxButtonHitbox;
   @FXML private Rectangle profileButtonHitbox;
   @FXML private Rectangle logoutButtonHitbox;
-  public Image ll2Image;
-  double screenWidth, screenHeight;
+
   Scene currScene;
 
   @FXML
   void initialize() throws IOException {
-
     SceneUtil.removeOpacity(
         mapHiddenRect,
         servicesHiddenRect,
@@ -68,7 +70,20 @@ public class SideBarController {
         profileHiddenRect,
         inboxHiddenRect,
         logoutHiddenRect);
+    SceneUtil.initializePanes(
+        mainScreenPane,
+        "views/Map.fxml",
+        "views/RequestMenu.fxml",
+        "views/MedEquipTable.fxml",
+        "views/ActServReqTable.fxml",
+        "views/ActiveServiceRequest.fxml",
+        "views/PersonalSettings.fxml");
+    SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
+    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+  }
 
+  public void reloadSidebar() throws IOException {
+    mainScreenPane.getChildren().clear();
     SceneUtil.initializePanes(
         mainScreenPane,
         "views/Map.fxml",
@@ -77,17 +92,14 @@ public class SideBarController {
         "views/ActiveServiceRequest.fxml",
         "views/ActiveServiceRequest.fxml",
         "views/PersonalSettings.fxml");
-
-    // Set the background to transparent
     SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-
-    screenWidth = mainScreenPane.getWidth();
-    screenHeight = mainScreenPane.getHeight();
+    mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).setVisible(true);
   }
 
   @FXML
-  void initializeScale() {
+  void initializeScale() throws IOException {
+
     currScene = bottomSidebarText.getScene();
     // Bottom sidebar text
     bottomSidebarText.layoutYProperty().bind(currScene.heightProperty().subtract(200));
@@ -118,6 +130,11 @@ public class SideBarController {
     sidebarBindToLabel(servicesHiddenRect, servicesButtonHitbox, servicesLabel);
     sidebarBindToLabel(equipmentHiddenRect, equipmentButtonHitbox, equipmentLabel);
     sidebarBindToLabel(tasksHiddenRect, tasksButtonHitbox, tasksLabel);
+
+    sidebarBindToLabel(homeHiddenRect, homeButtonHitbox, homeLabel);
+    sidebarBindToLabel(inboxHiddenRect, inboxButtonHitbox, inboxLabel);
+    sidebarBindToLabel(profileHiddenRect, profileButtonHitbox, profileLabel);
+    sidebarBindToLabel(logoutHiddenRect, logoutButtonHitbox, logoutLabel);
   }
 
   private void resizeMainScreen() {
@@ -328,5 +345,96 @@ public class SideBarController {
         profileHiddenRect,
         inboxHiddenRect,
         logoutHiddenRect);
+  }
+
+  @FXML private TextField searchBar;
+  /**
+   * Performs a search given key words these words are processed through a series of RegEx's and
+   * filters to fit a standardized form these strings are then appended with other key words in
+   * order to switch to that respective page TODO: add error handling, levenshtein distance, error
+   * page, history page?
+   */
+  @FXML
+  public void doSearch() throws IOException {
+    String entry = searchBar.getText();
+
+    // Valid pages: !!! NEEDS TO UPDATE EVERYTIME NEW PAGE IS ADDED !!!
+    String[] pages = {
+      "floral",
+      "lab",
+      "laundry",
+      "meal",
+      "medical",
+      "security",
+      "map",
+      "settings",
+      "menu",
+      "request",
+      "profile",
+      "translator",
+      "tasks"
+    };
+
+    // The following lines of code filters and processes search request
+    entry = entry.toLowerCase();
+    entry.replaceAll(" ", "");
+    entry.replaceAll("active", "table");
+    entry.replaceAll("current", "table");
+    entry.replaceAll("equipment", "medical");
+
+    // Will see if this request exists
+    String isValid = getPage(entry, pages);
+    if (isValid == "ERROR") {
+      // TODO: Levenshtein distance computations
+    } else {
+      entry = isValid;
+    }
+  }
+
+  /** Helper method for doSearch Will determine if a valid page exists */
+  public String getPage(String entry, String[] pages) throws IOException {
+    // for (int i = 0; i < pages.length; i++) {
+    // if (entry.contains(pages[i])) {
+    // i = pages.length;
+    if (entry.contains("medical")) {
+      loadViewServiceRequests();
+      SceneUtil.requests.loadMedEquipReq();
+    } else if (entry.contains("laundry")) {
+      loadViewServiceRequests();
+      SceneUtil.requests.loadLaundryReq();
+    } else if (entry.contains("meal")) {
+      loadViewServiceRequests();
+      SceneUtil.requests.loadMealReq();
+    } else if (entry.contains("security")) {
+      loadViewServiceRequests();
+      SceneUtil.requests.loadSecurityReq();
+    } else if (entry.contains("floral")) {
+      loadViewServiceRequests();
+      SceneUtil.requests.loadFloralReq();
+    } else if (entry.contains("translator")) {
+      loadViewServiceRequests();
+      SceneUtil.requests.loadTranslatorReq();
+    } else if (entry.contains("settings") || entry.contains("profile")) {
+      loadProfile();
+    } else if (entry.contains("security")) {
+      loadViewServiceRequests();
+      SceneUtil.requests.loadSecurityReq();
+    } else if (entry.contains("map")) {
+      loadMap();
+    } else if (entry.contains("request")) {
+      loadViewServiceRequests();
+      SceneUtil.requests.showMainPane();
+    } else if (entry.contains("equipment")) {
+      loadEquipment();
+    } else if (entry.contains("tasks")) {
+      loadTasks();
+    }
+    // } else {
+    //  entry = entry.substring(0).toUpperCase();
+    //  entry = entry + "Request.fxml";
+    // }
+    // entry = "views/" + entry;
+    // }
+    return "";
   }
 }

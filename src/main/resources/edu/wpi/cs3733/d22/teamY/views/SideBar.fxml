@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -82,7 +83,7 @@
             <Image url="@images/sidebarLogo.png" />
          </image>
       </ImageView>
-      <TextField layoutX="30.0" layoutY="140.0" prefWidth="210.0" promptText="Search...">
+      <TextField fx:id="searchBar" layoutX="30.0" layoutY="140.0" onAction="#doSearch" prefWidth="210.0" promptText="Search...">
          <font>
             <Font size="16.0" />
          </font>
@@ -97,22 +98,22 @@
       </VBox>
       <VBox layoutX="71.0" layoutY="200.0" spacing="20.0">
          <children>
-            <Label fx:id="mapLabel" text="Map" textFill="WHITE">
+            <Label fx:id="mapLabel" styleClass="sidebarTopOptions" text="Map" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="32.0" />
                </font>
             </Label>
-            <Label fx:id="servicesLabel" text="Services" textFill="WHITE">
+            <Label fx:id="servicesLabel" styleClass="sidebarTopOptions" text="Services" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="32.0" />
                </font>
             </Label>
-            <Label fx:id="equipmentLabel" graphicTextGap="0.0" text="Equipment" textFill="WHITE">
+            <Label fx:id="equipmentLabel" graphicTextGap="0.0" styleClass="sidebarTopOptions" text="Equipment" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="32.0" />
                </font>
             </Label>
-            <Label fx:id="tasksLabel" graphicTextGap="0.0" text="Tasks" textFill="WHITE">
+            <Label fx:id="tasksLabel" graphicTextGap="0.0" styleClass="sidebarTopOptions" text="Tasks" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="32.0" />
                </font>
@@ -129,22 +130,22 @@
       </VBox>
       <VBox fx:id="bottomSidebarText" layoutX="71.0" layoutY="600.0">
          <children>
-            <Label graphicTextGap="0.0" text="Home" textFill="WHITE">
+            <Label fx:id="homeLabel" graphicTextGap="0.0" styleClass="sidebarBottomOptions" text="Home" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
             </Label>
-            <Label graphicTextGap="0.0" text="Inbox" textFill="WHITE">
+            <Label fx:id="inboxLabel" graphicTextGap="0.0" styleClass="sidebarBottomOptions" text="Inbox" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
             </Label>
-            <Label graphicTextGap="0.0" text="My Profile" textFill="WHITE">
+            <Label fx:id="profileLabel" graphicTextGap="0.0" styleClass="sidebarBottomOptions" text="My Profile" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
             </Label>
-            <Label graphicTextGap="0.0" text="Logout" textFill="WHITE">
+            <Label fx:id="logoutLabel" graphicTextGap="0.0" styleClass="sidebarBottomOptions" text="Logout" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
@@ -168,4 +169,8 @@
          </children>
       </VBox>
    </children>
+   <stylesheets>
+      <URL value="@css/Fonts.csss" />
+      <URL value="@css/Fonts.css" />
+   </stylesheets>
 </AnchorPane>
