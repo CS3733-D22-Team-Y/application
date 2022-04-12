@@ -37,8 +37,8 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-        <Circle centerX="395.0" centerY="120.0" fill="#20758b" layoutX="196.0" layoutY="133.0" radius="100.0" stroke="#20758b" strokeType="INSIDE" />
-        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="491.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" />
+        <Circle centerX="395.0" centerY="120.0" fill="#20758b" layoutX="200.0" layoutY="127.0" radius="100.0" stroke="#20758b" strokeType="INSIDE" />
+        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="495.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" />
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#c2c2c2" height="400.0" layoutX="10.0" layoutY="390.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1180.0" />
       <Label layoutX="96.0" layoutY="509.0" text="Legal Name:">
          <font>
@@ -130,14 +130,19 @@
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label fx:id="userExistsDisplay" layoutX="105.0" layoutY="220.0" text="Error: User Already Exists" visible="false">
+      <Label fx:id="userExistsDisplay" layoutX="97.0" layoutY="251.0" text="Error: Username Already Exists" textFill="RED" visible="false">
          <font>
-            <Font name="Calibri Bold" size="30.0" />
+            <Font size="26.0" />
          </font>
       </Label>
-      <Label fx:id="invalidInputsDisplay" layoutX="718.0" layoutY="218.0" text="Error:  Missing required input field(s)" visible="false">
+      <Label fx:id="invalidInputsDisplay" layoutX="58.0" layoutY="211.0" text="Error:  Missing required input field(s)" textFill="RED" visible="false">
          <font>
-            <Font name="Calibri Bold" size="30.0" />
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="addUserSuccessDisplay" layoutX="751.0" layoutY="228.0" text="User Added Successfully!" textFill="#34b900" visible="false">
+         <font>
+            <Font size="26.0" />
          </font>
       </Label>
     </children>

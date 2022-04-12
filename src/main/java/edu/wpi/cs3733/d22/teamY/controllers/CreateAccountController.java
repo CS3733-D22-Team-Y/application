@@ -8,8 +8,10 @@ import edu.wpi.cs3733.d22.teamY.model.Employee;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.util.Duration;
 
 public class CreateAccountController {
 
@@ -26,10 +28,12 @@ public class CreateAccountController {
   @FXML MFXButton backButton;
   @FXML Label userExistsDisplay;
   @FXML Label invalidInputsDisplay;
+  @FXML Label addUserSuccessDisplay;
 
   public void initialize() {
     invalidInputsDisplay.setVisible(false);
     userExistsDisplay.setVisible(false);
+    addUserSuccessDisplay.setVisible(false);
   }
 
   @FXML
@@ -63,6 +67,13 @@ public class CreateAccountController {
       createdEmployee.addAuthMode(AuthTypes.NONE, args);
 
       DBManager.save(createdEmployee);
+
+      addUserSuccessDisplay.setVisible(true);
+      FadeTransition ft = new FadeTransition(Duration.millis(1000), addUserSuccessDisplay);
+      ft.setFromValue(0.0);
+      ft.setToValue(1.0);
+      ft.play();
+
       System.out.println("Saved employee");
     } else {
       System.out.println("Invalid Inputs");
@@ -95,6 +106,10 @@ public class CreateAccountController {
             || phone.getText().isEmpty());
     if (!state) {
       invalidInputsDisplay.setVisible(true);
+      FadeTransition ft = new FadeTransition(Duration.millis(1000), invalidInputsDisplay);
+      ft.setFromValue(0.0);
+      ft.setToValue(1.0);
+      ft.play();
     }
 
     return state;
@@ -104,6 +119,10 @@ public class CreateAccountController {
     boolean state = DBUtils.doesUserExist(hashedUser);
     if (!state) {
       userExistsDisplay.setVisible(true);
+      FadeTransition ft = new FadeTransition(Duration.millis(1000), userExistsDisplay);
+      ft.setFromValue(0.0);
+      ft.setToValue(1.0);
+      ft.play();
     }
     return state;
   }
