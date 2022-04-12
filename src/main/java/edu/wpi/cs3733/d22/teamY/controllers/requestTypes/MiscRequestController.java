@@ -65,7 +65,7 @@ public class MiscRequestController {
         || input_RequestName.getText().equals("")) {
       errorLabel.setText("Missing Required Fields.");
       SceneLoading.loadPopup(
-              "views/popups/ReqSubmitted.fxml", "views/requestTypes/MiscRequest.fxml");
+          "views/popups/ReqSubmitted.fxml", "views/requestTypes/MiscRequest.fxml");
 
     } else {
       submitRequest(

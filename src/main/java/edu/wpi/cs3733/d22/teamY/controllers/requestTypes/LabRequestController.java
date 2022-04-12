@@ -94,7 +94,7 @@ public class LabRequestController {
           getResultType());
       errorLabel.setText("");
       SceneLoading.loadPopup(
-              "views/popups/ReqSubmitted.fxml", "views/requestTypes/LabRequest.fxml");
+          "views/popups/ReqSubmitted.fxml", "views/requestTypes/LabRequest.fxml");
     } else {
       errorLabel.setText("Missing Required Fields.");
     }

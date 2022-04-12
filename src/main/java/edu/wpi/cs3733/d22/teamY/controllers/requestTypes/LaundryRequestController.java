@@ -91,7 +91,7 @@ public class LaundryRequestController {
           getResultType());
       errorLabel.setText("");
       SceneLoading.loadPopup(
-              "views/popups/ReqSubmitted.fxml", "views/requestTypes/LaundryRequest.fxml");
+          "views/popups/ReqSubmitted.fxml", "views/requestTypes/LaundryRequest.fxml");
     } else {
       errorLabel.setText("Missing Required Fields.");
     }

@@ -139,7 +139,7 @@ public class MedicalEquipmentRequestController {
         failed = true;
       }
       SceneLoading.loadPopup(
-              "views/popups/ReqSubmitted.fxml", "views/requestTypes/MedicalEquipmentRequest.fxml");
+          "views/popups/ReqSubmitted.fxml", "views/requestTypes/MedicalEquipmentRequest.fxml");
     } else {
       errorLabel.setText("Please select an equipment option.");
       failed = true;
