@@ -173,7 +173,7 @@
                 <Font name="Calibri" size="15.0" />
             </font>
         </JFXTextArea>
-        <TextField fx:id="roomsHiddenField" layoutX="167.0" layoutY="306.0" prefHeight="26.0" prefWidth="163.0" style="-fx-background-color: #00000000;" />
-      <JFXComboBox fx:id="roomsComboBox" layoutX="160.0" layoutY="300.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" style="-fx-border-radius: 15px; -fx-background-color: white;" styleClass="requestInput" unFocusColor="#ffffff00" />
+        <TextField fx:id="roomsHiddenField" layoutX="160.0" layoutY="300.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="requestInput" />
+      <JFXComboBox fx:id="roomsComboBox" layoutX="160.0" layoutY="300.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput" unFocusColor="#ffffff00" />
     </children>
 </AnchorPane>
