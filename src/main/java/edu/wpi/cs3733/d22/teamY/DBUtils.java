@@ -218,13 +218,11 @@ public class DBUtils {
       return "Error: New password cannot be the same as old password.";
     }
     if (!Employee.isValidNewPassword(newPassword)) {
-      System.out.println("constraints not met");
       return "Error: New password must be at least 5 characters long and contain at least one number, one letter, and one special character.";
     }
 
     employee.setPassword(newPassword.hashCode() + "");
     DBManager.update(employee);
-    System.out.println("success");
     return "Successfully changed password.";
   }
 
