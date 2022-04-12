@@ -20,9 +20,9 @@ public class ActiveServiceRequestController {
 
   @FXML private VBox requestBox;
   @FXML private MFXScrollPane scrollBox;
-  @FXML private JFXTextArea extraInfoBox;
+  @FXML private JFXTextArea extraInfoText;
 
-  ArrayList<ReqControllerPanePair> rqPairs;
+  private ArrayList<ReqControllerPanePair> rqPairs;
 
   public void initialize() throws IOException {
     // requestBox.setPrefHeight(1000);
@@ -47,7 +47,7 @@ public class ActiveServiceRequestController {
   }
 
   public void fillInfoField(String info) {
-    extraInfoBox.setText(info);
+    extraInfoText.setText(info);
   }
 
   private void addRequest(Requestable req) throws IOException {

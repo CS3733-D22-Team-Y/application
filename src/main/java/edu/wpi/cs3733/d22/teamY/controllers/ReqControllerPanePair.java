@@ -6,7 +6,7 @@ public class ReqControllerPanePair {
   SingularServiceRequestController controller;
   Pane pane;
 
-  ReqControllerPanePair(SingularServiceRequestController controller, Pane pane) {
+  public ReqControllerPanePair(SingularServiceRequestController controller, Pane pane) {
     this.controller = controller;
     this.pane = pane;
   }
