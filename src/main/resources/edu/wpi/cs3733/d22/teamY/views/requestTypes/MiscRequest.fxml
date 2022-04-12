@@ -11,9 +11,8 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MiscRequestController">
     <children>
-        <Rectangle fx:id="mainPane" arcHeight="20.0" arcWidth="20.0" fill="#ffffff80" height="780.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="920.0" />
         <Label layoutY="10.0" text="Miscellaneous Request">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
@@ -69,31 +68,31 @@
             </font>
         </Label>
         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="440.0" layoutX="14.0" layoutY="263.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="870.0" />
-        <JFXTextArea fx:id="notesText" focusColor="#ffffff00" layoutX="19.0" layoutY="268.0" prefHeight="430.0" prefWidth="860.0" promptText="Additional Text..." unFocusColor="#ffffff00">
+        <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="19.0" layoutY="268.0" prefHeight="430.0" prefWidth="860.0" promptText="Additional Text..." unFocusColor="#ffffff00">
             <font>
                 <Font name="Calibri" size="20.0" />
             </font></JFXTextArea>
-        <MFXTextField fx:id="patientIDText" floatMode="DISABLED" layoutX="240.0" layoutY="146.0" pickOnBounds="false" prefHeight="42.0" prefWidth="200.0">
+        <MFXTextField fx:id="input_PatientID" floatMode="DISABLED" layoutX="240.0" layoutY="146.0" pickOnBounds="false" prefHeight="42.0" prefWidth="200.0">
             <font>
                 <Font name="Calibri" size="20.0" />
             </font>
         </MFXTextField>
-        <MFXTextField fx:id="nurseText" floatMode="DISABLED" layoutX="240.0" layoutY="196.0" pickOnBounds="false" prefHeight="42.0" prefWidth="200.0">
+        <MFXTextField fx:id="input_AssignedNurse" floatMode="DISABLED" layoutX="240.0" layoutY="196.0" pickOnBounds="false" prefHeight="42.0" prefWidth="200.0">
             <font>
                 <Font name="Calibri" size="20.0" />
             </font>
         </MFXTextField>
-        <MFXTextField fx:id="roomText" floatMode="DISABLED" layoutX="685.0" layoutY="146.0" pickOnBounds="false" prefHeight="42.0" prefWidth="200.0">
+        <MFXTextField fx:id="input_RoomID" floatMode="DISABLED" layoutX="685.0" layoutY="146.0" pickOnBounds="false" prefHeight="42.0" prefWidth="200.0">
             <font>
                 <Font name="Calibri" size="20.0" />
             </font>
         </MFXTextField>
-        <MFXButton computeRadiusMultiplier="false" layoutX="700.0" layoutY="730.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" text="Reset" textFill="WHITE">
+        <MFXButton computeRadiusMultiplier="false" layoutX="700.0" layoutY="730.0" onAction="#resetAllFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" text="Reset" textFill="WHITE">
             <font>
                 <Font name="Calibri Bold" size="20.0" />
             </font>
         </MFXButton>
-        <MFXButton computeRadiusMultiplier="false" layoutX="810.0" layoutY="730.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" text="Submit" textFill="WHITE">
+        <MFXButton computeRadiusMultiplier="false" layoutX="810.0" layoutY="730.0" onAction="#submitButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" text="Submit" textFill="WHITE">
             <font>
                 <Font name="Calibri Bold" size="20.0" />
             </font>
@@ -103,7 +102,7 @@
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <MFXTextField fx:id="requestName" floatMode="DISABLED" layoutX="685.0" layoutY="196.0" pickOnBounds="false" prefHeight="42.0" prefWidth="200.0">
+      <MFXTextField fx:id="input_RequestName" floatMode="DISABLED" layoutX="685.0" layoutY="196.0" pickOnBounds="false" prefHeight="42.0" prefWidth="200.0">
          <font>
             <Font name="Calibri" size="20.0" />
          </font>
