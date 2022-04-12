@@ -136,7 +136,7 @@ public class MealRequestController {
           input_AdditionalNotes.getText());
       errorLabel.setText("");
       SceneLoading.loadPopup(
-              "views/popups/ReqSubmitted.fxml", "views/requestTypes/MealRequest.fxml");
+          "views/popups/ReqSubmitted.fxml", "views/requestTypes/MealRequest.fxml");
     } else {
       if (allFields || sideSelected || mealSelected) {
         errorLabel.setText("Missing Required Fields");

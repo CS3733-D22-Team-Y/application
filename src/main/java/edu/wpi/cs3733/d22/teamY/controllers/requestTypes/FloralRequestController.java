@@ -92,7 +92,8 @@ public class FloralRequestController {
           input_AdditionalNotes.getText(),
           getBouquetType());
       errorLabel.setText("");
-      SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/requestTypes/FloralRequest.fxml");
+      SceneLoading.loadPopup(
+          "views/popups/ReqSubmitted.fxml", "views/requestTypes/FloralRequest.fxml");
     } else {
       errorLabel.setText("Missing Required Fields.");
     }
