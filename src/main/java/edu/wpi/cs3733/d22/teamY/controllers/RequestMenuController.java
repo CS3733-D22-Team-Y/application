@@ -37,6 +37,7 @@ public class RequestMenuController {
         "views/requestTypes/MealRequest.fxml");
     SceneUtil.hideAllBackgrounds(bgPane.getChildren());
     SceneUtil.hideAllPanes(bgPane.getChildren());
+    SceneUtil.requests = this;
   }
 
   private void loadRequestScreen(int index) {
@@ -44,7 +45,7 @@ public class RequestMenuController {
     bgPane.getChildren().get(index).setVisible(true);
   }
 
-  private void showMainPane() {
+  void showMainPane() {
     loadRequestScreen(MAIN_PAGE_INDEX);
   }
 
