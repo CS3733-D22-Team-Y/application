@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.MealRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
@@ -109,7 +108,7 @@ public class MealRequestController {
 
   // Called when the submit button is pressed.
   @FXML
-  void submitButton() throws IOException {
+  void submitButton() {
     errorLabel.setText("Missing Required Fields");
     Boolean mealSelected =
         RequestControllerUtil.isRadioButtonSelected(
@@ -135,8 +134,6 @@ public class MealRequestController {
           dietaryRestrictionsSelectionBox.getValue(),
           input_AdditionalNotes.getText());
       errorLabel.setText("");
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/MealRequest.fxml");
     } else {
       if (allFields || sideSelected || mealSelected) {
         errorLabel.setText("Missing Required Fields");

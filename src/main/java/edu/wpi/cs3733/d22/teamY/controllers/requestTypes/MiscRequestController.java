@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.MiscRequest;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
@@ -64,9 +63,6 @@ public class MiscRequestController {
         || input_AssignedNurse.getText().equals("")
         || input_RequestName.getText().equals("")) {
       errorLabel.setText("Missing Required Fields.");
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/MiscRequest.fxml");
-
     } else {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),

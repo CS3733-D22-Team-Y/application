@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.FloralRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -92,8 +91,6 @@ public class FloralRequestController {
           input_AdditionalNotes.getText(),
           getBouquetType());
       errorLabel.setText("");
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/FloralRequest.fxml");
     } else {
       errorLabel.setText("Missing Required Fields.");
     }

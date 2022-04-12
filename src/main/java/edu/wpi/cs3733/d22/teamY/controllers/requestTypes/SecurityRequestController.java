@@ -100,7 +100,7 @@ public class SecurityRequestController {
 
   // Called when the submit button is pressed.
   @FXML
-  void submitButton() throws IOException {
+  void submitButton() {
     Boolean typeSelected =
         RequestControllerUtil.isRadioButtonSelected(
             disruptionRadioButton, theftRadioButton, unwantedGuestRadioButton);
@@ -113,6 +113,7 @@ public class SecurityRequestController {
         !Objects.equals(roomsComboBox.getValue(), "")
             && !Objects.equals(input_AssignedNurse.getText(), "");
 
+    // Checks if a bouquet choice has been made
     if (typeSelected && prioritySelected && allFields) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
@@ -122,8 +123,6 @@ public class SecurityRequestController {
           getRequestType(),
           getRequestPriority());
       errorLabel.setText("");
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/SecurityRequest.fxml");
     } else {
       // Print error messages
       if (typeSelected || prioritySelected || allFields || !allFields) {

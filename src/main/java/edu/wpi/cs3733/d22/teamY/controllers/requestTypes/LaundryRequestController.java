@@ -77,7 +77,7 @@ public class LaundryRequestController {
 
   // Called when the submit button is pressed.
   @FXML
-  void submitButton() throws IOException {
+  void submitButton() {
     // Checks if a lab result choice has been made.
     if (RequestControllerUtil.isRadioButtonSelected(
             hazardousRadioButton, linensRadioButton, scrubsRadioButton)
@@ -90,8 +90,6 @@ public class LaundryRequestController {
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/LaundryRequest.fxml");
     } else {
       errorLabel.setText("Missing Required Fields.");
     }

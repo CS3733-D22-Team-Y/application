@@ -80,7 +80,7 @@ public class LabRequestController {
 
   // Called when the submit button is pressed.
   @FXML
-  void submitButton() throws IOException {
+  void submitButton() {
     // Checks if a lab result choice has been made.
     if (RequestControllerUtil.isRadioButtonSelected(
             bloodRadioButton, urineRadioButton, xrayRadioButton, catScanRadioButton, mriRadioButton)
@@ -93,8 +93,6 @@ public class LabRequestController {
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/LabRequest.fxml");
     } else {
       errorLabel.setText("Missing Required Fields.");
     }

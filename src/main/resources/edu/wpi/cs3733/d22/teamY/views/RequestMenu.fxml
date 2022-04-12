@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXToggleButton?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import java.net.URL?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -14,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="bgPane" maxHeight="780.0" maxWidth="920.0" minHeight="780.0" minWidth="920.0" prefHeight="780.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.RequestMenuController">
+<AnchorPane fx:id="bgPane" maxHeight="780.0" maxWidth="920.0" minHeight="780.0" minWidth="920.0" prefHeight="780.0" prefWidth="920.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.RequestMenuController">
    <AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
       <children>
          <Label styleClass="title" text="Request Forms">
@@ -104,7 +103,7 @@
                <Image url="@images/icons/miscellaneousRequestFinal.png" />
             </image>
          </ImageView>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="150.0" onAction="#loadMedEquipReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Medical&#10;Equipment" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="150.0" onAction="#loadMedEquipReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Medical&#10;Equipment" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="29.0" />
             </font>
@@ -112,7 +111,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="150.0" onAction="#loadSecurityReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Security&#10;Services" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="150.0" onAction="#loadSecurityReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Security&#10;Services" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -120,7 +119,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="290.0" onAction="#loadLaundryReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Laundry&#10;Services" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="290.0" onAction="#loadLaundryReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Laundry&#10;Services" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -128,7 +127,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="290.0" onAction="#loadMealReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Meal&#10;Delivery" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="290.0" onAction="#loadMealReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Meal&#10;Delivery" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -136,7 +135,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="430.0" onAction="#loadLabReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Lab Work" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="430.0" onAction="#loadLabReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Lab Work" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -144,7 +143,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="430.0" onAction="#loadFloralReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Bouquet&#10;Delivery" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="430.0" onAction="#loadFloralReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Bouquet&#10;Delivery" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -152,7 +151,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="570.0" onAction="#loadTranslatorReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Translator" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="570.0" onAction="#loadTranslatorReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Translator" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -160,7 +159,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="570.0" onAction="#loadOtherReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Other" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="570.0" onAction="#loadOtherReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" text="Other" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -183,8 +182,4 @@
          <Label fx:id="creator8" layoutX="520.0" layoutY="431.0" text="Jake Brady" visible="false" />
       </children>
    </AnchorPane>
-   <stylesheets>
-      <URL value="@css/Fonts.css" />
-      <URL value="@css/Fonts.css" />
-   </stylesheets>
 </AnchorPane>

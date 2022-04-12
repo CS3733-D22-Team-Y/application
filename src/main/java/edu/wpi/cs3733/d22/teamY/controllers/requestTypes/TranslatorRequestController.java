@@ -4,11 +4,9 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.TranslatorRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
-import java.io.IOException;
 import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -83,7 +81,7 @@ public class TranslatorRequestController {
 
   // Called when the submit button is pressed.
   @FXML
-  void submitButton() throws IOException {
+  void submitButton() {
     // Checks if a bouquet choice has been made
     if (RequestControllerUtil.isRadioButtonSelected(
             spanishRadioButton,
@@ -100,8 +98,6 @@ public class TranslatorRequestController {
           input_AdditionalNotes.getText(),
           getLanguageType());
       errorLabel.setText("");
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/TranslatorRequest.fxml");
     } else {
       errorLabel.setText("Missing Required Fields.");
     }

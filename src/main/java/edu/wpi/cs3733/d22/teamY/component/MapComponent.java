@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.component;
 
 import java.util.List;
+import java.util.function.Supplier;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -8,14 +9,13 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.layout.*;
 
 public class MapComponent {
-  public double universalScale = 0.3;
-
   public static class MapImage {
-    Image image;
+    Supplier<Image> imageSupplier;
     double initialX, initialY, initialScale;
 
-    public MapImage(Image image, double initialX, double initialY, double initialScale) {
-      this.image = image;
+    public MapImage(
+        Supplier<Image> imageSupplier, double initialX, double initialY, double initialScale) {
+      this.imageSupplier = imageSupplier;
       this.initialX = initialX;
       this.initialY = initialY;
       this.initialScale = initialScale;
@@ -26,7 +26,7 @@ public class MapComponent {
   private final Pane rootPane = new Pane();
 
   // Map pane can be translated and scaled within the root pane
-  public final Pane mapPane = new Pane();
+  private final Pane mapPane = new Pane();
 
   // Location in pane where a drag was started
   private double dragX = 0;
@@ -40,7 +40,7 @@ public class MapComponent {
         e -> {
           System.out.println("PRESSED");
           // If right button clicked, handle start of drag
-          if (e.getButton() == MouseButton.PRIMARY) {
+          if (e.getButton() == MouseButton.SECONDARY) {
             dragX = e.getX();
             dragY = e.getY();
             e.consume();
@@ -51,7 +51,7 @@ public class MapComponent {
     rootPane.setOnMouseDragged(
         e -> {
           // If right button is down, handle updating drag
-          if (e.isPrimaryButtonDown()) {
+          if (e.isSecondaryButtonDown()) {
             double dx = dragX - e.getX();
             double dy = dragY - e.getY();
             dragX = e.getX();
@@ -59,15 +59,8 @@ public class MapComponent {
 
             // Translate all children of the root node
             for (Node n : rootPane.getChildren()) {
-              if ((7484 * universalScale - 723) > n.getTranslateX() - dx
-                  && n.getTranslateX() - dx > 0) {
-                n.setTranslateX(n.getTranslateX() - dx);
-              }
-              System.out.println("TRANSLATE Y: " + n.getTranslateY());
-              if ((3987 * universalScale - 271) > n.getTranslateY() - dy
-                  && n.getTranslateY() - dy > 0) {
-                n.setTranslateY(n.getTranslateY() - dy);
-              }
+              n.setTranslateX(n.getTranslateX() - dx);
+              n.setTranslateY(n.getTranslateY() - dy);
             }
 
             e.consume();
@@ -81,9 +74,10 @@ public class MapComponent {
   private void handleZoom(double delta, double pivotX, double pivotY) {
     double oldScale = mapPane.getScaleX();
     double scale = oldScale * delta;
-    if (scale < 0.1) scale = 0.1;
-    if (scale > 1) scale = 1;
-    System.out.println("ZOOM: " + scale);
+    if (scale < 0.05) scale = 0.05;
+    if (scale > 50) scale = 50;
+    mapPane.setScaleX(scale);
+    mapPane.setScaleY(scale);
 
     double f = (scale / oldScale) - 1;
 
@@ -92,16 +86,9 @@ public class MapComponent {
       Bounds bounds = n.localToScene(n.getBoundsInLocal());
       double dx = (pivotX - (bounds.getWidth() / 2 + bounds.getMinX()));
       double dy = (pivotY - (bounds.getHeight() / 2 + bounds.getMinY()));
-      if (n.getTranslateX() - f * dx > 0
-          && n.getTranslateX() - f * dx > 0
-          && (7484 * scale - 723) > n.getTranslateX() - f * dx
-          && (3987 * scale - 271) > n.getTranslateY() - f * dy) {
-        n.setTranslateX(n.getTranslateX() - f * dx);
-        n.setTranslateY(n.getTranslateY() - f * dy);
-        mapPane.setScaleX(scale);
-        mapPane.setScaleY(scale);
-        universalScale = scale;
-      }
+
+      n.setTranslateX(n.getTranslateX() - f * dx);
+      n.setTranslateY(n.getTranslateY() - f * dy);
     }
   }
 
@@ -128,7 +115,7 @@ public class MapComponent {
     // Remove all elements from the map pane (attached elements)
     mapPane.getChildren().clear();
 
-    Image i = image.image;
+    Image i = image.imageSupplier.get();
 
     // Update background image
     mapPane.setBackground(
@@ -160,16 +147,5 @@ public class MapComponent {
     // Add all children
     rootPane.getChildren().addAll(elements);
     mapPane.getChildren().addAll(attachedElements);
-
-    for (Node n : rootPane.getChildren()) {
-      n.setTranslateX(n.getTranslateX() + 570);
-      n.setTranslateY(n.getTranslateY() + 700);
-    }
-    mapPane.setScaleX(0.3);
-    mapPane.setScaleY(0.3);
-  }
-
-  public Pane getMapPane() {
-    return mapPane;
   }
 }
