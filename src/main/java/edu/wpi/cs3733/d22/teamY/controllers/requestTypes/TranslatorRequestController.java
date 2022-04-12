@@ -1,5 +1,9 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
+import edu.wpi.cs3733.d22.teamY.DBManager;
+import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.model.TranslatorRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
@@ -48,18 +52,18 @@ public class TranslatorRequestController {
       String additionalNotes,
       String languageTypeSelected) {
     // Get request Num
-    // String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.TRANSLATOR_REQUEST));
-    /*
+    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.TRANSLATOR_REQUEST));
+
     DBManager.save(
-            new TranslatorRequest(
-                    nextRequest,
-                    roomID,
-                    assignedNurse,
-                    requestStatus,
-                    additionalNotes,
-                    bouquetTypeSelected));
-     */
-    // System.out.println("Saved TranslatorRequest");
+        new TranslatorRequest(
+            nextRequest,
+            roomID,
+            assignedNurse,
+            requestStatus,
+            additionalNotes,
+            languageTypeSelected));
+
+    System.out.println("Saved TranslatorRequest");
   }
 
   // Called when the submit button is pressed.
