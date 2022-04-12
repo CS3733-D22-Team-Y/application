@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
-
 
 <AnchorPane fx:id="serviceRequestDooDad" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SingularServiceRequestController">
    <children>
@@ -14,5 +14,6 @@
             <Rectangle fill="DODGERBLUE" height="100.0" layoutX="25.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="33.0" />
          </children>
       </Group>
+      <MFXButton layoutY="10.0" onAction="#displayDetailedInfo" prefHeight="100.0" prefWidth="400.0" style="-fx-blend-mode: SCREEN; -fx-background-color: #000000;" text=" " />
    </children>
 </AnchorPane>

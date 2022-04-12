@@ -101,7 +101,7 @@ public class MedicalEquipmentRequestController {
     DBUtils.updateCleanStatus(equipmentTypeSelected, roomID);
     System.out.println("Saved MedEquipRequest");
     updateAvailableEquip();
-    SceneUtil.sidebar.mainPage();
+    SceneUtil.welcomePage.mainPage();
   }
 
   // Called when the submit button is pressed.

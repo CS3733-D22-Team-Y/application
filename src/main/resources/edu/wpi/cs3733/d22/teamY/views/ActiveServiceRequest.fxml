@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -35,7 +37,15 @@
             <Font name="Arial Rounded MT Bold" size="60.0" />
          </font>
       </Label>
-        <Pane fx:id="test" layoutX="531.0" layoutY="150.0" prefHeight="535.0" prefWidth="294.0" style="-fx-background-color: white; -fx-background-radius: 15;" />
+        <Pane fx:id="test" layoutX="438.0" layoutY="98.0" prefHeight="667.0" prefWidth="479.0" style="-fx-background-color: #93cddc; -fx-background-radius: 15;">
+         <children>
+            <MFXTextField fx:id="bruh" editable="false" floatMode="BORDER" layoutX="11.0" layoutY="11.0" prefHeight="644.0" prefWidth="458.0" text="Additional information will appear here.">
+               <font>
+                  <Font name="Calibri" size="22.0" />
+               </font>
+            </MFXTextField>
+            <JFXTextArea fx:id="extraInfoBox" layoutX="-94.0" layoutY="125.0" text="nkhj vhkgvjl;bu;ilctiyf;gkultuctfyigubiyvictuoyrtuvlghk" />
+         </children></Pane>
       <Accordion layoutX="72.0" layoutY="400.0" />
       <MFXScrollPane fx:id="scrollBox" layoutX="14.0" layoutY="85.0" prefHeight="689.0" prefWidth="415.0">
          <content>

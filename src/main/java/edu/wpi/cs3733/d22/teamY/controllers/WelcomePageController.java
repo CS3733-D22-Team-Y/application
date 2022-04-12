@@ -1,16 +1,12 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
-import static org.apache.commons.lang3.RandomStringUtils.*;
-
 import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.Auth;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
-import java.io.*;
 import java.io.IOException;
-import java.net.*;
 import java.util.Arrays;
 import java.util.Random;
 import javafx.animation.FadeTransition;
@@ -65,7 +61,7 @@ public class WelcomePageController {
 
   @FXML
   public void mainPage() throws IOException {
-    SceneUtil.sidebar = this;
+    SceneUtil.welcomePage = this;
     FXMLLoader root = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
     App.getInstance().setScene(new Scene(root.load()));
     SideBarController controller = root.getController();

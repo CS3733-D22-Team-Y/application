@@ -12,6 +12,11 @@ public class SingularServiceRequestController {
 
   public void populateFromRequestable(Requestable req) {}
 
+  @FXML
+  void displayDetailedInfo() {
+    SceneUtil.serviceRequests.fillInfoField("Tada!!!!!!!\n\nYou clicked a button. Big whoop");
+  }
+
   public void setColor(Color color) {
     for (Node child : colorGizmo.getChildren()) {
       ((Shape) child).setFill(color);

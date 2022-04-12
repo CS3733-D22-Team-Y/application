@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.model.MealRequest;
 import edu.wpi.cs3733.d22.teamY.model.Requestable;
@@ -15,6 +16,7 @@ import javafx.scene.layout.VBox;
 public class ActiveServiceRequestController {
   @FXML private VBox requestBox;
   @FXML private MFXScrollPane scrollBox;
+  @FXML private JFXTextArea extraInfoBox;
 
   ArrayList<ReqControllerPanePair> rqPairs;
 
@@ -34,16 +36,18 @@ public class ActiveServiceRequestController {
     for (ReqControllerPanePair pair : rqPairs) {
       addToBox(pair);
     }
+
+    SceneUtil.serviceRequests = this;
+  }
+
+  public void fillInfoField(String info) {
+    extraInfoBox.setText(info);
   }
 
   private void addRequest(Requestable req) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SingularServiceRequest.fxml"));
     Pane pane = loader.load();
     SingularServiceRequestController controller = loader.getController();
-
-    if (controller == null) {
-      System.out.println("BRUUUUUH");
-    }
 
     rqPairs.add(new ReqControllerPanePair(controller, pane));
   }
