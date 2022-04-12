@@ -12,6 +12,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
 
 public class SceneUtil {
+  public static WelcomePageController sidebar;
+
   protected static void startHover(Shape s) {
     s.setOpacity(s.getOpacity() + (.33));
   }
