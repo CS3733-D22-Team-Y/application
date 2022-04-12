@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
-import edu.wpi.cs3733.d22.teamY.model.FloralRequest;
+import edu.wpi.cs3733.d22.teamY.model.MiscRequest;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -34,9 +34,9 @@ public class MiscRequestController {
       String additionalNotes,
       String requestName) {
     // Get request Num
-    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.FLORAL_REQUEST));
+    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.MISC_REQUEST));
     DBManager.save(
-        new FloralRequest(
+        new MiscRequest(
             nextRequest, roomID, assignedNurse, requestStatus, additionalNotes, requestName));
     System.out.println("Saved MiscRequest");
   }

@@ -39,6 +39,8 @@ public class App extends Application {
     Parent root =
         FXMLLoader.load(Objects.requireNonNull(getClass().getResource("views/Welcome.fxml")));
     Scene scene = new Scene(root);
+    scene.getStylesheets().add("http://fonts.googleapis.com/css?family=Fredoka+One");
+    primaryStage.setTitle("Bringham and Women's Hospital Equipment Tracker");
     primaryStage.setScene(scene);
     primaryStage.show();
     // camera.newPfp();
