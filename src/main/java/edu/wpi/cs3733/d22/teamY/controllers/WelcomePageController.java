@@ -261,4 +261,12 @@ public class WelcomePageController {
   public static String getCode() {
     return String.format("%06d", new Random().nextInt(999999));
   }
+
+  public void createNewUser() throws Exception {
+    try {
+      SceneLoading.loadScene("views/CreateAccount.fxml");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
 }

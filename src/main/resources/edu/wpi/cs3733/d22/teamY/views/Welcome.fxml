@@ -5,7 +5,6 @@
 <?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
 <?import io.github.palexdev.materialfx.controls.MFXProgressSpinner?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -80,14 +79,11 @@
             </LinearGradient>
          </textFill>
         </Label>
-        <JFXButton layoutX="974.0" layoutY="7.0" onAction="#killApplication" text="Exit" textFill="WHITE">
-            <font>
-                <Font name="Microsoft Tai Le Bold" size="36.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-        </JFXButton>
+      <MFXButton buttonType="RAISED" layoutX="1070.0" layoutY="10.0" onAction="#killApplication" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #20758b;" styleClass="loginButton" text="Exit" textFill="#e4e5e6">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="20.0" />
+         </font>
+      </MFXButton>
         <Pane fx:id="loginPane" layoutX="450.0" layoutY="250.0" prefWidth="300.0">
             <children>
                 <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="256.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
@@ -108,9 +104,14 @@
                <font>
                   <Font size="15.0" />
                </font></MFXPasswordField>
-            <MFXButton buttonType="RAISED" layoutX="50.0" layoutY="180.0" onAction="#loginToMainPage" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #20758b;" text="Login" textFill="#e4e5e6">
+            <MFXButton buttonType="RAISED" layoutX="155.0" layoutY="178.0" onAction="#loginToMainPage" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #20758b;" styleClass="loginButton" text="Login" textFill="#e4e5e6">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="25.0" />
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </MFXButton>
+            <MFXButton buttonType="RAISED" layoutX="25.0" layoutY="178.0" onAction="#createNewUser" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #20758b;" styleClass="loginButton" text="New Acct" textFill="#e4e5e6">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
                </font>
             </MFXButton>
             </children>
