@@ -8,6 +8,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
 public class SingularServiceRequestController {
+  @FXML
+  void initialize() {
+    ActiveServiceRequestController.requestControllers.add(this);
+  }
+
   @FXML private Group colorGizmo;
 
   public void populateFromRequestable(Requestable req) {}
