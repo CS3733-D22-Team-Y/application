@@ -70,8 +70,8 @@ public class SideBarController {
         mainScreenPane,
         "views/Map.fxml",
         "views/RequestMenu.fxml",
-        "views/ActServReqTable.fxml",
         "views/MedEquipTable.fxml",
+        "views/ActServReqTable.fxml",
         "views/ActiveServiceRequest.fxml",
         "views/PersonalSettings.fxml");
     SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
