@@ -77,10 +77,24 @@ public class SideBarController {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
   }
 
-  // void test() throws IOException {}
+  public void reloadSidebar() throws IOException {
+    mainScreenPane.getChildren().clear();
+    SceneUtil.initializePanes(
+        mainScreenPane,
+        "views/Map.fxml",
+        "views/RequestMenu.fxml",
+        "views/ActServReqTable.fxml",
+        "views/ActiveServiceRequest.fxml",
+        "views/ActiveServiceRequest.fxml",
+        "views/PersonalSettings.fxml");
+    SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
+    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).setVisible(true);
+  }
 
   @FXML
   void initializeScale() throws IOException {
+
     currScene = bottomSidebarText.getScene();
     // Bottom sidebar text
     bottomSidebarText.layoutYProperty().bind(currScene.heightProperty().subtract(200));
