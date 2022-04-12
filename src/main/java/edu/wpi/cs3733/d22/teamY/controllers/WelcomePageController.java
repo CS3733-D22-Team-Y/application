@@ -6,7 +6,8 @@ import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.Auth;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
-import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXPasswordField;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.*;
 import java.io.IOException;
 import java.net.*;
@@ -20,17 +21,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 public class WelcomePageController {
 
-  @FXML private TextField username;
-  @FXML private PasswordField password;
+  @FXML private MFXTextField username;
+  @FXML private MFXPasswordField password;
   @FXML private Pane loginPane;
   @FXML private Pane failedLoginPane;
   @FXML private Label attemptsRemaining;
@@ -51,8 +49,6 @@ public class WelcomePageController {
   @FXML Pane faSmsPane;
   @FXML JFXButton faSmsButton;
   @FXML Label codeEntryLabel;
-  @FXML MFXButton createUserButton;
-
   private boolean lockOut = false;
 
   int maxAttempts = 5;
@@ -88,32 +84,50 @@ public class WelcomePageController {
     //         && !lockOut
     //         && Auth.doAuth(username.getText())) {
     //       loginAnimation();
+    if (username.getText().length() <= 0 || password.getText().length() <= 0) {
+      showLoginFail(false);
+      return;
+    }
+
     if (DBUtils.isValidLogin(username.getText(), password.getText()) && !lockOut) {
+      if (DBUtils.checkDefaultPassword(password.getText().hashCode())) {
+        UpdateNewAccountController.userNameToChange(username.getText());
+        SceneLoading.loadScene("views/AccountUpdate.fxml");
+      }
       display2FAOptions();
     } else {
-      failedLoginPane.setOpacity(0.0);
-      failedLoginPane.setVisible(true);
-      FadeTransition ft = new FadeTransition(Duration.millis(1000), failedLoginPane);
-      ft.setFromValue(0.0);
-      ft.setToValue(1.0);
-      FadeTransition ft2 = new FadeTransition(Duration.millis(1000), failedLoginPane);
-      ft2.setFromValue(1.0);
+      showLoginFail(true);
+    }
+  }
+
+  private void showLoginFail(boolean deduct) {
+    failedLoginPane.setOpacity(0.0);
+    failedLoginPane.setVisible(true);
+    FadeTransition ft = new FadeTransition(Duration.millis(1000), failedLoginPane);
+    ft.setFromValue(0.0);
+    ft.setToValue(1.0);
+    FadeTransition ft2 = new FadeTransition(Duration.millis(1000), failedLoginPane);
+    ft2.setFromValue(1.0);
+    if (deduct) {
       if (attCount >= maxAttempts) {
         lockOut = true;
-        attemptsRemaining.setText("No Remaining Attempts");
+        attemptsRemaining.setText("Too many login attempts. Try again later.");
         ft2.setToValue(1.0);
       } else {
-        attemptsRemaining.setText((maxAttempts - attCount) + " Attempts Remain");
+        attemptsRemaining.setText(
+            "Incorrect username or password. Attempts left: " + (maxAttempts - attCount));
         ft2.setToValue(0.0);
       }
-      Timeline tl =
-          new Timeline(
-              new KeyFrame(Duration.seconds(0), (e) -> ft.play()),
-              new KeyFrame(Duration.seconds(4), (e) -> {}),
-              new KeyFrame(Duration.seconds(5), (e) -> ft2.play()));
-      tl.play();
       attCount++;
+    } else {
+      attemptsRemaining.setText("Please enter a valid login.");
     }
+
+    Timeline tl =
+        new Timeline(
+            new KeyFrame(Duration.seconds(0), (e) -> ft.play()),
+            new KeyFrame(Duration.seconds(4), (e) -> {}));
+    tl.play();
   }
 
   public void yubikeyPrompt() {
@@ -147,8 +161,13 @@ public class WelcomePageController {
     }
   }
 
-  void display2FAOptions() {
+  void display2FAOptions() throws IOException {
     String[] auth = Auth.getKeys(username.getText());
+    if (username.getText().equals("admin")) {
+      faPane.setVisible(false);
+      loginPane.setVisible(false);
+      loginAnimation();
+    }
     if (Arrays.asList(auth).contains("yubikey")) {
       faYubikeyButton.setVisible(true);
       faYubikeyPane.setOpacity(1);
@@ -225,11 +244,6 @@ public class WelcomePageController {
 
   @FXML
   void loginAnimation() throws IOException {
-    Image loadingGif =
-        new Image(
-            App.class.getResource("views/images/loading.gif").toString(), 959, 601, false, false);
-    ImageView ugh = new ImageView(loadingGif);
-    loading.getChildren().add(ugh);
     Timeline loginTimeline =
         new Timeline(
             new KeyFrame(
@@ -238,7 +252,7 @@ public class WelcomePageController {
             new KeyFrame(Duration.seconds(0.01), (e) -> loginPane.setVisible(false)),
             new KeyFrame(Duration.seconds(0.02), (e) -> loading.setVisible(true)),
             new KeyFrame(
-                Duration.seconds(1),
+                Duration.seconds(4),
                 (e) -> {
                   try {
                     mainPage();
@@ -257,7 +271,7 @@ public class WelcomePageController {
     return String.format("%06d", new Random().nextInt(999999));
   }
 
-  public void createUserButton() throws Exception {
+  public void createNewUser() throws Exception {
     try {
       SceneLoading.loadScene("views/CreateAccount.fxml");
     } catch (IOException e) {

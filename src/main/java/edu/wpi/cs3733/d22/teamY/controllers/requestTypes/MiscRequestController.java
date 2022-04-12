@@ -8,6 +8,7 @@ import edu.wpi.cs3733.d22.teamY.model.MiscRequest;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
 
 public class MiscRequestController {
   @FXML private MFXTextField input_RoomID;
@@ -15,6 +16,7 @@ public class MiscRequestController {
   @FXML private MFXTextField input_PatientID;
   @FXML private JFXTextArea input_AdditionalNotes;
   @FXML private MFXTextField input_RequestName;
+  @FXML private TextArea errorLabel;
 
   public MiscRequestController() {}
 
@@ -44,12 +46,20 @@ public class MiscRequestController {
   // Called when the submit button is pressed.
   @FXML
   void submitButton() throws IOException {
-    submitRequest(
-        input_RoomID.getText(),
-        input_AssignedNurse.getText(),
-        input_PatientID.getText(),
-        input_AdditionalNotes.getText(),
-        input_RequestName.getText());
+    if (input_RoomID.getText().equals("")
+        || input_AdditionalNotes.getText().equals("")
+        || input_AssignedNurse.getText().equals("")
+        || input_RequestName.getText().equals("")) {
+      errorLabel.setText("Missing Required Fields.");
+    } else {
+      submitRequest(
+          input_RoomID.getText(),
+          input_AssignedNurse.getText(),
+          input_PatientID.getText(),
+          input_AdditionalNotes.getText(),
+          input_RequestName.getText());
+      errorLabel.setText("");
+    }
   }
 
   @FXML

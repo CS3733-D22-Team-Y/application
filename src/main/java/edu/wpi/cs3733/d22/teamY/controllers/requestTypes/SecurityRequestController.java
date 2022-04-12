@@ -9,6 +9,7 @@ import edu.wpi.cs3733.d22.teamY.model.SecurityServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
+import java.util.Objects;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -91,11 +92,18 @@ public class SecurityRequestController {
     Boolean typeSelected =
         RequestControllerUtil.isRadioButtonSelected(
             disruptionRadioButton, theftRadioButton, unwantedGuestRadioButton);
+
     Boolean prioritySelected =
         RequestControllerUtil.isRadioButtonSelected(
             urgentRadioButton, mostUrgentRadioButton, lowPriorityRadioButton);
+
+    Boolean allFields =
+        !Objects.equals(input_RoomID.getText(), "")
+            && !Objects.equals(input_AssignedNurse.getText(), "")
+            && !Objects.equals(input_PatientID.getText(), "");
+
     // Checks if a bouquet choice has been made
-    if (typeSelected && prioritySelected) {
+    if (typeSelected && prioritySelected && allFields) {
       submitRequest(
           input_RoomID.getText(),
           input_AssignedNurse.getText(),
@@ -106,12 +114,8 @@ public class SecurityRequestController {
       errorLabel.setText("");
     } else {
       // Print error messages
-      if (typeSelected) {
-        errorLabel.setText("Please select a priority.");
-      } else if (prioritySelected) {
-        errorLabel.setText("Please select a request type.");
-      } else {
-        errorLabel.setText("Please select a purpose and priority.");
+      if (typeSelected || prioritySelected || allFields || !allFields) {
+        errorLabel.setText("Missing Required Fields.");
       }
     }
   }
