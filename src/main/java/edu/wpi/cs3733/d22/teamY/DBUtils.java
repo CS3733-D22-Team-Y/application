@@ -255,4 +255,18 @@ public class DBUtils {
     }
     return filtered;
   }
+
+  /**
+   * Get the number of requests on a floor.
+   *
+   * @param floor
+   * @return number of requests on a floor
+   */
+  public static int getSumOfRequestsOnFloor(String floor) {
+    int sum = 0;
+    for (RequestType r : RequestType.values()) {
+      sum += getRequestsOnFloor(r.requestClass, floor).size();
+    }
+    return sum;
+  }
 }

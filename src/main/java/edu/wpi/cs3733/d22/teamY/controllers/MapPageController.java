@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
 import edu.wpi.cs3733.d22.teamY.App;
+import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.component.MapComponent;
 import edu.wpi.cs3733.d22.teamY.model.Location;
@@ -64,8 +65,7 @@ public class MapPageController {
 
   @FXML private Pane ll1MainPane;
   @FXML private Pane ll1PopupPane;
-
-  int tempNum = 0;
+  @FXML private Label ll1RequestNum;
 
   MapComponent mapComponent = new MapComponent();
 
@@ -388,17 +388,18 @@ public class MapPageController {
   }
 
   private void loadFloors(String... floors) {
-    for(String floor : floors) {
-      ArrayList<String> requestsOnFloor = new ArrayList<>();
-
+    int[] reqsOnFloor = new int[floors.length];
+    for (int i = 0; i < reqsOnFloor.length; i++) {
+      reqsOnFloor[i] = DBUtils.getSumOfRequestsOnFloor(floors[i]);
     }
 
+    addItem(reqsOnFloor[0] + "");
   }
 
-  public void addLL1Item(String text) {
+  public void addItem(String text) {
     Label testLabel = new Label();
     testLabel.setText(text);
-    testLabel.setTranslateY(200 - 20 * tempNum++);
+    testLabel.setTranslateY(200 - 20);
     ll1PopupPane.getChildren().add(testLabel);
   }
 
