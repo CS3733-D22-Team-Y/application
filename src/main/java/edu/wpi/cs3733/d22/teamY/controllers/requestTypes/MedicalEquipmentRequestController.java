@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
@@ -19,7 +20,8 @@ public class MedicalEquipmentRequestController {
   // Text Inputs
   @FXML private TextField input_PatientID;
   @FXML private TextField input_AssignedNurse;
-  @FXML private TextField input_RoomID;
+  @FXML private JFXComboBox<String> roomsComboBox;
+  @FXML private TextField roomsHiddenField;
 
   @FXML private JFXTextArea input_AdditionalNotes;
   // Radio Buttons
@@ -43,6 +45,14 @@ public class MedicalEquipmentRequestController {
   private void initialize() {
     System.out.println("HEllo");
     updateAvailableEquip();
+
+    System.out.println(RequestControllerUtil.allRoomsComboBox.getItems().size());
+    roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+  }
+
+  @FXML
+  private void setRoomText() {
+    roomsHiddenField.setText(roomsComboBox.getValue());
   }
 
   private void updateAvailableEquip() {
@@ -139,7 +149,7 @@ public class MedicalEquipmentRequestController {
 
     if (!failed) {
       submitRequest(
-          input_RoomID.getText(),
+          DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
           "bruh"
           /*input_RequestStatus.getText()*/ ,
@@ -171,10 +181,11 @@ public class MedicalEquipmentRequestController {
   @FXML
   void resetAllFields() {
     RequestControllerUtil.resetTextFields(
-        input_PatientID, input_RoomID, input_AssignedNurse, input_AdditionalNotes);
+        input_PatientID, roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
     // Radio buttons
     RequestControllerUtil.resetRadioButtons(
         bedRadioButton, xrayRadioButton, infusionPumpRadioButton, reclinerRadioButton);
     errorLabel.setText("");
+    roomsComboBox.setValue("");
   }
 }

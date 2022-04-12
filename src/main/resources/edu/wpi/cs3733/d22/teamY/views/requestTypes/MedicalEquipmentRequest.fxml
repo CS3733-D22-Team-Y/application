@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXRadioButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
@@ -13,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" stylesheets="@../css/Fonts.css" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MedicalEquipmentRequestController">
+<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MedicalEquipmentRequestController">
    <children>
        <Label styleClass="title" text="Medical Equipment Request">
            <textFill>
@@ -64,11 +66,6 @@
          </font>
       </MFXTextField>
       <MFXTextField fx:id="input_AssignedNurse" floatMode="DISABLED" layoutX="160.0" layoutY="221.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0">
-         <font>
-            <Font name="Calibri" size="20.0" />
-         </font>
-      </MFXTextField>
-      <MFXTextField fx:id="input_RoomID" floatMode="DISABLED" layoutX="160.0" layoutY="296.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0">
          <font>
             <Font name="Calibri" size="20.0" />
          </font>
@@ -174,5 +171,7 @@
             <Font name="Calibri" size="15.0" />
          </font>
       </JFXTextArea>
+      <TextField fx:id="roomsHiddenField" layoutX="167.0" layoutY="306.0" prefHeight="26.0" prefWidth="163.0" style="-fx-background-color: #00000000;" />
+      <JFXComboBox fx:id="roomsComboBox" layoutX="164.0" layoutY="305.0" onAction="#setRoomText" prefHeight="26.0" prefWidth="166.0" />
    </children>
 </AnchorPane>
