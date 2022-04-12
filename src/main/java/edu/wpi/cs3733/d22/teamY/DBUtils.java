@@ -70,7 +70,7 @@ public class DBUtils {
     int available = 0;
 
     for (MedEquip i : equipment) {
-      if (i.getIsClean().equals("1")) {
+      if (i.isClean().equals("1")) {
         available++;
       }
     }
@@ -95,7 +95,7 @@ public class DBUtils {
     MedEquip thisEquip = equipment.get(0);
 
     thisEquip.setEquipLocId(locationID);
-    thisEquip.setIsClean("0");
+    thisEquip.setClean("0");
 
     DBManager.update(thisEquip);
   }

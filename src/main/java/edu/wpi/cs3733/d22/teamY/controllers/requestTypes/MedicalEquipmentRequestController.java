@@ -141,7 +141,8 @@ public class MedicalEquipmentRequestController {
       submitRequest(
           input_RoomID.getText(),
           input_AssignedNurse.getText(),
-          "WAITING",
+          "bruh"
+          /*input_RequestStatus.getText()*/ ,
           input_AdditionalNotes.getText(),
           getEquipmentType());
       errorLabel.setText("");

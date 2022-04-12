@@ -33,10 +33,7 @@ public class MedEquip implements StringArrayConv {
   public MedEquip() {}
 
   public MedEquip(String equipID, String equipType, String equipLocId, String isClean) {
-    this.equipID = equipID;
-    this.equipType = equipType;
-    this.equipLocId = equipLocId;
-    this.isClean = isClean;
+    init(equipID, equipType, equipLocId, isClean);
   }
 
   public void fromStringArray(String[] args) {
@@ -86,7 +83,7 @@ public class MedEquip implements StringArrayConv {
     return equipLocId;
   }
 
-  public String getIsClean() {
+  public String isClean() {
     return isClean;
   }
 
@@ -102,7 +99,7 @@ public class MedEquip implements StringArrayConv {
     equipLocId = eLocId;
   }
 
-  public void setIsClean(String clean) {
+  public void setClean(String clean) {
     isClean = clean;
   }
   // endregion
