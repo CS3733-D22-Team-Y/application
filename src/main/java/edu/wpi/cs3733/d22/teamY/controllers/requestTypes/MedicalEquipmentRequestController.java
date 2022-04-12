@@ -139,7 +139,7 @@ public class MedicalEquipmentRequestController {
       submitRequest(
           input_RoomID.getText(),
           input_AssignedNurse.getText(),
-          "bruh"
+          "null"
           /*input_RequestStatus.getText()*/ ,
           input_AdditionalNotes.getText(),
           getEquipmentType());

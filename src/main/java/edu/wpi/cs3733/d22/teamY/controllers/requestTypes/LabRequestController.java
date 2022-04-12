@@ -9,6 +9,7 @@ import edu.wpi.cs3733.d22.teamY.model.LabRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
+import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 
@@ -71,16 +72,19 @@ public class LabRequestController {
   void submitButton() {
     // Checks if a lab result choice has been made.
     if (RequestControllerUtil.isRadioButtonSelected(
-        bloodRadioButton, urineRadioButton, xrayRadioButton, catScanRadioButton, mriRadioButton)) {
+            bloodRadioButton, urineRadioButton, xrayRadioButton, catScanRadioButton, mriRadioButton)
+        && !Objects.equals(input_RoomID.getText(), "")
+        && !Objects.equals(input_AssignedNurse.getText(), "")
+        && !Objects.equals(input_PatientID.getText(), "")) {
       submitRequest(
           input_RoomID.getText(),
           input_AssignedNurse.getText(),
-          input_RequestStatus.getText(),
+          "",
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");
     } else {
-      errorLabel.setText("Please select a result type.");
+      errorLabel.setText("Missing Required Fields.");
     }
   }
 
