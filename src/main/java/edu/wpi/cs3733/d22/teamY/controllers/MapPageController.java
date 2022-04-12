@@ -294,6 +294,7 @@ public class MapPageController {
       //                  i.setPrefHeight(iconDim);
       //                  i.setTranslateX(l.getXCoord() - iconDim / 2);
       //                  i.setTranslateY(l.getYCoord() - iconDim / 2);
+      //                  i.setTranslateY(l.getYCoord() - iconDim / 2);
       //                  i.getChildren().add(frame);
       //
       //                  // ImageView iconView = new ImageView(icon);
