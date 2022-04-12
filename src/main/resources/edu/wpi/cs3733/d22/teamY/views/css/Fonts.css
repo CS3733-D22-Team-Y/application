@@ -29,9 +29,20 @@
 }
 
 .submenuButton{
-
+    -fx-font-family: 'Fredoka One';
+    -fx-font-size: 30;
 }
 
 .loginButton{
 
+}
+
+.sidebarTopOptions{
+    -fx-font-family: 'Fredoka One';
+    -fx-font-size: 30;
+}
+
+.sidebarBottomOptions{
+    -fx-font-family: 'Fredoka One';
+    -fx-font-size: 30;
 }
