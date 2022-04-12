@@ -23,7 +23,6 @@ public class TranslatorRequestController {
   @FXML private MFXTextField input_OtherLanguage;
   // Input fields
   @FXML private MFXTextField input_AssignedNurse;
-  @FXML private MFXTextField input_PatientID;
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
   // Additional Notes
@@ -91,12 +90,11 @@ public class TranslatorRequestController {
             arabicRadioButton,
             otherRadioButton)
         && !Objects.equals(roomsComboBox.getValue(), "")
-        && !Objects.equals(input_AssignedNurse.getText(), "")
-        && !Objects.equals(input_PatientID.getText(), "")) {
+        && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
-          input_PatientID.getText(),
+          "open",
           input_AdditionalNotes.getText(),
           getLanguageType());
       errorLabel.setText("");
@@ -142,7 +140,7 @@ public class TranslatorRequestController {
         arabicRadioButton,
         otherRadioButton);
     RequestControllerUtil.resetTextFields(
-        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes, input_PatientID);
+        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
     errorLabel.setText("");
     roomsComboBox.setValue("");
   }

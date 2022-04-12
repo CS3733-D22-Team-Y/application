@@ -14,7 +14,6 @@ import javafx.scene.control.TextField;
 
 public class MealRequestController {
   // Text input
-  @FXML private TextField input_PatientID;
   @FXML private TextArea input_AdditionalNotes;
   @FXML private TextField input_AssignedNurse;
   @FXML private JFXComboBox<String> roomsComboBox;
@@ -163,7 +162,7 @@ public class MealRequestController {
   void resetAllFields() {
     // Input text fields
     RequestControllerUtil.resetTextFields(
-        input_AssignedNurse, input_AdditionalNotes, roomsHiddenField, input_PatientID);
+        input_AssignedNurse, input_AdditionalNotes, roomsHiddenField);
     // Mains
     RequestControllerUtil.resetRadioButtons(
         pizzaRadioButton,

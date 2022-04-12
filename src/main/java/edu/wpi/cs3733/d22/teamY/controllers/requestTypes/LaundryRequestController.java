@@ -21,7 +21,6 @@ public class LaundryRequestController {
   @FXML private MFXRadioButton scrubsRadioButton;
   @FXML private MFXRadioButton linensRadioButton;
   // Text inputs
-  @FXML private TextField input_PatientID;
   @FXML private TextField input_AssignedNurse;
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
@@ -83,12 +82,11 @@ public class LaundryRequestController {
     if (RequestControllerUtil.isRadioButtonSelected(
             hazardousRadioButton, linensRadioButton, scrubsRadioButton)
         && !Objects.equals(roomsComboBox.getValue(), "")
-        && !Objects.equals(input_AssignedNurse.getText(), "")
-        && !Objects.equals(input_PatientID.getText(), "")) {
+        && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
-          input_PatientID.getText(),
+          "open",
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");
@@ -117,7 +115,7 @@ public class LaundryRequestController {
     RequestControllerUtil.resetRadioButtons(
         scrubsRadioButton, linensRadioButton, hazardousRadioButton);
     RequestControllerUtil.resetTextFields(
-        roomsHiddenField, input_PatientID, input_AssignedNurse, input_AdditionalNotes);
+        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
     errorLabel.setText("");
     roomsComboBox.setValue("");
   }

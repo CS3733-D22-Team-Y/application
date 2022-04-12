@@ -19,7 +19,6 @@ import javafx.scene.control.TextField;
 
 public class SecurityRequestController {
   // Text input
-  @FXML private MFXTextField input_PatientID;
   @FXML private MFXTextField input_AssignedNurse;
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
@@ -112,16 +111,15 @@ public class SecurityRequestController {
 
     Boolean allFields =
         !Objects.equals(roomsComboBox.getValue(), "")
-            && !Objects.equals(input_AssignedNurse.getText(), "")
-            && !Objects.equals(input_PatientID.getText(), "");
+            && !Objects.equals(input_AssignedNurse.getText(), "");
 
     // Checks if a bouquet choice has been made
     if (typeSelected && prioritySelected && allFields) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
-          input_PatientID.getText(),
           input_AdditionalNotes.getText(),
+          "open",
           getRequestType(),
           getRequestPriority());
       errorLabel.setText("");
@@ -176,11 +174,7 @@ public class SecurityRequestController {
   void resetAllFields() {
     // Text input
     RequestControllerUtil.resetTextFields(
-        roomsHiddenField,
-        input_AssignedNurse,
-        input_PatientID,
-        input_AdditionalNotes,
-        input_OtherText);
+        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes, input_OtherText);
     // Report type radio buttons
     RequestControllerUtil.resetRadioButtons(
         unwantedGuestRadioButton,

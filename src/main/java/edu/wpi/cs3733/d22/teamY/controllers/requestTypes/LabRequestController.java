@@ -18,7 +18,6 @@ import javafx.scene.control.TextField;
 public class LabRequestController {
 
   // Input fields
-  @FXML private MFXTextField input_PatientID;
   @FXML private MFXTextField input_AssignedNurse;
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
@@ -86,8 +85,7 @@ public class LabRequestController {
     if (RequestControllerUtil.isRadioButtonSelected(
             bloodRadioButton, urineRadioButton, xrayRadioButton, catScanRadioButton, mriRadioButton)
         && !Objects.equals(roomsComboBox.getValue(), "")
-        && !Objects.equals(input_AssignedNurse.getText(), "")
-        && !Objects.equals(input_PatientID.getText(), "")) {
+        && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
@@ -123,11 +121,7 @@ public class LabRequestController {
     RequestControllerUtil.resetRadioButtons(
         bloodRadioButton, urineRadioButton, xrayRadioButton, catScanRadioButton, mriRadioButton);
     RequestControllerUtil.resetTextFields(
-        roomsHiddenField,
-        input_AssignedNurse,
-        // input_RequestStatus,
-        input_AdditionalNotes,
-        input_PatientID);
+        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
     errorLabel.setText("");
     roomsComboBox.setValue("");
   }

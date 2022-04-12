@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 
 public class MedicalEquipmentRequestController {
   // Text Inputs
-  @FXML private TextField input_PatientID;
   @FXML private TextField input_AssignedNurse;
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
@@ -171,7 +170,7 @@ public class MedicalEquipmentRequestController {
   @FXML
   void resetAllFields() {
     RequestControllerUtil.resetTextFields(
-        input_PatientID, roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
+        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
     // Radio buttons
     RequestControllerUtil.resetRadioButtons(
         bedRadioButton, xrayRadioButton, infusionPumpRadioButton, reclinerRadioButton);
