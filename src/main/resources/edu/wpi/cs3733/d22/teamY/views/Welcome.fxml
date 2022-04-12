@@ -20,6 +20,17 @@
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.WelcomePageController">
     <children>
+        <Pane fx:id="yubikeyPane" layoutX="400.0" layoutY="222.0">
+            <children>
+                <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="250.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
+                <Label fx:id="yubikeyInstruct" layoutY="98.0" prefHeight="25.0" prefWidth="370.0" style="-fx-text-alignment: center; -fx-alignment: center;" text="Tap Your Ubikey" textAlignment="CENTER">
+                    <font>
+                        <Font name="Microsoft Tai Le Bold" size="18.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="yubikeyEntry" layoutX="110.0" layoutY="142.0" onAction="#yubikeyDone" opacity="0.0" />
+            </children>
+        </Pane>
       <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
          <image>
             <Image url="@images/do-rgb.jpg" />
@@ -48,10 +59,26 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-        <Label fx:id="Welcome" layoutX="21.0" layoutY="13.0" text="Welcome" textFill="WHITE">
+        <Label fx:id="Welcome" layoutX="21.0" layoutY="13.0" text="Welcome to BWH Portal">
             <font>
-                <Font name="Microsoft Tai Le Bold" size="52.0" />
+                <Font name="Arial Rounded MT Bold" size="54.0" />
             </font>
+         <textFill>
+            <LinearGradient endX="0.5681817603833748" endY="1.0" startX="0.5643939542951006" startY="0.22348483403523764">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
         </Label>
         <JFXButton layoutX="974.0" layoutY="7.0" onAction="#killApplication" text="Exit" textFill="WHITE">
             <font>
@@ -61,17 +88,6 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </JFXButton>
-        <Pane fx:id="yubikeyPane" layoutX="364.0" layoutY="222.0" visible="false">
-            <children>
-                <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="256.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="370.0" />
-                <Label fx:id="yubikeyInstruct" layoutY="98.0" prefHeight="25.0" prefWidth="370.0" style="-fx-text-alignment: center; -fx-alignment: center;" text="Tap Your Ubikey" textAlignment="CENTER">
-                    <font>
-                        <Font name="Microsoft Tai Le Bold" size="18.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="yubikeyEntry" layoutX="110.0" layoutY="142.0" onAction="#yubikeyDone" opacity="0.0" />
-            </children>
-        </Pane>
         <Pane fx:id="loginPane" layoutX="450.0" layoutY="250.0" prefWidth="300.0">
             <children>
                 <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="256.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
