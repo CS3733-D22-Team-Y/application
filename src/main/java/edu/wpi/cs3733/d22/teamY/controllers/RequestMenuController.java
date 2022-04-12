@@ -15,6 +15,7 @@ public class RequestMenuController {
   protected static final Integer SECURITY_RESULTS_INDEX = 5;
   protected static final Integer MEDICAL_RESULTS_INDEX = 6;
   protected static final Integer MEAL_RESULTS_INDEX = 7;
+  protected static final Integer MISC_RESULTS_INDEX = 8;
 
   @FXML AnchorPane bgPane;
   @FXML private ToggleButton creatorToggle;
@@ -34,7 +35,8 @@ public class RequestMenuController {
         "views/requestTypes/TranslatorRequest.fxml",
         "views/requestTypes/SecurityRequest.fxml",
         "views/requestTypes/MedicalEquipmentRequest.fxml",
-        "views/requestTypes/MealRequest.fxml");
+        "views/requestTypes/MealRequest.fxml",
+        "views/requestTypes/MiscRequest.fxml");
     SceneUtil.hideAllBackgrounds(bgPane.getChildren());
     SceneUtil.hideAllPanes(bgPane.getChildren());
   }
@@ -84,7 +86,9 @@ public class RequestMenuController {
   }
 
   @FXML
-  void loadOtherReq() {}
+  void loadOtherReq() {
+    loadRequestScreen(MISC_RESULTS_INDEX);
+  }
 
   @FXML
   void showCreators() {
