@@ -35,7 +35,7 @@
                <Font name="Arial Rounded MT Bold" size="60.0" />
            </font>
        </Label>
-       <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+       <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
            <fill>
                <LinearGradient endX="1.0" endY="1.0">
                    <stops>
