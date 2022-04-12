@@ -1,3 +1,9 @@
+.title, .subtitle, .requestOption, .requestButton, .inputLabel, .requestInput, .inputField, .plainText, .submenuButton, .loginButton, .sidebarTopOptions, .sidebarBottomOptions{
+    -fx-border-style: solid;
+    -fx-border-width: 2;
+    -fx-border-color: "#f0f";
+}
+
 .title {
     -fx-font-family: 'Fredoka One';
     -fx-font-size: 60;
@@ -24,6 +30,11 @@
 }
 
 .requestInput{
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 20;
+}
+
+.inputField{
     -fx-font-family: 'Varela Round';
     -fx-font-size: 20;
 }
