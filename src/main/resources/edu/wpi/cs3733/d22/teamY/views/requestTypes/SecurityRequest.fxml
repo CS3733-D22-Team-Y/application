@@ -4,7 +4,6 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXRadioButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,14 +13,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.FloralRequestController">
+<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.SecurityRequestController">
     <children>
-      <JFXTextArea fx:id="errorLabel" depthTest="DISABLE" disable="true" editable="false" focusColor="#ffffff00" layoutX="700.0" layoutY="700.0" opacity="0.97" prefHeight="10.0" prefWidth="243.0" style="-fx-text-fill: RED;" unFocusColor="#ffffff00">
-         <font>
-            <Font name="Calibri" size="15.0" />
-         </font>
-      </JFXTextArea>
-        <Label layoutY="10.0" text="Floral Request">
+        <Label layoutY="10.0" text="Security Request">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -94,21 +88,18 @@
             <font>
                 <Font name="Calibri" size="20.0" />
             </font>
-         <cursor>
-            <Cursor fx:constant="CROSSHAIR" />
-         </cursor>
         </MFXTextField>
         <MFXButton computeRadiusMultiplier="false" layoutX="700.0" layoutY="730.0" onAction="#resetAllFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" text="Reset" textFill="WHITE">
             <font>
                 <Font name="Calibri Bold" size="20.0" />
             </font>
         </MFXButton>
-        <MFXButton computeRadiusMultiplier="false" layoutX="810.0" layoutY="730.0" onAction="#submitButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" text="Submit" textFill="WHITE">
+        <MFXButton fx:id="submitButton" computeRadiusMultiplier="false" layoutX="810.0" layoutY="730.0" onAction="#submitButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" text="Submit" textFill="WHITE">
             <font>
                 <Font name="Calibri Bold" size="20.0" />
             </font>
         </MFXButton>
-        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="601.0" layoutY="140.0" prefHeight="54.0" prefWidth="319.0" text="Bouquet Type" textAlignment="RIGHT">
+        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="140.0" prefWidth="300.0" text="Purpose" textAlignment="RIGHT">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -129,7 +120,7 @@
                 <Font name="Arial Rounded MT Bold" size="45.0" />
             </font>
         </Label>
-        <Rectangle arcHeight="10.0" arcWidth="10.0" height="8.0" layoutX="561.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="359.0">
+        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="620.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0">
             <fill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -147,23 +138,95 @@
                 </LinearGradient>
             </fill>
         </Rectangle>
-      <MFXRadioButton fx:id="newBabyRadioButton" layoutX="560.0" layoutY="275.0" radius="12.0" text="New Baby Bouquet">
+      <MFXRadioButton fx:id="unwantedGuestRadioButton" layoutX="650.0" layoutY="230.0" onAction="#disableMiscBox" radius="12.0" text="Unwanted Guest">
+         <font>
+            <Font name="Calibri" size="30.0" />
+         </font>
          <toggleGroup>
-            <ToggleGroup fx:id="boquetOptions" />
+            <ToggleGroup fx:id="Purpose" />
          </toggleGroup>
+      </MFXRadioButton>
+      <MFXRadioButton fx:id="disruptionRadioButton" layoutX="650.0" layoutY="275.0" onAction="#disableMiscBox" radius="12.0" text="Disruption" toggleGroup="$Purpose">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="getWellSoonBouquetRadioButton" layoutX="560.0" layoutY="230.0" radius="12.0" text="Get Well Soon Bouquet" toggleGroup="$boquetOptions">
+      <MFXRadioButton fx:id="theftRadioButton" layoutX="650.0" layoutY="320.0" onAction="#disableMiscBox" radius="12.0" text="Suspected Theft" toggleGroup="$Purpose">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="bouquetOfTheDayRadioButton" layoutX="560.0" layoutY="320.0" radius="12.0" text="Bouquet of the Day" toggleGroup="$boquetOptions">
+      <MFXRadioButton fx:id="otherRadioButton" layoutX="650.0" layoutY="365.0" onAction="#enableMiscBox" radius="12.0" text="Other:" toggleGroup="$Purpose">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
+      <MFXTextField fx:id="input_OtherText" allowEdit="false" floatMode="DISABLED" layoutX="650.0" layoutY="410.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" selectable="false">
+         <font>
+            <Font name="Calibri" size="20.0" />
+         </font>
+      </MFXTextField>
+      <MFXRadioButton fx:id="mostUrgentRadioButton" layoutX="650.0" layoutY="553.0" radius="10.0" text="Most Urgent">
+         <font>
+            <Font name="Calibri" size="30.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="Problem" />
+         </toggleGroup>
+      </MFXRadioButton>
+      <MFXRadioButton fx:id="urgentRadioButton" layoutX="650.0" layoutY="598.0" radius="10.0" text="Urgent" toggleGroup="$Problem">
+         <font>
+            <Font name="Calibri" size="30.0" />
+         </font>
+      </MFXRadioButton>
+      <MFXRadioButton fx:id="lowPriorityRadioButton" layoutX="650.0" layoutY="643.0" radius="10.0" text="Low Priority" toggleGroup="$Problem">
+         <font>
+            <Font name="Calibri" size="30.0" />
+         </font>
+      </MFXRadioButton>
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="480.0" prefWidth="300.0" text="Problem Level" textAlignment="RIGHT">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Arial Rounded MT Bold" size="40.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="620.0" layoutY="540.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <JFXTextArea fx:id="errorLabel" depthTest="DISABLE" disable="true" editable="false" focusColor="#ffffff00" layoutX="700.0" layoutY="700.0" opacity="0.97" prefHeight="10.0" prefWidth="243.0" style="-fx-text-fill: RED;" unFocusColor="#ffffff00">
+         <font>
+            <Font name="Calibri" size="15.0" />
+         </font>
+      </JFXTextArea>
     </children>
 </AnchorPane>

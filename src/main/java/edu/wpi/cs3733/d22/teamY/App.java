@@ -32,6 +32,8 @@ public class App extends Application {
   @Override
   public void start(Stage primaryStage) throws Exception {
     instance = this; // instantiates instance
+    primaryStage.setMinWidth(900);
+    primaryStage.setMinHeight(600);
     this.primaryStage = primaryStage;
     // Sets the primary scene (currently request menu) and displays it
     Parent root =

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -10,14 +9,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: eeeeee;"
-            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ActiveServiceRequestController">
+<AnchorPane fx:id="mainPane" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ActiveServiceRequestController">
     <children>
-        <Text fill="#297bce" layoutX="242.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="Active Service Requests" textAlignment="CENTER" wrappingWidth="855.6928634643555">
+        <Text fill="#297bce" layoutX="85.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Active Service Requests" textAlignment="CENTER" wrappingWidth="758.626335144043">
             <font>
-                <Font name="Microsoft Tai Le Bold" size="54.0"/>
+                <Font name="Microsoft Tai Le Bold" size="54.0" />
             </font>
         </Text>
         <VBox layoutX="200.0" layoutY="107.0" spacing="15.0">
@@ -26,17 +22,15 @@
                     <children>
                         <Pane layoutX="15.0" layoutY="11.0">
                             <children>
-                                <JFXButton prefHeight="32.0" prefWidth="281.0" style="-fx-background-color: fff;"
-                                           text="Security">
+                                <JFXButton prefHeight="32.0" prefWidth="281.0" style="-fx-background-color: fff;" text="Security">
                                     <font>
-                                        <Font name="Microsoft Tai Le Bold" size="14.0"/>
+                                        <Font name="Microsoft Tai Le Bold" size="14.0" />
                                     </font>
                                 </JFXButton>
-                                <Circle fill="#68c666" layoutX="15.0" layoutY="15.0" radius="5.0" scaleX="1.2"
-                                        scaleY="1.2" scaleZ="1.2" stroke="#00000033" strokeType="INSIDE"/>
+                                <Circle fill="#68c666" layoutX="15.0" layoutY="15.0" radius="5.0" scaleX="1.2" scaleY="1.2" scaleZ="1.2" stroke="#00000033" strokeType="INSIDE" />
                                 <Text layoutX="250.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="B06">
                                     <font>
-                                        <Font name="Microsoft Tai Le" size="12.0"/>
+                                        <Font name="Microsoft Tai Le" size="12.0" />
                                     </font>
                                 </Text>
                             </children>
@@ -47,17 +41,15 @@
                     <children>
                         <Pane layoutX="15.0" layoutY="11.0">
                             <children>
-                                <JFXButton prefHeight="32.0" prefWidth="281.0" style="-fx-background-color: fff;"
-                                           text="Meal Delivery">
+                                <JFXButton prefHeight="32.0" prefWidth="281.0" style="-fx-background-color: fff;" text="Meal Delivery">
                                     <font>
-                                        <Font name="Microsoft Tai Le Bold" size="14.0"/>
+                                        <Font name="Microsoft Tai Le Bold" size="14.0" />
                                     </font>
                                 </JFXButton>
-                                <Circle fill="#fff068" layoutX="15.0" layoutY="15.0" radius="5.0" scaleX="1.2"
-                                        scaleY="1.2" scaleZ="1.2" stroke="#00000033" strokeType="INSIDE"/>
+                                <Circle fill="#fff068" layoutX="15.0" layoutY="15.0" radius="5.0" scaleX="1.2" scaleY="1.2" scaleZ="1.2" stroke="#00000033" strokeType="INSIDE" />
                                 <Text layoutX="250.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A13">
                                     <font>
-                                        <Font name="Microsoft Tai Le" size="12.0"/>
+                                        <Font name="Microsoft Tai Le" size="12.0" />
                                     </font>
                                 </Text>
                             </children>
@@ -68,17 +60,15 @@
                     <children>
                         <Pane layoutX="15.0" layoutY="11.0">
                             <children>
-                                <JFXButton prefHeight="32.0" prefWidth="281.0" style="-fx-background-color: fff;"
-                                           text="Laundry">
+                                <JFXButton prefHeight="32.0" prefWidth="281.0" style="-fx-background-color: fff;" text="Laundry">
                                     <font>
-                                        <Font name="Microsoft Tai Le Bold" size="14.0"/>
+                                        <Font name="Microsoft Tai Le Bold" size="14.0" />
                                     </font>
                                 </JFXButton>
-                                <Circle fill="#fff068" layoutX="15.0" layoutY="15.0" radius="5.0" scaleX="1.2"
-                                        scaleY="1.2" scaleZ="1.2" stroke="#00000033" strokeType="INSIDE"/>
+                                <Circle fill="#fff068" layoutX="15.0" layoutY="15.0" radius="5.0" scaleX="1.2" scaleY="1.2" scaleZ="1.2" stroke="#00000033" strokeType="INSIDE" />
                                 <Text layoutX="250.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A22">
                                     <font>
-                                        <Font name="Microsoft Tai Le" size="12.0"/>
+                                        <Font name="Microsoft Tai Le" size="12.0" />
                                     </font>
                                 </Text>
                             </children>
@@ -89,17 +79,15 @@
                     <children>
                         <Pane layoutX="15.0" layoutY="11.0">
                             <children>
-                                <JFXButton prefHeight="32.0" prefWidth="281.0" style="-fx-background-color: fff;"
-                                           text="Floral">
+                                <JFXButton prefHeight="32.0" prefWidth="281.0" style="-fx-background-color: fff;" text="Floral">
                                     <font>
-                                        <Font name="Microsoft Tai Le Bold" size="14.0"/>
+                                        <Font name="Microsoft Tai Le Bold" size="14.0" />
                                     </font>
                                 </JFXButton>
-                                <Circle fill="#989595" layoutX="15.0" layoutY="15.0" radius="5.0" scaleX="1.2"
-                                        scaleY="1.2" scaleZ="1.2" stroke="#00000033" strokeType="INSIDE"/>
+                                <Circle fill="#989595" layoutX="15.0" layoutY="15.0" radius="5.0" scaleX="1.2" scaleY="1.2" scaleZ="1.2" stroke="#00000033" strokeType="INSIDE" />
                                 <Text layoutX="250.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="C21">
                                     <font>
-                                        <Font name="Microsoft Tai Le" size="12.0"/>
+                                        <Font name="Microsoft Tai Le" size="12.0" />
                                     </font>
                                 </Text>
                             </children>
@@ -110,17 +98,15 @@
                     <children>
                         <Pane layoutX="15.0" layoutY="41.0">
                             <children>
-                                <JFXButton prefHeight="32.0" prefWidth="281.0" style="-fx-background-color: fff;"
-                                           text="Med Equipment">
+                                <JFXButton prefHeight="32.0" prefWidth="281.0" style="-fx-background-color: fff;" text="Med Equipment">
                                     <font>
-                                        <Font name="Microsoft Tai Le Bold" size="14.0"/>
+                                        <Font name="Microsoft Tai Le Bold" size="14.0" />
                                     </font>
                                 </JFXButton>
-                                <Circle fill="#f02f2f" layoutX="15.0" layoutY="15.0" radius="5.0" scaleX="1.2"
-                                        scaleY="1.2" scaleZ="1.2" stroke="#00000033" strokeType="INSIDE"/>
+                                <Circle fill="#f02f2f" layoutX="15.0" layoutY="15.0" radius="5.0" scaleX="1.2" scaleY="1.2" scaleZ="1.2" stroke="#00000033" strokeType="INSIDE" />
                                 <Text layoutX="250.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A32">
                                     <font>
-                                        <Font name="Microsoft Tai Le" size="12.0"/>
+                                        <Font name="Microsoft Tai Le" size="12.0" />
                                     </font>
                                 </Text>
                             </children>
@@ -129,18 +115,6 @@
                 </Group>
             </children>
         </VBox>
-        <JFXButton fx:id="backButton" layoutX="234.0" layoutY="19.0" onAction="#mainMenu" prefHeight="51.0"
-                   prefWidth="95.0" style="-fx-background-color: #021D5A;" text="Back" textFill="WHITE">
-            <font>
-                <Font name="Microsoft Tai Le" size="24.0"/>
-            </font>
-        </JFXButton>
-        <Pane fx:id="test" layoutX="704.0" layoutY="98.0" onMouseClicked="#openSidebarLayout" prefHeight="535.0"
-              prefWidth="294.0" style="-fx-background-color: white; -fx-background-radius: 15;"/>
-        <Pane fx:id="sidebarPane" prefHeight="700.0" prefWidth="185.0"/>
-        <JFXHamburger fx:id="sidebarHamburger" layoutX="10.0" layoutY="10.0" onMouseClicked="#openSidebarLayout"/>
-        <JFXButton fx:id="closeSidebarHiddenButton" layoutX="151.0" layoutY="14.0" onAction="#closeSidebarLayout"
-                   prefHeight="30.0" prefWidth="31.0" text="closeSidebarHiddenButton" textFill="TRANSPARENT"
-                   visible="false"/>
+        <Pane fx:id="test" layoutX="531.0" layoutY="150.0" prefHeight="535.0" prefWidth="294.0" style="-fx-background-color: white; -fx-background-radius: 15;" />
     </children>
 </AnchorPane>

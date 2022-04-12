@@ -6,6 +6,8 @@ import org.hibernate.cfg.Configuration;
 
 /** This class is used to manage the Hibernate session. */
 public class SessionManager {
+  private String googleCloudCFG = "hibernate_googlecloud.cfg.xml";
+
   private static SessionFactory sf =
       new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 

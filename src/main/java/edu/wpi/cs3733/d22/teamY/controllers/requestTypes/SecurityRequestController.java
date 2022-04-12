@@ -1,52 +1,55 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
-import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.SecurityServiceRequest;
+import io.github.palexdev.materialfx.controls.MFXRadioButton;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 
-public class SecurityServicesRequestController {
+public class SecurityRequestController {
   // Text input
-  @FXML private TextField input_RoomID;
-  @FXML private TextField input_PatientName;
-  @FXML private TextField input_AssignedNurse;
-  @FXML private TextField input_RequestStatus;
+  @FXML private MFXTextField input_RoomID;
+  @FXML private MFXTextField input_PatientID;
+  @FXML private MFXTextField input_AssignedNurse;
 
-  @FXML private TextArea input_AdditionalNotes;
+  @FXML private JFXTextArea input_AdditionalNotes;
+
+  @FXML private MFXTextField input_OtherText;
   // Radio buttons
-  @FXML private JFXRadioButton unwantedGuestRadioButton;
-  @FXML private JFXRadioButton disruptionRadioButton;
-  @FXML private JFXRadioButton theftRadioButton;
+  @FXML private MFXRadioButton unwantedGuestRadioButton;
+  @FXML private MFXRadioButton disruptionRadioButton;
+  @FXML private MFXRadioButton theftRadioButton;
+  @FXML private MFXRadioButton otherRadioButton;
 
-  @FXML private JFXRadioButton mostUrgentRadioButton;
-  @FXML private JFXRadioButton urgentRadioButton;
-  @FXML private JFXRadioButton lowPriorityRadioButton;
+  @FXML private MFXRadioButton mostUrgentRadioButton;
+  @FXML private MFXRadioButton urgentRadioButton;
+  @FXML private MFXRadioButton lowPriorityRadioButton;
   // Error Label
-  @FXML private Label errorLabel;
+  @FXML private TextArea errorLabel;
 
   private Scene requestMenu = null;
 
   // Security types text. These should be changed depending on what the names in the database are.
-  private final String unwantedGuestText = "unwantedGuest";
-  private final String disruptionText = "disruption";
-  private final String theftText = "theft";
+  private static final String unwantedGuestText = "unwantedGuest";
+  private static final String disruptionText = "disruption";
+  private static final String theftText = "theft";
+  private static final String otherText = "other";
 
   // Security priority text. These should be changed depending on what the names in  the database
   // are.
-  private final String mostUrgentText = "mostUrgent";
-  private final String urgentText = "urgent";
-  private final String lowPriorityText = "lowPriority";
+  private static final String mostUrgentText = "mostUrgent";
+  private static final String urgentText = "urgent";
+  private static final String lowPriorityText = "lowPriority";
 
-  public SecurityServicesRequestController() throws IOException {}
+  public SecurityRequestController() throws IOException {}
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
 
@@ -96,11 +99,11 @@ public class SecurityServicesRequestController {
       submitRequest(
           input_RoomID.getText(),
           input_AssignedNurse.getText(),
-          input_RequestStatus.getText(),
+          input_PatientID.getText(),
           input_AdditionalNotes.getText(),
           getRequestType(),
           getRequestPriority());
-      RequestControllerUtil.resetLabels(errorLabel);
+      errorLabel.setText("");
     } else {
       // Print error messages
       if (typeSelected) {
@@ -108,7 +111,7 @@ public class SecurityServicesRequestController {
       } else if (prioritySelected) {
         errorLabel.setText("Please select a request type.");
       } else {
-        errorLabel.setText("Please select a request type and priority.");
+        errorLabel.setText("Please select a purpose and priority.");
       }
     }
   }
@@ -118,6 +121,7 @@ public class SecurityServicesRequestController {
     if (theftRadioButton.isSelected()) return theftText;
     if (disruptionRadioButton.isSelected()) return disruptionText;
     if (unwantedGuestRadioButton.isSelected()) return unwantedGuestText;
+    if (otherRadioButton.isSelected()) return otherText;
     // Should never happen
     return ("");
   }
@@ -137,20 +141,34 @@ public class SecurityServicesRequestController {
     resetAllFields();
   }
 
+  @FXML
+  void enableMiscBox() {
+    input_OtherText.setAllowEdit(true);
+    input_OtherText.setSelectable(true);
+  }
+
+  @FXML
+  void disableMiscBox() {
+    input_OtherText.setAllowEdit(false);
+    input_OtherText.setSelectable(false);
+    RequestControllerUtil.resetTextFields(input_OtherText);
+  }
+
   //  Reset button functionality
   @FXML
   void resetAllFields() {
     // Text input
     RequestControllerUtil.resetTextFields(
-        input_RoomID, input_AssignedNurse, input_RequestStatus, input_AdditionalNotes);
+        input_RoomID, input_AssignedNurse, input_PatientID, input_AdditionalNotes, input_OtherText);
     // Report type radio buttons
     RequestControllerUtil.resetRadioButtons(
         unwantedGuestRadioButton,
         disruptionRadioButton,
         theftRadioButton,
+        otherRadioButton,
         mostUrgentRadioButton,
         urgentRadioButton,
         lowPriorityRadioButton);
-    RequestControllerUtil.resetLabels(errorLabel);
+    errorLabel.setText("");
   }
 }

@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class SceneLoading {
   public static void loadScene(String path) throws IOException {
@@ -16,7 +17,7 @@ public class SceneLoading {
   }
 
   public static void loadPopup(String popPath, String parentPath) throws IOException {
-    Stage stage = new Stage();
+    Stage stage = new Stage(StageStyle.UNDECORATED);
     Scene sceneToLoad =
         new Scene(FXMLLoader.load(Objects.requireNonNull(App.class.getResource(popPath))));
     Scene parentScene =
