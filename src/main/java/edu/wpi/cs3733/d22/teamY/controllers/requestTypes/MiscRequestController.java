@@ -10,6 +10,7 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 
 public class MiscRequestController {
   @FXML private MFXTextField input_AssignedNurse;
@@ -17,6 +18,7 @@ public class MiscRequestController {
   @FXML private MFXTextField input_RequestName;
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
+  @FXML private TextArea errorLabel;
 
   public MiscRequestController() {}
 
@@ -56,12 +58,20 @@ public class MiscRequestController {
   // Called when the submit button is pressed.
   @FXML
   void submitButton() throws IOException {
-    submitRequest(
-        DBUtils.convertNameToID(roomsComboBox.getValue()),
-        input_AssignedNurse.getText(),
-        "Patient ID",
-        input_AdditionalNotes.getText(),
-        input_RequestName.getText());
+    if (DBUtils.convertNameToID(roomsComboBox.getValue()).equals("")
+        || input_AdditionalNotes.getText().equals("")
+        || input_AssignedNurse.getText().equals("")
+        || input_RequestName.getText().equals("")) {
+      errorLabel.setText("Missing Required Fields.");
+    } else {
+      submitRequest(
+              DBUtils.convertNameToID(roomsComboBox.getValue()),
+          input_AssignedNurse.getText(),
+          "Patient ID",
+          input_AdditionalNotes.getText(),
+          input_RequestName.getText());
+      errorLabel.setText("");
+    }
   }
 
   @FXML

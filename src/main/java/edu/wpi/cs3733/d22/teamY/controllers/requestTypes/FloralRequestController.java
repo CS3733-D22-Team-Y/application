@@ -8,6 +8,7 @@ import edu.wpi.cs3733.d22.teamY.model.FloralRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
+import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -81,7 +82,10 @@ public class FloralRequestController {
   void submitButton() throws IOException {
     // Checks if a bouquet choice has been made
     if (RequestControllerUtil.isRadioButtonSelected(
-        getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton)) {
+            getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton)
+        && !Objects.equals(input_RoomID.getText(), "")
+        && !Objects.equals(input_AssignedNurse.getText(), "")
+        && !Objects.equals(input_PatientID.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
@@ -90,7 +94,7 @@ public class FloralRequestController {
           getBouquetType());
       errorLabel.setText("");
     } else {
-      errorLabel.setText("Please select a bouquet option.");
+      errorLabel.setText("Missing Required Fields.");
     }
   }
 

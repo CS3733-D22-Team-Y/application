@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -15,72 +16,82 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.LaundryRequestController">
+<AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="780.0" minWidth="920.0" prefHeight="780.0" prefWidth="920.0" styleClass="subtitle" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.LaundryRequestController">
    <children>
-       <Label styleClass="title" text="Laundry Request">
-           <textFill>
-               <LinearGradient endX="1.0" endY="1.0">
-                   <stops>
-                       <Stop>
-                           <color>
-                               <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
-                           </color>
-                       </Stop>
-                       <Stop offset="1.0">
-                           <color>
-                               <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
-                           </color>
-                       </Stop>
-                   </stops>
-               </LinearGradient>
-           </textFill>
-           <font>
-               <Font name="Arial Rounded MT Bold" size="60.0" />
-           </font>
+      <Label styleClass="title" text="Laundry Request">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Arial Rounded MT Bold" size="60.0" />
+         </font>
          <effect>
+            <DropShadow height="21.61" offsetX="-1.0" offsetY="1.0" radius="10.3275" width="21.7">
+               <color>
+                  <Color red="0.0835999995470047" green="0.2515600025653839" blue="0.3799999952316284" opacity="0.23000000417232513" />
+               </color>
+            </DropShadow>
          </effect>
-       </Label>
-      <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="150.0" prefHeight="35.0" prefWidth="134.0" text="Patient ID:" textAlignment="CENTER">
+      </Label>
+      <Label layoutX="15.0" layoutY="150.0" prefHeight="35.0" prefWidth="134.0" styleClass="inputLabel" text="Patient ID:">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="225.0" prefHeight="35.0" prefWidth="133.0" text="Nurse:" textAlignment="CENTER">
+      <Label layoutX="15.0" layoutY="225.0" prefHeight="35.0" prefWidth="133.0" styleClass="inputLabel" text="Nurse:">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="300.0" prefHeight="35.0" prefWidth="133.0" text="Room:" textAlignment="CENTER">
+      <Label layoutX="15.0" layoutY="300.0" prefHeight="35.0" prefWidth="133.0" styleClass="inputLabel" text="Room:">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="400.0" layoutX="10.0" layoutY="380.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
-      <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="15.0" layoutY="385.0" prefHeight="390.0" prefWidth="390.0" promptText="Additional Text..." unFocusColor="#ffffff00">
+      <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="15.0" layoutY="385.0" prefHeight="390.0" prefWidth="390.0" promptText="Additional Text..." styleClass="requestInput" unFocusColor="#ffffff00">
          <font>
             <Font name="Calibri" size="20.0" />
          </font></JFXTextArea>
-      <MFXTextField fx:id="input_PatientID" floatMode="DISABLED" layoutX="160.0" layoutY="146.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0">
+      <MFXTextField fx:id="input_PatientID" floatMode="DISABLED" layoutX="160.0" layoutY="146.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
          <font>
             <Font name="Calibri" size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField fx:id="input_AssignedNurse" floatMode="DISABLED" layoutX="160.0" layoutY="221.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0">
+      <MFXTextField fx:id="input_AssignedNurse" floatMode="DISABLED" layoutX="160.0" layoutY="221.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
          <font>
             <Font name="Calibri" size="20.0" />
          </font>
       </MFXTextField>
-      <MFXButton computeRadiusMultiplier="false" layoutX="700.0" layoutY="730.0" onAction="#resetAllFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" text="Reset" textFill="WHITE">
+      <MFXTextField fx:id="input_RoomID" floatMode="DISABLED" layoutX="160.0" layoutY="296.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
+         <font>
+            <Font name="Calibri" size="20.0" />
+         </font>
+      </MFXTextField>
+      <MFXButton computeRadiusMultiplier="false" layoutX="710.0" layoutY="730.0" onAction="#resetAllFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" styleClass="requestButton" text="Reset" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </MFXButton>
-      <MFXButton fx:id="submitButton" computeRadiusMultiplier="false" layoutX="810.0" layoutY="730.0" onAction="#submitButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" text="Submit" textFill="WHITE">
+      <MFXButton fx:id="submitButton" computeRadiusMultiplier="false" layoutX="820.0" layoutY="730.0" onAction="#submitButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Submit" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </MFXButton>
-      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="140.0" prefWidth="300.0" text="Options" textAlignment="RIGHT">
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="110.0" prefWidth="300.0" styleClass="subtitle" text="Options" textAlignment="RIGHT">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -101,10 +112,20 @@
             <Font name="Arial Rounded MT Bold" size="45.0" />
          </font>
          <effect>
+            <DropShadow offsetX="-1.0" offsetY="1.0">
+               <color>
+                  <Color red="0.08510000258684158" green="0.2512916624546051" blue="0.3700000047683716" opacity="0.23000000417232513" />
+               </color>
+            </DropShadow>
          </effect>
       </Label>
       <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
          <effect>
+            <DropShadow height="20.24" offsetX="-3.0" offsetY="2.0" radius="9.985" width="21.7">
+               <color>
+                  <Color red="0.08235294371843338" green="0.24705882370471954" blue="0.38823530077934265" opacity="0.3799999952316284" />
+               </color>
+            </DropShadow>
          </effect>
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -123,8 +144,13 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="620.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0">
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="520.0" layoutY="175.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0">
          <effect>
+            <DropShadow height="15.85" offsetX="-3.0" offsetY="2.0" radius="8.8875" width="21.7">
+               <color>
+                  <Color red="0.08190000057220459" green="0.24621999263763428" blue="0.38999998569488525" opacity="0.3767123222351074" />
+               </color>
+            </DropShadow>
          </effect>
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -143,7 +169,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <MFXRadioButton fx:id="linensRadioButton" layoutX="650.0" layoutY="230.0" radius="12.0" text="Linens">
+      <MFXRadioButton fx:id="linensRadioButton" layoutX="520.0" layoutY="200.0" radius="12.0" styleClass="requestOption" text="Linens">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
@@ -151,12 +177,12 @@
             <ToggleGroup fx:id="laundry_options" />
          </toggleGroup>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="scrubsRadioButton" layoutX="650.0" layoutY="275.0" radius="12.0" text="Scrubs" toggleGroup="$laundry_options">
+      <MFXRadioButton fx:id="scrubsRadioButton" layoutX="520.0" layoutY="250.0" radius="12.0" styleClass="requestOption" text="Scrubs" toggleGroup="$laundry_options">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="hazardousRadioButton" layoutX="650.0" layoutY="320.0" radius="12.0" text="Hazardous" toggleGroup="$laundry_options">
+      <MFXRadioButton fx:id="hazardousRadioButton" layoutX="520.0" layoutY="300.0" radius="12.0" styleClass="requestOption" text="Hazardous" toggleGroup="$laundry_options">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>

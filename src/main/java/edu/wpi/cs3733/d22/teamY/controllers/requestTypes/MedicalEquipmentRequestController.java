@@ -53,7 +53,6 @@ public class MedicalEquipmentRequestController {
   }
 
   private void updateAvailableEquip() {
-    System.out.println("Hello???");
     bedRadioButton.setText(
         "Beds: \n"
             + DBUtils.getAvailableEquipment("BED").getKey().toString()
@@ -148,7 +147,7 @@ public class MedicalEquipmentRequestController {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
-          "Request Status"
+          "null"
           /*input_RequestStatus.getText()*/ ,
           input_AdditionalNotes.getText(),
           getEquipmentType());

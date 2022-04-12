@@ -7,6 +7,7 @@ import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.model.TranslatorRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -84,11 +85,14 @@ public class TranslatorRequestController {
   void submitButton() {
     // Checks if a bouquet choice has been made
     if (RequestControllerUtil.isRadioButtonSelected(
-        spanishRadioButton,
-        chineseRadioButton,
-        germanRadioButton,
-        arabicRadioButton,
-        otherRadioButton)) {
+            spanishRadioButton,
+            chineseRadioButton,
+            germanRadioButton,
+            arabicRadioButton,
+            otherRadioButton)
+        && !Objects.equals(input_RoomID.getText(), "")
+        && !Objects.equals(input_AssignedNurse.getText(), "")
+        && !Objects.equals(input_PatientID.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
@@ -97,7 +101,7 @@ public class TranslatorRequestController {
           getLanguageType());
       errorLabel.setText("");
     } else {
-      errorLabel.setText("Please select a language option.");
+      errorLabel.setText("Missing Required Fields.");
     }
   }
 
