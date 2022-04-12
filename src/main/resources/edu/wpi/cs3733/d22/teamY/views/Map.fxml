@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="mainPane" prefHeight="780.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MapPageController">
@@ -14,13 +17,6 @@
       <center>
          <AnchorPane fx:id="mapRoot" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
       </center>
-      <right>
-         <VBox prefHeight="400.0" prefWidth="158.0" BorderPane.alignment="CENTER">
-            <children>
-               <ComboBox fx:id="modeBox" prefHeight="26.0" prefWidth="200.0" />
-            </children>
-         </VBox>
-      </right>
       <bottom>
          <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
@@ -87,4 +83,48 @@
          </HBox>
       </bottom>
    </BorderPane>
+   <Pane fx:id="locationInfoPane" layoutX="701.0" prefHeight="780.0" prefWidth="219.0">
+      <children>
+         <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="780.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="219.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="82.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Node ID:">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="locationID" layoutX="84.0" layoutY="76.0" prefHeight="48.0" prefWidth="134.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="170.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Short Name:">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="locationShort" layoutX="84.0" layoutY="164.0" prefHeight="48.0" prefWidth="134.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="269.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Long Name:">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="locationLong" layoutX="84.0" layoutY="263.0" prefHeight="48.0" prefWidth="134.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="365.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="X Coord:">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="locationX" layoutX="84.0" layoutY="359.0" prefHeight="48.0" prefWidth="134.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="450.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Y Coord:">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="locationY" layoutX="84.0" layoutY="444.0" prefHeight="48.0" prefWidth="134.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="540.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Building:">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="locationBuilding" layoutX="84.0" layoutY="534.0" prefHeight="48.0" prefWidth="134.0" />
+         <MFXButton fx:id="locationSubmit" layoutX="110.0" layoutY="675.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />
+         <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Submit" />
+      </children>
+   </Pane>
+   <MFXLegacyComboBox fx:id="modeBox" layoutX="770.0" layoutY="29.0" prefHeight="37.0" prefWidth="134.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0" />
 </AnchorPane>
