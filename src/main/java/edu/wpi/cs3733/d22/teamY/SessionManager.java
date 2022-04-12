@@ -39,10 +39,9 @@ public class SessionManager {
     }
   }
 
-  public static void switchToCloud(){
+  public static void switchToCloud() {
     System.out.println("Switching to Cloud DB...");
     sf.close();
     sf = new Configuration().configure("hibernate_googlecloud.cfg.xml").buildSessionFactory();
   }
-  
 }
