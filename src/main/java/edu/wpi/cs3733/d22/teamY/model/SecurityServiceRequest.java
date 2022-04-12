@@ -127,7 +127,6 @@ public class SecurityServiceRequest implements StringArrayConv, Requestable {
     this.requestPriority = requestPriority;
   }
 
-
   @Override
   public String getLocID() {
     return this.roomID;
