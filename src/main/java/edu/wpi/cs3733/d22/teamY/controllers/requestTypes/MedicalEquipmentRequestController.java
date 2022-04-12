@@ -5,6 +5,7 @@ import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
@@ -88,7 +89,8 @@ public class MedicalEquipmentRequestController {
       String assignedNurse,
       String requestStatus,
       String additionalNotes,
-      String equipmentTypeSelected) {
+      String equipmentTypeSelected)
+      throws IOException {
     String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.MED_EQUIP_REQ));
     DBManager.save(
         new MedEquipReq(
@@ -101,11 +103,12 @@ public class MedicalEquipmentRequestController {
     DBUtils.updateCleanStatus(equipmentTypeSelected, roomID);
     System.out.println("Saved MedEquipRequest");
     updateAvailableEquip();
+    SceneUtil.sidebar.mainPage();
   }
 
   // Called when the submit button is pressed.
   @FXML
-  void submitButton() {
+  void submitButton() throws IOException {
     // Checks if a bouquet choice has been made
 
     boolean failed = false;
