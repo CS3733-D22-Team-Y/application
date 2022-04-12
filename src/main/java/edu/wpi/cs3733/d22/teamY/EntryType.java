@@ -31,6 +31,9 @@ public enum EntryType {
       7, "SecurityServiceRequests", "securityServiceRequests_export", SecurityServiceRequest.class),
 
   TRANSLATOR_REQUEST(6, "TranslatorRequests", "translatorRequests_export", TranslatorRequest.class),
+
+  MISC_REQUEST(6, "MiscRequests", "miscRequests_export", MiscRequest.class),
+
 // region Enum Data / Methods
 /* Enum specification begins below... */ ;
 

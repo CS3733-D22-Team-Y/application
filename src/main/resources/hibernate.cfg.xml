@@ -30,5 +30,6 @@
         <mapping class="edu.wpi.cs3733.d22.teamY.model.MealRequest"/>
         <mapping class="edu.wpi.cs3733.d22.teamY.model.SecurityServiceRequest"/>
         <mapping class="edu.wpi.cs3733.d22.teamY.model.TranslatorRequest"/>
+        <mapping class="edu.wpi.cs3733.d22.teamY.model.MiscRequest"/>
     </session-factory>
 </hibernate-configuration>

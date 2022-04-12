@@ -5,25 +5,25 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TRANSLATORREQUESTS")
-public class TranslatorRequest implements StringArrayConv, Requestable {
+@Table(name = "MISCREQUESTS")
+public class MiscRequest implements StringArrayConv, Requestable {
   @Id private String requestNum;
   private String roomID;
   private String assignedNurse;
   private String requestStatus;
-  private String additonalNotes;
-  private String languageTypeSelected;
+  private String additionalNotes;
+  private String requestName;
 
-  public TranslatorRequest() {}
+  public MiscRequest() {}
 
-  public TranslatorRequest(
+  public MiscRequest(
       String requestNum,
       String roomID,
       String assignedNurse,
       String requestStatus,
-      String additonalNotes,
-      String languageTypeSelected) {
-    init(requestNum, roomID, assignedNurse, requestStatus, additonalNotes, languageTypeSelected);
+      String additionalNotes,
+      String requestName) {
+    init(requestNum, roomID, assignedNurse, requestStatus, additionalNotes, requestName);
   }
 
   private void init(
@@ -31,14 +31,19 @@ public class TranslatorRequest implements StringArrayConv, Requestable {
       String roomID,
       String assignedNurse,
       String requestStatus,
-      String additonalNotes,
-      String languageTypeSelected) {
+      String additionalNotes,
+      String requestName) {
     this.requestNum = requestNum;
     this.roomID = roomID;
     this.assignedNurse = assignedNurse;
     this.requestStatus = requestStatus;
-    this.additonalNotes = additonalNotes;
-    this.languageTypeSelected = languageTypeSelected;
+    this.additionalNotes = additionalNotes;
+    this.requestName = requestName;
+  }
+
+  @Override
+  public String getLocID() {
+    return this.roomID;
   }
 
   @Override
@@ -48,19 +53,14 @@ public class TranslatorRequest implements StringArrayConv, Requestable {
       this.roomID,
       this.assignedNurse,
       this.requestStatus,
-      this.additonalNotes,
-      this.languageTypeSelected
+      this.additionalNotes,
+      this.requestName
     };
   }
 
   @Override
   public void fromStringArray(String[] args) {
     init(args[0], args[1], args[2], args[3], args[4], args[5]);
-  }
-
-  @Override
-  public String getLocID() {
-    return this.roomID;
   }
 
   public String getRequestNum() {
@@ -95,19 +95,19 @@ public class TranslatorRequest implements StringArrayConv, Requestable {
     this.requestStatus = requestStatus;
   }
 
-  public String getAdditonalNotes() {
-    return additonalNotes;
+  public String getAdditionalNotes() {
+    return additionalNotes;
   }
 
-  public void setAdditonalNotes(String additonalNotes) {
-    this.additonalNotes = additonalNotes;
+  public void setAdditionalNotes(String additionalNotes) {
+    this.additionalNotes = additionalNotes;
   }
 
-  public String getLanguageTypeSelected() {
-    return languageTypeSelected;
+  public String getRequestName() {
+    return requestName;
   }
 
-  public void setLanguageTypeSelected(String languageTypeSelected) {
-    this.languageTypeSelected = languageTypeSelected;
+  public void setRequestName(String requestName) {
+    this.requestName = requestName;
   }
 }
