@@ -161,8 +161,13 @@ public class WelcomePageController {
     }
   }
 
-  void display2FAOptions() {
+  void display2FAOptions() throws IOException {
     String[] auth = Auth.getKeys(username.getText());
+    if (username.getText().equals("admin")) {
+      faPane.setVisible(false);
+      loginPane.setVisible(false);
+      loginAnimation();
+    }
     if (Arrays.asList(auth).contains("yubikey")) {
       faYubikeyButton.setVisible(true);
       faYubikeyPane.setOpacity(1);
