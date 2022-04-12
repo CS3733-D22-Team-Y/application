@@ -111,7 +111,7 @@ public class SecurityRequestController {
             urgentRadioButton, mostUrgentRadioButton, lowPriorityRadioButton);
 
     Boolean allFields =
-        !Objects.equals(input_RoomID.getText(), "")
+        !Objects.equals(roomsComboBox.getValue(), "")
             && !Objects.equals(input_AssignedNurse.getText(), "")
             && !Objects.equals(input_PatientID.getText(), "");
 

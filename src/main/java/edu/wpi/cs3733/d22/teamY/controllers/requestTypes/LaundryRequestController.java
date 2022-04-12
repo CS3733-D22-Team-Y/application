@@ -82,7 +82,7 @@ public class LaundryRequestController {
     // Checks if a lab result choice has been made.
     if (RequestControllerUtil.isRadioButtonSelected(
             hazardousRadioButton, linensRadioButton, scrubsRadioButton)
-        && !Objects.equals(input_RoomID.getText(), "")
+        && !Objects.equals(roomsComboBox.getValue(), "")
         && !Objects.equals(input_AssignedNurse.getText(), "")
         && !Objects.equals(input_PatientID.getText(), "")) {
       submitRequest(

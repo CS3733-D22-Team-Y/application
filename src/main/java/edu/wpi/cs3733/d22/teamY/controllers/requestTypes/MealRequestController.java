@@ -116,7 +116,7 @@ public class MealRequestController {
             pizzaRadioButton, burgerRadioButton, saladRadioButton);
 
     Boolean allFields =
-        !Objects.equals(input_RoomID.getText(), "")
+        !Objects.equals(roomsComboBox.getValue(), "")
             && !Objects.equals(input_AssignedNurse.getText(), "");
 
     Boolean sideSelected =

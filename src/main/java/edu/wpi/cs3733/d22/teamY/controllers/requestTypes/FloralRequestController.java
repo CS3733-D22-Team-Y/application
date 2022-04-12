@@ -83,7 +83,7 @@ public class FloralRequestController {
     // Checks if a bouquet choice has been made
     if (RequestControllerUtil.isRadioButtonSelected(
             getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton)
-        && !Objects.equals(input_RoomID.getText(), "")
+        && !Objects.equals(roomsComboBox.getValue(), "")
         && !Objects.equals(input_AssignedNurse.getText(), "")
         && !Objects.equals(input_PatientID.getText(), "")) {
       submitRequest(

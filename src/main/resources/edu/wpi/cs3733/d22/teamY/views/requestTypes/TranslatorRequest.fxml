@@ -86,11 +86,6 @@
                 <Font name="Calibri" size="20.0" />
             </font>
         </MFXTextField>
-        <MFXTextField fx:id="input_RoomID" floatMode="DISABLED" layoutX="160.0" layoutY="296.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
-            <font>
-                <Font name="Calibri" size="20.0" />
-            </font>
-        </MFXTextField>
         <MFXButton computeRadiusMultiplier="false" layoutX="710.0" layoutY="730.0" onAction="#resetAllFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" styleClass="requestButton" text="Reset" textFill="WHITE">
             <font>
                 <Font name="Calibri Bold" size="20.0" />

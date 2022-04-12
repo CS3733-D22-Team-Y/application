@@ -90,7 +90,7 @@ public class TranslatorRequestController {
             germanRadioButton,
             arabicRadioButton,
             otherRadioButton)
-        && !Objects.equals(input_RoomID.getText(), "")
+        && !Objects.equals(roomsComboBox.getValue(), "")
         && !Objects.equals(input_AssignedNurse.getText(), "")
         && !Objects.equals(input_PatientID.getText(), "")) {
       submitRequest(
