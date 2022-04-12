@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "MEALREQUESTS")
-public class MealRequest implements StringArrayConv {
+public class MealRequest implements StringArrayConv, Requestable {
 
   @Id private String requestNum;
   private String roomID;
@@ -153,5 +153,10 @@ public class MealRequest implements StringArrayConv {
 
   public void setSpecialInstructions(String specialInstructions) {
     this.specialInstructions = specialInstructions;
+  }
+
+  @Override
+  public String getLocID() {
+    return roomID;
   }
 }
