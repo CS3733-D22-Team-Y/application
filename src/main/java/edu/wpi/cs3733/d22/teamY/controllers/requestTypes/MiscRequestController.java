@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
@@ -8,15 +9,26 @@ import edu.wpi.cs3733.d22.teamY.model.MiscRequest;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 
 public class MiscRequestController {
-  @FXML private MFXTextField input_RoomID;
   @FXML private MFXTextField input_AssignedNurse;
-  @FXML private MFXTextField input_PatientID;
   @FXML private JFXTextArea input_AdditionalNotes;
   @FXML private MFXTextField input_RequestName;
+  @FXML private JFXComboBox<String> roomsComboBox;
+  @FXML private TextField roomsHiddenField;
 
   public MiscRequestController() {}
+
+  @FXML
+  void initialize() {
+    roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+  }
+
+  @FXML
+  private void setRoomText() {
+    roomsHiddenField.setText(roomsComboBox.getValue());
+  }
 
   /**
    * Submits a service request.
@@ -45,9 +57,9 @@ public class MiscRequestController {
   @FXML
   void submitButton() throws IOException {
     submitRequest(
-        input_RoomID.getText(),
+        DBUtils.convertNameToID(roomsComboBox.getValue()),
         input_AssignedNurse.getText(),
-        input_PatientID.getText(),
+        "Patient ID",
         input_AdditionalNotes.getText(),
         input_RequestName.getText());
   }
@@ -55,10 +67,7 @@ public class MiscRequestController {
   @FXML
   void resetAllFields() {
     RequestControllerUtil.resetTextFields(
-        input_RequestName,
-        input_AdditionalNotes,
-        input_RoomID,
-        input_PatientID,
-        input_AssignedNurse);
+        input_RequestName, input_AdditionalNotes, roomsHiddenField, input_AssignedNurse);
+    roomsComboBox.setValue("");
   }
 }
