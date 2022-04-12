@@ -26,7 +26,7 @@ public class UpdateNewAccountController {
   }
 
   @FXML
-  void goToMainPage() throws IOException {
+  void backToMainButton() throws IOException {
     passwordValidityError.setVisible(false);
     passwordsDoNotMatch.setVisible(false);
     SceneLoading.loadScene("views/Welcome.fxml");

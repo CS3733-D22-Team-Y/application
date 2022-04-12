@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,70 +14,65 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="800.0" maxWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.UpdateNewAccountController">
+<AnchorPane maxHeight="800.0" maxWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.UpdateNewAccountController">
     <children>
-      <ImageView fitHeight="800.0" fitWidth="1200.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
+      <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
          <image>
             <Image url="@images/do-rgb.jpg" />
          </image>
       </ImageView>
-        <Rectangle height="265.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1100.0">
+      <Label fx:id="Welcome" layoutX="10.0" styleClass="title" text="Update Your New Account">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="60.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.5681817603833748" endY="1.0" startX="0.5643939542951006" startY="0.22348483403523764">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
             <fill>
-                <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.2831439393939398">
+                <LinearGradient endX="1.0" endY="1.0">
                     <stops>
                         <Stop>
                             <color>
-                                <Color red="0.003921568859368563" green="0.1764705926179886" blue="0.3529411852359772" />
+                                <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
                             </color>
                         </Stop>
                         <Stop offset="1.0">
                             <color>
-                                <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                                <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
                             </color>
                         </Stop>
                     </stops>
                 </LinearGradient>
             </fill>
         </Rectangle>
-        <Rectangle height="265.0" layoutY="434.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-rotate: 180;" width="1100.0">
-            <fill>
-                <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.2831439393939398">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.003921568859368563" green="0.1764705926179886" blue="0.3529411852359772" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </fill>
-        </Rectangle>
-        <Label layoutX="21.0" layoutY="13.0" text="Update Your New Account" textFill="WHITE">
-            <font>
-                <Font name="Microsoft Tai Le Bold" size="52.0" />
-            </font>
-        </Label>
-        <JFXButton fx:id="backToMainButton" layoutX="974.0" layoutY="7.0" onAction="#goToMainPage" text="Back" textFill="WHITE">
-            <font>
-                <Font name="Microsoft Tai Le Bold" size="36.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-        </JFXButton>
-      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="344.0" layoutX="210.0" layoutY="191.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="681.0" />
-      <MFXPasswordField fx:id="newPasswordField" layoutX="491.0" layoutY="313.0" prefHeight="51.0" prefWidth="362.0" />
-      <Label layoutX="270.0" layoutY="316.0" prefHeight="44.0" prefWidth="163.0" text="New Password:">
+      <MFXButton buttonType="RAISED" layoutX="1070.0" layoutY="10.0" onAction="#backToMainButton" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #20758b;" styleClass="loginButton" text="Exit" textFill="#e4e5e6">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="20.0" />
+         </font>
+      </MFXButton>
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="345.0" layoutX="267.0" layoutY="250.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="680.0" />
+      <MFXPasswordField fx:id="newPasswordField" layoutX="540.0" layoutY="364.0" prefHeight="51.0" prefWidth="362.0" />
+      <Label layoutX="319.0" layoutY="367.0" prefHeight="44.0" prefWidth="163.0" styleClass="inputLabel" text="New Password:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="303.0" layoutY="214.0" prefHeight="102.0" prefWidth="495.0" text="Hi! We noticed you have a new account, please update your password!" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+      <Label layoutX="359.0" layoutY="261.0" prefHeight="102.0" prefWidth="495.0" styleClass="plainText" text="Hi! We noticed you have a new account, please update your password!" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
          <font>
             <Font size="24.0" />
          </font>
@@ -94,13 +88,13 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="511.0" layoutY="425.0" prefHeight="63.0" prefWidth="323.0" text="Password must be at least 5 characters long, with at least one number, one letter and one special character." textAlignment="CENTER" wrapText="true">
+      <Label layoutX="314.0" layoutY="496.0" prefHeight="63.0" prefWidth="590.0" styleClass="plainText" text="Password must be at least 5 characters long, with at least one number, one letter and one special character." textAlignment="CENTER" textFill="RED" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <MFXPasswordField fx:id="confirmPasswordField" layoutX="491.0" layoutY="383.0" prefHeight="51.0" prefWidth="362.0" />
-      <Label layoutX="270.0" layoutY="387.0" prefHeight="44.0" prefWidth="201.0" text="Confirm Password:">
+      <MFXPasswordField fx:id="confirmPasswordField" layoutX="540.0" layoutY="434.0" prefHeight="51.0" prefWidth="362.0" />
+      <Label layoutX="319.0" layoutY="438.0" prefHeight="44.0" prefWidth="201.0" styleClass="inputLabel" text="Confirm Password:">
          <font>
             <Font size="24.0" />
          </font>

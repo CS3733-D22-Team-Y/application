@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.WelcomePageController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.WelcomePageController">
     <children>
         <Pane fx:id="yubikeyPane" layoutX="400.0" layoutY="222.0">
             <children>
@@ -58,9 +58,9 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-        <Label fx:id="Welcome" layoutX="21.0" layoutY="13.0" text="Welcome to BWH Portal">
+        <Label fx:id="Welcome" layoutX="10.0" styleClass="title" text="Welcome to BWH Portal">
             <font>
-                <Font name="Arial Rounded MT Bold" size="54.0" />
+                <Font name="Arial Rounded MT Bold" size="60.0" />
             </font>
          <textFill>
             <LinearGradient endX="0.5681817603833748" endY="1.0" startX="0.5643939542951006" startY="0.22348483403523764">
@@ -79,12 +79,30 @@
             </LinearGradient>
          </textFill>
         </Label>
+        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
       <MFXButton buttonType="RAISED" layoutX="1070.0" layoutY="10.0" onAction="#killApplication" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #20758b;" styleClass="loginButton" text="Exit" textFill="#e4e5e6">
          <font>
             <Font name="Arial Rounded MT Bold" size="20.0" />
          </font>
       </MFXButton>
-        <Pane fx:id="loginPane" layoutX="450.0" layoutY="250.0" prefWidth="300.0">
+        <Pane fx:id="loginPane" layoutX="450.0" layoutY="300.0" prefWidth="300.0">
             <children>
                 <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="256.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
                 <Pane fx:id="failedLoginPane" layoutY="150.0" prefHeight="28.0" prefWidth="300.0" visible="false">
