@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
@@ -9,7 +10,6 @@ import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -17,9 +17,9 @@ import javafx.scene.control.TextField;
 
 public class MedicalEquipmentRequestController {
   // Text Inputs
-  @FXML private TextField input_PatientID;
   @FXML private TextField input_AssignedNurse;
-  @FXML private TextField input_RoomID;
+  @FXML private JFXComboBox<String> roomsComboBox;
+  @FXML private TextField roomsHiddenField;
 
   @FXML private JFXTextArea input_AdditionalNotes;
   // Radio Buttons
@@ -43,6 +43,14 @@ public class MedicalEquipmentRequestController {
   private void initialize() {
 
     updateAvailableEquip();
+
+    System.out.println(RequestControllerUtil.allRoomsComboBox.getItems().size());
+    roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+  }
+
+  @FXML
+  private void setRoomText() {
+    roomsHiddenField.setText(roomsComboBox.getValue());
   }
 
   private void updateAvailableEquip() {
@@ -132,6 +140,8 @@ public class MedicalEquipmentRequestController {
         errorLabel.setText("Equipment not available.");
         failed = true;
       }
+      SceneLoading.loadPopup(
+          "views/popups/ReqSubmitted.fxml", "views/requestTypes/MedicalEquipmentRequest.fxml");
     } else {
       errorLabel.setText("Please select an equipment option.");
       failed = true;
@@ -139,9 +149,9 @@ public class MedicalEquipmentRequestController {
 
     if (!failed) {
       submitRequest(
-          input_RoomID.getText(),
+          DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
-          "bruh"
+          "null"
           /*input_RequestStatus.getText()*/ ,
           input_AdditionalNotes.getText(),
           getEquipmentType());
@@ -161,20 +171,15 @@ public class MedicalEquipmentRequestController {
     return ("");
   }
 
-  @FXML
-  void backToRequestMenu(ActionEvent event) throws IOException {
-    SceneLoading.loadScene("views/RequestMenu.fxml");
-    resetAllFields();
-  }
-
   //  Reset button functionality
   @FXML
   void resetAllFields() {
     RequestControllerUtil.resetTextFields(
-        input_PatientID, input_RoomID, input_AssignedNurse, input_AdditionalNotes);
+        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
     // Radio buttons
     RequestControllerUtil.resetRadioButtons(
         bedRadioButton, xrayRadioButton, infusionPumpRadioButton, reclinerRadioButton);
     errorLabel.setText("");
+    roomsComboBox.setValue("");
   }
 }

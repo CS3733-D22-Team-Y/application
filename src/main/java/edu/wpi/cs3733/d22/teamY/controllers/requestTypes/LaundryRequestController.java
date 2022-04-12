@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
+import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
@@ -7,6 +8,7 @@ import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.LaundryRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
+import java.util.Objects;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -19,9 +21,9 @@ public class LaundryRequestController {
   @FXML private MFXRadioButton scrubsRadioButton;
   @FXML private MFXRadioButton linensRadioButton;
   // Text inputs
-  @FXML private TextField input_RoomID;
-  @FXML private TextField input_PatientID;
   @FXML private TextField input_AssignedNurse;
+  @FXML private JFXComboBox<String> roomsComboBox;
+  @FXML private TextField roomsHiddenField;
   // Additional  Notes
   @FXML private TextArea input_AdditionalNotes;
   // Error Label
@@ -34,6 +36,15 @@ public class LaundryRequestController {
   private final String linensText = "linens";
 
   public LaundryRequestController() {}
+
+  public void initialize() {
+    roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+  }
+
+  @FXML
+  private void setRoomText() {
+    roomsHiddenField.setText(roomsComboBox.getValue());
+  }
 
   // BACKEND PEOPLE,THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
 
@@ -66,19 +77,23 @@ public class LaundryRequestController {
 
   // Called when the submit button is pressed.
   @FXML
-  void submitButton() {
+  void submitButton() throws IOException {
     // Checks if a lab result choice has been made.
     if (RequestControllerUtil.isRadioButtonSelected(
-        hazardousRadioButton, linensRadioButton, scrubsRadioButton)) {
+            hazardousRadioButton, linensRadioButton, scrubsRadioButton)
+        && !Objects.equals(roomsComboBox.getValue(), "")
+        && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
-          input_RoomID.getText(),
+          DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
-          input_PatientID.getText(),
+          "open",
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");
+      SceneLoading.loadPopup(
+          "views/popups/ReqSubmitted.fxml", "views/requestTypes/LaundryRequest.fxml");
     } else {
-      errorLabel.setText("Please select the type of laundry.");
+      errorLabel.setText("Missing Required Fields.");
     }
   }
 
@@ -102,7 +117,8 @@ public class LaundryRequestController {
     RequestControllerUtil.resetRadioButtons(
         scrubsRadioButton, linensRadioButton, hazardousRadioButton);
     RequestControllerUtil.resetTextFields(
-        input_RoomID, input_PatientID, input_AssignedNurse, input_AdditionalNotes);
+        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
     errorLabel.setText("");
+    roomsComboBox.setValue("");
   }
 }
