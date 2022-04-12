@@ -29,17 +29,17 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <JFXButton layoutX="286.0" layoutY="140.0" onAction="#logOut" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" text="Yes, cancel request" textFill="#1b89a6">
+      <JFXButton layoutX="286.0" layoutY="140.0" onAction="#logOut" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="loginButton" text="Yes, cancel request" textFill="#1b89a6">
          <font>
             <Font name="Microsoft Tai Le Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="stayButton" layoutX="46.0" layoutY="140.0" onAction="#stayIn" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" text="No, don't cancel" textFill="#1b89a6">
+      <JFXButton fx:id="stayButton" layoutX="46.0" layoutY="140.0" onAction="#stayIn" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="loginButton" text="No, don't cancel" textFill="#1b89a6">
          <font>
             <Font name="Microsoft Tai Le Bold" size="16.0" />
          </font>
       </JFXButton>
-      <Label layoutY="17.0" prefHeight="116.0" prefWidth="532.0" text="You are in the middle of filling out a request, are you sure you want to leave this page?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label layoutY="17.0" prefHeight="116.0" prefWidth="532.0" styleClass="popupText" text="You are in the middle of filling out a request, are you sure you want to leave this page?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Microsoft Tai Le Bold" size="24.0" />
          </font>

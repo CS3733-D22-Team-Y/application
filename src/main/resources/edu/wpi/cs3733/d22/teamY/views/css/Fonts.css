@@ -1,4 +1,4 @@
-.title, .subtitle, .requestOption, .requestButton, .inputLabel, .requestInput, .inputField, .plainText, .submenuButton, .loginButton, .sidebarTopOptions, .sidebarBottomOptions{
+.title, .subtitle, .popupText, .requestOption, .requestButton, .inputLabel, .requestInput, .inputField, .plainText, .submenuButton, .loginButton, .sidebarTopOptions, .sidebarBottomOptions{
     -fx-border-style: solid;
     -fx-border-width: 2;
     -fx-border-color: "#f0f";
@@ -12,6 +12,11 @@
 .subtitle{
     -fx-font-family: 'Fredoka One';
     -fx-font-size: 45;
+}
+
+.popupText{
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 24;
 }
 
 .requestOption{
