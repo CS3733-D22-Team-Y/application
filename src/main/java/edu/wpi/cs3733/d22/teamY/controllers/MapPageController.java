@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
 import edu.wpi.cs3733.d22.teamY.App;
-import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.component.MapComponent;
 import edu.wpi.cs3733.d22.teamY.model.Location;
@@ -53,6 +52,11 @@ public class MapPageController {
 
   @FXML private Button floorLL1Button;
   @FXML private Button floorLL2Button;
+  @FXML private Button floorL1Button;
+  @FXML private Button floorL2Button;
+  @FXML private Button floorL3Button;
+  @FXML private Button floorL4Button;
+  @FXML private Button floorL5Button;
   @FXML private Button floor1Button;
   @FXML private Button floor2Button;
   @FXML private Button floor3Button;
@@ -65,7 +69,60 @@ public class MapPageController {
 
   @FXML private Pane ll1MainPane;
   @FXML private Pane ll1PopupPane;
-  @FXML private Label ll1RequestNum;
+  @FXML private Pane ll2PopupPane;
+  @FXML private Pane l1PopupPane;
+  @FXML private Pane l2PopupPane;
+  @FXML private Pane l3PopupPane;
+  @FXML private Pane l4PopupPane;
+  @FXML private Pane l5PopupPane;
+
+  @FXML private TextField ll1RequestNum;
+  @FXML private TextField ll1Bed;
+  @FXML private TextField ll1Pump;
+  @FXML private TextField ll1Rec;
+  @FXML private TextField ll1X;
+
+  @FXML private TextField ll2RequestNum;
+  @FXML private TextField ll2Bed;
+  @FXML private TextField ll2Pump;
+  @FXML private TextField ll2Rec;
+  @FXML private TextField ll2X;
+
+  @FXML private TextField l1RequestNum;
+  @FXML private TextField l1Bed;
+  @FXML private TextField l1Pump;
+  @FXML private TextField l1Rec;
+  @FXML private TextField l1X;
+
+  @FXML private TextField l2RequestNum;
+  @FXML private TextField l2Bed;
+  @FXML private TextField l2Pump;
+  @FXML private TextField l2Rec;
+  @FXML private TextField l2X;
+
+  @FXML private TextField l3RequestNum;
+  @FXML private TextField l3Bed;
+  @FXML private TextField l3Pump;
+  @FXML private TextField l3Rec;
+  @FXML private TextField l3X;
+
+  @FXML private TextField l4RequestNum;
+  @FXML private TextField l4Bed;
+  @FXML private TextField l4Pump;
+  @FXML private TextField l4Rec;
+  @FXML private TextField l4X;
+
+  @FXML private TextField l5RequestNum;
+  @FXML private TextField l5Bed;
+  @FXML private TextField l5Pump;
+  @FXML private TextField l5Rec;
+  @FXML private TextField l5X;
+
+  private TextField[] reqNumLabels;
+  private TextField[] bedLabels;
+  private TextField[] pumpLabels;
+  private TextField[] recLabels;
+  private TextField[] xLabels;
 
   MapComponent mapComponent = new MapComponent();
 
@@ -372,46 +429,181 @@ public class MapPageController {
 
     floorLL1Button.setOnAction(e -> switchMap(Floors.LOWER_LEVEL_1, mapMode));
     floorLL2Button.setOnAction(e -> switchMap(Floors.LOWER_LEVEL_2, mapMode));
-    floor1Button.setOnAction(e -> switchMap(Floors.FIRST_FLOOR, mapMode));
-    floor2Button.setOnAction(e -> switchMap(Floors.SECOND_FLOOR, mapMode));
-    floor3Button.setOnAction(e -> switchMap(Floors.THIRD_FLOOR, mapMode));
-    floor4Button.setOnAction(e -> switchMap(Floors.FOURTH_FLOOR, mapMode));
-    floor5Button.setOnAction(e -> switchMap(Floors.FIFTH_FLOOR, mapMode));
+    floorL1Button.setOnAction(e -> switchMap(Floors.FIRST_FLOOR, mapMode));
+    floorL2Button.setOnAction(e -> switchMap(Floors.SECOND_FLOOR, mapMode));
+    floorL3Button.setOnAction(e -> switchMap(Floors.THIRD_FLOOR, mapMode));
+    floorL4Button.setOnAction(e -> switchMap(Floors.FOURTH_FLOOR, mapMode));
+    floorL5Button.setOnAction(e -> switchMap(Floors.FIFTH_FLOOR, mapMode));
+
+    ll1PopupPane.setVisible(true);
+    ll1PopupPane.setOpacity(0);
+
+    ll2PopupPane.setVisible(true);
+    ll2PopupPane.setOpacity(0);
+
+    l1PopupPane.setVisible(true);
+    l1PopupPane.setOpacity(0);
+
+    l2PopupPane.setVisible(true);
+    l2PopupPane.setOpacity(0);
+
+    l3PopupPane.setVisible(true);
+    l3PopupPane.setOpacity(0);
+
+    l4PopupPane.setVisible(true);
+    l4PopupPane.setOpacity(0);
+
+    l5PopupPane.setVisible(true);
+    l5PopupPane.setOpacity(0);
 
     // Load initial floor and mode
     switchMap(lastFloor, MapMode.LOCATION);
 
-    loadFloors("1", "2", "3", "L1", "L2");
+    this.reqNumLabels = new TextField[7];
+    this.bedLabels = new TextField[7];
+    this.pumpLabels = new TextField[7];
+    this.recLabels = new TextField[7];
+    this.xLabels = new TextField[7];
 
-    // set bottom left coordinate to 0,200
+    this.reqNumLabels[0] = ll1RequestNum;
+    this.reqNumLabels[1] = ll2RequestNum;
+    this.reqNumLabels[2] = l1RequestNum;
+    this.reqNumLabels[3] = l2RequestNum;
+    this.reqNumLabels[4] = l3RequestNum;
+    this.reqNumLabels[5] = l4RequestNum;
+    this.reqNumLabels[6] = l5RequestNum;
 
+    this.bedLabels[0] = ll1Bed;
+    this.bedLabels[1] = ll2Bed;
+    this.bedLabels[2] = l1Bed;
+    this.bedLabels[3] = l2Bed;
+    this.bedLabels[4] = l3Bed;
+    this.bedLabels[5] = l4Bed;
+    this.bedLabels[6] = l5Bed;
+
+    this.pumpLabels[0] = ll1Pump;
+    this.pumpLabels[1] = ll2Pump;
+    this.pumpLabels[2] = l1Pump;
+    this.pumpLabels[3] = l2Pump;
+    this.pumpLabels[4] = l3Pump;
+    this.pumpLabels[5] = l4Pump;
+    this.pumpLabels[6] = l5Pump;
+
+    this.recLabels[0] = ll1Rec;
+    this.recLabels[1] = ll2Rec;
+    this.recLabels[2] = l1Rec;
+    this.recLabels[3] = l2Rec;
+    this.recLabels[4] = l3Rec;
+    this.recLabels[5] = l4Rec;
+    this.recLabels[6] = l5Rec;
+
+    this.xLabels[0] = ll1X;
+    this.xLabels[1] = ll2X;
+    this.xLabels[2] = l1X;
+    this.xLabels[3] = l2X;
+    this.xLabels[4] = l3X;
+    this.xLabels[5] = l4X;
+    this.xLabels[6] = l5X;
   }
 
-  private void loadFloors(String... floors) {
-    int[] reqsOnFloor = new int[floors.length];
-    for (int i = 0; i < reqsOnFloor.length; i++) {
-      reqsOnFloor[i] = DBUtils.getSumOfRequestsOnFloor(floors[i]);
+  private void updateQuickDash(String floor) {
+    int reqNum = DBUtils.getSumOfRequestsOnFloor(floor);
+    String[] floorNames = {"L1", "L2", "1", "2", "3", "4", "5"};
+    // get the index of the floor
+    int index = -1;
+    for (int i = 0; i < floorNames.length; i++) {
+      if (floorNames[i].equals(floor)) {
+        index = i;
+        break;
+      }
     }
+    // set the text of the button
+    if (index > this.reqNumLabels.length - 1 || index < 0) {
+      return;
+    }
+    this.reqNumLabels[index].setText(reqNum + "");
 
-    addItem(reqsOnFloor[0] + "");
-  }
-
-  public void addItem(String text) {
-    Label testLabel = new Label();
-    testLabel.setText(text);
-    testLabel.setTranslateY(200 - 20);
-    ll1PopupPane.getChildren().add(testLabel);
+    HashMap<String, HashMap<String, Integer>> floorCounts = DBUtils.getEquipFloorCounts();
+    this.bedLabels[index].setText(floorCounts.get(floor).get("BED") + "");
+    this.pumpLabels[index].setText(floorCounts.get(floor).get("PUMP") + "");
+    this.recLabels[index].setText(floorCounts.get(floor).get("RECLINER") + "");
+    this.xLabels[index].setText(floorCounts.get(floor).get("XRAY") + "");
   }
 
   @FXML
   public void LL1Enter() {
-    System.out.println("Enter LL1");
-    ll1PopupPane.setVisible(true);
+    updateQuickDash("L1");
+    ll1PopupPane.setOpacity(1);
   }
 
   @FXML
   public void LL1Exit() {
-    System.out.println("Exit LL1");
-    ll1PopupPane.setVisible(false);
+    ll1PopupPane.setOpacity(0);
+  }
+
+  @FXML
+  public void LL2Enter() {
+    updateQuickDash("L2");
+    ll2PopupPane.setOpacity(1);
+  }
+
+  @FXML
+  public void LL2Exit() {
+    ll2PopupPane.setOpacity(0);
+  }
+
+  @FXML
+  public void L1Enter() {
+    updateQuickDash("1");
+    l1PopupPane.setOpacity(1);
+  }
+
+  @FXML
+  public void L1Exit() {
+    l1PopupPane.setOpacity(0);
+  }
+
+  @FXML
+  public void L2Enter() {
+    updateQuickDash("2");
+    l2PopupPane.setOpacity(1);
+  }
+
+  @FXML
+  public void L2Exit() {
+    l2PopupPane.setOpacity(0);
+  }
+
+  @FXML
+  public void L3Enter() {
+    updateQuickDash("3");
+    l3PopupPane.setOpacity(1);
+  }
+
+  @FXML
+  public void L3Exit() {
+    l3PopupPane.setOpacity(0);
+  }
+
+  @FXML
+  public void L4Enter() {
+    updateQuickDash("4");
+    l4PopupPane.setOpacity(1);
+  }
+
+  @FXML
+  public void L4Exit() {
+    l4PopupPane.setOpacity(0);
+  }
+
+  @FXML
+  public void L5Enter() {
+    updateQuickDash("5");
+    l5PopupPane.setOpacity(1);
+  }
+
+  @FXML
+  public void L5Exit() {
+    l5PopupPane.setOpacity(0);
   }
 }

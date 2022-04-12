@@ -3,6 +3,7 @@ package edu.wpi.cs3733.d22.teamY;
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController;
 import edu.wpi.cs3733.d22.teamY.model.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javafx.util.Pair;
 import org.hibernate.Session;
@@ -268,5 +269,34 @@ public class DBUtils {
       sum += getRequestsOnFloor(r.requestClass, floor).size();
     }
     return sum;
+  }
+
+  public static HashMap<String, HashMap<String, Integer>> getEquipFloorCounts() {
+    // floor can be index, then need hashmap for each equipment type
+    HashMap<String, HashMap<String, Integer>> equipFloorCounts = new HashMap<>();
+
+    String[] floorNames = {"L1", "L2", "1", "2", "3", "4", "5"};
+    for (String floor : floorNames) {
+      HashMap<String, Integer> floorCounts = new HashMap<>();
+      floorCounts.put("BED", 0);
+      floorCounts.put("PUMP", 0);
+      floorCounts.put("RECLINER", 0);
+      floorCounts.put("XRAY", 0);
+      equipFloorCounts.put(floor, floorCounts);
+    }
+    // go through each piece of equipment
+    List<MedEquip> equip = DBManager.getAll(MedEquip.class);
+    List<Location> locations = DBManager.getAll(Location.class);
+    for (MedEquip e : equip) {
+      // find what floor it is on
+      String locationID = e.getEquipLocId();
+      for (Location l : locations) {
+        if (l.getNodeID().equals(locationID)) {
+          int prevCount = equipFloorCounts.get(l.getFloor()).get(e.getEquipType());
+          equipFloorCounts.get(l.getFloor()).put(e.getEquipType(), prevCount + 1);
+        }
+      }
+    }
+    return equipFloorCounts;
   }
 }
