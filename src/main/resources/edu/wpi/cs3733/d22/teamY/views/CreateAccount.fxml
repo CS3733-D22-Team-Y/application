@@ -159,17 +159,17 @@
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label fx:id="userExistsDisplay" layoutX="97.0" layoutY="251.0" text="Error: Username Already Exists" textFill="RED" visible="false">
+      <Label fx:id="userExistsDisplay" layoutX="97.0" layoutY="251.0" styleClass="plainText" text="Error: Username Already Exists" textFill="RED" visible="false">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label fx:id="invalidInputsDisplay" layoutX="58.0" layoutY="211.0" text="Error:  Missing required input field(s)" textFill="RED" visible="false">
+      <Label fx:id="invalidInputsDisplay" layoutX="58.0" layoutY="211.0" styleClass="plainText" text="Error:  Missing required input field(s)" textFill="RED" visible="false">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label fx:id="addUserSuccessDisplay" layoutX="751.0" layoutY="228.0" text="User Added Successfully!" textFill="#34b900" visible="false">
+      <Label fx:id="addUserSuccessDisplay" layoutX="751.0" layoutY="228.0" styleClass="plainText" text="User Added Successfully!" textFill="#34b900" visible="false">
          <font>
             <Font size="26.0" />
          </font>
