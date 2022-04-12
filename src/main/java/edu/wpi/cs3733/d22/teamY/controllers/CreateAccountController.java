@@ -105,6 +105,7 @@ public class CreateAccountController {
             || pronouns.getText().isEmpty()
             || phone.getText().isEmpty());
     if (!state) {
+      addUserSuccessDisplay.setVisible(false);
       invalidInputsDisplay.setVisible(true);
       FadeTransition ft = new FadeTransition(Duration.millis(1000), invalidInputsDisplay);
       ft.setFromValue(0.0);
@@ -118,6 +119,7 @@ public class CreateAccountController {
   private boolean checkUserExists(int hashedUser) {
     boolean state = DBUtils.doesUserExist(hashedUser);
     if (!state) {
+      addUserSuccessDisplay.setVisible(false);
       userExistsDisplay.setVisible(true);
       FadeTransition ft = new FadeTransition(Duration.millis(1000), userExistsDisplay);
       ft.setFromValue(0.0);
