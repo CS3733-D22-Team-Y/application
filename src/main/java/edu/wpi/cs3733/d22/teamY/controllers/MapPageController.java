@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -72,7 +73,9 @@ public class MapPageController {
   @FXML private Pane locationInfoPane;
   @FXML public MFXButton locationSubmit;
   private String fuck = "shit";
-  @FXML private MFXLegacyComboBox<MapMode> modeBox;
+  @FXML private MFXLegacyComboBox<String> modeBox;
+  @FXML private TextField selectorBoxText;
+  @FXML Pane mainPane;
 
   MapComponent mapComponent = new MapComponent();
 
@@ -103,58 +106,37 @@ public class MapPageController {
         "1",
         "Floor 1",
         new MapComponent.MapImage(
-            () -> new Image(App.class.getResource("views/images/floor1.jpg").toString()),
-            0,
-            0,
-            0.05)),
+            new Image(App.class.getResource("views/images/floor1.jpg").toString()), 0, 0, 0.05)),
     LOWER_LEVEL_1(
         "L1",
         "Lower Level 1",
         new MapComponent.MapImage(
-            () -> new Image(App.class.getResource("views/images/floor-1.jpg").toString()),
-            0,
-            0,
-            0.05)),
+            new Image(App.class.getResource("views/images/floor-1.jpg").toString()), 0, 0, 0.05)),
     LOWER_LEVEL_2(
         "L2",
         "Lower Level 2",
         new MapComponent.MapImage(
-            () -> new Image(App.class.getResource("views/images/floor-2.jpg").toString()),
-            0,
-            0,
-            0.05)),
+            new Image(App.class.getResource("views/images/floor-2.jpg").toString()), 0, 0, 0.05)),
     SECOND_FLOOR(
         "2",
         "Floor 2",
         new MapComponent.MapImage(
-            () -> new Image(App.class.getResource("views/images/floor2.jpg").toString()),
-            0,
-            0,
-            0.05)),
+            new Image(App.class.getResource("views/images/floor2.jpg").toString()), 0, 0, 0.05)),
     THIRD_FLOOR(
         "3",
         "Floor 3",
         new MapComponent.MapImage(
-            () -> new Image(App.class.getResource("views/images/floor3.jpg").toString()),
-            0,
-            0,
-            0.05)),
+            new Image(App.class.getResource("views/images/floor3.jpg").toString()), 0, 0, 0.05)),
     FOURTH_FLOOR(
         "4",
         "Floor 4",
         new MapComponent.MapImage(
-            () -> new Image(App.class.getResource("views/images/floor4.jpg").toString()),
-            0,
-            0,
-            0.05)),
+            new Image(App.class.getResource("views/images/floor4.jpg").toString()), 0, 0, 0.05)),
     FIFTH_FLOOR(
         "5",
         "Floor 5",
         new MapComponent.MapImage(
-            () -> new Image(App.class.getResource("views/images/floor5.jpg").toString()),
-            0,
-            0,
-            0.05));
+            new Image(App.class.getResource("views/images/floor5.jpg").toString()), 0, 0, 0.05));
 
     public final String dbKey;
     public final String name;
@@ -259,6 +241,36 @@ public class MapPageController {
   private void switchMap(Floors newFloor, MapMode newMode) {
     lastFloor = newFloor;
 
+    mapComponent
+        .getMapPane()
+        .setOnMouseClicked(
+            e -> {
+              if (e.getButton().equals(MouseButton.PRIMARY) && e.getClickCount() == 2) {
+                // TODO add building
+                Location created =
+                    new Location(
+                        Integer.toString((int) Math.round(Math.random() * 10000)),
+                        (int) Math.round(e.getX()),
+                        (int) Math.round(e.getY()),
+                        newFloor.dbKey,
+                        " ",
+                        " ",
+                        " ",
+                        " ");
+                System.out.println((int) Math.round(e.getX()) + " " + (int) Math.round(e.getY()));
+
+                if (created != null) {
+                  // The element was created
+                  try {
+                    DBManager.save(created);
+                    switchMap(newFloor, mapMode);
+                  } catch (Exception e1) {
+                    e1.printStackTrace();
+                  }
+                }
+              }
+            });
+
     // Load new locations from DB and create shapes for each
     try {
       // Get all locations on the floor
@@ -292,15 +304,28 @@ public class MapPageController {
 
                 // Checks if the point is in a valid position
                 // Create the circle for this location and add context menu handlers to it
-                Circle c = new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
                 Pane i = new Pane();
-                i.setLayoutX(l.getXCoord());
-                i.setLayoutY(l.getYCoord());
-                Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
-                i.setPrefWidth(iconDim);
-                i.setPrefHeight(iconDim);
-                i.getChildren().add(frame);
-                mapElements.add(i);
+                if (modeBox.getValue().equals("Locations")) {
+                  Circle c =
+                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
+                  i.setLayoutX(l.getXCoord());
+                  i.setLayoutY(l.getYCoord());
+                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
+                  i.setPrefWidth(iconDim);
+                  i.setPrefHeight(iconDim);
+                  i.getChildren().add(frame);
+                  mapElements.add(i);
+                } else if (modeBox.getValue().equals("Equipment") && hasEquipment) {
+                  Circle c =
+                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
+                  i.setLayoutX(l.getXCoord());
+                  i.setLayoutY(l.getYCoord());
+                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
+                  i.setPrefWidth(iconDim);
+                  i.setPrefHeight(iconDim);
+                  i.getChildren().add(frame);
+                  mapElements.add(i);
+                }
                 // ImageView iconView = new ImageView(icon);
                 // iconView.setTranslateX((Integer) ((iconDim - logoDim) / 2));
                 // iconView.setTranslateY((Integer) ((iconDim - logoDim) / 2));
@@ -332,6 +357,7 @@ public class MapPageController {
 
                 i.setOnContextMenuRequested(
                     e -> {
+                      System.out.println(modeBox.getValue());
                       if (modeBox.getValue().equals("Locations")) {
                         fuck = String.valueOf(l.getNodeID());
                         locationInfoPane.setVisible(true);
@@ -370,6 +396,7 @@ public class MapPageController {
                       //   System.out.println("fuck me" + fuckMe.getShortName());
                       //   System.out.println(l.getShortName());
                       DBManager.update(fuckMe);
+                      exit();
                       switchMap(newFloor, mapMode);
                     });
               });
@@ -476,12 +503,12 @@ public class MapPageController {
 
   public void initialize() throws IOException {
 
-    modeBox.setItems(FXCollections.observableArrayList(MapMode.values()));
-    modeBox.setValue(MapMode.LOCATION);
-    modeBox.setOnAction((e) -> System.out.println(modeBox.getValue()));
-
+    modeBox.setItems(
+        FXCollections.observableArrayList("Locations", "Equipment", "Service Requests"));
+    modeBox.setValue("Locations");
+    selectorBoxText.setText("Locations");
     mapRoot.getChildren().add(0, mapComponent.getRootPane());
-
+    modeBox.setValue("Locations");
     floorLL1Button.setOnAction(e -> switchMap(Floors.LOWER_LEVEL_1, mapMode));
     floorLL2Button.setOnAction(e -> switchMap(Floors.LOWER_LEVEL_2, mapMode));
     floor1Button.setOnAction(e -> switchMap(Floors.FIRST_FLOOR, mapMode));
@@ -489,6 +516,12 @@ public class MapPageController {
     floor3Button.setOnAction(e -> switchMap(Floors.THIRD_FLOOR, mapMode));
     floor4Button.setOnAction(e -> switchMap(Floors.FOURTH_FLOOR, mapMode));
     floor5Button.setOnAction(e -> switchMap(Floors.FIFTH_FLOOR, mapMode));
+    modeBox.setOnAction(
+        e -> {
+          selectorBoxText.setText(modeBox.getValue());
+          exit();
+        });
+    System.out.println("shit" + MapMode.LOCATION);
 
     // Load initial floor and mode
     switchMap(lastFloor, MapMode.LOCATION);

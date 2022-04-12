@@ -126,5 +126,6 @@
          <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Submit" />
       </children>
    </Pane>
-   <MFXLegacyComboBox fx:id="modeBox" layoutX="770.0" layoutY="29.0" prefHeight="37.0" prefWidth="134.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0" />
+   <MFXLegacyComboBox fx:id="modeBox" layoutX="770.0" layoutY="29.0" lineStrokeWidth="0.0" prefHeight="37.0" prefWidth="134.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0" />
+   <TextField fx:id="selectorBoxText" editable="false" layoutX="772.0" layoutY="32.0" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: FFFFFFFF;" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="32.0" />
 </AnchorPane>

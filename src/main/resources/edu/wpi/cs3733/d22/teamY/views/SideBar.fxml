@@ -43,6 +43,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
+      <Pane fx:id="mainScreenPane" layoutX="270.0" layoutY="10.0" prefHeight="780.0" prefWidth="920.0" />
       <Rectangle fx:id="sidebarFrame" arcHeight="10.0" arcWidth="10.0" height="780.0" layoutX="10.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0">
          <fill>
             <LinearGradient endX="0.4015151804143732" endY="1.0">
@@ -158,7 +159,6 @@
             <Rectangle fx:id="tasksButtonHitbox" fill="#2e2e2e00" height="58.0" onMouseClicked="#loadTasks" onMouseEntered="#startTasksButtonHover" onMouseExited="#endTasksButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
          </children>
       </VBox>
-      <Pane fx:id="mainScreenPane" layoutX="270.0" layoutY="10.0" prefHeight="780.0" prefWidth="920.0" />
       <VBox fx:id="bottomSidebarHiddenButtons" layoutX="10.0" layoutY="603.0" prefHeight="132.0" prefWidth="250.0">
          <children>
             <Rectangle fx:id="homeButtonHitbox" fill="#2e2e2e00" height="33.0" onMouseClicked="#loadHome" onMouseEntered="#startHomeButtonHover" onMouseExited="#endHomeButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />

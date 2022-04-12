@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import java.awt.*;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -51,12 +52,13 @@ public class SideBarController {
   @FXML private Rectangle inboxButtonHitbox;
   @FXML private Rectangle profileButtonHitbox;
   @FXML private Rectangle logoutButtonHitbox;
-
+  public Image ll2Image;
   double screenWidth, screenHeight;
   Scene currScene;
 
   @FXML
   void initialize() throws IOException {
+
     SceneUtil.removeOpacity(
         mapHiddenRect,
         servicesHiddenRect,
