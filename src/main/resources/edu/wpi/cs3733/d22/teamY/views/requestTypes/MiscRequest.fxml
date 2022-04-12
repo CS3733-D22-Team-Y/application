@@ -54,17 +54,12 @@
                 </LinearGradient>
             </fill>
         </Rectangle>
-        <Label layoutX="15.0" layoutY="125.0" styleClass="inputLabel" text="Patient ID:">
+        <Label layoutX="15.0" layoutY="200.0" styleClass="inputLabel" text="Nurse:">
             <font>
                 <Font name="Calibri Bold" size="30.0" />
             </font>
         </Label>
-        <Label layoutX="15.0" layoutY="190.0" styleClass="inputLabel" text="Nurse:">
-            <font>
-                <Font name="Calibri Bold" size="30.0" />
-            </font>
-        </Label>
-        <Label layoutX="460.0" layoutY="125.0" styleClass="inputLabel" text="Room:">
+        <Label layoutX="520.0" layoutY="200.0" styleClass="inputLabel" text="Room:">
             <font>
                 <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -74,12 +69,7 @@
             <font>
                 <Font name="Calibri" size="20.0" />
             </font></JFXTextArea>
-        <MFXTextField fx:id="input_PatientID" floatMode="DISABLED" layoutX="180.0" layoutY="125.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
-            <font>
-                <Font name="Calibri" size="20.0" />
-            </font>
-        </MFXTextField>
-        <MFXTextField fx:id="input_AssignedNurse" floatMode="DISABLED" layoutX="180.0" layoutY="190.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
+        <MFXTextField fx:id="input_AssignedNurse" floatMode="DISABLED" layoutX="230.0" layoutY="200.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
             <font>
                 <Font name="Calibri" size="20.0" />
             </font>
@@ -94,22 +84,22 @@
                 <Font name="Calibri Bold" size="20.0" />
             </font>
         </MFXButton>
-      <Label layoutX="460.0" layoutY="190.0" styleClass="inputLabel" text="Request Name:">
+      <Label layoutX="15.0" layoutY="150.0" styleClass="inputLabel" text="Request Name:">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <MFXTextField fx:id="input_RequestName" floatMode="DISABLED" layoutX="670.0" layoutY="190.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
+      <MFXTextField fx:id="input_RequestName" floatMode="DISABLED" layoutX="230.0" layoutY="150.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
          <font>
             <Font name="Calibri" size="20.0" />
          </font>
       </MFXTextField>
-      <TextField fx:id="roomsHiddenField" layoutX="670.0" layoutY="125.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="requestInput" />
+      <TextField fx:id="roomsHiddenField" layoutX="670.0" layoutY="200.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="requestInput" />
       <JFXTextArea fx:id="errorLabel" depthTest="DISABLE" disable="true" editable="false" focusColor="#ffffff00" layoutX="700.0" layoutY="700.0" opacity="0.97" prefHeight="10.0" prefWidth="243.0" style="-fx-text-fill: RED;" unFocusColor="#ffffff00">
          <font>
             <Font name="Calibri" size="15.0" />
          </font>
       </JFXTextArea>
-      <JFXComboBox fx:id="roomsComboBox" layoutX="670.0" layoutY="125.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput" unFocusColor="#ffffff00" />
+      <JFXComboBox fx:id="roomsComboBox" layoutX="670.0" layoutY="200.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput" unFocusColor="#ffffff00" />
     </children>
 </AnchorPane>
