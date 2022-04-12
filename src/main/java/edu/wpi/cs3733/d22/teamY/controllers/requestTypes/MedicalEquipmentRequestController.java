@@ -43,7 +43,6 @@ public class MedicalEquipmentRequestController {
 
   @FXML
   private void initialize() {
-    System.out.println("HEllo");
     updateAvailableEquip();
 
     System.out.println(RequestControllerUtil.allRoomsComboBox.getItems().size());
