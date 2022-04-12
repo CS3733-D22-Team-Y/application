@@ -41,6 +41,7 @@ public class MedicalEquipmentRequestController {
 
   @FXML
   private void initialize() {
+
     updateAvailableEquip();
 
     System.out.println(RequestControllerUtil.allRoomsComboBox.getItems().size());
@@ -53,6 +54,7 @@ public class MedicalEquipmentRequestController {
   }
 
   private void updateAvailableEquip() {
+
     bedRadioButton.setText(
         "Beds: \n"
             + DBUtils.getAvailableEquipment("BED").getKey().toString()

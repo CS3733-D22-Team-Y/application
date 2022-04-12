@@ -189,6 +189,19 @@ public class DBUtils {
     return (tempLocations.get(0).getNodeID());
   }
 
+  public static String convertIDToName(String nodeID) {
+    Session s = SessionManager.getSession();
+    List<Location> tempLocations =
+        s.createQuery("from Location where nodeID = :nodeID").setParameter("nodeID", nodeID).list();
+    s.close();
+
+    if (tempLocations.size() > 1) {
+      return null;
+    }
+
+    return (tempLocations.get(0).getShortName());
+  }
+
   /**
    * Changes an employee's password.
    *
