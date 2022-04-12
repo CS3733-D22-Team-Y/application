@@ -71,14 +71,14 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </JFXButton>
-      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="303.0" layoutX="210.0" layoutY="232.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="681.0" />
-      <MFXPasswordField fx:id="newPasswordField" layoutX="490.0" layoutY="372.0" prefHeight="51.0" prefWidth="362.0" />
-      <Label layoutX="270.0" layoutY="376.0" prefHeight="44.0" prefWidth="163.0" text="New Password:">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="344.0" layoutX="210.0" layoutY="191.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="681.0" />
+      <MFXPasswordField fx:id="newPasswordField" layoutX="491.0" layoutY="313.0" prefHeight="51.0" prefWidth="362.0" />
+      <Label layoutX="270.0" layoutY="316.0" prefHeight="44.0" prefWidth="163.0" text="New Password:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="302.0" layoutY="247.0" prefHeight="102.0" prefWidth="495.0" text="Hi! We noticed you have a new account, please update your password!" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+      <Label layoutX="303.0" layoutY="214.0" prefHeight="102.0" prefWidth="495.0" text="Hi! We noticed you have a new account, please update your password!" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
          <font>
             <Font size="24.0" />
          </font>
@@ -94,9 +94,20 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="510.0" layoutY="421.0" prefHeight="63.0" prefWidth="323.0" text="Password must be at least 5 characters long, with at least one number, one letter and one special character." textAlignment="CENTER" wrapText="true">
+      <Label layoutX="511.0" layoutY="425.0" prefHeight="63.0" prefWidth="323.0" text="Password must be at least 5 characters long, with at least one number, one letter and one special character." textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="14.0" />
+         </font>
+      </Label>
+      <MFXPasswordField fx:id="confirmPasswordField" layoutX="491.0" layoutY="383.0" prefHeight="51.0" prefWidth="362.0" />
+      <Label layoutX="270.0" layoutY="387.0" prefHeight="44.0" prefWidth="201.0" text="Confirm Password:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="passwordsDoNotMatch" layoutX="393.0" layoutY="472.0" prefHeight="56.0" prefWidth="314.0" text="Error: Passwords do not match" textAlignment="CENTER" textFill="RED" textOverrun="CLIP" visible="false" wrapText="true">
+         <font>
+            <Font size="24.0" />
          </font>
       </Label>
     </children>

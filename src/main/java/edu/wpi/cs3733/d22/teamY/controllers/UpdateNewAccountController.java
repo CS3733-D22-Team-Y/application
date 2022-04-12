@@ -16,6 +16,9 @@ public class UpdateNewAccountController {
   @FXML MFXPasswordField newPasswordField;
   @FXML Polygon submitTriangle;
   @FXML Label passwordValidityError;
+  @FXML MFXPasswordField confirmPasswordField;
+  @FXML Label passwordsDoNotMatch;
+
   public static String user;
 
   public static void userNameToChange(String userName) {
@@ -25,19 +28,29 @@ public class UpdateNewAccountController {
   @FXML
   void goToMainPage() throws IOException {
     passwordValidityError.setVisible(false);
+    passwordsDoNotMatch.setVisible(false);
     SceneLoading.loadScene("views/Welcome.fxml");
-    System.out.println(PersonalSettings.currentEmployee.getUsername());
   }
 
   @FXML
   void submitAndReturn() throws IOException {
     if (!Employee.isValidNewPassword(newPasswordField.getText())) {
+      passwordsDoNotMatch.setVisible(false);
       passwordValidityError.setVisible(true);
       FadeTransition ft = new FadeTransition(Duration.millis(1000), passwordValidityError);
       ft.setFromValue(0.0);
       ft.setToValue(1.0);
       ft.play();
+    } else if (!(newPasswordField.getText().equals(confirmPasswordField.getText()))) {
+      passwordValidityError.setVisible(false);
+      passwordsDoNotMatch.setVisible(true);
+      FadeTransition ft = new FadeTransition(Duration.millis(1000), passwordsDoNotMatch);
+      ft.setFromValue(0.0);
+      ft.setToValue(1.0);
+      ft.play();
     } else {
+      passwordValidityError.setVisible(false);
+      passwordsDoNotMatch.setVisible(false);
       DBUtils.changePassword(
           String.valueOf(user.hashCode()),
           String.valueOf("1234".hashCode()),
