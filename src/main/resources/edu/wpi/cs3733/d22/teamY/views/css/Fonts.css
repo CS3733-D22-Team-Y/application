@@ -9,23 +9,28 @@
 }
 
 .requestOption{
-
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 24;
 }
 
 .requestButton{
-
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 20;
 }
 
 .inputLabel{
-
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 24;
 }
 
 .requestInput{
+    -fx-font-family: 'Varela Round';
     -fx-font-size: 20;
 }
 
 .plainText{
-
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 20;
 }
 
 .submenuButton{
@@ -34,7 +39,8 @@
 }
 
 .loginButton{
-
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 20;
 }
 
 .sidebarTopOptions{
