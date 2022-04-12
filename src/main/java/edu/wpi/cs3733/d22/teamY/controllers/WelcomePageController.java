@@ -70,6 +70,7 @@ public class WelcomePageController {
     App.getInstance().setScene(new Scene(root.load()));
     SideBarController controller = root.getController();
     controller.initializeScale();
+    // controller.test();
   };
 
   @FXML
