@@ -321,15 +321,29 @@ public class MapPageController {
                   i.setLayoutX(l.getXCoord());
                   i.setLayoutY(l.getYCoord());
                   Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
+                  ImageView equipIcon = new ImageView();
+                  if (equip.size() < 9) {
+                    equipIcon.setImage(
+                        new Image(
+                            String.valueOf(
+                                App.class
+                                    .getResource("views/images/icons/" + equip.size() + ".png")
+                                    .toString())));
+                  } else {
+                    equipIcon.setImage(
+                        new Image(
+                            String.valueOf(
+                                App.class.getResource("views/images/icons/9.png").toString())));
+                  }
+                  equipIcon.setFitWidth(iconDim);
+                  equipIcon.setFitHeight(iconDim);
                   i.setPrefWidth(iconDim);
                   i.setPrefHeight(iconDim);
                   i.getChildren().add(frame);
+                  i.getChildren().add(equipIcon);
                   mapElements.add(i);
                 }
-                // ImageView iconView = new ImageView(icon);
-                // iconView.setTranslateX((Integer) ((iconDim - logoDim) / 2));
-                // iconView.setTranslateY((Integer) ((iconDim - logoDim) / 2));
-                // i.getChildren().add(iconView);
+
                 // Create context menu for shape
                 ContextMenu rightClickMenu = new ContextMenu();
                 MenuItem editItem = new MenuItem("Edit");
@@ -520,6 +534,7 @@ public class MapPageController {
         e -> {
           selectorBoxText.setText(modeBox.getValue());
           exit();
+          switchMap(lastFloor, mapMode);
         });
     System.out.println("shit" + MapMode.LOCATION);
 
