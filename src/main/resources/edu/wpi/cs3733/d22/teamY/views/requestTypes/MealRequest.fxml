@@ -161,7 +161,8 @@
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <JFXComboBox fx:id="dietaryRestrictionsSelectionBox" layoutX="520.0" layoutY="600.0" prefHeight="26.0" prefWidth="135.0" styleClass="requestInput" />
+      <TextField fx:id="restrictionsHiddenField" layoutX="520.0" layoutY="600.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="requestInput" />
+      <JFXComboBox fx:id="dietaryRestrictionsSelectionBox" layoutX="520.0" layoutY="600.0" onAction="#setRestrictionText" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput" />
       <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="310.0" prefWidth="300.0" styleClass="subtitle" text="Side" textAlignment="RIGHT">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">

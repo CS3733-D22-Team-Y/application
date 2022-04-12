@@ -19,6 +19,8 @@ public class MealRequestController {
   @FXML private TextField input_AssignedNurse;
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
+  @FXML private JFXComboBox<String> dietaryRestrictionsSelectionBox;
+  @FXML private TextField restrictionsHiddenField;
 
   // Radio button main course
   @FXML private MFXRadioButton pizzaRadioButton;
@@ -28,8 +30,6 @@ public class MealRequestController {
   @FXML private MFXRadioButton riceRadioButton;
   @FXML private MFXRadioButton peasRadioButton;
   @FXML private MFXRadioButton appleRadioButton;
-  // Dropdown menu
-  @FXML private JFXComboBox<String> dietaryRestrictionsSelectionBox;
   // Error Label
   @FXML private TextArea errorLabel;
 
@@ -58,14 +58,20 @@ public class MealRequestController {
     dietaryRestrictionsSelectionBox
         .getItems()
         .addAll(textNone, "Gluten Free", "Vegetarian", "Vegan", textOther);
-    dietaryRestrictionsSelectionBox.setValue(textNone);
+    dietaryRestrictionsSelectionBox.setValue("");
 
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    restrictionsHiddenField.setText("None");
   }
 
   @FXML
   private void setRoomText() {
     roomsHiddenField.setText(roomsComboBox.getValue());
+  }
+
+  @FXML
+  private void setRestrictionText() {
+    restrictionsHiddenField.setText(dietaryRestrictionsSelectionBox.getValue());
   }
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
