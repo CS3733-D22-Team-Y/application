@@ -6,6 +6,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXRadioButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
@@ -81,11 +82,6 @@
             </font>
         </MFXTextField>
         <MFXTextField fx:id="input_AssignedNurse" floatMode="DISABLED" layoutX="160.0" layoutY="221.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
-            <font>
-                <Font name="Calibri" size="20.0" />
-            </font>
-        </MFXTextField>
-        <MFXTextField fx:id="input_RoomID" floatMode="DISABLED" layoutX="160.0" layoutY="296.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
             <font>
                 <Font name="Calibri" size="20.0" />
             </font>
@@ -259,5 +255,7 @@
             <Font name="Calibri" size="15.0" />
          </font>
       </JFXTextArea>
+      <TextField fx:id="roomsHiddenField" layoutX="167.0" layoutY="306.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="requestInput" />
+      <JFXComboBox fx:id="roomsComboBox" layoutX="167.0" layoutY="306.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput" unFocusColor="#ffffff00" />
     </children>
 </AnchorPane>

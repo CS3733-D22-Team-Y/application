@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
@@ -14,12 +15,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 public class SecurityRequestController {
   // Text input
-  @FXML private MFXTextField input_RoomID;
   @FXML private MFXTextField input_PatientID;
   @FXML private MFXTextField input_AssignedNurse;
+  @FXML private JFXComboBox<String> roomsComboBox;
+  @FXML private TextField roomsHiddenField;
 
   @FXML private JFXTextArea input_AdditionalNotes;
 
@@ -51,6 +54,16 @@ public class SecurityRequestController {
   private static final String lowPriorityText = "lowPriority";
 
   public SecurityRequestController() throws IOException {}
+
+  @FXML
+  void initialize() {
+    roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+  }
+
+  @FXML
+  private void setRoomText() {
+    roomsHiddenField.setText(roomsComboBox.getValue());
+  }
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
 
@@ -98,14 +111,14 @@ public class SecurityRequestController {
             urgentRadioButton, mostUrgentRadioButton, lowPriorityRadioButton);
 
     Boolean allFields =
-        !Objects.equals(input_RoomID.getText(), "")
+        !Objects.equals(roomsComboBox.getValue(), "")
             && !Objects.equals(input_AssignedNurse.getText(), "")
             && !Objects.equals(input_PatientID.getText(), "");
 
     // Checks if a bouquet choice has been made
     if (typeSelected && prioritySelected && allFields) {
       submitRequest(
-          input_RoomID.getText(),
+          DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
           input_PatientID.getText(),
           input_AdditionalNotes.getText(),
@@ -163,7 +176,11 @@ public class SecurityRequestController {
   void resetAllFields() {
     // Text input
     RequestControllerUtil.resetTextFields(
-        input_RoomID, input_AssignedNurse, input_PatientID, input_AdditionalNotes, input_OtherText);
+        roomsHiddenField,
+        input_AssignedNurse,
+        input_PatientID,
+        input_AdditionalNotes,
+        input_OtherText);
     // Report type radio buttons
     RequestControllerUtil.resetRadioButtons(
         unwantedGuestRadioButton,
@@ -174,5 +191,6 @@ public class SecurityRequestController {
         urgentRadioButton,
         lowPriorityRadioButton);
     errorLabel.setText("");
+    roomsComboBox.setValue("");
   }
 }

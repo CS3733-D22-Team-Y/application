@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXRadioButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="780.0" minWidth="920.0" prefHeight="780.0" prefWidth="920.0" styleClass="subtitle" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.LaundryRequestController">
+<AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="780.0" minWidth="920.0" prefHeight="780.0" prefWidth="920.0" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.LaundryRequestController">
    <children>
       <Label styleClass="title" text="Laundry Request">
          <textFill>
@@ -70,11 +72,6 @@
          </font>
       </MFXTextField>
       <MFXTextField fx:id="input_AssignedNurse" floatMode="DISABLED" layoutX="160.0" layoutY="221.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
-         <font>
-            <Font name="Calibri" size="20.0" />
-         </font>
-      </MFXTextField>
-      <MFXTextField fx:id="input_RoomID" floatMode="DISABLED" layoutX="160.0" layoutY="296.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
          <font>
             <Font name="Calibri" size="20.0" />
          </font>
@@ -190,5 +187,7 @@
             <Font name="Calibri" size="15.0" />
          </font>
       </JFXTextArea>
+      <TextField fx:id="roomsHiddenField" layoutX="167.0" layoutY="306.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="requestInput" />
+      <JFXComboBox fx:id="roomsComboBox" depthTest="DISABLE" layoutX="167.0" layoutY="306.0" maxHeight="42.0" minHeight="42.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="inputLabel" unFocusColor="#ffffff00" />
    </children>
 </AnchorPane>

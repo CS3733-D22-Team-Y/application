@@ -14,11 +14,11 @@ import javafx.scene.control.TextField;
 
 public class MealRequestController {
   // Text input
-  @FXML private TextField input_RoomID;
   @FXML private TextField input_PatientID;
   @FXML private TextArea input_AdditionalNotes;
   @FXML private TextField input_AssignedNurse;
-  @FXML private TextField input_RequestStatus;
+  @FXML private JFXComboBox<String> roomsComboBox;
+  @FXML private TextField roomsHiddenField;
 
   // Radio button main course
   @FXML private MFXRadioButton pizzaRadioButton;
@@ -59,6 +59,13 @@ public class MealRequestController {
         .getItems()
         .addAll(textNone, "Gluten Free", "Vegetarian", "Vegan", textOther);
     dietaryRestrictionsSelectionBox.setValue(textNone);
+
+    roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+  }
+
+  @FXML
+  private void setRoomText() {
+    roomsHiddenField.setText(roomsComboBox.getValue());
   }
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
@@ -109,7 +116,7 @@ public class MealRequestController {
             pizzaRadioButton, burgerRadioButton, saladRadioButton);
 
     Boolean allFields =
-        !Objects.equals(input_RoomID.getText(), "")
+        !Objects.equals(roomsComboBox.getValue(), "")
             && !Objects.equals(input_AssignedNurse.getText(), "");
 
     Boolean sideSelected =
@@ -119,7 +126,7 @@ public class MealRequestController {
     // Checks if a bouquet choice has been made
     if (mealSelected && sideSelected && allFields) {
       submitRequest(
-          input_RoomID.getText(),
+          DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
           "temp",
           input_AdditionalNotes.getText(),
@@ -156,11 +163,7 @@ public class MealRequestController {
   void resetAllFields() {
     // Input text fields
     RequestControllerUtil.resetTextFields(
-        input_RoomID,
-        input_AssignedNurse,
-        input_AdditionalNotes,
-        input_AdditionalNotes,
-        input_PatientID);
+        input_AssignedNurse, input_AdditionalNotes, roomsHiddenField, input_PatientID);
     // Mains
     RequestControllerUtil.resetRadioButtons(
         pizzaRadioButton,
@@ -172,5 +175,6 @@ public class MealRequestController {
     // Selection box
     dietaryRestrictionsSelectionBox.setValue(textNone);
     errorLabel.setText("");
+    roomsComboBox.setValue("");
   }
 }

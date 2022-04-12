@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
@@ -12,14 +13,15 @@ import java.io.IOException;
 import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 public class LabRequestController {
 
   // Input fields
-  @FXML private MFXTextField input_RoomID;
   @FXML private MFXTextField input_PatientID;
   @FXML private MFXTextField input_AssignedNurse;
-  @FXML private MFXTextField input_RequestStatus;
+  @FXML private JFXComboBox<String> roomsComboBox;
+  @FXML private TextField roomsHiddenField;
   // Additional Notes
   @FXML private JFXTextArea input_AdditionalNotes;
   // Radio buttons
@@ -37,6 +39,16 @@ public class LabRequestController {
   private final String xrayText = "xray";
   private final String catScanText = "catScan";
   private final String mriText = "mri";
+
+  @FXML
+  void initialize() {
+    roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+  }
+
+  @FXML
+  private void setRoomText() {
+    roomsHiddenField.setText(roomsComboBox.getValue());
+  }
 
   // BACKEND PEOPLE,THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
 
@@ -73,13 +85,13 @@ public class LabRequestController {
     // Checks if a lab result choice has been made.
     if (RequestControllerUtil.isRadioButtonSelected(
             bloodRadioButton, urineRadioButton, xrayRadioButton, catScanRadioButton, mriRadioButton)
-        && !Objects.equals(input_RoomID.getText(), "")
+        && !Objects.equals(roomsComboBox.getValue(), "")
         && !Objects.equals(input_AssignedNurse.getText(), "")
         && !Objects.equals(input_PatientID.getText(), "")) {
       submitRequest(
-          input_RoomID.getText(),
+          DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
-          "",
+          "request status",
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");
@@ -111,11 +123,12 @@ public class LabRequestController {
     RequestControllerUtil.resetRadioButtons(
         bloodRadioButton, urineRadioButton, xrayRadioButton, catScanRadioButton, mriRadioButton);
     RequestControllerUtil.resetTextFields(
-        input_RoomID,
+        roomsHiddenField,
         input_AssignedNurse,
         // input_RequestStatus,
         input_AdditionalNotes,
         input_PatientID);
     errorLabel.setText("");
+    roomsComboBox.setValue("");
   }
 }
