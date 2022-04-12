@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Group?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="serviceRequestDooDad" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SingularServiceRequestController">
    <children>
-      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#93cddc" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
+      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#93cddc" height="100.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
+      <Group fx:id="colorGizmo" layoutY="10.0">
+         <children>
+            <Rectangle arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
+            <Rectangle fill="DODGERBLUE" height="100.0" layoutX="25.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="33.0" />
+         </children>
+      </Group>
    </children>
 </AnchorPane>
