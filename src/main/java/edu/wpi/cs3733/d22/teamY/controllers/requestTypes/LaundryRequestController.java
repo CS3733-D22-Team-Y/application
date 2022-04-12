@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
+import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
@@ -19,9 +20,10 @@ public class LaundryRequestController {
   @FXML private MFXRadioButton scrubsRadioButton;
   @FXML private MFXRadioButton linensRadioButton;
   // Text inputs
-  @FXML private TextField input_RoomID;
   @FXML private TextField input_PatientID;
   @FXML private TextField input_AssignedNurse;
+  @FXML private JFXComboBox<String> roomsComboBox;
+  @FXML private TextField roomsHiddenField;
   // Additional  Notes
   @FXML private TextArea input_AdditionalNotes;
   // Error Label
@@ -34,6 +36,15 @@ public class LaundryRequestController {
   private final String linensText = "linens";
 
   public LaundryRequestController() {}
+
+  public void initialize() {
+    roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+  }
+
+  @FXML
+  private void setRoomText() {
+    roomsHiddenField.setText(roomsComboBox.getValue());
+  }
 
   // BACKEND PEOPLE,THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
 
@@ -71,7 +82,7 @@ public class LaundryRequestController {
     if (RequestControllerUtil.isRadioButtonSelected(
         hazardousRadioButton, linensRadioButton, scrubsRadioButton)) {
       submitRequest(
-          input_RoomID.getText(),
+          DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
           input_PatientID.getText(),
           input_AdditionalNotes.getText(),
@@ -102,7 +113,8 @@ public class LaundryRequestController {
     RequestControllerUtil.resetRadioButtons(
         scrubsRadioButton, linensRadioButton, hazardousRadioButton);
     RequestControllerUtil.resetTextFields(
-        input_RoomID, input_PatientID, input_AssignedNurse, input_AdditionalNotes);
+        roomsHiddenField, input_PatientID, input_AssignedNurse, input_AdditionalNotes);
     errorLabel.setText("");
+    roomsComboBox.setValue("");
   }
 }

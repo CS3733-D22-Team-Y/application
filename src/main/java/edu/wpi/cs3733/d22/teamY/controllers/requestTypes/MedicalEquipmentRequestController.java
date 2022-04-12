@@ -5,12 +5,10 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -168,12 +166,6 @@ public class MedicalEquipmentRequestController {
     if (xrayRadioButton.isSelected()) return xrayText;
     // Should never happen
     return ("");
-  }
-
-  @FXML
-  void backToRequestMenu(ActionEvent event) throws IOException {
-    SceneLoading.loadScene("views/RequestMenu.fxml");
-    resetAllFields();
   }
 
   //  Reset button functionality
