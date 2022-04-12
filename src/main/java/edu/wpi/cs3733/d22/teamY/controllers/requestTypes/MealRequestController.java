@@ -102,6 +102,7 @@ public class MealRequestController {
   // Called when the submit button is pressed.
   @FXML
   void submitButton() {
+    errorLabel.setText("hi");
     Boolean mealSelected =
         RequestControllerUtil.isRadioButtonSelected(
             pizzaRadioButton, burgerRadioButton, saladRadioButton);

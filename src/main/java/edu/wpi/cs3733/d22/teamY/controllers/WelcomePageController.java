@@ -65,11 +65,13 @@ public class WelcomePageController {
   }
 
   @FXML
-  void mainPage() throws IOException {
+  public void mainPage() throws IOException {
+    SceneUtil.sidebar = this;
     FXMLLoader root = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
     App.getInstance().setScene(new Scene(root.load()));
     SideBarController controller = root.getController();
     controller.initializeScale();
+    controller.loadViewServiceRequests();
   };
 
   @FXML
