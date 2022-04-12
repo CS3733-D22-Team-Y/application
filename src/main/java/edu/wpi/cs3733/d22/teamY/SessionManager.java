@@ -6,7 +6,6 @@ import org.hibernate.cfg.Configuration;
 
 /** This class is used to manage the Hibernate session. */
 public class SessionManager {
-  private String googleCloudCFG = "hibernate_googlecloud.cfg.xml";
 
   private static SessionFactory sf =
       new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -39,4 +38,11 @@ public class SessionManager {
       sf = new Configuration().configure("hibernate_server.cfg.xml").buildSessionFactory();
     }
   }
+
+  public static void switchToCloud(){
+    System.out.println("Switching to Cloud DB...");
+    sf.close();
+    sf = new Configuration().configure("hibernate_googlecloud.cfg.xml").buildSessionFactory();
+  }
+  
 }

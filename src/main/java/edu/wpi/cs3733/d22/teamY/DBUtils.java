@@ -157,6 +157,23 @@ public class DBUtils {
     return employees.size() == 1;
   }
 
+  /**
+   * Returns if username already exists.
+   *
+   * @param hashedUsername hashed Username INTEGER
+   * @return true if valid username, false if one exists.
+   */
+  public static boolean doesUserExist(int hashedUsername) {
+    Session s = SessionManager.getSession();
+
+    List<Employee> employees =
+        s.createQuery("from Employee where username = :username")
+            .setParameter("username", String.valueOf(hashedUsername))
+            .list();
+    s.close();
+    return employees.size() == 0;
+  }
+
   public static String convertNameToID(String shortName) {
     Session s = SessionManager.getSession();
     List<Location> tempLocations =

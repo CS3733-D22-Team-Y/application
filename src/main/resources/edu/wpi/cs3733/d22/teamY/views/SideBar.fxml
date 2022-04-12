@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SideBarController">
+<AnchorPane fx:id="mainPane" stylesheets="@css/Fonts.css" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SideBarController">
    <children>
       <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
          <image>
@@ -81,7 +81,7 @@
             <Image url="@images/sidebarLogo.png" />
          </image>
       </ImageView>
-      <TextField layoutX="30.0" layoutY="140.0" prefWidth="210.0" promptText="Search...">
+      <TextField fx:id="searchBar" layoutX="30.0" layoutY="140.0" onAction="#doSearch" prefWidth="210.0" promptText="Search...">
          <font>
             <Font size="16.0" />
          </font>

@@ -12,14 +12,14 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController">
+<AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="780.0" minWidth="920.0" prefHeight="780.0" prefWidth="920.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController">
     <children>
-        <Label layoutY="10.0" text="My Profile" textFill="#20758b">
+        <Label styleClass="title" text="My Profile" textFill="#20758b">
             <font>
                 <Font name="Arial Rounded MT Bold" size="60.0" />
             </font>
         </Label>
-      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -39,83 +39,83 @@
       </Rectangle>
         <Circle centerX="395.0" centerY="120.0" fill="#20758b" layoutX="65.0" layoutY="126.0" radius="100.0" stroke="#20758b" strokeType="INSIDE" />
         <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="360.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" />
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#c2c2c2" height="400.0" layoutY="390.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="920.0" />
-      <Label layoutX="10.0" layoutY="440.0" text="Legal Name:">
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#c2c2c2" height="400.0" layoutY="380.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="920.0" />
+      <Label layoutX="10.0" layoutY="440.0" styleClass="inputLabel" text="Legal Name:">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="10.0" layoutY="515.0" text="Preferred Name:">
+      <Label layoutX="10.0" layoutY="515.0" styleClass="inputLabel" text="Preferred Name:">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="10.0" layoutY="590.0" text="Title:">
+      <Label layoutX="10.0" layoutY="590.0" styleClass="inputLabel" text="Title:">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="10.0" layoutY="665.0" text="Email:">
+      <Label layoutX="10.0" layoutY="665.0" styleClass="inputLabel" text="Email:">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0">
+      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0">
+      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0">
+      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="661.0" prefHeight="42.0" prefWidth="220.0">
+      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="661.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <Label layoutX="470.0" layoutY="440.0" text="Date of Birth:">
+      <Label layoutX="470.0" layoutY="440.0" styleClass="inputLabel" text="Date of Birth:">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="470.0" layoutY="515.0" text="Pronouns:">
+      <Label layoutX="470.0" layoutY="515.0" styleClass="inputLabel" text="Pronouns:">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="470.0" layoutY="590.0" text="Phone:">
+      <Label layoutX="470.0" layoutY="590.0" styleClass="inputLabel" text="Phone:">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0">
+      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0">
+      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0">
+      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXButton layoutX="810.0" layoutY="730.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" text="Apply" textFill="WHITE">
+      <MFXButton layoutX="810.0" layoutY="720.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" styleClass="requestButton" text="Apply" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </MFXButton>
-      <MFXButton layoutX="700.0" layoutY="730.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" text="Cancel" textFill="WHITE">
+      <MFXButton layoutX="700.0" layoutY="720.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" styleClass="requestButton" text="Cancel" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>

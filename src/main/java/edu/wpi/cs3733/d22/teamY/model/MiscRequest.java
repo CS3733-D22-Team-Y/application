@@ -5,18 +5,26 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "SECURITYSERVICEREQUESTS")
-public class SecurityServiceRequest implements StringArrayConv, Requestable {
-
+@Table(name = "MISCREQUESTS")
+public class MiscRequest implements StringArrayConv, Requestable {
   @Id private String requestNum;
   private String roomID;
   private String assignedNurse;
   private String requestStatus;
   private String additionalNotes;
-  private String requestTypeSelected;
-  private String requestPriority;
+  private String requestName;
 
-  public SecurityServiceRequest() {}
+  public MiscRequest() {}
+
+  public MiscRequest(
+      String requestNum,
+      String roomID,
+      String assignedNurse,
+      String requestStatus,
+      String additionalNotes,
+      String requestName) {
+    init(requestNum, roomID, assignedNurse, requestStatus, additionalNotes, requestName);
+  }
 
   private void init(
       String requestNum,
@@ -24,51 +32,35 @@ public class SecurityServiceRequest implements StringArrayConv, Requestable {
       String assignedNurse,
       String requestStatus,
       String additionalNotes,
-      String requestTypeSelected,
-      String requestPriority) {
+      String requestName) {
     this.requestNum = requestNum;
     this.roomID = roomID;
     this.assignedNurse = assignedNurse;
     this.requestStatus = requestStatus;
     this.additionalNotes = additionalNotes;
-    this.requestTypeSelected = requestTypeSelected;
-    this.requestPriority = requestPriority;
+    this.requestName = requestName;
   }
 
-  public SecurityServiceRequest(
-      String requestNum,
-      String roomID,
-      String assignedNurse,
-      String requestStatus,
-      String additionalNotes,
-      String requestTypeSelected,
-      String requestPriority) {
-    init(
-        requestNum,
-        roomID,
-        assignedNurse,
-        requestStatus,
-        additionalNotes,
-        requestTypeSelected,
-        requestPriority);
+  @Override
+  public String getLocID() {
+    return this.roomID;
   }
 
   @Override
   public String[] toStringArray() {
     return new String[] {
-      requestNum,
-      roomID,
-      assignedNurse,
-      requestStatus,
-      additionalNotes,
-      requestTypeSelected,
-      requestPriority
+      this.requestNum,
+      this.roomID,
+      this.assignedNurse,
+      this.requestStatus,
+      this.additionalNotes,
+      this.requestName
     };
   }
 
   @Override
   public void fromStringArray(String[] args) {
-    init(args[0], args[1], args[2], args[3], args[4], args[5], args[6]);
+    init(args[0], args[1], args[2], args[3], args[4], args[5]);
   }
 
   public String getRequestNum() {
@@ -111,24 +103,11 @@ public class SecurityServiceRequest implements StringArrayConv, Requestable {
     this.additionalNotes = additionalNotes;
   }
 
-  public String getRequestTypeSelected() {
-    return requestTypeSelected;
+  public String getRequestName() {
+    return requestName;
   }
 
-  public void setRequestTypeSelected(String requestTypeSelected) {
-    this.requestTypeSelected = requestTypeSelected;
-  }
-
-  public String getRequestPriority() {
-    return requestPriority;
-  }
-
-  public void setRequestPriority(String requestPriority) {
-    this.requestPriority = requestPriority;
-  }
-
-  @Override
-  public String getLocID() {
-    return this.roomID;
+  public void setRequestName(String requestName) {
+    this.requestName = requestName;
   }
 }
