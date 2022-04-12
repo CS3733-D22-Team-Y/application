@@ -5,8 +5,6 @@
 <?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -20,323 +18,68 @@
          <AnchorPane fx:id="mapRoot" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
       </center>
       <bottom>
-         <HBox alignment="BOTTOM_LEFT" prefHeight="324.0" prefWidth="920.0" BorderPane.alignment="CENTER">
+         <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+               <MFXButton fx:id="floorLL1Button" prefHeight="50.0" prefWidth="50.0" text="LL1">
+                  <HBox.margin>
+                     <Insets right="10.0" />
+                  </HBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </MFXButton>
+               <MFXButton fx:id="floorLL2Button" prefHeight="50.0" prefWidth="50.0" text="LL2">
+                  <HBox.margin>
+                     <Insets right="10.0" />
+                  </HBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </MFXButton>
+               <MFXButton fx:id="floor1Button" prefHeight="50.0" prefWidth="50.0" text="1">
+                  <HBox.margin>
+                     <Insets right="10.0" />
+                  </HBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </MFXButton>
+               <MFXButton fx:id="floor2Button" prefHeight="50.0" prefWidth="50.0" text="2">
+                  <HBox.margin>
+                     <Insets right="10.0" />
+                  </HBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </MFXButton>
+               <MFXButton fx:id="floor3Button" prefHeight="50.0" prefWidth="50.0" text="3">
+                  <HBox.margin>
+                     <Insets right="10.0" />
+                  </HBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </MFXButton>
+               <MFXButton fx:id="floor4Button" prefHeight="50.0" prefWidth="50.0" text="4">
+                  <HBox.margin>
+                     <Insets right="10.0" />
+                  </HBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </MFXButton>
+               <MFXButton fx:id="floor5Button" prefHeight="50.0" prefWidth="50.0" text="5">
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </MFXButton>
+            </children>
             <opaqueInsets>
                <Insets />
             </opaqueInsets>
             <padding>
                <Insets bottom="10.0" left="10.0" />
             </padding>
-            <children>
-               <Pane fx:id="ll1MainPane" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
-                  <children>
-                     <MFXButton fx:id="floorLL1Button" layoutY="250.0" onMouseEntered="#LL1Enter" onMouseExited="#LL1Exit" prefHeight="50.0" prefWidth="50.0" text="LL1">
-                        <font>
-                           <Font size="15.0" />
-                        </font>
-                     </MFXButton>
-                     <Pane fx:id="ll1PopupPane" prefHeight="250.0" prefWidth="50.0">
-                        <children>
-                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutX="-1.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/bellLogo.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="ll1RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/bedlogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/pumplogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/reclinerlogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="ll1Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <TextField fx:id="ll1Pump" editable="false" layoutX="25.0" layoutY="166.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <TextField fx:id="ll1Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/xrayIcon.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="ll1X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
-                        </children>
-                     </Pane>
-                  </children>
-               </Pane>
-               <Pane fx:id="ll1MainPane1" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
-                  <children>
-                     <MFXButton fx:id="floorLL2Button" layoutY="250.0" onMouseEntered="#LL2Enter" onMouseExited="#LL2Exit" prefHeight="50.0" prefWidth="50.0" text="LL2">
-                        <font>
-                           <Font size="15.0" />
-                        </font>
-                     </MFXButton>
-                     <Pane fx:id="ll2PopupPane" prefHeight="250.0" prefWidth="50.0">
-                        <children>
-                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/bellLogo.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="ll2RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="40.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/bedlogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/pumplogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/reclinerlogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="ll2Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <TextField fx:id="ll2Pump" editable="false" layoutX="25.0" layoutY="166.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <TextField fx:id="ll2Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/xrayIcon.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="ll2X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
-                        </children>
-                     </Pane>
-                  </children>
-               </Pane>
-               <Pane fx:id="ll1MainPane11" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
-                  <children>
-                     <MFXButton fx:id="floorL1Button" layoutY="250.0" onMouseEntered="#L1Enter" onMouseExited="#L1Exit" prefHeight="50.0" prefWidth="50.0" text="1">
-                        <font>
-                           <Font size="15.0" />
-                        </font>
-                     </MFXButton>
-                     <Pane fx:id="l1PopupPane" prefHeight="250.0" prefWidth="50.0">
-                        <children>
-                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/bellLogo.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="l1RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/bedlogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/pumplogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/reclinerlogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="l1Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <TextField fx:id="l1Pump" editable="false" layoutX="25.0" layoutY="166.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <TextField fx:id="l1Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/xrayIcon.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="l1X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
-                        </children>
-                     </Pane>
-                  </children>
-               </Pane>
-               <Pane fx:id="ll1MainPane111" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
-                  <children>
-                     <MFXButton fx:id="floorL2Button" layoutY="250.0" onMouseEntered="#L2Enter" onMouseExited="#L2Exit" prefHeight="50.0" prefWidth="50.0" text="2">
-                        <font>
-                           <Font size="15.0" />
-                        </font>
-                     </MFXButton>
-                     <Pane fx:id="l2PopupPane" prefHeight="250.0" prefWidth="50.0">
-                        <children>
-                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/bellLogo.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="l2RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="38.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/bedlogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/pumplogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/reclinerlogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="l2Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <TextField fx:id="l2Pump" editable="false" layoutX="25.0" layoutY="166.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <TextField fx:id="l2Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="38.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/xrayIcon.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="l2X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
-                        </children>
-                     </Pane>
-                  </children>
-               </Pane>
-               <Pane fx:id="ll1MainPane1111" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
-                  <children>
-                     <MFXButton fx:id="floorL3Button" layoutY="250.0" onMouseEntered="#L3Enter" onMouseExited="#L3Exit" prefHeight="50.0" prefWidth="50.0" text="3">
-                        <font>
-                           <Font size="15.0" />
-                        </font>
-                     </MFXButton>
-                     <Pane fx:id="l3PopupPane" prefHeight="250.0" prefWidth="50.0">
-                        <children>
-                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/bellLogo.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="l3RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/bedlogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/pumplogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/reclinerlogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="l3Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <TextField fx:id="l3Pump" editable="false" layoutX="25.0" layoutY="166.0" prefHeight="25.0" prefWidth="38.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <TextField fx:id="l3Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/xrayIcon.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="l3X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
-                        </children>
-                     </Pane>
-                  </children>
-               </Pane>
-               <Pane fx:id="ll1MainPane11111" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
-                  <children>
-                     <MFXButton fx:id="floorL4Button" layoutY="250.0" onMouseEntered="#L4Enter" onMouseExited="#L4Exit" prefHeight="50.0" prefWidth="50.0" text="4">
-                        <font>
-                           <Font size="15.0" />
-                        </font>
-                     </MFXButton>
-                     <Pane fx:id="l4PopupPane" prefHeight="250.0" prefWidth="50.0">
-                        <children>
-                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/bellLogo.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="l4RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/bedlogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/pumplogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/reclinerlogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="l4Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <TextField fx:id="l4Pump" editable="false" layoutX="25.0" layoutY="166.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <TextField fx:id="l4Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/xrayIcon.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="l4X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
-                        </children>
-                     </Pane>
-                  </children>
-               </Pane>
-               <Pane fx:id="ll1MainPane111111" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
-                  <children>
-                     <MFXButton fx:id="floorL5Button" layoutY="250.0" onMouseEntered="#L5Enter" onMouseExited="#L5Exit" prefHeight="50.0" prefWidth="50.0" text="5">
-                        <font>
-                           <Font size="15.0" />
-                        </font>
-                     </MFXButton>
-                     <Pane fx:id="l5PopupPane" prefHeight="250.0" prefWidth="50.0">
-                        <children>
-                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/bellLogo.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="l5RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/bedlogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/pumplogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/reclinerlogoBlack.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="l5Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="38.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <TextField fx:id="l5Pump" editable="false" layoutX="25.0" layoutY="166.0" prefHeight="25.0" prefWidth="38.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <TextField fx:id="l5Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="38.0" style="-fx-background-color: #00000000;" text="-1" />
-                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
-                              <image>
-                                 <Image url="@images/icons/xrayIcon.png" />
-                              </image>
-                           </ImageView>
-                           <TextField fx:id="l5X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
-                        </children>
-                     </Pane>
-                  </children>
-               </Pane>
-            </children>
          </HBox>
       </bottom>
    </BorderPane>
