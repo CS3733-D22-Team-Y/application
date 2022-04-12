@@ -33,6 +33,10 @@ public class SideBarController {
   @FXML private Label servicesLabel;
   @FXML private Label equipmentLabel;
   @FXML private Label tasksLabel;
+  @FXML private Label homeLabel;
+  @FXML private Label inboxLabel;
+  @FXML private Label profileLabel;
+  @FXML private Label logoutLabel;
 
   // Hidden rectangles
   @FXML private Rectangle mapHiddenRect;
@@ -126,6 +130,11 @@ public class SideBarController {
     sidebarBindToLabel(servicesHiddenRect, servicesButtonHitbox, servicesLabel);
     sidebarBindToLabel(equipmentHiddenRect, equipmentButtonHitbox, equipmentLabel);
     sidebarBindToLabel(tasksHiddenRect, tasksButtonHitbox, tasksLabel);
+
+    sidebarBindToLabel(homeHiddenRect, homeButtonHitbox, homeLabel);
+    sidebarBindToLabel(inboxHiddenRect, inboxButtonHitbox, inboxLabel);
+    sidebarBindToLabel(profileHiddenRect, profileButtonHitbox, profileLabel);
+    sidebarBindToLabel(logoutHiddenRect, logoutButtonHitbox, logoutLabel);
   }
 
   private void resizeMainScreen() {
