@@ -128,22 +128,22 @@
       </VBox>
       <VBox fx:id="bottomSidebarText" layoutX="71.0" layoutY="600.0">
          <children>
-            <Label graphicTextGap="0.0" styleClass="sidebarBottomOptions" text="Home" textFill="WHITE">
+            <Label fx:id="homeLabel" graphicTextGap="0.0" styleClass="sidebarBottomOptions" text="Home" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
             </Label>
-            <Label graphicTextGap="0.0" styleClass="sidebarBottomOptions" text="Inbox" textFill="WHITE">
+            <Label fx:id="inboxLabel" graphicTextGap="0.0" styleClass="sidebarBottomOptions" text="Inbox" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
             </Label>
-            <Label graphicTextGap="0.0" styleClass="sidebarBottomOptions" text="My Profile" textFill="WHITE">
+            <Label fx:id="profileLabel" graphicTextGap="0.0" styleClass="sidebarBottomOptions" text="My Profile" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
             </Label>
-            <Label graphicTextGap="0.0" styleClass="sidebarBottomOptions" text="Logout" textFill="WHITE">
+            <Label fx:id="logoutLabel" graphicTextGap="0.0" styleClass="sidebarBottomOptions" text="Logout" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
