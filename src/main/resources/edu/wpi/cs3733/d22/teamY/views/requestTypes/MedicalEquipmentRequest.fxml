@@ -76,11 +76,6 @@
             <Font name="Calibri" size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField fx:id="input_RoomID" floatMode="DISABLED" layoutX="160.0" layoutY="296.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
-         <font>
-            <Font name="Calibri" size="20.0" />
-         </font>
-      </MFXTextField>
       <MFXButton computeRadiusMultiplier="false" layoutX="710.0" layoutY="730.0" onAction="#resetAllFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" styleClass="requestButton" text="Reset" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
@@ -198,6 +193,6 @@
          </font>
       </JFXTextArea>
       <TextField fx:id="roomsHiddenField" layoutX="167.0" layoutY="306.0" prefHeight="26.0" prefWidth="163.0" style="-fx-background-color: #00000000;" />
-      <JFXComboBox fx:id="roomsComboBox" layoutX="164.0" layoutY="305.0" onAction="#setRoomText" prefHeight="26.0" prefWidth="166.0" />
+      <JFXComboBox fx:id="roomsComboBox" layoutX="160.0" layoutY="300.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" style="-fx-border-radius: 15px; -fx-background-color: white;" styleClass="requestInput" unFocusColor="#ffffff00" />
    </children>
 </AnchorPane>
