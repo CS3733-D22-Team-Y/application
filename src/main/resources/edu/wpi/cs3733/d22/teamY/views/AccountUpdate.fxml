@@ -15,13 +15,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="700.0" maxWidth="100.0" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.UpdateNewAccountController">
+<AnchorPane maxHeight="800.0" maxWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.UpdateNewAccountController">
     <children>
-        <ImageView fitHeight="700.0" fitWidth="1100.0" opacity="0.75">
-            <image>
-                <Image url="@images/do-rgb.jpg" />
-            </image>
-        </ImageView>
+      <ImageView fitHeight="800.0" fitWidth="1200.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
+         <image>
+            <Image url="@images/do-rgb.jpg" />
+         </image>
+      </ImageView>
         <Rectangle height="265.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1100.0">
             <fill>
                 <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.2831439393939398">
