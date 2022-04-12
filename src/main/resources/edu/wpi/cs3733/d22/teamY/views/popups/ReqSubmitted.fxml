@@ -29,12 +29,12 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <JFXButton fx:id="stayButton" layoutX="166.0" layoutY="140.0" onAction="#stayIn" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="loginButton" text="Okay" textFill="#1b89a6">
+      <JFXButton fx:id="stayButton" layoutX="166.0" layoutY="140.0" onAction="#stayIn" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="loginButton" text="Okay" textFill="#1b89a6">
          <font>
             <Font name="Microsoft Tai Le Bold" size="16.0" />
          </font>
       </JFXButton>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="42.0" layoutY="50.0" prefHeight="40.0" prefWidth="448.0" styleClass="popupText" text="Your request has been submitted." textFill="WHITE">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="25.0" prefHeight="100.0" prefWidth="515.0" styleClass="popupText" text="Your request has been submitted." textFill="WHITE" wrapText="true">
          <font>
             <Font name="Microsoft Tai Le Bold" size="24.0" />
          </font>
