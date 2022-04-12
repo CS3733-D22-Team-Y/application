@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.Auth;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import java.io.*;
 import java.io.IOException;
 import java.net.*;
@@ -50,6 +51,8 @@ public class WelcomePageController {
   @FXML Pane faSmsPane;
   @FXML JFXButton faSmsButton;
   @FXML Label codeEntryLabel;
+  @FXML MFXButton createUserButton;
+
   private boolean lockOut = false;
 
   int maxAttempts = 5;
@@ -252,5 +255,13 @@ public class WelcomePageController {
 
   public static String getCode() {
     return String.format("%06d", new Random().nextInt(999999));
+  }
+
+  public void createUserButton() throws Exception {
+    try {
+      SceneLoading.loadScene("views/CreateAccount.fxml");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }
