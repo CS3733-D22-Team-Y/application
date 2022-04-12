@@ -2,6 +2,7 @@ package edu.wpi.cs3733.d22.teamY;
 
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController;
 import edu.wpi.cs3733.d22.teamY.model.*;
+import java.util.ArrayList;
 import java.util.List;
 import javafx.util.Pair;
 import org.hibernate.Session;
@@ -156,10 +157,29 @@ public class DBUtils {
     return employees.size() == 1;
   }
 
+  /**
+   * Returns if username already exists.
+   *
+   * @param hashedUsername hashed Username INTEGER
+   * @return true if valid username, false if one exists.
+   */
+  public static boolean doesUserExist(int hashedUsername) {
+    Session s = SessionManager.getSession();
+
+    List<Employee> employees =
+        s.createQuery("from Employee where username = :username")
+            .setParameter("username", String.valueOf(hashedUsername))
+            .list();
+    s.close();
+    return employees.size() == 0;
+  }
+
   public static String convertNameToID(String shortName) {
     Session s = SessionManager.getSession();
     List<Location> tempLocations =
-        s.createQuery("from Location where shortName = :shortName").list();
+        s.createQuery("from Location where shortName =:shortName")
+            .setParameter("shortName", shortName)
+            .list();
     s.close();
 
     if (tempLocations.size() > 1) {
@@ -179,7 +199,6 @@ public class DBUtils {
    */
   @SuppressWarnings("unchecked")
   public static String changePassword(String username, String oldPassword, String newPassword) {
-    newPassword = newPassword.hashCode() + "";
     Session s = SessionManager.getSession();
     List<Employee> employees =
         s.createQuery("from Employee where username = :username")
@@ -204,7 +223,7 @@ public class DBUtils {
       return "Error: New password must be at least 5 characters long and contain at least one number, one letter, and one special character.";
     }
 
-    employee.setPassword(newPassword);
+    employee.setPassword(newPassword.hashCode() + "");
     DBManager.update(employee);
     return "Successfully changed password.";
   }
@@ -217,5 +236,29 @@ public class DBUtils {
   public static void switchDBType(boolean input) {
     SessionManager.switchType(input);
     DBUtils.completeCSVRefresh();
+  }
+
+  public static boolean checkDefaultPassword(int passwordHash) {
+    String defaultPass = "1234";
+    return (passwordHash == defaultPass.hashCode());
+  }
+
+  public static <T extends Requestable> List<T> getRequestsOnFloor(
+      Class<T> requestType, String floor) {
+    List<T> requests = DBManager.getAll(requestType);
+    if (requests.size() == 0) {
+      return requests;
+    }
+    List<T> filtered = new ArrayList<>();
+    List<Location> locations = DBUtils.getLocationsOnFloor(floor);
+    for (T r : requests) {
+      String locID = r.getLocID();
+      for (Location l : locations) {
+        if (l.getNodeID().equals(locID)) {
+          filtered.add(r);
+        }
+      }
+    }
+    return filtered;
   }
 }

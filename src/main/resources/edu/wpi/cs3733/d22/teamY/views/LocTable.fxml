@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17"
+<AnchorPane stylesheets="@css/Fonts.css" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="edu.wpi.cs3733.d22.teamY.controllers.LocTablePageController">
     <children>
         <TableView fx:id="tableView" layoutX="386.0" layoutY="104.0" prefHeight="550.0" prefWidth="700.0"/>
-        <Label layoutX="425.0" layoutY="14.0" text="Hospital Locations Table" textFill="#297bce">
+        <Label text="Hospital Locations Table" styleClass="title">
             <font>
                 <Font name="Microsoft Tai Le Bold" size="54.0"/>
             </font>

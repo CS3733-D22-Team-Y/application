@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.Cursor?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXProgressSpinner?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,236 +14,235 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="700.0" maxWidth="100.0" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="edu.wpi.cs3733.d22.teamY.controllers.WelcomePageController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.WelcomePageController">
     <children>
-        <ImageView fitHeight="700.0" fitWidth="1100.0" opacity="0.75">
-            <image>
-                <Image url="@images/do-rgb.jpg"/>
-            </image>
-        </ImageView>
-        <Rectangle height="265.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1100.0">
-            <fill>
-                <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.2831439393939398">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.003921568859368563" green="0.1764705926179886" blue="0.3529411852359772"/>
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="1.0" green="1.0" blue="1.0" opacity="0.0"/>
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </fill>
-        </Rectangle>
-        <Rectangle height="265.0" layoutY="434.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0"
-                   style="-fx-rotate: 180;" width="1100.0">
-            <fill>
-                <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.2831439393939398">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.003921568859368563" green="0.1764705926179886" blue="0.3529411852359772"/>
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="1.0" green="1.0" blue="1.0" opacity="0.0"/>
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </fill>
-        </Rectangle>
-        <Label fx:id="Welcome" layoutX="21.0" layoutY="13.0" text="Welcome" textFill="WHITE">
-            <font>
-                <Font name="Microsoft Tai Le Bold" size="52.0"/>
-            </font>
-        </Label>
-        <JFXButton layoutX="974.0" layoutY="7.0" onAction="#killApplication" text="Exit" textFill="WHITE">
-            <font>
-                <Font name="Microsoft Tai Le Bold" size="36.0"/>
-            </font>
-            <cursor>
-                <Cursor fx:constant="HAND"/>
-            </cursor>
-        </JFXButton>
-        <Polygon fill="WHITE" layoutX="549.0" layoutY="656.0" onMouseClicked="#mainPage"
-                 points="-50.0, 40.0, 50.0, 40.0, 0.0, -60.0" stroke="BLACK" strokeType="INSIDE"
-                 style="-fx-rotate: 180; -fx-scale-x: .6; -fx-scale-y: .5;"/>
-        <Rectangle height="125.0" layoutY="573.0" onMouseClicked="#loginToMainPage" stroke="BLACK" strokeType="INSIDE"
-                   strokeWidth="0.0" width="1100.0">
-            <fill>
-                <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.2831439393939398">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.007000000216066837" green="0.1784999966621399" blue="0.3499999940395355"
-                                       opacity="0.0"/>
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="0.11999999731779099" green="0.5746666789054871" blue="1.0" opacity="0.0"/>
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </fill>
-            <cursor>
-                <Cursor fx:constant="HAND"/>
-            </cursor>
-        </Rectangle>
-        <Pane fx:id="yubikeyPane" layoutX="364.0" layoutY="222.0" visible="false">
+        <Pane fx:id="yubikeyPane" layoutX="400.0" layoutY="222.0">
             <children>
-                <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="256.0" opacity="0.72" stroke="BLACK"
-                           strokeType="INSIDE" strokeWidth="0.0" width="370.0"/>
-                <Label fx:id="yubikeyInstruct" layoutY="98.0" prefHeight="25.0" prefWidth="370.0"
-                       style="-fx-text-alignment: center; -fx-alignment: center;" text="Tap Your Ubikey"
-                       textAlignment="CENTER">
+                <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="250.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
+                <Label fx:id="yubikeyInstruct" layoutY="98.0" prefHeight="25.0" prefWidth="370.0" style="-fx-text-alignment: center; -fx-alignment: center;" text="Tap Your Ubikey" textAlignment="CENTER">
                     <font>
-                        <Font name="Microsoft Tai Le Bold" size="18.0"/>
+                        <Font name="Microsoft Tai Le Bold" size="18.0" />
                     </font>
                 </Label>
-                <TextField fx:id="yubikeyEntry" layoutX="110.0" layoutY="142.0" onAction="#yubikeyDone" opacity="0.0"/>
+                <TextField fx:id="yubikeyEntry" layoutX="110.0" layoutY="142.0" onAction="#yubikeyDone" opacity="0.0" />
             </children>
         </Pane>
-        <Pane fx:id="loginPane" layoutX="364.0" layoutY="222.0">
+      <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
+         <image>
+            <Image url="@images/do-rgb.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: .8;" width="1200.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.42222025286541415">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+        <Label fx:id="Welcome" layoutX="10.0" styleClass="title" text="Welcome to BWH Portal">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="60.0" />
+            </font>
+         <textFill>
+            <LinearGradient endX="0.5681817603833748" endY="1.0" startX="0.5643939542951006" startY="0.22348483403523764">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+        </Label>
+        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+      <MFXButton buttonType="RAISED" layoutX="1070.0" layoutY="10.0" onAction="#killApplication" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #20758b;" styleClass="loginButton" text="Exit" textFill="#e4e5e6">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="20.0" />
+         </font>
+      </MFXButton>
+        <Pane fx:id="loginPane" layoutX="450.0" layoutY="300.0" prefWidth="300.0">
             <children>
-                <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="256.0" opacity="0.72" stroke="BLACK"
-                           strokeType="INSIDE" strokeWidth="0.0" width="370.0"/>
-                <TextField fx:id="username" layoutX="67.0" layoutY="43.0" onAction="#loginToMainPage" prefHeight="50.0"
-                           prefWidth="236.0" promptText="Username">
-                    <font>
-                        <Font size="20.0"/>
-                    </font>
-                </TextField>
-                <PasswordField fx:id="password" layoutX="67.0" layoutY="162.0" onAction="#loginToMainPage"
-                               prefHeight="50.0" prefWidth="236.0" promptText="Password">
-                    <font>
-                        <Font size="20.0"/>
-                    </font>
-                </PasswordField>
-                <Pane fx:id="failedLoginPane" layoutX="67.0" layoutY="100.0" visible="false">
+                <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="256.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+                <Pane fx:id="failedLoginPane" layoutY="150.0" prefHeight="28.0" prefWidth="300.0" visible="false">
                     <children>
-                        <Label prefHeight="28.0" prefWidth="236.0" style="-fx-alignment: center;"
-                               text="Incorrect Password" textFill="#ff3a3a">
+                        <Label fx:id="attemptsRemaining" prefHeight="28.0" prefWidth="300.0" style="-fx-alignment: center;" text="5 Attempts Remain" textAlignment="CENTER" textFill="#df2056">
                             <font>
-                                <Font name="Microsoft Tai Le Bold" size="18.0"/>
-                            </font>
-                        </Label>
-                        <Label fx:id="attemptsRemaining" layoutY="34.0" prefHeight="28.0" prefWidth="236.0"
-                               style="-fx-alignment: center;" text="5 Attempts Remain" textAlignment="CENTER"
-                               textFill="#ff3a3a">
-                            <font>
-                                <Font name="Microsoft Tai Le Bold" size="18.0"/>
+                                <Font name="Microsoft Tai Le Bold" size="12.0" />
                             </font>
                         </Label>
                     </children>
                 </Pane>
+            <MFXTextField fx:id="username" floatMode="ABOVE" layoutX="25.0" layoutY="30.0" onAction="#loginToMainPage" prefHeight="50.0" prefWidth="250.0" promptText="Username">
+               <font>
+                  <Font size="15.0" />
+               </font></MFXTextField>
+            <MFXPasswordField fx:id="password" floatMode="ABOVE" layoutX="25.0" layoutY="100.0" onAction="#loginToMainPage" prefHeight="50.0" prefWidth="250.0" promptText="Password">
+               <font>
+                  <Font size="15.0" />
+               </font></MFXPasswordField>
+            <MFXButton buttonType="RAISED" layoutX="155.0" layoutY="178.0" onAction="#loginToMainPage" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #20758b;" styleClass="loginButton" text="Login" textFill="#e4e5e6">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </MFXButton>
+            <MFXButton buttonType="RAISED" layoutX="25.0" layoutY="178.0" onAction="#createNewUser" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #20758b;" styleClass="loginButton" text="New Acct" textFill="#e4e5e6">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </MFXButton>
             </children>
         </Pane>
-        <Text fill="WHITE" layoutX="508.0" layoutY="611.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In">
+        <Pane fx:id="loading" layoutX="300.0" layoutY="100.0" prefHeight="600.0" prefWidth="600.0" visible="false">
+         <children>
+            <MFXProgressSpinner layoutX="275.0" layoutY="275.0" prefHeight="50.0" prefWidth="50.0" scaleX="5.0" scaleY="5.0" startingAngle="0.0">
+               <color1>
+                  <Color red="0.5372549295425415" green="0.5254902243614197" blue="0.48627451062202454" />
+               </color1>
+               <color2>
+                  <Color red="0.7921568751335144" green="0.239215686917305" blue="0.5843137502670288" />
+               </color2>
+               <color3>
+                  <Color red="0.12156862765550613" green="0.29411765933036804" blue="0.5137255191802979" />
+               </color3>
+               <color4>
+                  <Color red="0.08627451211214066" green="0.5607843399047852" blue="0.5921568870544434" />
+               </color4>
+            </MFXProgressSpinner>
+            <MFXProgressSpinner layoutX="280.0" layoutY="280.0" prefHeight="40.0" prefWidth="40.0" scaleX="5.0" scaleY="5.0" startingAngle="90.0">
+               <color1>
+                  <Color red="0.5372549295425415" green="0.5254902243614197" blue="0.48627451062202454" />
+               </color1>
+               <color2>
+                  <Color red="0.7921568751335144" green="0.239215686917305" blue="0.5843137502670288" />
+               </color2>
+               <color3>
+                  <Color red="0.12156862765550613" green="0.29411765933036804" blue="0.5137255191802979" />
+               </color3>
+               <color4>
+                  <Color red="0.9684210419654846" green="0.7792800664901733" blue="0.15781676769256592" />
+               </color4>
+            </MFXProgressSpinner>
+            <MFXProgressSpinner layoutX="285.0" layoutY="285.0" prefHeight="30.0" prefWidth="30.0" scaleX="5.0" scaleY="5.0" startingAngle="180.0">
+               <color1>
+                  <Color red="0.5372549295425415" green="0.5254902243614197" blue="0.48627451062202454" />
+               </color1>
+               <color2>
+                  <Color red="0.7921568751335144" green="0.239215686917305" blue="0.5843137502670288" />
+               </color2>
+               <color3>
+                  <Color red="0.12156862765550613" green="0.29411765933036804" blue="0.5137255191802979" />
+               </color3>
+               <color4>
+                  <Color red="1.0" green="0.49259260296821594" blue="0.6448147892951965" />
+               </color4>
+            </MFXProgressSpinner>
+         </children></Pane>
+        <JFXButton layoutX="21.0" layoutY="222.0" onAction="#testingButton" prefHeight="282.0" prefWidth="299.0" ripplerFill="#5c4f4f00" text="Testing Button (DELETE BEFORE SUBMISSION)" textAlignment="CENTER" textFill="#ff00a1" wrapText="true">
             <font>
-                <Font name="Microsoft Tai Le Bold" size="28.0"/>
-            </font>
-        </Text>
-        <Pane fx:id="loading" layoutX="69.0" layoutY="49.0" prefHeight="601.0" prefWidth="959.0" visible="false"/>
-        <JFXButton layoutX="21.0" layoutY="222.0" onAction="#testingButton" prefHeight="282.0" prefWidth="299.0"
-                   ripplerFill="#5c4f4f00" text="Testing Button (DELETE BEFORE SUBMISSION)" textAlignment="CENTER"
-                   textFill="#ff00a1" wrapText="true">
-            <font>
-                <Font name="System Bold Italic" size="36.0"/>
+                <Font name="System Bold Italic" size="36.0" />
             </font>
         </JFXButton>
         <Pane fx:id="faPane" layoutX="217.0" layoutY="120.0" visible="false">
             <children>
-                <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="461.0" opacity="0.72" stroke="BLACK"
-                           strokeType="INSIDE" strokeWidth="0.0" width="663.0"/>
-                <Label alignment="CENTER" layoutX="106.0" layoutY="14.0" prefHeight="75.0" prefWidth="452.0"
-                       text="2FA Selection" textAlignment="CENTER">
+                <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="461.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="663.0" />
+                <Label alignment="CENTER" layoutX="106.0" layoutY="14.0" prefHeight="75.0" prefWidth="452.0" text="2FA Selection" textAlignment="CENTER">
                     <font>
-                        <Font name="Microsoft Tai Le Bold" size="40.0"/>
+                        <Font name="Microsoft Tai Le Bold" size="40.0" />
                     </font>
                 </Label>
-                <Pane fx:id="faYubikeyPane" layoutX="44.0" layoutY="106.0" opacity="0.2" prefHeight="125.0"
-                      prefWidth="125.0">
+                <Pane fx:id="faYubikeyPane" layoutX="44.0" layoutY="106.0" opacity="0.2" prefHeight="125.0" prefWidth="125.0">
                     <children>
-                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutY="2.0" pickOnBounds="true"
-                                   preserveRatio="true">
+                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@images/icons/Yubikeylogo.png"/>
+                                <Image url="@images/icons/Yubikeylogo.png" />
                             </image>
                         </ImageView>
-                        <JFXButton fx:id="faYubikeyButton" layoutY="2.0" onAction="#yubikeyPrompt" prefHeight="125.0"
-                                   prefWidth="125.0" text=" " visible="false"/>
+                        <JFXButton fx:id="faYubikeyButton" layoutY="2.0" onAction="#yubikeyPrompt" prefHeight="125.0" prefWidth="125.0" text=" " visible="false" />
                     </children>
                 </Pane>
-                <Pane fx:id="faPushPane" layoutX="270.0" layoutY="106.0" opacity="0.2" prefHeight="125.0"
-                      prefWidth="125.0">
+                <Pane fx:id="faPushPane" layoutX="270.0" layoutY="106.0" opacity="0.2" prefHeight="125.0" prefWidth="125.0">
                     <children>
-                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutY="2.0" pickOnBounds="true"
-                                   preserveRatio="true">
+                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@images/icons/notificationlogo.png"/>
+                                <Image url="@images/icons/notificationlogo.png" />
                             </image>
                         </ImageView>
-                        <JFXButton fx:id="faPushButton" layoutY="2.0" onAction="#sendPushBullet" prefHeight="125.0"
-                                   prefWidth="125.0" text=" " visible="false"/>
+                        <JFXButton fx:id="faPushButton" layoutY="2.0" onAction="#sendPushBullet" prefHeight="125.0" prefWidth="125.0" text=" " visible="false" />
                     </children>
                 </Pane>
-                <Pane fx:id="faEmailPane" layoutX="496.0" layoutY="106.0" opacity="0.2" prefHeight="125.0"
-                      prefWidth="125.0">
+                <Pane fx:id="faEmailPane" layoutX="496.0" layoutY="106.0" opacity="0.2" prefHeight="125.0" prefWidth="125.0">
                     <children>
-                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutY="2.0" pickOnBounds="true"
-                                   preserveRatio="true">
+                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@images/icons/emailogo.png"/>
+                                <Image url="@images/icons/emailogo.png" />
                             </image>
                         </ImageView>
-                        <JFXButton fx:id="faEmailButton" layoutY="2.0" onAction="#sendEmail" prefHeight="125.0"
-                                   prefWidth="125.0" text=" " visible="false"/>
+                        <JFXButton fx:id="faEmailButton" layoutY="2.0" onAction="#sendEmail" prefHeight="125.0" prefWidth="125.0" text=" " visible="false" />
                     </children>
                 </Pane>
-                <Pane fx:id="faSmsPane" layoutX="44.0" layoutY="290.0" opacity="0.2" prefHeight="125.0"
-                      prefWidth="125.0">
+                <Pane fx:id="faSmsPane" layoutX="44.0" layoutY="290.0" opacity="0.2" prefHeight="125.0" prefWidth="125.0">
                     <children>
-                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutY="2.0" pickOnBounds="true"
-                                   preserveRatio="true">
+                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@images/icons/smslogo.png"/>
+                                <Image url="@images/icons/smslogo.png" />
                             </image>
                         </ImageView>
-                        <JFXButton fx:id="faSmsButton" layoutY="2.0" onAction="#sendSms" prefHeight="125.0"
-                                   prefWidth="125.0" text=" " visible="false"/>
+                        <JFXButton fx:id="faSmsButton" layoutY="2.0" onAction="#sendSms" prefHeight="125.0" prefWidth="125.0" text=" " visible="false" />
                     </children>
                 </Pane>
             </children>
         </Pane>
-        <Pane fx:id="codeEntryPane" layoutX="364.0" layoutY="222.0" prefHeight="256.0" prefWidth="370.0"
-              visible="false">
+        <Pane fx:id="codeEntryPane" layoutX="364.0" layoutY="222.0" prefHeight="256.0" prefWidth="370.0" visible="false">
             <children>
-                <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="256.0" opacity="0.72" stroke="BLACK"
-                           strokeType="INSIDE" strokeWidth="0.0" width="370.0"/>
-                <Label fx:id="codeEntryLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="7.0"
-                       prefHeight="113.0" prefWidth="299.0" text="Please enter the code that was sent to your device"
-                       textAlignment="CENTER" wrapText="true">
+                <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="256.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="370.0" />
+                <Label fx:id="codeEntryLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="7.0" prefHeight="113.0" prefWidth="299.0" text="Please enter the code that was sent to your device" textAlignment="CENTER" wrapText="true">
                     <font>
-                        <Font name="Microsoft Tai Le Bold" size="23.0"/>
+                        <Font name="Microsoft Tai Le Bold" size="23.0" />
                     </font>
                 </Label>
-                <TextField fx:id="codeEntryField" layoutX="69.0" layoutY="162.0" onAction="#codeChecker"
-                           prefHeight="50.0" prefWidth="236.0"/>
+                <TextField fx:id="codeEntryField" layoutX="69.0" layoutY="162.0" onAction="#codeChecker" prefHeight="50.0" prefWidth="236.0" />
             </children>
         </Pane>
     </children>

@@ -265,4 +265,12 @@ public class Employee implements StringArrayConv {
     }
     this.authString += (type.getName() + ":" + String.join(":", args) + ";");
   }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
 }

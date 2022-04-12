@@ -11,7 +11,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "LABREQUESTS")
-public class LabRequest implements StringArrayConv {
+public class LabRequest implements StringArrayConv, Requestable {
   @Id private String requestNum;
   private String roomID;
   private String requestStatus;
@@ -111,6 +111,11 @@ public class LabRequest implements StringArrayConv {
 
   public void setResultTypeSelected(String resultType) {
     this.resultType = resultType;
+  }
+
+  @Override
+  public String getLocID() {
+    return roomID;
   }
   // endregion
 }

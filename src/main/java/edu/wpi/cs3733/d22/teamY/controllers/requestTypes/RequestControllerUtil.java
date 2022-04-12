@@ -1,11 +1,26 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXRadioButton;
+import edu.wpi.cs3733.d22.teamY.DBManager;
+import edu.wpi.cs3733.d22.teamY.model.Location;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
+import java.util.LinkedList;
+import javafx.collections.FXCollections;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.TextInputControl;
 
 public class RequestControllerUtil {
+  public static JFXComboBox<String> allRoomsComboBox = new JFXComboBox<>();
+
+  public static void initialize() {
+    LinkedList<String> items = new LinkedList<>();
+    for (int i = 0; i < DBManager.getAll(Location.class).size(); i++) {
+      items.add(((Location) DBManager.getAll(Location.class).get(i)).getShortName());
+    }
+    allRoomsComboBox.setItems(FXCollections.observableList(items));
+  }
+
   // Checks if any of the given radio buttons are selected.
   protected static boolean isRadioButtonSelected(JFXRadioButton... buttons) {
     for (JFXRadioButton currButton : buttons) {
