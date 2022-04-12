@@ -150,7 +150,7 @@ public class MedicalEquipmentRequestController {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
-          "bruh"
+          "Request Status"
           /*input_RequestStatus.getText()*/ ,
           input_AdditionalNotes.getText(),
           getEquipmentType());
