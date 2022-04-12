@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" stylesheets="@../css/Fonts.css" maxHeight="800.0" maxWidth="930.0" minHeight="800.0" minWidth="930.0" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.FloralRequestController">
+<AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="780.0" minWidth="920.0" prefHeight="780.0" prefWidth="920.0" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.FloralRequestController">
     <children>
       <JFXTextArea fx:id="errorLabel" depthTest="DISABLE" disable="true" editable="false" focusColor="#ffffff00" layoutX="700.0" layoutY="700.0" opacity="0.97" prefHeight="10.0" prefWidth="243.0" style="-fx-text-fill: RED;" unFocusColor="#ffffff00">
          <font>
@@ -42,7 +42,7 @@
                 <Font name="Arial Rounded MT Bold" size="60.0" />
             </font>
         </Label>
-        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
             <fill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -98,17 +98,17 @@
             <Cursor fx:constant="CROSSHAIR" />
          </cursor>
         </MFXTextField>
-        <MFXButton computeRadiusMultiplier="false" layoutX="700.0" layoutY="730.0" onAction="#resetAllFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" text="Reset" textFill="WHITE">
+        <MFXButton computeRadiusMultiplier="false" layoutX="710.0" layoutY="730.0" onAction="#resetAllFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" text="Reset" textFill="WHITE">
             <font>
                 <Font name="Calibri Bold" size="20.0" />
             </font>
         </MFXButton>
-        <MFXButton computeRadiusMultiplier="false" layoutX="810.0" layoutY="730.0" onAction="#submitButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" text="Submit" textFill="WHITE">
+        <MFXButton computeRadiusMultiplier="false" layoutX="820.0" layoutY="730.0" onAction="#submitButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" text="Submit" textFill="WHITE">
             <font>
                 <Font name="Calibri Bold" size="20.0" />
             </font>
         </MFXButton>
-        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="601.0" layoutY="140.0" prefHeight="54.0" prefWidth="319.0" text="Bouquet Type" textAlignment="RIGHT">
+        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="601.0" layoutY="110.0" prefHeight="54.0" prefWidth="319.0" styleClass="subtitle" text="Bouquet Type" textAlignment="RIGHT">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -129,7 +129,7 @@
                 <Font name="Arial Rounded MT Bold" size="45.0" />
             </font>
         </Label>
-        <Rectangle arcHeight="10.0" arcWidth="10.0" height="8.0" layoutX="561.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="359.0">
+        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="520.0" layoutY="175.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0">
             <fill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -147,7 +147,7 @@
                 </LinearGradient>
             </fill>
         </Rectangle>
-      <MFXRadioButton fx:id="newBabyRadioButton" layoutX="560.0" layoutY="275.0" radius="12.0" text="New Baby Bouquet">
+      <MFXRadioButton fx:id="newBabyRadioButton" layoutX="520.0" layoutY="250.0" radius="12.0" text="New Baby Bouquet">
          <toggleGroup>
             <ToggleGroup fx:id="boquetOptions" />
          </toggleGroup>
@@ -155,12 +155,12 @@
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="getWellSoonBouquetRadioButton" layoutX="560.0" layoutY="230.0" radius="12.0" text="Get Well Soon Bouquet" toggleGroup="$boquetOptions">
+      <MFXRadioButton fx:id="getWellSoonBouquetRadioButton" layoutX="520.0" layoutY="200.0" radius="12.0" text="Get Well Soon Bouquet" toggleGroup="$boquetOptions">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="bouquetOfTheDayRadioButton" layoutX="560.0" layoutY="320.0" radius="12.0" text="Bouquet of the Day" toggleGroup="$boquetOptions">
+      <MFXRadioButton fx:id="bouquetOfTheDayRadioButton" layoutX="520.0" layoutY="300.0" radius="12.0" text="Bouquet of the Day" toggleGroup="$boquetOptions">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
