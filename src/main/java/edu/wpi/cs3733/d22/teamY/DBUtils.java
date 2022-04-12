@@ -264,7 +264,7 @@ public class DBUtils {
   }
 
   /**
-   * Get the number of requests on a floor.
+   * Get the number of requests on a floor
    *
    * @param floor
    * @return number of requests on a floor
