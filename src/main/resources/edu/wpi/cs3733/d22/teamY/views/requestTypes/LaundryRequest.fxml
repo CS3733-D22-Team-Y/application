@@ -8,7 +8,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -38,13 +37,6 @@
          <font>
             <Font name="Arial Rounded MT Bold" size="60.0" />
          </font>
-         <effect>
-            <DropShadow height="21.61" offsetX="-1.0" offsetY="1.0" radius="10.3275" width="21.7">
-               <color>
-                  <Color red="0.0835999995470047" green="0.2515600025653839" blue="0.3799999952316284" opacity="0.23000000417232513" />
-               </color>
-            </DropShadow>
-         </effect>
       </Label>
       <Label layoutX="15.0" layoutY="150.0" prefHeight="35.0" prefWidth="133.0" styleClass="inputLabel" text="Nurse:">
          <font>
@@ -96,22 +88,8 @@
          <font>
             <Font name="Arial Rounded MT Bold" size="45.0" />
          </font>
-         <effect>
-            <DropShadow offsetX="-1.0" offsetY="1.0">
-               <color>
-                  <Color red="0.08510000258684158" green="0.2512916624546051" blue="0.3700000047683716" opacity="0.23000000417232513" />
-               </color>
-            </DropShadow>
-         </effect>
       </Label>
       <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
-         <effect>
-            <DropShadow height="20.24" offsetX="-3.0" offsetY="2.0" radius="9.985" width="21.7">
-               <color>
-                  <Color red="0.08235294371843338" green="0.24705882370471954" blue="0.38823530077934265" opacity="0.3799999952316284" />
-               </color>
-            </DropShadow>
-         </effect>
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -130,13 +108,6 @@
          </fill>
       </Rectangle>
       <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="520.0" layoutY="175.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0">
-         <effect>
-            <DropShadow height="15.85" offsetX="-3.0" offsetY="2.0" radius="8.8875" width="21.7">
-               <color>
-                  <Color red="0.08190000057220459" green="0.24621999263763428" blue="0.38999998569488525" opacity="0.3767123222351074" />
-               </color>
-            </DropShadow>
-         </effect>
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
