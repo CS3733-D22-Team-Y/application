@@ -8,7 +8,6 @@ import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 public class FloralRequestController {
@@ -23,7 +22,7 @@ public class FloralRequestController {
   // Additional Notes
   @FXML private TextArea input_AdditionalNotes;
   // Error Label
-  @FXML private Label errorLabel;
+  @FXML private TextArea errorLabel;
 
   private Scene requestMenu = null;
 
@@ -35,7 +34,10 @@ public class FloralRequestController {
   public FloralRequestController() {}
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
+  public void initialize() {
 
+    // errorTest.setVisible(true);
+  }
   /**
    * Submits a service request.
    *
@@ -76,7 +78,7 @@ public class FloralRequestController {
           input_PatientID.getText(),
           input_AdditionalNotes.getText(),
           getBouquetType());
-      RequestControllerUtil.resetLabels(errorLabel);
+      errorLabel.setText("");
     } else {
       errorLabel.setText("Please select a bouquet option.");
     }
@@ -98,6 +100,6 @@ public class FloralRequestController {
         getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton);
     RequestControllerUtil.resetTextFields(
         input_RoomID, input_AssignedNurse, input_AdditionalNotes, input_PatientID);
-    RequestControllerUtil.resetLabels(errorLabel);
+    errorLabel.setText("");
   }
 }

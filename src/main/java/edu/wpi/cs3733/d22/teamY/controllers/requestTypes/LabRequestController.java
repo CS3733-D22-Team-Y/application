@@ -10,7 +10,7 @@ import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 
 public class LabRequestController {
 
@@ -28,7 +28,7 @@ public class LabRequestController {
   @FXML private MFXRadioButton catScanRadioButton;
   @FXML private MFXRadioButton mriRadioButton;
   // Error Label
-  @FXML private Label errorLabel;
+  @FXML private TextArea errorLabel;
 
   // Result types text. These should be changed depending on what the names in the database are.
   private final String bloodSampleText = "bloodSample";
@@ -78,7 +78,7 @@ public class LabRequestController {
           input_RequestStatus.getText(),
           input_AdditionalNotes.getText(),
           getResultType());
-      RequestControllerUtil.resetLabels(errorLabel);
+      errorLabel.setText("");
     } else {
       errorLabel.setText("Please select a result type.");
     }
@@ -112,6 +112,6 @@ public class LabRequestController {
         // input_RequestStatus,
         input_AdditionalNotes,
         input_PatientID);
-    RequestControllerUtil.resetLabels(errorLabel);
+    errorLabel.setText("");
   }
 }

@@ -4,13 +4,10 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.MealRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -22,7 +19,6 @@ public class MealRequestController {
   @FXML private TextField input_AssignedNurse;
   @FXML private TextField input_RequestStatus;
 
-  @FXML private TextArea input_SpecialInstructions;
   // Radio button main course
   @FXML private MFXRadioButton pizzaRadioButton;
   @FXML private MFXRadioButton burgerRadioButton;
@@ -34,7 +30,7 @@ public class MealRequestController {
   // Dropdown menu
   @FXML private JFXComboBox<String> dietaryRestrictionsSelectionBox;
   // Error Label
-  @FXML private Label errorLabel;
+  @FXML private TextArea errorLabel;
 
   // Combobox text items
   private final String textOther = "Other (specify)";
@@ -61,6 +57,7 @@ public class MealRequestController {
     dietaryRestrictionsSelectionBox
         .getItems()
         .addAll(textNone, "Gluten Free", "Vegetarian", "Vegan", textOther);
+    dietaryRestrictionsSelectionBox.setValue(textNone);
   }
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
@@ -116,13 +113,13 @@ public class MealRequestController {
       submitRequest(
           input_RoomID.getText(),
           input_AssignedNurse.getText(),
-          input_RequestStatus.getText(),
+          "temp",
           input_AdditionalNotes.getText(),
           getMainChoice(),
           getSideChoice(),
           dietaryRestrictionsSelectionBox.getValue(),
-          input_SpecialInstructions.getText());
-      RequestControllerUtil.resetLabels(errorLabel);
+          input_AdditionalNotes.getText());
+      errorLabel.setText("");
     } else {
       if (mealSelected) {
         errorLabel.setText("Please select a side option.");
@@ -150,34 +147,6 @@ public class MealRequestController {
     return ("");
   }
 
-  @FXML
-  void backToRequestMenu(ActionEvent event) throws IOException {
-    SceneLoading.loadScene("views/RequestMenu.fxml");
-    resetAllFields();
-  }
-
-  // Checks if the "Special Instructions" box should be enabled.
-  // Will only enable if "Other (specify)" is selected.
-  @FXML
-  void checkSpecialInstructionsEnable() {
-    if (dietaryRestrictionsSelectionBox.getValue().equals(textOther)) {
-      input_SpecialInstructions.setDisable(false);
-    } else {
-      input_SpecialInstructions.setDisable(true);
-    }
-  }
-
-  @FXML
-  void enableMiscBox() {
-    input_SpecialInstructions.setEditable(true);
-  }
-
-  @FXML
-  void disableMiscBox() {
-    input_SpecialInstructions.setEditable(false);
-    RequestControllerUtil.resetTextFields(input_SpecialInstructions);
-  }
-
   // Reset button functionality
   @FXML
   void resetAllFields() {
@@ -186,7 +155,7 @@ public class MealRequestController {
         input_RoomID,
         input_AssignedNurse,
         input_AdditionalNotes,
-        input_SpecialInstructions,
+        input_AdditionalNotes,
         input_PatientID);
     // Mains
     RequestControllerUtil.resetRadioButtons(
@@ -198,6 +167,6 @@ public class MealRequestController {
         appleRadioButton);
     // Selection box
     dietaryRestrictionsSelectionBox.setValue(textNone);
-    RequestControllerUtil.resetLabels(errorLabel);
+    errorLabel.setText("");
   }
 }
