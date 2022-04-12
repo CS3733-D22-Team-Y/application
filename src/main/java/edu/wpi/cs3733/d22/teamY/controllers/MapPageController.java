@@ -62,6 +62,11 @@ public class MapPageController {
 
   @FXML private ComboBox<MapMode> modeBox;
 
+  @FXML private Pane ll1MainPane;
+  @FXML private Pane ll1PopupPane;
+
+  int tempNum = 0;
+
   MapComponent mapComponent = new MapComponent();
 
   private static final int CIRCLE_RADIUS_PX = 10;
@@ -375,5 +380,37 @@ public class MapPageController {
 
     // Load initial floor and mode
     switchMap(lastFloor, MapMode.LOCATION);
+
+    loadFloors("1", "2", "3", "L1", "L2");
+
+    // set bottom left coordinate to 0,200
+
+  }
+
+  private void loadFloors(String... floors) {
+    for(String floor : floors) {
+      ArrayList<String> requestsOnFloor = new ArrayList<>();
+
+    }
+
+  }
+
+  public void addLL1Item(String text) {
+    Label testLabel = new Label();
+    testLabel.setText(text);
+    testLabel.setTranslateY(200 - 20 * tempNum++);
+    ll1PopupPane.getChildren().add(testLabel);
+  }
+
+  @FXML
+  public void LL1Enter() {
+    System.out.println("Enter LL1");
+    ll1PopupPane.setVisible(true);
+  }
+
+  @FXML
+  public void LL1Exit() {
+    System.out.println("Exit LL1");
+    ll1PopupPane.setVisible(false);
   }
 }

@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -22,16 +23,21 @@
          </VBox>
       </right>
       <bottom>
-         <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <HBox alignment="BOTTOM_LEFT" prefHeight="348.0" prefWidth="920.0" BorderPane.alignment="CENTER">
             <children>
-               <MFXButton fx:id="floorLL1Button" prefHeight="50.0" prefWidth="50.0" text="LL1">
+               <Pane fx:id="ll1MainPane" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
                   <HBox.margin>
                      <Insets right="10.0" />
                   </HBox.margin>
-                  <font>
-                     <Font size="15.0" />
-                  </font>
-               </MFXButton>
+                  <children>
+                     <MFXButton fx:id="floorLL1Button" layoutY="250.0" onMouseEntered="#LL1Enter" onMouseExited="#LL1Exit" prefHeight="50.0" prefWidth="50.0" text="LL1">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </MFXButton>
+                     <Pane fx:id="ll1PopupPane" prefHeight="250.0" prefWidth="50.0" />
+                  </children>
+               </Pane>
                <MFXButton fx:id="floorLL2Button" prefHeight="50.0" prefWidth="50.0" text="LL2">
                   <HBox.margin>
                      <Insets right="10.0" />
