@@ -11,7 +11,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "FLORALREQUESTS")
-public class FloralRequest implements StringArrayConv {
+public class FloralRequest implements StringArrayConv, Requestable {
 
   @Id private String requestNum;
   private String roomID;
@@ -108,5 +108,10 @@ public class FloralRequest implements StringArrayConv {
 
   public void setAdditionalNotes(String additionalNotes) {
     this.additionalNotes = additionalNotes;
+  }
+
+  @Override
+  public String getLocID() {
+    return this.roomID;
   }
 }

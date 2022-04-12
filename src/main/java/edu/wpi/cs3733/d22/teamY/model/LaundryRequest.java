@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "LAUNDRYREQUESTS")
-public class LaundryRequest implements StringArrayConv {
+public class LaundryRequest implements StringArrayConv, Requestable {
 
   @Id private String requestNum;
   private String roomID;
@@ -100,5 +100,10 @@ public class LaundryRequest implements StringArrayConv {
 
   public void setLaundryTypeSelected(String laundryTypeSelected) {
     this.laundryTypeSelected = laundryTypeSelected;
+  }
+
+  @Override
+  public String getLocID() {
+    return this.roomID;
   }
 }

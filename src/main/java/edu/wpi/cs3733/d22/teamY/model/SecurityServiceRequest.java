@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "SECURITYSERVICEREQUESTS")
-public class SecurityServiceRequest implements StringArrayConv {
+public class SecurityServiceRequest implements StringArrayConv, Requestable {
 
   @Id private String requestNum;
   private String roomID;
@@ -125,5 +125,11 @@ public class SecurityServiceRequest implements StringArrayConv {
 
   public void setRequestPriority(String requestPriority) {
     this.requestPriority = requestPriority;
+  }
+
+
+  @Override
+  public String getLocID() {
+    return this.roomID;
   }
 }
