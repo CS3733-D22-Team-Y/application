@@ -89,6 +89,10 @@ public class WelcomePageController {
     //         && Auth.doAuth(username.getText())) {
     //       loginAnimation();
     if (DBUtils.isValidLogin(username.getText(), password.getText()) && !lockOut) {
+      if (DBUtils.checkDefaultPassword(password.getText().hashCode())) {
+        UpdateNewAccountController.userNameToChange(username.getText());
+        SceneLoading.loadScene("views/AccountUpdate.fxml");
+      }
       display2FAOptions();
     } else {
       failedLoginPane.setOpacity(0.0);

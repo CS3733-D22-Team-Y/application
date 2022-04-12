@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="700.0" maxWidth="100.0" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.UpdateNewAccountController">
+    <children>
+        <ImageView fitHeight="700.0" fitWidth="1100.0" opacity="0.75">
+            <image>
+                <Image url="@images/do-rgb.jpg" />
+            </image>
+        </ImageView>
+        <Rectangle height="265.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1100.0">
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.2831439393939398">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="0.003921568859368563" green="0.1764705926179886" blue="0.3529411852359772" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+        <Rectangle height="265.0" layoutY="434.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-rotate: 180;" width="1100.0">
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.2831439393939398">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="0.003921568859368563" green="0.1764705926179886" blue="0.3529411852359772" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+        <Label layoutX="21.0" layoutY="13.0" text="Update Your New Account" textFill="WHITE">
+            <font>
+                <Font name="Microsoft Tai Le Bold" size="52.0" />
+            </font>
+        </Label>
+        <JFXButton fx:id="backToMainButton" layoutX="974.0" layoutY="7.0" onAction="#goToMainPage" text="Back" textFill="WHITE">
+            <font>
+                <Font name="Microsoft Tai Le Bold" size="36.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </JFXButton>
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="303.0" layoutX="210.0" layoutY="232.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="681.0" />
+      <MFXPasswordField fx:id="newPasswordField" layoutX="490.0" layoutY="372.0" prefHeight="51.0" prefWidth="362.0" />
+      <Label layoutX="270.0" layoutY="376.0" prefHeight="44.0" prefWidth="163.0" text="New Password:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="302.0" layoutY="247.0" prefHeight="102.0" prefWidth="495.0" text="Hi! We noticed you have a new account, please update your password!" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Polygon fx:id="submitTriangle" fill="WHITE" layoutX="550.0" layoutY="655.0" onMouseClicked="#submitAndReturn" points="-50.0, 40.0, 50.0, 40.0, 0.0, -60.0" stroke="BLACK" strokeType="INSIDE" style="-fx-rotate: 180; -fx-scale-x: .6; -fx-scale-y: .5;" />
+      <Text fill="WHITE" layoutX="351.0" layoutY="604.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update and return to Login Screen">
+         <font>
+            <Font name="Microsoft Tai Le Bold" size="28.0" />
+         </font>
+      </Text>
+      <Label fx:id="passwordValidityError" layoutX="305.0" layoutY="472.0" prefHeight="56.0" prefWidth="495.0" text="Error: Password does not meet requirements." textAlignment="CENTER" textFill="RED" textOverrun="CLIP" visible="false" wrapText="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="510.0" layoutY="421.0" prefHeight="63.0" prefWidth="323.0" text="Password must be at least 5 characters long, with at least one number, one letter and one special character." textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>
