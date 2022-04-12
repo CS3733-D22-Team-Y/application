@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
@@ -137,6 +138,8 @@ public class MedicalEquipmentRequestController {
         errorLabel.setText("Equipment not available.");
         failed = true;
       }
+      SceneLoading.loadPopup(
+              "views/popups/ReqSubmitted.fxml", "views/requestTypes/MedicalEquipmentRequest.fxml");
     } else {
       errorLabel.setText("Please select an equipment option.");
       failed = true;
