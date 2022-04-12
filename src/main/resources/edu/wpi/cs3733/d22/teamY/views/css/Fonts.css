@@ -21,7 +21,7 @@
 }
 
 .requestInput{
-
+    -fx-font-size: 20;
 }
 
 .plainText{
@@ -29,5 +29,9 @@
 }
 
 .submenuButton{
+
+}
+
+.loginButton{
 
 }
