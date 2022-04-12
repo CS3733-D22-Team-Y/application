@@ -35,7 +35,8 @@ public class MedEquipTablePageController {
       e.printStackTrace();
       medEquips = Collections.emptyList();
     }
-    String totalText = "";
+    String[] totalText = new String[4];
+    String totalResult = "";
     for (int i = 0; i < medEquips.size(); i++) {
 
       String shortName = DBUtils.convertIDToName(medEquips.get(i).getEquipLocId());
@@ -45,20 +46,33 @@ public class MedEquipTablePageController {
       } else {
         clean = "clean";
       }
-      totalText +=
-          medEquips.get(i).getEquipID()
-              + " "
-              + medEquips.get(i).getEquipType()
-              + " "
-              + shortName
-              + " "
-              + clean
-              + "\n";
+
+      totalText[0] = medEquips.get(i).getEquipID();
+      totalText[1] = medEquips.get(i).getEquipType();
+      totalText[2] = shortName;
+      totalText[3] = clean;
+
+      String[] stdOutputOptions = new String[4];
+      stdOutputOptions[0] = "                       "; // 23 spaces
+      stdOutputOptions[1] = "                 "; // 17 spaces
+      stdOutputOptions[2] = "                         "; // 25 spaces
+      stdOutputOptions[3] = "          ";
+
+      char[] stdOutput;
+      for (int j = 0; j < 4; j++) {
+        stdOutput = stdOutputOptions[j].toCharArray();
+        for (int k = 0; k < totalText[j].length(); k++) {
+          stdOutput[k] = totalText[j].charAt(k);
+        }
+        for (int f = 0; f < stdOutput.length; f++) {
+          totalResult += stdOutput[f];
+        }
+      }
+
+      totalResult += "\n";
     }
 
-    System.out.println("bruh");
-
-    equipmentTable.setText(totalText);
+    equipmentTable.setText(totalResult);
   }
 
   public static class ChangeTheme {

@@ -41,12 +41,12 @@ public class MedicalEquipmentRequestController {
 
   @FXML
   private void initialize() {
-    System.out.println("HEllo");
+
     updateAvailableEquip();
   }
 
   private void updateAvailableEquip() {
-    System.out.println("Hello???");
+
     bedRadioButton.setText(
         "Beds: \n"
             + DBUtils.getAvailableEquipment("BED").getKey().toString()
