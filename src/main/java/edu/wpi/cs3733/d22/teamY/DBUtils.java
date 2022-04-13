@@ -323,4 +323,21 @@ public class DBUtils {
     }
     return sum;
   }
+
+  /**
+   * Returns a list of all the medical equipment at a location.
+   * @param l the location
+   * @return equipment list
+   */
+  public static List<MedEquip> getEquipAtLocation(Location l) {
+    List<MedEquip> allEquip = DBManager.getAll(MedEquip.class);
+    List<MedEquip> filtered = new ArrayList<>();
+    for (MedEquip e : allEquip) {
+      if (e.getEquipLocId().equals(l.getNodeID())) {
+        filtered.add(e);
+      }
+    }
+    return filtered;
+  }
+
 }
