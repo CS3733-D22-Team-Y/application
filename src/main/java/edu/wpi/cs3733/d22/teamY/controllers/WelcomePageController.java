@@ -55,6 +55,8 @@ public class WelcomePageController {
 
   private boolean lockOut = false;
 
+  private boolean loadingRightNow = false;
+
   int maxAttempts = 5;
   int attCount = 0;
 
@@ -68,10 +70,15 @@ public class WelcomePageController {
     loading.setVisible(false);
     yubikeyPane.setVisible(false);
     dbMenu.getItems().addAll(dbOptions);
+
+    loadingRightNow = false;
   }
 
   @FXML
   public void mainPage() throws IOException {
+    if (loadingRightNow) return;
+    loadingRightNow = true;
+
     SceneUtil.welcomePage = this;
     RequestControllerUtil.initialize();
 
@@ -84,9 +91,14 @@ public class WelcomePageController {
     } catch (IOException ex) {
       ex.printStackTrace();
     }
+
+    loadingRightNow = false;
   }
 
   public void mainPageThreaded() throws IOException {
+    if (loadingRightNow) return;
+    loadingRightNow = true;
+
     SceneUtil.welcomePage = this;
     RequestControllerUtil.initialize();
 
@@ -100,6 +112,8 @@ public class WelcomePageController {
           } catch (IOException ex) {
             ex.printStackTrace();
           }
+
+          loadingRightNow = false;
         });
 
     Thread t = new Thread(loadMainTask);
