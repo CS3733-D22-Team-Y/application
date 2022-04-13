@@ -95,27 +95,55 @@
             <Rectangle fx:id="tasksHiddenRect" fill="#2e2e2eef" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
          </children>
       </VBox>
-      <VBox layoutX="71.0" layoutY="210.0" spacing="20.0">
+      <VBox layoutX="20.0" layoutY="210.0" spacing="20.0">
          <children>
             <Label fx:id="mapLabel" styleClass="sidebarTopOptions" text="Map" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="32.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons/mapIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
             <Label fx:id="servicesLabel" styleClass="sidebarTopOptions" text="Services" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="32.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons/servicesIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
             <Label fx:id="equipmentLabel" graphicTextGap="0.0" styleClass="sidebarTopOptions" text="Equipment" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="32.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons/equipIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
             <Label fx:id="tasksLabel" graphicTextGap="0.0" styleClass="sidebarTopOptions" text="Tasks" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="32.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons/tasksIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
          </children>
       </VBox>
