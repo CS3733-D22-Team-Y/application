@@ -2,6 +2,7 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,12 +15,16 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="780.0" minWidth="920.0" prefHeight="780.0" prefWidth="920.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController">
     <children>
-        <Label styleClass="title" text="My Profile" textFill="#20758b">
+        <Label text="My Profile" textFill="#20758b">
             <font>
                 <Font name="Arial Rounded MT Bold" size="60.0" />
             </font>
+         <styleClass>
+            <String fx:value="title" />
+            <String fx:value="primaryColor" />
+         </styleClass>
         </Label>
-      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="primaryColor" width="700.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -38,7 +43,7 @@
          </fill>
       </Rectangle>
         <Circle centerX="395.0" centerY="120.0" fill="#20758b" layoutX="65.0" layoutY="126.0" radius="100.0" stroke="#20758b" strokeType="INSIDE" />
-        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="360.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="360.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" styleClass="primaryColor" />
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#c2c2c2" height="400.0" layoutY="380.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="920.0" />
       <Label layoutX="10.0" layoutY="440.0" styleClass="inputLabel" text="Legal Name:">
          <font>
@@ -120,10 +125,16 @@
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </MFXButton>
-      <MFXButton fx:id="edit" layoutX="810.0" layoutY="720.0" onAction="#editMode" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" styleClass="requestButton" text="Edit" textFill="WHITE">
+      <MFXButton fx:id="edit" layoutX="810.0" layoutY="720.0" onAction="#editMode" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" text="Edit" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
+         <styleClass>
+            <String fx:value="requestButton" />
+            <String fx:value="primaryColor" />
+         </styleClass>
       </MFXButton>
+      <MFXButton fx:id="lightModeButton" layoutX="470.0" layoutY="661.0" onAction="#lightMode" prefHeight="50.0" prefWidth="125.0" text="Light Mode" />
+      <MFXButton fx:id="darkModeButton" layoutX="610.0" layoutY="661.0" onAction="#darkMode" prefHeight="50.0" prefWidth="125.0" text="Dark Mode" />
     </children>
 </AnchorPane>
