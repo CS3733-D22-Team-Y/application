@@ -26,7 +26,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
-public class MapPageController {
+public class MapPageController<T extends Requestable> {
   private List<Location> getLocationsForFloor(Floors floor) {
     return DBUtils.getLocationsOnFloor(floor.dbKey);
   }
@@ -89,6 +89,8 @@ public class MapPageController {
 
   @FXML public MFXButton locationSubmit;
   private String fuck = "shit";
+  private T fuck2;
+  private int currReqSelection;
   @FXML private MFXLegacyComboBox<String> modeBox;
   @FXML private TextField selectorBoxText;
   @FXML Pane mainPane;
@@ -310,7 +312,7 @@ public class MapPageController {
    * @param newFloor
    * @param newMode
    */
-  private <T extends Requestable> void switchMap(Floors newFloor, MapMode newMode) {
+  private void switchMap(Floors newFloor, MapMode newMode) {
     lastFloor = newFloor;
 
     mapComponent
@@ -469,6 +471,7 @@ public class MapPageController {
                       }
                       if (modeBox.getValue().equals("Service Requests")) {
                         if (requests.size() > 0) {
+                          fuck2 = requests.get(0);
                           reqInfoPane.setVisible(true);
                           currReqDisplay.setText(requests.get(0).getRequestType());
                           this.reqLocationBox.setText(requests.get(0).getLocID());
@@ -512,16 +515,14 @@ public class MapPageController {
 
                 reqSubmit.setOnMouseClicked(
                     e -> {
-                      T req = requests.get(currReq);
+                      T req = fuck2;
                       req.setAssignedNurse(reqNurseBox.getText());
                       req.setStatus(reqStatusBox.getText());
 
                       DBManager.update(req);
 
                       System.out.println("Submit");
-                    }
-                    );
-
+                    });
               });
       ;
       System.out.println("FUCCCKCKCKCKCKCKCKCKCMCKn");
