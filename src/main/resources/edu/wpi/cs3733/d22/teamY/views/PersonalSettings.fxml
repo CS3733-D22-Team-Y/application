@@ -60,22 +60,22 @@
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0" styleClass="inputField">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0" styleClass="inputField">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0" styleClass="inputField">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="661.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="661.0" prefHeight="42.0" prefWidth="220.0" styleClass="inputField">
          <font>
             <Font size="20.0" />
          </font>
@@ -95,17 +95,17 @@
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0" styleClass="inputField">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0" styleClass="inputField">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0" styleClass="inputField">
          <font>
             <Font size="20.0" />
          </font>
