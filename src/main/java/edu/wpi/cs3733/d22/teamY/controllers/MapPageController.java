@@ -6,6 +6,7 @@ import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.component.MapComponent;
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.MedEquip;
+import edu.wpi.cs3733.d22.teamY.model.Requestable;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox;
@@ -294,7 +295,7 @@ public class MapPageController {
    * @param newFloor
    * @param newMode
    */
-  private void switchMap(Floors newFloor, MapMode newMode) {
+  private <T extends Requestable> void switchMap(Floors newFloor, MapMode newMode) {
     lastFloor = newFloor;
 
     mapComponent
@@ -351,6 +352,7 @@ public class MapPageController {
                     equip.stream().map(MedEquip::getEquipType).collect(Collectors.toSet());
 
                 boolean hasEquipment = equip.size() > 0;
+                List<T> requests = DBUtils.getAllServiceReqsAtLocation(l);
 
                 // equipTypes: list of equipment types in the location.  if room has
                 // multiple of one
@@ -398,6 +400,11 @@ public class MapPageController {
                   i.getChildren().add(frame);
                   i.getChildren().add(equipIcon);
                   mapElements.add(i);
+                } // Service Requests
+                else if (modeBox.getValue().equals("Service Requests") && requests.size() > 0) {
+                  for(T req : requests) {
+                    System.out.println(req.getLocID());
+                  }
                 }
 
                 // Create context menu for shape
