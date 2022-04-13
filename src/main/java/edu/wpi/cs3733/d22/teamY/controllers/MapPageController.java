@@ -1,16 +1,20 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXHamburger;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.component.MapComponent;
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.MedEquip;
+import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXTextField;
+import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox;
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,18 +25,59 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
 public class MapPageController {
-  // Base pane for displaying new scenes
-  @FXML private Pane mapPane;
-  // Sidebar pane
-  @FXML private Pane sidebarPane;
-  // Hamburger that opens the sidebar
-  @FXML private JFXHamburger hamburger;
-  // Menu of buttons
-  @FXML private JFXButton closeSidebarHiddenButton;
-  @FXML private JFXHamburger sidebarHamburger;
-  @FXML private VBox buttonBox;
+  private List<Location> getLocationsForFloor(Floors floor) {
+    return DBUtils.getLocationsOnFloor(floor.dbKey);
+  }
 
-  AnchorPane sidebar = null;
+  private List<MedEquip> getEquipmentAtLocation(Location location) {
+    return DBUtils.getEquipmentAtLocation(location);
+  }
+
+  private int getNumberOfServiceRequestsAtLocation(Location location) {
+    return 0;
+  }
+
+  enum MapMode {
+    LOCATION("Locations"),
+    EQUIPMENT("Equipment"),
+    SERVICE_REQUESTS("Service Requests");
+
+    private final String name;
+
+    MapMode(String name) {
+      this.name = name;
+    }
+
+    @Override
+    public String toString() {
+      return name;
+    }
+  }
+
+  private MapMode mapMode = MapMode.LOCATION;
+
+  @FXML private Button floorLL1Button;
+  @FXML private Button floorLL2Button;
+  @FXML private Button floor1Button;
+  @FXML private Button floor2Button;
+  @FXML private Button floor3Button;
+  @FXML private Button floor4Button;
+  @FXML private Button floor5Button;
+  @FXML private AnchorPane mapRoot;
+  @FXML private MFXTextField locationID;
+  @FXML private MFXTextField locationShort;
+  @FXML private MFXTextField locationLong;
+  @FXML private MFXTextField locationX;
+  @FXML private MFXTextField locationY;
+  @FXML private MFXTextField locationBuilding;
+  @FXML private Pane locationInfoPane;
+  @FXML public MFXButton locationSubmit;
+  private String fuck = "shit";
+  @FXML private MFXLegacyComboBox<String> modeBox;
+  @FXML private TextField selectorBoxText;
+  @FXML Pane mainPane;
+
+  MapComponent mapComponent = new MapComponent();
 
   private static final int CIRCLE_RADIUS_PX = 10;
   private static final Paint CIRCLE_PAINT = Color.RED;
@@ -42,7 +87,7 @@ public class MapPageController {
   private static final int MAP_YMIN = 0;
   private static final int MAP_XMAX = 700;
   private static final int MAP_YMAX = 700;
-  private static final int iconDim = 26;
+  private static final int iconDim = 50;
   private static final int logoDim = 20;
   public static final Map<String, String> equipNames =
       Map.of(
@@ -54,21 +99,58 @@ public class MapPageController {
       Map.of(
           "BED", "bedlogo.png",
           "PUMP", "pumplogo.png",
-          "RECLINER", "reclinerlogo.png",
-          "none", "emptylogo.png");
+          "RECLINER", "reclinerlogo.png");
 
   enum Floors {
-    GROUND_FLOOR("GG"),
-    FIRST_FLOOR("1"),
-    LOWER_LEVEL_1("L1"),
-    LOWER_LEVEL_2("L2"),
-    SECOND_FLOOR("2"),
-    THIRD_FLOOR("3");
+    FIRST_FLOOR(
+        "1",
+        "Floor 1",
+        new MapComponent.MapImage(
+            new Image(App.class.getResource("views/images/floor1.jpg").toString()), 0, 0, 0.05)),
+    LOWER_LEVEL_1(
+        "L1",
+        "Lower Level 1",
+        new MapComponent.MapImage(
+            new Image(App.class.getResource("views/images/floor-1.jpg").toString()), 0, 0, 0.05)),
+    LOWER_LEVEL_2(
+        "L2",
+        "Lower Level 2",
+        new MapComponent.MapImage(
+            new Image(App.class.getResource("views/images/floor-2.jpg").toString()), 0, 0, 0.05)),
+    SECOND_FLOOR(
+        "2",
+        "Floor 2",
+        new MapComponent.MapImage(
+            new Image(App.class.getResource("views/images/floor2.jpg").toString()), 0, 0, 0.05)),
+    THIRD_FLOOR(
+        "3",
+        "Floor 3",
+        new MapComponent.MapImage(
+            new Image(App.class.getResource("views/images/floor3.jpg").toString()), 0, 0, 0.05)),
+    FOURTH_FLOOR(
+        "4",
+        "Floor 4",
+        new MapComponent.MapImage(
+            new Image(App.class.getResource("views/images/floor4.jpg").toString()), 0, 0, 0.05)),
+    FIFTH_FLOOR(
+        "5",
+        "Floor 5",
+        new MapComponent.MapImage(
+            new Image(App.class.getResource("views/images/floor5.jpg").toString()), 0, 0, 0.05));
 
     public final String dbKey;
+    public final String name;
+    public final MapComponent.MapImage image;
 
-    Floors(String dbKey) {
+    Floors(String dbKey, String name, MapComponent.MapImage image) {
       this.dbKey = dbKey;
+      this.name = name;
+      this.image = image;
+    }
+
+    @Override
+    public String toString() {
+      return name;
     }
   }
 
@@ -80,17 +162,17 @@ public class MapPageController {
 
   private final HashMap<Floors, Image> floorImages = new HashMap<>();
 
-  private String iconDecider(Set<String> equipTypes) {
-    if (equipTypes.contains("PUMP")) {
-      return dotIcons.get("PUMP");
-    } else if (equipTypes.contains("RECLINER")) {
-      return dotIcons.get("RECLINER");
-    } else if (equipTypes.contains("BED")) {
-      return dotIcons.get("BED");
-    } else {
-      return dotIcons.get("none");
-    }
-  }
+  //  private String iconDecider(Set<String> equipTypes) {
+  //    if (equipTypes.contains("PUMP")) {
+  //      return dotIcons.get("PUMP");
+  //    } else if (equipTypes.contains("RECLINER")) {
+  //      return dotIcons.get("RECLINER");
+  //    } else if (equipTypes.contains("BED")) {
+  //      return dotIcons.get("BED");
+  //    } else {
+  //      return dotIcons.get("none");
+  //    }
+  //  }
 
   /**
    * Shows an edit dialog. Updates the contents of l if the ok button is clicked, otherwise does
@@ -150,202 +232,317 @@ public class MapPageController {
         || l.getYCoord() < MAP_YMIN);
   }
 
-  private void switchFloor(Floors newFloor) {
+  /**
+   * Called whenever the floor or map mode is switched
+   *
+   * @param newFloor
+   * @param newMode
+   */
+  private void switchMap(Floors newFloor, MapMode newMode) {
     lastFloor = newFloor;
-    // Remove all loaded shapes from the pane
-    mapPane.getChildren().clear();
-    // Re-add image pane to mapPane
-    mapPane.getChildren().add(imageView);
+
+    mapComponent
+        .getMapPane()
+        .setOnMouseClicked(
+            e -> {
+              if (e.getButton().equals(MouseButton.PRIMARY) && e.getClickCount() == 2) {
+                // TODO add building
+                Location created =
+                    new Location(
+                        Integer.toString((int) Math.round(Math.random() * 10000)),
+                        (int) Math.round(e.getX()),
+                        (int) Math.round(e.getY()),
+                        newFloor.dbKey,
+                        " ",
+                        " ",
+                        " ",
+                        " ");
+                System.out.println((int) Math.round(e.getX()) + " " + (int) Math.round(e.getY()));
+
+                if (created != null) {
+                  // The element was created
+                  try {
+                    DBManager.save(created);
+                    switchMap(newFloor, mapMode);
+                  } catch (Exception e1) {
+                    e1.printStackTrace();
+                  }
+                }
+              }
+            });
 
     // Load new locations from DB and create shapes for each
     try {
+      // Get all locations on the floor
+      List<Location> locations = getLocationsForFloor(newFloor);
+      List<Node> mapElements = new ArrayList<>();
+
+      //      for (Location location : locations) {
+      //        // Create a shape for each location
+      //        Circle locationCircle =
+      //            new Circle(location.getXCoord(), location.getYCoord(), 1000, Color.RED);
+      //        mapElements.add(locationCircle);
+      //      }
+
       // Gets all locations on the newly selected floor
       DBUtils.getLocationsOnFloor(newFloor.dbKey)
           // And iterates over them
           .forEach(
               (l) -> {
+                System.out.println(l.getXCoord() + "," + l.getYCoord());
                 List<MedEquip> equip = DBUtils.getEquipmentAtLocation(l);
                 Set<String> equipTypes =
                     equip.stream().map(MedEquip::getEquipType).collect(Collectors.toSet());
 
                 boolean hasEquipment = equip.size() > 0;
 
-                // equipTypes: list of equipment types in the location.  if room has multiple of one
+                // equipTypes: list of equipment types in the location.  if room has
+                // multiple of one
                 // type, only 1 element is in the list still
                 // equip: list of all equipment objects in the location
                 // hasEquipment: true if there is 1 or more equipment in location
 
                 // Checks if the point is in a valid position
-                if (isValidPlacement(l)) {
-                  // Create the circle for this location and add context menu handlers to it
+                // Create the circle for this location and add context menu handlers to it
+                Pane i = new Pane();
+                if (modeBox.getValue().equals("Locations")) {
                   Circle c =
                       new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
-                  mapPane.getChildren().add(c);
-
-                  Pane i = new Pane();
+                  i.setLayoutX(l.getXCoord());
+                  i.setLayoutY(l.getYCoord());
                   Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
-
                   i.setPrefWidth(iconDim);
                   i.setPrefHeight(iconDim);
-                  i.setTranslateX(l.getXCoord() - iconDim / 2);
-                  i.setTranslateY(l.getYCoord() - iconDim / 2);
-                  mapPane.getChildren().add(i);
                   i.getChildren().add(frame);
-
-                  Image icon =
-                      new Image(
-                          App.class
-                              .getResource("views/images/icons/" + iconDecider(equipTypes))
-                              .toString(),
-                          logoDim,
-                          logoDim,
-                          false,
-                          false);
-
-                  ImageView iconView = new ImageView(icon);
-                  iconView.setTranslateX((Integer) ((iconDim - logoDim) / 2));
-                  iconView.setTranslateY((Integer) ((iconDim - logoDim) / 2));
-                  i.getChildren().add(iconView);
-                  // Create context menu for shape
-                  ContextMenu rightClickMenu = new ContextMenu();
-                  MenuItem editItem = new MenuItem("Edit");
-                  MenuItem deleteItem = new MenuItem("Delete");
-                  MenuItem showEquipment = new MenuItem("Show Equipment");
-
-                  if (hasEquipment) {
-                    rightClickMenu.getItems().addAll(editItem, deleteItem, showEquipment);
+                  mapElements.add(i);
+                } else if (modeBox.getValue().equals("Equipment") && hasEquipment) {
+                  Circle c =
+                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
+                  i.setLayoutX(l.getXCoord());
+                  i.setLayoutY(l.getYCoord());
+                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
+                  ImageView equipIcon = new ImageView();
+                  if (equip.size() < 9) {
+                    equipIcon.setImage(
+                        new Image(
+                            String.valueOf(
+                                App.class
+                                    .getResource("views/images/icons/" + equip.size() + ".png")
+                                    .toString())));
                   } else {
-                    rightClickMenu.getItems().addAll(editItem, deleteItem);
+                    equipIcon.setImage(
+                        new Image(
+                            String.valueOf(
+                                App.class.getResource("views/images/icons/9.png").toString())));
                   }
-                  editItem.setOnAction(
-                      e -> {
-                        if (showEditDialog(l)) {
-                          DBManager.update(l);
-                        }
-                      });
-
-                  deleteItem.setOnAction(
-                      e -> {
-                        DBManager.delete(l);
-                        // Reload data from DB to prevent desync
-                        switchFloor(lastFloor);
-                      });
-
-                  showEquipment.setOnAction(
-                      e -> {
-                        // TODO do something better with this
-
-                        Alert a = new Alert(Alert.AlertType.INFORMATION);
-                        a.setContentText(equip.toString());
-                        a.setHeaderText("Equipment at this location");
-                        a.show();
-                        //                        ContextMenu equipmentAtLocation = new
-                        // ContextMenu();
-                        //                        for (MedEquip med : equip) {
-                        //                          equipmentAtLocation.getItems().addAll(new
-                        // MenuItem(med.toString()));
-                        //                        }
-                        //                        equipmentAtLocation.show(i, e.getScreenX(),
-                        // e.getScreenY());
-                      });
-
-                  i.setOnContextMenuRequested(
-                      e -> rightClickMenu.show(i, e.getScreenX(), e.getScreenY()));
+                  equipIcon.setFitWidth(iconDim);
+                  equipIcon.setFitHeight(iconDim);
+                  i.setPrefWidth(iconDim);
+                  i.setPrefHeight(iconDim);
+                  i.getChildren().add(frame);
+                  i.getChildren().add(equipIcon);
+                  mapElements.add(i);
                 }
+
+                // Create context menu for shape
+                ContextMenu rightClickMenu = new ContextMenu();
+                MenuItem editItem = new MenuItem("Edit");
+                MenuItem deleteItem = new MenuItem("Delete");
+                MenuItem showEquipment = new MenuItem("Show Equipment");
+
+                if (hasEquipment) {
+                  rightClickMenu.getItems().addAll(editItem, deleteItem, showEquipment);
+                } else {
+                  rightClickMenu.getItems().addAll(editItem, deleteItem);
+                }
+                editItem.setOnAction(
+                    e -> {
+                      if (showEditDialog(l)) {
+                        DBManager.update(l);
+                      }
+                    });
+
+                deleteItem.setOnAction(
+                    e -> {
+                      DBManager.delete(l);
+                      // Reload data from DB to prevent desync
+                      switchMap(lastFloor, mapMode);
+                    });
+
+                i.setOnContextMenuRequested(
+                    e -> {
+                      System.out.println(modeBox.getValue());
+                      if (modeBox.getValue().equals("Locations")) {
+                        fuck = String.valueOf(l.getNodeID());
+                        locationInfoPane.setVisible(true);
+                        locationX.setText(String.valueOf(l.getXCoord()));
+                        locationY.setText(String.valueOf(l.getYCoord()));
+                        locationBuilding.setText(l.getBuilding());
+                        locationShort.setText(l.getShortName());
+                        locationLong.setText(l.getLongName());
+                        locationID.setText(String.valueOf(l.getNodeID()));
+                      }
+                    });
+
+                locationSubmit.setOnMouseClicked(
+                    e -> {
+                      Location fuckMe =
+                          new Location(
+                              fuck,
+                              Integer.parseInt(locationX.getText()),
+                              Integer.parseInt(locationY.getText()),
+                              l.getFloor(),
+                              locationBuilding.getText(),
+                              l.getNodeType(),
+                              locationLong.getText(),
+                              locationShort.getText());
+                      System.out.println("fuck");
+                      // l.setShortName(locationShort.getText());
+                      // l.setLongName(locationLong.getText());
+                      System.out.println(l.getShortName());
+                      // l.setBuilding(locationBuilding.getText());
+                      // l.setXCoord(Integer.parseInt(locationX.getText()));
+                      // l.setYCoord(Integer.parseInt(locationY.getText()));
+                      //  System.out.println(l.toStringArray().toString());
+
+                      ///  System.out.println(l.getNodeID());System.out.println(l.getShortName());
+                      //   System.out.println("fuck me" + fuckMe.getNodeID());
+                      //   System.out.println("fuck me" + fuckMe.getShortName());
+                      //   System.out.println(l.getShortName());
+                      DBManager.update(fuckMe);
+                      exit();
+                      switchMap(newFloor, mapMode);
+                    });
               });
+      ;
+      System.out.println("FUCCCKCKCKCKCKCKCKCKCMCKn");
+      mapComponent.setContent(newFloor.image, List.of(), mapElements);
+      System.out.println("FUCCCKCKCKCKCKCKCKCKCMCKn");
+
+      // Gets all locations on the newly selected floor
+      //      DBUtils.getLocationsOnFloor(newFloor.dbKey)
+      //          // And iterates over them
+      //          .forEach(
+      //              (l) -> {
+      //                List<MedEquip> equip = DBUtils.getEquipmentAtLocation(l);
+      //                Set<String> equipTypes =
+      //                    equip.stream().map(MedEquip::getEquipType).collect(Collectors.toSet());
+      //
+      //                boolean hasEquipment = equip.size() > 0;
+      //
+      //                // equipTypes: list of equipment types in the location.  if room has
+      // multiple of one
+      //                // type, only 1 element is in the list still
+      //                // equip: list of all equipment objects in the location
+      //                // hasEquipment: true if there is 1 or more equipment in location
+      //
+      //                // Checks if the point is in a valid position
+      //                if (isValidPlacement(l)) {
+      //                  // Create the circle for this location and add context menu handlers to it
+      //                  Circle c =
+      //                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX,
+      // CIRCLE_PAINT);
+      //
+      //                  Pane i = new Pane();
+      //                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2,
+      // Color.NAVY);
+      //
+      //                  i.setPrefWidth(iconDim);
+      //                  i.setPrefHeight(iconDim);
+      //                  i.setTranslateX(l.getXCoord() - iconDim / 2);
+      //                  i.setTranslateY(l.getYCoord() - iconDim / 2);
+      //                  i.setTranslateY(l.getYCoord() - iconDim / 2);
+      //                  i.getChildren().add(frame);
+      //
+      //                  // ImageView iconView = new ImageView(icon);
+      //                  // iconView.setTranslateX((Integer) ((iconDim - logoDim) / 2));
+      //                  // iconView.setTranslateY((Integer) ((iconDim - logoDim) / 2));
+      //                  // i.getChildren().add(iconView);
+      //                  // Create context menu for shape
+      //                  ContextMenu rightClickMenu = new ContextMenu();
+      //                  MenuItem editItem = new MenuItem("Edit");
+      //                  MenuItem deleteItem = new MenuItem("Delete");
+      //                  MenuItem showEquipment = new MenuItem("Show Equipment");
+      //
+      //                  if (hasEquipment) {
+      //                    rightClickMenu.getItems().addAll(editItem, deleteItem, showEquipment);
+      //                  } else {
+      //                    rightClickMenu.getItems().addAll(editItem, deleteItem);
+      //                  }
+      //                  editItem.setOnAction(
+      //                      e -> {
+      //                        if (showEditDialog(l)) {
+      //                          DBManager.update(l);
+      //                        }
+      //                      });
+      //
+      //                  deleteItem.setOnAction(
+      //                      e -> {
+      //                        DBManager.delete(l);
+      //                        // Reload data from DB to prevent desync
+      //                        switchMap(lastFloor, mapMode);
+      //                      });
+      //
+      //                  showEquipment.setOnAction(
+      //                      e -> {
+      //                        // TODO do something better with this
+      //
+      //                        Alert a = new Alert(Alert.AlertType.INFORMATION);
+      //                        a.setContentText(equip.toString());
+      //                        a.setHeaderText("Equipment at this location");
+      //                        a.show();
+      //                        //                        ContextMenu equipmentAtLocation = new
+      //                        // ContextMenu();
+      //                        //                        for (MedEquip med : equip) {
+      //                        //
+      // equipmentAtLocation.getItems().addAll(new
+      //                        // MenuItem(med.toString()));
+      //                        //                        }
+      //                        //                        equipmentAtLocation.show(i,
+      // e.getScreenX(),
+      //                        // e.getScreenY());
+      //                      });
+      //
+      //                  i.setOnContextMenuRequested(
+      //                      e -> rightClickMenu.show(i, e.getScreenX(), e.getScreenY()));
+      //                }
+      //              });
     } catch (Exception e) {
       e.printStackTrace();
     }
-
-    // Double click handler for adding new items
-    mapPane.setOnMouseClicked(
-        e -> {
-          if (e.getButton().equals(MouseButton.PRIMARY) && e.getClickCount() == 2) {
-            // TODO add building
-            Location created =
-                showCreateDialog((int) e.getX(), (int) e.getY(), lastFloor.dbKey, "");
-            if (created != null) {
-              // The element was created
-              try {
-                DBManager.save(created);
-              } catch (Exception ex) {
-                ex.printStackTrace();
-              }
-              switchFloor(lastFloor);
-            }
-          }
-        });
 
     // Switch to new background image
     imageView.setImage(floorImages.get(newFloor));
   }
 
   public void initialize() throws IOException {
-    // Load floors
-    floorImages.put(
-        Floors.FIRST_FLOOR,
-        new Image(App.class.getResource("views/images/firstfloor.png").toString()));
-    floorImages.put(
-        Floors.LOWER_LEVEL_1,
-        new Image(App.class.getResource("views/images/lowerlevel1.png").toString()));
-    floorImages.put(
-        Floors.LOWER_LEVEL_2,
-        new Image(App.class.getResource("views/images/lowerlevel2.png").toString()));
-    floorImages.put(
-        Floors.SECOND_FLOOR,
-        new Image(App.class.getResource("views/images/secondfloor.png").toString()));
-    floorImages.put(
-        Floors.THIRD_FLOOR,
-        new Image(App.class.getResource("views/images/thirdfloor.png").toString()));
 
-    mapPane.getChildren().add(imageView);
+    modeBox.setItems(
+        FXCollections.observableArrayList("Locations", "Equipment", "Service Requests"));
+    modeBox.setValue("Locations");
+    selectorBoxText.setText("Locations");
+    mapRoot.getChildren().add(0, mapComponent.getRootPane());
+    modeBox.setValue("Locations");
+    floorLL1Button.setOnAction(e -> switchMap(Floors.LOWER_LEVEL_1, mapMode));
+    floorLL2Button.setOnAction(e -> switchMap(Floors.LOWER_LEVEL_2, mapMode));
+    floor1Button.setOnAction(e -> switchMap(Floors.FIRST_FLOOR, mapMode));
+    floor2Button.setOnAction(e -> switchMap(Floors.SECOND_FLOOR, mapMode));
+    floor3Button.setOnAction(e -> switchMap(Floors.THIRD_FLOOR, mapMode));
+    floor4Button.setOnAction(e -> switchMap(Floors.FOURTH_FLOOR, mapMode));
+    floor5Button.setOnAction(e -> switchMap(Floors.FIFTH_FLOOR, mapMode));
+    modeBox.setOnAction(
+        e -> {
+          selectorBoxText.setText(modeBox.getValue());
+          exit();
+          switchMap(lastFloor, mapMode);
+        });
+    System.out.println("shit" + MapMode.LOCATION);
 
-    // Load initial floor
-    switchFloor(lastFloor);
-
-    // Load sidebar
-    // sidebar = SidebarUtil.initializeSidebar(sidebarPane);
-    // openSidebarLayout();
+    // Load initial floor and mode
+    switchMap(lastFloor, MapMode.LOCATION);
   }
 
-  // Loading maps
-
-  @FXML
-  void loadBasement1Map() {
-    switchFloor(Floors.LOWER_LEVEL_1);
-  }
-
-  @FXML
-  void loadBasement2Map() {
-    switchFloor(Floors.LOWER_LEVEL_2);
-  }
-
-  @FXML
-  void loadFloor1Map() {
-    switchFloor(Floors.FIRST_FLOOR);
-  }
-
-  @FXML
-  void loadFloor2Map() {
-    switchFloor(Floors.SECOND_FLOOR);
-  }
-
-  @FXML
-  void loadFloor3Map() {
-
-    switchFloor(Floors.THIRD_FLOOR);
-  }
-
-  // Sidebar
-  @FXML
-  void openSidebarLayout() {
-    SidebarUtil.openSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
-    buttonBox.setLayoutX(250);
-  }
-
-  @FXML
-  void closeSidebarLayout() {
-    SidebarUtil.closeSidebar(sidebar, closeSidebarHiddenButton, sidebarHamburger);
-    buttonBox.setLayoutX(150);
+  public void exit() {
+    locationInfoPane.setVisible(false);
   }
 }

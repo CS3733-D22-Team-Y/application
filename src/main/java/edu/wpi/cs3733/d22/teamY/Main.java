@@ -9,6 +9,8 @@ public class Main {
       CSVBackup.loadFromCSV(e);
     }
 
+    //    FEXIT00101
+
     App.launch(App.class, args);
 
     // Backup all tables to CSV on shutdown
