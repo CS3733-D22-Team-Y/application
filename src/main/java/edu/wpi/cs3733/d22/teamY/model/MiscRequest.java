@@ -76,4 +76,9 @@ public class MiscRequest extends Requestable implements StringArrayConv {
   public void setRequestName(String requestName) {
     this.requestName = requestName;
   }
+
+  @Override
+  public String getTypeString() {
+    return "Miscellaneous";
+  }
 }

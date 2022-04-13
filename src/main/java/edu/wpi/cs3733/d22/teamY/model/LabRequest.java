@@ -87,4 +87,9 @@ public class LabRequest extends Requestable implements StringArrayConv {
   public String getLocID() {
     return getRoomID();
   }
+
+  @Override
+  public String getTypeString() {
+    return "Lab Request";
+  }
 }

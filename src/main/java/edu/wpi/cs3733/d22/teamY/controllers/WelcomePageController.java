@@ -16,8 +16,10 @@ import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -73,12 +75,33 @@ public class WelcomePageController {
     SceneUtil.welcomePage = this;
     RequestControllerUtil.initialize();
 
-    FXMLLoader root = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
-    App.getInstance().setScene(new Scene(root.load()));
-    SideBarController controller = root.getController();
-    controller.initializeScale();
-    controller.loadViewServiceRequests();
-  };
+    loadMainTask.setOnSucceeded(
+        e -> {
+          App.getInstance().setScene(new Scene(loadMainTask.getValue()));
+
+          FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
+          SideBarController controller = loader.getController();
+          try {
+            controller.initializeScale();
+            controller.loadViewServiceRequests();
+          } catch (IOException ex) {
+            ex.printStackTrace();
+          }
+        });
+
+    Thread t = new Thread(loadMainTask);
+    t.setDaemon(true);
+    t.start();
+  }
+
+  Task<Parent> loadMainTask =
+      new Task<>() {
+        @Override
+        protected Parent call() throws IOException {
+          FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
+          return loader.load();
+        }
+      };
 
   @FXML
   void killApplication() throws IOException {
@@ -250,24 +273,16 @@ public class WelcomePageController {
   }
 
   @FXML
-  void loginAnimation() throws IOException {
-    Timeline loginTimeline =
-        new Timeline(
-            new KeyFrame(
-                Duration.seconds(0),
-                (e) -> Welcome.setText("Welcome, " + DBUtils.getNameFromID(username.getText()))),
-            new KeyFrame(Duration.seconds(0.01), (e) -> loginPane.setVisible(false)),
-            new KeyFrame(Duration.seconds(0.02), (e) -> loading.setVisible(true)),
-            new KeyFrame(
-                Duration.seconds(1),
-                (e) -> {
-                  try {
-                    mainPage();
-                  } catch (IOException ex) {
-                    ex.printStackTrace();
-                  }
-                }));
-    loginTimeline.play();
+  void loginAnimation() {
+    loginPane.setVisible(false);
+    loading.setVisible(true);
+    Welcome.setText("Welcome, " + DBUtils.getNameFromID(username.getText()));
+
+    try {
+      mainPage();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   @FXML

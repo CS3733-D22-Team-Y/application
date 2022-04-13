@@ -6,12 +6,10 @@ import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.model.*;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -23,6 +21,8 @@ public class ActiveServiceRequestController {
   @FXML private VBox requestBox;
   @FXML private MFXScrollPane scrollBox;
   @FXML private JFXTextArea extraInfoText;
+
+  @FXML private Label nothingToSeeHere;
 
   private ArrayList<RequestSet> rqPairs;
 
@@ -53,9 +53,13 @@ public class ActiveServiceRequestController {
       }
     }
 
+    rqPairs.sort(Comparator.comparingInt(rs -> (10 - rs.getController().getPriority())));
+
     for (RequestSet pair : rqPairs) {
       addToBox(pair);
     }
+
+    nothingToSeeHere.setVisible(rqPairs.isEmpty());
 
     SceneUtil.serviceRequests = this;
   }
@@ -70,7 +74,7 @@ public class ActiveServiceRequestController {
     // SingularServiceRequestController controller = loader.getController();
     SingularServiceRequestController controller =
         ActiveServiceRequestController.requestControllers.getLast();
-    System.out.println(ActiveServiceRequestController.requestControllers.getLast());
+    // System.out.println(ActiveServiceRequestController.requestControllers.getLast());
 
     rqPairs.add(new RequestSet(controller, pane, req));
   }

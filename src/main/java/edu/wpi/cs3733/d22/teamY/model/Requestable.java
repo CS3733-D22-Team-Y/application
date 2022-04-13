@@ -71,9 +71,15 @@ public abstract class Requestable {
 
   public abstract String getLocID();
 
+  public abstract String getTypeString();
+
   public abstract int getRequestPriority();
 
   public abstract String getSpecificText();
+
+  public String getStatus() {
+    return requestStatus.name();
+  }
 
   public String getInfoBoxText() {
     StringBuilder sb = new StringBuilder();

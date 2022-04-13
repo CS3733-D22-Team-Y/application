@@ -90,5 +90,10 @@
             </LinearGradient>
          </fill>
       </Rectangle>
+      <Label fx:id="nothingToSeeHere" alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="124.0" prefHeight="26.0" prefWidth="390.0" text="No active requests to display." textAlignment="CENTER" visible="false">
+         <font>
+            <Font name="Calibri Italic" size="29.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

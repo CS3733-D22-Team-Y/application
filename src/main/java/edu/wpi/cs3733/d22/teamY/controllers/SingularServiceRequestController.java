@@ -1,9 +1,11 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.model.Requestable;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
@@ -15,11 +17,25 @@ public class SingularServiceRequestController {
 
   @FXML private Group colorGizmo;
 
+  @FXML private Label assignedNurse;
+  @FXML private Label reqType;
+  @FXML private Label mapLocation;
+
   private String additional;
+  private int priority;
 
   public void populateFromRequestable(Requestable req) {
     additional = req.getInfoBoxText();
-    setColor(priorityColor(req.getRequestPriority()));
+    priority = req.getRequestPriority();
+    setColor(priorityColor(priority));
+
+    assignedNurse.setText(DBUtils.getNameFromID(req.getAssignedNurse()));
+    reqType.setText(req.getTypeString());
+    mapLocation.setText(DBUtils.convertIDToName(req.getLocID()));
+  }
+
+  public int getPriority() {
+    return priority;
   }
 
   @FXML

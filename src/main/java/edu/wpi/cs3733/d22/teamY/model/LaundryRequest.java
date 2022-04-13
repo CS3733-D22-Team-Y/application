@@ -56,7 +56,7 @@ public class LaundryRequest extends Requestable implements StringArrayConv {
 
   @Override
   public int getRequestPriority() {
-    return 3;
+    return 2;
   }
 
   @Override
@@ -75,5 +75,10 @@ public class LaundryRequest extends Requestable implements StringArrayConv {
   @Override
   public String getLocID() {
     return getRoomID();
+  }
+
+  @Override
+  public String getTypeString() {
+    return "Laundry Services";
   }
 }

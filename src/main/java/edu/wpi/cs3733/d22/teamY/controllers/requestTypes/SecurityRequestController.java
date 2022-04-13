@@ -148,10 +148,10 @@ public class SecurityRequestController {
     if (typeSelected || prioritySelected || allFields) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
       if (!SceneLoading.stayOnPage) {
-        SceneUtil.sidebar.mainPage();
+        SceneUtil.welcomePage.mainPage();
       }
     } else {
-      SceneUtil.sidebar.mainPage();
+      SceneUtil.welcomePage.mainPage();
     }
   }
 

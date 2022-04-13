@@ -100,10 +100,10 @@ public class LaundryRequestController {
         || !Objects.equals(input_AssignedNurse.getText(), "")) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
       if (!SceneLoading.stayOnPage) {
-        SceneUtil.sidebar.mainPage();
+        SceneUtil.welcomePage.mainPage();
       }
     } else {
-      SceneUtil.sidebar.mainPage();
+      SceneUtil.welcomePage.mainPage();
     }
   }
 

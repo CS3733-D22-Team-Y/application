@@ -497,13 +497,12 @@ public class MapPageController<T extends Requestable> {
                           }
                           reqInfoPane.setVisible(true);
                           this.currReqSelection %= fuck2.size();
-                          currReqDisplay.setText(fuck2.get(this.currReqSelection).getRequestType());
+                          currReqDisplay.setText(fuck2.get(this.currReqSelection).getTypeString());
                           this.reqLocationBox.setText(fuck2.get(this.currReqSelection).getLocID());
                           this.reqDescriptionBox.setText(
-                              fuck2.get(this.currReqSelection).getDescription());
+                              fuck2.get(this.currReqSelection).getAdditionalNotes());
                           this.reqStatusBox.setText(fuck2.get(this.currReqSelection).getStatus());
-                          this.reqTypeBox.setText(
-                              fuck2.get(this.currReqSelection).getRequestType());
+                          this.reqTypeBox.setText(fuck2.get(this.currReqSelection).getTypeString());
                           this.reqNurseBox.setText(
                               fuck2.get(this.currReqSelection).getAssignedNurse());
                         }
@@ -545,7 +544,7 @@ public class MapPageController<T extends Requestable> {
                       this.currReqSelection %= this.fuck2.size();
                       T req = fuck2.get(this.currReqSelection);
                       req.setAssignedNurse(reqNurseBox.getText());
-                      req.setStatus(reqStatusBox.getText());
+                      // req.setStatus(reqStatusBox.getText());
 
                       DBManager.update(req);
 
@@ -806,11 +805,11 @@ public class MapPageController<T extends Requestable> {
 
   public void updateReqInfo() {
     this.currReqSelection %= fuck2.size();
-    currReqDisplay.setText(fuck2.get(this.currReqSelection).getRequestType());
+    currReqDisplay.setText(fuck2.get(this.currReqSelection).getTypeString());
     this.reqLocationBox.setText(fuck2.get(this.currReqSelection).getLocID());
-    this.reqDescriptionBox.setText(fuck2.get(this.currReqSelection).getDescription());
+    this.reqDescriptionBox.setText(fuck2.get(this.currReqSelection).getAdditionalNotes());
     this.reqStatusBox.setText(fuck2.get(this.currReqSelection).getStatus());
-    this.reqTypeBox.setText(fuck2.get(this.currReqSelection).getRequestType());
+    this.reqTypeBox.setText(fuck2.get(this.currReqSelection).getTypeString());
     this.reqNurseBox.setText(fuck2.get(this.currReqSelection).getAssignedNurse());
 
     equipInfoPane.setVisible(false);

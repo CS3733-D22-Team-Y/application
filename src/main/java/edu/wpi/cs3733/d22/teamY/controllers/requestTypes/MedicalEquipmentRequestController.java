@@ -161,10 +161,10 @@ public class MedicalEquipmentRequestController {
             bedRadioButton, xrayRadioButton, infusionPumpRadioButton, reclinerRadioButton)) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
       if (!SceneLoading.stayOnPage) {
-        SceneUtil.sidebar.mainPage();
+        SceneUtil.welcomePage.mainPage();
       }
     } else {
-      SceneUtil.sidebar.mainPage();
+      SceneUtil.welcomePage.mainPage();
     }
   }
 

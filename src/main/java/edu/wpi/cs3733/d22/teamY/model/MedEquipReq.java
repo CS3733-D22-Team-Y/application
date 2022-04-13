@@ -63,7 +63,7 @@ public class MedEquipReq extends Requestable implements StringArrayConv {
 
   @Override
   public int getRequestPriority() {
-    return 5;
+    return 7;
   }
 
   @Override
@@ -82,6 +82,11 @@ public class MedEquipReq extends Requestable implements StringArrayConv {
   @Override
   public String getLocID() {
     return getRoomID();
+  }
+
+  @Override
+  public String getTypeString() {
+    return "Equipment Transit";
   }
 
   // endregion

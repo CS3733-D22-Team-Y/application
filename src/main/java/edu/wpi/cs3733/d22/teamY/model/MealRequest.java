@@ -84,7 +84,7 @@ public class MealRequest extends Requestable implements StringArrayConv {
 
   @Override
   public int getRequestPriority() {
-    return 5;
+    return 4;
   }
 
   @Override
@@ -133,5 +133,10 @@ public class MealRequest extends Requestable implements StringArrayConv {
   @Override
   public String getLocID() {
     return getRoomID();
+  }
+
+  @Override
+  public String getTypeString() {
+    return "Meal Delivery";
   }
 }

@@ -56,7 +56,7 @@ public class TranslatorRequest extends Requestable implements StringArrayConv {
 
   @Override
   public int getRequestPriority() {
-    return 5;
+    return 3;
   }
 
   @Override
@@ -67,6 +67,11 @@ public class TranslatorRequest extends Requestable implements StringArrayConv {
   @Override
   public String getLocID() {
     return getRoomID();
+  }
+
+  @Override
+  public String getTypeString() {
+    return "Medical Translator";
   }
 
   public String getLanguageTypeSelected() {

@@ -107,4 +107,9 @@ public class SecurityServiceRequest extends Requestable implements StringArrayCo
   public String getLocID() {
     return getRoomID();
   }
+
+  @Override
+  public String getTypeString() {
+    return "Security Alert";
+  }
 }
