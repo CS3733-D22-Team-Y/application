@@ -387,7 +387,7 @@
          <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Submit" />
       </children>
    </Pane>
-   <Pane fx:id="reqInfoPane" layoutX="711.0" prefHeight="790.0" prefWidth="219.0">
+   <Pane fx:id="reqInfoPane" layoutX="711.0" prefHeight="790.0" prefWidth="219.0" visible="false">
       <children>
          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="780.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="219.0" />
          <TextField alignment="CENTER_RIGHT" editable="false" layoutX="-20.0" layoutY="200.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Type">
