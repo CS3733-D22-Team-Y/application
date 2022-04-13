@@ -138,7 +138,6 @@ public class PersonalSettingsController {
 
   @FXML
   void darkMode() {
-    System.out.println("give box");
     darkModeButton
         .getScene()
         .getStylesheets()
@@ -148,7 +147,6 @@ public class PersonalSettingsController {
 
   @FXML
   void lightMode() {
-    System.out.println("no box");
     lightModeButton
         .getScene()
         .getStylesheets()

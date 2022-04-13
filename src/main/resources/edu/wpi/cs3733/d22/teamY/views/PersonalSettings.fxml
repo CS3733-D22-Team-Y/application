@@ -134,7 +134,7 @@
             <String fx:value="primaryColor" />
          </styleClass>
       </MFXButton>
-      <MFXButton fx:id="lightModeButton" layoutX="470.0" layoutY="661.0" onAction="#lightMode" prefHeight="50.0" prefWidth="125.0" text="Light Mode" />
-      <MFXButton fx:id="darkModeButton" layoutX="610.0" layoutY="661.0" onAction="#darkMode" prefHeight="50.0" prefWidth="125.0" text="Dark Mode" />
+      <MFXButton fx:id="lightModeButton" layoutX="470.0" layoutY="659.0" onAction="#lightMode" prefHeight="50.0" prefWidth="175.0" styleClass="requestButton" text="Light Mode" />
+      <MFXButton fx:id="darkModeButton" layoutX="655.0" layoutY="659.0" onAction="#darkMode" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #444;" styleClass="requestButton" text="Dark Mode" textFill="WHITE" />
     </children>
 </AnchorPane>
