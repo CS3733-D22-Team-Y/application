@@ -124,7 +124,16 @@ public class MealRequest implements StringArrayConv, Requestable {
 
   @Override
   public String getDescription() {
-    return "Main: " + mainChoice + "\nSide: " + sideChoice + "\nAllergies: " + allergies + "\nSpecial Instructions: " + specialInstructions + "\n\n" + additionalNotes;
+    return "Main: "
+        + mainChoice
+        + "\nSide: "
+        + sideChoice
+        + "\nAllergies: "
+        + allergies
+        + "\nSpecial Instructions: "
+        + specialInstructions
+        + "\n\n"
+        + additionalNotes;
   }
 
   public String getRequestStatus() {

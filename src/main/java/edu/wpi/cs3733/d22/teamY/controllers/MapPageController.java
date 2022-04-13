@@ -402,9 +402,15 @@ public class MapPageController {
                   mapElements.add(i);
                 } // Service Requests
                 else if (modeBox.getValue().equals("Service Requests") && requests.size() > 0) {
-                  for(T req : requests) {
-                    System.out.println(req.getLocID());
-                  }
+                  Circle c =
+                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
+                  i.setLayoutX(l.getXCoord());
+                  i.setLayoutY(l.getYCoord());
+                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.RED);
+                  i.setPrefWidth(iconDim);
+                  i.setPrefHeight(iconDim);
+                  i.getChildren().add(frame);
+                  mapElements.add(i);
                 }
 
                 // Create context menu for shape

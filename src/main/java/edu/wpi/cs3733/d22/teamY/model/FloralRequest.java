@@ -70,7 +70,6 @@ public class FloralRequest implements StringArrayConv, Requestable {
   @Override
   public String getRequestType() {
     return "Floral";
-
   }
 
   public void setRequestNum(String requestNum) {
@@ -105,7 +104,7 @@ public class FloralRequest implements StringArrayConv, Requestable {
 
   @Override
   public String getDescription() {
-    return this.bouquetTypeSelected  + " Flowers Selected\n\n" + this.additionalNotes;
+    return this.bouquetTypeSelected + " Flowers Selected\n\n" + this.additionalNotes;
   }
 
   public String getBouquetTypeSelected() {
@@ -138,6 +137,4 @@ public class FloralRequest implements StringArrayConv, Requestable {
   public void setStatus(String status) {
     this.requestStatus = status;
   }
-
-
 }

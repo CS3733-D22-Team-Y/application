@@ -112,7 +112,11 @@ public class SecurityServiceRequest implements StringArrayConv, Requestable {
 
   @Override
   public String getDescription() {
-    return this.requestPriority + " priority request for " + this.requestTypeSelected + "\n\n" + this.additionalNotes;
+    return this.requestPriority
+        + " priority request for "
+        + this.requestTypeSelected
+        + "\n\n"
+        + this.additionalNotes;
   }
 
   public String getRequestStatus() {

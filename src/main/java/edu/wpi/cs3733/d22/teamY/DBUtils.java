@@ -287,9 +287,9 @@ public class DBUtils {
     return filtered;
   }
 
-  public static <T extends Requestable> List<T> getAllServiceReqsAtLocation(Location l){
+  public static <T extends Requestable> List<T> getAllServiceReqsAtLocation(Location l) {
     List<T> requests = new ArrayList<>();
-    for(RequestType rt : RequestType.values()){
+    for (RequestType rt : RequestType.values()) {
       requests.addAll(serviceReqsAtLocation(rt.requestClass, l));
     }
     return requests;
