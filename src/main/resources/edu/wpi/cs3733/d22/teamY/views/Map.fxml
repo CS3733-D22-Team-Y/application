@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox?>
@@ -343,7 +344,7 @@
          </HBox>
       </bottom>
    </BorderPane>
-   <Pane fx:id="locationInfoPane" layoutX="701.0" prefHeight="780.0" prefWidth="219.0">
+   <Pane fx:id="locationInfoPane" layoutX="701.0" prefHeight="780.0" prefWidth="219.0" visible="false">
       <children>
          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="780.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="219.0" />
          <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="82.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Node ID:">
@@ -384,6 +385,54 @@
          <MFXTextField fx:id="locationBuilding" layoutX="84.0" layoutY="534.0" prefHeight="48.0" prefWidth="134.0" />
          <MFXButton fx:id="locationSubmit" layoutX="110.0" layoutY="675.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />
          <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Submit" />
+      </children>
+   </Pane>
+   <Pane fx:id="reqInfoPane" layoutX="711.0" prefHeight="790.0" prefWidth="219.0">
+      <children>
+         <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="780.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="219.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="-20.0" layoutY="200.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Type">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="reqTypeBox" layoutX="64.0" layoutY="194.0" prefHeight="48.0" prefWidth="134.0" />
+         <MFXButton fx:id="locationSubmit1" layoutX="110.0" layoutY="675.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />
+         <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Submit" />
+         <MFXButton layoutX="1.0" layoutY="109.0" prefHeight="56.0" prefWidth="54.0" text="&lt;">
+            <font>
+               <Font size="30.0" />
+            </font>
+         </MFXButton>
+         <MFXButton layoutX="161.0" layoutY="109.0" prefHeight="56.0" prefWidth="54.0" text="&gt;">
+            <font>
+               <Font size="30.0" />
+            </font>
+         </MFXButton>
+         <MFXTextField fx:id="currReqDisplay" allowEdit="false" layoutX="43.0" layoutY="116.0" prefHeight="48.0" prefWidth="134.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="-20.0" layoutY="261.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Location">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="reqLocationBox" layoutX="64.0" layoutY="255.0" prefHeight="48.0" prefWidth="134.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="-20.0" layoutY="324.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Status">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="reqStatusBox" layoutX="64.0" layoutY="318.0" prefHeight="48.0" prefWidth="134.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="-20.0" layoutY="388.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Nurse">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="reqNurseBox" layoutX="64.0" layoutY="382.0" prefHeight="48.0" prefWidth="134.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="58.0" layoutY="447.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Description">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <JFXTextArea fx:id="reqDescriptionBox" layoutX="19.0" layoutY="491.0" prefHeight="151.0" prefWidth="179.0" text="No Description Provided" />
       </children>
    </Pane>
    <MFXLegacyComboBox fx:id="modeBox" layoutX="770.0" layoutY="29.0" lineStrokeWidth="0.0" prefHeight="37.0" prefWidth="134.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0" />

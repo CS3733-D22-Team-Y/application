@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
@@ -72,6 +73,20 @@ public class MapPageController {
   @FXML private MFXTextField locationY;
   @FXML private MFXTextField locationBuilding;
   @FXML private Pane locationInfoPane;
+
+  // req stuff
+  @FXML private MFXTextField currReqDisplay;
+  @FXML private MFXTextField reqTypeBox;
+  @FXML private MFXTextField reqLocationBox;
+  @FXML private MFXTextField reqStatusBox;
+  @FXML private MFXTextField reqNurseBox;
+  @FXML private JFXTextArea reqDescriptionBox;
+  @FXML private MFXButton reqSubmit;
+
+  @FXML private Pane reqInfoPane;
+
+  // end req stuff
+
   @FXML public MFXButton locationSubmit;
   private String fuck = "shit";
   @FXML private MFXLegacyComboBox<String> modeBox;
@@ -451,6 +466,12 @@ public class MapPageController {
                         locationLong.setText(l.getLongName());
                         locationID.setText(String.valueOf(l.getNodeID()));
                       }
+                      if (modeBox.getValue().equals("Service Requests")) {
+                        if (requests.size() > 0) {
+                          reqInfoPane.setVisible(true);
+                          currReqDisplay.setText(requests.get(0).getRequestType());
+                        }
+                      }
                     });
 
                 locationSubmit.setOnMouseClicked(
@@ -680,6 +701,7 @@ public class MapPageController {
 
   public void exit() {
     locationInfoPane.setVisible(false);
+    reqInfoPane.setVisible(false);
   }
 
   private void updateQuickDash(String floor) {
