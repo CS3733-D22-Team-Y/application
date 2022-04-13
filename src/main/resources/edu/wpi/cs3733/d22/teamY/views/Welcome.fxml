@@ -104,15 +104,15 @@
       </MFXButton>
         <Pane fx:id="loginPane" layoutX="400.0" layoutY="300.0" prefWidth="400.0">
             <children>
-                <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="256.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
-                <Pane fx:id="failedLoginPane" layoutY="150.0" prefHeight="28.0" prefWidth="300.0" visible="false">
-                    <children>
-                        <Label fx:id="attemptsRemaining" prefHeight="28.0" prefWidth="300.0" style="-fx-alignment: center;" text="5 Attempts Remain" textAlignment="CENTER" textFill="#df2056">
+                <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="289.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
+                <Pane fx:id="failedLoginPane" layoutX="25.0" layoutY="220.0" prefHeight="33.0" prefWidth="350.0" visible="false">
+               <children>
+                        <Label fx:id="attemptsRemaining" prefHeight="62.0" prefWidth="360.0" style="-fx-alignment: center;" styleClass="plainText" text="5 Attempts Remain" textAlignment="CENTER" textFill="#df2056" wrapText="true">
                             <font>
                                 <Font name="Microsoft Tai Le Bold" size="12.0" />
                             </font>
                         </Label>
-                    </children>
+               </children>
                 </Pane>
             <MFXTextField fx:id="username" floatMode="ABOVE" layoutX="25.0" layoutY="30.0" onAction="#loginToMainPage" prefHeight="50.0" prefWidth="350.0" promptText="Username" styleClass="inputField">
                <font>
@@ -184,7 +184,7 @@
                 <Font name="System Bold Italic" size="36.0" />
             </font>
         </JFXButton>
-        <Pane fx:id="faPane" layoutX="217.0" layoutY="120.0" visible="false">
+        <Pane fx:id="faPane" layoutX="275.0" layoutY="175.0" visible="false">
             <children>
                 <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="461.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="663.0" />
                 <Label alignment="CENTER" layoutX="106.0" layoutY="14.0" prefHeight="75.0" prefWidth="452.0" text="2FA Selection" textAlignment="CENTER">
