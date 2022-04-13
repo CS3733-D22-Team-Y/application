@@ -540,7 +540,6 @@ public class MapPageController<T extends Requestable> {
                       switchMap(newFloor, mapMode);
                     });
 
-
                 reqSubmit.setOnMouseClicked(
                     e -> {
                       this.currReqSelection %= this.fuck2.size();
@@ -551,7 +550,7 @@ public class MapPageController<T extends Requestable> {
                       DBManager.update(req);
 
                       System.out.println("Submit");
-                      });
+                    });
 
                 equipUp.setOnMouseClicked(
                     e -> {
@@ -584,102 +583,107 @@ public class MapPageController<T extends Requestable> {
                               + ","
                               + equipClean.getText());
                       System.out.println(equip.size());
-
                     });
-             
-      
-      System.out.println("FUCCCKCKCKCKCKCKCKCKCMCKn");
-      mapComponent.setContent(newFloor.image, List.of(), mapElements);
-      System.out.println("FUCCCKCKCKCKCKCKCKCKCMCKn");
 
-      // Gets all locations on the newly selected floor
-      //      DBUtils.getLocationsOnFloor(newFloor.dbKey)
-      //          // And iterates over them
-      //          .forEach(
-      //              (l) -> {
-      //                List<MedEquip> equip = DBUtils.getEquipmentAtLocation(l);
-      //                Set<String> equipTypes =
-      //                    equip.stream().map(MedEquip::getEquipType).collect(Collectors.toSet());
-      //
-      //                boolean hasEquipment = equip.size() > 0;
-      //
-      //                // equipTypes: list of equipment types in the location.  if room has
-      // multiple of one
-      //                // type, only 1 element is in the list still
-      //                // equip: list of all equipment objects in the location
-      //                // hasEquipment: true if there is 1 or more equipment in location
-      //
-      //                // Checks if the point is in a valid position
-      //                if (isValidPlacement(l)) {
-      //                  // Create the circle for this location and add context menu handlers to it
-      //                  Circle c =
-      //                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX,
-      // CIRCLE_PAINT);
-      //
-      //                  Pane i = new Pane();
-      //                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2,
-      // Color.NAVY);
-      //
-      //                  i.setPrefWidth(iconDim);
-      //                  i.setPrefHeight(iconDim);
-      //                  i.setTranslateX(l.getXCoord() - iconDim / 2);
-      //                  i.setTranslateY(l.getYCoord() - iconDim / 2);
-      //                  i.setTranslateY(l.getYCoord() - iconDim / 2);
-      //                  i.getChildren().add(frame);
-      //
-      //                  // ImageView iconView = new ImageView(icon);
-      //                  // iconView.setTranslateX((Integer) ((iconDim - logoDim) / 2));
-      //                  // iconView.setTranslateY((Integer) ((iconDim - logoDim) / 2));
-      //                  // i.getChildren().add(iconView);
-      //                  // Create context menu for shape
-      //                  ContextMenu rightClickMenu = new ContextMenu();
-      //                  MenuItem editItem = new MenuItem("Edit");
-      //                  MenuItem deleteItem = new MenuItem("Delete");
-      //                  MenuItem showEquipment = new MenuItem("Show Equipment");
-      //
-      //                  if (hasEquipment) {
-      //                    rightClickMenu.getItems().addAll(editItem, deleteItem, showEquipment);
-      //                  } else {
-      //                    rightClickMenu.getItems().addAll(editItem, deleteItem);
-      //                  }
-      //                  editItem.setOnAction(
-      //                      e -> {
-      //                        if (showEditDialog(l)) {
-      //                          DBManager.update(l);
-      //                        }
-      //                      });
-      //
-      //                  deleteItem.setOnAction(
-      //                      e -> {
-      //                        DBManager.delete(l);
-      //                        // Reload data from DB to prevent desync
-      //                        switchMap(lastFloor, mapMode);
-      //                      });
-      //
-      //                  showEquipment.setOnAction(
-      //                      e -> {
-      //                        // TODO do something better with this
-      //
-      //                        Alert a = new Alert(Alert.AlertType.INFORMATION);
-      //                        a.setContentText(equip.toString());
-      //                        a.setHeaderText("Equipment at this location");
-      //                        a.show();
-      //                        //                        ContextMenu equipmentAtLocation = new
-      //                        // ContextMenu();
-      //                        //                        for (MedEquip med : equip) {
-      //                        //
-      // equipmentAtLocation.getItems().addAll(new
-      //                        // MenuItem(med.toString()));
-      //                        //                        }
-      //                        //                        equipmentAtLocation.show(i,
-      // e.getScreenX(),
-      //                        // e.getScreenY());
-      //                      });
-      //
-      //                  i.setOnContextMenuRequested(
-      //                      e -> rightClickMenu.show(i, e.getScreenX(), e.getScreenY()));
-      //                }
-      //              });
+                System.out.println("FUCCCKCKCKCKCKCKCKCKCMCKn");
+                mapComponent.setContent(newFloor.image, List.of(), mapElements);
+                System.out.println("FUCCCKCKCKCKCKCKCKCKCMCKn");
+
+                // Gets all locations on the newly selected floor
+                //      DBUtils.getLocationsOnFloor(newFloor.dbKey)
+                //          // And iterates over them
+                //          .forEach(
+                //              (l) -> {
+                //                List<MedEquip> equip = DBUtils.getEquipmentAtLocation(l);
+                //                Set<String> equipTypes =
+                //
+                // equip.stream().map(MedEquip::getEquipType).collect(Collectors.toSet());
+                //
+                //                boolean hasEquipment = equip.size() > 0;
+                //
+                //                // equipTypes: list of equipment types in the location.  if room
+                // has
+                // multiple of one
+                //                // type, only 1 element is in the list still
+                //                // equip: list of all equipment objects in the location
+                //                // hasEquipment: true if there is 1 or more equipment in location
+                //
+                //                // Checks if the point is in a valid position
+                //                if (isValidPlacement(l)) {
+                //                  // Create the circle for this location and add context menu
+                // handlers to it
+                //                  Circle c =
+                //                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX,
+                // CIRCLE_PAINT);
+                //
+                //                  Pane i = new Pane();
+                //                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2,
+                // Color.NAVY);
+                //
+                //                  i.setPrefWidth(iconDim);
+                //                  i.setPrefHeight(iconDim);
+                //                  i.setTranslateX(l.getXCoord() - iconDim / 2);
+                //                  i.setTranslateY(l.getYCoord() - iconDim / 2);
+                //                  i.setTranslateY(l.getYCoord() - iconDim / 2);
+                //                  i.getChildren().add(frame);
+                //
+                //                  // ImageView iconView = new ImageView(icon);
+                //                  // iconView.setTranslateX((Integer) ((iconDim - logoDim) / 2));
+                //                  // iconView.setTranslateY((Integer) ((iconDim - logoDim) / 2));
+                //                  // i.getChildren().add(iconView);
+                //                  // Create context menu for shape
+                //                  ContextMenu rightClickMenu = new ContextMenu();
+                //                  MenuItem editItem = new MenuItem("Edit");
+                //                  MenuItem deleteItem = new MenuItem("Delete");
+                //                  MenuItem showEquipment = new MenuItem("Show Equipment");
+                //
+                //                  if (hasEquipment) {
+                //                    rightClickMenu.getItems().addAll(editItem, deleteItem,
+                // showEquipment);
+                //                  } else {
+                //                    rightClickMenu.getItems().addAll(editItem, deleteItem);
+                //                  }
+                //                  editItem.setOnAction(
+                //                      e -> {
+                //                        if (showEditDialog(l)) {
+                //                          DBManager.update(l);
+                //                        }
+                //                      });
+                //
+                //                  deleteItem.setOnAction(
+                //                      e -> {
+                //                        DBManager.delete(l);
+                //                        // Reload data from DB to prevent desync
+                //                        switchMap(lastFloor, mapMode);
+                //                      });
+                //
+                //                  showEquipment.setOnAction(
+                //                      e -> {
+                //                        // TODO do something better with this
+                //
+                //                        Alert a = new Alert(Alert.AlertType.INFORMATION);
+                //                        a.setContentText(equip.toString());
+                //                        a.setHeaderText("Equipment at this location");
+                //                        a.show();
+                //                        //                        ContextMenu equipmentAtLocation
+                // = new
+                //                        // ContextMenu();
+                //                        //                        for (MedEquip med : equip) {
+                //                        //
+                // equipmentAtLocation.getItems().addAll(new
+                //                        // MenuItem(med.toString()));
+                //                        //                        }
+                //                        //                        equipmentAtLocation.show(i,
+                // e.getScreenX(),
+                //                        // e.getScreenY());
+                //                      });
+                //
+                //                  i.setOnContextMenuRequested(
+                //                      e -> rightClickMenu.show(i, e.getScreenX(),
+                // e.getScreenY()));
+                //                }
+                //              });
+              });
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -810,7 +814,6 @@ public class MapPageController<T extends Requestable> {
     this.reqNurseBox.setText(fuck2.get(this.currReqSelection).getAssignedNurse());
 
     equipInfoPane.setVisible(false);
-
   }
 
   private void updateQuickDash(String floor) {
