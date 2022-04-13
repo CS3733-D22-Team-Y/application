@@ -69,6 +69,21 @@ public class LabRequest implements StringArrayConv, Requestable {
     return requestNum;
   }
 
+  @Override
+  public String getRequestType() {
+    return "Lab";
+  }
+
+  @Override
+  public String getStatus() {
+    return requestStatus;
+  }
+
+  @Override
+  public void setStatus(String status) {
+    this.requestStatus = status;
+  }
+
   public void setRequestNum(String requestNum) {
     this.requestNum = requestNum;
   }
@@ -95,6 +110,11 @@ public class LabRequest implements StringArrayConv, Requestable {
 
   public void setAssignedNurse(String assignedNurse) {
     this.assignedNurse = assignedNurse;
+  }
+
+  @Override
+  public String getDescription() {
+    return resultType + " result type" + "\n\n" + additionalNotes;
   }
 
   public String getAdditionalNotes() {

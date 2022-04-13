@@ -58,6 +58,21 @@ public class LaundryRequest implements StringArrayConv, Requestable {
     return requestNum;
   }
 
+  @Override
+  public String getRequestType() {
+    return "Laundry";
+  }
+
+  @Override
+  public String getStatus() {
+    return this.requestStatus;
+  }
+
+  @Override
+  public void setStatus(String status) {
+    this.requestStatus = status;
+  }
+
   public void setRequestNum(String requestNum) {
     this.requestNum = requestNum;
   }
@@ -76,6 +91,11 @@ public class LaundryRequest implements StringArrayConv, Requestable {
 
   public void setAssignedNurse(String assignedNurse) {
     this.assignedNurse = assignedNurse;
+  }
+
+  @Override
+  public String getDescription() {
+    return this.laundryTypeSelected + " selected\n\n" + this.additionalNotes;
   }
 
   public String getRequestStatus() {
