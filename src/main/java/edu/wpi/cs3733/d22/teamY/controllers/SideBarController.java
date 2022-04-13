@@ -77,7 +77,7 @@ public class SideBarController {
         "views/MedEquipTable.fxml",
         "views/ActServReqTable.fxml",
         "views/ActiveServiceRequest.fxml",
-        "views/PersonalSettings.fxml");
+        "views/PersonalSettingsEdit.fxml");
     SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
   }
@@ -91,7 +91,7 @@ public class SideBarController {
         "views/ActServReqTable.fxml",
         "views/ActiveServiceRequest.fxml",
         "views/ActiveServiceRequest.fxml",
-        "views/PersonalSettings.fxml");
+        "views/PersonalSettingsEdit.fxml");
     SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).setVisible(true);
