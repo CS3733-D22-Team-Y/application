@@ -113,6 +113,25 @@ public class TranslatorRequestController {
     }
   }
 
+  @FXML
+  void backButton() throws IOException {
+    if (RequestControllerUtil.isRadioButtonSelected(
+            spanishRadioButton,
+            chineseRadioButton,
+            germanRadioButton,
+            arabicRadioButton,
+            otherRadioButton)
+        || !Objects.equals(roomsHiddenField.getText(), "")
+        || !Objects.equals(input_AssignedNurse.getText(), "")) {
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
+      if (!SceneLoading.stayOnPage) {
+        SceneUtil.sidebar.mainPage();
+      }
+    } else {
+      SceneUtil.sidebar.mainPage();
+    }
+  }
+
   // Returns the database name of the selected radio button.
   private String getLanguageType() {
     if (spanishRadioButton.isSelected()) return spanishText;

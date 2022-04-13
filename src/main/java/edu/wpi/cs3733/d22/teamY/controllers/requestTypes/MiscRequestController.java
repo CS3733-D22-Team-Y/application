@@ -82,6 +82,21 @@ public class MiscRequestController {
   }
 
   @FXML
+  void backButton() throws IOException {
+    if (!(roomsHiddenField.getText().equals("")
+        || input_AdditionalNotes.getText().equals("")
+        || input_AssignedNurse.getText().equals("")
+        || input_RequestName.getText().equals(""))) {
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
+      if (!SceneLoading.stayOnPage) {
+        SceneUtil.sidebar.mainPage();
+      }
+    } else {
+      SceneUtil.sidebar.mainPage();
+    }
+  }
+
+  @FXML
   void resetAllFields() {
     RequestControllerUtil.resetTextFields(
         input_RequestName, input_AdditionalNotes, roomsHiddenField, input_AssignedNurse);
