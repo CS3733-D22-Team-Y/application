@@ -1,10 +1,13 @@
 package edu.wpi.cs3733.d22.teamY;
 
-import java.util.Objects;
+import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
+
+import com.teamdev.jxbrowser.browser.Browser;
+import com.teamdev.jxbrowser.engine.Engine;
+import com.teamdev.jxbrowser.view.javafx.BrowserView;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,7 +34,27 @@ public class App extends Application {
 
   @Override
   public void start(Stage primaryStage) throws Exception {
-    instance = this; // instantiates instance
+    // Initialize Chromium.
+    Engine engine = Engine.newInstance(HARDWARE_ACCELERATED);
+
+    // Create a Browser instance.
+    Browser browser = engine.newBrowser();
+
+    // Load the required web page.
+    browser.navigation().loadUrl("https://html5test.com");
+
+    // Create and embed JavaFX BrowserView component to display web content.
+    BrowserView view = BrowserView.newInstance(browser);
+
+    Scene scene = new Scene(new BorderPane(view), 1280, 800);
+    primaryStage.setTitle("JxBrowser JavaFX");
+    primaryStage.setScene(scene);
+    primaryStage.show();
+
+    // Shutdown Chromium and release allocated resources.
+    primaryStage.setOnCloseRequest(event -> engine.close());
+
+    /*instance = this; // instantiates instance
     primaryStage.setMinWidth(900);
     primaryStage.setMinHeight(600);
     this.primaryStage = primaryStage;
@@ -45,6 +68,7 @@ public class App extends Application {
     primaryStage.setScene(scene);
     primaryStage.show();
     // camera.newPfp();
+    */
   }
 
   @Override

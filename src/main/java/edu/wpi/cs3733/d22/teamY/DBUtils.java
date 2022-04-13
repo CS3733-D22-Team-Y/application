@@ -259,6 +259,7 @@ public class DBUtils {
 
   /**
    * Checks if logged in user has the default password
+   *
    * @param passwordHash hashed pass INTEGER
    * @return true if users' pass is the default
    */

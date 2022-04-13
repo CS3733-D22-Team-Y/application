@@ -12,7 +12,8 @@ repositories {
     mavenCentral()
     jcenter()
     maven {
-        url 'https://apisite.crmyers.dev/maven'
+        url = 'https://apisite.crmyers.dev/maven'
+        url = 'https://europe-maven.pkg.dev/jxbrowser/releases'
     }
 }
 
@@ -35,7 +36,9 @@ dependencies {
             [group: 'org.apache.derby', name: 'derbyclient', version: '10.15.2.0'],
             'org.slf4j:slf4j-api:1.7.30',
             'org.slf4j:slf4j-simple:1.7.30',
-            'org.postgresql:postgresql:42.2.0'
+            'org.postgresql:postgresql:42.2.0',
+            "com.teamdev.jxbrowser:jxbrowser-cross-platform:7.24.3",
+            "com.teamdev.jxbrowser:jxbrowser-javafx:7.24.3"
             //
 
     )
