@@ -53,7 +53,7 @@ public class ActiveServiceRequestController {
       }
     }
 
-    rqPairs.sort(Comparator.comparingInt(rs -> (10 - rs.getController().getPriority())));
+    rqPairs.sort(Comparator.comparingInt(rs -> (10 - rs.getRequest().getRequestPriority())));
 
     for (RequestSet pair : rqPairs) {
       addToBox(pair);

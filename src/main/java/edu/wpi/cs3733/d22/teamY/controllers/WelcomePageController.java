@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXToggleButton;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.Auth;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MainLoaderResult;
 import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.RequestControllerUtil;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -19,7 +20,6 @@ import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -75,12 +75,25 @@ public class WelcomePageController {
     SceneUtil.welcomePage = this;
     RequestControllerUtil.initialize();
 
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
+    App.getInstance().setScene(new Scene(loader.load()));
+    SideBarController controller = loader.getController();
+    try {
+      controller.initializeScale();
+      controller.loadViewServiceRequests();
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  public void mainPageThreaded() throws IOException {
+    SceneUtil.welcomePage = this;
+    RequestControllerUtil.initialize();
+
     loadMainTask.setOnSucceeded(
         e -> {
-          App.getInstance().setScene(new Scene(loadMainTask.getValue()));
-
-          FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
-          SideBarController controller = loader.getController();
+          App.getInstance().setScene(new Scene(loadMainTask.getValue().getParent()));
+          SideBarController controller = loadMainTask.getValue().getLoader().getController();
           try {
             controller.initializeScale();
             controller.loadViewServiceRequests();
@@ -94,12 +107,12 @@ public class WelcomePageController {
     t.start();
   }
 
-  Task<Parent> loadMainTask =
+  Task<MainLoaderResult> loadMainTask =
       new Task<>() {
         @Override
-        protected Parent call() throws IOException {
+        protected MainLoaderResult call() throws IOException {
           FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
-          return loader.load();
+          return new MainLoaderResult(loader, loader.load());
         }
       };
 
@@ -279,7 +292,7 @@ public class WelcomePageController {
     Welcome.setText("Welcome, " + DBUtils.getNameFromID(username.getText()));
 
     try {
-      mainPage();
+      mainPageThreaded();
     } catch (IOException e) {
       e.printStackTrace();
     }
