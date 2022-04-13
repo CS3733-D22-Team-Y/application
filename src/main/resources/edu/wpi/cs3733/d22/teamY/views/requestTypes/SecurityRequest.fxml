@@ -222,5 +222,10 @@
       </JFXTextArea>
       <TextField fx:id="roomsHiddenField" layoutX="160.0" layoutY="200.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
       <JFXComboBox fx:id="roomsComboBox" layoutX="160.0" layoutY="200.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="inputField" unFocusColor="#ffffff00" />
+      <MFXButton computeRadiusMultiplier="false" layoutX="820.0" layoutY="-4.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+      </MFXButton>
     </children>
 </AnchorPane>

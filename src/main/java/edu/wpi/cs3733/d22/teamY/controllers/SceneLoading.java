@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class SceneLoading {
+  public static boolean stayOnPage;
+
   public static void loadScene(String path) throws IOException {
     Scene sceneToLoad =
         new Scene(FXMLLoader.load(Objects.requireNonNull(App.class.getResource(path))));

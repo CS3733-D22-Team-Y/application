@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController;
 import edu.wpi.cs3733.d22.teamY.model.*;
 import java.util.ArrayList;
@@ -36,7 +37,6 @@ public class DBUtils {
    *
    * @param e Entry Type to delete
    */
-
   public static void deleteType(EntryType e) {
     List<StringArrayConv> list = DBManager.getAll(EntryType.LOCATION.getEntryClass());
     // Check if null
@@ -59,6 +59,7 @@ public class DBUtils {
       refreshFromCSV(e);
     }
   }
+
   @SuppressWarnings("Unchecked")
   public static Pair<Integer, Integer> getAvailableEquipment(String equipType) {
     List<MedEquip> equipment =
@@ -147,7 +148,6 @@ public class DBUtils {
    * @param password the password of the employee
    * @return true if the employee had valid credentials, false otherwise
    */
-
   @SuppressWarnings("Unchecked")
   public static boolean isValidLogin(String username, String password) {
     Session s = SessionManager.getSession();
@@ -158,7 +158,11 @@ public class DBUtils {
             .setParameter("password", password.hashCode() + "")
             .list();
     s.close();
-    return employees.size() == 1;
+    if (employees.size() == 1) {
+      PersonalSettings.currentEmployee = employees.get(0);
+      return true;
+    }
+    return false;
   }
 
   /**
@@ -212,9 +216,9 @@ public class DBUtils {
   /**
    * Changes an employee's password.
    *
-   * @param username the username of the employee
-   * @param oldPassword the old password of the employee
-   * @param newPassword the new password of the employee
+   * @param username the username of the employee | hash in string form
+   * @param oldPassword the old password of the employee | hash in string form
+   * @param newPassword the new password of the employee | new pass in plain text
    * @return String relating to the success of the change
    */
   @SuppressWarnings("unchecked")
@@ -253,11 +257,17 @@ public class DBUtils {
    *
    * @param input false for Embedded, true for C-S
    */
-  public static void switchDBType(boolean input) {
+  public static void switchDBType(String input) {
     SessionManager.switchType(input);
     DBUtils.completeCSVRefresh();
   }
 
+  /**
+   * Checks if logged in user has the default password
+   *
+   * @param passwordHash hashed pass INTEGER
+   * @return true if users' pass is the default
+   */
   public static boolean checkDefaultPassword(int passwordHash) {
     String defaultPass = "1234";
     return (passwordHash == defaultPass.hashCode());
@@ -291,6 +301,14 @@ public class DBUtils {
       }
     }
     return filtered;
+  }
+
+  public static <T extends Requestable> List<T> getAllServiceReqsAtLocation(Location l) {
+    List<T> requests = new ArrayList<>();
+    for (RequestType rt : RequestType.values()) {
+      requests.addAll(serviceReqsAtLocation(rt.requestClass, l));
+    }
+    return requests;
   }
 
   public static HashMap<String, HashMap<String, Integer>> getEquipFloorCounts() {
@@ -328,5 +346,22 @@ public class DBUtils {
       sum += getRequestsOnFloor(r.requestClass, floor).size();
     }
     return sum;
+  }
+
+  /**
+   * Returns a list of all the medical equipment at a location.
+   *
+   * @param l the location
+   * @return equipment list
+   */
+  public static List<MedEquip> getEquipAtLocation(Location l) {
+    List<MedEquip> allEquip = DBManager.getAll(MedEquip.class);
+    List<MedEquip> filtered = new ArrayList<>();
+    for (MedEquip e : allEquip) {
+      if (e.getEquipLocId().equals(l.getNodeID())) {
+        filtered.add(e);
+      }
+    }
+    return filtered;
   }
 }

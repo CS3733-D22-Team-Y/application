@@ -131,6 +131,30 @@ public class SecurityRequestController {
     }
   }
 
+  @FXML
+  void backButton() throws IOException {
+    Boolean typeSelected =
+        RequestControllerUtil.isRadioButtonSelected(
+            disruptionRadioButton, theftRadioButton, unwantedGuestRadioButton, otherRadioButton);
+
+    Boolean prioritySelected =
+        RequestControllerUtil.isRadioButtonSelected(
+            urgentRadioButton, mostUrgentRadioButton, lowPriorityRadioButton);
+
+    Boolean allFields =
+        !Objects.equals(roomsHiddenField.getText(), "")
+            || !Objects.equals(input_AssignedNurse.getText(), "");
+
+    if (typeSelected || prioritySelected || allFields) {
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
+      if (!SceneLoading.stayOnPage) {
+        SceneUtil.sidebar.mainPage();
+      }
+    } else {
+      SceneUtil.sidebar.mainPage();
+    }
+  }
+
   // Returns the database name of the selected radio button.
   private String getRequestType() {
     if (theftRadioButton.isSelected()) return theftText;

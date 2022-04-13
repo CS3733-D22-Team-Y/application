@@ -1,6 +1,8 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXToggleButton;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.Auth;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
@@ -46,6 +48,9 @@ public class WelcomePageController {
   @FXML Pane faSmsPane;
   @FXML JFXButton faSmsButton;
   @FXML Label codeEntryLabel;
+  @FXML JFXToggleButton dbSwitcherToggle;
+  @FXML JFXComboBox<String> dbMenu;
+
   private boolean lockOut = false;
 
   int maxAttempts = 5;
@@ -53,11 +58,14 @@ public class WelcomePageController {
 
   String universalCode;
 
+  String[] dbOptions = new String[] {"Embedded", "Client-Server", "GoogleCloud"};
+
   @FXML
   void initialize() throws IOException {
     loginPane.setVisible(true);
     loading.setVisible(false);
     yubikeyPane.setVisible(false);
+    dbMenu.getItems().addAll(dbOptions);
   }
 
   @FXML
@@ -260,6 +268,11 @@ public class WelcomePageController {
                   }
                 }));
     loginTimeline.play();
+  }
+
+  @FXML
+  void databaseSwitch() {
+    DBUtils.switchDBType(dbMenu.getValue());
   }
 
   public void testingButton() throws IOException {

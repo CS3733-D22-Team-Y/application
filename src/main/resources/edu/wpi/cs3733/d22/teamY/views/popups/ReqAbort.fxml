@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="262.0" prefWidth="532.0" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ConfirmCloseController">
+<AnchorPane prefHeight="262.0" prefWidth="532.0" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SRConfirmCloseController">
    <children>
       <Rectangle height="262.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="532.0">
          <fill>
@@ -29,7 +29,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <JFXButton alignment="CENTER" layoutX="275.0" layoutY="140.0" onAction="#logOut" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="loginButton" text="Yes, cancel request" textAlignment="CENTER" textFill="#1b89a6" wrapText="true">
+      <JFXButton fx:id="exitButton" alignment="CENTER" layoutX="275.0" layoutY="140.0" onAction="#exit" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="loginButton" text="Yes, cancel request" textAlignment="CENTER" textFill="#1b89a6" wrapText="true">
          <font>
             <Font name="Microsoft Tai Le Bold" size="16.0" />
          </font>

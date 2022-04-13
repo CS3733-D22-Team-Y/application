@@ -71,6 +71,11 @@ public class FloralRequest extends Requestable implements StringArrayConv {
     return "Bouquet Type: " + bouquetTypeSelected;
   }
 
+  @Override
+  public String getDescription() {
+    return this.bouquetTypeSelected + " Flowers Selected\n\n" + this.additionalNotes;
+  }
+
   public String getBouquetTypeSelected() {
     return bouquetTypeSelected;
   }
@@ -82,5 +87,15 @@ public class FloralRequest extends Requestable implements StringArrayConv {
   @Override
   public String getLocID() {
     return getRoomID();
+  }
+
+  @Override
+  public String getStatus() {
+    return this.requestStatus;
+  }
+
+  @Override
+  public void setStatus(String status) {
+    this.requestStatus = status;
   }
 }

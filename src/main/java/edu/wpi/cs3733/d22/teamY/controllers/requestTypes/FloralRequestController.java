@@ -94,6 +94,22 @@ public class FloralRequestController {
     }
   }
 
+  @FXML
+  void backButton() throws IOException {
+    if (RequestControllerUtil.isRadioButtonSelected(
+            getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton)
+        || !input_AssignedNurse.getText().equals("")
+        || !input_AdditionalNotes.getText().equals("")
+        || !Objects.equals(roomsHiddenField.getText(), "")) {
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
+      if (!SceneLoading.stayOnPage) {
+        SceneUtil.sidebar.mainPage();
+      }
+    } else {
+      SceneUtil.sidebar.mainPage();
+    }
+  }
+
   // Returns the database name of the selected radio button.
   private String getBouquetType() {
     if (getWellSoonBouquetRadioButton.isSelected()) return getWellSoonBouquetText;
