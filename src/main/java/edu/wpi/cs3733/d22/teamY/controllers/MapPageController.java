@@ -127,11 +127,14 @@ public class MapPageController {
   @FXML private TextField l5Rec;
   @FXML private TextField l5X;
 
-  @FXML MFXTextField epuipID;
+  @FXML MFXTextField equipID;
   @FXML MFXTextField equipLocation;
   @FXML MFXTextField equipType;
   @FXML MFXTextField equipClean;
   @FXML Pane equipInfoPane;
+  @FXML MFXButton equipSubmit;
+  @FXML MFXButton equipUp;
+  @FXML MFXButton equipDown;
 
   private TextField[] reqNumLabels;
   private TextField[] bedLabels;
@@ -139,6 +142,7 @@ public class MapPageController {
   private TextField[] recLabels;
   private TextField[] xLabels;
 
+  private int currentEquip = 0;
   MapComponent mapComponent = new MapComponent();
 
   private static final int CIRCLE_RADIUS_PX = 10;
@@ -433,6 +437,9 @@ public class MapPageController {
 
                 i.setOnContextMenuRequested(
                     e -> {
+                      if (currentEquip > equip.size() - 1) {
+                        currentEquip = 0;
+                      }
                       System.out.println(modeBox.getValue());
                       if (modeBox.getValue().equals("Locations")) {
                         fuck = String.valueOf(l.getNodeID());
@@ -445,6 +452,12 @@ public class MapPageController {
                         locationID.setText(String.valueOf(l.getNodeID()));
                       } else if (modeBox.getValue().equals("Equipment")) {
                         equipInfoPane.setVisible(true);
+                        MedEquip o = equip.get(currentEquip);
+                        fuck = String.valueOf(o.getEquipID());
+                        equipID.setText(String.valueOf(o.getEquipID()));
+                        equipLocation.setText(o.getEquipLocId());
+                        equipType.setText(o.getEquipType());
+                        equipClean.setText(o.isClean());
                       }
                     });
 
@@ -476,6 +489,39 @@ public class MapPageController {
                       DBManager.update(fuckMe);
                       exit();
                       switchMap(newFloor, mapMode);
+                    });
+
+                equipUp.setOnMouseClicked(
+                    e -> {
+                      currentEquip++;
+                    });
+
+                equipDown.setOnMouseClicked(
+                    e -> {
+                      currentEquip--;
+                    });
+
+                equipSubmit.setOnMouseClicked(
+                    e -> {
+                      MedEquip t =
+                          new MedEquip(
+                              fuck,
+                              equipType.getText(),
+                              equipLocation.getText(),
+                              equipClean.getText());
+                      DBManager.update(t);
+                      DBManager.save(t);
+                      equip.add(t);
+                      switchMap(newFloor, mapMode);
+                      System.out.println(
+                          fuck
+                              + ","
+                              + equipLocation.getText()
+                              + ","
+                              + equipType.getText()
+                              + ","
+                              + equipClean.getText());
+                      System.out.println(equip.size());
                     });
               });
       ;
@@ -675,6 +721,7 @@ public class MapPageController {
 
   public void exit() {
     locationInfoPane.setVisible(false);
+    equipInfoPane.setVisible(false);
   }
 
   private void updateQuickDash(String floor) {
