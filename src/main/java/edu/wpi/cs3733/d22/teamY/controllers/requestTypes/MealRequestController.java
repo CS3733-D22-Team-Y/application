@@ -139,7 +139,7 @@ public class MealRequestController {
           dietaryRestrictionsSelectionBox.getValue(),
           input_AdditionalNotes.getText());
       errorLabel.setText("");
-      SceneUtil.sidebar.mainPage();
+      SceneUtil.welcomePage.mainPage();
 
       SceneLoading.loadPopup(
           "views/popups/ReqSubmitted.fxml", "views/requestTypes/MealRequest.fxml");

@@ -86,7 +86,7 @@ public class LabRequestController {
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");
-      SceneUtil.sidebar.mainPage();
+      SceneUtil.welcomePage.mainPage();
       SceneLoading.loadPopup(
           "views/popups/ReqSubmitted.fxml", "views/requestTypes/LabRequest.fxml");
       resetAllFields();
