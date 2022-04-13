@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TRANSLATORREQUESTS")
-public class TranslatorRequest implements StringArrayConv, Requestable {
+public class TranslatorRequest extends Requestable implements StringArrayConv {
   @Id private String requestNum;
   private String roomID;
   private String assignedNurse;
@@ -31,13 +31,9 @@ public class TranslatorRequest implements StringArrayConv, Requestable {
       String roomID,
       String assignedNurse,
       String requestStatus,
-      String additonalNotes,
+      String additionalNotes,
       String languageTypeSelected) {
-    this.requestNum = requestNum;
-    this.roomID = roomID;
-    this.assignedNurse = assignedNurse;
-    this.requestStatus = requestStatus;
-    this.additonalNotes = additonalNotes;
+    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus, 5);
     this.languageTypeSelected = languageTypeSelected;
   }
 

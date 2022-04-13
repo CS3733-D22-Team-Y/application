@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "MISCREQUESTS")
-public class MiscRequest implements StringArrayConv, Requestable {
+public class MiscRequest extends Requestable implements StringArrayConv {
   @Id private String requestNum;
   private String roomID;
   private String assignedNurse;
@@ -33,11 +33,7 @@ public class MiscRequest implements StringArrayConv, Requestable {
       String requestStatus,
       String additionalNotes,
       String requestName) {
-    this.requestNum = requestNum;
-    this.roomID = roomID;
-    this.assignedNurse = assignedNurse;
-    this.requestStatus = requestStatus;
-    this.additionalNotes = additionalNotes;
+    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus, 5);
     this.requestName = requestName;
   }
 

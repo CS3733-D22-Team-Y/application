@@ -11,7 +11,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "MEDEQUIPREQUEST")
-public class MedEquipReq implements StringArrayConv, Requestable {
+public class MedEquipReq extends Requestable implements StringArrayConv {
   @Id private String requestNum;
   private String roomID;
   private String assignedNurse;
@@ -30,11 +30,7 @@ public class MedEquipReq implements StringArrayConv, Requestable {
       String requestStatus,
       String additionalNotes,
       String equipmentTypeSelected) {
-    this.requestNum = requestNum;
-    this.roomID = roomID;
-    this.assignedNurse = assignedNurse;
-    this.requestStatus = requestStatus;
-    this.additionalNotes = additionalNotes;
+    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus, 5);
     this.equipmentTypeSelected = equipmentTypeSelected;
   }
 
@@ -63,46 +59,6 @@ public class MedEquipReq implements StringArrayConv, Requestable {
       this.additionalNotes,
       this.equipmentTypeSelected
     };
-  }
-
-  public String getRequestNum() {
-    return requestNum;
-  }
-
-  public void setRequestNum(String requestNum) {
-    this.requestNum = requestNum;
-  }
-
-  public String getRoomID() {
-    return roomID;
-  }
-
-  public void setRoomID(String roomID) {
-    this.roomID = roomID;
-  }
-
-  public String getAssignedNurse() {
-    return assignedNurse;
-  }
-
-  public void setAssignedNurse(String assignedNurse) {
-    this.assignedNurse = assignedNurse;
-  }
-
-  public String getRequestStatus() {
-    return requestStatus;
-  }
-
-  public void setRequestStatus(String requestStatus) {
-    this.requestStatus = requestStatus;
-  }
-
-  public String getAdditionalNotes() {
-    return additionalNotes;
-  }
-
-  public void setAdditionalNotes(String additionalNotes) {
-    this.additionalNotes = additionalNotes;
   }
 
   public String getEquipmentTypeSelected() {
