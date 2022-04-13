@@ -4,12 +4,14 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -336,47 +338,55 @@
    <Pane fx:id="locationInfoPane" layoutX="701.0" prefHeight="780.0" prefWidth="219.0" visible="false">
       <children>
          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="780.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="219.0" />
-         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="82.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Node ID:">
-            <font>
-               <Font name="Microsoft Tai Le" size="12.0" />
-            </font>
-         </TextField>
-         <MFXTextField fx:id="locationID" floatMode="DISABLED" layoutX="84.0" layoutY="76.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
-         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="170.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Short Name:">
-            <font>
-               <Font name="Microsoft Tai Le" size="12.0" />
-            </font>
-         </TextField>
-         <MFXTextField fx:id="locationShort" floatMode="DISABLED" layoutX="84.0" layoutY="164.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
-         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="269.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Long Name:">
-            <font>
-               <Font name="Microsoft Tai Le" size="12.0" />
-            </font>
-         </TextField>
-         <MFXTextField fx:id="locationLong" floatMode="DISABLED" layoutX="84.0" layoutY="263.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
-         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="365.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="X Coord:">
-            <font>
-               <Font name="Microsoft Tai Le" size="12.0" />
-            </font>
-         </TextField>
-         <MFXTextField fx:id="locationX" floatMode="DISABLED" layoutX="84.0" layoutY="359.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
-         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="450.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Y Coord:">
-            <font>
-               <Font name="Microsoft Tai Le" size="12.0" />
-            </font>
-         </TextField>
-         <MFXTextField fx:id="locationY" floatMode="DISABLED" layoutX="84.0" layoutY="444.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
-         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="540.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Building:">
-            <font>
-               <Font name="Microsoft Tai Le" size="12.0" />
-            </font>
-         </TextField>
-         <MFXTextField fx:id="locationBuilding" floatMode="DISABLED" layoutX="84.0" layoutY="534.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
+         <VBox layoutX="1.0" layoutY="102.0" spacing="50.0">
+            <children>
+               <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Node ID:">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="12.0" />
+                  </font>
+               </TextField>
+               <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Short Name:">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="12.0" />
+                  </font>
+               </TextField>
+               <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Long Name:">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="12.0" />
+                  </font>
+               </TextField>
+               <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="X Coord:">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="12.0" />
+                  </font>
+               </TextField>
+               <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Y Coord:">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="12.0" />
+                  </font>
+               </TextField>
+               <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Building:">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="12.0" />
+                  </font>
+               </TextField>
+            </children>
+         </VBox>
+         <VBox layoutX="84.0" layoutY="104.0" spacing="53.0">
+            <children>
+               <MFXTextField fx:id="locationID" floatMode="DISABLED" prefHeight="16.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+               <MFXTextField fx:id="locationShort" floatMode="DISABLED" prefHeight="14.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+               <MFXTextField fx:id="locationLong" floatMode="DISABLED" prefHeight="9.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+               <MFXTextField fx:id="locationX" floatMode="DISABLED" prefHeight="9.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+               <MFXTextField fx:id="locationY" floatMode="DISABLED" prefHeight="13.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+               <MFXTextField fx:id="locationBuilding" floatMode="DISABLED" prefHeight="10.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+            </children>
+         </VBox>
          <MFXButton fx:id="locationSubmit" layoutX="110.0" layoutY="675.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />
          <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Close" />
       </children>
    </Pane>
-   <Pane fx:id="equipInfoPane" layoutX="701.0" prefHeight="780.0" prefWidth="219.0">
+   <Pane fx:id="equipInfoPane" layoutX="701.0" prefHeight="780.0" prefWidth="219.0" visible="false">
       <children>
          <MFXButton />
          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="780.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="219.0" />
@@ -385,25 +395,33 @@
                <Font name="Microsoft Tai Le" size="12.0" />
             </font>
          </TextField>
-         <MFXTextField fx:id="equipID" floatMode="DISABLED" layoutX="47.0" layoutY="109.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
-         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="336.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Location ID:">
-            <font>
-               <Font name="Microsoft Tai Le" size="12.0" />
-            </font>
-         </TextField>
-         <MFXTextField fx:id="equipLocation" floatMode="DISABLED" layoutX="84.0" layoutY="330.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
-         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="435.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Equip Type:">
-            <font>
-               <Font name="Microsoft Tai Le" size="12.0" />
-            </font>
-         </TextField>
-         <MFXTextField fx:id="equipType" floatMode="DISABLED" layoutX="84.0" layoutY="429.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
-         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="531.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Is Clean?:">
-            <font>
-               <Font name="Microsoft Tai Le" size="12.0" />
-            </font>
-         </TextField>
-         <MFXTextField fx:id="equipClean" floatMode="DISABLED" layoutX="84.0" layoutY="525.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
+         <MFXTextField fx:id="equipID" floatMode="DISABLED" layoutX="47.0" layoutY="109.0" prefHeight="48.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+         <VBox layoutX="1.0" layoutY="236.0" spacing="50.0">
+            <children>
+               <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Location ID:">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="12.0" />
+                  </font>
+               </TextField>
+               <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Equip Type:">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="12.0" />
+                  </font>
+               </TextField>
+               <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Is Clean?:">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="12.0" />
+                  </font>
+               </TextField>
+            </children>
+         </VBox>
+         <VBox layoutX="84.0" layoutY="238.0" spacing="53.0">
+            <children>
+               <MFXTextField fx:id="equipLocation" floatMode="DISABLED" prefHeight="0.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+               <MFXTextField fx:id="equipType" floatMode="DISABLED" prefHeight="8.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+               <MFXTextField fx:id="equipClean" floatMode="DISABLED" prefHeight="0.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+            </children>
+         </VBox>
          <MFXButton fx:id="equipSubmit" layoutX="110.0" layoutY="675.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />
          <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Exit" />
          <MFXButton fx:id="equipDown" layoutX="4.0" layoutY="108.0" text="&lt;">
@@ -417,54 +435,59 @@
          </MFXButton>
       </children>
    </Pane>
-   <Pane fx:id="reqInfoPane" layoutX="711.0" prefHeight="790.0" prefWidth="219.0" visible="false">
+   <Pane fx:id="reqInfoPane" layoutX="711.0" prefHeight="790.0" prefWidth="219.0">
       <children>
          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="780.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="219.0" />
-         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="-20.0" layoutY="200.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Type">
-            <font>
-               <Font name="Microsoft Tai Le" size="12.0" />
-            </font>
-         </TextField>
-         <MFXTextField fx:id="reqTypeBox" floatMode="DISABLED" layoutX="64.0" layoutY="194.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
+         <VBox layoutX="-20.0" layoutY="150.0" spacing="50.0">
+            <children>
+               <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Type:">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="12.0" />
+                  </font>
+               </TextField>
+               <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Location:">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="12.0" />
+                  </font>
+               </TextField>
+               <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Status:">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="12.0" />
+                  </font>
+               </TextField>
+               <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Nurse:">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="12.0" />
+                  </font>
+               </TextField>
+            </children>
+         </VBox>
+         <VBox layoutX="64.0" layoutY="152.0" spacing="53.0">
+            <children>
+               <MFXTextField fx:id="reqTypeBox" floatMode="DISABLED" prefHeight="15.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+               <MFXTextField fx:id="reqLocationBox" floatMode="DISABLED" prefHeight="7.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+               <MFXTextField fx:id="reqStatusBox" floatMode="DISABLED" prefHeight="11.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+               <MFXTextField fx:id="reqNurseBox" floatMode="DISABLED" prefHeight="13.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+            </children>
+         </VBox>
          <MFXButton fx:id="reqSubmit" layoutX="110.0" layoutY="675.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />
          <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Submit" />
-         <MFXButton layoutX="1.0" layoutY="109.0" onAction="#left" prefHeight="56.0" prefWidth="54.0" text="&lt;">
+         <MFXButton layoutX="1.0" layoutY="69.0" onAction="#left" prefHeight="56.0" prefWidth="54.0" text="&lt;">
             <font>
                <Font size="30.0" />
             </font>
          </MFXButton>
-         <MFXButton layoutX="161.0" layoutY="109.0" onAction="#right" prefHeight="56.0" prefWidth="54.0" text="&gt;">
+         <MFXButton layoutX="161.0" layoutY="69.0" onAction="#right" prefHeight="56.0" prefWidth="54.0" text="&gt;">
             <font>
                <Font size="30.0" />
             </font>
          </MFXButton>
-         <MFXTextField fx:id="currReqDisplay" allowEdit="false" floatMode="DISABLED" layoutX="43.0" layoutY="116.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
-         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="-20.0" layoutY="261.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Location">
-            <font>
-               <Font name="Microsoft Tai Le" size="12.0" />
-            </font>
-         </TextField>
-         <MFXTextField fx:id="reqLocationBox" floatMode="DISABLED" layoutX="64.0" layoutY="255.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
-         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="-20.0" layoutY="324.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Status">
-            <font>
-               <Font name="Microsoft Tai Le" size="12.0" />
-            </font>
-         </TextField>
-         <MFXTextField fx:id="reqStatusBox" floatMode="DISABLED" layoutX="64.0" layoutY="318.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
-         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="-20.0" layoutY="388.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Nurse">
-            <font>
-               <Font name="Microsoft Tai Le" size="12.0" />
-            </font>
-         </TextField>
-         <MFXTextField fx:id="reqNurseBox" floatMode="DISABLED" layoutX="64.0" layoutY="382.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
-         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="58.0" layoutY="447.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Description">
-            <font>
-               <Font name="Microsoft Tai Le" size="12.0" />
-            </font>
-         </TextField>
-         <JFXTextArea fx:id="reqDescriptionBox" layoutX="19.0" layoutY="491.0" prefHeight="151.0" prefWidth="179.0" text="No Description Provided" />
+         <MFXTextField fx:id="currReqDisplay" allowEdit="false" floatMode="DISABLED" layoutX="43.0" layoutY="83.0" prefHeight="12.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+         <JFXTextArea fx:id="reqDescriptionBox" layoutX="19.0" layoutY="491.0" prefHeight="151.0" prefWidth="179.0" style="-fx-font-size: 12;" text="No Description Provided" />
+         <Label layoutX="13.0" layoutY="480.0" text="Description:" />
       </children>
    </Pane>
-   <TextField fx:id="selectorBoxText" editable="false" layoutX="787.0" layoutY="35.0" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: FFFFFFFF;" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="35.0" />
-   <MFXLegacyComboBox fx:id="modeBox" layoutX="770.0" layoutY="35.0" lineStrokeWidth="0.0" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: 00000011;" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="35.0" />
+   <TextField fx:id="selectorBoxText1" editable="false" layoutX="787.0" layoutY="35.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: FFFFFFFF;" />
+   <MFXLegacyComboBox fx:id="modeBox" layoutX="770.0" layoutY="35.0" lineStrokeWidth="0.0" prefHeight="25.0" prefWidth="127.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="35.0" />
+   <TextField fx:id="selectorBoxText" editable="false" layoutX="787.0" layoutY="35.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: FFFFFFFF;" AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="35.0" />
 </AnchorPane>
