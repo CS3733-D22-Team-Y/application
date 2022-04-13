@@ -4,8 +4,11 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.Messaging.MessageService;
+import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
+import edu.wpi.cs3733.d22.teamY.model.Employee;
 import edu.wpi.cs3733.d22.teamY.model.FloralRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -76,6 +79,9 @@ public class FloralRequestController {
             additionalNotes,
             bouquetTypeSelected));
     System.out.println("Saved FloralRequest");
+
+    Employee to = (Employee) DBManager.getAll(Employee.class).get(0);
+    MessageService.sendMessage("Hello?", PersonalSettings.currentEmployee, to);
   }
 
   // Called when the submit button is pressed.
