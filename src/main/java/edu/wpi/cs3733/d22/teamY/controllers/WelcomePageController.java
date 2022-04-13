@@ -290,6 +290,11 @@ public class WelcomePageController {
     DBUtils.switchDBType(dbMenu.getValue());
   }
 
+  @FXML
+  void databaseSwitch() {
+    DBUtils.switchDBType(dbMenu.getValue());
+  }
+
   public void testingButton() throws IOException {
     loginAnimation();
   }
