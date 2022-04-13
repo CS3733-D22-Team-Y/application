@@ -119,35 +119,34 @@ public class MedicalEquipmentRequestController {
   void submitButton() throws IOException {
     // Checks if a bouquet choice has been made
 
-    boolean failed = false;
-    if (RequestControllerUtil.isRadioButtonSelected(reclinerRadioButton)) {
-      if (DBUtils.getAvailableEquipment("RECLINER").getKey() == 0) {
-        errorLabel.setText("Equipment not available.");
-        failed = true;
-      }
-    } else if (RequestControllerUtil.isRadioButtonSelected(infusionPumpRadioButton)) {
-      if (DBUtils.getAvailableEquipment("PUMP").getKey() == 0) {
-        errorLabel.setText("Equipment not available.");
-        failed = true;
-      }
-    } else if (RequestControllerUtil.isRadioButtonSelected(xrayRadioButton)) {
-      if (DBUtils.getAvailableEquipment("XRAY").getKey() == 0) {
-        errorLabel.setText("Equipment not available.");
-        failed = true;
-      }
-    } else if (RequestControllerUtil.isRadioButtonSelected(bedRadioButton)) {
-      if (DBUtils.getAvailableEquipment("BED").getKey() == 0) {
-        errorLabel.setText("Equipment not available.");
-        failed = true;
-      }
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/MedicalEquipmentRequest.fxml");
-    } else {
-      errorLabel.setText("Please select an equipment option.");
-      failed = true;
-    }
+    if (roomsHiddenField.getText().equals("") || input_AssignedNurse.getText().equals("")) {
+      errorLabel.setText("Please enter all required fields.");
 
-    if (!failed) {
+    } else if (!RequestControllerUtil.isRadioButtonSelected(
+        bedRadioButton, xrayRadioButton, infusionPumpRadioButton, reclinerRadioButton)) {
+      errorLabel.setText("Please select an equipment option.");
+
+    } else if (RequestControllerUtil.isRadioButtonSelected(reclinerRadioButton)
+        && DBUtils.getAvailableEquipment("RECLINER").getKey() == 0) {
+
+      errorLabel.setText("Equipment not available.");
+
+    } else if (RequestControllerUtil.isRadioButtonSelected(infusionPumpRadioButton)
+        && DBUtils.getAvailableEquipment("PUMP").getKey() == 0) {
+
+      errorLabel.setText("Equipment not available.");
+
+    } else if (RequestControllerUtil.isRadioButtonSelected(xrayRadioButton)
+        && DBUtils.getAvailableEquipment("XRAY").getKey() == 0) {
+
+      errorLabel.setText("Equipment not available.");
+
+    } else if (RequestControllerUtil.isRadioButtonSelected(bedRadioButton)
+        && DBUtils.getAvailableEquipment("BED").getKey() == 0) {
+
+      errorLabel.setText("Equipment not available.");
+
+    } else {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
@@ -156,6 +155,11 @@ public class MedicalEquipmentRequestController {
           input_AdditionalNotes.getText(),
           getEquipmentType());
       errorLabel.setText("");
+
+      SceneLoading.loadPopup(
+          "views/popups/ReqSubmitted.fxml", "views/requestTypes/MedicalEquipmentRequest.fxml");
+
+      resetAllFields();
     }
   }
 

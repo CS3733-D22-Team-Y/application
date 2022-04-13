@@ -5,6 +5,7 @@ import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.LaundryRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
@@ -81,7 +82,7 @@ public class LaundryRequestController {
     // Checks if a lab result choice has been made.
     if (RequestControllerUtil.isRadioButtonSelected(
             hazardousRadioButton, linensRadioButton, scrubsRadioButton)
-        && !Objects.equals(roomsComboBox.getValue(), "")
+        && !Objects.equals(roomsHiddenField.getText(), "")
         && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
@@ -90,8 +91,10 @@ public class LaundryRequestController {
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");
+      SceneUtil.sidebar.mainPage();
       SceneLoading.loadPopup(
           "views/popups/ReqSubmitted.fxml", "views/requestTypes/LaundryRequest.fxml");
+      resetAllFields();
     } else {
       errorLabel.setText("Missing Required Fields.");
     }
