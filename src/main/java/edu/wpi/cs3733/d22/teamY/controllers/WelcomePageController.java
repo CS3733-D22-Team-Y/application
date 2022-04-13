@@ -275,19 +275,7 @@ public class WelcomePageController {
 
   @FXML
   void databaseSwitch() {
-    switch (dbMenu.getValue()) {
-      case "Embedded":
-        DBUtils.switchDBType(dbMenu.getValue());
-        break;
-      case "Client-Server":
-        DBUtils.switchDBType(dbMenu.getValue());
-        break;
-      case "Google Cloud":
-        DBUtils.switchDBType(dbMenu.getValue());
-        break;
-      default:
-        DBUtils.switchDBType("Embedded");
-    }
+    DBUtils.switchDBType(dbMenu.getValue());
   }
 
   public void testingButton() throws IOException {
