@@ -67,15 +67,15 @@
             </font>
         </Label>
         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="525.0" layoutX="10.0" layoutY="255.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
-        <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="15.0" layoutY="260.0" prefHeight="515.0" prefWidth="390.0" promptText="Additional Text..." styleClass="requestInput" unFocusColor="#ffffff00">
-            <font>
-                <Font name="Calibri" size="20.0" />
-            </font></JFXTextArea>
         <MFXTextField fx:id="input_AssignedNurse" floatMode="DISABLED" layoutX="160.0" layoutY="150.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
             <font>
                 <Font name="Calibri" size="20.0" />
             </font>
         </MFXTextField>
+        <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="15.0" layoutY="260.0" prefHeight="515.0" prefWidth="390.0" promptText="Additional Text..." styleClass="requestInput" unFocusColor="#ffffff00">
+            <font>
+                <Font name="Calibri" size="20.0" />
+            </font></JFXTextArea>
         <MFXButton computeRadiusMultiplier="false" layoutX="710.0" layoutY="730.0" onAction="#resetAllFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" styleClass="requestButton" text="Reset" textFill="WHITE">
             <font>
                 <Font name="Calibri Bold" size="20.0" />
@@ -161,8 +161,8 @@
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <TextField fx:id="restrictionsHiddenField" layoutX="520.0" layoutY="600.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="requestInput" />
-      <JFXComboBox fx:id="dietaryRestrictionsSelectionBox" layoutX="520.0" layoutY="600.0" onAction="#setRestrictionText" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput" />
+      <TextField fx:id="restrictionsHiddenField" layoutX="520.0" layoutY="600.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
+      <JFXComboBox fx:id="dietaryRestrictionsSelectionBox" layoutX="520.0" layoutY="600.0" onAction="#setRestrictionText" prefHeight="42.0" prefWidth="250.0" styleClass="inputField" />
       <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="310.0" prefWidth="300.0" styleClass="subtitle" text="Side" textAlignment="RIGHT">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -246,7 +246,7 @@
             <Font name="Calibri" size="15.0" />
          </font>
       </JFXTextArea>
-      <TextField fx:id="roomsHiddenField" layoutX="160.0" layoutY="200.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="requestInput" />
-      <JFXComboBox fx:id="roomsComboBox" layoutX="160.0" layoutY="200.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput" unFocusColor="#ffffff00" />
+      <TextField fx:id="roomsHiddenField" layoutX="160.0" layoutY="200.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
+      <JFXComboBox fx:id="roomsComboBox" layoutX="160.0" layoutY="200.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="inputField" unFocusColor="#ffffff00" />
     </children>
 </AnchorPane>

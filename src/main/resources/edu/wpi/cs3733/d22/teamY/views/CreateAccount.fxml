@@ -89,22 +89,22 @@
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <MFXTextField fx:id="username" floatMode="DISABLED" layoutX="325.0" layoutY="437.0" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
+      <MFXTextField fx:id="username" floatMode="DISABLED" layoutX="325.0" layoutY="437.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField fx:id="legalName" floatMode="DISABLED" layoutX="325.0" layoutY="509.0" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
+      <MFXTextField fx:id="legalName" floatMode="DISABLED" layoutX="325.0" layoutY="509.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField fx:id="prefName" floatMode="DISABLED" layoutX="325.0" layoutY="581.0" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
+      <MFXTextField fx:id="prefName" floatMode="DISABLED" layoutX="325.0" layoutY="581.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField fx:id="role" floatMode="DISABLED" layoutX="325.0" layoutY="653.0" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
+      <MFXTextField fx:id="role" floatMode="DISABLED" layoutX="325.0" layoutY="653.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
          <font>
             <Font size="20.0" />
          </font>
@@ -134,22 +134,22 @@
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </MFXButton>
-      <MFXTextField fx:id="dob" floatMode="DISABLED" layoutX="874.0" layoutY="438.0" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
+      <MFXTextField fx:id="dob" floatMode="DISABLED" layoutX="874.0" layoutY="438.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField fx:id="pronouns" floatMode="DISABLED" layoutX="874.0" layoutY="510.0" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
+      <MFXTextField fx:id="pronouns" floatMode="DISABLED" layoutX="874.0" layoutY="510.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField fx:id="phone" floatMode="DISABLED" layoutX="874.0" layoutY="582.0" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
+      <MFXTextField fx:id="phone" floatMode="DISABLED" layoutX="874.0" layoutY="582.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField fx:id="email" floatMode="DISABLED" layoutX="874.0" layoutY="654.0" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
+      <MFXTextField fx:id="email" floatMode="DISABLED" layoutX="874.0" layoutY="654.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
          <font>
             <Font size="20.0" />
          </font>
