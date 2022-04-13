@@ -155,27 +155,55 @@
             <Rectangle fx:id="logoutHiddenRect" fill="#2e2e2eef" height="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
          </children>
       </VBox>
-      <VBox fx:id="bottomSidebarText" layoutX="71.0" layoutY="600.0">
+      <VBox fx:id="bottomSidebarText" layoutX="20.0" layoutY="600.0">
          <children>
             <Label fx:id="homeLabel" graphicTextGap="0.0" styleClass="sidebarBottomOptions" text="Home" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons/homeIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
             <Label fx:id="inboxLabel" graphicTextGap="0.0" styleClass="sidebarBottomOptions" text="Inbox" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons/mailIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
             <Label fx:id="profileLabel" graphicTextGap="0.0" styleClass="sidebarBottomOptions" text="My Profile" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons/profileIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
             <Label fx:id="logoutLabel" graphicTextGap="0.0" styleClass="sidebarBottomOptions" text="Logout" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons/logoutIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
          </children>
       </VBox>
