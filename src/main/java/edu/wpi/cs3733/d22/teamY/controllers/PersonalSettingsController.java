@@ -1,10 +1,12 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.model.Employee;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
+import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
@@ -18,7 +20,7 @@ public class PersonalSettingsController {
   @FXML MFXTextField pronouns;
   @FXML MFXTextField phone;
 
-  @FXML MFXButton edit, apply, cancel;
+  @FXML MFXButton edit, apply, cancel, lightModeButton, darkModeButton;
 
   AnchorPane sidebar = null;
   public static Employee currentEmployee =
@@ -132,5 +134,25 @@ public class PersonalSettingsController {
   public void updatePhone() {
     PersonalSettings.currentEmployee.setPhone(phone.getText());
     DBManager.update(PersonalSettings.currentEmployee);
+  }
+
+  @FXML
+  void darkMode() {
+    System.out.println("give box");
+    darkModeButton
+        .getScene()
+        .getStylesheets()
+        .add(
+            Objects.requireNonNull(App.class.getResource("views/css/Theme1.css")).toExternalForm());
+  }
+
+  @FXML
+  void lightMode() {
+    System.out.println("no box");
+    lightModeButton
+        .getScene()
+        .getStylesheets()
+        .remove(
+            Objects.requireNonNull(App.class.getResource("views/css/Theme1.css")).toExternalForm());
   }
 }
