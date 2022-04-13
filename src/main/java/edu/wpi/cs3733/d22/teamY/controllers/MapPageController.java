@@ -471,9 +471,7 @@ public class MapPageController {
                     });
               });
       ;
-      System.out.println("FUCCCKCKCKCKCKCKCKCKCMCKn");
       mapComponent.setContent(newFloor.image, List.of(), mapElements);
-      System.out.println("FUCCCKCKCKCKCKCKCKCKCMCKn");
 
       // Gets all locations on the newly selected floor
       //      DBUtils.getLocationsOnFloor(newFloor.dbKey)

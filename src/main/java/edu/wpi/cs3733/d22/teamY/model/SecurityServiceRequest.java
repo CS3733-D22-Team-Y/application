@@ -7,7 +7,7 @@ import javax.persistence.Table;
 @Table(name = "SECURITYSERVICEREQUESTS")
 public class SecurityServiceRequest extends Requestable implements StringArrayConv {
   private String requestTypeSelected;
-  private String requestPriority;
+  private String securityRequestPriority;
 
   public SecurityServiceRequest() {}
 
@@ -19,9 +19,9 @@ public class SecurityServiceRequest extends Requestable implements StringArrayCo
       String additionalNotes,
       String requestTypeSelected,
       String requestPriority) {
-    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus, 5);
+    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus);
     this.requestTypeSelected = requestTypeSelected;
-    this.requestPriority = requestPriority;
+    this.securityRequestPriority = requestPriority;
   }
 
   public SecurityServiceRequest(
@@ -31,7 +31,7 @@ public class SecurityServiceRequest extends Requestable implements StringArrayCo
       RequestStatus requestStatus,
       String additionalNotes,
       String requestTypeSelected,
-      String requestPriority) {
+      String securityRequestPriority) {
     init(
         requestNum,
         roomID,
@@ -39,7 +39,7 @@ public class SecurityServiceRequest extends Requestable implements StringArrayCo
         requestStatus,
         additionalNotes,
         requestTypeSelected,
-        requestPriority);
+        securityRequestPriority);
   }
 
   @Override
@@ -51,7 +51,7 @@ public class SecurityServiceRequest extends Requestable implements StringArrayCo
       Integer.toString(getRequestStatus().ordinal()),
       getAdditionalNotes(),
       requestTypeSelected,
-      requestPriority
+      securityRequestPriority
     };
   }
 
@@ -67,9 +67,24 @@ public class SecurityServiceRequest extends Requestable implements StringArrayCo
         args[6]);
   }
 
-  @Override
   public int getRequestPriority() {
-    return 5;
+    switch (securityRequestPriority) {
+      case "mostUrgent":
+        return 10;
+      case "urgent":
+        return 9;
+      case "lowPriority":
+        return 8;
+      default:
+        break;
+    }
+
+    return 10;
+  }
+
+  @Override
+  public String getSpecificText() {
+    return "Type: " + requestTypeSelected;
   }
 
   public String getRequestTypeSelected() {
@@ -78,6 +93,14 @@ public class SecurityServiceRequest extends Requestable implements StringArrayCo
 
   public void setRequestTypeSelected(String requestTypeSelected) {
     this.requestTypeSelected = requestTypeSelected;
+  }
+
+  public String getSecurityRequestPriority() {
+    return securityRequestPriority;
+  }
+
+  public void setSecurityRequestPriority(String priority) {
+    this.securityRequestPriority = priority;
   }
 
   @Override

@@ -28,7 +28,7 @@ public class LabRequest extends Requestable implements StringArrayConv {
       RequestStatus requestStatus,
       String additionalNotes,
       String resultType) {
-    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus, 5);
+    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus);
     this.resultType = resultType;
   }
 
@@ -51,7 +51,7 @@ public class LabRequest extends Requestable implements StringArrayConv {
       getAssignedNurse(),
       Integer.toString(getRequestStatus().ordinal()),
       getAdditionalNotes(),
-      String.valueOf(getRequestPriority())
+      resultType
     };
   }
 
@@ -67,7 +67,12 @@ public class LabRequest extends Requestable implements StringArrayConv {
 
   @Override
   public int getRequestPriority() {
-    return 5;
+    return 6;
+  }
+
+  @Override
+  public String getSpecificText() {
+    return "Result Type: " + resultType;
   }
 
   public String getResultType() {

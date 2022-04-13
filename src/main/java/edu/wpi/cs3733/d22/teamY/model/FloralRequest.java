@@ -22,7 +22,7 @@ public class FloralRequest extends Requestable implements StringArrayConv {
       RequestStatus requestStatus,
       String additionalNotes,
       String bouquetTypeSelected) {
-    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus, 5);
+    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus);
     this.bouquetTypeSelected = bouquetTypeSelected;
   }
 
@@ -63,7 +63,12 @@ public class FloralRequest extends Requestable implements StringArrayConv {
 
   @Override
   public int getRequestPriority() {
-    return 5;
+    return 1;
+  }
+
+  @Override
+  public String getSpecificText() {
+    return "Bouquet Type: " + bouquetTypeSelected;
   }
 
   public String getBouquetTypeSelected() {

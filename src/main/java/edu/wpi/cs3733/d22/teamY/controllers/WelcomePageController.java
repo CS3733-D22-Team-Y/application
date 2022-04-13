@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.Auth;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.RequestControllerUtil;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
@@ -62,6 +63,8 @@ public class WelcomePageController {
   @FXML
   public void mainPage() throws IOException {
     SceneUtil.welcomePage = this;
+    RequestControllerUtil.initialize();
+
     FXMLLoader root = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
     App.getInstance().setScene(new Scene(root.load()));
     SideBarController controller = root.getController();

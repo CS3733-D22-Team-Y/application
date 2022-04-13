@@ -196,8 +196,8 @@ public class DBUtils {
         s.createQuery("from Location where nodeID = :nodeID").setParameter("nodeID", nodeID).list();
     s.close();
 
-    if (tempLocations.size() > 1) {
-      return null;
+    if (tempLocations.size() != 1) {
+      return "null";
     }
 
     return (tempLocations.get(0).getShortName());

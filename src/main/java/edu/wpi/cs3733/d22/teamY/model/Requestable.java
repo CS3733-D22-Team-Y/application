@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
+import edu.wpi.cs3733.d22.teamY.DBUtils;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -12,21 +13,18 @@ public abstract class Requestable {
   private String assignedNurse;
   private String additionalNotes;
   private RequestStatus requestStatus;
-  private int requestPriority;
 
   protected void initParent(
       String requestNum,
       String roomID,
       String assignedNurse,
       String additionalNotes,
-      RequestStatus status,
-      int priority) {
+      RequestStatus status) {
     this.requestNum = requestNum;
     this.roomID = roomID;
     this.assignedNurse = assignedNurse;
     this.additionalNotes = additionalNotes;
     this.requestStatus = status;
-    this.requestPriority = priority;
   }
 
   // region Getters/Setters
@@ -69,10 +67,23 @@ public abstract class Requestable {
   public void setAdditionalNotes(String additionalNotes) {
     this.additionalNotes = additionalNotes;
   }
-
   // endregion
 
   public abstract String getLocID();
 
   public abstract int getRequestPriority();
+
+  public abstract String getSpecificText();
+
+  public String getInfoBoxText() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("ID#: ")
+        .append(requestNum)
+        .append("\nRoom: ")
+        .append(DBUtils.convertIDToName(roomID))
+        .append("\n");
+    sb.append(getSpecificText()).append("\n\n").append(additionalNotes);
+
+    return sb.toString();
+  }
 }

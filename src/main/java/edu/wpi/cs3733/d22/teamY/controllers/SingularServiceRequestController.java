@@ -15,14 +15,19 @@ public class SingularServiceRequestController {
 
   @FXML private Group colorGizmo;
 
-  public void populateFromRequestable(Requestable req) {}
+  private String additional;
+
+  public void populateFromRequestable(Requestable req) {
+    additional = req.getInfoBoxText();
+    setColor(priorityColor(req.getRequestPriority()));
+  }
 
   @FXML
   void displayDetailedInfo() {
-    SceneUtil.serviceRequests.fillInfoField("Tada!!!!!!!\n\nYou clicked a button. Big whoop");
+    SceneUtil.serviceRequests.fillInfoField(additional);
   }
 
-  public void setColor(Color color) {
+  private void setColor(Color color) {
     for (Node child : colorGizmo.getChildren()) {
       ((Shape) child).setFill(color);
     }

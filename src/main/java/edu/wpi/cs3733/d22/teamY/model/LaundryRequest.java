@@ -17,7 +17,7 @@ public class LaundryRequest extends Requestable implements StringArrayConv {
       RequestStatus requestStatus,
       String additionalNotes,
       String laundryTypeSelected) {
-    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus, 5);
+    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus);
     this.laundryTypeSelected = laundryTypeSelected;
   }
 
@@ -56,7 +56,12 @@ public class LaundryRequest extends Requestable implements StringArrayConv {
 
   @Override
   public int getRequestPriority() {
-    return 5;
+    return 3;
+  }
+
+  @Override
+  public String getSpecificText() {
+    return "Laundry Type: " + laundryTypeSelected;
   }
 
   public String getLaundryTypeSelected() {

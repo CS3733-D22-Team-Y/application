@@ -27,7 +27,7 @@ public class MiscRequest extends Requestable implements StringArrayConv {
       RequestStatus requestStatus,
       String additionalNotes,
       String requestName) {
-    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus, 5);
+    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus);
     this.requestName = requestName;
   }
 
@@ -62,6 +62,11 @@ public class MiscRequest extends Requestable implements StringArrayConv {
   @Override
   public int getRequestPriority() {
     return 5;
+  }
+
+  @Override
+  public String getSpecificText() {
+    return "Request: " + requestName;
   }
 
   public String getRequestName() {

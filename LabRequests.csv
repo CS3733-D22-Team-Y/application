@@ -1,3 +1,3 @@
-requestNum,roomID,requestStatus,assignedNurse,additionalNotes,resultType
-001,room01,98981,0,none,bloodwork
-002,room02,07715,1,test,antibody
+requestNum,roomID,assignedNurse,requestStatus,additionalNotes,resultType
+001,FHALL00101,98981,0,none,bloodwork
+002,HBATH00203,07715,1,test,antibody

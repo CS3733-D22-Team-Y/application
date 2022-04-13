@@ -24,7 +24,7 @@ public class MealRequest extends Requestable implements StringArrayConv {
       String sideChoice,
       String allergies,
       String specialInstructions) {
-    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus, 5);
+    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus);
     this.mainChoice = mainChoice;
     this.sideChoice = sideChoice;
     this.allergies = allergies;
@@ -85,6 +85,17 @@ public class MealRequest extends Requestable implements StringArrayConv {
   @Override
   public int getRequestPriority() {
     return 5;
+  }
+
+  @Override
+  public String getSpecificText() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Entree: ").append(mainChoice);
+    sb.append("Side: ").append(sideChoice);
+    sb.append("Dietary Restriction: ").append(allergies);
+    sb.append("Special Instructions: ").append(specialInstructions);
+
+    return sb.toString();
   }
 
   public String getMainChoice() {

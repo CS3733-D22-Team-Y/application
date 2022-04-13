@@ -24,7 +24,7 @@ public class MedEquipReq extends Requestable implements StringArrayConv {
       RequestStatus requestStatus,
       String additionalNotes,
       String equipmentTypeSelected) {
-    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus, 5);
+    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus);
     this.equipmentTypeSelected = equipmentTypeSelected;
   }
 
@@ -64,6 +64,11 @@ public class MedEquipReq extends Requestable implements StringArrayConv {
   @Override
   public int getRequestPriority() {
     return 5;
+  }
+
+  @Override
+  public String getSpecificText() {
+    return "Equipment Type: " + equipmentTypeSelected;
   }
 
   public String getEquipmentTypeSelected() {

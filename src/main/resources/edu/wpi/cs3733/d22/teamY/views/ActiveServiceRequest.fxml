@@ -51,7 +51,7 @@
       <Accordion layoutX="72.0" layoutY="400.0" />
       <MFXScrollPane fx:id="scrollBox" layoutX="14.0" layoutY="85.0" prefHeight="689.0" prefWidth="415.0">
          <content>
-            <VBox fx:id="requestBox" prefHeight="1000.0" prefWidth="400.0" />
+            <VBox fx:id="requestBox" prefHeight="10.0" prefWidth="400.0" />
          </content>
       </MFXScrollPane>
       <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
