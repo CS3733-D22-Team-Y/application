@@ -509,6 +509,19 @@ public class MapPageController {
                       exit();
                       switchMap(newFloor, mapMode);
                     });
+
+                reqSubmit.setOnMouseClicked(
+                    e -> {
+                      T req = requests.get(currReq);
+                      req.setAssignedNurse(reqNurseBox.getText());
+                      req.setStatus(reqStatusBox.getText());
+
+                      DBManager.update(req);
+
+                      System.out.println("Submit");
+                    }
+                    );
+
               });
       ;
       System.out.println("FUCCCKCKCKCKCKCKCKCKCMCKn");
