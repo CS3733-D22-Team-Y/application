@@ -56,7 +56,7 @@ public class CreateAccountController {
               String.valueOf(username.getText().hashCode()),
               String.valueOf(defaultPass.hashCode()),
               Integer.parseInt(defaultAccess),
-              null,
+              "email: " + email.getText() + ";",
               prefName.getText(),
               email.getText(),
               phone.getText(),
