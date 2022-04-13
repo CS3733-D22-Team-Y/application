@@ -60,22 +60,22 @@
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+      <MFXTextField fx:id="legalName" editable="false" floatMode="DISABLED" layoutX="230.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+      <MFXTextField fx:id="prefName" editable="false" floatMode="DISABLED" layoutX="230.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+      <MFXTextField fx:id="title" editable="false" floatMode="DISABLED" layoutX="230.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField floatMode="DISABLED" layoutX="230.0" layoutY="661.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+      <MFXTextField fx:id="email" editable="false" floatMode="DISABLED" layoutX="230.0" layoutY="661.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
          <font>
             <Font size="20.0" />
          </font>
@@ -95,27 +95,32 @@
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+      <MFXTextField fx:id="dob" editable="false" floatMode="DISABLED" layoutX="690.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+      <MFXTextField fx:id="pronouns" editable="false" floatMode="DISABLED" layoutX="690.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXTextField floatMode="DISABLED" layoutX="690.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+      <MFXTextField fx:id="phone" editable="false" floatMode="DISABLED" layoutX="690.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
          <font>
             <Font size="20.0" />
          </font>
       </MFXTextField>
-      <MFXButton layoutX="810.0" layoutY="720.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" styleClass="requestButton" text="Apply" textFill="WHITE">
+      <MFXButton fx:id="apply" layoutX="810.0" layoutY="720.0" onAction="#updateFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" styleClass="requestButton" text="Apply" textFill="WHITE" visible="false">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </MFXButton>
-      <MFXButton layoutX="700.0" layoutY="720.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" styleClass="requestButton" text="Cancel" textFill="WHITE">
+      <MFXButton fx:id="cancel" layoutX="700.0" layoutY="720.0" onAction="#cancelEdits" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" styleClass="requestButton" text="Cancel" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+      </MFXButton>
+      <MFXButton fx:id="edit" layoutX="810.0" layoutY="720.0" onAction="#editMode" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" styleClass="requestButton" text="Edit" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
