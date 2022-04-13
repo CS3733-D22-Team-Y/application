@@ -127,6 +127,12 @@ public class MapPageController {
   @FXML private TextField l5Rec;
   @FXML private TextField l5X;
 
+  @FXML MFXTextField epuipID;
+  @FXML MFXTextField equipLocation;
+  @FXML MFXTextField equipType;
+  @FXML MFXTextField equipClean;
+  @FXML Pane equipInfoPane;
+
   private TextField[] reqNumLabels;
   private TextField[] bedLabels;
   private TextField[] pumpLabels;
@@ -437,6 +443,8 @@ public class MapPageController {
                         locationShort.setText(l.getShortName());
                         locationLong.setText(l.getLongName());
                         locationID.setText(String.valueOf(l.getNodeID()));
+                      } else if (modeBox.getValue().equals("Equipment")) {
+                        equipInfoPane.setVisible(true);
                       }
                     });
 
