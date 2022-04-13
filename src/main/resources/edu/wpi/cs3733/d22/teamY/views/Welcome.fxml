@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXToggleButton?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
 <?import io.github.palexdev.materialfx.controls.MFXProgressSpinner?>
@@ -245,5 +246,66 @@
                 <TextField fx:id="codeEntryField" layoutX="69.0" layoutY="162.0" onAction="#codeChecker" prefHeight="50.0" prefWidth="236.0" />
             </children>
         </Pane>
+      <Label layoutX="1010.0" layoutY="771.0">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.09917154163122177" green="0.7696312665939331" blue="0.9736841917037964" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="984.0" layoutY="759.0" text="Embedded">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="13.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.5681817603833748" endY="1.0" startX="0.5643939542951006" startY="0.22348483403523764">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="1106.0" layoutY="759.0" text="Client-Server">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="13.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.5681817603833748" endY="1.0" startX="0.5643939542951006" startY="0.22348483403523764">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <JFXToggleButton fx:id="dbSwitcherToggle" layoutX="1043.0" layoutY="737.0" onAction="#databaseSwitch" prefHeight="28.0" prefWidth="79.0" textOverrun="CLIP" />
     </children>
 </AnchorPane>

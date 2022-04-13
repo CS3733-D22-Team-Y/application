@@ -3,6 +3,7 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 import static org.apache.commons.lang3.RandomStringUtils.*;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXToggleButton;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.Auth;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
@@ -50,6 +51,8 @@ public class WelcomePageController {
   @FXML Pane faSmsPane;
   @FXML JFXButton faSmsButton;
   @FXML Label codeEntryLabel;
+  @FXML JFXToggleButton dbSwitcherToggle;
+
   private boolean lockOut = false;
 
   int maxAttempts = 5;
@@ -263,6 +266,11 @@ public class WelcomePageController {
                   }
                 }));
     loginTimeline.play();
+  }
+
+  @FXML
+  void databaseSwitch() {
+    DBUtils.switchDBType(dbSwitcherToggle.isSelected());
   }
 
   public void testingButton() throws IOException {
