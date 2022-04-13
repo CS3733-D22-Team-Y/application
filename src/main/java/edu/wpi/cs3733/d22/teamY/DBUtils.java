@@ -211,9 +211,9 @@ public class DBUtils {
   /**
    * Changes an employee's password.
    *
-   * @param username the username of the employee
-   * @param oldPassword the old password of the employee
-   * @param newPassword the new password of the employee
+   * @param username the username of the employee | hash in string form
+   * @param oldPassword the old password of the employee | hash in string form
+   * @param newPassword the new password of the employee | new pass in plain text
    * @return String relating to the success of the change
    */
   @SuppressWarnings("unchecked")
@@ -257,6 +257,11 @@ public class DBUtils {
     DBUtils.completeCSVRefresh();
   }
 
+  /**
+   * Checks if logged in user has the default password
+   * @param passwordHash hashed pass INTEGER
+   * @return true if users' pass is the default
+   */
   public static boolean checkDefaultPassword(int passwordHash) {
     String defaultPass = "1234";
     return (passwordHash == defaultPass.hashCode());

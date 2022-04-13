@@ -22,9 +22,9 @@ public class SessionManager {
   }
 
   /**
-   * Changes Type of Derby Server
+   * Changes DB Connection
    *
-   * @param type false For Embedded, true for Client-Server
+   * @param type string of the DB type to switch to. Handled by front end.
    */
   public static void switchType(String type) {
     switch (type) {
