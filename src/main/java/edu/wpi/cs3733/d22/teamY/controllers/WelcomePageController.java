@@ -141,7 +141,7 @@ public class WelcomePageController {
     if (deduct) {
       if (attCount >= maxAttempts) {
         lockOut = true;
-        attemptsRemaining.setText("Too many login attempts. Try again later.");
+        attemptsRemaining.setText("Too many login attempts.\nTry again later.");
         ft2.setToValue(1.0);
       } else {
         attemptsRemaining.setText(
