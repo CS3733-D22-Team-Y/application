@@ -6,6 +6,7 @@ import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.SecurityServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -103,17 +104,20 @@ public class SecurityRequestController {
   void submitButton() throws IOException {
     Boolean typeSelected =
         RequestControllerUtil.isRadioButtonSelected(
-            disruptionRadioButton, theftRadioButton, unwantedGuestRadioButton);
+            disruptionRadioButton, theftRadioButton, unwantedGuestRadioButton, otherRadioButton);
 
     Boolean prioritySelected =
         RequestControllerUtil.isRadioButtonSelected(
             urgentRadioButton, mostUrgentRadioButton, lowPriorityRadioButton);
 
     Boolean allFields =
-        !Objects.equals(roomsComboBox.getValue(), "")
+        !Objects.equals(roomsHiddenField.getText(), "")
             && !Objects.equals(input_AssignedNurse.getText(), "");
 
-    if (typeSelected && prioritySelected && allFields) {
+    if (RequestControllerUtil.isRadioButtonSelected(otherRadioButton)
+        && Objects.equals(input_OtherText.getText(), "")) {
+      errorLabel.setText("Missing Required Fields.");
+    } else if (typeSelected && prioritySelected && allFields) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
@@ -122,12 +126,15 @@ public class SecurityRequestController {
           getRequestType(),
           getRequestPriority());
       errorLabel.setText("");
+      SceneUtil.sidebar.mainPage();
       SceneLoading.loadPopup(
           "views/popups/ReqSubmitted.fxml", "views/requestTypes/SecurityRequest.fxml");
+      resetAllFields();
+
     } else {
       // Print error messages
       if (typeSelected || prioritySelected || allFields || !allFields) {
-        errorLabel.setText("Missing Required Fields.");
+        errorLabel.setText("please enter required fields.");
       }
     }
   }

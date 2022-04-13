@@ -5,6 +5,7 @@ import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.MealRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
@@ -116,7 +117,7 @@ public class MealRequestController {
             pizzaRadioButton, burgerRadioButton, saladRadioButton);
 
     Boolean allFields =
-        !Objects.equals(roomsComboBox.getValue(), "")
+        !Objects.equals(roomsHiddenField.getText(), "")
             && !Objects.equals(input_AssignedNurse.getText(), "");
 
     Boolean sideSelected =
@@ -135,8 +136,11 @@ public class MealRequestController {
           dietaryRestrictionsSelectionBox.getValue(),
           input_AdditionalNotes.getText());
       errorLabel.setText("");
+      SceneUtil.sidebar.mainPage();
+
       SceneLoading.loadPopup(
           "views/popups/ReqSubmitted.fxml", "views/requestTypes/MealRequest.fxml");
+      resetAllFields();
     } else {
       if (allFields || sideSelected || mealSelected) {
         errorLabel.setText("Missing Required Fields");
