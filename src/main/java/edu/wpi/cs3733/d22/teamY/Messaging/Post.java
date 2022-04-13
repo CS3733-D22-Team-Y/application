@@ -14,6 +14,18 @@ public class Post {
     this.recipients = recipients;
   }
 
+  public Post(String author, String recipients, String message) {
+    this.author = author;
+    this.message = message;
+    this.time = generateTime();
+    this.recipients = recipients;
+  }
+
+  //returns ms since epoch
+  public String generateTime() {
+    return System.currentTimeMillis() + "";
+  }
+
   public Post() {}
 
   @Override
@@ -34,7 +46,6 @@ public class Post {
         + '}';
   }
 
-
   public String getAuthor() {
     return author;
   }
@@ -50,5 +61,4 @@ public class Post {
   public String getRecipients() {
     return recipients;
   }
-
 }

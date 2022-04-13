@@ -10,14 +10,15 @@ public class MessageService {
   private MessageService() {}
 
   public static void sendMessage(String message, Employee from, Employee... to) {
-    Post post = new Post(from.getName(), message);
     String key = getChatKey(from, to);
-    //get post count number from the /postCount node
-    int postCount = -1;
-    DatabaseReference postCountRef = Firebase.database.getReference("/postCount");
+    Post post = new Post(from.getName(), key, message);
 
-    DatabaseReference chatRoom = Firebase.database.getReference("/posts/" + key);
-    chatRoom.setValueAsync(post);
+    // get post count number from the /postCount node
+    int postCount = 3;
+//    DatabaseReference postCountRef = Firebase.database.getReference("/postCount");
+
+    DatabaseReference chatArea = Firebase.database.getReference("/posts/" + key + "/" + postCount);
+    chatArea.setValueAsync(post);
   }
 
   private static String getChatKey(Employee from, Employee... to) {
