@@ -1,20 +1,95 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
+import edu.wpi.cs3733.d22.teamY.DBUtils;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
 /** Interface for request objects. Add methods that are common across all request objects. */
-public interface Requestable {
-  public String getLocID();
+@MappedSuperclass
+public abstract class Requestable {
 
-  public String getRequestNum();
+  @Id private String requestNum;
+  private String roomID;
+  private String assignedNurse;
+  private String additionalNotes;
+  private RequestStatus requestStatus;
 
-  public String getRequestType();
+  protected void initParent(
+      String requestNum,
+      String roomID,
+      String assignedNurse,
+      String additionalNotes,
+      RequestStatus status) {
+    this.requestNum = requestNum;
+    this.roomID = roomID;
+    this.assignedNurse = assignedNurse;
+    this.additionalNotes = additionalNotes;
+    this.requestStatus = status;
+  }
 
-  public String getStatus();
+  // region Getters/Setters
+  public String getRequestNum() {
+    return requestNum;
+  }
 
-  public void setStatus(String status);
+  public void setRequestNum(String requestNum) {
+    this.requestNum = requestNum;
+  }
 
-  public String getAssignedNurse();
+  public String getRoomID() {
+    return roomID;
+  }
 
-  public void setAssignedNurse(String nurse);
+  public void setRoomID(String roomID) {
+    this.roomID = roomID;
+  }
 
-  public String getDescription();
+  public String getAssignedNurse() {
+    return assignedNurse;
+  }
+
+  public void setAssignedNurse(String assignedNurse) {
+    this.assignedNurse = assignedNurse;
+  }
+
+  public RequestStatus getRequestStatus() {
+    return requestStatus;
+  }
+
+  public void setRequestStatus(RequestStatus requestStatus) {
+    this.requestStatus = requestStatus;
+  }
+
+  public String getAdditionalNotes() {
+    return additionalNotes;
+  }
+
+  public void setAdditionalNotes(String additionalNotes) {
+    this.additionalNotes = additionalNotes;
+  }
+  // endregion
+
+  public abstract String getLocID();
+
+  public abstract String getTypeString();
+
+  public abstract int getRequestPriority();
+
+  public abstract String getSpecificText();
+
+  public String getStatus() {
+    return requestStatus.name();
+  }
+
+  public String getInfoBoxText() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("ID#: ")
+        .append(requestNum)
+        .append("\nRoom: ")
+        .append(DBUtils.convertIDToName(roomID))
+        .append("\n");
+    sb.append(getSpecificText()).append("\n\n").append(additionalNotes);
+
+    return sb.toString();
+  }
 }

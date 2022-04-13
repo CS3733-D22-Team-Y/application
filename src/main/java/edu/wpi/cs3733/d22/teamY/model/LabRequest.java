@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -11,12 +10,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "LABREQUESTS")
-public class LabRequest implements StringArrayConv, Requestable {
-  @Id private String requestNum;
-  private String roomID;
-  private String requestStatus;
-  private String assignedNurse;
-  private String additionalNotes;
+public class LabRequest extends Requestable implements StringArrayConv {
   private String resultType;
 
   public static final String REQUEST_NUM = "REQUESTNUM";
@@ -30,15 +24,11 @@ public class LabRequest implements StringArrayConv, Requestable {
   private void init(
       String requestNum,
       String roomID,
-      String requestStatus,
       String assignedNurse,
+      RequestStatus requestStatus,
       String additionalNotes,
       String resultType) {
-    this.requestNum = requestNum;
-    this.roomID = roomID;
-    this.requestStatus = requestStatus;
-    this.assignedNurse = assignedNurse;
-    this.additionalNotes = additionalNotes;
+    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus);
     this.resultType = resultType;
   }
 
@@ -47,82 +37,42 @@ public class LabRequest implements StringArrayConv, Requestable {
   public LabRequest(
       String requestNum,
       String roomID,
-      String requestStatus,
       String assignedNurse,
+      RequestStatus requestStatus,
       String additionalNotes,
       String resultType) {
-    init(requestNum, roomID, requestStatus, assignedNurse, additionalNotes, resultType);
+    init(requestNum, roomID, assignedNurse, requestStatus, additionalNotes, resultType);
   }
 
   public String[] toStringArray() {
     return new String[] {
-      requestNum, roomID, requestStatus, assignedNurse, additionalNotes, resultType
+      getRequestNum(),
+      getRoomID(),
+      getAssignedNurse(),
+      Integer.toString(getRequestStatus().ordinal()),
+      getAdditionalNotes(),
+      resultType
     };
   }
 
   public void fromStringArray(String[] args) {
-    init(args[0], args[1], args[2], args[3], args[4], args[5]);
-  }
-
-  // region Getters/Setters
-  public String getRequestNum() {
-    return requestNum;
-  }
-
-  @Override
-  public String getRequestType() {
-    return "Lab";
+    init(
+        args[0],
+        args[1],
+        args[2],
+        RequestStatus.values()[Integer.parseInt(args[3])],
+        args[4],
+        args[5]);
   }
 
   @Override
-  public String getStatus() {
-    return requestStatus;
+  public int getRequestPriority() {
+    return 6;
   }
 
   @Override
-  public void setStatus(String status) {
-    this.requestStatus = status;
-  }
-
-  public void setRequestNum(String requestNum) {
-    this.requestNum = requestNum;
-  }
-
-  public String getRoomID() {
-    return roomID;
-  }
-
-  public void setRoomID(String roomID) {
-    this.roomID = roomID;
-  }
-
-  public String getRequestStatus() {
-    return requestStatus;
-  }
-
-  public void setRequestStatus(String requestStatus) {
-    this.requestStatus = requestStatus;
-  }
-
-  public String getAssignedNurse() {
-    return assignedNurse;
-  }
-
-  public void setAssignedNurse(String assignedNurse) {
-    this.assignedNurse = assignedNurse;
-  }
-
-  @Override
-  public String getDescription() {
-    return resultType + " result type" + "\n\n" + additionalNotes;
-  }
-
-  public String getAdditionalNotes() {
-    return additionalNotes;
-  }
-
-  public void setAdditionalNotes(String additionalNotes) {
-    this.additionalNotes = additionalNotes;
+  public String getSpecificText() {
+    return "Result Type: " + resultType;
   }
 
   public String getResultType() {
@@ -135,7 +85,11 @@ public class LabRequest implements StringArrayConv, Requestable {
 
   @Override
   public String getLocID() {
-    return roomID;
+    return getRoomID();
   }
-  // endregion
+
+  @Override
+  public String getTypeString() {
+    return "Lab Request";
+  }
 }

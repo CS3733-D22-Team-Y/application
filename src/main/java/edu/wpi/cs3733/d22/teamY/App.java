@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class App extends Application {
+
   private Stage primaryStage;
 
   // changes active scene
@@ -38,10 +39,13 @@ public class App extends Application {
     this.primaryStage = primaryStage;
     // Sets the primary scene (currently request menu) and displays it
     Parent root =
-        FXMLLoader.load(Objects.requireNonNull(getClass().getResource("views/Welcome.fxml")));
+        FXMLLoader.load(Objects.requireNonNull(App.class.getResource("views/Welcome.fxml")));
     Scene scene = new Scene(root);
     scene.getStylesheets().add("http://fonts.googleapis.com/css?family=Fredoka+One");
     scene.getStylesheets().add("http://fonts.googleapis.com/css2?family=Varela+Round");
+    scene
+        .getStylesheets()
+        .add(Objects.requireNonNull(App.class.getResource("views/css/Fonts.css")).toExternalForm());
     primaryStage.setTitle("Bringham and Women's Hospital Equipment Tracker");
     primaryStage.setScene(scene);
     primaryStage.show();

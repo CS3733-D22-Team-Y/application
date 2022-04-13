@@ -1,120 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.Group?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainPane" stylesheets="@css/Fonts.css" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ActiveServiceRequestController">
+<AnchorPane fx:id="mainPane" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ActiveServiceRequestController">
     <children>
-        <Text fill="#297bce" layoutX="85.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Active Service Requests" textAlignment="CENTER" wrappingWidth="758.626335144043">
-            <font>
-                <Font name="Microsoft Tai Le Bold" size="54.0" />
-            </font>
-        </Text>
-        <VBox layoutX="200.0" layoutY="107.0" spacing="15.0">
-            <children>
-                <Group>
-                    <children>
-                        <Pane layoutX="15.0" layoutY="11.0">
-                            <children>
-                                <JFXButton prefHeight="32.0" prefWidth="281.0" style="-fx-background-color: fff;" text="Security">
-                                    <font>
-                                        <Font name="Microsoft Tai Le Bold" size="14.0" />
-                                    </font>
-                                </JFXButton>
-                                <Circle fill="#68c666" layoutX="15.0" layoutY="15.0" radius="5.0" scaleX="1.2" scaleY="1.2" scaleZ="1.2" stroke="#00000033" strokeType="INSIDE" />
-                                <Text layoutX="250.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="B06">
-                                    <font>
-                                        <Font name="Microsoft Tai Le" size="12.0" />
-                                    </font>
-                                </Text>
-                            </children>
-                        </Pane>
-                    </children>
-                </Group>
-                <Group>
-                    <children>
-                        <Pane layoutX="15.0" layoutY="11.0">
-                            <children>
-                                <JFXButton prefHeight="32.0" prefWidth="281.0" style="-fx-background-color: fff;" text="Meal Delivery">
-                                    <font>
-                                        <Font name="Microsoft Tai Le Bold" size="14.0" />
-                                    </font>
-                                </JFXButton>
-                                <Circle fill="#fff068" layoutX="15.0" layoutY="15.0" radius="5.0" scaleX="1.2" scaleY="1.2" scaleZ="1.2" stroke="#00000033" strokeType="INSIDE" />
-                                <Text layoutX="250.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A13">
-                                    <font>
-                                        <Font name="Microsoft Tai Le" size="12.0" />
-                                    </font>
-                                </Text>
-                            </children>
-                        </Pane>
-                    </children>
-                </Group>
-                <Group>
-                    <children>
-                        <Pane layoutX="15.0" layoutY="11.0">
-                            <children>
-                                <JFXButton prefHeight="32.0" prefWidth="281.0" style="-fx-background-color: fff;" text="Laundry">
-                                    <font>
-                                        <Font name="Microsoft Tai Le Bold" size="14.0" />
-                                    </font>
-                                </JFXButton>
-                                <Circle fill="#fff068" layoutX="15.0" layoutY="15.0" radius="5.0" scaleX="1.2" scaleY="1.2" scaleZ="1.2" stroke="#00000033" strokeType="INSIDE" />
-                                <Text layoutX="250.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A22">
-                                    <font>
-                                        <Font name="Microsoft Tai Le" size="12.0" />
-                                    </font>
-                                </Text>
-                            </children>
-                        </Pane>
-                    </children>
-                </Group>
-                <Group>
-                    <children>
-                        <Pane layoutX="15.0" layoutY="11.0">
-                            <children>
-                                <JFXButton prefHeight="32.0" prefWidth="281.0" style="-fx-background-color: fff;" text="Floral">
-                                    <font>
-                                        <Font name="Microsoft Tai Le Bold" size="14.0" />
-                                    </font>
-                                </JFXButton>
-                                <Circle fill="#989595" layoutX="15.0" layoutY="15.0" radius="5.0" scaleX="1.2" scaleY="1.2" scaleZ="1.2" stroke="#00000033" strokeType="INSIDE" />
-                                <Text layoutX="250.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="C21">
-                                    <font>
-                                        <Font name="Microsoft Tai Le" size="12.0" />
-                                    </font>
-                                </Text>
-                            </children>
-                        </Pane>
-                    </children>
-                </Group>
-                <Group>
-                    <children>
-                        <Pane layoutX="15.0" layoutY="41.0">
-                            <children>
-                                <JFXButton prefHeight="32.0" prefWidth="281.0" style="-fx-background-color: fff;" text="Med Equipment">
-                                    <font>
-                                        <Font name="Microsoft Tai Le Bold" size="14.0" />
-                                    </font>
-                                </JFXButton>
-                                <Circle fill="#f02f2f" layoutX="15.0" layoutY="15.0" radius="5.0" scaleX="1.2" scaleY="1.2" scaleZ="1.2" stroke="#00000033" strokeType="INSIDE" />
-                                <Text layoutX="250.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A32">
-                                    <font>
-                                        <Font name="Microsoft Tai Le" size="12.0" />
-                                    </font>
-                                </Text>
-                            </children>
-                        </Pane>
-                    </children>
-                </Group>
-            </children>
-        </VBox>
-        <Pane fx:id="test" layoutX="531.0" layoutY="150.0" prefHeight="535.0" prefWidth="294.0" style="-fx-background-color: white; -fx-background-radius: 15;" />
+      <Label styleClass="title" text="Active Service Requests">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Arial Rounded MT Bold" size="60.0" />
+         </font>
+      </Label>
+        <Pane layoutX="438.0" layoutY="98.0" prefHeight="667.0" prefWidth="479.0" style="-fx-background-color: #93cddc; -fx-background-radius: 15;">
+         <children>
+            <JFXTextArea fx:id="extraInfoText" editable="false" focusColor="#ffffff00" layoutX="11.0" layoutY="11.0" prefHeight="644.0" prefWidth="458.0" style="-fx-background-color: ECEFFC; -fx-padding: 10;" text="Additional information will appear here.&#10;" unFocusColor="#ffffff00" wrapText="true">
+               <font>
+                  <Font name="Calibri" size="21.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+            </JFXTextArea>
+         </children></Pane>
+      <Accordion layoutX="72.0" layoutY="400.0" />
+      <MFXScrollPane fx:id="scrollBox" layoutX="14.0" layoutY="85.0" prefHeight="689.0" prefWidth="415.0">
+         <content>
+            <VBox fx:id="requestBox" prefHeight="10.0" prefWidth="400.0" />
+         </content>
+      </MFXScrollPane>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="771.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="443.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label fx:id="nothingToSeeHere" alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="124.0" prefHeight="26.0" prefWidth="390.0" text="No active requests to display." textAlignment="CENTER" visible="false">
+         <font>
+            <Font name="Calibri Italic" size="29.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

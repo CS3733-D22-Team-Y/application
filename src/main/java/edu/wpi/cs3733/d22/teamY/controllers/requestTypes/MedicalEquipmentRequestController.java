@@ -8,6 +8,7 @@ import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
+import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -87,31 +88,24 @@ public class MedicalEquipmentRequestController {
    * Submits a service request.
    *
    * @param roomID The room ID.
-   * @param assignedNurse The assigned nurse.
-   * @param requestStatus The request status.
    * @param additionalNotes Any additional notes.
    * @param equipmentTypeSelected The type of bouquet selected.
    */
-  private void submitRequest(
-      String roomID,
-      String assignedNurse,
-      String requestStatus,
-      String additionalNotes,
-      String equipmentTypeSelected)
+  private void submitRequest(String roomID, String additionalNotes, String equipmentTypeSelected)
       throws IOException {
-    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.MED_EQUIP_REQ));
+    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.MED_EQUIP_REQUEST));
     DBManager.save(
         new MedEquipReq(
             nextRequest,
             roomID,
-            assignedNurse,
-            requestStatus,
+            "",
+            RequestStatus.INCOMPLETE,
             additionalNotes,
             equipmentTypeSelected));
     DBUtils.updateCleanStatus(equipmentTypeSelected, roomID);
     System.out.println("Saved MedEquipRequest");
     updateAvailableEquip();
-    SceneUtil.sidebar.mainPage();
+    SceneUtil.welcomePage.mainPage();
   }
 
   // Called when the submit button is pressed.
@@ -149,9 +143,6 @@ public class MedicalEquipmentRequestController {
     } else {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          input_AssignedNurse.getText(),
-          "null"
-          /*input_RequestStatus.getText()*/ ,
           input_AdditionalNotes.getText(),
           getEquipmentType());
       errorLabel.setText("");
@@ -170,10 +161,10 @@ public class MedicalEquipmentRequestController {
             bedRadioButton, xrayRadioButton, infusionPumpRadioButton, reclinerRadioButton)) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
       if (!SceneLoading.stayOnPage) {
-        SceneUtil.sidebar.mainPage();
+        SceneUtil.welcomePage.mainPage();
       }
     } else {
-      SceneUtil.sidebar.mainPage();
+      SceneUtil.welcomePage.mainPage();
     }
   }
 

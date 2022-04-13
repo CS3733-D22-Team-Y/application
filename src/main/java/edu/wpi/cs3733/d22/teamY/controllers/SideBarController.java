@@ -75,26 +75,12 @@ public class SideBarController {
         "views/Map.fxml",
         "views/RequestMenu.fxml",
         "views/MedEquipTable.fxml",
-        "views/ActServReqTable.fxml",
         "views/ActiveServiceRequest.fxml",
-        "views/PersonalSettings.fxml");
+        "views/ActServReqTable.fxml",
+        "views/PersonalSettings.fxml",
+        "views/SecondaryMap_TEMPLATE.fxml");
     SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-  }
-
-  public void reloadSidebar() throws IOException {
-    mainScreenPane.getChildren().clear();
-    SceneUtil.initializePanes(
-        mainScreenPane,
-        "views/Map.fxml",
-        "views/RequestMenu.fxml",
-        "views/ActServReqTable.fxml",
-        "views/ActiveServiceRequest.fxml",
-        "views/ActiveServiceRequest.fxml",
-        "views/PersonalSettings.fxml");
-    SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).setVisible(true);
   }
 
   @FXML

@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -11,12 +10,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "MEDEQUIPREQUEST")
-public class MedEquipReq implements StringArrayConv, Requestable {
-  @Id private String requestNum;
-  private String roomID;
-  private String assignedNurse;
-  private String requestStatus;
-  private String additionalNotes;
+public class MedEquipReq extends Requestable implements StringArrayConv {
   private String equipmentTypeSelected;
 
   public static final String REQUEST_NUM = "REQUESTNUM";
@@ -27,14 +21,10 @@ public class MedEquipReq implements StringArrayConv, Requestable {
       String requestNum,
       String roomID,
       String assignedNurse,
-      String requestStatus,
+      RequestStatus requestStatus,
       String additionalNotes,
       String equipmentTypeSelected) {
-    this.requestNum = requestNum;
-    this.roomID = roomID;
-    this.assignedNurse = assignedNurse;
-    this.requestStatus = requestStatus;
-    this.additionalNotes = additionalNotes;
+    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus);
     this.equipmentTypeSelected = equipmentTypeSelected;
   }
 
@@ -44,85 +34,41 @@ public class MedEquipReq implements StringArrayConv, Requestable {
       String requestNum,
       String roomID,
       String assignedNurse,
-      String requestStatus,
+      RequestStatus requestStatus,
       String additionalNotes,
       String equipmentTypeSelected) {
     init(requestNum, roomID, assignedNurse, requestStatus, additionalNotes, equipmentTypeSelected);
   }
 
   public void fromStringArray(String[] args) {
-    init(args[0], args[1], args[2], args[3], args[4], args[5]);
+    init(
+        args[0],
+        args[1],
+        args[2],
+        RequestStatus.values()[Integer.parseInt(args[3])],
+        args[4],
+        args[5]);
   }
 
   public String[] toStringArray() {
     return new String[] {
-      this.requestNum,
-      this.roomID,
-      this.assignedNurse,
-      this.requestStatus,
-      this.additionalNotes,
+      getRequestNum(),
+      getRoomID(),
+      getAssignedNurse(),
+      Integer.toString(getRequestStatus().ordinal()),
+      getAdditionalNotes(),
       this.equipmentTypeSelected
     };
   }
 
-  public String getRequestNum() {
-    return requestNum;
+  @Override
+  public int getRequestPriority() {
+    return 7;
   }
 
   @Override
-  public String getRequestType() {
-    return "Medical";
-  }
-
-  @Override
-  public String getStatus() {
-    return this.requestStatus;
-  }
-
-  @Override
-  public void setStatus(String status) {
-    this.requestStatus = status;
-  }
-
-  public void setRequestNum(String requestNum) {
-    this.requestNum = requestNum;
-  }
-
-  public String getRoomID() {
-    return roomID;
-  }
-
-  public void setRoomID(String roomID) {
-    this.roomID = roomID;
-  }
-
-  public String getAssignedNurse() {
-    return assignedNurse;
-  }
-
-  public void setAssignedNurse(String assignedNurse) {
-    this.assignedNurse = assignedNurse;
-  }
-
-  @Override
-  public String getDescription() {
-    return "Type " + this.equipmentTypeSelected + "\n\n" + this.additionalNotes;
-  }
-
-  public String getRequestStatus() {
-    return requestStatus;
-  }
-
-  public void setRequestStatus(String requestStatus) {
-    this.requestStatus = requestStatus;
-  }
-
-  public String getAdditionalNotes() {
-    return additionalNotes;
-  }
-
-  public void setAdditionalNotes(String additionalNotes) {
-    this.additionalNotes = additionalNotes;
+  public String getSpecificText() {
+    return "Equipment Type: " + equipmentTypeSelected;
   }
 
   public String getEquipmentTypeSelected() {
@@ -135,7 +81,12 @@ public class MedEquipReq implements StringArrayConv, Requestable {
 
   @Override
   public String getLocID() {
-    return this.roomID;
+    return getRoomID();
+  }
+
+  @Override
+  public String getTypeString() {
+    return "Equipment Transit";
   }
 
   // endregion
