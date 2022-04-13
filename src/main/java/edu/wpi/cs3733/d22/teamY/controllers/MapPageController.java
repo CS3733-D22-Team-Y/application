@@ -368,6 +368,7 @@ public class MapPageController {
 
                 boolean hasEquipment = equip.size() > 0;
                 List<T> requests = DBUtils.getAllServiceReqsAtLocation(l);
+                int currReq = 0;
 
                 // equipTypes: list of equipment types in the location.  if room has
                 // multiple of one
@@ -470,6 +471,11 @@ public class MapPageController {
                         if (requests.size() > 0) {
                           reqInfoPane.setVisible(true);
                           currReqDisplay.setText(requests.get(0).getRequestType());
+                          this.reqLocationBox.setText(requests.get(0).getLocID());
+                          this.reqDescriptionBox.setText(requests.get(0).getDescription());
+                          this.reqStatusBox.setText(requests.get(0).getStatus());
+                          this.reqTypeBox.setText(requests.get(0).getRequestType());
+                          this.reqNurseBox.setText(requests.get(0).getAssignedNurse());
                         }
                       }
                     });
