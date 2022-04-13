@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.FloralRequest;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
@@ -76,13 +78,17 @@ public class FloralRequestController {
     // Checks if a bouquet choice has been made
     if (RequestControllerUtil.isRadioButtonSelected(
             getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton)
-        && !Objects.equals(roomsComboBox.getValue(), "")
+        && !Objects.equals(roomsHiddenField.getText(), "")
         && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AdditionalNotes.getText(),
           getBouquetType());
       errorLabel.setText("");
+      SceneUtil.sidebar.mainPage();
+      SceneLoading.loadPopup(
+          "views/popups/ReqSubmitted.fxml", "views/requestTypes/FloralRequest.fxml");
+      resetAllFields();
     } else {
       errorLabel.setText("Missing Required Fields.");
     }

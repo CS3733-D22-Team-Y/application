@@ -1,42 +1,391 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="700.0" maxWidth="1100.0" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: eee;" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MapPageController">
-    <children>
-        <Pane fx:id="mapPane" layoutX="190.0" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: ccc;" />
-        <VBox fx:id="buttonBox" layoutX="30.0" layoutY="18.0" spacing="40.0">
+<AnchorPane fx:id="mainPane" prefHeight="780.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MapPageController">
+   <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <center>
+         <AnchorPane fx:id="mapRoot" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      </center>
+      <bottom>
+         <HBox alignment="BOTTOM_LEFT" prefHeight="348.0" prefWidth="920.0" BorderPane.alignment="CENTER">
             <children>
-                <JFXButton fx:id="testButton" onAction="#loadFloor3Map" prefHeight="100.0" prefWidth="130.0" style="-fx-background-color: #021D5A; -fx-background-radius: 25;" text="3" textFill="WHITE">
-                    <font>
-                        <Font name="Microsoft Tai Le Bold" size="36.0" />
-                    </font>
-                </JFXButton>
-                <JFXButton onAction="#loadFloor2Map" prefHeight="100.0" prefWidth="130.0" style="-fx-background-color: #021D5A; -fx-background-radius: 25;" text="2" textFill="WHITE">
-                    <font>
-                        <Font name="Microsoft Tai Le Bold" size="36.0" />
-                    </font>
-                </JFXButton>
-                <JFXButton onAction="#loadFloor1Map" prefHeight="100.0" prefWidth="130.0" style="-fx-background-color: #021D5A; -fx-background-radius: 25;" text="1" textFill="WHITE">
-                    <font>
-                        <Font name="Microsoft Tai Le Bold" size="36.0" />
-                    </font>
-                </JFXButton>
-                <JFXButton onAction="#loadBasement1Map" prefHeight="100.0" prefWidth="130.0" style="-fx-background-color: #021D5A; -fx-background-radius: 25;" text="LL1" textFill="WHITE">
-                    <font>
-                        <Font name="Microsoft Tai Le Bold" size="36.0" />
-                    </font>
-                </JFXButton>
-                <JFXButton onAction="#loadBasement2Map" prefHeight="100.0" prefWidth="130.0" style="-fx-background-color: #021D5A; -fx-background-radius: 25;" text="LL2" textFill="WHITE">
-                    <font>
-                        <Font name="Microsoft Tai Le Bold" size="36.0" />
-                    </font>
-                </JFXButton>
+               <Pane fx:id="ll1MainPane" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
+                  <HBox.margin>
+                     <Insets right="10.0" />
+                  </HBox.margin>
+                  <children>
+                     <MFXButton fx:id="floorLL1Button" layoutY="250.0" onMouseEntered="#LL1Enter" onMouseExited="#LL1Exit" prefHeight="50.0" prefWidth="50.0" text="LL1">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </MFXButton>
+                     <Pane fx:id="ll1PopupPane" prefHeight="250.0" prefWidth="50.0">
+                        <children>
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutX="-1.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bellLogo.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="ll1RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bedlogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/pumplogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/reclinerlogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="ll1Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <TextField fx:id="ll1Pump" editable="false" layoutX="25.0" layoutY="166.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <TextField fx:id="ll1Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/xrayIcon.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="ll1X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                        </children>
+                     </Pane>
+                  </children>
+               </Pane>
+               <Pane fx:id="ll1MainPane1" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
+                  <children>
+                     <MFXButton fx:id="floorLL2Button" layoutY="250.0" onMouseEntered="#LL2Enter" onMouseExited="#LL2Exit" prefHeight="50.0" prefWidth="50.0" text="LL2">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </MFXButton>
+                     <Pane fx:id="ll2PopupPane" prefHeight="250.0" prefWidth="50.0">
+                        <children>
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bellLogo.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="ll2RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="40.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bedlogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/pumplogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/reclinerlogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="ll2Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <TextField fx:id="ll2Pump" editable="false" layoutX="25.0" layoutY="166.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <TextField fx:id="ll2Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/xrayIcon.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="ll2X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                        </children>
+                     </Pane>
+                  </children>
+               </Pane>
+               <Pane fx:id="ll1MainPane11" layoutX="80.0" layoutY="48.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0" translateX="10.0">
+                  <children>
+                     <MFXButton fx:id="floor1Button" layoutY="250.0" onMouseEntered="#L1Enter" onMouseExited="#L1Exit" prefHeight="50.0" prefWidth="50.0" text="1">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </MFXButton>
+                     <Pane fx:id="l1PopupPane" prefHeight="250.0" prefWidth="50.0">
+                        <children>
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bellLogo.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="l1RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bedlogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/pumplogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/reclinerlogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="l1Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <TextField fx:id="l1Pump" editable="false" layoutX="25.0" layoutY="166.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <TextField fx:id="l1Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/xrayIcon.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="l1X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                        </children>
+                     </Pane>
+                  </children>
+               </Pane>
+               <Pane fx:id="ll1MainPane111" layoutX="130.0" layoutY="48.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0" translateX="20.0">
+                  <children>
+                     <MFXButton fx:id="floor2Button" layoutY="250.0" onMouseEntered="#L2Enter" onMouseExited="#L2Exit" prefHeight="50.0" prefWidth="50.0" text="2">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </MFXButton>
+                     <Pane fx:id="l2PopupPane" prefHeight="250.0" prefWidth="50.0">
+                        <children>
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bellLogo.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="l2RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="38.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bedlogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/pumplogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/reclinerlogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="l2Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <TextField fx:id="l2Pump" editable="false" layoutX="25.0" layoutY="166.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <TextField fx:id="l2Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="38.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/xrayIcon.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="l2X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                        </children>
+                     </Pane>
+                  </children>
+               </Pane>
+               <Pane fx:id="ll1MainPane1111" layoutX="180.0" layoutY="48.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0" translateX="30.0">
+                  <children>
+                     <MFXButton fx:id="floor3Button" layoutY="250.0" onMouseEntered="#L3Enter" onMouseExited="#L3Exit" prefHeight="50.0" prefWidth="50.0" text="3">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </MFXButton>
+                     <Pane fx:id="l3PopupPane" prefHeight="250.0" prefWidth="50.0">
+                        <children>
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bellLogo.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="l3RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bedlogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/pumplogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/reclinerlogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="l3Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <TextField fx:id="l3Pump" editable="false" layoutX="25.0" layoutY="166.0" prefHeight="25.0" prefWidth="38.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <TextField fx:id="l3Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/xrayIcon.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="l3X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                        </children>
+                     </Pane>
+                  </children>
+               </Pane>
+               <Pane fx:id="ll1MainPane11111" layoutX="230.0" layoutY="48.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0" translateX="40.0">
+                  <children>
+                     <MFXButton fx:id="floor4Button" layoutY="250.0" onMouseEntered="#L4Enter" onMouseExited="#L4Exit" prefHeight="50.0" prefWidth="50.0" text="4">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </MFXButton>
+                     <Pane fx:id="l4PopupPane" prefHeight="250.0" prefWidth="50.0">
+                        <children>
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bellLogo.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="l4RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bedlogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/pumplogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/reclinerlogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="l4Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <TextField fx:id="l4Pump" editable="false" layoutX="25.0" layoutY="166.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <TextField fx:id="l4Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/xrayIcon.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="l4X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                        </children>
+                     </Pane>
+                  </children>
+               </Pane>
+               <Pane fx:id="ll1MainPane111111" layoutX="280.0" layoutY="48.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0" translateX="50.0">
+                  <children>
+                     <MFXButton fx:id="floor5Button" layoutY="250.0" onMouseEntered="#L5Enter" onMouseExited="#L5Exit" prefHeight="50.0" prefWidth="50.0" text="5">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </MFXButton>
+                     <Pane fx:id="l5PopupPane" prefHeight="250.0" prefWidth="50.0">
+                        <children>
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bellLogo.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="l5RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bedlogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/pumplogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/reclinerlogoBlack.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="l5Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="38.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <TextField fx:id="l5Pump" editable="false" layoutX="25.0" layoutY="166.0" prefHeight="25.0" prefWidth="38.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <TextField fx:id="l5Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="38.0" style="-fx-background-color: #00000000;" text="-1" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/xrayIcon.png" />
+                              </image>
+                           </ImageView>
+                           <TextField fx:id="l5X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                        </children>
+                     </Pane>
+                  </children>
+               </Pane>
             </children>
-        </VBox>
-    </children>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <padding>
+               <Insets bottom="10.0" left="10.0" />
+            </padding>
+         </HBox>
+      </bottom>
+   </BorderPane>
+   <Pane fx:id="locationInfoPane" layoutX="701.0" prefHeight="780.0" prefWidth="219.0">
+      <children>
+         <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="780.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="219.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="82.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Node ID:">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="locationID" layoutX="84.0" layoutY="76.0" prefHeight="48.0" prefWidth="134.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="170.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Short Name:">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="locationShort" layoutX="84.0" layoutY="164.0" prefHeight="48.0" prefWidth="134.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="269.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Long Name:">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="locationLong" layoutX="84.0" layoutY="263.0" prefHeight="48.0" prefWidth="134.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="365.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="X Coord:">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="locationX" layoutX="84.0" layoutY="359.0" prefHeight="48.0" prefWidth="134.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="450.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Y Coord:">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="locationY" layoutX="84.0" layoutY="444.0" prefHeight="48.0" prefWidth="134.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="540.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Building:">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="locationBuilding" layoutX="84.0" layoutY="534.0" prefHeight="48.0" prefWidth="134.0" />
+         <MFXButton fx:id="locationSubmit" layoutX="110.0" layoutY="675.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />
+         <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Submit" />
+      </children>
+   </Pane>
+   <MFXLegacyComboBox fx:id="modeBox" layoutX="770.0" layoutY="29.0" lineStrokeWidth="0.0" prefHeight="37.0" prefWidth="134.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0" />
+   <TextField fx:id="selectorBoxText" editable="false" layoutX="772.0" layoutY="32.0" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: FFFFFFFF;" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="32.0" />
 </AnchorPane>

@@ -5,9 +5,12 @@ import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.TranslatorRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.io.IOException;
 import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -75,21 +78,28 @@ public class TranslatorRequestController {
 
   // Called when the submit button is pressed.
   @FXML
-  void submitButton() {
+  void submitButton() throws IOException {
     // Checks if a bouquet choice has been made
-    if (RequestControllerUtil.isRadioButtonSelected(
+    if (RequestControllerUtil.isRadioButtonSelected(otherRadioButton)
+        && Objects.equals(input_OtherLanguage.getText(), "")) {
+      errorLabel.setText("Missing Required Fields.");
+    } else if (RequestControllerUtil.isRadioButtonSelected(
             spanishRadioButton,
             chineseRadioButton,
             germanRadioButton,
             arabicRadioButton,
             otherRadioButton)
-        && !Objects.equals(roomsComboBox.getValue(), "")
+        && !Objects.equals(roomsHiddenField.getText(), "")
         && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AdditionalNotes.getText(),
           getLanguageType());
       errorLabel.setText("");
+      SceneUtil.sidebar.mainPage();
+      SceneLoading.loadPopup(
+          "views/popups/ReqSubmitted.fxml", "views/requestTypes/TranslatorRequest.fxml");
+      resetAllFields();
     } else {
       errorLabel.setText("Missing Required Fields.");
     }

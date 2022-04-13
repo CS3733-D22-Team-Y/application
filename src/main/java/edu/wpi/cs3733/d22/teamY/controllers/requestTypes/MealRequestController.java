@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.MealRequest;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
@@ -19,6 +21,8 @@ public class MealRequestController {
   @FXML private TextField input_AssignedNurse;
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
+  @FXML private JFXComboBox<String> dietaryRestrictionsSelectionBox;
+  @FXML private TextField restrictionsHiddenField;
 
   // Radio button main course
   @FXML private MFXRadioButton pizzaRadioButton;
@@ -28,8 +32,6 @@ public class MealRequestController {
   @FXML private MFXRadioButton riceRadioButton;
   @FXML private MFXRadioButton peasRadioButton;
   @FXML private MFXRadioButton appleRadioButton;
-  // Dropdown menu
-  @FXML private JFXComboBox<String> dietaryRestrictionsSelectionBox;
   // Error Label
   @FXML private TextArea errorLabel;
 
@@ -58,14 +60,20 @@ public class MealRequestController {
     dietaryRestrictionsSelectionBox
         .getItems()
         .addAll(textNone, "Gluten Free", "Vegetarian", "Vegan", textOther);
-    dietaryRestrictionsSelectionBox.setValue(textNone);
+    dietaryRestrictionsSelectionBox.setValue("");
 
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    restrictionsHiddenField.setText("None");
   }
 
   @FXML
   private void setRoomText() {
     roomsHiddenField.setText(roomsComboBox.getValue());
+  }
+
+  @FXML
+  private void setRestrictionText() {
+    restrictionsHiddenField.setText(dietaryRestrictionsSelectionBox.getValue());
   }
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
@@ -107,14 +115,14 @@ public class MealRequestController {
 
   // Called when the submit button is pressed.
   @FXML
-  void submitButton() {
+  void submitButton() throws IOException {
     errorLabel.setText("Missing Required Fields");
     Boolean mealSelected =
         RequestControllerUtil.isRadioButtonSelected(
             pizzaRadioButton, burgerRadioButton, saladRadioButton);
 
     Boolean allFields =
-        !Objects.equals(roomsComboBox.getValue(), "")
+        !Objects.equals(roomsHiddenField.getText(), "")
             && !Objects.equals(input_AssignedNurse.getText(), "");
 
     Boolean sideSelected =
@@ -131,6 +139,11 @@ public class MealRequestController {
           dietaryRestrictionsSelectionBox.getValue(),
           input_AdditionalNotes.getText());
       errorLabel.setText("");
+      SceneUtil.sidebar.mainPage();
+
+      SceneLoading.loadPopup(
+          "views/popups/ReqSubmitted.fxml", "views/requestTypes/MealRequest.fxml");
+      resetAllFields();
     } else {
       if (allFields || sideSelected || mealSelected) {
         errorLabel.setText("Missing Required Fields");

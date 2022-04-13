@@ -1,3 +1,9 @@
+/*.title, .subtitle, .popupText, .requestOption, .requestButton, .inputLabel, .requestInput, .inputField, .plainText, .submenuButton, .loginButton, .sidebarTopOptions, .sidebarBottomOptions{*/
+/*    -fx-border-style: solid;*/
+/*    -fx-border-width: 2;*/
+/*    -fx-border-color: "#f0f";*/
+/*}*/
+
 .title {
     -fx-font-family: 'Fredoka One';
     -fx-font-size: 60;
@@ -8,30 +14,58 @@
     -fx-font-size: 45;
 }
 
-.requestOption{
+.popupText{
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 24;
+}
 
+.requestOption{
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 24;
 }
 
 .requestButton{
-
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 20;
 }
 
 .inputLabel{
-
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 24;
 }
 
 .requestInput{
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 20;
+    -fx-padding: 0 0 15px 0;
+}
+
+.inputField{
+    -fx-font-family: 'Varela Round';
     -fx-font-size: 20;
 }
 
 .plainText{
-
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 20;
 }
 
 .submenuButton{
-
+    -fx-font-family: 'Fredoka One';
+    -fx-font-size: 30;
 }
 
 .loginButton{
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 20;
+}
 
+.sidebarTopOptions{
+    -fx-font-family: 'Fredoka One';
+    -fx-font-size: 30;
+}
+
+.sidebarBottomOptions{
+    -fx-font-family: 'Fredoka One';
+    -fx-font-size: 20;
 }

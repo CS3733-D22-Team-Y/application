@@ -5,6 +5,8 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.MiscRequest;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -52,17 +54,22 @@ public class MiscRequestController {
   // Called when the submit button is pressed.
   @FXML
   void submitButton() throws IOException {
-    if (roomsComboBox.getValue().equals("")
+    if (roomsHiddenField.getText().equals("")
         || input_AdditionalNotes.getText().equals("")
         || input_AssignedNurse.getText().equals("")
         || input_RequestName.getText().equals("")) {
       errorLabel.setText("Missing Required Fields.");
+
     } else {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AdditionalNotes.getText(),
           input_RequestName.getText());
       errorLabel.setText("");
+      SceneUtil.sidebar.mainPage();
+      SceneLoading.loadPopup(
+          "views/popups/ReqSubmitted.fxml", "views/requestTypes/MiscRequest.fxml");
+      resetAllFields();
     }
   }
 
