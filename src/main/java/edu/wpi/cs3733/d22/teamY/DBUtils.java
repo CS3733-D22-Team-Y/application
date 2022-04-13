@@ -247,7 +247,7 @@ public class DBUtils {
    *
    * @param input false for Embedded, true for C-S
    */
-  public static void switchDBType(boolean input) {
+  public static void switchDBType(String input) {
     SessionManager.switchType(input);
     DBUtils.completeCSVRefresh();
   }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXToggleButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
 <?import io.github.palexdev.materialfx.controls.MFXProgressSpinner?>
@@ -264,9 +264,9 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label layoutX="984.0" layoutY="759.0" text="Embedded">
+      <Label layoutX="1019.0" layoutY="665.0" text="Database Choice">
          <font>
-            <Font name="Arial Rounded MT Bold" size="13.0" />
+            <Font name="Arial Rounded MT Bold" size="16.0" />
          </font>
          <textFill>
             <LinearGradient endX="0.5681817603833748" endY="1.0" startX="0.5643939542951006" startY="0.22348483403523764">
@@ -278,18 +278,15 @@
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                        <Color red="0.3019607961177826" green="0.3019607961177826" blue="0.3019607961177826" />
                      </color>
                   </Stop>
                </stops>
             </LinearGradient>
          </textFill>
       </Label>
-      <Label layoutX="1106.0" layoutY="759.0" text="Client-Server">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="13.0" />
-         </font>
-         <textFill>
+      <JFXComboBox fx:id="dbMenu" focusColor="BLACK" layoutX="1011.0" layoutY="687.0" onAction="#databaseSwitch" prefHeight="26.0" prefWidth="150.0">
+         <unFocusColor>
             <LinearGradient endX="0.5681817603833748" endY="1.0" startX="0.5643939542951006" startY="0.22348483403523764">
                <stops>
                   <Stop>
@@ -299,13 +296,12 @@
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                        <Color red="0.3019607961177826" green="0.3019607961177826" blue="0.3019607961177826" />
                      </color>
                   </Stop>
                </stops>
             </LinearGradient>
-         </textFill>
-      </Label>
-      <JFXToggleButton fx:id="dbSwitcherToggle" layoutX="1043.0" layoutY="737.0" onAction="#databaseSwitch" prefHeight="28.0" prefWidth="79.0" textOverrun="CLIP" />
+         </unFocusColor>
+      </JFXComboBox>
     </children>
 </AnchorPane>

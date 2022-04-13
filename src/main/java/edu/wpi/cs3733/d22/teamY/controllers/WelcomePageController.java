@@ -3,6 +3,7 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 import static org.apache.commons.lang3.RandomStringUtils.*;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXToggleButton;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.Auth;
@@ -52,6 +53,7 @@ public class WelcomePageController {
   @FXML JFXButton faSmsButton;
   @FXML Label codeEntryLabel;
   @FXML JFXToggleButton dbSwitcherToggle;
+  @FXML JFXComboBox<String> dbMenu;
 
   private boolean lockOut = false;
 
@@ -60,11 +62,14 @@ public class WelcomePageController {
 
   String universalCode;
 
+  String[] dbOptions = new String[] {"Embedded", "Client-Server", "GoogleCloud"};
+
   @FXML
   void initialize() throws IOException {
     loginPane.setVisible(true);
     loading.setVisible(false);
     yubikeyPane.setVisible(false);
+    dbMenu.getItems().addAll(dbOptions);
   }
 
   @FXML
@@ -270,7 +275,19 @@ public class WelcomePageController {
 
   @FXML
   void databaseSwitch() {
-    DBUtils.switchDBType(dbSwitcherToggle.isSelected());
+    switch (dbMenu.getValue()) {
+      case "Embedded":
+        DBUtils.switchDBType(dbMenu.getValue());
+        break;
+      case "Client-Server":
+        DBUtils.switchDBType(dbMenu.getValue());
+        break;
+      case "Google Cloud":
+        DBUtils.switchDBType(dbMenu.getValue());
+        break;
+      default:
+        DBUtils.switchDBType("Embedded");
+    }
   }
 
   public void testingButton() throws IOException {
