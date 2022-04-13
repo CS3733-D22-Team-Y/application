@@ -89,8 +89,8 @@ public class MapPageController<T extends Requestable> {
 
   @FXML public MFXButton locationSubmit;
   private String fuck = "shit";
-  private T fuck2;
-  private int currReqSelection;
+  private ArrayList<T> fuck2 = new ArrayList<>();
+  private int currReqSelection = 0;
   @FXML private MFXLegacyComboBox<String> modeBox;
   @FXML private TextField selectorBoxText;
   @FXML Pane mainPane;
@@ -370,7 +370,6 @@ public class MapPageController<T extends Requestable> {
 
                 boolean hasEquipment = equip.size() > 0;
                 List<T> requests = DBUtils.getAllServiceReqsAtLocation(l);
-                int currReq = 0;
 
                 // equipTypes: list of equipment types in the location.  if room has
                 // multiple of one
@@ -471,14 +470,21 @@ public class MapPageController<T extends Requestable> {
                       }
                       if (modeBox.getValue().equals("Service Requests")) {
                         if (requests.size() > 0) {
-                          fuck2 = requests.get(0);
+                          fuck2.clear();
+                          for (T r : requests) {
+                            fuck2.add(r);
+                          }
                           reqInfoPane.setVisible(true);
-                          currReqDisplay.setText(requests.get(0).getRequestType());
-                          this.reqLocationBox.setText(requests.get(0).getLocID());
-                          this.reqDescriptionBox.setText(requests.get(0).getDescription());
-                          this.reqStatusBox.setText(requests.get(0).getStatus());
-                          this.reqTypeBox.setText(requests.get(0).getRequestType());
-                          this.reqNurseBox.setText(requests.get(0).getAssignedNurse());
+                          this.currReqSelection %= fuck2.size();
+                          currReqDisplay.setText(fuck2.get(this.currReqSelection).getRequestType());
+                          this.reqLocationBox.setText(fuck2.get(this.currReqSelection).getLocID());
+                          this.reqDescriptionBox.setText(
+                              fuck2.get(this.currReqSelection).getDescription());
+                          this.reqStatusBox.setText(fuck2.get(this.currReqSelection).getStatus());
+                          this.reqTypeBox.setText(
+                              fuck2.get(this.currReqSelection).getRequestType());
+                          this.reqNurseBox.setText(
+                              fuck2.get(this.currReqSelection).getAssignedNurse());
                         }
                       }
                     });
@@ -515,7 +521,8 @@ public class MapPageController<T extends Requestable> {
 
                 reqSubmit.setOnMouseClicked(
                     e -> {
-                      T req = fuck2;
+                      this.currReqSelection %= this.fuck2.size();
+                      T req = fuck2.get(this.currReqSelection);
                       req.setAssignedNurse(reqNurseBox.getText());
                       req.setStatus(reqStatusBox.getText());
 
@@ -722,6 +729,28 @@ public class MapPageController<T extends Requestable> {
   public void exit() {
     locationInfoPane.setVisible(false);
     reqInfoPane.setVisible(false);
+  }
+
+  public void right() {
+    this.currReqSelection++;
+    System.out.println("right" + currReqSelection);
+    updateReqInfo();
+  }
+
+  public void left() {
+    this.currReqSelection--;
+    System.out.println("left" + currReqSelection);
+    updateReqInfo();
+  }
+
+  public void updateReqInfo() {
+    this.currReqSelection %= fuck2.size();
+    currReqDisplay.setText(fuck2.get(this.currReqSelection).getRequestType());
+    this.reqLocationBox.setText(fuck2.get(this.currReqSelection).getLocID());
+    this.reqDescriptionBox.setText(fuck2.get(this.currReqSelection).getDescription());
+    this.reqStatusBox.setText(fuck2.get(this.currReqSelection).getStatus());
+    this.reqTypeBox.setText(fuck2.get(this.currReqSelection).getRequestType());
+    this.reqNurseBox.setText(fuck2.get(this.currReqSelection).getAssignedNurse());
   }
 
   private void updateQuickDash(String floor) {
