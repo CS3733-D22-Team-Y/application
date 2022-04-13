@@ -783,6 +783,9 @@ public class MapPageController<T extends Requestable> {
 
     // Load initial floor and mode
     switchMap(lastFloor, MapMode.LOCATION);
+    equipInfoPane.setVisible(false);
+    reqInfoPane.setVisible(false);
+    locationInfoPane.setVisible(false);
   }
 
   public void exit() {
