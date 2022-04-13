@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.TranslatorRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -53,17 +54,10 @@ public class TranslatorRequestController {
    * Submits a service request.
    *
    * @param roomID The room ID.
-   * @param assignedNurse The assigned nurse.
-   * @param requestStatus The request status.
    * @param additionalNotes Any additional notes.
    * @param languageTypeSelected The type of language selected.
    */
-  private void submitRequest(
-      String roomID,
-      String assignedNurse,
-      String requestStatus,
-      String additionalNotes,
-      String languageTypeSelected) {
+  private void submitRequest(String roomID, String additionalNotes, String languageTypeSelected) {
     // Get request Num
     String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.TRANSLATOR_REQUEST));
 
@@ -71,8 +65,8 @@ public class TranslatorRequestController {
         new TranslatorRequest(
             nextRequest,
             roomID,
-            assignedNurse,
-            requestStatus,
+            "",
+            RequestStatus.INCOMPLETE,
             additionalNotes,
             languageTypeSelected));
 
@@ -93,8 +87,6 @@ public class TranslatorRequestController {
         && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          input_AssignedNurse.getText(),
-          "open",
           input_AdditionalNotes.getText(),
           getLanguageType());
       errorLabel.setText("");

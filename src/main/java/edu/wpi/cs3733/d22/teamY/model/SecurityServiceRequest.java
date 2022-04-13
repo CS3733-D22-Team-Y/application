@@ -1,18 +1,11 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "SECURITYSERVICEREQUESTS")
 public class SecurityServiceRequest extends Requestable implements StringArrayConv {
-
-  @Id private String requestNum;
-  private String roomID;
-  private String assignedNurse;
-  private String requestStatus;
-  private String additionalNotes;
   private String requestTypeSelected;
   private String requestPriority;
 
@@ -22,7 +15,7 @@ public class SecurityServiceRequest extends Requestable implements StringArrayCo
       String requestNum,
       String roomID,
       String assignedNurse,
-      String requestStatus,
+      RequestStatus requestStatus,
       String additionalNotes,
       String requestTypeSelected,
       String requestPriority) {
@@ -35,7 +28,7 @@ public class SecurityServiceRequest extends Requestable implements StringArrayCo
       String requestNum,
       String roomID,
       String assignedNurse,
-      String requestStatus,
+      RequestStatus requestStatus,
       String additionalNotes,
       String requestTypeSelected,
       String requestPriority) {
@@ -52,11 +45,11 @@ public class SecurityServiceRequest extends Requestable implements StringArrayCo
   @Override
   public String[] toStringArray() {
     return new String[] {
-      requestNum,
-      roomID,
-      assignedNurse,
-      requestStatus,
-      additionalNotes,
+      getRequestNum(),
+      getRoomID(),
+      getAssignedNurse(),
+      Integer.toString(getRequestStatus().ordinal()),
+      getAdditionalNotes(),
       requestTypeSelected,
       requestPriority
     };
@@ -64,7 +57,19 @@ public class SecurityServiceRequest extends Requestable implements StringArrayCo
 
   @Override
   public void fromStringArray(String[] args) {
-    init(args[0], args[1], args[2], args[3], args[4], args[5], args[6]);
+    init(
+        args[0],
+        args[1],
+        args[2],
+        RequestStatus.values()[Integer.parseInt(args[3])],
+        args[4],
+        args[5],
+        args[6]);
+  }
+
+  @Override
+  public int getRequestPriority() {
+    return 5;
   }
 
   public String getRequestTypeSelected() {
@@ -75,16 +80,8 @@ public class SecurityServiceRequest extends Requestable implements StringArrayCo
     this.requestTypeSelected = requestTypeSelected;
   }
 
-  public String getRequestPriority() {
-    return requestPriority;
-  }
-
-  public void setRequestPriority(String requestPriority) {
-    this.requestPriority = requestPriority;
-  }
-
   @Override
   public String getLocID() {
-    return this.roomID;
+    return getRoomID();
   }
 }

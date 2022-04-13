@@ -15,12 +15,12 @@ public abstract class Requestable {
   private int requestPriority;
 
   protected void initParent(
-          String requestNum,
-          String roomID,
-          String assignedNurse,
-          String additionalNotes,
-          RequestStatus status,
-          int priority){
+      String requestNum,
+      String roomID,
+      String assignedNurse,
+      String additionalNotes,
+      RequestStatus status,
+      int priority) {
     this.requestNum = requestNum;
     this.roomID = roomID;
     this.assignedNurse = assignedNurse;
@@ -69,7 +69,10 @@ public abstract class Requestable {
   public void setAdditionalNotes(String additionalNotes) {
     this.additionalNotes = additionalNotes;
   }
+
   // endregion
 
   public abstract String getLocID();
+
+  public abstract int getRequestPriority();
 }

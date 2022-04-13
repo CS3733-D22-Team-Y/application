@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -13,25 +12,17 @@ import javax.persistence.Table;
 @Table(name = "FLORALREQUESTS")
 public class FloralRequest extends Requestable implements StringArrayConv {
 
-  @Id private String requestNum;
-  private String roomID;
-  private String requestStatus;
-  private String assignedNurse;
-
   // GetwellSoon, newBaby, bouquet otd
   private String bouquetTypeSelected;
-  // Additional Notes
-  private String additionalNotes;
 
   private void init(
       String requestNum,
       String roomID,
       String assignedNurse,
-      String requestStatus,
+      RequestStatus requestStatus,
       String additionalNotes,
       String bouquetTypeSelected) {
     initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus, 5);
-    this.additionalNotes = additionalNotes;
     this.bouquetTypeSelected = bouquetTypeSelected;
   }
 
@@ -41,7 +32,7 @@ public class FloralRequest extends Requestable implements StringArrayConv {
       String requestNum,
       String roomID,
       String assignedNurse,
-      String requestStatus,
+      RequestStatus requestStatus,
       String additionalNotes,
       String bouquetTypeSelected) {
     init(requestNum, roomID, assignedNurse, requestStatus, additionalNotes, bouquetTypeSelected);
@@ -50,15 +41,30 @@ public class FloralRequest extends Requestable implements StringArrayConv {
   @Override
   public String[] toStringArray() {
     return new String[] {
-      requestNum, roomID, assignedNurse, requestStatus, additionalNotes, bouquetTypeSelected
+      getRequestNum(),
+      getRoomID(),
+      getAssignedNurse(),
+      Integer.toString(getRequestStatus().ordinal()),
+      getAdditionalNotes(),
+      bouquetTypeSelected
     };
   }
 
   @Override
   public void fromStringArray(String[] args) {
-    init(args[0], args[1], args[2], args[3], args[4], args[5]);
+    init(
+        args[0],
+        args[1],
+        args[2],
+        RequestStatus.values()[Integer.parseInt(args[3])],
+        args[4],
+        args[5]);
   }
 
+  @Override
+  public int getRequestPriority() {
+    return 5;
+  }
 
   public String getBouquetTypeSelected() {
     return bouquetTypeSelected;
@@ -68,9 +74,8 @@ public class FloralRequest extends Requestable implements StringArrayConv {
     this.bouquetTypeSelected = bouquetTypeSelected;
   }
 
-
   @Override
   public String getLocID() {
-    return this.roomID;
+    return getRoomID();
   }
 }

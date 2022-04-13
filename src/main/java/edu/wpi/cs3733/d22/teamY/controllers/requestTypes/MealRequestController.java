@@ -5,6 +5,7 @@ import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.model.MealRequest;
+import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
 import java.util.Objects;
@@ -84,8 +85,6 @@ public class MealRequestController {
    */
   private void submitRequest(
       String roomID,
-      String assignedNurse,
-      String requestStatus,
       String additionalNotes,
       String mainChoice,
       String sideChoice,
@@ -96,8 +95,8 @@ public class MealRequestController {
         new MealRequest(
             nextRequest,
             roomID,
-            assignedNurse,
-            requestStatus,
+            "",
+            RequestStatus.INCOMPLETE,
             additionalNotes,
             mainChoice,
             sideChoice,
@@ -126,8 +125,6 @@ public class MealRequestController {
     if (mealSelected && sideSelected && allFields) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          input_AssignedNurse.getText(),
-          "temp",
           input_AdditionalNotes.getText(),
           getMainChoice(),
           getSideChoice(),

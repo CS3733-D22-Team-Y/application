@@ -6,6 +6,7 @@ import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
+import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.SecurityServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -70,19 +71,12 @@ public class SecurityRequestController {
    * Submits a service request.
    *
    * @param roomID The room ID.
-   * @param assignedNurse The assigned nurse.
-   * @param requestStatus The request status.
    * @param additionalNotes Any additional notes.
    * @param requestTypeSelected The type of request selected.
    * @param requestPriority The priority of the request.
    */
   private void submitRequest(
-      String roomID,
-      String assignedNurse,
-      String requestStatus,
-      String additionalNotes,
-      String requestTypeSelected,
-      String requestPriority) {
+      String roomID, String additionalNotes, String requestTypeSelected, String requestPriority) {
 
     String nextRequest =
         String.valueOf(DBUtils.getNextRequestNum(EntryType.SECURITY_SERVICE_REQUEST));
@@ -90,8 +84,8 @@ public class SecurityRequestController {
         new SecurityServiceRequest(
             nextRequest,
             roomID,
-            assignedNurse,
-            requestStatus,
+            "",
+            RequestStatus.INCOMPLETE,
             additionalNotes,
             requestTypeSelected,
             requestPriority));
@@ -117,9 +111,7 @@ public class SecurityRequestController {
     if (typeSelected && prioritySelected && allFields) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
-          "open",
           getRequestType(),
           getRequestPriority());
       errorLabel.setText("");

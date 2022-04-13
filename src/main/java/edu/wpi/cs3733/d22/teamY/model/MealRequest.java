@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -36,7 +35,7 @@ public class MealRequest extends Requestable implements StringArrayConv {
       String requestNum,
       String roomID,
       String assignedNurse,
-      String requestStatus,
+      RequestStatus requestStatus,
       String additionalNotes,
       String mainChoice,
       String sideChoice,
@@ -57,11 +56,11 @@ public class MealRequest extends Requestable implements StringArrayConv {
   @Override
   public String[] toStringArray() {
     return new String[] {
-      requestNum,
-      roomID,
-      assignedNurse,
-      requestStatus,
-      additionalNotes,
+      getRequestNum(),
+      getRoomID(),
+      getAssignedNurse(),
+      Integer.toString(getRequestStatus().ordinal()),
+      getAdditionalNotes(),
       mainChoice,
       sideChoice,
       allergies,
@@ -71,7 +70,21 @@ public class MealRequest extends Requestable implements StringArrayConv {
 
   @Override
   public void fromStringArray(String[] args) {
-    init(args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8]);
+    init(
+        args[0],
+        args[1],
+        args[2],
+        RequestStatus.values()[Integer.parseInt(args[3])],
+        args[4],
+        args[5],
+        args[6],
+        args[7],
+        args[8]);
+  }
+
+  @Override
+  public int getRequestPriority() {
+    return 5;
   }
 
   public String getMainChoice() {
@@ -108,6 +121,6 @@ public class MealRequest extends Requestable implements StringArrayConv {
 
   @Override
   public String getLocID() {
-    return roomID;
+    return getRoomID();
   }
 }

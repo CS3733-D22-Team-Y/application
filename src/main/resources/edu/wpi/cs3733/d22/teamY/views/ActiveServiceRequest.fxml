@@ -39,7 +39,7 @@
       </Label>
         <Pane layoutX="438.0" layoutY="98.0" prefHeight="667.0" prefWidth="479.0" style="-fx-background-color: #93cddc; -fx-background-radius: 15;">
          <children>
-            <JFXTextArea fx:id="extraInfoText" editable="false" layoutX="11.0" layoutY="11.0" prefHeight="644.0" prefWidth="458.0" style="-fx-background-color: E4E5E6; -fx-padding: 10;" text="Additional information will appear here.&#10;" unFocusColor="#ffffff00" wrapText="true">
+            <JFXTextArea fx:id="extraInfoText" editable="false" layoutX="11.0" layoutY="11.0" prefHeight="644.0" prefWidth="458.0" style="-fx-background-color: ECEFFC; -fx-padding: 10;" text="Additional information will appear here.&#10;" unFocusColor="#ffffff00" wrapText="true">
                <font>
                   <Font name="Calibri" size="21.0" />
                </font>

@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXButton;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.Auth;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
-import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.RequestControllerUtil;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
