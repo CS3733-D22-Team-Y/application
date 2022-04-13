@@ -2,6 +2,7 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.model.Employee;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -16,6 +17,8 @@ public class PersonalSettingsController {
   @FXML MFXTextField dob;
   @FXML MFXTextField pronouns;
   @FXML MFXTextField phone;
+
+  @FXML MFXButton edit, apply, cancel;
 
   AnchorPane sidebar = null;
   public static Employee currentEmployee =
@@ -32,6 +35,61 @@ public class PersonalSettingsController {
     dob.setText(PersonalSettings.currentEmployee.getDOB());
     pronouns.setText(PersonalSettings.currentEmployee.getPronouns());
     phone.setText(PersonalSettings.currentEmployee.getPhone());
+
+    setEdit(false);
+  }
+
+  private void setEdit(boolean b) {
+    legalName.setEditable(b);
+    prefName.setEditable(b);
+    title.setEditable(b);
+    email.setEditable(b);
+    dob.setEditable(b);
+    pronouns.setEditable(b);
+    phone.setEditable(b);
+
+    legalName.setDisable(!b);
+    prefName.setDisable(!b);
+    title.setDisable(!b);
+    email.setDisable(!b);
+    dob.setDisable(!b);
+    pronouns.setDisable(!b);
+    phone.setDisable(!b);
+  }
+
+  @FXML
+  void editMode() {
+    edit.setVisible(false);
+    cancel.setVisible(true);
+    apply.setVisible(true);
+
+    setEdit(true);
+  }
+
+  @FXML
+  public void updateFields() {
+    edit.setVisible(true);
+    cancel.setVisible(false);
+    apply.setVisible(false);
+
+    updateLegalName();
+    updatePrefName();
+    updateTitle();
+    updateEmail();
+    updateDob();
+    updatePronouns();
+    updatePhone();
+
+    setEdit(false);
+  }
+
+  @FXML
+  public void cancelEdits() throws IOException {
+    edit.setVisible(true);
+    cancel.setVisible(false);
+    apply.setVisible(false);
+
+    initialize();
   }
 
   @FXML
@@ -74,16 +132,5 @@ public class PersonalSettingsController {
   public void updatePhone() {
     PersonalSettings.currentEmployee.setPhone(phone.getText());
     DBManager.update(PersonalSettings.currentEmployee);
-  }
-
-  @FXML
-  public void updateFields() {
-    updateLegalName();
-    updatePrefName();
-    updateTitle();
-    updateEmail();
-    updateDob();
-    updatePronouns();
-    updatePhone();
   }
 }
