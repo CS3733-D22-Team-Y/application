@@ -4,13 +4,11 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -21,12 +19,9 @@
          <AnchorPane fx:id="mapRoot" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
       </center>
       <bottom>
-         <HBox alignment="BOTTOM_LEFT" prefHeight="348.0" prefWidth="920.0" BorderPane.alignment="CENTER">
+         <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-               <Pane fx:id="ll1MainPane" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
-                  <HBox.margin>
-                     <Insets right="10.0" />
-                  </HBox.margin>
+               <Pane fx:id="ll1MainPane" layoutX="10.0" layoutY="-110.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
                   <children>
                      <MFXButton fx:id="floorLL1Button" layoutY="250.0" onMouseEntered="#LL1Enter" onMouseExited="#LL1Exit" prefHeight="50.0" prefWidth="50.0" text="LL1">
                         <font>
@@ -35,7 +30,7 @@
                      </MFXButton>
                      <Pane fx:id="ll1PopupPane" prefHeight="250.0" prefWidth="50.0">
                         <children>
-                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutX="-1.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutX="-1.0" layoutY="98.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                               <image>
                                  <Image url="@images/icons/bellLogo.png" />
@@ -70,7 +65,7 @@
                      </Pane>
                   </children>
                </Pane>
-               <Pane fx:id="ll1MainPane1" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
+               <Pane fx:id="ll1MainPane1" layoutX="70.0" layoutY="-110.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
                   <children>
                      <MFXButton fx:id="floorLL2Button" layoutY="250.0" onMouseEntered="#LL2Enter" onMouseExited="#LL2Exit" prefHeight="50.0" prefWidth="50.0" text="LL2">
                         <font>
@@ -79,7 +74,7 @@
                      </MFXButton>
                      <Pane fx:id="ll2PopupPane" prefHeight="250.0" prefWidth="50.0">
                         <children>
-                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                               <image>
                                  <Image url="@images/icons/bellLogo.png" />
@@ -114,7 +109,7 @@
                      </Pane>
                   </children>
                </Pane>
-               <Pane fx:id="ll1MainPane11" layoutX="80.0" layoutY="48.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0" translateX="10.0">
+               <Pane fx:id="ll1MainPane11" layoutX="130.0" layoutY="-110.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
                   <children>
                      <MFXButton fx:id="floor1Button" layoutY="250.0" onMouseEntered="#L1Enter" onMouseExited="#L1Exit" prefHeight="50.0" prefWidth="50.0" text="1">
                         <font>
@@ -123,7 +118,7 @@
                      </MFXButton>
                      <Pane fx:id="l1PopupPane" prefHeight="250.0" prefWidth="50.0">
                         <children>
-                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                               <image>
                                  <Image url="@images/icons/bellLogo.png" />
@@ -158,7 +153,7 @@
                      </Pane>
                   </children>
                </Pane>
-               <Pane fx:id="ll1MainPane111" layoutX="130.0" layoutY="48.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0" translateX="20.0">
+               <Pane fx:id="ll1MainPane111" layoutX="190.0" layoutY="-110.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
                   <children>
                      <MFXButton fx:id="floor2Button" layoutY="250.0" onMouseEntered="#L2Enter" onMouseExited="#L2Exit" prefHeight="50.0" prefWidth="50.0" text="2">
                         <font>
@@ -167,7 +162,7 @@
                      </MFXButton>
                      <Pane fx:id="l2PopupPane" prefHeight="250.0" prefWidth="50.0">
                         <children>
-                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                               <image>
                                  <Image url="@images/icons/bellLogo.png" />
@@ -202,16 +197,11 @@
                      </Pane>
                   </children>
                </Pane>
-               <Pane fx:id="ll1MainPane1111" layoutX="180.0" layoutY="48.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0" translateX="30.0">
+               <Pane fx:id="ll1MainPane1111" layoutX="250.0" layoutY="-110.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
                   <children>
-                     <MFXButton fx:id="floor3Button" layoutY="250.0" onMouseEntered="#L3Enter" onMouseExited="#L3Exit" prefHeight="50.0" prefWidth="50.0" text="3">
-                        <font>
-                           <Font size="15.0" />
-                        </font>
-                     </MFXButton>
                      <Pane fx:id="l3PopupPane" prefHeight="250.0" prefWidth="50.0">
                         <children>
-                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                               <image>
                                  <Image url="@images/icons/bellLogo.png" />
@@ -244,9 +234,14 @@
                            <TextField fx:id="l3X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                         </children>
                      </Pane>
+                     <MFXButton fx:id="floor3Button" layoutY="250.0" onMouseEntered="#L3Enter" onMouseExited="#L3Exit" prefHeight="50.0" prefWidth="50.0" text="3">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </MFXButton>
                   </children>
                </Pane>
-               <Pane fx:id="ll1MainPane11111" layoutX="230.0" layoutY="48.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0" translateX="40.0">
+               <Pane fx:id="ll1MainPane11111" layoutX="310.0" layoutY="-110.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
                   <children>
                      <MFXButton fx:id="floor4Button" layoutY="250.0" onMouseEntered="#L4Enter" onMouseExited="#L4Exit" prefHeight="50.0" prefWidth="50.0" text="4">
                         <font>
@@ -255,7 +250,7 @@
                      </MFXButton>
                      <Pane fx:id="l4PopupPane" prefHeight="250.0" prefWidth="50.0">
                         <children>
-                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                               <image>
                                  <Image url="@images/icons/bellLogo.png" />
@@ -290,7 +285,7 @@
                      </Pane>
                   </children>
                </Pane>
-               <Pane fx:id="ll1MainPane111111" layoutX="280.0" layoutY="48.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0" translateX="50.0">
+               <Pane fx:id="ll1MainPane111111" layoutX="370.0" layoutY="-110.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
                   <children>
                      <MFXButton fx:id="floor5Button" layoutY="250.0" onMouseEntered="#L5Enter" onMouseExited="#L5Exit" prefHeight="50.0" prefWidth="50.0" text="5">
                         <font>
@@ -299,7 +294,7 @@
                      </MFXButton>
                      <Pane fx:id="l5PopupPane" prefHeight="250.0" prefWidth="50.0">
                         <children>
-                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
+                           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                               <image>
                                  <Image url="@images/icons/bellLogo.png" />
@@ -335,13 +330,7 @@
                   </children>
                </Pane>
             </children>
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-            <padding>
-               <Insets bottom="10.0" left="10.0" />
-            </padding>
-         </HBox>
+         </Pane>
       </bottom>
    </BorderPane>
    <Pane fx:id="locationInfoPane" layoutX="701.0" prefHeight="780.0" prefWidth="219.0" visible="false">
@@ -384,10 +373,10 @@
          </TextField>
          <MFXTextField fx:id="locationBuilding" floatMode="DISABLED" layoutX="84.0" layoutY="534.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
          <MFXButton fx:id="locationSubmit" layoutX="110.0" layoutY="675.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />
-         <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Exit" />
+         <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Close" />
       </children>
    </Pane>
-   <Pane fx:id="equipInfoPane" layoutX="701.0" prefHeight="780.0" prefWidth="219.0" visible="false">
+   <Pane fx:id="equipInfoPane" layoutX="701.0" prefHeight="780.0" prefWidth="219.0">
       <children>
          <MFXButton />
          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="780.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="219.0" />
@@ -476,6 +465,6 @@
          <JFXTextArea fx:id="reqDescriptionBox" layoutX="19.0" layoutY="491.0" prefHeight="151.0" prefWidth="179.0" text="No Description Provided" />
       </children>
    </Pane>
-   <MFXLegacyComboBox fx:id="modeBox" layoutX="770.0" layoutY="29.0" lineStrokeWidth="0.0" prefHeight="37.0" prefWidth="134.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0" />
-   <TextField fx:id="selectorBoxText" editable="false" layoutX="772.0" layoutY="32.0" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: FFFFFFFF;" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="32.0" />
+   <TextField fx:id="selectorBoxText" editable="false" layoutX="787.0" layoutY="35.0" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: FFFFFFFF;" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="35.0" />
+   <MFXLegacyComboBox fx:id="modeBox" layoutX="770.0" layoutY="35.0" lineStrokeWidth="0.0" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: 00000011;" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="35.0" />
 </AnchorPane>

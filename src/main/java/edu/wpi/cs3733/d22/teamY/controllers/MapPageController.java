@@ -783,6 +783,7 @@ public class MapPageController<T extends Requestable> {
 
     // Load initial floor and mode
     switchMap(lastFloor, MapMode.LOCATION);
+    modeBox.setValue("");
   }
 
   public void exit() {
