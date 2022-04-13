@@ -62,8 +62,14 @@ public class FloralRequest implements StringArrayConv, Requestable {
     init(args[0], args[1], args[2], args[3], args[4], args[5]);
   }
 
+  @Override
   public String getRequestNum() {
     return requestNum;
+  }
+
+  @Override
+  public String getRequestType() {
+    return "Floral";
   }
 
   public void setRequestNum(String requestNum) {
@@ -86,12 +92,19 @@ public class FloralRequest implements StringArrayConv, Requestable {
     this.requestStatus = requestStatus;
   }
 
+  @Override
   public String getAssignedNurse() {
     return assignedNurse;
   }
 
+  @Override
   public void setAssignedNurse(String assignedNurse) {
     this.assignedNurse = assignedNurse;
+  }
+
+  @Override
+  public String getDescription() {
+    return this.bouquetTypeSelected + " Flowers Selected\n\n" + this.additionalNotes;
   }
 
   public String getBouquetTypeSelected() {
@@ -113,5 +126,15 @@ public class FloralRequest implements StringArrayConv, Requestable {
   @Override
   public String getLocID() {
     return this.roomID;
+  }
+
+  @Override
+  public String getStatus() {
+    return this.requestStatus;
+  }
+
+  @Override
+  public void setStatus(String status) {
+    this.requestStatus = status;
   }
 }

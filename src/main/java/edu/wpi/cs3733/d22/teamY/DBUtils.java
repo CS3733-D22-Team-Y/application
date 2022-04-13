@@ -297,6 +297,14 @@ public class DBUtils {
     return filtered;
   }
 
+  public static <T extends Requestable> List<T> getAllServiceReqsAtLocation(Location l) {
+    List<T> requests = new ArrayList<>();
+    for (RequestType rt : RequestType.values()) {
+      requests.addAll(serviceReqsAtLocation(rt.requestClass, l));
+    }
+    return requests;
+  }
+
   public static HashMap<String, HashMap<String, Integer>> getEquipFloorCounts() {
     // floor can be index, then need hashmap for each equipment type
     HashMap<String, HashMap<String, Integer>> equipFloorCounts = new HashMap<>();
@@ -332,5 +340,22 @@ public class DBUtils {
       sum += getRequestsOnFloor(r.requestClass, floor).size();
     }
     return sum;
+  }
+
+  /**
+   * Returns a list of all the medical equipment at a location.
+   *
+   * @param l the location
+   * @return equipment list
+   */
+  public static List<MedEquip> getEquipAtLocation(Location l) {
+    List<MedEquip> allEquip = DBManager.getAll(MedEquip.class);
+    List<MedEquip> filtered = new ArrayList<>();
+    for (MedEquip e : allEquip) {
+      if (e.getEquipLocId().equals(l.getNodeID())) {
+        filtered.add(e);
+      }
+    }
+    return filtered;
   }
 }

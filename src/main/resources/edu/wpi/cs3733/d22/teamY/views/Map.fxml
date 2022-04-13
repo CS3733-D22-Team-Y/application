@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" prefHeight="780.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MapPageController">
+<AnchorPane fx:id="mainPane" prefHeight="780.0" prefWidth="920.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MapPageController">
    <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
          <AnchorPane fx:id="mapRoot" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
@@ -37,23 +38,23 @@
                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutX="-1.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bellLogo.png" />
+                                 <Image url="@images/icons/bellLogo.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="ll1RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bedlogoBlack.png" />
+                                 <Image url="@images/icons/bedlogoBlack.png" />
                               </image>
                            </ImageView>
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/pumplogoBlack.png" />
+                                 <Image url="@images/icons/pumplogoBlack.png" />
                               </image>
                            </ImageView>
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/reclinerlogoBlack.png" />
+                                 <Image url="@images/icons/reclinerlogoBlack.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="ll1Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
@@ -61,7 +62,7 @@
                            <TextField fx:id="ll1Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/xrayIcon.png" />
+                                 <Image url="@images/icons/xrayIcon.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="ll1X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
@@ -81,23 +82,23 @@
                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bellLogo.png" />
+                                 <Image url="@images/icons/bellLogo.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="ll2RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="40.0" style="-fx-background-color: #00000000;" text="-1" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bedlogoBlack.png" />
+                                 <Image url="@images/icons/bedlogoBlack.png" />
                               </image>
                            </ImageView>
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/pumplogoBlack.png" />
+                                 <Image url="@images/icons/pumplogoBlack.png" />
                               </image>
                            </ImageView>
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/reclinerlogoBlack.png" />
+                                 <Image url="@images/icons/reclinerlogoBlack.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="ll2Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
@@ -105,7 +106,7 @@
                            <TextField fx:id="ll2Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/xrayIcon.png" />
+                                 <Image url="@images/icons/xrayIcon.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="ll2X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
@@ -125,23 +126,23 @@
                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bellLogo.png" />
+                                 <Image url="@images/icons/bellLogo.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="l1RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #00000000;" text="-1" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bedlogoBlack.png" />
+                                 <Image url="@images/icons/bedlogoBlack.png" />
                               </image>
                            </ImageView>
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/pumplogoBlack.png" />
+                                 <Image url="@images/icons/pumplogoBlack.png" />
                               </image>
                            </ImageView>
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/reclinerlogoBlack.png" />
+                                 <Image url="@images/icons/reclinerlogoBlack.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="l1Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
@@ -149,7 +150,7 @@
                            <TextField fx:id="l1Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/xrayIcon.png" />
+                                 <Image url="@images/icons/xrayIcon.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="l1X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
@@ -169,23 +170,23 @@
                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bellLogo.png" />
+                                 <Image url="@images/icons/bellLogo.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="l2RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="38.0" style="-fx-background-color: #00000000;" text="-1" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bedlogoBlack.png" />
+                                 <Image url="@images/icons/bedlogoBlack.png" />
                               </image>
                            </ImageView>
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/pumplogoBlack.png" />
+                                 <Image url="@images/icons/pumplogoBlack.png" />
                               </image>
                            </ImageView>
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/reclinerlogoBlack.png" />
+                                 <Image url="@images/icons/reclinerlogoBlack.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="l2Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #00000000;" text="-1" />
@@ -193,7 +194,7 @@
                            <TextField fx:id="l2Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="38.0" style="-fx-background-color: #00000000;" text="-1" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/xrayIcon.png" />
+                                 <Image url="@images/icons/xrayIcon.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="l2X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
@@ -213,23 +214,23 @@
                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bellLogo.png" />
+                                 <Image url="@images/icons/bellLogo.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="l3RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bedlogoBlack.png" />
+                                 <Image url="@images/icons/bedlogoBlack.png" />
                               </image>
                            </ImageView>
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/pumplogoBlack.png" />
+                                 <Image url="@images/icons/pumplogoBlack.png" />
                               </image>
                            </ImageView>
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/reclinerlogoBlack.png" />
+                                 <Image url="@images/icons/reclinerlogoBlack.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="l3Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #00000000;" text="-1" />
@@ -237,7 +238,7 @@
                            <TextField fx:id="l3Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/xrayIcon.png" />
+                                 <Image url="@images/icons/xrayIcon.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="l3X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
@@ -257,23 +258,23 @@
                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bellLogo.png" />
+                                 <Image url="@images/icons/bellLogo.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="l4RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bedlogoBlack.png" />
+                                 <Image url="@images/icons/bedlogoBlack.png" />
                               </image>
                            </ImageView>
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/pumplogoBlack.png" />
+                                 <Image url="@images/icons/pumplogoBlack.png" />
                               </image>
                            </ImageView>
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/reclinerlogoBlack.png" />
+                                 <Image url="@images/icons/reclinerlogoBlack.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="l4Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
@@ -281,7 +282,7 @@
                            <TextField fx:id="l4Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #00000000;" text="-1" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/xrayIcon.png" />
+                                 <Image url="@images/icons/xrayIcon.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="l4X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
@@ -301,23 +302,23 @@
                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.5" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bellLogo.png" />
+                                 <Image url="@images/icons/bellLogo.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="l5RequestNum" editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: #00000000;" text="-1" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/bedlogoBlack.png" />
+                                 <Image url="@images/icons/bedlogoBlack.png" />
                               </image>
                            </ImageView>
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/pumplogoBlack.png" />
+                                 <Image url="@images/icons/pumplogoBlack.png" />
                               </image>
                            </ImageView>
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/reclinerlogoBlack.png" />
+                                 <Image url="@images/icons/reclinerlogoBlack.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="l5Bed" editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="38.0" style="-fx-background-color: #00000000;" text="-1" />
@@ -325,7 +326,7 @@
                            <TextField fx:id="l5Rec" editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="38.0" style="-fx-background-color: #00000000;" text="-1" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@../../../../../../../../../../../Downloads/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/application-dd4902910d10c9da600dc1a8cd0c1592e311444f/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/xrayIcon.png" />
+                                 <Image url="@images/icons/xrayIcon.png" />
                               </image>
                            </ImageView>
                            <TextField fx:id="l5X" editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
@@ -343,7 +344,7 @@
          </HBox>
       </bottom>
    </BorderPane>
-   <Pane fx:id="locationInfoPane" layoutX="701.0" prefHeight="780.0" prefWidth="219.0">
+   <Pane fx:id="locationInfoPane" layoutX="701.0" prefHeight="780.0" prefWidth="219.0" visible="false">
       <children>
          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="780.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="219.0" />
          <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="82.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Node ID:">
@@ -351,39 +352,128 @@
                <Font name="Microsoft Tai Le" size="12.0" />
             </font>
          </TextField>
-         <MFXTextField fx:id="locationID" layoutX="84.0" layoutY="76.0" prefHeight="48.0" prefWidth="134.0" />
+         <MFXTextField fx:id="locationID" floatMode="DISABLED" layoutX="84.0" layoutY="76.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
          <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="170.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Short Name:">
             <font>
                <Font name="Microsoft Tai Le" size="12.0" />
             </font>
          </TextField>
-         <MFXTextField fx:id="locationShort" layoutX="84.0" layoutY="164.0" prefHeight="48.0" prefWidth="134.0" />
+         <MFXTextField fx:id="locationShort" floatMode="DISABLED" layoutX="84.0" layoutY="164.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
          <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="269.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Long Name:">
             <font>
                <Font name="Microsoft Tai Le" size="12.0" />
             </font>
          </TextField>
-         <MFXTextField fx:id="locationLong" layoutX="84.0" layoutY="263.0" prefHeight="48.0" prefWidth="134.0" />
+         <MFXTextField fx:id="locationLong" floatMode="DISABLED" layoutX="84.0" layoutY="263.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
          <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="365.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="X Coord:">
             <font>
                <Font name="Microsoft Tai Le" size="12.0" />
             </font>
          </TextField>
-         <MFXTextField fx:id="locationX" layoutX="84.0" layoutY="359.0" prefHeight="48.0" prefWidth="134.0" />
+         <MFXTextField fx:id="locationX" floatMode="DISABLED" layoutX="84.0" layoutY="359.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
          <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="450.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Y Coord:">
             <font>
                <Font name="Microsoft Tai Le" size="12.0" />
             </font>
          </TextField>
-         <MFXTextField fx:id="locationY" layoutX="84.0" layoutY="444.0" prefHeight="48.0" prefWidth="134.0" />
+         <MFXTextField fx:id="locationY" floatMode="DISABLED" layoutX="84.0" layoutY="444.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
          <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="540.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Building:">
             <font>
                <Font name="Microsoft Tai Le" size="12.0" />
             </font>
          </TextField>
-         <MFXTextField fx:id="locationBuilding" layoutX="84.0" layoutY="534.0" prefHeight="48.0" prefWidth="134.0" />
+         <MFXTextField fx:id="locationBuilding" floatMode="DISABLED" layoutX="84.0" layoutY="534.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
          <MFXButton fx:id="locationSubmit" layoutX="110.0" layoutY="675.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />
+         <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Exit" />
+      </children>
+   </Pane>
+   <Pane fx:id="equipInfoPane" layoutX="701.0" prefHeight="780.0" prefWidth="219.0" visible="false">
+      <children>
+         <MFXButton />
+         <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="780.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="219.0" />
+         <TextField alignment="CENTER" editable="false" layoutX="69.0" layoutY="75.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Equip ID:">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="equipID" floatMode="DISABLED" layoutX="47.0" layoutY="109.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="336.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Location ID:">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="equipLocation" floatMode="DISABLED" layoutX="84.0" layoutY="330.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="435.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Equip Type:">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="equipType" floatMode="DISABLED" layoutX="84.0" layoutY="429.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="1.0" layoutY="531.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Is Clean?:">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="equipClean" floatMode="DISABLED" layoutX="84.0" layoutY="525.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
+         <MFXButton fx:id="equipSubmit" layoutX="110.0" layoutY="675.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />
+         <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Exit" />
+         <MFXButton fx:id="equipDown" layoutX="4.0" layoutY="108.0" text="&lt;">
+            <font>
+               <Font size="24.0" />
+            </font></MFXButton>
+         <MFXButton fx:id="equipUp" layoutX="173.0" layoutY="108.0" text="&gt;">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </MFXButton>
+      </children>
+   </Pane>
+   <Pane fx:id="reqInfoPane" layoutX="711.0" prefHeight="790.0" prefWidth="219.0" visible="false">
+      <children>
+         <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="780.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="219.0" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="-20.0" layoutY="200.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Type">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="reqTypeBox" floatMode="DISABLED" layoutX="64.0" layoutY="194.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
+         <MFXButton fx:id="reqSubmit" layoutX="110.0" layoutY="675.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />
          <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Submit" />
+         <MFXButton layoutX="1.0" layoutY="109.0" onAction="#left" prefHeight="56.0" prefWidth="54.0" text="&lt;">
+            <font>
+               <Font size="30.0" />
+            </font>
+         </MFXButton>
+         <MFXButton layoutX="161.0" layoutY="109.0" onAction="#right" prefHeight="56.0" prefWidth="54.0" text="&gt;">
+            <font>
+               <Font size="30.0" />
+            </font>
+         </MFXButton>
+         <MFXTextField fx:id="currReqDisplay" allowEdit="false" floatMode="DISABLED" layoutX="43.0" layoutY="116.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="-20.0" layoutY="261.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Location">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="reqLocationBox" floatMode="DISABLED" layoutX="64.0" layoutY="255.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="-20.0" layoutY="324.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Status">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="reqStatusBox" floatMode="DISABLED" layoutX="64.0" layoutY="318.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="-20.0" layoutY="388.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Nurse">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <MFXTextField fx:id="reqNurseBox" floatMode="DISABLED" layoutX="64.0" layoutY="382.0" prefHeight="48.0" prefWidth="134.0" styleClass="requestInput" />
+         <TextField alignment="CENTER_RIGHT" editable="false" layoutX="58.0" layoutY="447.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Description">
+            <font>
+               <Font name="Microsoft Tai Le" size="12.0" />
+            </font>
+         </TextField>
+         <JFXTextArea fx:id="reqDescriptionBox" layoutX="19.0" layoutY="491.0" prefHeight="151.0" prefWidth="179.0" text="No Description Provided" />
       </children>
    </Pane>
    <MFXLegacyComboBox fx:id="modeBox" layoutX="770.0" layoutY="29.0" lineStrokeWidth="0.0" prefHeight="37.0" prefWidth="134.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="29.0" />
