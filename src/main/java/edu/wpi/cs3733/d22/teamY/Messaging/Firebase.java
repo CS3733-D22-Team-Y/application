@@ -4,6 +4,10 @@ import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
+import edu.wpi.cs3733.d22.teamY.DBManager;
+import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
+import edu.wpi.cs3733.d22.teamY.model.Employee;
+
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -26,11 +30,15 @@ public class Firebase {
     createEventListeners();
 
     HashMap<String, Post> testData = new HashMap<>();
-    testData.put("1", new Post("Nathan", "Hello World"));
+    testData.put("1", new Post("Nathan", "Hello World", ));
     testData.put("2", new Post("Ann", "Hello?"));
     testData.put("3", new Post("Jim", "World..."));
 
     mainRef.setValueAsync(testData);
+
+
+      Employee to = (Employee) DBManager.getAll(Employee.class).get(0);
+      MessageService.sendMessage("Hello?", PersonalSettings.currentEmployee, to);
   }
 
   private static void createEventListeners() {

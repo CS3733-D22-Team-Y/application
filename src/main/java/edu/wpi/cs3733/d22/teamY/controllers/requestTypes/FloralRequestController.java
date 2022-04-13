@@ -73,9 +73,6 @@ public class FloralRequestController {
             additionalNotes,
             bouquetTypeSelected));
     System.out.println("Saved FloralRequest");
-
-    Employee to = (Employee) DBManager.getAll(Employee.class).get(0);
-    MessageService.sendMessage("Hello?", PersonalSettings.currentEmployee, to);
   }
 
   // Called when the submit button is pressed.
