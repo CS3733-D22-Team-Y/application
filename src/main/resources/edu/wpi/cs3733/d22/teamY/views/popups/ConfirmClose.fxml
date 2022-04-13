@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="popup" stylesheets="@../css/Fonts.css" prefHeight="262.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ConfirmCloseController">
+<AnchorPane fx:id="popup" prefHeight="262.0" prefWidth="532.0" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ConfirmCloseController">
     <children>
       <Rectangle height="262.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="532.0">
          <fill>
@@ -29,17 +29,17 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-        <JFXButton layoutX="286.0" layoutY="140.0" onAction="#logOut" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" text="Yes, log me out" textFill="#1b89a6">
+        <JFXButton layoutX="275.0" layoutY="140.0" onAction="#logOut" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="loginButton" text="Yes, log me out" textAlignment="CENTER" textFill="#1b89a6" wrapText="true">
             <font>
                 <Font name="Microsoft Tai Le Bold" size="16.0" />
             </font>
         </JFXButton>
-        <JFXButton fx:id="stayButton" layoutX="46.0" layoutY="140.0" onAction="#stayIn" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" text="No, keep me logged in" textFill="#1b89a6">
+        <JFXButton fx:id="stayButton" layoutX="60.0" layoutY="140.0" onAction="#stayIn" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="loginButton" text="No, keep me logged in" textAlignment="CENTER" textFill="#1b89a6" wrapText="true">
             <font>
                 <Font name="Microsoft Tai Le Bold" size="16.0" />
             </font>
         </JFXButton>
-        <Label layoutX="46.0" layoutY="50.0" text="You are about to log out, are you sure?" textFill="WHITE">
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="25.0" prefHeight="100.0" prefWidth="515.0" styleClass="popupText" text="You are about to log out, are you sure?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
             <font>
                 <Font name="Microsoft Tai Le Bold" size="24.0" />
             </font>

@@ -1,3 +1,9 @@
+/*.title, .subtitle, .popupText, .requestOption, .requestButton, .inputLabel, .requestInput, .inputField, .plainText, .submenuButton, .loginButton, .sidebarTopOptions, .sidebarBottomOptions{*/
+/*    -fx-border-style: solid;*/
+/*    -fx-border-width: 2;*/
+/*    -fx-border-color: "#f0f";*/
+/*}*/
+
 .title {
     -fx-font-family: 'Fredoka One';
     -fx-font-size: 60;
@@ -6,6 +12,11 @@
 .subtitle{
     -fx-font-family: 'Fredoka One';
     -fx-font-size: 45;
+}
+
+.popupText{
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 24;
 }
 
 .requestOption{
@@ -24,6 +35,12 @@
 }
 
 .requestInput{
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 20;
+    -fx-padding: 0 0 15px 0;
+}
+
+.inputField{
     -fx-font-family: 'Varela Round';
     -fx-font-size: 20;
 }
@@ -50,5 +67,5 @@
 
 .sidebarBottomOptions{
     -fx-font-family: 'Fredoka One';
-    -fx-font-size: 30;
+    -fx-font-size: 20;
 }

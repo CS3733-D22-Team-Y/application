@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -14,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SideBarController">
+<AnchorPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SideBarController">
    <children>
       <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
          <image>
@@ -83,12 +82,12 @@
             <Image url="@images/sidebarLogo.png" />
          </image>
       </ImageView>
-      <TextField fx:id="searchBar" layoutX="30.0" layoutY="140.0" onAction="#doSearch" prefWidth="210.0" promptText="Search...">
+      <TextField fx:id="searchBar" layoutX="20.0" layoutY="140.0" onAction="#doSearch" prefHeight="53.0" prefWidth="230.0" promptText="Search..." styleClass="inputField">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <VBox layoutX="10.0" layoutY="192.0" prefHeight="175.0" prefWidth="250.0">
+      <VBox layoutX="10.0" layoutY="200.0" prefHeight="175.0" prefWidth="250.0">
          <children>
             <Rectangle fx:id="mapHiddenRect" fill="#2e2e2eef" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
             <Rectangle fx:id="servicesHiddenRect" fill="#2e2e2eef" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
@@ -96,7 +95,7 @@
             <Rectangle fx:id="tasksHiddenRect" fill="#2e2e2eef" height="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
          </children>
       </VBox>
-      <VBox layoutX="71.0" layoutY="200.0" spacing="20.0">
+      <VBox layoutX="71.0" layoutY="210.0" spacing="20.0">
          <children>
             <Label fx:id="mapLabel" styleClass="sidebarTopOptions" text="Map" textFill="WHITE">
                <font>
@@ -152,7 +151,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="10.0" layoutY="192.0" prefHeight="175.0" prefWidth="250.0">
+      <VBox layoutX="10.0" layoutY="200.0" prefHeight="175.0" prefWidth="250.0">
          <children>
             <Rectangle fx:id="mapButtonHitbox" fill="#2e2e2e00" height="58.0" onMouseClicked="#loadMap" onMouseEntered="#startMapButtonHover" onMouseExited="#endMapButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
             <Rectangle fx:id="servicesButtonHitbox" fill="#2e2e2e00" height="58.0" onMouseClicked="#loadViewServiceRequests" onMouseEntered="#startServicesButtonHover" onMouseExited="#endServicesButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
@@ -169,8 +168,4 @@
          </children>
       </VBox>
    </children>
-   <stylesheets>
-      <URL value="@css/Fonts.csss" />
-      <URL value="@css/Fonts.css" />
-   </stylesheets>
 </AnchorPane>
