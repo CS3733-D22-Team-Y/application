@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController;
 import edu.wpi.cs3733.d22.teamY.model.*;
 import java.util.ArrayList;
@@ -155,7 +156,11 @@ public class DBUtils {
             .setParameter("password", password.hashCode() + "")
             .list();
     s.close();
-    return employees.size() == 1;
+    if (employees.size() == 1) {
+      PersonalSettings.currentEmployee = employees.get(0);
+      return true;
+    }
+    return false;
   }
 
   /**
