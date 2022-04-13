@@ -77,8 +77,8 @@ public class SideBarController {
         "views/MedEquipTable.fxml",
         "views/ActiveServiceRequest.fxml",
         "views/ActServReqTable.fxml",
-        "views/SecondaryMap_TEMPLATE.fxml",
-        "views/PersonalSettings.fxml");
+        "views/PersonalSettings.fxml",
+        "views/SecondaryMap_TEMPLATE.fxml");
     SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
   }
