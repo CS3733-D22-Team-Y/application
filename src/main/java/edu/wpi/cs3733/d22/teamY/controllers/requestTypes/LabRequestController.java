@@ -8,6 +8,7 @@ import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.LabRequest;
+import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
@@ -56,24 +57,17 @@ public class LabRequestController {
    * Submits a service request.
    *
    * @param roomID The room ID.
-   * @param assignedNurse The assigned nurse.
-   * @param requestStatus The request status.
    * @param additionalNotes Any additional notes.
    * @param resultTypeSelected The type of result selected.
    */
-  private void submitRequest(
-      String roomID,
-      String assignedNurse,
-      String requestStatus,
-      String additionalNotes,
-      String resultTypeSelected) {
+  private void submitRequest(String roomID, String additionalNotes, String resultTypeSelected) {
     String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.LAB_REQUEST));
     DBManager.save(
         new LabRequest(
             nextRequest,
             roomID,
-            assignedNurse,
-            requestStatus,
+            "",
+            RequestStatus.INCOMPLETE,
             additionalNotes,
             resultTypeSelected));
     System.out.println("Saved LabRequest");
@@ -89,12 +83,10 @@ public class LabRequestController {
         && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          input_AssignedNurse.getText(),
-          "request status",
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");
-      SceneUtil.sidebar.mainPage();
+      SceneUtil.welcomePage.mainPage();
       SceneLoading.loadPopup(
           "views/popups/ReqSubmitted.fxml", "views/requestTypes/LabRequest.fxml");
       resetAllFields();
@@ -111,10 +103,10 @@ public class LabRequestController {
         || !Objects.equals(input_AssignedNurse.getText(), "")) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
       if (!SceneLoading.stayOnPage) {
-        SceneUtil.sidebar.mainPage();
+        SceneUtil.welcomePage.mainPage();
       }
     } else {
-      SceneUtil.sidebar.mainPage();
+      SceneUtil.welcomePage.mainPage();
     }
   }
 

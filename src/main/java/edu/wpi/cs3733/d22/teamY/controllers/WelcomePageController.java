@@ -1,25 +1,23 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
-import static org.apache.commons.lang3.RandomStringUtils.*;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXToggleButton;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.Auth;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MainLoaderResult;
 import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.RequestControllerUtil;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
-import java.io.*;
 import java.io.IOException;
-import java.net.*;
 import java.util.Arrays;
 import java.util.Random;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -57,6 +55,8 @@ public class WelcomePageController {
 
   private boolean lockOut = false;
 
+  private boolean loadingRightNow = false;
+
   int maxAttempts = 5;
   int attCount = 0;
 
@@ -70,18 +70,65 @@ public class WelcomePageController {
     loading.setVisible(false);
     yubikeyPane.setVisible(false);
     dbMenu.getItems().addAll(dbOptions);
+
+    loadingRightNow = false;
   }
 
   @FXML
   public void mainPage() throws IOException {
-    SceneUtil.sidebar = this;
+    if (loadingRightNow) return;
+    loadingRightNow = true;
+
+    SceneUtil.welcomePage = this;
     RequestControllerUtil.initialize();
-    FXMLLoader root = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
-    App.getInstance().setScene(new Scene(root.load()));
-    SideBarController controller = root.getController();
-    controller.initializeScale();
-    controller.loadViewServiceRequests();
-  };
+
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
+    App.getInstance().setScene(new Scene(loader.load()));
+    SideBarController controller = loader.getController();
+    try {
+      controller.initializeScale();
+      controller.loadViewServiceRequests();
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
+
+    loadingRightNow = false;
+  }
+
+  public void mainPageThreaded() throws IOException {
+    if (loadingRightNow) return;
+    loadingRightNow = true;
+
+    SceneUtil.welcomePage = this;
+    RequestControllerUtil.initialize();
+
+    loadMainTask.setOnSucceeded(
+        e -> {
+          App.getInstance().setScene(new Scene(loadMainTask.getValue().getParent()));
+          SideBarController controller = loadMainTask.getValue().getLoader().getController();
+          try {
+            controller.initializeScale();
+            controller.loadViewServiceRequests();
+          } catch (IOException ex) {
+            ex.printStackTrace();
+          }
+
+          loadingRightNow = false;
+        });
+
+    Thread t = new Thread(loadMainTask);
+    t.setDaemon(true);
+    t.start();
+  }
+
+  Task<MainLoaderResult> loadMainTask =
+      new Task<>() {
+        @Override
+        protected MainLoaderResult call() throws IOException {
+          FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
+          return new MainLoaderResult(loader, loader.load());
+        }
+      };
 
   @FXML
   void killApplication() throws IOException {
@@ -121,7 +168,7 @@ public class WelcomePageController {
     if (deduct) {
       if (attCount >= maxAttempts) {
         lockOut = true;
-        attemptsRemaining.setText("Too many login attempts. Try again later.");
+        attemptsRemaining.setText("Too many login attempts.\nTry again later.");
         ft2.setToValue(1.0);
       } else {
         attemptsRemaining.setText(
@@ -253,24 +300,16 @@ public class WelcomePageController {
   }
 
   @FXML
-  void loginAnimation() throws IOException {
-    Timeline loginTimeline =
-        new Timeline(
-            new KeyFrame(
-                Duration.seconds(0),
-                (e) -> Welcome.setText("Welcome, " + DBUtils.getNameFromID(username.getText()))),
-            new KeyFrame(Duration.seconds(0.01), (e) -> loginPane.setVisible(false)),
-            new KeyFrame(Duration.seconds(0.02), (e) -> loading.setVisible(true)),
-            new KeyFrame(
-                Duration.seconds(1),
-                (e) -> {
-                  try {
-                    mainPage();
-                  } catch (IOException ex) {
-                    ex.printStackTrace();
-                  }
-                }));
-    loginTimeline.play();
+  void loginAnimation() {
+    loginPane.setVisible(false);
+    loading.setVisible(true);
+    Welcome.setText("Welcome, " + DBUtils.getNameFromID(username.getText()));
+
+    try {
+      mainPageThreaded();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   @FXML

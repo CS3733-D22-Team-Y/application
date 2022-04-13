@@ -7,6 +7,7 @@ import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.LaundryRequest;
+import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
 import java.util.Objects;
@@ -53,24 +54,17 @@ public class LaundryRequestController {
    * Submits a service request.
    *
    * @param roomID The room ID.
-   * @param assignedNurse The assigned nurse.
-   * @param requestStatus The request status.
    * @param additionalNotes Any additional notes.
    * @param laundryTypeSelected The type of result selected.
    */
-  private void submitRequest(
-      String roomID,
-      String assignedNurse,
-      String requestStatus,
-      String additionalNotes,
-      String laundryTypeSelected) {
+  private void submitRequest(String roomID, String additionalNotes, String laundryTypeSelected) {
     String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.LAUNDRY_REQUEST));
     DBManager.save(
         new LaundryRequest(
             nextRequest,
             roomID,
-            assignedNurse,
-            requestStatus,
+            "",
+            RequestStatus.INCOMPLETE,
             additionalNotes,
             laundryTypeSelected));
     System.out.println("Saved Laundry Request");
@@ -86,12 +80,10 @@ public class LaundryRequestController {
         && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          input_AssignedNurse.getText(),
-          "open",
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");
-      SceneUtil.sidebar.mainPage();
+      SceneUtil.welcomePage.mainPage();
       SceneLoading.loadPopup(
           "views/popups/ReqSubmitted.fxml", "views/requestTypes/LaundryRequest.fxml");
       resetAllFields();
@@ -108,10 +100,10 @@ public class LaundryRequestController {
         || !Objects.equals(input_AssignedNurse.getText(), "")) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
       if (!SceneLoading.stayOnPage) {
-        SceneUtil.sidebar.mainPage();
+        SceneUtil.welcomePage.mainPage();
       }
     } else {
-      SceneUtil.sidebar.mainPage();
+      SceneUtil.welcomePage.mainPage();
     }
   }
 

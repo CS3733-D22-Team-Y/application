@@ -1,18 +1,12 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "MEALREQUESTS")
-public class MealRequest implements StringArrayConv, Requestable {
+public class MealRequest extends Requestable implements StringArrayConv {
 
-  @Id private String requestNum;
-  private String roomID;
-  private String assignedNurse;
-  private String requestStatus;
-  private String additionalNotes;
   private String mainChoice;
   private String sideChoice;
   private String allergies;
@@ -24,17 +18,13 @@ public class MealRequest implements StringArrayConv, Requestable {
       String requestNum,
       String roomID,
       String assignedNurse,
-      String requestStatus,
+      RequestStatus requestStatus,
       String additionalNotes,
       String mainChoice,
       String sideChoice,
       String allergies,
       String specialInstructions) {
-    this.requestNum = requestNum;
-    this.roomID = roomID;
-    this.assignedNurse = assignedNurse;
-    this.requestStatus = requestStatus;
-    this.additionalNotes = additionalNotes;
+    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus);
     this.mainChoice = mainChoice;
     this.sideChoice = sideChoice;
     this.allergies = allergies;
@@ -45,7 +35,7 @@ public class MealRequest implements StringArrayConv, Requestable {
       String requestNum,
       String roomID,
       String assignedNurse,
-      String requestStatus,
+      RequestStatus requestStatus,
       String additionalNotes,
       String mainChoice,
       String sideChoice,
@@ -66,11 +56,11 @@ public class MealRequest implements StringArrayConv, Requestable {
   @Override
   public String[] toStringArray() {
     return new String[] {
-      requestNum,
-      roomID,
-      assignedNurse,
-      requestStatus,
-      additionalNotes,
+      getRequestNum(),
+      getRoomID(),
+      getAssignedNurse(),
+      Integer.toString(getRequestStatus().ordinal()),
+      getAdditionalNotes(),
       mainChoice,
       sideChoice,
       allergies,
@@ -80,76 +70,32 @@ public class MealRequest implements StringArrayConv, Requestable {
 
   @Override
   public void fromStringArray(String[] args) {
-    init(args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8]);
-  }
-
-  public String getRequestNum() {
-    return requestNum;
-  }
-
-  @Override
-  public String getRequestType() {
-    return "Meal";
-  }
-
-  @Override
-  public String getStatus() {
-    return this.requestStatus;
+    init(
+        args[0],
+        args[1],
+        args[2],
+        RequestStatus.values()[Integer.parseInt(args[3])],
+        args[4],
+        args[5],
+        args[6],
+        args[7],
+        args[8]);
   }
 
   @Override
-  public void setStatus(String status) {
-    this.requestStatus = status;
-  }
-
-  public void setRequestNum(String requestNum) {
-    this.requestNum = requestNum;
-  }
-
-  public String getRoomID() {
-    return roomID;
-  }
-
-  public void setRoomID(String roomID) {
-    this.roomID = roomID;
-  }
-
-  public String getAssignedNurse() {
-    return assignedNurse;
-  }
-
-  public void setAssignedNurse(String assignedNurse) {
-    this.assignedNurse = assignedNurse;
+  public int getRequestPriority() {
+    return 4;
   }
 
   @Override
-  public String getDescription() {
-    return "Main: "
-        + mainChoice
-        + "\nSide: "
-        + sideChoice
-        + "\nAllergies: "
-        + allergies
-        + "\nSpecial Instructions: "
-        + specialInstructions
-        + "\n\n"
-        + additionalNotes;
-  }
+  public String getSpecificText() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Entree: ").append(mainChoice);
+    sb.append("Side: ").append(sideChoice);
+    sb.append("Dietary Restriction: ").append(allergies);
+    sb.append("Special Instructions: ").append(specialInstructions);
 
-  public String getRequestStatus() {
-    return requestStatus;
-  }
-
-  public void setRequestStatus(String requestStatus) {
-    this.requestStatus = requestStatus;
-  }
-
-  public String getAdditionalNotes() {
-    return additionalNotes;
-  }
-
-  public void setAdditionalNotes(String additionalNotes) {
-    this.additionalNotes = additionalNotes;
+    return sb.toString();
   }
 
   public String getMainChoice() {
@@ -186,6 +132,11 @@ public class MealRequest implements StringArrayConv, Requestable {
 
   @Override
   public String getLocID() {
-    return roomID;
+    return getRoomID();
+  }
+
+  @Override
+  public String getTypeString() {
+    return "Meal Delivery";
   }
 }

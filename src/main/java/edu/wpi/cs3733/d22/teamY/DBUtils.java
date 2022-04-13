@@ -60,6 +60,7 @@ public class DBUtils {
     }
   }
 
+  @SuppressWarnings("Unchecked")
   public static Pair<Integer, Integer> getAvailableEquipment(String equipType) {
     List<MedEquip> equipment =
         DBManager.getAll(MedEquip.class, new Where(MedEquip.EQUIP_TYPE, equipType));
@@ -103,7 +104,7 @@ public class DBUtils {
   }
 
   // find MedEquip object
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings("Unchecked")
   public static String getNameFromID(String id) {
     Session s = SessionManager.getSession();
     List<Employee> people =
@@ -128,6 +129,7 @@ public class DBUtils {
    * @param e EntryType of Object to Use
    * @return Number of Next Request
    */
+  @SuppressWarnings("Unchecked")
   public static int getNextRequestNum(EntryType e) {
     Session s = SessionManager.getSession();
     int count =
@@ -146,7 +148,7 @@ public class DBUtils {
    * @param password the password of the employee
    * @return true if the employee had valid credentials, false otherwise
    */
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings("Unchecked")
   public static boolean isValidLogin(String username, String password) {
     Session s = SessionManager.getSession();
     // search for the employee with the given username and password
@@ -169,6 +171,7 @@ public class DBUtils {
    * @param hashedUsername hashed Username INTEGER
    * @return true if valid username, false if one exists.
    */
+  @SuppressWarnings("Unchecked")
   public static boolean doesUserExist(int hashedUsername) {
     Session s = SessionManager.getSession();
 
@@ -180,6 +183,7 @@ public class DBUtils {
     return employees.size() == 0;
   }
 
+  @SuppressWarnings("Unchecked")
   public static String convertNameToID(String shortName) {
     Session s = SessionManager.getSession();
     List<Location> tempLocations =
@@ -195,14 +199,15 @@ public class DBUtils {
     return (tempLocations.get(0).getNodeID());
   }
 
+  @SuppressWarnings("Unchecked")
   public static String convertIDToName(String nodeID) {
     Session s = SessionManager.getSession();
     List<Location> tempLocations =
         s.createQuery("from Location where nodeID = :nodeID").setParameter("nodeID", nodeID).list();
     s.close();
 
-    if (tempLocations.size() > 1) {
-      return null;
+    if (tempLocations.size() != 1) {
+      return "null";
     }
 
     return (tempLocations.get(0).getShortName());
@@ -259,6 +264,7 @@ public class DBUtils {
 
   /**
    * Checks if logged in user has the default password
+   *
    * @param passwordHash hashed pass INTEGER
    * @return true if users' pass is the default
    */
