@@ -1,1 +1,10 @@
-﻿
+﻿001,room01,1,active,none,xray
+002,room02,1,inactive,mistake,infusion_pump
+003,room03,1,active,none,xray
+004,room04,1,inactive,none,bed
+005,room05,1,active,asap,xray
+006,room06,1,inactive,none,recliner
+007,room07,1,active,none,infusion_pump
+008,room08,1,active,none,recliner
+009,room09,1,active,none,infusion_pump
+010,room10,1,inactive,whenever,bed
