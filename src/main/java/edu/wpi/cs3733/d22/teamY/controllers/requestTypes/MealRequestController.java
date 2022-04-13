@@ -162,7 +162,7 @@ public class MealRequestController {
 
     Boolean allFields =
         !Objects.equals(roomsHiddenField.getText(), "")
-            && !Objects.equals(input_AssignedNurse.getText(), "");
+            || !Objects.equals(input_AssignedNurse.getText(), "");
 
     Boolean sideSelected =
         RequestControllerUtil.isRadioButtonSelected(

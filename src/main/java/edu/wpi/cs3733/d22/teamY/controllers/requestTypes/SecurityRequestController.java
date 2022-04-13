@@ -151,7 +151,7 @@ public class SecurityRequestController {
 
     Boolean allFields =
         !Objects.equals(roomsHiddenField.getText(), "")
-            && !Objects.equals(input_AssignedNurse.getText(), "");
+            || !Objects.equals(input_AssignedNurse.getText(), "");
 
     if (typeSelected || prioritySelected || allFields) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
