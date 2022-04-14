@@ -19,7 +19,7 @@ public class ChangeThemeController {
   @FXML private JFXButton theme1Button;
   @FXML private JFXButton normalTheme;
   AnchorPane sidebar = null;
-  String activeTheme = "views/css/Theme1.css";
+  String activeTheme = "views/css/ThemeDark.css";
 
   @FXML
   void initialize() throws IOException {
@@ -50,7 +50,8 @@ public class ChangeThemeController {
         .getScene()
         .getStylesheets()
         .add(
-            Objects.requireNonNull(App.class.getResource("views/css/Theme1.css")).toExternalForm());
+            Objects.requireNonNull(App.class.getResource("views/css/ThemeDark.css"))
+                .toExternalForm());
   }
 
   @FXML

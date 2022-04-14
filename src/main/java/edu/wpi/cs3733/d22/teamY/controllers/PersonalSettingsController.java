@@ -142,7 +142,8 @@ public class PersonalSettingsController {
         .getScene()
         .getStylesheets()
         .add(
-            Objects.requireNonNull(App.class.getResource("views/css/Theme1.css")).toExternalForm());
+            Objects.requireNonNull(App.class.getResource("views/css/ThemeDark.css"))
+                .toExternalForm());
   }
 
   @FXML
@@ -151,6 +152,7 @@ public class PersonalSettingsController {
         .getScene()
         .getStylesheets()
         .remove(
-            Objects.requireNonNull(App.class.getResource("views/css/Theme1.css")).toExternalForm());
+            Objects.requireNonNull(App.class.getResource("views/css/ThemeDark.css"))
+                .toExternalForm());
   }
 }
