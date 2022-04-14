@@ -303,7 +303,7 @@ public class WelcomePageController {
   void loginAnimation() {
     loginPane.setVisible(false);
     loading.setVisible(true);
-    String name = DBUtils.getNameFromID(username.getText());
+    String name = DBUtils.getPrefNameFromID(username.getText());
     Welcome.setText("Welcome, " + (name.equals("") ? "Guest" : name));
 
     try {
