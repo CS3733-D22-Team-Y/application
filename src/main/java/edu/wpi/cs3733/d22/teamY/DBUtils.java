@@ -103,7 +103,7 @@ public class DBUtils {
     DBManager.update(thisEquip);
   }
 
-  // find MedEquip object
+  // Gets an employee's legal name from their ID
   @SuppressWarnings("Unchecked")
   public static String getNameFromID(String id) {
     Session s = SessionManager.getSession();
@@ -121,6 +121,26 @@ public class DBUtils {
     PersonalSettingsController.currentEmployee = thePerson; // TODO change
 
     return thePerson.getName();
+  }
+
+  // Gets an employee's preferred name from their ID
+  @SuppressWarnings("Unchecked")
+  public static String getPrefNameFromID(String id) {
+    Session s = SessionManager.getSession();
+    List<Employee> people =
+        s.createQuery("from Employee where username = :id")
+            .setParameter("id", id.hashCode() + "")
+            .list();
+    s.close();
+
+    if (people.size() == 0) {
+      return "";
+    }
+
+    Employee thePerson = people.get(0);
+    PersonalSettingsController.currentEmployee = thePerson; // TODO change
+
+    return thePerson.getPrefName();
   }
 
   /**
