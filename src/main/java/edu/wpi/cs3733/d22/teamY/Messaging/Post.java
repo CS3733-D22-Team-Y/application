@@ -21,12 +21,12 @@ public class Post {
     this.recipients = recipients;
   }
 
-  //returns ms since epoch
+  public Post() {}
+
+  // returns ms since epoch
   public String generateTime() {
     return System.currentTimeMillis() + "";
   }
-
-  public Post() {}
 
   @Override
   public String toString() {
@@ -60,5 +60,21 @@ public class Post {
 
   public String getRecipients() {
     return recipients;
+  }
+
+  public void setAuthor(String author) {
+    this.author = author;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  public void setTime(String time) {
+    this.time = time;
+  }
+
+  public void setRecipients(String recipients) {
+    this.recipients = recipients;
   }
 }

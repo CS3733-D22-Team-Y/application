@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="780.0" minWidth="920.0" prefHeight="780.0" prefWidth="920.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MessageController">
+    <children>
+        <Label layoutX="14.0" layoutY="14.0" text="Messages" textFill="#20758b">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="60.0" />
+            </font>
+         <styleClass>
+            <String fx:value="title" />
+            <String fx:value="primaryColor" />
+         </styleClass>
+        </Label>
+      <MFXButton layoutX="794.0" layoutY="707.0" onAction="#send" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" text="Send" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+         <styleClass>
+            <String fx:value="requestButton" />
+            <String fx:value="primaryColor" />
+         </styleClass>
+      </MFXButton>
+      <MFXTextField fx:id="messageText" layoutX="77.0" layoutY="707.0" prefHeight="49.0" prefWidth="683.0" />
+      <MFXTextField fx:id="toUID" layoutX="379.0" layoutY="464.0" prefHeight="49.0" prefWidth="163.0" />
+    </children>
+</AnchorPane>

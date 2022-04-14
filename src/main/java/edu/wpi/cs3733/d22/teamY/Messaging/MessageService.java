@@ -11,22 +11,19 @@ public class MessageService {
 
   public static void sendMessage(String message, Employee from, Employee... to) {
     String key = getChatKey(from, to);
-    Post post = new Post(from.getName(), key, message);
+    Post post = new Post(from.getIDNumber(), key, message);
 
-    // get post count number from the /postCount node
-    int postCount = 3;
-//    DatabaseReference postCountRef = Firebase.database.getReference("/postCount");
-
-    DatabaseReference chatArea = Firebase.database.getReference("/posts/" + key + "/" + postCount);
+    DatabaseReference chatArea =
+        Firebase.database.getReference("/chats/" + key + "/" + post.getTime());
     chatArea.setValueAsync(post);
   }
 
   private static String getChatKey(Employee from, Employee... to) {
     ArrayList<String> members = new ArrayList<String>();
     for (Employee employee : to) {
-      members.add(employee.getName());
+      members.add(employee.getIDNumber());
     }
-    members.add(from.getName());
+    members.add(from.getIDNumber());
     Collections.sort(members);
     String key = "";
     for (String member : members) {

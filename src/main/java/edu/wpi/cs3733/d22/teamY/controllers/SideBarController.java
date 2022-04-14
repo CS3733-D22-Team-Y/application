@@ -75,7 +75,8 @@ public class SideBarController {
         "views/Map.fxml",
         "views/RequestMenu.fxml",
         "views/MedEquipTable.fxml",
-        "views/ActiveServiceRequest.fxml",
+        //        "views/ActiveServiceRequest.fxml",
+        "views/Messages.fxml",
         "views/ActServReqTable.fxml",
         "views/PersonalSettings.fxml",
         "views/SecondaryMap_TEMPLATE.fxml");
