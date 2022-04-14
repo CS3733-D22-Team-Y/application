@@ -114,7 +114,7 @@ public class DBUtils {
     s.close();
 
     if (people.size() == 0) {
-      return "Guest";
+      return "";
     }
 
     Employee thePerson = people.get(0);

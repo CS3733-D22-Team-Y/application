@@ -77,6 +77,9 @@ public class CSVBackup {
       return null;
     }
 
+    while (csvOutputs.size() % size != 0) {
+      csvOutputs.add("");
+    }
     for (int i = size; i < csvOutputs.size(); i += size) {
       try {
         String[] sa = csvOutputs.subList(i, i + size).toArray(String[]::new);
@@ -139,7 +142,9 @@ public class CSVBackup {
         StringBuilder line = new StringBuilder();
         for (int i = 0; i < data.length; i++) {
           // line.append("\"");
-          line.append(data[i].replaceAll("\"", "\"\""));
+          if (data[i] != null) {
+            line.append(data[i].replaceAll("\"", "\"\""));
+          }
           // line.append("\"");
           if (i != data.length - 1) {
             line.append(',');

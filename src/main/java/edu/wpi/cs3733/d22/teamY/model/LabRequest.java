@@ -90,6 +90,6 @@ public class LabRequest extends Requestable implements StringArrayConv {
 
   @Override
   public String getTypeString() {
-    return "Lab Request";
+    return "Lab Work";
   }
 }

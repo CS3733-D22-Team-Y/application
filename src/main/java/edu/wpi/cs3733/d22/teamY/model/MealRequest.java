@@ -91,9 +91,9 @@ public class MealRequest extends Requestable implements StringArrayConv {
   public String getSpecificText() {
     StringBuilder sb = new StringBuilder();
     sb.append("Entree: ").append(mainChoice);
-    sb.append("Side: ").append(sideChoice);
-    sb.append("Dietary Restriction: ").append(allergies);
-    sb.append("Special Instructions: ").append(specialInstructions);
+    sb.append("\nSide: ").append(sideChoice);
+    sb.append("\nDietary Restriction: ").append(allergies);
+    sb.append("\nSpecial Instructions:");
 
     return sb.toString();
   }

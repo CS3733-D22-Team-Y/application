@@ -521,7 +521,6 @@ public class MapPageController<T extends Requestable> {
                               l.getNodeType(),
                               locationLong.getText(),
                               locationShort.getText());
-                      System.out.println("fuck");
                       // l.setShortName(locationShort.getText());
                       // l.setLongName(locationLong.getText());
                       System.out.println(l.getShortName());
@@ -571,6 +570,7 @@ public class MapPageController<T extends Requestable> {
                               equipClean.getText());
                       DBManager.update(t);
                       DBManager.save(t);
+
                       equip.add(t);
                       switchMap(newFloor, mapMode);
                       System.out.println(
@@ -584,9 +584,7 @@ public class MapPageController<T extends Requestable> {
                       System.out.println(equip.size());
                     });
 
-                System.out.println("FUCCCKCKCKCKCKCKCKCKCMCKn");
                 mapComponent.setContent(newFloor.image, List.of(), mapElements);
-                System.out.println("FUCCCKCKCKCKCKCKCKCKCMCKn");
 
                 // Gets all locations on the newly selected floor
                 //      DBUtils.getLocationsOnFloor(newFloor.dbKey)
@@ -779,10 +777,12 @@ public class MapPageController<T extends Requestable> {
           exit();
           switchMap(lastFloor, mapMode);
         });
-    System.out.println("shit" + MapMode.LOCATION);
 
     // Load initial floor and mode
     switchMap(lastFloor, MapMode.LOCATION);
+    equipInfoPane.setVisible(false);
+    reqInfoPane.setVisible(false);
+    locationInfoPane.setVisible(false);
   }
 
   public void exit() {
