@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane stylesheets="@css/Fonts.css" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17"
+<AnchorPane stylesheets="@css/Blank.css" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ChangeThemeController">
     <children>

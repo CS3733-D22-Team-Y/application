@@ -47,7 +47,7 @@ public class App extends Application {
     scene.getStylesheets().add("http://fonts.googleapis.com/css2?family=Varela+Round");
     scene
         .getStylesheets()
-        .add(Objects.requireNonNull(App.class.getResource("views/css/Fonts.css")).toExternalForm());
+        .add(Objects.requireNonNull(App.class.getResource("views/css/Blank.css")).toExternalForm());
     primaryStage.setTitle("Bringham and Women's Hospital Equipment Tracker");
     primaryStage.setScene(scene);
     primaryStage.show();
