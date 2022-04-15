@@ -73,6 +73,8 @@ public class WelcomePageController {
     dbMenu.getItems().addAll(dbOptions);
 
     loadingRightNow = false;
+
+    NewSceneLoading.addMultipleScenes("views/PersonalSettings.fxml", "views/MedEquipTable.fxml");
   }
 
   @FXML
@@ -165,6 +167,7 @@ public class WelcomePageController {
     //         && !lockOut
     //         && Auth.doAuth(username.getText())) {
     //       loginAnimation();
+    /*
     if (username.getText().length() <= 0 || password.getText().length() <= 0) {
       showLoginFail(false);
       return;
@@ -178,6 +181,17 @@ public class WelcomePageController {
       display2FAOptions();
     } else {
       showLoginFail(true);
+    }
+
+     */
+    // NewSceneLoading.loadScene("views/SideBar.fxml");
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
+    App.getInstance().setScene(new Scene(loader.load()));
+    SideBarController controller = loader.getController();
+    try {
+      controller.initializeScale();
+    } catch (IOException ex) {
+      ex.printStackTrace();
     }
   }
 

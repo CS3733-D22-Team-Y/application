@@ -61,7 +61,6 @@ public class SideBarController {
 
   @FXML
   void initialize() throws IOException {
-    /*
     SceneUtil.removeOpacity(
         mapHiddenRect,
         servicesHiddenRect,
@@ -71,6 +70,7 @@ public class SideBarController {
         profileHiddenRect,
         inboxHiddenRect,
         logoutHiddenRect);
+    /*
     SceneUtil.initializePanes(
         mainScreenPane,
         "views/Map.fxml",
@@ -269,8 +269,9 @@ public class SideBarController {
 
   @FXML
   void loadMap() throws IOException {
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(MAP_LIST_LOCATION).setVisible(true);
+    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    // mainScreenPane.getChildren().get(MAP_LIST_LOCATION).setVisible(true);
+    NewSceneLoading.loadScene("views/PersonalSettings.fxml");
     setButtonSelected(mapHiddenRect);
   }
 
@@ -289,8 +290,9 @@ public class SideBarController {
 
   @FXML
   void loadEquipment() {
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(EQUIPMENT_LIST_LOCATION).setVisible(true);
+    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    // mainScreenPane.getChildren().get(EQUIPMENT_LIST_LOCATION).setVisible(true);
+    NewSceneLoading.loadScene("views/MedEquipTable.fxml");
     setButtonSelected(equipmentHiddenRect);
   }
 
