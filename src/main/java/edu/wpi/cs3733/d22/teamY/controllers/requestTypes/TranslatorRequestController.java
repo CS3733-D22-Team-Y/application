@@ -14,6 +14,7 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.util.Objects;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -34,7 +35,7 @@ public class TranslatorRequestController {
   // Additional Notes
   @FXML private TextArea input_AdditionalNotes;
   // Error Label
-  @FXML private TextArea errorLabel;
+  @FXML private Label errorLabel;
   // Side bar
   @FXML private AnchorPane sidebarPane;
 

@@ -17,7 +17,7 @@ import java.util.Objects;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -40,7 +40,7 @@ public class SecurityRequestController {
   @FXML private MFXRadioButton urgentRadioButton;
   @FXML private MFXRadioButton lowPriorityRadioButton;
   // Error Label
-  @FXML private TextArea errorLabel;
+  @FXML private Label errorLabel;
   // Side bar
   @FXML private AnchorPane sidebarPane;
   private Scene requestMenu = null;

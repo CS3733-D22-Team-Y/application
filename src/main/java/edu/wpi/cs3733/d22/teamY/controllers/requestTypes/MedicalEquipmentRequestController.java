@@ -14,7 +14,7 @@ import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -30,7 +30,7 @@ public class MedicalEquipmentRequestController {
   @FXML private MFXRadioButton xrayRadioButton;
   @FXML private MFXRadioButton infusionPumpRadioButton;
   @FXML private MFXRadioButton reclinerRadioButton;
-  @FXML private TextArea errorLabel;
+  @FXML private Label errorLabel;
   // Side bar
   @FXML private AnchorPane sidebarPane;
   // Equipment types text. These should be changed depending on what the names in the database are.
