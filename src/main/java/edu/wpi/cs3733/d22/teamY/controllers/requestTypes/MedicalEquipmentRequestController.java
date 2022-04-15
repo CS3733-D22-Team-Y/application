@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
@@ -15,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class MedicalEquipmentRequestController {
   // Text Inputs
@@ -29,7 +31,8 @@ public class MedicalEquipmentRequestController {
   @FXML private MFXRadioButton infusionPumpRadioButton;
   @FXML private MFXRadioButton reclinerRadioButton;
   @FXML private TextArea errorLabel;
-
+  // Side bar
+  @FXML private AnchorPane sidebarPane;
   // Equipment types text. These should be changed depending on what the names in the database are.
   private final String bedText = "BED";
   private final String xrayText = "XRAY";
@@ -41,12 +44,13 @@ public class MedicalEquipmentRequestController {
   public MedicalEquipmentRequestController() throws IOException {}
 
   @FXML
-  private void initialize() {
+  private void initialize() throws IOException {
 
     updateAvailableEquip();
 
     System.out.println(RequestControllerUtil.allRoomsComboBox.getItems().size());
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   @FXML

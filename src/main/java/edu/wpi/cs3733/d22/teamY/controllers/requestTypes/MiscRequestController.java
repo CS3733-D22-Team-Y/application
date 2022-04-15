@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.MiscRequest;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class MiscRequestController {
   @FXML private MFXTextField input_AssignedNurse;
@@ -22,12 +24,14 @@ public class MiscRequestController {
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
   @FXML private TextArea errorLabel;
-
+  // Side bar
+  @FXML private AnchorPane sidebarPane;
   public MiscRequestController() {}
 
   @FXML
-  void initialize() {
+  void initialize() throws IOException {
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   @FXML
