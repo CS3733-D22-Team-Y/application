@@ -161,6 +161,9 @@
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </MFXButton>
-      <Pane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
+      <Pane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0">
+         <children>
+            <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
+         </children></Pane>
    </children>
 </AnchorPane>
