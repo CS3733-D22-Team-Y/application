@@ -90,7 +90,8 @@ public class WelcomePageController {
         "views/requestTypes/MedicalEquipmentRequest.fxml",
         "views/requestTypes/MiscRequest.fxml",
         "views/requestTypes/SecurityRequest.fxml",
-        "views/requestTypes/TranslatorRequest.fxml");
+        "views/requestTypes/TranslatorRequest.fxml",
+        "views/Map.fxml");
   }
 
   @FXML

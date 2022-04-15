@@ -154,6 +154,8 @@ public class MapPageController<T extends Requestable> {
   @FXML MFXButton equipUp;
   @FXML MFXButton equipDown;
 
+  @FXML private AnchorPane sidebarPane;
+
   private TextField[] reqNumLabels;
   private TextField[] bedLabels;
   private TextField[] pumpLabels;
@@ -783,6 +785,8 @@ public class MapPageController<T extends Requestable> {
     equipInfoPane.setVisible(false);
     reqInfoPane.setVisible(false);
     locationInfoPane.setVisible(false);
+
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   public void exit() {

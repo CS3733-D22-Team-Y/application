@@ -278,7 +278,7 @@ public class SideBarController {
   void loadMap() throws IOException {
     // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     // mainScreenPane.getChildren().get(MAP_LIST_LOCATION).setVisible(true);
-    NewSceneLoading.loadScene("views/PersonalSettings.fxml");
+    NewSceneLoading.loadScene("views/ActiveServiceRequest.fxml");
     setButtonSelected(mapHiddenRect);
   }
 
@@ -316,27 +316,29 @@ public class SideBarController {
 
   @FXML
   void loadHome() {
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     setButtonSelected(homeHiddenRect);
   }
 
   @FXML
   void loadInbox() {
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(INBOX_LIST_LOCATION).setVisible(true);
+    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    // mainScreenPane.getChildren().get(INBOX_LIST_LOCATION).setVisible(true);
     setButtonSelected(inboxHiddenRect);
+    NewSceneLoading.loadScene("views/ActiveServiceRequest.fxml");
   }
 
   @FXML
   void loadProfile() {
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(PROFILE_LIST_LOCATION).setVisible(true);
+    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    // mainScreenPane.getChildren().get(PROFILE_LIST_LOCATION).setVisible(true);
     setButtonSelected(profileHiddenRect);
+    NewSceneLoading.loadScene("views/PersonalSettings.fxml");
   }
 
   @FXML
   void loadHome_noUpdateButton() {
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     SceneUtil.removeSelection(
         mapHiddenRect,
         servicesHiddenRect,

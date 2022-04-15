@@ -13,7 +13,6 @@ import javafx.scene.layout.AnchorPane;
 public class NewSceneLoading {
   // Hashmap of scenes, key: path, content: scene
   private static final HashMap<String, Scene> allScenes = new HashMap<>();
-  private static Node sidebarNode = testLoad();
 
   public static SideBarController sideBarController;
 
@@ -56,9 +55,8 @@ public class NewSceneLoading {
   }
 
   public static void loadSidebar(AnchorPane sidebarPane) throws IOException {
-    sidebarNode = testLoad();
     sidebarPane.getChildren().clear();
-    sidebarPane.getChildren().add(sidebarNode);
+    sidebarPane.getChildren().add(FXMLLoader.load(App.class.getResource("views/SideBar.fxml")));
     sideBarController.initializeScale();
   }
 }
