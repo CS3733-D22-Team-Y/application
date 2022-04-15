@@ -278,7 +278,7 @@ public class SideBarController {
   void loadMap() throws IOException {
     // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     // mainScreenPane.getChildren().get(MAP_LIST_LOCATION).setVisible(true);
-    NewSceneLoading.loadScene("views/ActiveServiceRequest.fxml");
+    NewSceneLoading.loadScene("views/Map.fxml");
     setButtonSelected(mapHiddenRect);
   }
 
