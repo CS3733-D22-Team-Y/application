@@ -283,6 +283,7 @@ public class SideBarController {
   @FXML
   void loadViewServiceRequests() throws IOException {
     // Reset to the main request screen
+    /*
     AnchorPane bgPane =
         (AnchorPane) mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).lookup("#bgPane");
     SceneUtil.hideAllPanes(bgPane.getChildren());
@@ -290,7 +291,9 @@ public class SideBarController {
     // Main code
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).setVisible(true);
+     */
     setButtonSelected(servicesHiddenRect);
+    NewSceneLoading.loadScene("views/RequestMenu.fxml");
   }
 
   @FXML
@@ -303,9 +306,10 @@ public class SideBarController {
 
   @FXML
   void loadTasks() {
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(TASKS_LIST_LOCATION).setVisible(true);
+    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    // mainScreenPane.getChildren().get(TASKS_LIST_LOCATION).setVisible(true);
     setButtonSelected(tasksHiddenRect);
+    NewSceneLoading.loadScene("views/ActiveServiceRequest.fxml");
   }
 
   @FXML

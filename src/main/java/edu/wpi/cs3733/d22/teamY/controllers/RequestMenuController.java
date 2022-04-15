@@ -27,6 +27,7 @@ public class RequestMenuController {
 
   @FXML
   void initialize() throws IOException {
+    /*
     SceneUtil.initializePanes(
         bgPane,
         "views/requestTypes/LabResult.fxml",
@@ -37,8 +38,9 @@ public class RequestMenuController {
         "views/requestTypes/MedicalEquipmentRequest.fxml",
         "views/requestTypes/MealRequest.fxml",
         "views/requestTypes/MiscRequest.fxml");
-    SceneUtil.hideAllBackgrounds(bgPane.getChildren());
-    SceneUtil.hideAllPanes(bgPane.getChildren());
+     */
+    // SceneUtil.hideAllBackgrounds(bgPane.getChildren());
+    // SceneUtil.hideAllPanes(bgPane.getChildren());
     SceneUtil.requests = this;
   }
 
