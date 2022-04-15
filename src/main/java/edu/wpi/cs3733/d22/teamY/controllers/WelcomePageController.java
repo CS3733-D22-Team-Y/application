@@ -73,8 +73,6 @@ public class WelcomePageController {
     dbMenu.getItems().addAll(dbOptions);
 
     loadingRightNow = false;
-
-    NewSceneLoading.addScene("views/SideBar.fxml");
   }
 
   @FXML

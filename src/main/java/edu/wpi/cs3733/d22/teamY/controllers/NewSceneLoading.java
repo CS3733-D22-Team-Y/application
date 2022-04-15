@@ -4,7 +4,6 @@ import edu.wpi.cs3733.d22.teamY.App;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
