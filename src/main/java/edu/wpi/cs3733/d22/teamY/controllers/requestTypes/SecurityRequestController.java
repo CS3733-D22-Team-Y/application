@@ -126,7 +126,7 @@ public class SecurityRequestController {
     } else {
       // Print error messages
       if (typeSelected || prioritySelected || allFields || !allFields) {
-        errorLabel.setText("please enter required fields.");
+        errorLabel.setText("Missing Required Fields.");
       }
     }
   }
