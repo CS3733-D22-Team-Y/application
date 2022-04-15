@@ -66,12 +66,15 @@ public class WelcomePageController {
 
   @FXML
   void initialize() throws IOException {
+    NewSceneLoading test = new NewSceneLoading();
     loginPane.setVisible(true);
     loading.setVisible(false);
     yubikeyPane.setVisible(false);
     dbMenu.getItems().addAll(dbOptions);
 
     loadingRightNow = false;
+
+    NewSceneLoading.addScene("views/SideBar.fxml");
   }
 
   @FXML
@@ -80,8 +83,9 @@ public class WelcomePageController {
     loadingRightNow = true;
 
     SceneUtil.welcomePage = this;
-    RequestControllerUtil.initialize();
+    // RequestControllerUtil.initialize();
 
+    /*
     FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
     App.getInstance().setScene(new Scene(loader.load()));
     SideBarController controller = loader.getController();
@@ -91,6 +95,9 @@ public class WelcomePageController {
     } catch (IOException ex) {
       ex.printStackTrace();
     }
+     */
+
+    NewSceneLoading.loadScene("views/SideBar.fxml");
 
     loadingRightNow = false;
   }

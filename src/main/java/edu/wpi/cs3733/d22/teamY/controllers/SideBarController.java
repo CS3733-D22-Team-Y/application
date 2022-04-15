@@ -61,6 +61,7 @@ public class SideBarController {
 
   @FXML
   void initialize() throws IOException {
+    /*
     SceneUtil.removeOpacity(
         mapHiddenRect,
         servicesHiddenRect,
@@ -81,6 +82,7 @@ public class SideBarController {
         "views/SecondaryMap_TEMPLATE.fxml");
     SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+     */
   }
 
   @FXML
