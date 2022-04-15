@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.RequestControllerUtil;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -44,6 +45,7 @@ public class RequestMenuController {
     // SceneUtil.hideAllPanes(bgPane.getChildren());
     SceneUtil.requests = this;
     NewSceneLoading.loadSidebar(sidebarPane);
+    RequestControllerUtil.initialize();
   }
 
   private void loadRequestScreen(int index) {
