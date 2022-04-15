@@ -15,7 +15,7 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.util.Objects;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -34,7 +34,7 @@ public class LabRequestController {
   @FXML private MFXRadioButton catScanRadioButton;
   @FXML private MFXRadioButton mriRadioButton;
   // Error Label
-  @FXML private TextArea errorLabel;
+  @FXML private Label errorLabel;
   // Side bar
   @FXML private AnchorPane sidebarPane;
   // Result types text. These should be changed depending on what the names in the database are.
