@@ -148,11 +148,6 @@
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <JFXTextArea fx:id="errorLabel" depthTest="DISABLE" disable="true" editable="false" focusColor="#ffffff00" layoutX="945.0" layoutY="685.0" opacity="0.97" prefHeight="10.0" prefWidth="243.0" style="-fx-text-fill: RED;" styleClass="plainText" unFocusColor="#ffffff00">
-         <font>
-            <Font name="Calibri" size="15.0" />
-         </font>
-      </JFXTextArea>
       <TextField fx:id="roomsHiddenField" layoutX="430.0" layoutY="210.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
       <JFXComboBox fx:id="roomsComboBox" layoutX="430.0" layoutY="210.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="inputField" unFocusColor="#ffffff00" />
       <MFXButton computeRadiusMultiplier="false" layoutX="1092.0" layoutY="10.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
@@ -161,5 +156,10 @@
          </font>
       </MFXButton>
       <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
+      <Label fx:id="errorLabel" layoutX="980.0" layoutY="710.0" prefHeight="25.0" prefWidth="210.0" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
