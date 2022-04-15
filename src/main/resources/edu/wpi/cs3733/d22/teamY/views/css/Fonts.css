@@ -31,7 +31,6 @@
 .requestInput{
     -fx-font-family: 'Varela Round';
     -fx-font-size: 20;
-    -fx-padding: 0 0 15px 0;
 }
 
 .inputField{
