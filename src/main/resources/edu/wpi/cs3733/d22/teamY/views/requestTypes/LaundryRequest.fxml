@@ -8,6 +8,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -17,6 +19,11 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="800.0" minWidth="1200.0" prefHeight="780.0" prefWidth="920.0" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.LaundryRequestController">
    <children>
+      <ImageView fx:id="background" fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
+         <image>
+            <Image url="@../images/do-rgb.jpg" />
+         </image>
+      </ImageView>
       <Label layoutX="270.0" layoutY="10.0" styleClass="title" text="Laundry Request">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
