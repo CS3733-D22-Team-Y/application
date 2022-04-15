@@ -8,7 +8,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "REQUESTS")
 public class Request {
-  @Id private String id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  int id;
+
   private RequestTypes type;
   private String assignedNurse;
   private String locationID;
@@ -22,14 +25,22 @@ public class Request {
 
   private String atr3;
 
+  /**
+   * Generic Request Constructor ID Generation Handled by Constructor and Database
+   *
+   * @param type Enum Request Type
+   * @param assignedNurse Nurse/Employee id to be assigned.
+   * @param locationID String nodeID of Request Location
+   * @param additionalNotes Additional Notes Field
+   * @param customAttributes a STRING ARRAY OF CUSTOM ATTRIBUTES !!! THE SAME SIZE AS THE NUMBER OF
+   *     FIELDS THE REQUEST REQUIRES !!!
+   */
   public Request(
-      String id,
       RequestTypes type,
       String assignedNurse,
       String locationID,
       String additionalNotes,
       String[] customAttributes) {
-    this.id = id;
     this.type = type;
     this.assignedNurse = assignedNurse;
     this.locationID = locationID;
@@ -50,7 +61,7 @@ public class Request {
           atr0 = customAttributes[0];
           atr1 = customAttributes[1];
           atr2 = customAttributes[2];
-          atr3 = customAttributes[4];
+          atr3 = customAttributes[3];
           break;
         case MEDEQUIP:
           atr0 = customAttributes[0];
@@ -70,6 +81,12 @@ public class Request {
 
   public Request() {}
 
+  /**
+   * Set's custom Attributes based on the Type of Request
+   *
+   * @param key String of the Key/Attribute to Update
+   * @param value String of the Value
+   */
   public void set(String key, String value) {
     switch (this.type) {
       case FLORAL:
@@ -110,6 +127,12 @@ public class Request {
     }
   }
 
+  /**
+   * Returns a String based on the current Request Type and the Passed in Key.
+   *
+   * @param key !!!
+   * @return
+   */
   public String get(String key) {
     switch (this.type) {
       case FLORAL:
@@ -143,10 +166,23 @@ public class Request {
     return "Incorrect Key";
   }
 
+  public int getRequestId() {
+    return this.id;
+  }
+  /**
+   * Retrieve Request Type of Current Request
+   *
+   * @return ENUM REQUESTTYPES
+   */
   public RequestTypes getType() {
     return type;
   }
 
+  /**
+   * Get Assigned Employee/Nurse
+   *
+   * @return String of Nurse/Employee Name/ID
+   */
   public String getAssignedNurse() {
     return assignedNurse;
   }
