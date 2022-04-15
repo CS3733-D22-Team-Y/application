@@ -21,7 +21,7 @@ import javafx.scene.layout.Pane;
 public class LocTablePageController {
   @FXML private TableView<Location> tableView;
 
-  @FXML Pane sidebarPane;
+  @FXML private AnchorPane sidebarPane;
   @FXML private JFXButton closeSidebarHiddenButton;
   @FXML private JFXHamburger sidebarHamburger;
 
@@ -65,6 +65,8 @@ public class LocTablePageController {
 
     sidebar = SidebarUtil.initializeSidebar(sidebarPane);
     openSidebarLayout();
+
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   // back button

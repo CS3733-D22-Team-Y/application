@@ -20,7 +20,7 @@ public class MedEquipTablePageController {
 
   @FXML private TextArea equipmentTable;
 
-  @FXML Pane sidebarPane;
+  @FXML private AnchorPane sidebarPane;
   @FXML private JFXButton closeSidebarHiddenButton;
   @FXML private JFXHamburger sidebarHamburger;
 
@@ -73,6 +73,7 @@ public class MedEquipTablePageController {
     }
 
     equipmentTable.setText(totalResult);
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   public static class ChangeTheme {
