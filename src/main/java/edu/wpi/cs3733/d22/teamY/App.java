@@ -41,8 +41,14 @@ public class App extends Application {
     Parent root =
         FXMLLoader.load(Objects.requireNonNull(App.class.getResource("views/Welcome.fxml")));
     Scene scene = new Scene(root);
-    scene.getStylesheets().add("http://fonts.googleapis.com/css?family=Fredoka+One");
+    scene
+        .getStylesheets()
+        .add(
+            "https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Varela+Round&display=swap");
     scene.getStylesheets().add("http://fonts.googleapis.com/css2?family=Varela+Round");
+    scene
+        .getStylesheets()
+        .add(Objects.requireNonNull(App.class.getResource("views/css/Blank.css")).toExternalForm());
     scene
         .getStylesheets()
         .add(Objects.requireNonNull(App.class.getResource("views/css/Fonts.css")).toExternalForm());

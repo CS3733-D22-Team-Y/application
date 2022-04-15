@@ -21,8 +21,7 @@ public class camera {
     Dimension frame = webcam.getViewSize();
     double x = frame.getWidth();
     double y = frame.getHeight();
-    System.out.println("hi");
-    System.out.println(x + "," + y);
+    // (x + "," + y);
     BufferedImage image = webcam.getImage();
     BufferedImage image2 = image.getSubimage((int) ((x - y) / 2), 0, (int) y, (int) y);
     ImageIO.write(

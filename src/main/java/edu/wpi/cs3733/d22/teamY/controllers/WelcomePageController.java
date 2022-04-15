@@ -303,8 +303,8 @@ public class WelcomePageController {
   void loginAnimation() {
     loginPane.setVisible(false);
     loading.setVisible(true);
-    String name = DBUtils.getNameFromID(username.getText());
-    Welcome.setText("Welcome, " + (name.equals("") ? "Guest" : name));
+    String name = DBUtils.getPrefNameFromID(username.getText());
+    Welcome.setText("Welcome, " + (name.trim().equals("") ? "Guest" : name));
 
     try {
       mainPageThreaded();

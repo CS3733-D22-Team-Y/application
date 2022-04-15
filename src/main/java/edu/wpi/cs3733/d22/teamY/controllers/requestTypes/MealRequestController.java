@@ -116,7 +116,7 @@ public class MealRequestController {
   // Called when the submit button is pressed.
   @FXML
   void submitButton() throws IOException {
-    errorLabel.setText("Missing Required Fields");
+    errorLabel.setText("Missing Required Fields.");
     Boolean mealSelected =
         RequestControllerUtil.isRadioButtonSelected(
             pizzaRadioButton, burgerRadioButton, saladRadioButton);
@@ -146,7 +146,7 @@ public class MealRequestController {
       resetAllFields();
     } else {
       if (allFields || sideSelected || mealSelected) {
-        errorLabel.setText("Missing Required Fields");
+        errorLabel.setText("Missing Required Fields.");
       }
     }
   }

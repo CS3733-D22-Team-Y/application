@@ -1,6 +1,8 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import edu.wpi.cs3733.d22.teamY.App;
 import java.io.IOException;
+import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -284,6 +286,16 @@ public class SideBarController {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).setVisible(true);
     setButtonSelected(servicesHiddenRect);
+    currScene
+        .getStylesheets()
+        .add(Objects.requireNonNull(App.class.getResource("views/css/Fonts.css")).toExternalForm());
+    if (PersonalSettings.currentEmployee.getTheme().equals("DARK")) {
+      currScene
+          .getStylesheets()
+          .add(
+              Objects.requireNonNull(App.class.getResource("views/css/ThemeDark.css"))
+                  .toExternalForm());
+    }
   }
 
   @FXML
