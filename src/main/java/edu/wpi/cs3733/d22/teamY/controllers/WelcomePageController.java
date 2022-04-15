@@ -74,7 +74,10 @@ public class WelcomePageController {
 
     loadingRightNow = false;
 
-    NewSceneLoading.addMultipleScenes("views/PersonalSettings.fxml", "views/MedEquipTable.fxml");
+    NewSceneLoading.addMultipleScenes(
+        "views/PersonalSettings.fxml",
+        "views/MedEquipTable.fxml",
+        "views/ActiveServiceRequest.fxml");
   }
 
   @FXML
@@ -116,7 +119,7 @@ public class WelcomePageController {
         "views/ConfirmClose.fxml",
         "views/ReqAbort.fxml",
         "views/ReqSubmitted.fxml");
-    NewSceneLoading.loadScene("views/SideBar.fxml");
+    NewSceneLoading.loadScene("views/ActiveServiceRequest.fxml");
 
     loadingRightNow = false;
   }
@@ -151,7 +154,8 @@ public class WelcomePageController {
       new Task<>() {
         @Override
         protected MainLoaderResult call() throws IOException {
-          FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
+          FXMLLoader loader =
+              new FXMLLoader(App.class.getResource("views/ActiveServiceRequest.fxml"));
           return new MainLoaderResult(loader, loader.load());
         }
       };
@@ -185,8 +189,10 @@ public class WelcomePageController {
 
      */
     // NewSceneLoading.loadScene("views/SideBar.fxml");
+    NewSceneLoading.loadScene("views/ActiveServiceRequest.fxml");
     FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
-    App.getInstance().setScene(new Scene(loader.load()));
+    loader.load();
+    // App.getInstance().setScene(new Scene(loader.load()));
     SideBarController controller = loader.getController();
     try {
       controller.initializeScale();

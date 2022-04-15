@@ -129,6 +129,7 @@ public class SideBarController {
   }
 
   private void resizeMainScreen() {
+    /*
     mainScreenPane.scaleYProperty().bind(currScene.heightProperty().subtract(20).divide(780));
     mainScreenPane
         .layoutYProperty()
@@ -138,6 +139,7 @@ public class SideBarController {
     mainScreenPane
         .layoutXProperty()
         .bind(mainScreenPane.scaleXProperty().multiply(460).subtract(190));
+     */
   }
 
   private void sidebarBindToHeight(Shape... shapes) {
