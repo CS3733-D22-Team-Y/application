@@ -490,5 +490,5 @@
    <TextField fx:id="selectorBoxText1" editable="false" layoutX="1057.0" layoutY="35.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: FFFFFFFF;" />
    <MFXLegacyComboBox fx:id="modeBox" layoutX="1043.0" layoutY="35.0" lineStrokeWidth="0.0" prefHeight="25.0" prefWidth="127.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="35.0" />
    <TextField fx:id="selectorBoxText" editable="false" layoutX="1043.6000000000001" layoutY="35.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: FFFFFFFF;" AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="35.0" />
-   <Pane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
+   <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
 </AnchorPane>
