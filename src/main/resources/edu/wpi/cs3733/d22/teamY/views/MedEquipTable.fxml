@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -11,6 +13,11 @@
 
 <AnchorPane fx:id="mainPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MedEquipTablePageController">
     <children>
+      <ImageView fx:id="background" fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
+         <image>
+            <Image url="@images/do-rgb.jpg" />
+         </image>
+      </ImageView>
       <TextArea fx:id="equipmentTable" layoutX="450.0" layoutY="200.0" prefHeight="400.0" prefWidth="570.0" style="letter-spacing: em-wide; letter-spacing: 5px;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
