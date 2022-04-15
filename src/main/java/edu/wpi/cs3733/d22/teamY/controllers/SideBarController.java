@@ -285,7 +285,9 @@ public class SideBarController {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).setVisible(true);
     setButtonSelected(servicesHiddenRect);
-
+    currScene
+        .getStylesheets()
+        .add(Objects.requireNonNull(App.class.getResource("views/css/Fonts.css")).toExternalForm());
     if (PersonalSettings.currentEmployee.getTheme().equals("DARK")) {
       currScene
           .getStylesheets()

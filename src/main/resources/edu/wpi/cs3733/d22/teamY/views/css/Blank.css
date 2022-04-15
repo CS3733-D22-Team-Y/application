@@ -1,67 +1,28 @@
-.title {
-    -fx-font-family: 'Nunito';
-    -fx-font-size: 60;
-}
+.title {}
 
-.subtitle{
-    -fx-font-family: 'Nunito';
-    -fx-font-size: 45;
-}
+.subtitle{}
 
-.popupText{
-    -fx-font-family: 'Varela Round';
-    -fx-font-size: 24;
-}
+.popupText{}
 
-.requestOption{
-    -fx-font-family: 'Varela Round';
-    -fx-font-size: 24;
-}
+.requestOption{}
 
-.requestButton{
-    -fx-font-family: 'Varela Round';
-    -fx-font-size: 20;
-}
+.requestButton{}
 
-.inputLabel{
-    -fx-font-family: 'Varela Round';
-    -fx-font-size: 24;
-}
+.inputLabel{}
 
-.requestInput{
-    -fx-font-family: 'Varela Round';
-    -fx-font-size: 20;
-    -fx-padding: 0 0 15px 0;
-}
+.requestInput{}
 
-.inputField{
-    -fx-font-family: 'Varela Round';
-    -fx-font-size: 20;
-}
+.inputField{}
 
-.plainText{
-    -fx-font-family: 'Varela Round';
-    -fx-font-size: 20;
-}
+.plainText{}
 
-.submenuButton{
-    -fx-font-family: 'Nunito';
-    -fx-font-size: 30;
-}
+.submenuButton{}
 
-.loginButton{
-    -fx-font-family: 'Nunito';
-    -fx-font-size: 20;
-}
+.loginButton{}
 
-.sidebarTopOptions{
-    -fx-font-family: 'Nunito';
-    -fx-font-size: 30;
-}
+.sidebarTopOptions{}
 
 .sidebarBottomOptions{
-    -fx-font-family: 'Nunito';
-    -fx-font-size: 20;
 }
 
 .backgroundTint{}
