@@ -101,7 +101,7 @@ public class TranslatorRequestController {
           input_AdditionalNotes.getText(),
           getLanguageType());
       errorLabel.setText("");
-      SceneUtil.welcomePage.mainPage();
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
       SceneLoading.loadPopup(
           "views/popups/ReqSubmitted.fxml", "views/requestTypes/TranslatorRequest.fxml");
       resetAllFields();

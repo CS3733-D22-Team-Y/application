@@ -89,7 +89,7 @@ public class FloralRequestController {
           input_AdditionalNotes.getText(),
           getBouquetType());
       errorLabel.setText("");
-      SceneUtil.welcomePage.mainPage();
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
       SceneLoading.loadPopup(
           "views/popups/ReqSubmitted.fxml", "views/requestTypes/FloralRequest.fxml");
       resetAllFields();
