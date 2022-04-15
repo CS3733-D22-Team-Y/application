@@ -419,8 +419,7 @@ public class MapPageController<T extends Requestable> {
                       // req.setStatus(reqStatusBox.getText());
 
                       DBManager.update(req);
-
-                      System.out.println("Submit");
+                      // ("Submit");
                     });
 
                 equipUp.setOnMouseClicked(
