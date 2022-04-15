@@ -12,7 +12,7 @@ public class PersonalSettings {
   // Base pane for displaying new scenes
   @FXML private Pane mapPane;
   // Sidebar
-  @FXML private Pane sidebarPane;
+  @FXML private AnchorPane sidebarPane;
   @FXML private JFXButton closeSidebarHiddenButton;
   @FXML private JFXHamburger sidebarHamburger;
   AnchorPane sidebar = null;
