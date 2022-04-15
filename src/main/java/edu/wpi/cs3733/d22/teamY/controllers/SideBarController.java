@@ -86,11 +86,12 @@ public class SideBarController {
     SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
      */
+    NewSceneLoading.sideBarController = this;
   }
 
   @FXML
   void initializeScale() throws IOException {
-
+    /*
     currScene = bottomSidebarText.getScene();
     // Bottom sidebar text
     bottomSidebarText.layoutYProperty().bind(currScene.heightProperty().subtract(200));
@@ -126,6 +127,7 @@ public class SideBarController {
     sidebarBindToLabel(inboxHiddenRect, inboxButtonHitbox, inboxLabel);
     sidebarBindToLabel(profileHiddenRect, profileButtonHitbox, profileLabel);
     sidebarBindToLabel(logoutHiddenRect, logoutButtonHitbox, logoutLabel);
+     */
   }
 
   private void resizeMainScreen() {

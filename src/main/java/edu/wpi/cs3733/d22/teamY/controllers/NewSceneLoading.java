@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -12,6 +13,18 @@ import javafx.scene.layout.AnchorPane;
 public class NewSceneLoading {
   // Hashmap of scenes, key: path, content: scene
   private static final HashMap<String, Scene> allScenes = new HashMap<>();
+  private static Node sidebarNode = testLoad();
+
+  public static SideBarController sideBarController;
+
+  private static Node testLoad() {
+    try {
+      return FXMLLoader.load(App.class.getResource("views/SideBar.fxml"));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
 
   // Function to load scene
   public static void addScene(String path) throws IOException {
@@ -43,7 +56,9 @@ public class NewSceneLoading {
   }
 
   public static void loadSidebar(AnchorPane sidebarPane) throws IOException {
+    sidebarNode = testLoad();
     sidebarPane.getChildren().clear();
-    sidebarPane.getChildren().add(FXMLLoader.load(App.class.getResource("views/SideBar.fxml")));
+    sidebarPane.getChildren().add(sidebarNode);
+    sideBarController.initializeScale();
   }
 }
