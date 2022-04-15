@@ -184,7 +184,7 @@
       </children>
    </AnchorPane>
    <stylesheets>
-      <URL value="@css/Fonts.css" />
-      <URL value="@css/Fonts.css" />
+      <URL value="@css/Blank.css" />
+      <URL value="@css/Blank.css" />
    </stylesheets>
 </AnchorPane>
