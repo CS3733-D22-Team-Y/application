@@ -183,6 +183,7 @@
          <Label fx:id="creator8" layoutX="520.0" layoutY="431.0" text="Jake Brady" visible="false" />
       </children>
    </AnchorPane>
+   <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
    <stylesheets>
       <URL value="@css/Fonts.css" />
       <URL value="@css/Fonts.css" />

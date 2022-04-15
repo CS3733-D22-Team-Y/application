@@ -77,7 +77,14 @@ public class WelcomePageController {
     NewSceneLoading.addMultipleScenes(
         "views/PersonalSettings.fxml",
         "views/MedEquipTable.fxml",
-        "views/ActiveServiceRequest.fxml");
+        "views/ActiveServiceRequest.fxml",
+        "views/AccountUpdate.fxml",
+        "views/CreateAccount.fxml",
+        "views/MedEquipTable.fxml",
+        "views/PersonalSettings.fxml",
+        "views/RequestMenu.fxml",
+        "views/requestTypes/FloralRequest.fxml",
+        "views/requestTypes/LabResult.fxml");
   }
 
   @FXML
@@ -119,7 +126,7 @@ public class WelcomePageController {
         "views/ConfirmClose.fxml",
         "views/ReqAbort.fxml",
         "views/ReqSubmitted.fxml");
-    NewSceneLoading.loadScene("views/ActiveServiceRequest.fxml");
+    // NewSceneLoading.loadScene("views/ActiveServiceRequest.fxml");
 
     loadingRightNow = false;
   }
