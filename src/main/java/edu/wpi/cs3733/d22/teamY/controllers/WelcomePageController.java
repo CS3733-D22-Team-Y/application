@@ -84,7 +84,13 @@ public class WelcomePageController {
         "views/PersonalSettings.fxml",
         "views/RequestMenu.fxml",
         "views/requestTypes/FloralRequest.fxml",
-        "views/requestTypes/LabResult.fxml");
+        "views/requestTypes/LabResult.fxml",
+        "views/requestTypes/LaundryRequest.fxml",
+        "views/requestTypes/MealRequest.fxml",
+        "views/requestTypes/MedicalEquipmentRequest.fxml",
+        "views/requestTypes/MiscRequest.fxml",
+        "views/requestTypes/SecurityRequest.fxml",
+        "views/requestTypes/TranslatorRequest.fxml");
   }
 
   @FXML

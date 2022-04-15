@@ -22,6 +22,8 @@ public class PersonalSettingsController {
 
   @FXML MFXButton edit, apply, cancel, lightModeButton, darkModeButton;
 
+  @FXML AnchorPane sidebarPane;
+
   AnchorPane sidebar = null;
   public static Employee currentEmployee =
       new Employee(
@@ -39,6 +41,7 @@ public class PersonalSettingsController {
     phone.setText(PersonalSettings.currentEmployee.getPhone());
 
     setEdit(false);
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   private void setEdit(boolean b) {

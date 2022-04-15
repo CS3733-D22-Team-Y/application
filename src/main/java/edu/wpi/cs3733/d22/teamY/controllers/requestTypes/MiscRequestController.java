@@ -26,6 +26,7 @@ public class MiscRequestController {
   @FXML private TextArea errorLabel;
   // Side bar
   @FXML private AnchorPane sidebarPane;
+
   public MiscRequestController() {}
 
   @FXML

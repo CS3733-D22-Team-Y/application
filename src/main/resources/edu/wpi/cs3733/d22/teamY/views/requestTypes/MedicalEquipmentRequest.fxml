@@ -9,7 +9,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -161,9 +160,6 @@
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </MFXButton>
-      <Pane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0">
-         <children>
-            <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
-         </children></Pane>
+      <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
    </children>
 </AnchorPane>

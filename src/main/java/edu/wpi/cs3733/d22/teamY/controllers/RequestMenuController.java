@@ -19,6 +19,7 @@ public class RequestMenuController {
 
   @FXML AnchorPane bgPane;
   @FXML private ToggleButton creatorToggle;
+  @FXML AnchorPane sidebarPane;
 
   @FXML
   private Label creator1, creator2, creator3, creator4, creator5, creator6, creator7, creator8;
@@ -42,6 +43,7 @@ public class RequestMenuController {
     // SceneUtil.hideAllBackgrounds(bgPane.getChildren());
     // SceneUtil.hideAllPanes(bgPane.getChildren());
     SceneUtil.requests = this;
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   private void loadRequestScreen(int index) {
@@ -50,47 +52,55 @@ public class RequestMenuController {
   }
 
   void showMainPane() {
-    loadRequestScreen(MAIN_PAGE_INDEX);
+    // loadRequestScreen(MAIN_PAGE_INDEX);
   }
 
   @FXML
   void loadLabReq() {
-    loadRequestScreen(LAB_RESULTS_INDEX);
+    // loadRequestScreen(LAB_RESULTS_INDEX);
+    NewSceneLoading.loadScene("views/requestTypes/LabResult.fxml");
   }
 
   @FXML
   void loadMedEquipReq() {
-    loadRequestScreen(MEDICAL_RESULTS_INDEX);
+    // loadRequestScreen(MEDICAL_RESULTS_INDEX);
+    NewSceneLoading.loadScene("views/requestTypes/MedicalEquipmentRequest.fxml");
   }
 
   @FXML
   void loadLaundryReq() {
-    loadRequestScreen(LAUNDRY_RESULTS_INDEX);
+    // loadRequestScreen(LAUNDRY_RESULTS_INDEX);
+    NewSceneLoading.loadScene("views/requestTypes/LaundryRequest.fxml");
   }
 
   @FXML
   void loadMealReq() {
-    loadRequestScreen(MEAL_RESULTS_INDEX);
+    // loadRequestScreen(MEAL_RESULTS_INDEX);
+    NewSceneLoading.loadScene("views/requestTypes/MealRequest.fxml");
   }
 
   @FXML
   void loadFloralReq() {
-    loadRequestScreen(FLORAL_RESULTS_INDEX);
+    // loadRequestScreen(FLORAL_RESULTS_INDEX);
+    NewSceneLoading.loadScene("views/requestTypes/FloralRequest.fxml");
   }
 
   @FXML
   void loadSecurityReq() {
-    loadRequestScreen(SECURITY_RESULTS_INDEX);
+    // loadRequestScreen(SECURITY_RESULTS_INDEX);
+    NewSceneLoading.loadScene("views/requestTypes/SecurityRequest.fxml");
   }
 
   @FXML
   void loadTranslatorReq() {
-    loadRequestScreen(TRANSLATOR_RESULTS_INDEX);
+    // loadRequestScreen(TRANSLATOR_RESULTS_INDEX);
+    NewSceneLoading.loadScene("views/requestTypes/TranslatorRequest.fxml");
   }
 
   @FXML
   void loadOtherReq() {
-    loadRequestScreen(MISC_RESULTS_INDEX);
+    // loadRequestScreen(MISC_RESULTS_INDEX);
+    NewSceneLoading.loadScene("views/requestTypes/MiscRequest.fxml");
   }
 
   @FXML
