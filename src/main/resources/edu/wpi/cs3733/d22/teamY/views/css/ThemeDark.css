@@ -1,3 +1,7 @@
 .backgroundTint{
     -fx-fill: "#000000d5";
 }
+
+.plainText, .inputLabel, .requestOption{
+    -fx-text-fill: white;
+}
