@@ -138,6 +138,8 @@ public class PersonalSettingsController {
 
   @FXML
   void darkMode() {
+    PersonalSettings.currentEmployee.setTheme("DARK");
+    DBManager.update(PersonalSettings.currentEmployee);
     darkModeButton
         .getScene()
         .getStylesheets()
@@ -148,6 +150,8 @@ public class PersonalSettingsController {
 
   @FXML
   void lightMode() {
+    PersonalSettings.currentEmployee.setTheme("LIGHT");
+    DBManager.update(PersonalSettings.currentEmployee);
     lightModeButton
         .getScene()
         .getStylesheets()
