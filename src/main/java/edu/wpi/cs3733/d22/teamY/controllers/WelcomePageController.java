@@ -304,7 +304,7 @@ public class WelcomePageController {
     loginPane.setVisible(false);
     loading.setVisible(true);
     String name = DBUtils.getPrefNameFromID(username.getText());
-    Welcome.setText("Welcome, " + (name.equals("") ? "Guest" : name));
+    Welcome.setText("Welcome, " + (name.trim().equals("") ? "Guest" : name));
 
     try {
       mainPageThreaded();
