@@ -4,13 +4,11 @@ import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
-import edu.wpi.cs3733.d22.teamY.DBManager;
-import edu.wpi.cs3733.d22.teamY.model.Employee;
 import java.io.IOException;
 
 public class Firebase {
   public static FirebaseDatabase database;
-  public static DatabaseReference mainRef;
+  public static DatabaseReference chatRef;
 
   public static void init() throws IOException {
 
@@ -23,40 +21,36 @@ public class Firebase {
     FirebaseApp.initializeApp(options);
     // Get a reference to our posts
     database = FirebaseDatabase.getInstance();
-    mainRef = database.getReference("/");
+    chatRef = database.getReference("/chats/");
     createEventListeners();
   }
 
   private static void createEventListeners() {
-    mainRef.addValueEventListener(
+    chatRef.addValueEventListener(
         new ValueEventListener() {
           @Override
           public void onDataChange(DataSnapshot dataSnapshot) {
-            Post post = dataSnapshot.getValue(Post.class);
-            System.out.println(post);
-            System.out.println("Data was changed");
+            System.out.println("onDataChange");
+              System.out.println(dataSnapshot.getValue());
           }
 
           @Override
           public void onCancelled(DatabaseError databaseError) {
-            System.out.println("The read failed: " + databaseError.getCode());
+            System.out.println("onCancel" + databaseError.getCode());
           }
         });
 
-    mainRef.addChildEventListener(
+    chatRef.addChildEventListener(
         new ChildEventListener() {
           @Override
           public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-            Post newPost = dataSnapshot.getValue(Post.class);
-              System.out.println(newPost.toString());
+            System.out.println("onAddedChild");
+            System.out.println(dataSnapshot.getValue());
           }
 
           @Override
           public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {
-            System.out.println("Child changed");
-            Post changedPost = dataSnapshot.getValue(Post.class);
-            System.out.println("Author: " + changedPost.author);
-            System.out.println("Title: " + changedPost.message);
+            System.out.println("onChildChanged");
           }
 
           @Override

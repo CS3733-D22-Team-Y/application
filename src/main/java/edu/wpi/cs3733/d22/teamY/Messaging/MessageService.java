@@ -4,6 +4,7 @@ import com.google.firebase.database.DatabaseReference;
 import edu.wpi.cs3733.d22.teamY.model.Employee;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 public class MessageService {
 
@@ -15,6 +16,7 @@ public class MessageService {
 
     DatabaseReference chatArea =
         Firebase.database.getReference("/chats/" + key + "/" + post.getTime());
+    HashMap<String, Post> postMap = new HashMap<String, Post>();
     chatArea.setValueAsync(post);
   }
 
