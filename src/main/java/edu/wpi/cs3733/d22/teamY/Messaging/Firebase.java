@@ -22,7 +22,7 @@ public class Firebase {
     // Get a reference to our posts
     database = FirebaseDatabase.getInstance();
     chatRef = database.getReference("/chats/");
-    createEventListeners();
+    //    createEventListeners();
   }
 
   private static void createEventListeners() {
@@ -31,7 +31,7 @@ public class Firebase {
           @Override
           public void onDataChange(DataSnapshot dataSnapshot) {
             System.out.println("onDataChange");
-              System.out.println(dataSnapshot.getValue());
+            System.out.println(dataSnapshot.getValue());
           }
 
           @Override
@@ -44,28 +44,30 @@ public class Firebase {
         new ChildEventListener() {
           @Override
           public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-            System.out.println("onAddedChild");
-            System.out.println(dataSnapshot.getValue());
+            //            System.out.println("onAddedChild");
+            //            System.out.println(dataSnapshot.getValue());
           }
 
           @Override
           public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {
-            System.out.println("onChildChanged");
+            //            System.out.println("onChildChanged");
           }
 
           @Override
           public void onChildRemoved(DataSnapshot dataSnapshot) {
-            System.out.println("Child removed");
+
+            //              System.out.println("Child removed");
           }
 
           @Override
           public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {
-            System.out.println("Child moved");
+            //            System.out.println("Child moved");
           }
 
           @Override
           public void onCancelled(DatabaseError databaseError) {
-            System.out.println("The read failed");
+
+            //              System.out.println("The read failed");
           }
         });
   }
