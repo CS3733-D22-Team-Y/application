@@ -94,7 +94,26 @@ public class WelcomePageController {
       ex.printStackTrace();
     }
      */
-
+    NewSceneLoading.addMultipleScenes(
+        "views/AccountUpdate.fxml",
+        "views/ActiveServiceRequest.fxml",
+        "views/ActServReqTable.fxml",
+        "views/ChangeTheme.fxml",
+        "views/CreateAccount.fxml",
+        "views/LocTable.fxml",
+        "views/Map.fxml",
+        "views/MapIcon",
+        "views/MedEquipTable.fxml",
+        "views/PersonalSettings.fxml",
+        "views/RequestMenu.fxml",
+        "views/SecondaryMap_TEMPLATE.fxml",
+        "views/SideBar.fxml",
+        "views/SingularServiceRequest.fxml",
+        "views/SubMenu_TEMPLATE.fxml",
+        "views/Welcome.fxml",
+        "views/ConfirmClose.fxml",
+        "views/ReqAbort.fxml",
+        "views/ReqSubmitted.fxml");
     NewSceneLoading.loadScene("views/SideBar.fxml");
 
     loadingRightNow = false;
