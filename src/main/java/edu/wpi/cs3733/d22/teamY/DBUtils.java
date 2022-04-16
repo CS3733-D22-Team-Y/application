@@ -1,8 +1,11 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import edu.wpi.cs3733.d22.teamY.Messaging.Firebase;
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController;
 import edu.wpi.cs3733.d22.teamY.model.*;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -169,7 +172,7 @@ public class DBUtils {
    * @return true if the employee had valid credentials, false otherwise
    */
   @SuppressWarnings("Unchecked")
-  public static boolean isValidLogin(String username, String password) {
+  public static boolean isValidLogin(String username, String password) throws IOException {
     Session s = SessionManager.getSession();
     // search for the employee with the given username and password
     List<Employee> employees =
@@ -180,6 +183,7 @@ public class DBUtils {
     s.close();
     if (employees.size() == 1) {
       PersonalSettings.currentEmployee = employees.get(0);
+      Firebase.init();
       return true;
     }
     return false;
