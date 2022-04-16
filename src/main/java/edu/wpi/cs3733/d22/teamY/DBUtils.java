@@ -1,9 +1,7 @@
 package edu.wpi.cs3733.d22.teamY;
 
-import com.twilio.http.Request;
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController;
-import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import edu.wpi.cs3733.d22.teamY.model.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -332,7 +330,7 @@ public class DBUtils {
     }
     return requests;
   }
-  
+
   public static HashMap<String, HashMap<String, Integer>> getEquipFloorCounts() {
     // floor can be index, then need hashmap for each equipment type
     HashMap<String, HashMap<String, Integer>> equipFloorCounts = new HashMap<>();

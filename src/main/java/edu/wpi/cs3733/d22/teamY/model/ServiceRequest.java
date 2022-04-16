@@ -15,7 +15,6 @@ public class ServiceRequest {
   private String locationID;
   private String additionalNotes;
 
-
   private String atr0;
 
   private String atr1;
@@ -33,14 +32,8 @@ public class ServiceRequest {
    * @param additionalNotes Additional Notes Field
    * @param customAttributes a STRING ARRAY OF CUSTOM ATTRIBUTES !!! THE SAME SIZE AS THE NUMBER OF
    *     FIELDS THE REQUEST REQUIRES !!!
-   *
-   * EXAMPLE
-   *        ServiceRequest NAME = new ServiceRequest(
-   *             RequestTypes.FLORAL,
-   *             "none",
-   *             roomID,
-   *             additionalNotes,
-   *             new String[] {bouquetTypeSelected}));
+   *     <p>EXAMPLE ServiceRequest NAME = new ServiceRequest( RequestTypes.FLORAL, "none", roomID,
+   *     additionalNotes, new String[] {bouquetTypeSelected}));
    */
   public ServiceRequest(
       RequestTypes type,
