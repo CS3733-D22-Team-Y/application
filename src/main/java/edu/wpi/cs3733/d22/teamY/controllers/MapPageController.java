@@ -419,8 +419,7 @@ public class MapPageController<T extends Requestable> {
                       // req.setStatus(reqStatusBox.getText());
 
                       DBManager.update(req);
-
-                      System.out.println("Submit");
+                      // ("Submit");
                     });
 
                 equipUp.setOnMouseClicked(
@@ -617,6 +616,8 @@ public class MapPageController<T extends Requestable> {
     this.xLabels[index].setText(floorCounts.get(floor).get("XRAY") + "");
   }
 
+
+
   @FXML
   public void LL1Enter() {
     updateQuickDash("L1");
@@ -692,5 +693,39 @@ public class MapPageController<T extends Requestable> {
   @FXML
   public void L5Exit() {
     l5PopupPane.setOpacity(0);
+  }
+
+  public ArrayList<Point> getHex(int n, double r, Point center){
+    ArrayList<Point> res = new ArrayList<Point>();
+    res.add(center);
+    if (n != 1) {
+      res.addAll(getHexRecursive(--n, r, center, 1));
+    }
+    return res;
+  }
+
+  private ArrayList<Point> getHexRecursive(int n, double r, Point center, int layer) {
+    ArrayList<Point> res = new ArrayList<Point>();
+    int num = 6*layer;
+    double dAngle = Math.toRadians(360.0/num);
+    for(int i = 0; i < num && n > 0; i++) {
+      res.add(new Point(center.x  + (2*r*layer+1) * Math.cos(dAngle*i), center.y  + (2*r*layer+1) * Math.sin(dAngle*i)));
+      n = n - 1;
+    }
+    if (n != 0) {
+      res.addAll(getHexRecursive(n, r, center, ++layer));
+    }
+    return res;
+
+
+  }
+
+  class Point{
+    double x;
+    double y;
+    Point(double x, double y) {
+      this.x = x;
+      this.y = y;
+    }
   }
 }

@@ -27,6 +27,7 @@ public class Employee implements StringArrayConv {
   private String phone;
   private String dob;
   private String pronouns;
+  private String theme = "LIGHT";
 
   public static final String ID_NUMBER = "IDNUMBER";
   public static final String ACCESS = "ACCESS";
@@ -248,6 +249,14 @@ public class Employee implements StringArrayConv {
 
   public void setPronouns(String pronouns) {
     this.pronouns = pronouns;
+  }
+
+  public void setTheme(String t) {
+    theme = t;
+  }
+
+  public String getTheme() {
+    return theme;
   }
 
   public static boolean isValidNewPassword(String password) {

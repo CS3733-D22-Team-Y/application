@@ -138,19 +138,25 @@ public class PersonalSettingsController {
 
   @FXML
   void darkMode() {
+    PersonalSettings.currentEmployee.setTheme("DARK");
+    DBManager.update(PersonalSettings.currentEmployee);
     darkModeButton
         .getScene()
         .getStylesheets()
         .add(
-            Objects.requireNonNull(App.class.getResource("views/css/Theme1.css")).toExternalForm());
+            Objects.requireNonNull(App.class.getResource("views/css/ThemeDark.css"))
+                .toExternalForm());
   }
 
   @FXML
   void lightMode() {
+    PersonalSettings.currentEmployee.setTheme("LIGHT");
+    DBManager.update(PersonalSettings.currentEmployee);
     lightModeButton
         .getScene()
         .getStylesheets()
         .remove(
-            Objects.requireNonNull(App.class.getResource("views/css/Theme1.css")).toExternalForm());
+            Objects.requireNonNull(App.class.getResource("views/css/ThemeDark.css"))
+                .toExternalForm());
   }
 }
