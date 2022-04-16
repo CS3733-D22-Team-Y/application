@@ -1,13 +1,11 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
-import static edu.wpi.cs3733.d22.teamY.RequestTypes.FLORAL;
-
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "REQUESTS")
-public class Request {
+public class ServiceRequest {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   int id;
@@ -16,6 +14,7 @@ public class Request {
   private String assignedNurse;
   private String locationID;
   private String additionalNotes;
+
 
   private String atr0;
 
@@ -34,8 +33,16 @@ public class Request {
    * @param additionalNotes Additional Notes Field
    * @param customAttributes a STRING ARRAY OF CUSTOM ATTRIBUTES !!! THE SAME SIZE AS THE NUMBER OF
    *     FIELDS THE REQUEST REQUIRES !!!
+   *
+   * EXAMPLE
+   *        ServiceRequest NAME = new ServiceRequest(
+   *             RequestTypes.FLORAL,
+   *             "none",
+   *             roomID,
+   *             additionalNotes,
+   *             new String[] {bouquetTypeSelected}));
    */
-  public Request(
+  public ServiceRequest(
       RequestTypes type,
       String assignedNurse,
       String locationID,
@@ -49,12 +56,9 @@ public class Request {
     try {
       switch (type) {
         case FLORAL:
-          atr0 = customAttributes[0];
-          break;
-        case LAB:
-          atr0 = customAttributes[0];
-          break;
         case LAUNDRY:
+        case LAB:
+        case TRANSLATOR:
           atr0 = customAttributes[0];
           break;
         case MEAL:
@@ -70,16 +74,13 @@ public class Request {
           atr0 = customAttributes[0];
           atr1 = customAttributes[1];
           break;
-        case TRANSLATOR:
-          atr0 = customAttributes[0];
-          break;
       }
     } catch (Exception e) {
       e.printStackTrace();
     }
   }
 
-  public Request() {}
+  public ServiceRequest() {}
 
   /**
    * Set's custom Attributes based on the Type of Request

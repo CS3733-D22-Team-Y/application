@@ -3,11 +3,10 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
-import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
-import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
-import edu.wpi.cs3733.d22.teamY.model.TranslatorRequest;
+import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
@@ -61,17 +60,13 @@ public class TranslatorRequestController {
    * @param languageTypeSelected The type of language selected.
    */
   private void submitRequest(String roomID, String additionalNotes, String languageTypeSelected) {
-    // Get request Num
-    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.TRANSLATOR_REQUEST));
-
     DBManager.save(
-        new TranslatorRequest(
-            nextRequest,
+        new ServiceRequest(
+            RequestTypes.TRANSLATOR,
+            "none",
             roomID,
-            "",
-            RequestStatus.INCOMPLETE,
             additionalNotes,
-            languageTypeSelected));
+            new String[] {languageTypeSelected}));
 
     System.out.println("Saved TranslatorRequest");
   }

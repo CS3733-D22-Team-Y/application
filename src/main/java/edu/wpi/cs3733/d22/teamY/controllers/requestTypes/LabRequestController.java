@@ -4,11 +4,10 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
-import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
-import edu.wpi.cs3733.d22.teamY.model.LabRequest;
-import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
+import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
@@ -61,15 +60,9 @@ public class LabRequestController {
    * @param resultTypeSelected The type of result selected.
    */
   private void submitRequest(String roomID, String additionalNotes, String resultTypeSelected) {
-    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.LAB_REQUEST));
     DBManager.save(
-        new LabRequest(
-            nextRequest,
-            roomID,
-            "",
-            RequestStatus.INCOMPLETE,
-            additionalNotes,
-            resultTypeSelected));
+        new ServiceRequest(
+            RequestTypes.LAB, "none", roomID, additionalNotes, new String[] {resultTypeSelected}));
     System.out.println("Saved LabRequest");
   }
 

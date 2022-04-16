@@ -4,11 +4,10 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
-import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
-import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
-import edu.wpi.cs3733.d22.teamY.model.SecurityServiceRequest;
+import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
@@ -79,17 +78,13 @@ public class SecurityRequestController {
   private void submitRequest(
       String roomID, String additionalNotes, String requestTypeSelected, String requestPriority) {
 
-    String nextRequest =
-        String.valueOf(DBUtils.getNextRequestNum(EntryType.SECURITY_SERVICE_REQUEST));
     DBManager.save(
-        new SecurityServiceRequest(
-            nextRequest,
+        new ServiceRequest(
+            RequestTypes.SECURITY,
+            "none",
             roomID,
-            "",
-            RequestStatus.INCOMPLETE,
             additionalNotes,
-            requestTypeSelected,
-            requestPriority));
+            new String[] {requestTypeSelected, requestPriority}));
     System.out.println("Saved SecurityServiceRequest");
   }
 

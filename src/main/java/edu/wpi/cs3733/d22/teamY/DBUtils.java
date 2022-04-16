@@ -1,7 +1,9 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import com.twilio.http.Request;
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController;
+import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import edu.wpi.cs3733.d22.teamY.model.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -323,12 +325,15 @@ public class DBUtils {
     return filtered;
   }
 
-  public static <T extends Requestable> List<T> getAllServiceReqsAtLocation(Location l) {
-    List<T> requests = new ArrayList<>();
-    for (RequestType rt : RequestType.values()) {
-      requests.addAll(serviceReqsAtLocation(rt.requestClass, l));
-    }
-    return requests;
+  public static List<ServiceRequest> getAllServiceReqsAtLocation(Location l) {
+    List<ServiceRequest> requests = new ArrayList<>();
+    Session s = SessionManager.getSession();
+    List<ServiceRequest> allReqs =
+        s.createQuery("from ServiceRequest where locationID = :location")
+            .setParameter("locationID", l.getNodeID()).list();
+    s.close();
+
+    return allReqs;
   }
 
   public static HashMap<String, HashMap<String, Integer>> getEquipFloorCounts() {

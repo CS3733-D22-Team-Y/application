@@ -3,11 +3,10 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
-import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
-import edu.wpi.cs3733.d22.teamY.model.MealRequest;
-import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
+import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
 import java.util.Objects;
@@ -82,8 +81,6 @@ public class MealRequestController {
    * Submits a service request.
    *
    * @param roomID The room ID.
-   * @param assignedNurse The assigned nurse.
-   * @param requestStatus The request status.
    * @param additionalNotes Any additional notes.
    * @param mainChoice The choice for the main meal.
    * @param sideChoice The choice for the side.
@@ -98,18 +95,13 @@ public class MealRequestController {
       String sideChoice,
       String allergies,
       String specialInstructions) {
-    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.MEAL_REQUEST));
     DBManager.save(
-        new MealRequest(
-            nextRequest,
+        new ServiceRequest(
+            RequestTypes.MEAL,
+            "none",
             roomID,
-            "",
-            RequestStatus.INCOMPLETE,
             additionalNotes,
-            mainChoice,
-            sideChoice,
-            allergies,
-            specialInstructions));
+            new String[] {mainChoice, sideChoice, allergies, specialInstructions}));
     System.out.println("Saved MealRequest");
   }
 
