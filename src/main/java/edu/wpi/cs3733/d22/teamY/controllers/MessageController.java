@@ -3,12 +3,14 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.Messaging.Chat;
 import edu.wpi.cs3733.d22.teamY.Messaging.ChatManager;
 import edu.wpi.cs3733.d22.teamY.Messaging.Firebase;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.util.HashMap;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -29,45 +31,22 @@ public class MessageController {
   @FXML private Circle bCircle;
   @FXML private Label bInitials;
   @FXML private Label bPreview;
+  @FXML private Label bName;
+  @FXML private VBox bTimeVbox;
+  @FXML private VBox bNamePrevBox;
+  @FXML private Label bTime;
 
   @FXML private VBox chatSelector;
 
   private String chatID = "";
   private boolean chatOpen = false;
 
-  public static boolean needsRefresh = false;
-
   // initialize the controller
   public void initialize() throws IOException {
     messageText.setPromptText("Enter your message here");
     String id = PersonalSettings.currentEmployee.getIDNumber();
     System.out.println("Init message controller here: " + id + " " + ChatManager.getChats().size());
-    Firebase.chatRef.addChildEventListener(
-        new ChildEventListener() {
-          @Override
-          public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
-            refresh();
-          }
-
-          @Override
-          public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
-            System.out.println("Child changed");
-            refresh();
-          }
-
-          @Override
-          public void onChildRemoved(DataSnapshot snapshot) {
-            refresh();
-          }
-
-          @Override
-          public void onChildMoved(DataSnapshot snapshot, String previousChildName) {
-            refresh();
-          }
-
-          @Override
-          public void onCancelled(DatabaseError error) {}
-        });
+    Firebase.chatRef.addChildEventListener(childEventListener);
 
     this.refresh();
   }
@@ -83,7 +62,6 @@ public class MessageController {
       chatSelector.getChildren().add(clone);
     }
     System.out.println("Refreshed");
-    MessageController.needsRefresh = false;
   }
 
   public void send() {
@@ -103,22 +81,41 @@ public class MessageController {
     Circle bCircleClone = getCircleClone(bCircle);
     Label bInitialsClone = getLabelClone(bInitials);
     Label bPreviewClone = getLabelClone(bPreview);
+    Label bNameClone = getLabelClone(bName);
+    VBox bTimeVboxClone = getVboxClone(bTimeVbox);
+    Label bTimeClone = getLabelClone(bTime);
+    VBox bNamePrevBoxClone = getVboxClone(bNamePrevBox);
 
     // set the rectangle and hbox to be children of the main pane
     clone.getChildren().add(bRectClone);
     clone.getChildren().add(bHboxClone);
 
-    // set the unread circle, pane and preview to be children of the hbox
-    bHboxClone.getChildren().add(bUnreadClone);
+    // set the pic pane, time vbox and name prev box to be children of the hbox
     bHboxClone.getChildren().add(bPicPaneClone);
-    bHboxClone.getChildren().add(bPreviewClone);
+    bHboxClone.getChildren().add(bNamePrevBoxClone);
+    bHboxClone.getChildren().add(bTimeVboxClone);
 
-    // set the circle and initials to be children of the pic pane
+    // set the circle and initials and unread to be children of the pic pane
     bPicPaneClone.getChildren().add(bCircleClone);
     bPicPaneClone.getChildren().add(bInitialsClone);
+    bPicPaneClone.getChildren().add(bUnreadClone);
+
+    // set the name prev vbox to have the messagePreview and name as children
+    bNamePrevBoxClone.getChildren().add(bNameClone);
+    bNamePrevBoxClone.getChildren().add(bPreviewClone);
+
+    // set the time label to be the child of the time vbox
+    bTimeVboxClone.getChildren().add(bTimeClone);
 
     // set the preview text to be the chat's preview
     bPreviewClone.setText(chat.getPosts().get(chat.getPosts().size() - 1).getMessage());
+
+    // set the name text to be employee's name
+    try {
+      bNameClone.setText(DBUtils.getNamesFromIds(chat.getUsers(), true));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
 
     // on click of the message, set the chatID to the chatID of the message
     bHboxClone.setOnMouseClicked(
@@ -163,6 +160,8 @@ public class MessageController {
     clone.setLayoutY(h.getLayoutY());
     clone.setStyle(h.getStyle());
     clone.setAlignment(h.getAlignment());
+    clone.setTranslateX(h.getTranslateX());
+    clone.setTranslateY(h.getTranslateY());
     return clone;
   }
 
@@ -194,4 +193,55 @@ public class MessageController {
     clone.setFont(l.getFont());
     return clone;
   }
+
+  private VBox getVboxClone(VBox vbox) {
+    // clones the vbox vbox
+    VBox clone = new VBox();
+    clone.setPrefSize(vbox.getPrefWidth(), vbox.getPrefHeight());
+    clone.setLayoutX(vbox.getLayoutX());
+    clone.setLayoutY(vbox.getLayoutY());
+    clone.setStyle(vbox.getStyle());
+    clone.setAlignment(vbox.getAlignment());
+    clone.setTranslateX(vbox.getTranslateX());
+    clone.setTranslateY(vbox.getTranslateY());
+    return clone;
+  }
+
+  ChildEventListener childEventListener =
+      new ChildEventListener() {
+        @Override
+        public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
+          Platform.runLater(
+              () -> {
+                refresh();
+              });
+        }
+
+        @Override
+        public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
+          Platform.runLater(
+              () -> {
+                refresh();
+              });
+        }
+
+        @Override
+        public void onChildRemoved(DataSnapshot snapshot) {
+          Platform.runLater(
+              () -> {
+                refresh();
+              });
+        }
+
+        @Override
+        public void onChildMoved(DataSnapshot snapshot, String previousChildName) {
+          Platform.runLater(
+              () -> {
+                refresh();
+              });
+        }
+
+        @Override
+        public void onCancelled(DatabaseError error) {}
+      };
 }

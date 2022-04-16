@@ -27,27 +27,45 @@
         </Label>
       <VBox fx:id="chatSelector" layoutY="101.0" prefHeight="680.0" prefWidth="396.0">
          <children>
-            <Pane fx:id="blankMessage" prefWidth="350.0">
+            <Pane fx:id="blankMessage" prefHeight="88.0" prefWidth="399.0">
                <children>
-                  <Rectangle fx:id="bRect" arcHeight="5.0" fill="#bcbcbc" height="100.0" stroke="BLACK" strokeType="OUTSIDE" width="396.0" />
-                  <HBox fx:id="bHbox" alignment="CENTER" layoutX="14.0" layoutY="13.0">
+                  <Rectangle fx:id="bRect" arcHeight="5.0" fill="#bcbcbc" height="88.0" layoutX="-1.0" layoutY="-1.0" stroke="BLACK" strokeType="OUTSIDE" width="399.0" />
+                  <HBox fx:id="bHbox" alignment="CENTER" layoutY="8.0" prefWidth="396.0">
                      <children>
-                        <Circle fx:id="bUnread" fill="DODGERBLUE" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Pane fx:id="bPicPane" prefHeight="74.0" prefWidth="106.0">
+                        <Pane fx:id="bPicPane" prefHeight="74.0" prefWidth="70.0">
                            <children>
-                              <Circle fx:id="bCircle" fill="WHITE" layoutX="53.0" layoutY="37.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Label fx:id="bInitials" layoutX="35.0" layoutY="18.0" text="NP">
+                              <Circle fx:id="bCircle" fill="WHITE" layoutX="37.0" layoutY="37.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Label fx:id="bInitials" layoutX="19.0" layoutY="18.0" text="NP">
                                  <font>
-                                    <Font size="27.0" />
+                                    <Font name="System Bold" size="26.0" />
+                                 </font>
+                              </Label>
+                              <Circle fx:id="bUnread" fill="DODGERBLUE" layoutX="14.0" layoutY="18.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+                           </children>
+                        </Pane>
+                        <VBox fx:id="bNamePrevBox" alignment="CENTER" prefHeight="74.0" prefWidth="249.0">
+                           <children>
+                              <Label fx:id="bName" prefHeight="27.0" prefWidth="249.0" text="Nathan Pollock">
+                                 <font>
+                                    <Font name="System Bold" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="bPreview" prefHeight="27.0" prefWidth="249.0" text="Message Preview this is a test of the">
+                                 <font>
+                                    <Font size="18.0" />
                                  </font>
                               </Label>
                            </children>
-                        </Pane>
-                        <Label fx:id="bPreview" prefHeight="27.0" prefWidth="253.0" text="Message Preview this is a test of the">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
+                        </VBox>
+                        <VBox fx:id="bTimeVbox" alignment="TOP_RIGHT" prefHeight="74.0" prefWidth="62.0">
+                           <children>
+                              <Label fx:id="bTime" text="12:38 PM">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
                      </children>
                   </HBox>
                </children>

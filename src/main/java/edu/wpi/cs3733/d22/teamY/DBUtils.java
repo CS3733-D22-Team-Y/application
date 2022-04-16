@@ -152,6 +152,42 @@ public class DBUtils {
     return thePerson.getPrefName();
   }
 
+  public static String getNameFromActualID(String id) throws IOException {
+    Session s = SessionManager.getSession();
+    List<Employee> people =
+        s.createQuery("from Employee where id = :id").setParameter("id", id).list();
+    s.close();
+
+    if (people.size() == 0) {
+      return "";
+    }
+
+    Employee thePerson = people.get(0);
+
+    return thePerson.getName();
+  }
+
+  public static String getNamesFromIds(ArrayList<String> ids, boolean excludeMe)
+      throws IOException {
+    StringBuilder sb = new StringBuilder();
+
+    for (String id : ids) {
+      if (excludeMe && id.equals(PersonalSettingsController.currentEmployee.getIDNumber())) {
+        continue;
+      }
+      String name = getNameFromActualID(id);
+      if (name.equals("")) {
+        name = "ID# " + id;
+      }
+      sb.append(name);
+      sb.append(", ");
+    }
+    if (sb.length() > 0) {
+      sb.delete(sb.length() - 2, sb.length());
+    }
+    return sb.toString();
+  }
+
   /**
    * Returns next request number
    *
