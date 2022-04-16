@@ -76,4 +76,8 @@ public class ChatManager {
     c.addPost(new Post(message));
     Firebase.chatRef.child(myID).child(chatID).setValueAsync(c);
   }
+
+  public static HashMap<String, Chat> getChats() {
+    return myChats;
+  }
 }

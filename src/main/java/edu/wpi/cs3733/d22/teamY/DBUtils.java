@@ -1,10 +1,8 @@
 package edu.wpi.cs3733.d22.teamY;
 
 import edu.wpi.cs3733.d22.teamY.Messaging.Firebase;
-import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController;
 import edu.wpi.cs3733.d22.teamY.model.*;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -128,7 +126,7 @@ public class DBUtils {
 
   // Gets an employee's preferred name from their ID
   @SuppressWarnings("Unchecked")
-  public static String getPrefNameFromID(String id) {
+  public static String getPrefNameFromID(String id) throws IOException {
     Session s = SessionManager.getSession();
     List<Employee> people =
         s.createQuery("from Employee where username = :id")
@@ -142,6 +140,8 @@ public class DBUtils {
 
     Employee thePerson = people.get(0);
     PersonalSettingsController.currentEmployee = thePerson; // TODO change
+    Firebase.init();
+    System.out.println("Firebase initialized");
 
     return thePerson.getPrefName();
   }
@@ -182,8 +182,9 @@ public class DBUtils {
             .list();
     s.close();
     if (employees.size() == 1) {
-      PersonalSettings.currentEmployee = employees.get(0);
-      Firebase.init();
+      //      PersonalSettings.currentEmployee = employees.get(0);
+      //      Firebase.init();
+      System.out.println("Valid Login");
       return true;
     }
     return false;

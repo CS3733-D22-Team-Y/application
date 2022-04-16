@@ -74,11 +74,12 @@ public class SideBarController {
         logoutHiddenRect);
     SceneUtil.initializePanes(
         mainScreenPane,
-        "views/Map.fxml",
+        //        "views/Map.fxml",
+        "views/ChatSelector.fxml",
         "views/RequestMenu.fxml",
         "views/MedEquipTable.fxml",
         //        "views/ActiveServiceRequest.fxml",
-        "views/Messages.fxml",
+        "views/ChatSelector.fxml",
         "views/ActServReqTable.fxml",
         "views/PersonalSettings.fxml",
         "views/SecondaryMap_TEMPLATE.fxml");
