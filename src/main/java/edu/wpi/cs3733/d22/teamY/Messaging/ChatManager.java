@@ -1,47 +1,79 @@
 package edu.wpi.cs3733.d22.teamY.Messaging;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 
 public class ChatManager {
 
   private ChatManager() {}
 
-  private static HashMap<String, Chat> chats = new HashMap<String, Chat>();
+  private static HashMap<String, Chat> myChats = new HashMap<>();
 
   public static void init(String id) {
     // clear all chats
-    chats.clear();
+    myChats.clear();
     Firebase.chatRef
         .child(id)
-        .addValueEventListener(
-            new ValueEventListener() {
+        .addChildEventListener(
+            new ChildEventListener() {
+
               @Override
-              public void onDataChange(DataSnapshot snapshot) {
+              public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
                 Chat c = snapshot.getValue(Chat.class);
-                chats.put(snapshot.getKey(), c);
-                System.out.println("ID: " + snapshot.getKey() + "Added chat from listener: \n" + c);
+                myChats.put(snapshot.getKey(), c);
+                System.out.println("Added chat from listener: \n" + c);
               }
+
+              @Override
+              public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
+                Chat c = snapshot.getValue(Chat.class);
+                myChats.put(snapshot.getKey(), c);
+                for (String s : c.users) {
+                  Firebase.chatRef.child(s).child(snapshot.getKey()).setValueAsync(c);
+                }
+                System.out.println("Added chat from listener: \n" + c);
+              }
+
+              @Override
+              public void onChildRemoved(DataSnapshot snapshot) {
+                myChats.remove(snapshot.getKey());
+              }
+
+              @Override
+              public void onChildMoved(DataSnapshot snapshot, String previousChildName) {}
 
               @Override
               public void onCancelled(DatabaseError error) {}
             });
   }
 
-  public static void sendMessage(String message, String... recipientIDs) {
+  public static void sendMessage(String message, String myID, String... recipientIDs) {
+    addMyMessage(message, myID, recipientIDs);
+    String chatID = Chat.getChatID(myID, recipientIDs);
     for (String id : recipientIDs) {
-      Chat c;
-      if (!(chats.containsKey(id))) {
-        c = new Chat(recipientIDs);
-        System.out.println("Created new chat: \n" + c);
-      } else {
-        c = chats.get(id);
-      }
-      c.addPost(new Post(message));
-      Firebase.chatRef.child(id).setValueAsync(c);
-      //      Firebase.chatRef.setValueAsync(c);
+      addTheirMessage(chatID, id);
     }
+  }
+
+  private static void addTheirMessage(String chatID, String id) {
+    Chat c = myChats.get(chatID);
+    System.out.println("Added their message" + (c == null));
+    Firebase.chatRef.child(id).child(chatID).setValueAsync(c);
+  }
+
+  private static void addMyMessage(String message, String myID, String... recipientIDs) {
+    Chat c;
+    String chatID = Chat.getChatID(myID, recipientIDs);
+    if (!(myChats.containsKey(chatID))) {
+      c = new Chat(myID, recipientIDs);
+      myChats.put(chatID, c);
+      System.out.println("Created new chat: \n" + c);
+    } else {
+      c = myChats.get(chatID);
+    }
+    c.addPost(new Post(message));
+    Firebase.chatRef.child(myID).child(chatID).setValueAsync(c);
   }
 }

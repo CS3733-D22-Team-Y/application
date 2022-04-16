@@ -11,11 +11,12 @@ public class Chat {
     users = new ArrayList<String>();
   }
 
-  public Chat(String... users) {
+  public Chat(String sender, String... users) {
     this.users = new ArrayList<String>();
     for (String u : users) {
       this.users.add(u);
     }
+    this.users.add(sender);
     posts = new ArrayList<Post>();
   }
 
@@ -50,5 +51,22 @@ public class Chat {
       res += p.toString() + "\n";
     }
     return res;
+  }
+
+  public static String getChatID(String myID, String... recipientIDs) {
+    String chatID = "";
+    ArrayList<String> ids = new ArrayList<>();
+    for (String id : recipientIDs) {
+      ids.add(id);
+    }
+    ids.add(myID);
+    // sort the ids in alphabetical order
+    ids.sort(String::compareTo);
+    for (String id : ids) {
+      chatID += id + ":";
+    }
+    // remove the last ":"
+    chatID = chatID.substring(0, chatID.length() - 1);
+    return chatID;
   }
 }
