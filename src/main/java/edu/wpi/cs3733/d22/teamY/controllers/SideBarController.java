@@ -1,8 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
-import edu.wpi.cs3733.d22.teamY.App;
 import java.io.IOException;
-import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -75,11 +73,12 @@ public class SideBarController {
     SceneUtil.initializePanes(
         mainScreenPane,
         //        "views/Map.fxml",
-        "views/ChatSelector.fxml",
+        //        "views/ChatSelector.fxml",
+        "views/ActiveServiceRequest.fxml",
         "views/RequestMenu.fxml",
         "views/MedEquipTable.fxml",
-        //        "views/ActiveServiceRequest.fxml",
-        "views/ChatSelector.fxml",
+        "views/ActiveServiceRequest.fxml",
+        //        "views/ChatSelector.fxml",
         "views/ActServReqTable.fxml",
         "views/PersonalSettings.fxml",
         "views/SecondaryMap_TEMPLATE.fxml");
@@ -278,25 +277,29 @@ public class SideBarController {
 
   @FXML
   void loadViewServiceRequests() throws IOException {
-    // Reset to the main request screen
-    AnchorPane bgPane =
-        (AnchorPane) mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).lookup("#bgPane");
-    SceneUtil.hideAllPanes(bgPane.getChildren());
-    bgPane.getChildren().get(RequestMenuController.MAIN_PAGE_INDEX).setVisible(true);
-    // Main code
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).setVisible(true);
-    setButtonSelected(servicesHiddenRect);
-    currScene
-        .getStylesheets()
-        .add(Objects.requireNonNull(App.class.getResource("views/css/Fonts.css")).toExternalForm());
-    if (PersonalSettings.currentEmployee.getTheme().equals("DARK")) {
-      currScene
-          .getStylesheets()
-          .add(
-              Objects.requireNonNull(App.class.getResource("views/css/ThemeDark.css"))
-                  .toExternalForm());
-    }
+    SceneLoading.loadScene("views/ChatSelector.fxml");
+
+    //            // Reset to the main request screen
+    //    AnchorPane bgPane =
+    //        (AnchorPane)
+    // mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).lookup("#bgPane");
+    //    SceneUtil.hideAllPanes(bgPane.getChildren());
+    //    bgPane.getChildren().get(RequestMenuController.MAIN_PAGE_INDEX).setVisible(true);
+    //    // Main code
+    //    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    //    mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).setVisible(true);
+    //    setButtonSelected(servicesHiddenRect);
+    //    currScene
+    //        .getStylesheets()
+    //
+    // .add(Objects.requireNonNull(App.class.getResource("views/css/Fonts.css")).toExternalForm());
+    //    if (PersonalSettings.currentEmployee.getTheme().equals("DARK")) {
+    //      currScene
+    //          .getStylesheets()
+    //          .add(
+    //              Objects.requireNonNull(App.class.getResource("views/css/ThemeDark.css"))
+    //                  .toExternalForm());
+    //    }
   }
 
   @FXML

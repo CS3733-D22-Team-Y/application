@@ -1,52 +1,16 @@
 package edu.wpi.cs3733.d22.teamY.Messaging;
 
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import java.util.HashMap;
 
 public class ChatManager {
 
   private ChatManager() {}
 
-  private static HashMap<String, Chat> myChats = new HashMap<>();
+  public static HashMap<String, Chat> myChats = new HashMap<>();
 
   public static void init(String id) {
     // clear all chats
     myChats.clear();
-    Firebase.chatRef
-        .child(id)
-        .addChildEventListener(
-            new ChildEventListener() {
-
-              @Override
-              public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
-                Chat c = snapshot.getValue(Chat.class);
-                myChats.put(snapshot.getKey(), c);
-                System.out.println("Added chat from listener: \n" + c);
-              }
-
-              @Override
-              public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
-                Chat c = snapshot.getValue(Chat.class);
-                myChats.put(snapshot.getKey(), c);
-                for (String s : c.users) {
-                  Firebase.chatRef.child(s).child(snapshot.getKey()).setValueAsync(c);
-                }
-                System.out.println("Added chat from listener: \n" + c);
-              }
-
-              @Override
-              public void onChildRemoved(DataSnapshot snapshot) {
-                myChats.remove(snapshot.getKey());
-              }
-
-              @Override
-              public void onChildMoved(DataSnapshot snapshot, String previousChildName) {}
-
-              @Override
-              public void onCancelled(DatabaseError error) {}
-            });
   }
 
   public static void sendMessage(String message, String myID, String... recipientIDs) {

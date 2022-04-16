@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.d22.teamY;
 
-import edu.wpi.cs3733.d22.teamY.Messaging.Firebase;
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController;
 import edu.wpi.cs3733.d22.teamY.model.*;
 import java.io.IOException;
@@ -140,8 +139,8 @@ public class DBUtils {
 
     Employee thePerson = people.get(0);
     PersonalSettingsController.currentEmployee = thePerson; // TODO change
-    Firebase.init();
-    System.out.println("Firebase initialized");
+    //    Firebase.init();
+    //    System.out.println("Firebase initialized");
 
     return thePerson.getPrefName();
   }

@@ -1,8 +1,13 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import edu.wpi.cs3733.d22.teamY.Messaging.Chat;
 import edu.wpi.cs3733.d22.teamY.Messaging.ChatManager;
+import edu.wpi.cs3733.d22.teamY.Messaging.Firebase;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.io.IOException;
 import java.util.HashMap;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -31,20 +36,66 @@ public class MessageController {
   private boolean chatOpen = false;
 
   // initialize the controller
-  public void initialize() {
+  public void initialize() throws IOException {
     messageText.setPromptText("Enter your message here");
-    chatSelector.getChildren().remove(blankMessage);
+    String id = PersonalSettings.currentEmployee.getIDNumber();
+    System.out.println("Init message controller here: " + id);
+    Firebase.init();
+    Firebase.chatRef
+        .child(id)
+        .addChildEventListener(
+            new ChildEventListener() {
+
+              @Override
+              public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
+                Chat c = snapshot.getValue(Chat.class);
+                ChatManager.myChats.put(snapshot.getKey(), c);
+                System.out.println("Added chat from listener: \n" + c);
+                refresh();
+              }
+
+              @Override
+              public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
+                Chat c = snapshot.getValue(Chat.class);
+                ChatManager.myChats.put(snapshot.getKey(), c);
+                for (String s : c.getUsers()) {
+                  Firebase.chatRef.child(s).child(snapshot.getKey()).setValueAsync(c);
+                }
+                System.out.println("Added chat from listener: \n" + c);
+                refresh();
+              }
+
+              @Override
+              public void onChildRemoved(DataSnapshot snapshot) {
+                ChatManager.myChats.remove(snapshot.getKey());
+              }
+
+              @Override
+              public void onChildMoved(DataSnapshot snapshot, String previousChildName) {}
+
+              @Override
+              public void onCancelled(DatabaseError error) {}
+            });
+
+    //    this.refresh();
+  }
+
+  public void refresh() {
+    System.out.println("refreshing");
+    chatSelector.getChildren().clear();
     HashMap<String, Chat> chats = ChatManager.getChats();
     System.out.println(chats.size());
     for (String key : chats.keySet()) {
       Pane clone = getBlankMessageClone(key, chats.get(key));
       chatSelector.getChildren().add(clone);
     }
+    System.out.println("Refreshed");
   }
 
   public void send() {
     String text = messageText.getText();
     ChatManager.sendMessage(text, PersonalSettings.currentEmployee.getIDNumber(), "2");
+    refresh();
     // toUID.getText());
   }
 
@@ -73,7 +124,7 @@ public class MessageController {
     bPicPaneClone.getChildren().add(bInitialsClone);
 
     // set the preview text to be the chat's preview
-    bPreviewClone.setText(chat.getPosts().get(chat.getPosts().size() - 1).message);
+    bPreviewClone.setText(chat.getPosts().get(chat.getPosts().size() - 1).getMessage());
 
     // on click of the message, set the chatID to the chatID of the message
     bHboxClone.setOnMouseClicked(
