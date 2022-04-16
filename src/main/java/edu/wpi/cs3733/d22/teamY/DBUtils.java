@@ -325,17 +325,14 @@ public class DBUtils {
     return filtered;
   }
 
-  public static List<ServiceRequest> getAllServiceReqsAtLocation(Location l) {
-    List<ServiceRequest> requests = new ArrayList<>();
-    Session s = SessionManager.getSession();
-    List<ServiceRequest> allReqs =
-        s.createQuery("from ServiceRequest where locationID = :location")
-            .setParameter("locationID", l.getNodeID()).list();
-    s.close();
-
-    return allReqs;
+  public static <T extends Requestable> List<T> getAllServiceReqsAtLocation(Location l) {
+    List<T> requests = new ArrayList<>();
+    for (RequestType rt : RequestType.values()) {
+      requests.addAll(serviceReqsAtLocation(rt.requestClass, l));
+    }
+    return requests;
   }
-
+  
   public static HashMap<String, HashMap<String, Integer>> getEquipFloorCounts() {
     // floor can be index, then need hashmap for each equipment type
     HashMap<String, HashMap<String, Integer>> equipFloorCounts = new HashMap<>();
