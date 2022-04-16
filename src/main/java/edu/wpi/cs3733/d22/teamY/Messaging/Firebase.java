@@ -4,6 +4,7 @@ import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
+import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
 import java.io.IOException;
 
 public class Firebase {
@@ -23,6 +24,7 @@ public class Firebase {
     database = FirebaseDatabase.getInstance();
     chatRef = database.getReference("/chats/");
     //    createEventListeners();
+    ChatManager.init(PersonalSettings.currentEmployee.getIDNumber());
   }
 
   private static void createEventListeners() {
