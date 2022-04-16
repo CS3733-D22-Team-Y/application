@@ -1,5 +1,7 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import edu.wpi.cs3733.d22.teamY.Messaging.Firebase;
+import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController;
 import edu.wpi.cs3733.d22.teamY.model.*;
 import java.io.IOException;
@@ -119,7 +121,12 @@ public class DBUtils {
 
     Employee thePerson = people.get(0);
     PersonalSettingsController.currentEmployee = thePerson; // TODO change
-
+    //    try {
+    ////      Firebase.init();
+    ////    } catch (IOException e) {
+    ////      e.printStackTrace();
+    ////    }
+    ////    System.out.println("Firebase initialized");
     return thePerson.getName();
   }
 
@@ -181,8 +188,8 @@ public class DBUtils {
             .list();
     s.close();
     if (employees.size() == 1) {
-      //      PersonalSettings.currentEmployee = employees.get(0);
-      //      Firebase.init();
+      PersonalSettings.currentEmployee = employees.get(0);
+      Firebase.init();
       System.out.println("Valid Login");
       return true;
     }

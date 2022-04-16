@@ -35,66 +35,60 @@ public class MessageController {
   private String chatID = "";
   private boolean chatOpen = false;
 
+  public static boolean needsRefresh = false;
+
   // initialize the controller
   public void initialize() throws IOException {
     messageText.setPromptText("Enter your message here");
     String id = PersonalSettings.currentEmployee.getIDNumber();
-    System.out.println("Init message controller here: " + id);
-    Firebase.init();
-    Firebase.chatRef
-        .child(id)
-        .addChildEventListener(
-            new ChildEventListener() {
+    System.out.println("Init message controller here: " + id + " " + ChatManager.getChats().size());
+    Firebase.chatRef.addChildEventListener(
+        new ChildEventListener() {
+          @Override
+          public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
+            refresh();
+          }
 
-              @Override
-              public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
-                Chat c = snapshot.getValue(Chat.class);
-                ChatManager.myChats.put(snapshot.getKey(), c);
-                System.out.println("Added chat from listener: \n" + c);
-                refresh();
-              }
+          @Override
+          public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
+            System.out.println("Child changed");
+            refresh();
+          }
 
-              @Override
-              public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
-                Chat c = snapshot.getValue(Chat.class);
-                ChatManager.myChats.put(snapshot.getKey(), c);
-                for (String s : c.getUsers()) {
-                  Firebase.chatRef.child(s).child(snapshot.getKey()).setValueAsync(c);
-                }
-                System.out.println("Added chat from listener: \n" + c);
-                refresh();
-              }
+          @Override
+          public void onChildRemoved(DataSnapshot snapshot) {
+            refresh();
+          }
 
-              @Override
-              public void onChildRemoved(DataSnapshot snapshot) {
-                ChatManager.myChats.remove(snapshot.getKey());
-              }
+          @Override
+          public void onChildMoved(DataSnapshot snapshot, String previousChildName) {
+            refresh();
+          }
 
-              @Override
-              public void onChildMoved(DataSnapshot snapshot, String previousChildName) {}
+          @Override
+          public void onCancelled(DatabaseError error) {}
+        });
 
-              @Override
-              public void onCancelled(DatabaseError error) {}
-            });
-
-    //    this.refresh();
+    this.refresh();
   }
 
   public void refresh() {
-    System.out.println("refreshing");
     chatSelector.getChildren().clear();
+
     HashMap<String, Chat> chats = ChatManager.getChats();
+
     System.out.println(chats.size());
     for (String key : chats.keySet()) {
       Pane clone = getBlankMessageClone(key, chats.get(key));
       chatSelector.getChildren().add(clone);
     }
     System.out.println("Refreshed");
+    MessageController.needsRefresh = false;
   }
 
   public void send() {
-    String text = messageText.getText();
-    ChatManager.sendMessage(text, PersonalSettings.currentEmployee.getIDNumber(), "2");
+    //    String text = messageText.getText();
+    //    ChatManager.sendMessage(text, PersonalSettings.currentEmployee.getIDNumber(), "2");
     refresh();
     // toUID.getText());
   }
