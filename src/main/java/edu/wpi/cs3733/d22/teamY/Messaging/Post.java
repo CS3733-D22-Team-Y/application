@@ -54,6 +54,12 @@ public class Post {
   public String generateSimpleTime() {
     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
     Date resultdate = new Date(Long.parseLong(this.getTime()));
-    return sdf.format(resultdate);
+    String parsed = sdf.format(resultdate);
+    if (Integer.parseInt(parsed.split(":")[0]) > 12) {
+      parsed = (Integer.parseInt(parsed.split(":")[0]) - 12) + ":" + parsed.split(":")[1] + " PM";
+    } else {
+      parsed = parsed + " AM";
+    }
+    return parsed;
   }
 }

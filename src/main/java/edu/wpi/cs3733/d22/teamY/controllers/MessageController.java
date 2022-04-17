@@ -265,6 +265,10 @@ public class MessageController {
     clone.setStroke(r.getStroke());
     clone.setStrokeWidth(r.getStrokeWidth());
     clone.setOpacity(r.getOpacity());
+    clone.setTranslateX(r.getTranslateX());
+    clone.setTranslateY(r.getTranslateY());
+    clone.setLayoutX(r.getLayoutX());
+    clone.setLayoutY(r.getLayoutY());
     return clone;
   }
 
@@ -278,6 +282,7 @@ public class MessageController {
     clone.setAlignment(h.getAlignment());
     clone.setTranslateX(h.getTranslateX());
     clone.setTranslateY(h.getTranslateY());
+
     return clone;
   }
 
@@ -308,12 +313,16 @@ public class MessageController {
     clone.setTextFill(l.getTextFill());
     clone.setFont(l.getFont());
     clone.setPadding(l.getPadding());
-    clone.setMinHeight(l.getMinHeight());
-    clone.setMinWidth(l.getMinWidth());
     clone.setAlignment(l.getAlignment());
     clone.setTranslateX(l.getTranslateX());
     clone.setTranslateY(l.getTranslateY());
     clone.setWrapText(l.isWrapText());
+    clone.setMaxHeight(l.getMaxHeight());
+    clone.setMaxWidth(l.getMaxWidth());
+    clone.setPrefHeight(l.getPrefHeight());
+    clone.setPrefWidth(l.getPrefWidth());
+    clone.setMinHeight(l.getMinHeight());
+    clone.setMinWidth(l.getMinWidth());
 
     return clone;
   }
