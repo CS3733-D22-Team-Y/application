@@ -40,6 +40,7 @@ public class ChatManager {
               @Override
               public void onChildRemoved(DataSnapshot snapshot) {
                 myChats.remove(snapshot.getKey());
+                System.out.println("Removed chat from listener: \n" + snapshot.getKey());
               }
 
               @Override

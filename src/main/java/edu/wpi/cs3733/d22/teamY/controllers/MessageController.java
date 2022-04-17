@@ -56,14 +56,20 @@ public class MessageController {
   @FXML private Label author;
   @FXML private Label time;
 
+  @FXML private VBox newChatArea;
+  @FXML private MFXTextField toBox;
+  @FXML private MFXScrollPane resultsArea;
+
   private String chatID = "";
   private boolean chatOpen = false;
+  private boolean newChatOpen = false;
 
   // initialize the controller
   public void initialize() throws IOException {
     messageText.setPromptText("Enter your message here");
     messageArea.getChildren().clear();
     setChatOpen(chatOpen);
+    setChatPickerOpen(newChatOpen);
     String id = PersonalSettings.currentEmployee.getIDNumber();
     System.out.println("Init message controller here: " + id + " " + ChatManager.getChats().size());
     Firebase.chatRef.addChildEventListener(childEventListener);
@@ -99,7 +105,11 @@ public class MessageController {
     messageArea.getChildren().clear();
     Chat c = ChatManager.myChats.get(chatID);
     for (Post p : c.getPosts()) {
-      messageArea.getChildren().add(getMessageClone(p));
+      try {
+        messageArea.getChildren().add(getMessageClone(p));
+      } catch (Exception e) {
+        System.out.println("Error getting message clone");
+      }
     }
     // scroll to bottom
     Platform.runLater(
@@ -124,7 +134,18 @@ public class MessageController {
     setChatPickerOpen(true);
   }
 
-  private void setChatPickerOpen(boolean b) {}
+  private void setChatPickerOpen(boolean b) {
+    newChatOpen = b;
+    newChatArea.setVisible(b);
+  }
+
+  public void selectedChat() {
+    setChatPickerOpen(false);
+    // send initial message
+    ChatManager.sendMessage(
+        "Chat Created", PersonalSettings.currentEmployee.getIDNumber(), toBox.getText());
+    setChatOpen(true);
+  }
 
   public Pane getMessageClone(Post p) {
     // clones the pane messageBarPane
@@ -216,11 +237,25 @@ public class MessageController {
     bPreviewClone.setText(chat.getPosts().get(chat.getPosts().size() - 1).getMessage());
 
     // set the name text to be employee's name
+    String csvNames = "Guest";
     try {
-      bNameClone.setText(DBUtils.getNamesFromIds(chat.getUsers(), true));
+      csvNames = DBUtils.getNamesFromIds(chat.getUsers(), true);
     } catch (IOException e) {
       e.printStackTrace();
     }
+    bNameClone.setText(csvNames);
+
+    // set the time text to be the time of the last message
+    bTimeClone.setText(chat.getPosts().get(chat.getPosts().size() - 1).generateSimpleTime());
+
+    // set the initials text to be the initials of the first name
+    String initials = "G";
+    String[] names = csvNames.split(",");
+    if (names.length > 0) {
+      initials = names[0].substring(0, 1);
+    }
+
+    bInitialsClone.setText(initials);
 
     // on click of the message, set the chatID to the chatID of the message
     bHboxClone.setOnMouseClicked(
