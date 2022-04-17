@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
@@ -101,7 +102,10 @@ public class MessageController {
       messageArea.getChildren().add(getMessageClone(p));
     }
     // scroll to bottom
-    messageAreaContainer.setVvalue(1.0);
+    Platform.runLater(
+        () -> {
+          messageAreaContainer.setVvalue(1.0);
+        });
 
     System.out.println("Refreshed Messages");
   }
@@ -157,6 +161,17 @@ public class MessageController {
 
     // set the time to be the time of the post
     timeClone.setText(p.generateSimpleTime());
+
+    // if i am not the sender, make the message background grey
+    if (!p.getSender().equals(PersonalSettings.currentEmployee.getIDNumber())) {
+      messageBackgroundClone.setFill(Color.rgb(200, 200, 200));
+    }
+
+    // set the height property of the rectangle to be the height of the message label
+    messageBackgroundClone.heightProperty().bind(messageLabelClone.heightProperty());
+
+    // set the height property of the text container pane to be the height of the message label
+    textContainerClone.setPrefHeight(messageLabelClone.getHeight());
 
     return clone;
   }
@@ -226,6 +241,13 @@ public class MessageController {
     clone.setStyle(p.getStyle());
     clone.setPadding(p.getPadding());
     clone.setMinHeight(p.getMinHeight());
+    clone.setMinWidth(p.getMinWidth());
+    clone.setMaxHeight(p.getMaxHeight());
+    clone.setMaxWidth(p.getMaxWidth());
+    clone.setPrefHeight(p.getPrefHeight());
+    clone.setPrefWidth(p.getPrefWidth());
+    clone.setStyle(p.getStyle());
+    clone.setOpacity(p.getOpacity());
 
     return clone;
   }
@@ -286,6 +308,13 @@ public class MessageController {
     clone.setTextFill(l.getTextFill());
     clone.setFont(l.getFont());
     clone.setPadding(l.getPadding());
+    clone.setMinHeight(l.getMinHeight());
+    clone.setMinWidth(l.getMinWidth());
+    clone.setAlignment(l.getAlignment());
+    clone.setTranslateX(l.getTranslateX());
+    clone.setTranslateY(l.getTranslateY());
+    clone.setWrapText(l.isWrapText());
+
     return clone;
   }
 

@@ -17,7 +17,7 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="780.0" minWidth="920.0" prefHeight="780.0" prefWidth="920.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MessageController">
     <children>
-        <Label layoutX="69.0" layoutY="7.0" text="Messages" textFill="#20758b">
+        <Label alignment="CENTER" layoutX="53.0" layoutY="14.0" prefHeight="88.0" prefWidth="292.0" text="Messages" textFill="#20758b">
             <font>
                 <Font name="Arial Rounded MT Bold" size="60.0" />
             </font>
@@ -96,7 +96,6 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Line endX="-100.0" endY="-536.0" layoutX="498.0" layoutY="536.0" startX="-100.0" startY="244.0" />
       <MFXButton layoutX="268.0" layoutY="726.0" onAction="#startChat" prefHeight="50.0" prefWidth="124.0" style="-fx-background-color: #14667B;" text="Start Chat" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
@@ -106,16 +105,16 @@
             <String fx:value="primaryColor" />
          </styleClass>
       </MFXButton>
-      <MFXScrollPane fx:id="messageAreaContainer" hbarPolicy="NEVER" layoutX="399.0" layoutY="104.0" prefHeight="618.0" prefWidth="515.0" visible="false">
+      <MFXScrollPane fx:id="messageAreaContainer" hbarPolicy="NEVER" layoutX="399.0" layoutY="104.0" prefHeight="618.0" prefWidth="515.0">
          <content>
             <VBox fx:id="messageArea" alignment="BOTTOM_CENTER" prefHeight="616.0" prefWidth="512.0">
                <children>
-                  <Pane fx:id="messageBarPane" minHeight="100.0" prefHeight="100.0" VBox.vgrow="NEVER">
+                  <Pane fx:id="messageBarPane" minHeight="-Infinity">
                      <children>
-                        <Pane fx:id="textContainer" layoutX="3.0" layoutY="20.0" maxHeight="500.0" prefHeight="77.0" prefWidth="512.0">
+                        <Pane fx:id="textContainer" layoutX="3.0" layoutY="20.0" maxHeight="500.0" prefHeight="30.0" prefWidth="512.0">
                            <children>
-                              <Rectangle fx:id="messageBackground" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="77.0" layoutX="-3.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" width="515.0" />
-                              <Label fx:id="messageLabel" nodeOrientation="LEFT_TO_RIGHT" prefHeight="78.0" prefWidth="515.0" text="130 character limit?" wrapText="true">
+                              <Rectangle fx:id="messageBackground" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="-3.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" width="515.0" />
+                              <Label fx:id="messageLabel" alignment="CENTER" layoutX="-1.0" layoutY="-1.0" maxHeight="500.0" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefWidth="515.0" text="130 character limit? this isa tetsts ts tas as akjs akjhs jah sjah kah ahsajh sahs ahs alksh lakhs la hlksa lkahs lkahs la al khsla hslash lalskahlks alkh slkah slkah lksah lskhal lkahs lkahls ajs ahjsa shakj sakjs hkja s" wrapText="true">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -143,9 +142,31 @@
                            </children>
                         </HBox>
                      </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
                   </Pane>
                </children>
             </VBox>
          </content></MFXScrollPane>
+      <VBox alignment="TOP_CENTER" layoutX="418.0" layoutY="58.0" prefHeight="723.0" prefWidth="489.0" visible="false">
+         <children>
+            <Label prefHeight="48.0" prefWidth="158.0" text="Create a new chat">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <MFXTextField prefHeight="63.0" prefWidth="487.0" promptText="to:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </MFXTextField>
+            <MFXScrollPane hbarPolicy="NEVER" prefHeight="610.0" prefWidth="503.0" />
+         </children>
+      </VBox>
+      <Line endX="-100.0" endY="-536.0" layoutX="498.0" layoutY="536.0" startX="-100.0" startY="244.0" />
     </children>
 </AnchorPane>
