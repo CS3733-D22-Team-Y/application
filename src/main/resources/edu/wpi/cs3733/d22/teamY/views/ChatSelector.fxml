@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
@@ -25,60 +26,60 @@
             <String fx:value="primaryColor" />
          </styleClass>
         </Label>
-      <VBox fx:id="chatSelector" layoutY="101.0" prefHeight="680.0" prefWidth="396.0">
-         <children>
-            <Pane fx:id="blankMessage" prefHeight="88.0" prefWidth="399.0">
+      <MFXScrollPane hbarPolicy="NEVER" layoutX="-2.0" layoutY="104.0" prefHeight="677.0" prefWidth="401.0">
+         <content>
+            <VBox fx:id="chatSelector">
                <children>
-                  <Rectangle fx:id="bRect" arcHeight="5.0" fill="#bcbcbc" height="88.0" layoutX="-1.0" layoutY="-1.0" stroke="BLACK" strokeType="OUTSIDE" width="399.0" />
-                  <HBox fx:id="bHbox" alignment="CENTER" layoutY="8.0" prefWidth="396.0">
+                  <Pane fx:id="blankMessage" prefHeight="88.0" prefWidth="399.0">
                      <children>
-                        <Pane fx:id="bPicPane" prefHeight="74.0" prefWidth="70.0">
+                        <Rectangle fx:id="bRect" arcHeight="5.0" fill="#bcbcbc" height="88.0" layoutX="-1.0" layoutY="-1.0" stroke="BLACK" strokeType="OUTSIDE" width="399.0" />
+                        <HBox fx:id="bHbox" alignment="CENTER" layoutY="8.0" prefWidth="396.0">
                            <children>
-                              <Circle fx:id="bCircle" fill="WHITE" layoutX="37.0" layoutY="37.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Label fx:id="bInitials" layoutX="19.0" layoutY="18.0" text="NP">
-                                 <font>
-                                    <Font name="System Bold" size="26.0" />
-                                 </font>
-                              </Label>
-                              <Circle fx:id="bUnread" fill="DODGERBLUE" layoutX="14.0" layoutY="18.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Pane fx:id="bPicPane" prefHeight="74.0" prefWidth="70.0">
+                                 <children>
+                                    <Circle fx:id="bCircle" fill="WHITE" layoutX="37.0" layoutY="37.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Label fx:id="bInitials" layoutX="19.0" layoutY="18.0" text="NP">
+                                       <font>
+                                          <Font name="System Bold" size="26.0" />
+                                       </font>
+                                    </Label>
+                                    <Circle fx:id="bUnread" fill="DODGERBLUE" layoutX="14.0" layoutY="18.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+                                 </children>
+                              </Pane>
+                              <VBox fx:id="bNamePrevBox" alignment="CENTER" prefHeight="74.0" prefWidth="249.0">
+                                 <children>
+                                    <Label fx:id="bName" prefHeight="27.0" prefWidth="249.0" text="Nathan Pollock">
+                                       <font>
+                                          <Font name="System Bold" size="21.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="bPreview" prefHeight="27.0" prefWidth="249.0" text="Message Preview this is a test of the">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="bTimeVbox" alignment="TOP_RIGHT" prefHeight="74.0" prefWidth="62.0">
+                                 <children>
+                                    <Label fx:id="bTime" text="12:38 PM">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
                            </children>
-                        </Pane>
-                        <VBox fx:id="bNamePrevBox" alignment="CENTER" prefHeight="74.0" prefWidth="249.0">
-                           <children>
-                              <Label fx:id="bName" prefHeight="27.0" prefWidth="249.0" text="Nathan Pollock">
-                                 <font>
-                                    <Font name="System Bold" size="21.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="bPreview" prefHeight="27.0" prefWidth="249.0" text="Message Preview this is a test of the">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox fx:id="bTimeVbox" alignment="TOP_RIGHT" prefHeight="74.0" prefWidth="62.0">
-                           <children>
-                              <Label fx:id="bTime" text="12:38 PM">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
+                        </HBox>
                      </children>
-                  </HBox>
+                  </Pane>
                </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </Pane>
-         </children>
-      </VBox>
-      <VBox fx:id="chatArea" layoutX="399.0" layoutY="104.0" prefHeight="616.0" prefWidth="521.0" />
-      <Pane fx:id="sendPane" layoutX="398.0" layoutY="726.0">
+            </VBox>
+         </content>
+      </MFXScrollPane>
+      <Pane fx:id="sendPane" layoutX="398.0" layoutY="726.0" visible="false">
          <children>
-            <MFXButton layoutX="415.0" onAction="#send" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" text="Send" textFill="WHITE">
+            <MFXButton fx:id="sendButton" layoutX="415.0" onAction="#send" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" text="Send" textFill="WHITE">
                <font>
                   <Font name="Calibri Bold" size="20.0" />
                </font>
@@ -90,13 +91,13 @@
             <MFXTextField fx:id="messageText" layoutX="6.0" onAction="#send" prefHeight="49.0" prefWidth="403.0" />
          </children>
       </Pane>
-      <Label fx:id="chatSelectLabel" layoutX="544.0" layoutY="349.0" text="Select a chat from the list">
+      <Label fx:id="chatSelectLabel" layoutX="544.0" layoutY="349.0" text="Select a chat from the list" visible="false">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
       <Line endX="-100.0" endY="-536.0" layoutX="498.0" layoutY="536.0" startX="-100.0" startY="244.0" />
-      <MFXButton layoutX="268.0" layoutY="726.0" onAction="#send" prefHeight="50.0" prefWidth="124.0" style="-fx-background-color: #14667B;" text="Start Chat" textAlignment="CENTER" textFill="WHITE">
+      <MFXButton layoutX="268.0" layoutY="726.0" onAction="#startChat" prefHeight="50.0" prefWidth="124.0" style="-fx-background-color: #14667B;" text="Start Chat" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
@@ -105,5 +106,46 @@
             <String fx:value="primaryColor" />
          </styleClass>
       </MFXButton>
+      <MFXScrollPane fx:id="messageAreaContainer" hbarPolicy="NEVER" layoutX="399.0" layoutY="104.0" prefHeight="618.0" prefWidth="515.0" visible="false">
+         <content>
+            <VBox fx:id="messageArea" alignment="BOTTOM_CENTER" prefHeight="616.0" prefWidth="512.0">
+               <children>
+                  <Pane fx:id="messageBarPane" minHeight="100.0" prefHeight="100.0" VBox.vgrow="NEVER">
+                     <children>
+                        <Pane fx:id="textContainer" layoutX="3.0" layoutY="20.0" maxHeight="500.0" prefHeight="77.0" prefWidth="512.0">
+                           <children>
+                              <Rectangle fx:id="messageBackground" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="77.0" layoutX="-3.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" width="515.0" />
+                              <Label fx:id="messageLabel" nodeOrientation="LEFT_TO_RIGHT" prefHeight="78.0" prefWidth="515.0" text="130 character limit?" wrapText="true">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <HBox fx:id="messageInfoPanel" alignment="CENTER_LEFT" layoutX="3.0">
+                           <children>
+                              <Label fx:id="author" text="Nathan Pollock">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="time" text="12:38 PM">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </content></MFXScrollPane>
     </children>
 </AnchorPane>

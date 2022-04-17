@@ -3,6 +3,7 @@ package edu.wpi.cs3733.d22.teamY.Messaging;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ChatManager {
@@ -59,8 +60,8 @@ public class ChatManager {
 
   private static void addTheirMessage(String chatID, String id) {
     Chat c = myChats.get(chatID);
-    System.out.println("Added their message" + (c == null));
     Firebase.chatRef.child(id).child(chatID).setValueAsync(c);
+    System.out.println("Added their message" + (c == null));
   }
 
   private static void addMyMessage(String message, String myID, String... recipientIDs) {
@@ -73,11 +74,19 @@ public class ChatManager {
     } else {
       c = myChats.get(chatID);
     }
-    c.addPost(new Post(message));
+    c.addPost(new Post(message, myID));
     Firebase.chatRef.child(myID).child(chatID).setValueAsync(c);
   }
 
   public static HashMap<String, Chat> getChats() {
     return myChats;
+  }
+
+  public static void sendMessage(String text, String idNumber, ArrayList<String> users) {
+    ArrayList<String> usersCopy = (ArrayList<String>) users.clone();
+    usersCopy.remove(idNumber);
+    String[] res = new String[usersCopy.size()];
+    res = usersCopy.toArray(res);
+    sendMessage(text, idNumber, res);
   }
 }

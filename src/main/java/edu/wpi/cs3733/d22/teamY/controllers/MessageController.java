@@ -7,11 +7,14 @@ import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.Messaging.Chat;
 import edu.wpi.cs3733.d22.teamY.Messaging.ChatManager;
 import edu.wpi.cs3733.d22.teamY.Messaging.Firebase;
+import edu.wpi.cs3733.d22.teamY.Messaging.Post;
+import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.util.HashMap;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -22,6 +25,7 @@ import javafx.scene.shape.Rectangle;
 public class MessageController {
 
   @FXML private MFXTextField messageText;
+  @FXML private Button sendButton;
 
   @FXML private Pane blankMessage;
   @FXML private Rectangle bRect;
@@ -35,8 +39,21 @@ public class MessageController {
   @FXML private VBox bTimeVbox;
   @FXML private VBox bNamePrevBox;
   @FXML private Label bTime;
+  @FXML private Label chatSelectLabel;
 
   @FXML private VBox chatSelector;
+  @FXML private VBox messageArea;
+  @FXML private Pane sendPane;
+  @FXML private MFXScrollPane messageAreaContainer;
+
+  // variables associated with a message
+  @FXML private Pane messageBarPane;
+  @FXML private Pane textContainer;
+  @FXML private HBox messageInfoPanel;
+  @FXML private Rectangle messageBackground;
+  @FXML private Label messageLabel;
+  @FXML private Label author;
+  @FXML private Label time;
 
   private String chatID = "";
   private boolean chatOpen = false;
@@ -44,14 +61,27 @@ public class MessageController {
   // initialize the controller
   public void initialize() throws IOException {
     messageText.setPromptText("Enter your message here");
+    messageArea.getChildren().clear();
+    setChatOpen(chatOpen);
     String id = PersonalSettings.currentEmployee.getIDNumber();
     System.out.println("Init message controller here: " + id + " " + ChatManager.getChats().size());
     Firebase.chatRef.addChildEventListener(childEventListener);
 
-    this.refresh();
+    this.refreshChats();
   }
 
-  public void refresh() {
+  public void setChatOpen(boolean open) {
+    chatOpen = open;
+    sendPane.setVisible(chatOpen);
+    chatSelectLabel.setVisible(!chatOpen);
+    messageAreaContainer.setVisible(chatOpen);
+    messageArea.setVisible(chatOpen);
+    if (chatOpen) {
+      refreshMessages();
+    }
+  }
+
+  public void refreshChats() {
     chatSelector.getChildren().clear();
 
     HashMap<String, Chat> chats = ChatManager.getChats();
@@ -61,14 +91,74 @@ public class MessageController {
       Pane clone = getBlankMessageClone(key, chats.get(key));
       chatSelector.getChildren().add(clone);
     }
-    System.out.println("Refreshed");
+    System.out.println("Refreshed Chats");
+  }
+
+  public void refreshMessages() {
+    messageArea.getChildren().clear();
+    Chat c = ChatManager.myChats.get(chatID);
+    for (Post p : c.getPosts()) {
+      messageArea.getChildren().add(getMessageClone(p));
+    }
+    // scroll to bottom
+    messageAreaContainer.setVvalue(1.0);
+
+    System.out.println("Refreshed Messages");
   }
 
   public void send() {
-    //    String text = messageText.getText();
-    //    ChatManager.sendMessage(text, PersonalSettings.currentEmployee.getIDNumber(), "2");
-    refresh();
-    // toUID.getText());
+    String text = messageText.getText();
+    ChatManager.sendMessage(
+        text,
+        PersonalSettings.currentEmployee.getIDNumber(),
+        ChatManager.myChats.get(chatID).getUsers());
+    messageText.setText("");
+  }
+
+  public void startChat() {
+    setChatOpen(false);
+    setChatPickerOpen(true);
+  }
+
+  private void setChatPickerOpen(boolean b) {}
+
+  public Pane getMessageClone(Post p) {
+    // clones the pane messageBarPane
+    Pane clone = getPaneClone(messageBarPane);
+    Pane textContainerClone = getPaneClone(textContainer);
+    HBox messageInfoPanelClone = getHboxClone(messageInfoPanel);
+    Rectangle messageBackgroundClone = getRectClone(messageBackground);
+    Label messageLabelClone = getLabelClone(messageLabel);
+    Label authorClone = getLabelClone(author);
+    Label timeClone = getLabelClone(time);
+
+    // set text container and message info panel to be children of clone
+    clone.getChildren().add(textContainerClone);
+    clone.getChildren().add(messageInfoPanelClone);
+
+    // set the message background and message label to be children of text container
+    textContainerClone.getChildren().add(messageBackgroundClone);
+    textContainerClone.getChildren().add(messageLabelClone);
+
+    // set the author and time to be children of message info panel
+    messageInfoPanelClone.getChildren().add(authorClone);
+    messageInfoPanelClone.getChildren().add(timeClone);
+
+    // set the message label to be the text of the post
+    messageLabelClone.setText(p.getMessage());
+
+    // set the author to be the author of the post
+    try {
+      authorClone.setText(DBUtils.getNameFromActualID(p.getSender()));
+    } catch (IOException e) {
+      e.printStackTrace();
+      authorClone.setText("ID# " + p.getSender());
+    }
+
+    // set the time to be the time of the post
+    timeClone.setText(p.generateSimpleTime());
+
+    return clone;
   }
 
   public Pane getBlankMessageClone(String chatID, Chat chat) {
@@ -121,7 +211,7 @@ public class MessageController {
     bHboxClone.setOnMouseClicked(
         e -> {
           this.chatID = chatID;
-          chatOpen = true;
+          setChatOpen(true);
         });
 
     return clone;
@@ -134,6 +224,9 @@ public class MessageController {
     clone.setLayoutX(p.getLayoutX());
     clone.setLayoutY(p.getLayoutY());
     clone.setStyle(p.getStyle());
+    clone.setPadding(p.getPadding());
+    clone.setMinHeight(p.getMinHeight());
+
     return clone;
   }
 
@@ -149,6 +242,7 @@ public class MessageController {
     clone.setFill(r.getFill());
     clone.setStroke(r.getStroke());
     clone.setStrokeWidth(r.getStrokeWidth());
+    clone.setOpacity(r.getOpacity());
     return clone;
   }
 
@@ -191,6 +285,7 @@ public class MessageController {
     clone.setText(l.getText());
     clone.setTextFill(l.getTextFill());
     clone.setFont(l.getFont());
+    clone.setPadding(l.getPadding());
     return clone;
   }
 
@@ -213,7 +308,10 @@ public class MessageController {
         public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
           Platform.runLater(
               () -> {
-                refresh();
+                refreshChats();
+                if (chatOpen) {
+                  refreshMessages();
+                }
               });
         }
 
@@ -221,7 +319,10 @@ public class MessageController {
         public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
           Platform.runLater(
               () -> {
-                refresh();
+                refreshChats();
+                if (chatOpen) {
+                  refreshMessages();
+                }
               });
         }
 
@@ -229,7 +330,10 @@ public class MessageController {
         public void onChildRemoved(DataSnapshot snapshot) {
           Platform.runLater(
               () -> {
-                refresh();
+                refreshChats();
+                if (chatOpen) {
+                  refreshMessages();
+                }
               });
         }
 
@@ -237,7 +341,10 @@ public class MessageController {
         public void onChildMoved(DataSnapshot snapshot, String previousChildName) {
           Platform.runLater(
               () -> {
-                refresh();
+                refreshChats();
+                if (chatOpen) {
+                  refreshMessages();
+                }
               });
         }
 
