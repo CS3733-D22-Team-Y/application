@@ -3,16 +3,21 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.Messaging.Chat;
 import edu.wpi.cs3733.d22.teamY.Messaging.ChatManager;
 import edu.wpi.cs3733.d22.teamY.Messaging.Firebase;
 import edu.wpi.cs3733.d22.teamY.Messaging.Post;
+import edu.wpi.cs3733.d22.teamY.model.Employee;
+import edu.wpi.cs3733.d22.teamY.utilTemp.SearchUtil;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -64,6 +69,17 @@ public class MessageController {
 
   @FXML private AnchorPane sidebarPane;
 
+  // variables associated with a result in the search
+  @FXML private Pane resultItemPane;
+  @FXML private Rectangle resultRect;
+  @FXML private VBox resultVbox;
+  @FXML private Label resultName;
+  @FXML private Label resultRole;
+
+  @FXML private Pane resultPane;
+
+  ArrayList<EmployeeResult> results = new ArrayList<>();
+
   private String chatID = "";
   private boolean chatOpen = false;
   private boolean newChatOpen = false;
@@ -72,11 +88,16 @@ public class MessageController {
   public void initialize() throws IOException {
     messageText.setPromptText("Enter your message here");
     messageArea.getChildren().clear();
+    resultPane.getChildren().clear();
     setChatOpen(chatOpen);
     setChatPickerOpen(newChatOpen);
     String id = PersonalSettings.currentEmployee.getIDNumber();
     System.out.println("Init message controller here: " + id + " " + ChatManager.getChats().size());
     Firebase.chatRef.addChildEventListener(childEventListener);
+    List<Employee> employees = DBManager.getAll(Employee.class);
+    for (Employee e : employees) {
+      results.add(new EmployeeResult(e.getName(), e.getRole(), e.getIDNumber()));
+    }
 
     this.refreshChats();
   }
@@ -89,6 +110,7 @@ public class MessageController {
     messageArea.setVisible(chatOpen);
     if (chatOpen) {
       refreshMessages();
+      messageText.requestFocus();
     }
   }
 
@@ -152,6 +174,8 @@ public class MessageController {
   public void startChat() {
     setChatOpen(false);
     setChatPickerOpen(true);
+    toBox.requestFocus();
+    this.getResults();
   }
 
   private void setChatPickerOpen(boolean b) {
@@ -160,12 +184,139 @@ public class MessageController {
   }
 
   public void selectedChat() {
-    // send initial message
-    ChatManager.sendMessage(
-        "Chat Created", PersonalSettings.currentEmployee.getIDNumber(), toBox.getText());
-    chatID = Chat.getChatID(PersonalSettings.currentEmployee.getIDNumber(), toBox.getText());
+    String text = toBox.getText().trim().replaceAll(" ", "");
+    String[] splitText = text.split(",");
+    if (text.length() == 0) {
+      System.out.println("No text in to box");
+      return;
+    }
+    for (String s : splitText) {
+      if (s.length() == 0 || !isNumeric(s)) {
+        System.out.println("empty recipient");
+        return;
+      }
+    }
+    if (text.contains(",,")) {
+      System.out.println("empty recipient");
+      return;
+    }
+
+    chatID = Chat.getChatID(PersonalSettings.currentEmployee.getIDNumber(), splitText);
+    if (!ChatManager.myChats.containsKey(chatID)) {
+      // send initial message
+      ChatManager.sendMessage(
+          "Chat Created", PersonalSettings.currentEmployee.getIDNumber(), splitText);
+    } else {
+      System.out.println("Chat already exists");
+    }
     setChatPickerOpen(false);
     setChatOpen(true);
+  }
+
+  public boolean isNumeric(String str) {
+    try {
+      Integer.parseInt(str);
+      return true;
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
+  // on key released handler for the to box:
+  public void getResults() {
+    // remove all spaces
+    toBox.setText(toBox.getText().replaceAll(" ", ""));
+    //    // remove all double commas
+    toBox.setText(toBox.getText().replaceAll(",,", ","));
+    // set the cursor to the end of the text
+    toBox.positionCaret(toBox.getText().length());
+    String text = toBox.getText();
+    String[] splitText = text.split(",");
+    // show search results
+    String query = "";
+    if (text.length() > 0) {
+      query = splitText[splitText.length - 1];
+      if (text.charAt(text.length() - 1) == ',') {
+        query = "";
+      }
+    }
+    // if a comma was the last character, query is empty
+
+    showResults(query);
+  }
+
+  public void showResults(String query) {
+    System.out.println("Searching for: '" + query + "'");
+    // clear the list
+    resultPane.getChildren().clear();
+    // get the results
+    results.sort(
+        new Comparator<EmployeeResult>() {
+          @Override
+          public int compare(EmployeeResult o1, EmployeeResult o2) {
+
+            //            return SearchUtil.compute_Levenshtein_distanceDP(o1.getName(), query)
+            //                - SearchUtil.compute_Levenshtein_distanceDP(o2.getName(), query);
+            return getFirstWordDist(o1.getName(), query) - getFirstWordDist(o2.getName(), query);
+          }
+        });
+    // add the results to the result pane
+    for (EmployeeResult result : results) {
+      resultPane.getChildren().add(result.getResultPane());
+    }
+  }
+
+  public int getFirstWordDist(String s1, String query) {
+    if (s1.length() == 0 || query.length() == 0) {
+      return 0;
+    }
+    String[] parsedName = s1.toLowerCase().split(" ");
+    int d1 = 100;
+    for (String s : parsedName) {
+      if (s.length() < query.length()) {
+        continue;
+      }
+      int dist =
+          SearchUtil.compute_Levenshtein_distanceDP(
+              s.substring(0, query.length() - 1), query.toLowerCase());
+      if (dist < d1) {
+        d1 = dist;
+      }
+    }
+    return d1;
+  }
+
+  public Pane getResultClone(String nameString, String roleString, String id) {
+    // clone the result item pane
+    Pane clone = getPaneClone(resultItemPane);
+    Rectangle cloneResultRect = getRectClone(resultRect);
+    VBox cloneResultVbox = getVboxClone(resultVbox);
+    Label cloneResultName = getLabelClone(resultName);
+    Label cloneResultRole = getLabelClone(resultRole);
+
+    // set the clone to have the rectangle and vbox as children
+    clone.getChildren().addAll(cloneResultRect, cloneResultVbox);
+
+    // set the vbox to have the name and role as children
+    cloneResultVbox.getChildren().addAll(cloneResultName, cloneResultRole);
+
+    // set the name and role to have the text
+    cloneResultName.setText(nameString);
+    cloneResultRole.setText(roleString);
+
+    // if the main clone pane is clicked, print the id
+    clone.setOnMouseClicked(
+        e -> {
+          addRecipientToChat(id);
+        });
+
+    return clone;
+  }
+
+  public void addRecipientToChat(String id) {
+    System.out.println("Adding " + id + " to chat");
+    toBox.setText(toBox.getText() + "," + id);
+    toBox.requestFocus();
   }
 
   public Pane getMessageClone(Post p) {
@@ -445,4 +596,32 @@ public class MessageController {
         @Override
         public void onCancelled(DatabaseError error) {}
       };
+
+  class EmployeeResult {
+    private String name, role, id;
+    private Pane resultPane;
+
+    public EmployeeResult(String name, String role, String id) {
+      this.name = name;
+      this.role = role;
+      this.id = id;
+      this.resultPane = getResultClone(name, role, id);
+    }
+
+    public String getName() {
+      return name;
+    }
+
+    public String getRole() {
+      return role;
+    }
+
+    public String getId() {
+      return id;
+    }
+
+    public Pane getResultPane() {
+      return resultPane;
+    }
+  }
 }
