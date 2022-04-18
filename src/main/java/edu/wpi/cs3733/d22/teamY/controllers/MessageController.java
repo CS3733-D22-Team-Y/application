@@ -148,7 +148,7 @@ public class MessageController {
 //        System.out.println("Error getting message clone");
       }
     }
-    // scroll to bottom
+    //scrolls to bottom
     Platform.runLater(
         () -> {
           messageAreaContainer.setVvalue(1.0);
