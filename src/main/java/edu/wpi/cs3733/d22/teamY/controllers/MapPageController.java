@@ -616,8 +616,6 @@ public class MapPageController<T extends Requestable> {
     this.xLabels[index].setText(floorCounts.get(floor).get("XRAY") + "");
   }
 
-
-
   @FXML
   public void LL1Enter() {
     updateQuickDash("L1");
@@ -695,7 +693,7 @@ public class MapPageController<T extends Requestable> {
     l5PopupPane.setOpacity(0);
   }
 
-  public ArrayList<Point> getHex(int n, double r, Point center){
+  public ArrayList<Point> getHex(int n, double r, Point center) {
     ArrayList<Point> res = new ArrayList<Point>();
     res.add(center);
     if (n != 1) {
@@ -706,23 +704,25 @@ public class MapPageController<T extends Requestable> {
 
   private ArrayList<Point> getHexRecursive(int n, double r, Point center, int layer) {
     ArrayList<Point> res = new ArrayList<Point>();
-    int num = 6*layer;
-    double dAngle = Math.toRadians(360.0/num);
-    for(int i = 0; i < num && n > 0; i++) {
-      res.add(new Point(center.x  + (2*r*layer+1) * Math.cos(dAngle*i), center.y  + (2*r*layer+1) * Math.sin(dAngle*i)));
+    int num = 6 * layer;
+    double dAngle = Math.toRadians(360.0 / num);
+    for (int i = 0; i < num && n > 0; i++) {
+      res.add(
+          new Point(
+              center.x + (2 * r * layer + 1) * Math.cos(dAngle * i),
+              center.y + (2 * r * layer + 1) * Math.sin(dAngle * i)));
       n = n - 1;
     }
     if (n != 0) {
       res.addAll(getHexRecursive(n, r, center, ++layer));
     }
     return res;
-
-
   }
 
-  class Point{
+  class Point {
     double x;
     double y;
+
     Point(double x, double y) {
       this.x = x;
       this.y = y;
