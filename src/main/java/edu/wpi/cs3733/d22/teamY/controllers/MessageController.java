@@ -185,6 +185,9 @@ public class MessageController {
 
   public void selectedChat() {
     String text = toBox.getText().trim().replaceAll(" ", "");
+    if (text.length() > 0 && text.charAt(text.length() - 1) == ',') {
+      text = text.substring(0, text.length() - 1);
+    }
     String[] splitText = text.split(",");
     if (text.length() == 0) {
       System.out.println("No text in to box");
@@ -195,6 +198,10 @@ public class MessageController {
         System.out.println("empty recipient");
         return;
       }
+      if (s.equals(PersonalSettings.currentEmployee.getIDNumber())) {
+        System.out.println("Cannot send to yourself");
+        return;
+      }
     }
     if (text.contains(",,")) {
       System.out.println("empty recipient");
@@ -202,6 +209,7 @@ public class MessageController {
     }
 
     chatID = Chat.getChatID(PersonalSettings.currentEmployee.getIDNumber(), splitText);
+    System.out.println("Attempting to start chat with ID" + chatID);
     if (!ChatManager.myChats.containsKey(chatID)) {
       // send initial message
       ChatManager.sendMessage(
@@ -315,8 +323,24 @@ public class MessageController {
 
   public void addRecipientToChat(String id) {
     System.out.println("Adding " + id + " to chat");
-    toBox.setText(toBox.getText() + "," + id);
+    // remove everything before the last comma and add the new id
+    String text = toBox.getText();
+
+    if (text.contains(",")) {
+      // find the index of the last comma
+      int index = text.lastIndexOf(",");
+      // remove everything after the last comma
+      text = text.substring(0, index);
+      // add the new id
+      text += "," + id + ",";
+    } else {
+      text = id + ",";
+    }
+    // set the text
+    toBox.setText(text);
     toBox.requestFocus();
+    // set the cursor to the end of the text
+    toBox.positionCaret(toBox.getText().length());
   }
 
   public Pane getMessageClone(Post p) {
