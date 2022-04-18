@@ -310,7 +310,7 @@ public class MessageController {
 
     // set the name and role to have the text
     cloneResultName.setText(nameString);
-    cloneResultRole.setText(roleString);
+    cloneResultRole.setText(roleString + "    |   ID#" + id);
 
     // if the main clone pane is clicked, print the id
     clone.setOnMouseClicked(
