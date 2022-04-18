@@ -79,7 +79,7 @@ public class TranslatorRequestController {
   // Called when the submit button is pressed.
   @FXML
   void submitButton() throws IOException {
-    // Checks if a bouquet choice has been made
+    // Checks if a language choice has been made
     if (RequestControllerUtil.isRadioButtonSelected(otherRadioButton)
         && Objects.equals(input_OtherLanguage.getText(), "")) {
       errorLabel.setText("Missing Required Fields.");
@@ -90,7 +90,9 @@ public class TranslatorRequestController {
             arabicRadioButton,
             otherRadioButton)
         && !Objects.equals(roomsHiddenField.getText(), "")
-        && !Objects.equals(input_AssignedNurse.getText(), "")) {
+        && !Objects.equals(input_AssignedNurse.getText(), "")
+        && !(RequestControllerUtil.isRadioButtonSelected(otherRadioButton)
+            && Objects.equals(input_OtherLanguage.getText(), ""))) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AdditionalNotes.getText(),
@@ -130,7 +132,7 @@ public class TranslatorRequestController {
     if (chineseRadioButton.isSelected()) return chineseText;
     if (germanRadioButton.isSelected()) return germanText;
     if (arabicRadioButton.isSelected()) return arabicText;
-    if (otherRadioButton.isSelected()) return otherText;
+    if (otherRadioButton.isSelected()) return input_OtherLanguage.getText();
     // Should never happen
     return ("");
   }
