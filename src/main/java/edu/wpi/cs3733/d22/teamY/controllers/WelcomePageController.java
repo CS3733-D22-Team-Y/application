@@ -185,7 +185,7 @@ public class WelcomePageController {
     //         && !lockOut
     //         && Auth.doAuth(username.getText())) {
     //       loginAnimation();
-    /*
+
     if (username.getText().length() <= 0 || password.getText().length() <= 0) {
       showLoginFail(false);
       return;
@@ -194,20 +194,16 @@ public class WelcomePageController {
     if (DBUtils.isValidLogin(username.getText(), password.getText()) && !lockOut) {
       if (DBUtils.checkDefaultPassword(password.getText().hashCode())) {
         UpdateNewAccountController.userNameToChange(username.getText());
-        SceneLoading.loadScene("views/AccountUpdate.fxml");
+        NewSceneLoading.loadScene("views/AccountUpdate.fxml");
       }
       display2FAOptions();
     } else {
       showLoginFail(true);
     }
 
-     */
     // NewSceneLoading.loadScene("views/SideBar.fxml");
-    NewSceneLoading.loadScene("views/ActiveServiceRequest.fxml");
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
-    loader.load();
-    // App.getInstance().setScene(new Scene(loader.load()));
-    SideBarController controller = loader.getController();
+    // NewSceneLoading.loadScene("views/ActiveServiceRequest.fxml");
+
     /*
     try {
       //controller.initializeScale();
@@ -268,11 +264,7 @@ public class WelcomePageController {
               new KeyFrame(
                   Duration.seconds(2),
                   (e) -> {
-                    try {
-                      SceneLoading.loadScene("views/Welcome.fxml");
-                    } catch (IOException ex) {
-                      ex.printStackTrace();
-                    }
+                    NewSceneLoading.loadScene("views/Welcome.fxml");
                   }));
       tl.play();
     }
@@ -349,11 +341,7 @@ public class WelcomePageController {
               new KeyFrame(
                   Duration.seconds(2),
                   (e) -> {
-                    try {
-                      SceneLoading.loadScene("views/Welcome.fxml");
-                    } catch (IOException ex) {
-                      ex.printStackTrace();
-                    }
+                    NewSceneLoading.loadScene("views/Welcome.fxml");
                   }));
       failed2FA.play();
     }
@@ -387,10 +375,6 @@ public class WelcomePageController {
   }
 
   public void createNewUser() throws Exception {
-    try {
-      SceneLoading.loadScene("views/CreateAccount.fxml");
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    NewSceneLoading.loadScene("views/CreateAccount.fxml");
   }
 }
