@@ -6,16 +6,24 @@ import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class Firebase {
   public static FirebaseDatabase database;
   public static DatabaseReference chatRef;
 
   public static void init() throws IOException {
+    InputStream serviceAccount =
+        Firebase.class
+            .getClassLoader()
+            .getResourceAsStream("get-wonged-firebase-adminsdk-dc3b7-37496f4921.json");
+
+    // print the service account
+    System.out.println(serviceAccount);
 
     FirebaseOptions options =
         FirebaseOptions.builder()
-            .setCredentials(GoogleCredentials.getApplicationDefault())
+            .setCredentials(GoogleCredentials.fromStream(serviceAccount))
             .setDatabaseUrl("https://get-wonged-default-rtdb.firebaseio.com/")
             .build();
 
