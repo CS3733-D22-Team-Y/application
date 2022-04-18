@@ -275,6 +275,7 @@ public class MessageController {
   }
 
   public int getFirstWordDist(String s1, String query) {
+    query = query.toLowerCase();
     if (s1.length() == 0 || query.length() == 0) {
       return 0;
     }
@@ -284,9 +285,7 @@ public class MessageController {
       if (s.length() < query.length()) {
         continue;
       }
-      int dist =
-          SearchUtil.compute_Levenshtein_distanceDP(
-              s.substring(0, query.length() - 1), query.toLowerCase());
+      int dist = SearchUtil.compute_Levenshtein_distanceDP(s.substring(0, query.length()), query);
       if (dist < d1) {
         d1 = dist;
       }
