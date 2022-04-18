@@ -83,4 +83,30 @@ public class SearchUtil {
   public static String getClosestMatch(String searchTerm, String[] list) {
     return search(searchTerm, list).get(0);
   }
+
+  /**
+   * wak algo that compares lev dist per word of s1 w length taken into account
+   *
+   * @param s1 A possible match
+   * @param query The search term
+   * @return A score for the match
+   */
+  public static int getMatchScore(String s1, String query) {
+    query = query.toLowerCase();
+    if (s1.length() == 0 || query.length() == 0) {
+      return 0;
+    }
+    String[] parsedName = s1.toLowerCase().split(" ");
+    int d1 = 100;
+    for (String s : parsedName) {
+      if (s.length() < query.length()) {
+        continue;
+      }
+      int dist = SearchUtil.compute_Levenshtein_distanceDP(s.substring(0, query.length()), query);
+      if (dist < d1) {
+        d1 = dist;
+      }
+    }
+    return d1;
+  }
 }

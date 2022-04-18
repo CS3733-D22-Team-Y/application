@@ -130,7 +130,6 @@ public class MessageController {
           messageAreaContainer.setVvalue(1.0);
         });
 
-    System.out.println("Refreshed Chats");
   }
 
   public void refreshMessages() {
@@ -146,7 +145,7 @@ public class MessageController {
       try {
         messageArea.getChildren().add(getMessageClone(p));
       } catch (Exception e) {
-        System.out.println("Error getting message clone");
+//        System.out.println("Error getting message clone");
       }
     }
     // scroll to bottom
@@ -155,7 +154,6 @@ public class MessageController {
           messageAreaContainer.setVvalue(1.0);
         });
 
-    System.out.println("Refreshed Messages");
   }
 
   public void send() {
@@ -254,43 +252,14 @@ public class MessageController {
   }
 
   public void showResults(String query) {
-    System.out.println("Searching for: '" + query + "'");
     // clear the list
     resultPane.getChildren().clear();
     // get the results
-    results.sort(
-        new Comparator<EmployeeResult>() {
-          @Override
-          public int compare(EmployeeResult o1, EmployeeResult o2) {
-
-            //            return SearchUtil.compute_Levenshtein_distanceDP(o1.getName(), query)
-            //                - SearchUtil.compute_Levenshtein_distanceDP(o2.getName(), query);
-            return getFirstWordDist(o1.getName(), query) - getFirstWordDist(o2.getName(), query);
-          }
-        });
+    results.sort(Comparator.comparingInt(o -> SearchUtil.getMatchScore(o.getName(), query)));
     // add the results to the result pane
     for (EmployeeResult result : results) {
       resultPane.getChildren().add(result.getResultPane());
     }
-  }
-
-  public int getFirstWordDist(String s1, String query) {
-    query = query.toLowerCase();
-    if (s1.length() == 0 || query.length() == 0) {
-      return 0;
-    }
-    String[] parsedName = s1.toLowerCase().split(" ");
-    int d1 = 100;
-    for (String s : parsedName) {
-      if (s.length() < query.length()) {
-        continue;
-      }
-      int dist = SearchUtil.compute_Levenshtein_distanceDP(s.substring(0, query.length()), query);
-      if (dist < d1) {
-        d1 = dist;
-      }
-    }
-    return d1;
   }
 
   public Pane getResultClone(String nameString, String roleString, String id) {
