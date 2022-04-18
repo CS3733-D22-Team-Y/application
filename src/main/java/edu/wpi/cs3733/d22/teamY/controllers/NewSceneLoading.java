@@ -43,29 +43,33 @@ public class NewSceneLoading {
   }
 
   // Function to reload scene
-  public static void reloadScene(String path) throws IOException {
-    FXMLLoader loader = new FXMLLoader(App.class.getResource(path));
-    Scene newScene = loader.load();
-    allScenes.remove(path);
-    allScenes.put(path, newScene);
+  public static void reloadScene(String pathToReload) throws IOException {
+    Parent root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource(pathToReload)));
+    Scene newScene = new Scene(root);
+    allScenes.remove(pathToReload);
+    allScenes.put(pathToReload, newScene);
   }
 
   public static void loadScene(String path) {
+    Scene currScene = allScenes.get(path);
     try {
-      Scene currScene = allScenes.get(path);
-      if (currScene.lookup("#sidebarPane") != null) {
-        AnchorPane mainPane = (AnchorPane) currScene.lookup("#sidebarPane");
-        mainPane.getChildren().add(sidebar);
-        sidebarController.initializeScale(currScene);
-      }
+      addSidebarHelper(currScene);
     } catch (IllegalArgumentException e) {
     } catch (IOException e) {
     }
-    App.getInstance().setScene(allScenes.get(path));
+    App.getInstance().setScene(currScene);
   }
 
   public static void loadSidebar(AnchorPane sidebarPane) throws IOException {
     sidebarPane.getChildren().clear();
     sidebarPane.getChildren().add(sidebar);
+  }
+
+  private static void addSidebarHelper(Scene currScene) throws IOException {
+    if (currScene.lookup("#sidebarPane") != null) {
+      AnchorPane mainPane = (AnchorPane) currScene.lookup("#sidebarPane");
+      mainPane.getChildren().add(sidebar);
+      sidebarController.initializeScale(currScene);
+    }
   }
 }

@@ -90,6 +90,7 @@ public class LaundryRequestController {
           getResultType());
       errorLabel.setText("");
       SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/SideBar.fxml");
+      NewSceneLoading.reloadScene("views/ActiveServiceRequest.fxml");
       NewSceneLoading.loadScene("views/RequestMenu.fxml");
       resetAllFields();
     } else {
