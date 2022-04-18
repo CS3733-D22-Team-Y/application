@@ -150,7 +150,7 @@ public class WelcomePageController {
           App.getInstance().setScene(new Scene(loadMainTask.getValue().getParent()));
           SideBarController controller = loadMainTask.getValue().getLoader().getController();
           try {
-            controller.initializeScale();
+            // controller.initializeScale();
             controller.loadViewServiceRequests();
           } catch (IOException ex) {
             ex.printStackTrace();
@@ -208,11 +208,13 @@ public class WelcomePageController {
     loader.load();
     // App.getInstance().setScene(new Scene(loader.load()));
     SideBarController controller = loader.getController();
+    /*
     try {
-      controller.initializeScale();
+      //controller.initializeScale();
     } catch (IOException ex) {
       ex.printStackTrace();
     }
+     */
   }
 
   private void showLoginFail(boolean deduct) {

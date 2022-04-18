@@ -88,9 +88,8 @@ public class FloralRequestController {
           input_AdditionalNotes.getText(),
           getBouquetType());
       errorLabel.setText("");
+      SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/SideBar.fxml");
       NewSceneLoading.loadScene("views/RequestMenu.fxml");
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/FloralRequest.fxml");
       resetAllFields();
     } else {
       errorLabel.setText("Missing Required Fields.");
@@ -104,7 +103,6 @@ public class FloralRequestController {
         || !input_AssignedNurse.getText().equals("")
         || !input_AdditionalNotes.getText().equals("")
         || !Objects.equals(roomsHiddenField.getText(), "")) {
-      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/FloralRequest.fxml");
       }

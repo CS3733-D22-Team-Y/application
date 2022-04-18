@@ -8,15 +8,6 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 
 public class RequestMenuController {
-  protected static final Integer MAIN_PAGE_INDEX = 0;
-  protected static final Integer LAB_RESULTS_INDEX = 1;
-  protected static final Integer FLORAL_RESULTS_INDEX = 2;
-  protected static final Integer LAUNDRY_RESULTS_INDEX = 3;
-  protected static final Integer TRANSLATOR_RESULTS_INDEX = 4;
-  protected static final Integer SECURITY_RESULTS_INDEX = 5;
-  protected static final Integer MEDICAL_RESULTS_INDEX = 6;
-  protected static final Integer MEAL_RESULTS_INDEX = 7;
-  protected static final Integer MISC_RESULTS_INDEX = 8;
 
   @FXML AnchorPane bgPane;
   @FXML private ToggleButton creatorToggle;
@@ -29,20 +20,6 @@ public class RequestMenuController {
 
   @FXML
   void initialize() throws IOException {
-    /*
-    SceneUtil.initializePanes(
-        bgPane,
-        "views/requestTypes/LabResult.fxml",
-        "views/requestTypes/FloralRequest.fxml",
-        "views/requestTypes/LaundryRequest.fxml",
-        "views/requestTypes/TranslatorRequest.fxml",
-        "views/requestTypes/SecurityRequest.fxml",
-        "views/requestTypes/MedicalEquipmentRequest.fxml",
-        "views/requestTypes/MealRequest.fxml",
-        "views/requestTypes/MiscRequest.fxml");
-     */
-    // SceneUtil.hideAllBackgrounds(bgPane.getChildren());
-    // SceneUtil.hideAllPanes(bgPane.getChildren());
     SceneUtil.requests = this;
     NewSceneLoading.loadSidebar(sidebarPane);
     RequestControllerUtil.initialize();

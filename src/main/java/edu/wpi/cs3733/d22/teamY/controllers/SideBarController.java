@@ -68,10 +68,10 @@ public class SideBarController {
   }
 
   @FXML
-  void initializeScale() throws IOException {
-    /*
-    currScene = bottomSidebarText.getScene();
+  void initializeScale(Scene currScene) throws IOException {
+    // currScene = bottomSidebarText.getScene();
     // Bottom sidebar text
+    /*
     bottomSidebarText.layoutYProperty().bind(currScene.heightProperty().subtract(200));
     bottomSidebarHiddenButtons.layoutYProperty().bind(currScene.heightProperty().subtract(200));
     bottomSidebarRectangles.layoutYProperty().bind(currScene.heightProperty().subtract(200));
@@ -256,6 +256,7 @@ public class SideBarController {
   void loadMap() throws IOException {
     // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     // mainScreenPane.getChildren().get(MAP_LIST_LOCATION).setVisible(true);
+    SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/RequestMenu.fxml");
     NewSceneLoading.loadScene("views/Map.fxml");
     setButtonSelected(mapHiddenRect);
   }

@@ -100,9 +100,8 @@ public class TranslatorRequestController {
           input_AdditionalNotes.getText(),
           getLanguageType());
       errorLabel.setText("");
+      SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/SideBar.fxml");
       NewSceneLoading.loadScene("views/RequestMenu.fxml");
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/TranslatorRequest.fxml");
       resetAllFields();
     } else {
       errorLabel.setText("Missing Required Fields.");

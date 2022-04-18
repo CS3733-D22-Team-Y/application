@@ -142,10 +142,8 @@ public class MealRequestController {
           dietaryRestrictionsSelectionBox.getValue(),
           input_AdditionalNotes.getText());
       errorLabel.setText("");
+      SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/SideBar.fxml");
       NewSceneLoading.loadScene("views/RequestMenu.fxml");
-
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/MealRequest.fxml");
       resetAllFields();
     } else {
       if (allFields || sideSelected || mealSelected) {

@@ -55,8 +55,9 @@ public class NewSceneLoading {
       Scene currScene = allScenes.get(path);
       AnchorPane mainPane = (AnchorPane) currScene.lookup("#sidebarPane");
       mainPane.getChildren().add(sidebar);
+      sidebarController.initializeScale(currScene);
     } catch (IllegalArgumentException e) {
-
+    } catch (IOException e) {
     }
     App.getInstance().setScene(allScenes.get(path));
   }
@@ -64,6 +65,5 @@ public class NewSceneLoading {
   public static void loadSidebar(AnchorPane sidebarPane) throws IOException {
     sidebarPane.getChildren().clear();
     sidebarPane.getChildren().add(sidebar);
-    sideBarController.initializeScale();
   }
 }
