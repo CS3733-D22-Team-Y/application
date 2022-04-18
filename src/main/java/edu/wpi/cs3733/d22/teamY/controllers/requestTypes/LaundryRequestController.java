@@ -61,13 +61,14 @@ public class LaundryRequestController {
    * @param additionalNotes Any additional notes.
    * @param laundryTypeSelected The type of result selected.
    */
-  private void submitRequest(String roomID, String additionalNotes, String laundryTypeSelected) {
+  private void submitRequest(
+      String roomID, String assignedNurse, String additionalNotes, String laundryTypeSelected) {
     String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.LAUNDRY_REQUEST));
     DBManager.save(
         new LaundryRequest(
             nextRequest,
             roomID,
-            "",
+            assignedNurse,
             RequestStatus.INCOMPLETE,
             additionalNotes,
             laundryTypeSelected));
@@ -84,6 +85,7 @@ public class LaundryRequestController {
         && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
+          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");

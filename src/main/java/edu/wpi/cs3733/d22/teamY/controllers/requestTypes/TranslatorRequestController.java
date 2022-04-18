@@ -67,7 +67,8 @@ public class TranslatorRequestController {
    * @param additionalNotes Any additional notes.
    * @param languageTypeSelected The type of language selected.
    */
-  private void submitRequest(String roomID, String additionalNotes, String languageTypeSelected) {
+  private void submitRequest(
+      String roomID, String assignedNurse, String additionalNotes, String languageTypeSelected) {
     // Get request Num
     String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.TRANSLATOR_REQUEST));
 
@@ -75,7 +76,7 @@ public class TranslatorRequestController {
         new TranslatorRequest(
             nextRequest,
             roomID,
-            "",
+            assignedNurse,
             RequestStatus.INCOMPLETE,
             additionalNotes,
             languageTypeSelected));
@@ -103,6 +104,7 @@ public class TranslatorRequestController {
         && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
+          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           getLanguageType());
       errorLabel.setText("");

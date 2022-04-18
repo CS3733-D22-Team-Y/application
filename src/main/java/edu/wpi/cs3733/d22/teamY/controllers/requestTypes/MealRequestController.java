@@ -96,6 +96,7 @@ public class MealRequestController {
    */
   private void submitRequest(
       String roomID,
+      String assignedNurse,
       String additionalNotes,
       String mainChoice,
       String sideChoice,
@@ -106,7 +107,7 @@ public class MealRequestController {
         new MealRequest(
             nextRequest,
             roomID,
-            "",
+            assignedNurse,
             RequestStatus.INCOMPLETE,
             additionalNotes,
             mainChoice,
@@ -136,6 +137,7 @@ public class MealRequestController {
     if (mealSelected && sideSelected && allFields) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
+          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           getMainChoice(),
           getSideChoice(),

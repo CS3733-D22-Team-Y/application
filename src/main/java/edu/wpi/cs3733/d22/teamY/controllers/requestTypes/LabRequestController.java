@@ -63,13 +63,14 @@ public class LabRequestController {
    * @param additionalNotes Any additional notes.
    * @param resultTypeSelected The type of result selected.
    */
-  private void submitRequest(String roomID, String additionalNotes, String resultTypeSelected) {
+  private void submitRequest(
+      String roomID, String assignedNurse, String additionalNotes, String resultTypeSelected) {
     String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.LAB_REQUEST));
     DBManager.save(
         new LabRequest(
             nextRequest,
             roomID,
-            "",
+            assignedNurse,
             RequestStatus.INCOMPLETE,
             additionalNotes,
             resultTypeSelected));
@@ -86,6 +87,7 @@ public class LabRequestController {
         && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
+          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");

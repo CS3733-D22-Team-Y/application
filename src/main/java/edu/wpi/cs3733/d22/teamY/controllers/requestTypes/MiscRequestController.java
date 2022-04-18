@@ -46,12 +46,18 @@ public class MiscRequestController {
    * @param additionalNotes Any additional notes.
    * @param requestName The type of bouquet selected.
    */
-  private void submitRequest(String roomID, String additionalNotes, String requestName) {
+  private void submitRequest(
+      String roomID, String assignedNurse, String additionalNotes, String requestName) {
     // Get request Num
     String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.MISC_REQUEST));
     DBManager.save(
         new MiscRequest(
-            nextRequest, roomID, "", RequestStatus.INCOMPLETE, additionalNotes, requestName));
+            nextRequest,
+            roomID,
+            assignedNurse,
+            RequestStatus.INCOMPLETE,
+            additionalNotes,
+            requestName));
     System.out.println("Saved MiscRequest");
   }
 
@@ -67,6 +73,7 @@ public class MiscRequestController {
     } else {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
+          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           input_RequestName.getText());
       errorLabel.setText("");

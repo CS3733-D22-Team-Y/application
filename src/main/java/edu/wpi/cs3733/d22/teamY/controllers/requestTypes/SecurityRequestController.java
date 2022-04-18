@@ -80,7 +80,11 @@ public class SecurityRequestController {
    * @param requestPriority The priority of the request.
    */
   private void submitRequest(
-      String roomID, String additionalNotes, String requestTypeSelected, String requestPriority) {
+      String roomID,
+      String assignedNurse,
+      String additionalNotes,
+      String requestTypeSelected,
+      String requestPriority) {
 
     String nextRequest =
         String.valueOf(DBUtils.getNextRequestNum(EntryType.SECURITY_SERVICE_REQUEST));
@@ -88,7 +92,7 @@ public class SecurityRequestController {
         new SecurityServiceRequest(
             nextRequest,
             roomID,
-            "",
+            assignedNurse,
             RequestStatus.INCOMPLETE,
             additionalNotes,
             requestTypeSelected,
@@ -117,6 +121,7 @@ public class SecurityRequestController {
     } else if (typeSelected && prioritySelected && allFields) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
+          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           getRequestType(),
           getRequestPriority());

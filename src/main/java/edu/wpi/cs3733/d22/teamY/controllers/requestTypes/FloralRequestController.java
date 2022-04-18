@@ -60,7 +60,8 @@ public class FloralRequestController {
    * @param additionalNotes Any additional notes.
    * @param bouquetTypeSelected The type of bouquet selected.
    */
-  private void submitRequest(String roomID, String additionalNotes, String bouquetTypeSelected)
+  private void submitRequest(
+      String roomID, String assignedNurse, String additionalNotes, String bouquetTypeSelected)
       throws IOException {
     // Get request Num
     String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.FLORAL_REQUEST));
@@ -68,7 +69,7 @@ public class FloralRequestController {
         new FloralRequest(
             nextRequest,
             roomID,
-            "",
+            assignedNurse,
             RequestStatus.INCOMPLETE,
             additionalNotes,
             bouquetTypeSelected));
@@ -85,6 +86,7 @@ public class FloralRequestController {
         && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
+          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           getBouquetType());
       errorLabel.setText("");

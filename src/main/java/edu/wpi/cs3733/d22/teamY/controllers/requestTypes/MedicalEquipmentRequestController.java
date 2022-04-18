@@ -94,14 +94,15 @@ public class MedicalEquipmentRequestController {
    * @param additionalNotes Any additional notes.
    * @param equipmentTypeSelected The type of bouquet selected.
    */
-  private void submitRequest(String roomID, String additionalNotes, String equipmentTypeSelected)
+  private void submitRequest(
+      String roomID, String assignedNurse, String additionalNotes, String equipmentTypeSelected)
       throws IOException {
     String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.MED_EQUIP_REQUEST));
     DBManager.save(
         new MedEquipReq(
             nextRequest,
             roomID,
-            "",
+            assignedNurse,
             RequestStatus.INCOMPLETE,
             additionalNotes,
             equipmentTypeSelected));
@@ -146,6 +147,7 @@ public class MedicalEquipmentRequestController {
     } else {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
+          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           getEquipmentType());
       errorLabel.setText("");
