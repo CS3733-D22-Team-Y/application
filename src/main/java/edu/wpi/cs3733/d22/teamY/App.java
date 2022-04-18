@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,7 +38,7 @@ public class App extends Application {
     primaryStage.setMinHeight(600);
     this.primaryStage = primaryStage;
 
-    // primaryStage.getIcons().add(new Image("file:icon.png")); FIGURE THIS OUT
+    primaryStage.getIcons().add(new Image(String.valueOf(App.class.getResource("icon.png"))));
 
     // Sets the primary scene (currently request menu) and displays it
     Parent root =
