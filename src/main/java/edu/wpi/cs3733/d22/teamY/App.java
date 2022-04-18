@@ -54,7 +54,7 @@ public class App extends Application {
     scene
         .getStylesheets()
         .add(Objects.requireNonNull(App.class.getResource("views/css/Fonts.css")).toExternalForm());
-    primaryStage.setTitle("Bringham and Women's Hospital Equipment Tracker");
+    primaryStage.setTitle("Brigham and Women's Hospital Equipment Tracker");
     primaryStage.setScene(scene);
     primaryStage.show();
     // camera.newPfp();
