@@ -117,7 +117,7 @@ public class MedicalEquipmentRequestController {
     // Checks if a bouquet choice has been made
 
     if (roomsHiddenField.getText().equals("") || input_AssignedNurse.getText().equals("")) {
-      errorLabel.setText("Please enter all required fields.");
+      errorLabel.setText("Missing Required Fields.");
 
     } else if (!RequestControllerUtil.isRadioButtonSelected(
         bedRadioButton, xrayRadioButton, infusionPumpRadioButton, reclinerRadioButton)) {

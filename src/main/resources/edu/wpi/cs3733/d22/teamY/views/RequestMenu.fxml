@@ -185,7 +185,7 @@
    </AnchorPane>
    <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
    <stylesheets>
-      <URL value="@css/Fonts.css" />
-      <URL value="@css/Fonts.css" />
+      <URL value="@css/Blank.css" />
+      <URL value="@css/Blank.css" />
    </stylesheets>
 </AnchorPane>

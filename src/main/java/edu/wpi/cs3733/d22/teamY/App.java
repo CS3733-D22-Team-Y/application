@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import com.google.firebase.database.*;
 import java.util.Objects;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -45,6 +46,9 @@ public class App extends Application {
         .add(
             "https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Varela+Round&display=swap");
     scene.getStylesheets().add("http://fonts.googleapis.com/css2?family=Varela+Round");
+    scene
+        .getStylesheets()
+        .add(Objects.requireNonNull(App.class.getResource("views/css/Blank.css")).toExternalForm());
     scene
         .getStylesheets()
         .add(Objects.requireNonNull(App.class.getResource("views/css/Fonts.css")).toExternalForm());

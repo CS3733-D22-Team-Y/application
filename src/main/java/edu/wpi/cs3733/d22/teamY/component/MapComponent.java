@@ -38,7 +38,6 @@ public class MapComponent {
     // Pane click handler
     rootPane.setOnMousePressed(
         e -> {
-          System.out.println("PRESSED");
           // If right button clicked, handle start of drag
           if (e.getButton() == MouseButton.PRIMARY) {
             dragX = e.getX();

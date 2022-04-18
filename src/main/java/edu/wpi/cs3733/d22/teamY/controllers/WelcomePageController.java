@@ -348,12 +348,11 @@ public class WelcomePageController {
   }
 
   @FXML
-  void loginAnimation() {
+  void loginAnimation() throws IOException {
     loginPane.setVisible(false);
     loading.setVisible(true);
     String name = DBUtils.getPrefNameFromID(username.getText());
-    Welcome.setText("Welcome, " + (name.equals("") ? "Guest" : name));
-
+    Welcome.setText("Welcome, " + (name.trim().equals("") ? "Guest" : name));
     try {
       mainPageThreaded();
     } catch (IOException e) {

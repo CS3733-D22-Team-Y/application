@@ -1,5 +1,7 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import com.google.firebase.database.*;
+
 public class Main {
 
   public static void main(String[] args) throws Exception {
@@ -8,8 +10,6 @@ public class Main {
     for (EntryType e : EntryType.values()) {
       CSVBackup.loadFromCSV(e);
     }
-
-    //    FEXIT00101
 
     App.launch(App.class, args);
 
