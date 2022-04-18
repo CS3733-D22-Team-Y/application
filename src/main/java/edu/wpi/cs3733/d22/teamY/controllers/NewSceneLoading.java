@@ -36,6 +36,12 @@ public class NewSceneLoading {
     }
   }
 
+  public static void removeScene(String path) {
+    if (allScenes.containsKey(path)) {
+      allScenes.remove(path);
+    }
+  }
+
   public static void addMultipleScenes(String... paths) throws IOException {
     for (String currPath : paths) {
       addScene(currPath);

@@ -13,25 +13,31 @@ public class Firebase {
   public static DatabaseReference chatRef;
 
   public static void init() throws IOException {
-    InputStream serviceAccount =
-        Firebase.class
-            .getClassLoader()
-            .getResourceAsStream("get-wonged-firebase-adminsdk-dc3b7-37496f4921.json");
+    if (FirebaseApp.getApps().size() == 0) {
+      InputStream serviceAccount =
+          Firebase.class
+              .getClassLoader()
+              .getResourceAsStream("get-wonged-firebase-adminsdk-dc3b7-37496f4921.json");
 
-    // print the service account
-    System.out.println(serviceAccount);
+      // print the service account
+      System.out.println(serviceAccount);
 
-    FirebaseOptions options =
-        FirebaseOptions.builder()
-            .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-            .setDatabaseUrl("https://get-wonged-default-rtdb.firebaseio.com/")
-            .build();
+      FirebaseOptions options =
+          FirebaseOptions.builder()
+              .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+              .setDatabaseUrl("https://get-wonged-default-rtdb.firebaseio.com/")
+              .build();
 
-    FirebaseApp.initializeApp(options);
-    // Get a reference to our posts
-    database = FirebaseDatabase.getInstance();
-    chatRef = database.getReference("/chats/");
-    //    createEventListeners();
+      FirebaseApp.initializeApp(options);
+      // Get a reference to our posts
+      database = FirebaseDatabase.getInstance();
+      chatRef = database.getReference("/chats/");
+      //    createEventListeners();
+    }
+    ChatManager.myChats.clear();
+  }
+
+  public static void initListeners() {
     ChatManager.init(PersonalSettings.currentEmployee.getIDNumber());
   }
 

@@ -355,8 +355,7 @@ public class WelcomePageController {
     loading.setVisible(true);
     String name = DBUtils.getPrefNameFromID(username.getText());
     Welcome.setText("Welcome, " + (name.trim().equals("") ? "Guest" : name));
-    Firebase.init();
-
+    Firebase.initListeners();
     try {
       mainPageThreaded();
     } catch (IOException e) {

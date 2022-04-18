@@ -11,6 +11,7 @@ import edu.wpi.cs3733.d22.teamY.Messaging.Post;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -101,13 +102,25 @@ public class MessageController {
       Pane clone = getBlankMessageClone(key, chats.get(key));
       chatSelector.getChildren().add(clone);
     }
+    // scroll to bottom
+    Platform.runLater(
+        () -> {
+          messageAreaContainer.setVvalue(1.0);
+        });
+
     System.out.println("Refreshed Chats");
   }
 
   public void refreshMessages() {
     messageArea.getChildren().clear();
     Chat c = ChatManager.myChats.get(chatID);
-    for (Post p : c.getPosts()) {
+    ArrayList<Post> posts = new ArrayList<>();
+    try {
+      posts = c.getPosts();
+    } catch (Exception e) {
+      return;
+    }
+    for (Post p : posts) {
       try {
         messageArea.getChildren().add(getMessageClone(p));
       } catch (Exception e) {
@@ -125,6 +138,10 @@ public class MessageController {
 
   public void send() {
     String text = messageText.getText();
+    if (text.length() == 0) {
+      System.out.println("No text");
+      return;
+    }
     ChatManager.sendMessage(
         text,
         PersonalSettings.currentEmployee.getIDNumber(),
@@ -143,10 +160,11 @@ public class MessageController {
   }
 
   public void selectedChat() {
-    setChatPickerOpen(false);
     // send initial message
     ChatManager.sendMessage(
         "Chat Created", PersonalSettings.currentEmployee.getIDNumber(), toBox.getText());
+    chatID = Chat.getChatID(PersonalSettings.currentEmployee.getIDNumber(), toBox.getText());
+    setChatPickerOpen(false);
     setChatOpen(true);
   }
 
