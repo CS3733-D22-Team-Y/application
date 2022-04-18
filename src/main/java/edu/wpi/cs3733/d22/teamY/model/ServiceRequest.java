@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "REQUESTS")
-public class ServiceRequest {
+public class ServiceRequest implements StringArrayConv {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   int id;
@@ -36,6 +36,15 @@ public class ServiceRequest {
    *     additionalNotes, new String[] {bouquetTypeSelected}));
    */
   public ServiceRequest(
+      RequestTypes type,
+      String assignedNurse,
+      String locationID,
+      String additionalNotes,
+      String[] customAttributes) {
+    init(type, assignedNurse, locationID, additionalNotes, customAttributes);
+  }
+
+  private void init(
       RequestTypes type,
       String assignedNurse,
       String locationID,
@@ -199,5 +208,44 @@ public class ServiceRequest {
 
   public void setAdditionalNotes(String additionalNotes) {
     this.additionalNotes = additionalNotes;
+  }
+
+  @Override
+  public String[] toStringArray() {
+    return new String[] {
+      String.valueOf(type), assignedNurse, locationID, additionalNotes, atr0, atr1, atr2, atr3
+    };
+  }
+
+  @Override
+  public void fromStringArray(String[] args) {
+    switch (args[0]) {
+      case "FLORAL":
+        init(RequestTypes.FLORAL, args[1], args[2], args[3], new String[] {args[4]});
+        break;
+      case "LAB":
+        init(RequestTypes.LAB, args[1], args[2], args[3], new String[] {args[4]});
+        break;
+      case "LAUNDRY":
+        init(RequestTypes.LAUNDRY, args[1], args[2], args[3], new String[] {args[4]});
+        break;
+      case "MEAL":
+        init(
+            RequestTypes.MEAL,
+            args[1],
+            args[2],
+            args[3],
+            new String[] {args[4], args[5], args[6], args[7]});
+        break;
+      case "MEDEQUIP":
+        init(RequestTypes.MEDEQUIP, args[1], args[2], args[3], new String[] {args[4]});
+        break;
+      case "SECURITY":
+        init(RequestTypes.SECURITY, args[1], args[2], args[3], new String[] {args[4], args[5]});
+        break;
+      case "TRANSLATOR":
+        init(RequestTypes.TRANSLATOR, args[1], args[2], args[3], new String[] {args[4]});
+        break;
+    }
   }
 }
