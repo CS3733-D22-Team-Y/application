@@ -7,6 +7,8 @@ import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
+import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
+import edu.wpi.cs3733.d22.teamY.utilTemp.Languages;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
@@ -39,6 +41,8 @@ public class TranslatorRequestController {
   private final String germanText = "german";
   private final String arabicText = "arabic";
   private final String otherText = "other";
+
+  public Languages langs = new Languages();
 
   public TranslatorRequestController() {}
 
@@ -74,10 +78,13 @@ public class TranslatorRequestController {
   // Called when the submit button is pressed.
   @FXML
   void submitButton() throws IOException {
-    // Checks if a bouquet choice has been made
+    // Checks if a language choice has been made
     if (RequestControllerUtil.isRadioButtonSelected(otherRadioButton)
         && Objects.equals(input_OtherLanguage.getText(), "")) {
       errorLabel.setText("Missing Required Fields.");
+    } else if (RequestControllerUtil.isRadioButtonSelected(otherRadioButton)
+        && !langs.isLanguage(input_OtherLanguage.getText())) {
+      errorLabel.setText("Language not valid.");
     } else if (RequestControllerUtil.isRadioButtonSelected(
             spanishRadioButton,
             chineseRadioButton,
@@ -85,7 +92,9 @@ public class TranslatorRequestController {
             arabicRadioButton,
             otherRadioButton)
         && !Objects.equals(roomsHiddenField.getText(), "")
-        && !Objects.equals(input_AssignedNurse.getText(), "")) {
+        && !Objects.equals(input_AssignedNurse.getText(), "")
+        && !(RequestControllerUtil.isRadioButtonSelected(otherRadioButton)
+            && Objects.equals(input_OtherLanguage.getText(), ""))) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AdditionalNotes.getText(),
@@ -125,7 +134,7 @@ public class TranslatorRequestController {
     if (chineseRadioButton.isSelected()) return chineseText;
     if (germanRadioButton.isSelected()) return germanText;
     if (arabicRadioButton.isSelected()) return arabicText;
-    if (otherRadioButton.isSelected()) return otherText;
+    if (otherRadioButton.isSelected()) return input_OtherLanguage.getText();
     // Should never happen
     return ("");
   }

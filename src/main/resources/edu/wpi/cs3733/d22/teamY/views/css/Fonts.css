@@ -1,3 +1,7 @@
+* {
+    -fx-font-smoothing-type: GRAY;
+}
+
 .title {
     -fx-font-family: 'Nunito';
     -fx-font-size: 60;
