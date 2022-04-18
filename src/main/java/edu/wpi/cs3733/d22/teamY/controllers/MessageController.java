@@ -92,7 +92,7 @@ public class MessageController {
     setChatOpen(chatOpen);
     setChatPickerOpen(newChatOpen);
     String id = PersonalSettings.currentEmployee.getIDNumber();
-    System.out.println("Init message controller here: " + id + " " + ChatManager.getChats().size());
+//    System.out.println("Init message controller here: " + id + " " + ChatManager.getChats().size());
     Firebase.chatRef.addChildEventListener(childEventListener);
     List<Employee> employees = DBManager.getAll(Employee.class);
     for (Employee e : employees) {
