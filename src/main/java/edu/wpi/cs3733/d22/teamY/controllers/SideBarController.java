@@ -300,11 +300,12 @@ public class SideBarController {
   }
 
   @FXML
-  void loadInbox() {
+  void loadInbox() throws IOException {
     // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     // mainScreenPane.getChildren().get(INBOX_LIST_LOCATION).setVisible(true);
     setButtonSelected(inboxHiddenRect);
-    NewSceneLoading.loadScene("views/ActiveServiceRequest.fxml");
+    NewSceneLoading.addScene("views/ChatSelector.fxml");
+    NewSceneLoading.loadScene("views/ChatSelector.fxml");
   }
 
   @FXML

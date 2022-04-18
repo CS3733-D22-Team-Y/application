@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXToggleButton;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.Auth;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.Messaging.Firebase;
 import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MainLoaderResult;
 import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.RequestControllerUtil;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
@@ -197,6 +198,7 @@ public class WelcomePageController {
         NewSceneLoading.loadScene("views/AccountUpdate.fxml");
       }
       display2FAOptions();
+
     } else {
       showLoginFail(true);
     }
@@ -353,6 +355,8 @@ public class WelcomePageController {
     loading.setVisible(true);
     String name = DBUtils.getPrefNameFromID(username.getText());
     Welcome.setText("Welcome, " + (name.trim().equals("") ? "Guest" : name));
+    Firebase.init();
+
     try {
       mainPageThreaded();
     } catch (IOException e) {

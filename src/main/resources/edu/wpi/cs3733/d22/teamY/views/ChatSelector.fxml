@@ -15,9 +15,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="780.0" minWidth="920.0" prefHeight="780.0" prefWidth="920.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MessageController">
+<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MessageController">
     <children>
-        <Label alignment="CENTER" layoutX="53.0" layoutY="14.0" prefHeight="88.0" prefWidth="292.0" text="Messages" textFill="#20758b">
+        <Label alignment="CENTER" layoutX="333.0" layoutY="14.0" prefHeight="88.0" prefWidth="292.0" text="Messages" textFill="#20758b">
             <font>
                 <Font name="Arial Rounded MT Bold" size="60.0" />
             </font>
@@ -26,7 +26,7 @@
             <String fx:value="primaryColor" />
          </styleClass>
         </Label>
-      <MFXScrollPane hbarPolicy="NEVER" layoutX="-2.0" layoutY="104.0" prefHeight="677.0" prefWidth="401.0">
+      <MFXScrollPane hbarPolicy="NEVER" layoutX="278.0" layoutY="104.0" prefHeight="677.0" prefWidth="401.0">
          <content>
             <VBox fx:id="chatSelector">
                <children>
@@ -77,7 +77,7 @@
             </VBox>
          </content>
       </MFXScrollPane>
-      <Pane fx:id="sendPane" layoutX="398.0" layoutY="726.0" visible="false">
+      <Pane fx:id="sendPane" layoutX="678.0" layoutY="726.0" visible="false">
          <children>
             <MFXButton fx:id="sendButton" layoutX="415.0" onAction="#send" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" text="Send" textFill="WHITE">
                <font>
@@ -91,12 +91,12 @@
             <MFXTextField fx:id="messageText" layoutX="6.0" onAction="#send" prefHeight="49.0" prefWidth="403.0" />
          </children>
       </Pane>
-      <Label fx:id="chatSelectLabel" layoutX="544.0" layoutY="349.0" text="Select a chat from the list" visible="false">
+      <Label fx:id="chatSelectLabel" layoutX="824.0" layoutY="349.0" text="Select a chat from the list" visible="false">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <MFXButton layoutX="268.0" layoutY="726.0" onAction="#startChat" prefHeight="50.0" prefWidth="124.0" style="-fx-background-color: #14667B;" text="Start Chat" textAlignment="CENTER" textFill="WHITE">
+      <MFXButton layoutX="548.0" layoutY="726.0" onAction="#startChat" prefHeight="50.0" prefWidth="124.0" style="-fx-background-color: #14667B;" text="Start Chat" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
@@ -105,7 +105,7 @@
             <String fx:value="primaryColor" />
          </styleClass>
       </MFXButton>
-      <MFXScrollPane fx:id="messageAreaContainer" hbarPolicy="NEVER" layoutX="399.0" layoutY="104.0" prefHeight="618.0" prefWidth="515.0" visible="false">
+      <MFXScrollPane fx:id="messageAreaContainer" hbarPolicy="NEVER" layoutX="679.0" layoutY="104.0" prefHeight="618.0" prefWidth="515.0" visible="false">
          <content>
             <VBox fx:id="messageArea" alignment="BOTTOM_CENTER" prefHeight="616.0" prefWidth="521.0">
                <children>
@@ -152,7 +152,7 @@
                </children>
             </VBox>
          </content></MFXScrollPane>
-      <VBox fx:id="newChatArea" alignment="TOP_CENTER" layoutX="418.0" layoutY="58.0" prefHeight="723.0" prefWidth="489.0">
+      <VBox fx:id="newChatArea" alignment="TOP_CENTER" layoutX="698.0" layoutY="58.0" prefHeight="723.0" prefWidth="489.0">
          <children>
             <Label prefHeight="48.0" prefWidth="158.0" text="Create a new chat">
                <font>
@@ -172,6 +172,7 @@
             </MFXTextField>
          </children>
       </VBox>
-      <Line endX="-100.0" endY="-536.0" layoutX="498.0" layoutY="536.0" startX="-100.0" startY="244.0" />
+      <Line endX="-100.0" endY="-536.0" layoutX="778.0" layoutY="536.0" startX="-100.0" startY="244.0" />
+      <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
     </children>
 </AnchorPane>

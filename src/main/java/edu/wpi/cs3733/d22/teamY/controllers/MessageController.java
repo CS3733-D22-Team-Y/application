@@ -16,6 +16,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -59,6 +60,8 @@ public class MessageController {
   @FXML private VBox newChatArea;
   @FXML private MFXTextField toBox;
   @FXML private MFXScrollPane resultsArea;
+
+  @FXML private AnchorPane sidebarPane;
 
   private String chatID = "";
   private boolean chatOpen = false;

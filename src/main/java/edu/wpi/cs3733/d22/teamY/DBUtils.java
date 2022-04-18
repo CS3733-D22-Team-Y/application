@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.d22.teamY;
 
-import edu.wpi.cs3733.d22.teamY.Messaging.Firebase;
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController;
 import edu.wpi.cs3733.d22.teamY.model.*;
@@ -225,7 +224,6 @@ public class DBUtils {
     s.close();
     if (employees.size() == 1) {
       PersonalSettings.currentEmployee = employees.get(0);
-      Firebase.init();
       System.out.println("Valid Login");
       return true;
     }
