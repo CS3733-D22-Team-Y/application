@@ -8,6 +8,7 @@ import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.TranslatorRequest;
+import edu.wpi.cs3733.d22.teamY.utilTemp.Languages;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
@@ -43,6 +44,8 @@ public class TranslatorRequestController {
   private final String germanText = "german";
   private final String arabicText = "arabic";
   private final String otherText = "other";
+
+  public Languages langs = new Languages();
 
   public TranslatorRequestController() {}
 
@@ -87,6 +90,9 @@ public class TranslatorRequestController {
     if (RequestControllerUtil.isRadioButtonSelected(otherRadioButton)
         && Objects.equals(input_OtherLanguage.getText(), "")) {
       errorLabel.setText("Missing Required Fields.");
+    } else if (RequestControllerUtil.isRadioButtonSelected(otherRadioButton)
+        && !langs.isLanguage(input_OtherLanguage.getText())) {
+      errorLabel.setText("Language not valid.");
     } else if (RequestControllerUtil.isRadioButtonSelected(
             spanishRadioButton,
             chineseRadioButton,
