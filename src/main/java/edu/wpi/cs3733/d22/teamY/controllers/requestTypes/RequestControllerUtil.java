@@ -14,11 +14,28 @@ public class RequestControllerUtil {
   public static JFXComboBox<String> allRoomsComboBox = new JFXComboBox<>();
 
   public static void initialize() {
+    resetComboBoxes("");
+  }
+
+  public static void resetComboBoxes(String input) {
+    System.out.println(input);
     LinkedList<String> items = new LinkedList<>();
     for (int i = 0; i < DBManager.getAll(Location.class).size(); i++) {
       items.add(((Location) DBManager.getAll(Location.class).get(i)).getShortName());
     }
-    allRoomsComboBox.setItems(FXCollections.observableList(items));
+
+    if (input == null) {
+      allRoomsComboBox.setItems(FXCollections.observableList(items));
+    } else {
+      LinkedList<String> newItems = new LinkedList<>();
+      for (String s : items) {
+        if (s.toLowerCase().contains(input.toLowerCase())) {
+          newItems.add(s);
+        }
+      }
+
+      allRoomsComboBox.setItems(FXCollections.observableList(newItems));
+    }
   }
 
   // Checks if any of the given radio buttons are selected.

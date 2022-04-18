@@ -17,6 +17,8 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="800.0" minWidth="1200.0" prefHeight="780.0" prefWidth="920.0" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.LabRequestController">
     <children>
+      <JFXComboBox fx:id="roomsComboBox" editable="true" layoutX="430.0" layoutY="210.0" onAction="#setRoomText" onDragOver="#reloadRoomList" onKeyTyped="#reloadRoomList" onMouseEntered="#reloadRoomList" onMouseExited="#reloadRoomList" prefHeight="42.0" prefWidth="250.0" styleClass="inputField" unFocusColor="#ffffff00" />
+      <TextField fx:id="roomsHiddenField" layoutX="430.0" layoutY="210.0" onKeyTyped="#reloadRoomList" prefHeight="43.0" prefWidth="196.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
         <Label layoutX="270.0" layoutY="10.0" styleClass="title" text="Lab Request">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
@@ -158,8 +160,6 @@
             <Font name="Calibri" size="15.0" />
          </font>
       </JFXTextArea>
-      <TextField fx:id="roomsHiddenField" layoutX="430.0" layoutY="210.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
-      <JFXComboBox fx:id="roomsComboBox" layoutX="430.0" layoutY="210.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="inputField" unFocusColor="#ffffff00" />
       <MFXButton computeRadiusMultiplier="false" layoutX="1090.0" layoutY="10.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />

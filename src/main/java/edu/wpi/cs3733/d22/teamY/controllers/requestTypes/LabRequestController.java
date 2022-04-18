@@ -54,6 +54,15 @@ public class LabRequestController {
     roomsHiddenField.setText(roomsComboBox.getValue());
   }
 
+  @FXML
+  private void reloadRoomList() {
+    String input = roomsHiddenField.getText();
+    System.out.println(input);
+    RequestControllerUtil.resetComboBoxes(input);
+    roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    System.out.println((RequestControllerUtil.allRoomsComboBox.getItems()).size());
+  }
+
   // BACKEND PEOPLE,THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
 
   /**
