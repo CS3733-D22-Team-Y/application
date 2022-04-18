@@ -36,6 +36,9 @@ public class App extends Application {
     primaryStage.setMinWidth(900);
     primaryStage.setMinHeight(600);
     this.primaryStage = primaryStage;
+
+    // primaryStage.getIcons().add(new Image("file:icon.png")); FIGURE THIS OUT
+
     // Sets the primary scene (currently request menu) and displays it
     Parent root =
         FXMLLoader.load(Objects.requireNonNull(App.class.getResource("views/Welcome.fxml")));
