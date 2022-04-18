@@ -1,35 +1,35 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
-import static org.apache.commons.lang3.RandomStringUtils.*;
-
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXToggleButton;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.Auth;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
-import java.io.*;
+import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MainLoaderResult;
+import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.RequestControllerUtil;
+import io.github.palexdev.materialfx.controls.MFXPasswordField;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
-import java.net.*;
 import java.util.Arrays;
 import java.util.Random;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 public class WelcomePageController {
 
-  @FXML private TextField username;
-  @FXML private PasswordField password;
+  @FXML private MFXTextField username;
+  @FXML private MFXPasswordField password;
   @FXML private Pane loginPane;
   @FXML private Pane failedLoginPane;
   @FXML private Label attemptsRemaining;
@@ -50,27 +50,85 @@ public class WelcomePageController {
   @FXML Pane faSmsPane;
   @FXML JFXButton faSmsButton;
   @FXML Label codeEntryLabel;
+  @FXML JFXToggleButton dbSwitcherToggle;
+  @FXML JFXComboBox<String> dbMenu;
+
   private boolean lockOut = false;
+
+  private boolean loadingRightNow = false;
 
   int maxAttempts = 5;
   int attCount = 0;
 
   String universalCode;
 
+  String[] dbOptions = new String[] {"Embedded", "Client-Server", "GoogleCloud"};
+
   @FXML
   void initialize() throws IOException {
     loginPane.setVisible(true);
     loading.setVisible(false);
     yubikeyPane.setVisible(false);
+    dbMenu.getItems().addAll(dbOptions);
+
+    loadingRightNow = false;
   }
 
   @FXML
-  void mainPage() throws IOException {
-    FXMLLoader root = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
-    App.getInstance().setScene(new Scene(root.load()));
-    SideBarController controller = root.getController();
-    controller.initializeScale();
-  };
+  public void mainPage() throws IOException {
+    if (loadingRightNow) return;
+    loadingRightNow = true;
+
+    SceneUtil.welcomePage = this;
+    RequestControllerUtil.initialize();
+
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
+    App.getInstance().setScene(new Scene(loader.load()));
+    SideBarController controller = loader.getController();
+    try {
+      controller.initializeScale();
+      controller.loadViewServiceRequests();
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
+
+    loadingRightNow = false;
+  }
+
+  public void mainPageThreaded() throws IOException {
+    if (loadingRightNow) return;
+    loadingRightNow = true;
+
+    SceneUtil.welcomePage = this;
+    RequestControllerUtil.initialize();
+
+    loadMainTask.setOnSucceeded(
+        e -> {
+          App.getInstance().setScene(new Scene(loadMainTask.getValue().getParent()));
+          SideBarController controller = loadMainTask.getValue().getLoader().getController();
+          try {
+            controller.initializeScale();
+            controller.loadViewServiceRequests();
+          } catch (IOException ex) {
+            ex.printStackTrace();
+          }
+
+          loadingRightNow = false;
+        });
+
+    Thread t = new Thread(loadMainTask);
+    t.setDaemon(true);
+    t.start();
+  }
+
+  Task<MainLoaderResult> loadMainTask =
+      new Task<>() {
+        @Override
+        protected MainLoaderResult call() throws IOException {
+          FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
+          return new MainLoaderResult(loader, loader.load());
+        }
+      };
 
   @FXML
   void killApplication() throws IOException {
@@ -83,32 +141,50 @@ public class WelcomePageController {
     //         && !lockOut
     //         && Auth.doAuth(username.getText())) {
     //       loginAnimation();
+    if (username.getText().length() <= 0 || password.getText().length() <= 0) {
+      showLoginFail(false);
+      return;
+    }
+
     if (DBUtils.isValidLogin(username.getText(), password.getText()) && !lockOut) {
+      if (DBUtils.checkDefaultPassword(password.getText().hashCode())) {
+        UpdateNewAccountController.userNameToChange(username.getText());
+        SceneLoading.loadScene("views/AccountUpdate.fxml");
+      }
       display2FAOptions();
     } else {
-      failedLoginPane.setOpacity(0.0);
-      failedLoginPane.setVisible(true);
-      FadeTransition ft = new FadeTransition(Duration.millis(1000), failedLoginPane);
-      ft.setFromValue(0.0);
-      ft.setToValue(1.0);
-      FadeTransition ft2 = new FadeTransition(Duration.millis(1000), failedLoginPane);
-      ft2.setFromValue(1.0);
+      showLoginFail(true);
+    }
+  }
+
+  private void showLoginFail(boolean deduct) {
+    failedLoginPane.setOpacity(0.0);
+    failedLoginPane.setVisible(true);
+    FadeTransition ft = new FadeTransition(Duration.millis(1000), failedLoginPane);
+    ft.setFromValue(0.0);
+    ft.setToValue(1.0);
+    FadeTransition ft2 = new FadeTransition(Duration.millis(1000), failedLoginPane);
+    ft2.setFromValue(1.0);
+    if (deduct) {
       if (attCount >= maxAttempts) {
         lockOut = true;
-        attemptsRemaining.setText("No Remaining Attempts");
+        attemptsRemaining.setText("Too many login attempts.\nTry again later.");
         ft2.setToValue(1.0);
       } else {
-        attemptsRemaining.setText((maxAttempts - attCount) + " Attempts Remain");
+        attemptsRemaining.setText(
+            "Incorrect username or password. Attempts left: " + (maxAttempts - attCount));
         ft2.setToValue(0.0);
       }
-      Timeline tl =
-          new Timeline(
-              new KeyFrame(Duration.seconds(0), (e) -> ft.play()),
-              new KeyFrame(Duration.seconds(4), (e) -> {}),
-              new KeyFrame(Duration.seconds(5), (e) -> ft2.play()));
-      tl.play();
       attCount++;
+    } else {
+      attemptsRemaining.setText("Please enter a valid login.");
     }
+
+    Timeline tl =
+        new Timeline(
+            new KeyFrame(Duration.seconds(0), (e) -> ft.play()),
+            new KeyFrame(Duration.seconds(4), (e) -> {}));
+    tl.play();
   }
 
   public void yubikeyPrompt() {
@@ -142,8 +218,13 @@ public class WelcomePageController {
     }
   }
 
-  void display2FAOptions() {
+  void display2FAOptions() throws IOException {
     String[] auth = Auth.getKeys(username.getText());
+    if (username.getText().equals("admin")) {
+      faPane.setVisible(false);
+      loginPane.setVisible(false);
+      loginAnimation();
+    }
     if (Arrays.asList(auth).contains("yubikey")) {
       faYubikeyButton.setVisible(true);
       faYubikeyPane.setOpacity(1);
@@ -219,29 +300,22 @@ public class WelcomePageController {
   }
 
   @FXML
-  void loginAnimation() throws IOException {
-    Image loadingGif =
-        new Image(
-            App.class.getResource("views/images/loading.gif").toString(), 959, 601, false, false);
-    ImageView ugh = new ImageView(loadingGif);
-    loading.getChildren().add(ugh);
-    Timeline loginTimeline =
-        new Timeline(
-            new KeyFrame(
-                Duration.seconds(0),
-                (e) -> Welcome.setText("Welcome, " + DBUtils.getNameFromID(username.getText()))),
-            new KeyFrame(Duration.seconds(0.01), (e) -> loginPane.setVisible(false)),
-            new KeyFrame(Duration.seconds(0.02), (e) -> loading.setVisible(true)),
-            new KeyFrame(
-                Duration.seconds(1),
-                (e) -> {
-                  try {
-                    mainPage();
-                  } catch (IOException ex) {
-                    ex.printStackTrace();
-                  }
-                }));
-    loginTimeline.play();
+  void loginAnimation() {
+    loginPane.setVisible(false);
+    loading.setVisible(true);
+    String name = DBUtils.getPrefNameFromID(username.getText());
+    Welcome.setText("Welcome, " + (name.trim().equals("") ? "Guest" : name));
+
+    try {
+      mainPageThreaded();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @FXML
+  void databaseSwitch() {
+    DBUtils.switchDBType(dbMenu.getValue());
   }
 
   public void testingButton() throws IOException {
@@ -250,5 +324,13 @@ public class WelcomePageController {
 
   public static String getCode() {
     return String.format("%06d", new Random().nextInt(999999));
+  }
+
+  public void createNewUser() throws Exception {
+    try {
+      SceneLoading.loadScene("views/CreateAccount.fxml");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }

@@ -1,25 +1,66 @@
 .title {
-    -fx-font-family: 'Fredoka One';
+    -fx-font-family: 'Nunito';
     -fx-font-size: 60;
 }
 
 .subtitle{
-    -fx-font-family: 'Fredoka One';
+    -fx-font-family: 'Nunito';
     -fx-font-size: 45;
 }
 
-.requestOption{
+.popupText{
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 24;
+}
 
+.requestOption{
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 24;
 }
 
 .requestButton{
-
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 20;
 }
 
 .inputLabel{
-
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 24;
 }
 
 .requestInput{
-
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 20;
 }
+
+.inputField{
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 20;
+}
+
+.plainText{
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 20;
+}
+
+.submenuButton{
+    -fx-font-family: 'Nunito';
+    -fx-font-size: 25;
+}
+
+.loginButton{
+    -fx-font-family: 'Nunito';
+    -fx-font-size: 20;
+}
+
+.sidebarTopOptions{
+    -fx-font-family: 'Nunito';
+    -fx-font-size: 30;
+}
+
+.sidebarBottomOptions{
+    -fx-font-family: 'Nunito';
+    -fx-font-size: 20;
+}
+
+.backgroundTint{}

@@ -4,20 +4,25 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.MealRequest;
+import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
+import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class MealRequestController {
   // Text input
-  @FXML private TextField input_RoomID;
-  @FXML private TextField input_PatientID;
   @FXML private TextArea input_AdditionalNotes;
   @FXML private TextField input_AssignedNurse;
-  @FXML private TextField input_RequestStatus;
+  @FXML private JFXComboBox<String> roomsComboBox;
+  @FXML private TextField roomsHiddenField;
+  @FXML private JFXComboBox<String> dietaryRestrictionsSelectionBox;
+  @FXML private TextField restrictionsHiddenField;
 
   // Radio button main course
   @FXML private MFXRadioButton pizzaRadioButton;
@@ -27,8 +32,6 @@ public class MealRequestController {
   @FXML private MFXRadioButton riceRadioButton;
   @FXML private MFXRadioButton peasRadioButton;
   @FXML private MFXRadioButton appleRadioButton;
-  // Dropdown menu
-  @FXML private JFXComboBox<String> dietaryRestrictionsSelectionBox;
   // Error Label
   @FXML private TextArea errorLabel;
 
@@ -57,7 +60,20 @@ public class MealRequestController {
     dietaryRestrictionsSelectionBox
         .getItems()
         .addAll(textNone, "Gluten Free", "Vegetarian", "Vegan", textOther);
-    dietaryRestrictionsSelectionBox.setValue(textNone);
+    dietaryRestrictionsSelectionBox.setValue("");
+
+    roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    restrictionsHiddenField.setText("None");
+  }
+
+  @FXML
+  private void setRoomText() {
+    roomsHiddenField.setText(roomsComboBox.getValue());
+  }
+
+  @FXML
+  private void setRestrictionText() {
+    restrictionsHiddenField.setText(dietaryRestrictionsSelectionBox.getValue());
   }
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
@@ -77,8 +93,6 @@ public class MealRequestController {
    */
   private void submitRequest(
       String roomID,
-      String assignedNurse,
-      String requestStatus,
       String additionalNotes,
       String mainChoice,
       String sideChoice,
@@ -89,8 +103,8 @@ public class MealRequestController {
         new MealRequest(
             nextRequest,
             roomID,
-            assignedNurse,
-            requestStatus,
+            "",
+            RequestStatus.INCOMPLETE,
             additionalNotes,
             mainChoice,
             sideChoice,
@@ -101,33 +115,64 @@ public class MealRequestController {
 
   // Called when the submit button is pressed.
   @FXML
-  void submitButton() {
+  void submitButton() throws IOException {
+    errorLabel.setText("Missing Required Fields.");
     Boolean mealSelected =
         RequestControllerUtil.isRadioButtonSelected(
             pizzaRadioButton, burgerRadioButton, saladRadioButton);
+
+    Boolean allFields =
+        !Objects.equals(roomsHiddenField.getText(), "")
+            && !Objects.equals(input_AssignedNurse.getText(), "");
+
     Boolean sideSelected =
         RequestControllerUtil.isRadioButtonSelected(
             riceRadioButton, peasRadioButton, appleRadioButton);
+
     // Checks if a bouquet choice has been made
-    if (mealSelected && sideSelected) {
+    if (mealSelected && sideSelected && allFields) {
       submitRequest(
-          input_RoomID.getText(),
-          input_AssignedNurse.getText(),
-          "temp",
+          DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AdditionalNotes.getText(),
           getMainChoice(),
           getSideChoice(),
           dietaryRestrictionsSelectionBox.getValue(),
           input_AdditionalNotes.getText());
       errorLabel.setText("");
+      SceneUtil.welcomePage.mainPage();
+
+      SceneLoading.loadPopup(
+          "views/popups/ReqSubmitted.fxml", "views/requestTypes/MealRequest.fxml");
+      resetAllFields();
     } else {
-      if (mealSelected) {
-        errorLabel.setText("Please select a side option.");
-      } else if (sideSelected) {
-        errorLabel.setText("Please select a meal option.");
-      } else {
-        errorLabel.setText("Please select meal and side options.");
+      if (allFields || sideSelected || mealSelected) {
+        errorLabel.setText("Missing Required Fields.");
       }
+    }
+  }
+
+  @FXML
+  void backButton() throws IOException {
+    Boolean mealSelected =
+        RequestControllerUtil.isRadioButtonSelected(
+            pizzaRadioButton, burgerRadioButton, saladRadioButton);
+
+    Boolean allFields =
+        !Objects.equals(roomsHiddenField.getText(), "")
+            || !Objects.equals(input_AssignedNurse.getText(), "");
+
+    Boolean sideSelected =
+        RequestControllerUtil.isRadioButtonSelected(
+            riceRadioButton, peasRadioButton, appleRadioButton);
+
+    // Checks if a bouquet choice has been made
+    if (mealSelected || sideSelected || allFields) {
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
+      if (!SceneLoading.stayOnPage) {
+        SceneUtil.welcomePage.mainPage();
+      }
+    } else {
+      SceneUtil.welcomePage.mainPage();
     }
   }
 
@@ -152,11 +197,7 @@ public class MealRequestController {
   void resetAllFields() {
     // Input text fields
     RequestControllerUtil.resetTextFields(
-        input_RoomID,
-        input_AssignedNurse,
-        input_AdditionalNotes,
-        input_AdditionalNotes,
-        input_PatientID);
+        input_AssignedNurse, input_AdditionalNotes, roomsHiddenField);
     // Mains
     RequestControllerUtil.resetRadioButtons(
         pizzaRadioButton,
@@ -168,5 +209,6 @@ public class MealRequestController {
     // Selection box
     dietaryRestrictionsSelectionBox.setValue(textNone);
     errorLabel.setText("");
+    roomsComboBox.setValue("");
   }
 }

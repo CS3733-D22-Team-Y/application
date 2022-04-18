@@ -6,7 +6,6 @@ import org.hibernate.cfg.Configuration;
 
 /** This class is used to manage the Hibernate session. */
 public class SessionManager {
-  private String googleCloudCFG = "hibernate_googlecloud.cfg.xml";
 
   private static SessionFactory sf =
       new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -23,20 +22,27 @@ public class SessionManager {
   }
 
   /**
-   * Changes Type of Derby Server
+   * Changes DB Connection
    *
-   * @param type false For Embedded, true for Client-Server
+   * @param type string of the DB type to switch to. Handled by front end.
    */
-  public static void switchType(boolean type) {
-    if (type == false) {
-      System.out.println("Switching to Embedded...");
-      sf.close();
-      sf = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-    }
-    if (type == true) {
-      System.out.println("Switching to Client-Server...");
-      sf.close();
-      sf = new Configuration().configure("hibernate_server.cfg.xml").buildSessionFactory();
+  public static void switchType(String type) {
+    switch (type) {
+      case "Embedded":
+        System.out.println("Switching to Embedded...");
+        sf.close();
+        sf = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+        break;
+      case "Client-Server":
+        System.out.println("Switching to Client-Server...");
+        sf.close();
+        sf = new Configuration().configure("hibernate_server.cfg.xml").buildSessionFactory();
+        break;
+      case "Google Cloud":
+        System.out.println("Switching to Cloud DB...");
+        sf.close();
+        sf = new Configuration().configure("hibernate_googlecloud.cfg.xml").buildSessionFactory();
+        break;
     }
   }
 }

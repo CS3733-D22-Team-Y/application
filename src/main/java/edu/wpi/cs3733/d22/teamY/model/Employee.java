@@ -27,6 +27,7 @@ public class Employee implements StringArrayConv {
   private String phone;
   private String dob;
   private String pronouns;
+  private String theme = "LIGHT";
 
   public static final String ID_NUMBER = "IDNUMBER";
   public static final String ACCESS = "ACCESS";
@@ -250,6 +251,14 @@ public class Employee implements StringArrayConv {
     this.pronouns = pronouns;
   }
 
+  public void setTheme(String t) {
+    theme = t;
+  }
+
+  public String getTheme() {
+    return theme;
+  }
+
   public static boolean isValidNewPassword(String password) {
     // password must be at least 5 characters long, and contain at least one number and one letter
     // and one special character
@@ -264,5 +273,13 @@ public class Employee implements StringArrayConv {
       throw new IllegalArgumentException("Invalid number of arguments for auth type");
     }
     this.authString += (type.getName() + ":" + String.join(":", args) + ";");
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
   }
 }

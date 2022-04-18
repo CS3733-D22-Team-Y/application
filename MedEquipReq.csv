@@ -1,1 +1,4 @@
-﻿
+id,room,assignedNurse,status,additional,equip
+1,FDEPT00301,,0,,BED
+2,FDEPT00301,,0,ASAP,PUMP
+3,HBATH00203,,0,Very Important,XRAY

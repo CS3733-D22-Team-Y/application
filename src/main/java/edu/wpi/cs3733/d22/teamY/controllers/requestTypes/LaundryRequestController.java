@@ -1,12 +1,16 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
+import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.LaundryRequest;
+import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
+import java.util.Objects;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -19,9 +23,9 @@ public class LaundryRequestController {
   @FXML private MFXRadioButton scrubsRadioButton;
   @FXML private MFXRadioButton linensRadioButton;
   // Text inputs
-  @FXML private TextField input_RoomID;
-  @FXML private TextField input_PatientID;
   @FXML private TextField input_AssignedNurse;
+  @FXML private JFXComboBox<String> roomsComboBox;
+  @FXML private TextField roomsHiddenField;
   // Additional  Notes
   @FXML private TextArea input_AdditionalNotes;
   // Error Label
@@ -35,30 +39,32 @@ public class LaundryRequestController {
 
   public LaundryRequestController() {}
 
+  public void initialize() {
+    roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+  }
+
+  @FXML
+  private void setRoomText() {
+    roomsHiddenField.setText(roomsComboBox.getValue());
+  }
+
   // BACKEND PEOPLE,THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
 
   /**
    * Submits a service request.
    *
    * @param roomID The room ID.
-   * @param assignedNurse The assigned nurse.
-   * @param requestStatus The request status.
    * @param additionalNotes Any additional notes.
    * @param laundryTypeSelected The type of result selected.
    */
-  private void submitRequest(
-      String roomID,
-      String assignedNurse,
-      String requestStatus,
-      String additionalNotes,
-      String laundryTypeSelected) {
+  private void submitRequest(String roomID, String additionalNotes, String laundryTypeSelected) {
     String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.LAUNDRY_REQUEST));
     DBManager.save(
         new LaundryRequest(
             nextRequest,
             roomID,
-            assignedNurse,
-            requestStatus,
+            "",
+            RequestStatus.INCOMPLETE,
             additionalNotes,
             laundryTypeSelected));
     System.out.println("Saved Laundry Request");
@@ -66,19 +72,38 @@ public class LaundryRequestController {
 
   // Called when the submit button is pressed.
   @FXML
-  void submitButton() {
+  void submitButton() throws IOException {
     // Checks if a lab result choice has been made.
     if (RequestControllerUtil.isRadioButtonSelected(
-        hazardousRadioButton, linensRadioButton, scrubsRadioButton)) {
+            hazardousRadioButton, linensRadioButton, scrubsRadioButton)
+        && !Objects.equals(roomsHiddenField.getText(), "")
+        && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
-          input_RoomID.getText(),
-          input_AssignedNurse.getText(),
-          input_PatientID.getText(),
+          DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");
+      SceneUtil.welcomePage.mainPage();
+      SceneLoading.loadPopup(
+          "views/popups/ReqSubmitted.fxml", "views/requestTypes/LaundryRequest.fxml");
+      resetAllFields();
     } else {
-      errorLabel.setText("Please select the type of laundry.");
+      errorLabel.setText("Missing Required Fields.");
+    }
+  }
+
+  @FXML
+  void backButton() throws IOException {
+    if (RequestControllerUtil.isRadioButtonSelected(
+            hazardousRadioButton, linensRadioButton, scrubsRadioButton)
+        || !Objects.equals(roomsHiddenField.getText(), "")
+        || !Objects.equals(input_AssignedNurse.getText(), "")) {
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
+      if (!SceneLoading.stayOnPage) {
+        SceneUtil.welcomePage.mainPage();
+      }
+    } else {
+      SceneUtil.welcomePage.mainPage();
     }
   }
 
@@ -102,7 +127,8 @@ public class LaundryRequestController {
     RequestControllerUtil.resetRadioButtons(
         scrubsRadioButton, linensRadioButton, hazardousRadioButton);
     RequestControllerUtil.resetTextFields(
-        input_RoomID, input_PatientID, input_AssignedNurse, input_AdditionalNotes);
+        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
     errorLabel.setText("");
+    roomsComboBox.setValue("");
   }
 }

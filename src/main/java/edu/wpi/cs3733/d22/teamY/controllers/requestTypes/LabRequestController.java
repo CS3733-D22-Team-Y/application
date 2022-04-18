@@ -1,24 +1,28 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.LabRequest;
+import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
+import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 public class LabRequestController {
 
   // Input fields
-  @FXML private MFXTextField input_RoomID;
-  @FXML private MFXTextField input_PatientID;
   @FXML private MFXTextField input_AssignedNurse;
-  @FXML private MFXTextField input_RequestStatus;
+  @FXML private JFXComboBox<String> roomsComboBox;
+  @FXML private TextField roomsHiddenField;
   // Additional Notes
   @FXML private JFXTextArea input_AdditionalNotes;
   // Radio buttons
@@ -37,30 +41,33 @@ public class LabRequestController {
   private final String catScanText = "catScan";
   private final String mriText = "mri";
 
+  @FXML
+  void initialize() {
+    roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+  }
+
+  @FXML
+  private void setRoomText() {
+    roomsHiddenField.setText(roomsComboBox.getValue());
+  }
+
   // BACKEND PEOPLE,THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
 
   /**
    * Submits a service request.
    *
    * @param roomID The room ID.
-   * @param assignedNurse The assigned nurse.
-   * @param requestStatus The request status.
    * @param additionalNotes Any additional notes.
    * @param resultTypeSelected The type of result selected.
    */
-  private void submitRequest(
-      String roomID,
-      String assignedNurse,
-      String requestStatus,
-      String additionalNotes,
-      String resultTypeSelected) {
+  private void submitRequest(String roomID, String additionalNotes, String resultTypeSelected) {
     String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.LAB_REQUEST));
     DBManager.save(
         new LabRequest(
             nextRequest,
             roomID,
-            assignedNurse,
-            requestStatus,
+            "",
+            RequestStatus.INCOMPLETE,
             additionalNotes,
             resultTypeSelected));
     System.out.println("Saved LabRequest");
@@ -68,19 +75,37 @@ public class LabRequestController {
 
   // Called when the submit button is pressed.
   @FXML
-  void submitButton() {
+  void submitButton() throws IOException {
     // Checks if a lab result choice has been made.
     if (RequestControllerUtil.isRadioButtonSelected(
-        bloodRadioButton, urineRadioButton, xrayRadioButton, catScanRadioButton, mriRadioButton)) {
+            bloodRadioButton, urineRadioButton, xrayRadioButton, catScanRadioButton, mriRadioButton)
+        && !Objects.equals(roomsHiddenField.getText(), "")
+        && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
-          input_RoomID.getText(),
-          input_AssignedNurse.getText(),
-          input_RequestStatus.getText(),
+          DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");
+      SceneUtil.welcomePage.mainPage();
+      SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/requestTypes/LabResult.fxml");
+      resetAllFields();
     } else {
-      errorLabel.setText("Please select a result type.");
+      errorLabel.setText("Missing Required Fields.");
+    }
+  }
+
+  @FXML
+  void backButton() throws IOException {
+    if (RequestControllerUtil.isRadioButtonSelected(
+            bloodRadioButton, urineRadioButton, xrayRadioButton, catScanRadioButton, mriRadioButton)
+        || !Objects.equals(roomsHiddenField.getText(), "")
+        || !Objects.equals(input_AssignedNurse.getText(), "")) {
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
+      if (!SceneLoading.stayOnPage) {
+        SceneUtil.welcomePage.mainPage();
+      }
+    } else {
+      SceneUtil.welcomePage.mainPage();
     }
   }
 
@@ -107,11 +132,8 @@ public class LabRequestController {
     RequestControllerUtil.resetRadioButtons(
         bloodRadioButton, urineRadioButton, xrayRadioButton, catScanRadioButton, mriRadioButton);
     RequestControllerUtil.resetTextFields(
-        input_RoomID,
-        input_AssignedNurse,
-        // input_RequestStatus,
-        input_AdditionalNotes,
-        input_PatientID);
+        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
     errorLabel.setText("");
+    roomsComboBox.setValue("");
   }
 }

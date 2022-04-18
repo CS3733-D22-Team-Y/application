@@ -1,20 +1,13 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "SECURITYSERVICEREQUESTS")
-public class SecurityServiceRequest implements StringArrayConv {
-
-  @Id private String requestNum;
-  private String roomID;
-  private String assignedNurse;
-  private String requestStatus;
-  private String additionalNotes;
+public class SecurityServiceRequest extends Requestable implements StringArrayConv {
   private String requestTypeSelected;
-  private String requestPriority;
+  private String securityRequestPriority;
 
   public SecurityServiceRequest() {}
 
@@ -22,27 +15,23 @@ public class SecurityServiceRequest implements StringArrayConv {
       String requestNum,
       String roomID,
       String assignedNurse,
-      String requestStatus,
+      RequestStatus requestStatus,
       String additionalNotes,
       String requestTypeSelected,
       String requestPriority) {
-    this.requestNum = requestNum;
-    this.roomID = roomID;
-    this.assignedNurse = assignedNurse;
-    this.requestStatus = requestStatus;
-    this.additionalNotes = additionalNotes;
+    initParent(requestNum, roomID, assignedNurse, additionalNotes, requestStatus);
     this.requestTypeSelected = requestTypeSelected;
-    this.requestPriority = requestPriority;
+    this.securityRequestPriority = requestPriority;
   }
 
   public SecurityServiceRequest(
       String requestNum,
       String roomID,
       String assignedNurse,
-      String requestStatus,
+      RequestStatus requestStatus,
       String additionalNotes,
       String requestTypeSelected,
-      String requestPriority) {
+      String securityRequestPriority) {
     init(
         requestNum,
         roomID,
@@ -50,65 +39,52 @@ public class SecurityServiceRequest implements StringArrayConv {
         requestStatus,
         additionalNotes,
         requestTypeSelected,
-        requestPriority);
+        securityRequestPriority);
   }
 
   @Override
   public String[] toStringArray() {
     return new String[] {
-      requestNum,
-      roomID,
-      assignedNurse,
-      requestStatus,
-      additionalNotes,
+      getRequestNum(),
+      getRoomID(),
+      getAssignedNurse(),
+      Integer.toString(getRequestStatus().ordinal()),
+      getAdditionalNotes(),
       requestTypeSelected,
-      requestPriority
+      securityRequestPriority
     };
   }
 
   @Override
   public void fromStringArray(String[] args) {
-    init(args[0], args[1], args[2], args[3], args[4], args[5], args[6]);
+    init(
+        args[0],
+        args[1],
+        args[2],
+        RequestStatus.values()[Integer.parseInt(args[3])],
+        args[4],
+        args[5],
+        args[6]);
   }
 
-  public String getRequestNum() {
-    return requestNum;
+  public int getRequestPriority() {
+    switch (securityRequestPriority) {
+      case "mostUrgent":
+        return 10;
+      case "urgent":
+        return 9;
+      case "lowPriority":
+        return 8;
+      default:
+        break;
+    }
+
+    return 10;
   }
 
-  public void setRequestNum(String requestNum) {
-    this.requestNum = requestNum;
-  }
-
-  public String getRoomID() {
-    return roomID;
-  }
-
-  public void setRoomID(String roomID) {
-    this.roomID = roomID;
-  }
-
-  public String getAssignedNurse() {
-    return assignedNurse;
-  }
-
-  public void setAssignedNurse(String assignedNurse) {
-    this.assignedNurse = assignedNurse;
-  }
-
-  public String getRequestStatus() {
-    return requestStatus;
-  }
-
-  public void setRequestStatus(String requestStatus) {
-    this.requestStatus = requestStatus;
-  }
-
-  public String getAdditionalNotes() {
-    return additionalNotes;
-  }
-
-  public void setAdditionalNotes(String additionalNotes) {
-    this.additionalNotes = additionalNotes;
+  @Override
+  public String getSpecificText() {
+    return "Type: " + requestTypeSelected;
   }
 
   public String getRequestTypeSelected() {
@@ -119,11 +95,21 @@ public class SecurityServiceRequest implements StringArrayConv {
     this.requestTypeSelected = requestTypeSelected;
   }
 
-  public String getRequestPriority() {
-    return requestPriority;
+  public String getSecurityRequestPriority() {
+    return securityRequestPriority;
   }
 
-  public void setRequestPriority(String requestPriority) {
-    this.requestPriority = requestPriority;
+  public void setSecurityRequestPriority(String priority) {
+    this.securityRequestPriority = priority;
+  }
+
+  @Override
+  public String getLocID() {
+    return getRoomID();
+  }
+
+  @Override
+  public String getTypeString() {
+    return "Security Alert";
   }
 }

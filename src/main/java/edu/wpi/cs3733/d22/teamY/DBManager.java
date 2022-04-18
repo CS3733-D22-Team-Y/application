@@ -119,7 +119,7 @@ public class DBManager {
    * @return A list of objects of the given class.
    */
   @SuppressWarnings("unchecked")
-  public static <T extends StringArrayConv> List<T> getAll(Class<?> c, Where... wheres) {
+  public static <T> List<T> getAll(Class<?> c, Where... wheres) {
     Session s = SessionManager.getSession();
     try {
       s.beginTransaction();
