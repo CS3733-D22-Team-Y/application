@@ -7,6 +7,7 @@ public class Main {
     // Load all tables with values from CSV
     CSVBackup.loadFromCSV(EntryType.LOCATION);
     CSVBackup.loadFromCSV(EntryType.MED_EQUIP);
+    CSVBackup.loadFromCSV(EntryType.EMPLOYEE);
 
     App.launch(App.class, args);
 
