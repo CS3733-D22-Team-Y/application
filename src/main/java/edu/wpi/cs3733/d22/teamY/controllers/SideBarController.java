@@ -7,22 +7,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
 public class SideBarController {
-  // Constant locations
-  protected static final Integer MAP_LIST_LOCATION = 0;
-  protected static final Integer SERVICES_LIST_LOCATION = 1;
-  protected static final Integer EQUIPMENT_LIST_LOCATION = 2;
-  protected static final Integer TASKS_LIST_LOCATION = 3;
-  protected static final Integer INBOX_LIST_LOCATION = 4;
-  protected static final Integer PROFILE_LIST_LOCATION = 5;
 
   @FXML AnchorPane mainPane;
-  @FXML Pane mainScreenPane;
 
   // Scaling
   @FXML private VBox bottomSidebarText;
@@ -73,19 +64,6 @@ public class SideBarController {
         logoutHiddenRect);
 
     mainPane.setBackground(Background.EMPTY);
-    /*
-    SceneUtil.initializePanes(
-        mainScreenPane,
-        "views/Map.fxml",
-        "views/RequestMenu.fxml",
-        "views/MedEquipTable.fxml",
-        "views/ActiveServiceRequest.fxml",
-        "views/ActServReqTable.fxml",
-        "views/PersonalSettings.fxml",
-        "views/SecondaryMap_TEMPLATE.fxml");
-    SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-     */
     NewSceneLoading.sideBarController = this;
   }
 
