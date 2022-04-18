@@ -53,9 +53,11 @@ public class NewSceneLoading {
   public static void loadScene(String path) {
     try {
       Scene currScene = allScenes.get(path);
-      AnchorPane mainPane = (AnchorPane) currScene.lookup("#sidebarPane");
-      mainPane.getChildren().add(sidebar);
-      sidebarController.initializeScale(currScene);
+      if (currScene.lookup("#sidebarPane") != null) {
+        AnchorPane mainPane = (AnchorPane) currScene.lookup("#sidebarPane");
+        mainPane.getChildren().add(sidebar);
+        sidebarController.initializeScale(currScene);
+      }
     } catch (IllegalArgumentException e) {
     } catch (IOException e) {
     }
