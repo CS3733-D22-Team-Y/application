@@ -71,7 +71,7 @@ public class MapPageController<T extends Requestable> {
   @FXML private MFXTextField reqNurseBox;
   @FXML private JFXTextArea reqDescriptionBox;
   @FXML private MFXButton reqSubmit;
-
+  String currentFloor = "1";
   @FXML private Pane reqInfoPane;
 
   // end req stuff
@@ -142,6 +142,12 @@ public class MapPageController<T extends Requestable> {
   @FXML MFXButton equipSubmit;
   @FXML MFXButton equipUp;
   @FXML MFXButton equipDown;
+
+  Boolean locationDragStatus = false;
+
+  int locationDotDefaultX = 500;
+  int locationDotDefaultY = 500;
+  Circle locationDot = new Circle(locationDotDefaultX, locationDotDefaultY, 10, Color.RED);
 
   @FXML private AnchorPane sidebarPane;
 
@@ -541,15 +547,43 @@ public class MapPageController<T extends Requestable> {
         FXCollections.observableArrayList("Locations", "Equipment", "Service Requests"));
     modeBox.setValue("Locations");
     selectorBoxText.setText("Locations");
-    mapRoot.getChildren().add(0, mapComponent.getRootPane());
+    mapRoot.getChildren().add(mapComponent.getRootPane());
     modeBox.setValue("Locations");
-    floorLL1Button.setOnAction(e -> switchMap(Floors.LOWER_LEVEL_1, mapMode));
-    floorLL2Button.setOnAction(e -> switchMap(Floors.LOWER_LEVEL_2, mapMode));
-    floor1Button.setOnAction(e -> switchMap(Floors.FIRST_FLOOR, mapMode));
-    floor2Button.setOnAction(e -> switchMap(Floors.SECOND_FLOOR, mapMode));
-    floor3Button.setOnAction(e -> switchMap(Floors.THIRD_FLOOR, mapMode));
-    floor4Button.setOnAction(e -> switchMap(Floors.FOURTH_FLOOR, mapMode));
-    floor5Button.setOnAction(e -> switchMap(Floors.FIFTH_FLOOR, mapMode));
+    floorLL1Button.setOnAction(
+        e -> {
+          switchMap(Floors.LOWER_LEVEL_1, mapMode);
+          currentFloor = "ll1";
+        });
+    floorLL2Button.setOnAction(
+        e -> {
+          switchMap(Floors.LOWER_LEVEL_2, mapMode);
+          currentFloor = "ll2";
+        });
+    floor1Button.setOnAction(
+        e -> {
+          switchMap(Floors.FIRST_FLOOR, mapMode);
+          currentFloor = "1";
+        });
+    floor2Button.setOnAction(
+        e -> {
+          switchMap(Floors.SECOND_FLOOR, mapMode);
+          currentFloor = "2";
+        });
+    floor3Button.setOnAction(
+        e -> {
+          switchMap(Floors.THIRD_FLOOR, mapMode);
+          currentFloor = "3";
+        });
+    floor4Button.setOnAction(
+        e -> {
+          switchMap(Floors.FOURTH_FLOOR, mapMode);
+          currentFloor = "4";
+        });
+    floor5Button.setOnAction(
+        e -> {
+          switchMap(Floors.FIFTH_FLOOR, mapMode);
+          currentFloor = "5";
+        });
     modeBox.setOnAction(
         e -> {
           selectorBoxText.setText(modeBox.getValue());
@@ -564,6 +598,44 @@ public class MapPageController<T extends Requestable> {
     locationInfoPane.setVisible(false);
 
     NewSceneLoading.loadSidebar(sidebarPane);
+
+    mapComponent
+        .getMapPane()
+        .setOnMouseDragExited(
+            e -> {
+              System.out.println("Mouse released");
+              if (locationDragStatus) {
+                Location newLocation =
+                    new Location(
+                        Integer.toString((int) Math.round(Math.random() * 1000)),
+                        (int) e.getX(),
+                        (int) e.getY(),
+                        currentFloor,
+                        "",
+                        "",
+                        "",
+                        "");
+                DBManager.save(newLocation);
+                System.out.println("Location saved");
+              }
+              locationDragStatus = false;
+            });
+
+    mainPane.getChildren().add(locationDot);
+
+    locationDot.setOnMouseDragged(
+        e -> {
+          locationDot.setCenterX(e.getX());
+          locationDot.setCenterY(e.getY());
+          locationDragStatus = true;
+        });
+
+    locationDot.setOnMouseReleased(
+        e -> {
+          locationDot.setCenterX(locationDotDefaultX);
+          locationDot.setCenterY(locationDotDefaultY);
+          System.out.println(currentFloor);
+        });
   }
 
   public void exit() {
