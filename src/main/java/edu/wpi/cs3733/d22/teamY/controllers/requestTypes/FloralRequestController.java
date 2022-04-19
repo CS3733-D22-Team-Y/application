@@ -3,11 +3,11 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
-import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
-import edu.wpi.cs3733.d22.teamY.model.FloralRequest;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
+import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
@@ -63,16 +63,16 @@ public class FloralRequestController {
   private void submitRequest(
       String roomID, String assignedNurse, String additionalNotes, String bouquetTypeSelected)
       throws IOException {
-    // Get request Num
-    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.FLORAL_REQUEST));
     DBManager.save(
-        new FloralRequest(
-            nextRequest,
-            roomID,
+        new ServiceRequest(
+            RequestTypes.FLORAL,
             assignedNurse,
-            RequestStatus.INCOMPLETE,
+            roomID,
             additionalNotes,
-            bouquetTypeSelected));
+            1,
+            RequestStatus.INCOMPLETE,
+            new String[] {bouquetTypeSelected}));
+
     System.out.println("Saved FloralRequest");
   }
 

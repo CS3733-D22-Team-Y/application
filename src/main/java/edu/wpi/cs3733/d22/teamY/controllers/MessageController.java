@@ -161,7 +161,7 @@ public class MessageController {
       System.out.println("No text");
       return;
     }
-    if(text.length() > 140) {
+    if (text.length() > 140) {
       System.out.println("Message too long");
       return;
     }

@@ -3,11 +3,11 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
-import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
-import edu.wpi.cs3733.d22.teamY.model.LaundryRequest;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
+import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
 import java.util.Objects;
@@ -63,15 +63,15 @@ public class LaundryRequestController {
    */
   private void submitRequest(
       String roomID, String assignedNurse, String additionalNotes, String laundryTypeSelected) {
-    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.LAUNDRY_REQUEST));
     DBManager.save(
-        new LaundryRequest(
-            nextRequest,
-            roomID,
+        new ServiceRequest(
+            RequestTypes.LAUNDRY,
             assignedNurse,
-            RequestStatus.INCOMPLETE,
+            roomID,
             additionalNotes,
-            laundryTypeSelected));
+            1,
+            RequestStatus.INCOMPLETE,
+            new String[] {laundryTypeSelected}));
     System.out.println("Saved Laundry Request");
   }
 

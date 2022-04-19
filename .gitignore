@@ -14,6 +14,7 @@ derby.log
 /LocationDB
 /Database
 /DB_Scripts/Database
+/Export_CSVs
 
 #Ignore auto generated export csv's
 locations_export.csv
