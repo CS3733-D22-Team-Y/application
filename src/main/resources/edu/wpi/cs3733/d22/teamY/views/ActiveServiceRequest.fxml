@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTextArea?>
 <?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -14,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ActiveServiceRequestController">
+<AnchorPane fx:id="mainPane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ActiveServiceRequestController">
     <children>
       <Label layoutX="270.0" styleClass="title" text="Active Service Requests">
          <textFill>
@@ -37,42 +34,13 @@
             <Font name="Arial Rounded MT Bold" size="60.0" />
          </font>
       </Label>
-        <Pane layoutX="708.0" layoutY="98.0" prefHeight="667.0" prefWidth="479.0" style="-fx-background-color: #93cddc; -fx-background-radius: 15;">
-         <children>
-            <JFXTextArea fx:id="extraInfoText" editable="false" focusColor="#ffffff00" layoutX="11.0" layoutY="11.0" prefHeight="644.0" prefWidth="458.0" style="-fx-background-color: ECEFFC; -fx-padding: 10;" text="Additional information will appear here.&#10;" unFocusColor="#ffffff00" wrapText="true">
-               <font>
-                  <Font name="Calibri" size="21.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="NONE" />
-               </cursor>
-            </JFXTextArea>
-         </children></Pane>
       <Accordion layoutX="342.0" layoutY="400.0" />
-      <MFXScrollPane fx:id="scrollBox" layoutX="284.0" layoutY="85.0" prefHeight="689.0" prefWidth="415.0">
+      <MFXScrollPane fx:id="scrollBox" layoutX="284.0" layoutY="85.0" prefHeight="600.0" prefWidth="920.0">
          <content>
             <VBox fx:id="requestBox" prefHeight="10.0" prefWidth="400.0" />
          </content>
       </MFXScrollPane>
       <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="270.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="270.0" layoutY="771.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="443.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>

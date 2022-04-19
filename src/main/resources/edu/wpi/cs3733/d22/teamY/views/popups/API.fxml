@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="262.0" prefWidth="532.0" stylesheets="@../css/default.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.views.popups.API">
+   <children>
+      <MFXButton fx:id="ExitBtn" layoutX="14.0" layoutY="14.0" onAction="#closePopUp" prefHeight="27.0" prefWidth="77.0" text="Exit" />
+      <MFXButton layoutX="365.0" layoutY="207.0" prefHeight="27.0" prefWidth="124.0" text="Add Employee" />
+   </children>
+</AnchorPane>
