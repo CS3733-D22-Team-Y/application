@@ -33,6 +33,9 @@
          </font>
       </Label>
       <MFXButton prefHeight="200.0" prefWidth="920.0" style="-fx-blend-mode: SCREEN; -fx-background-color: #000000;" text=" " />
-      <JFXTextArea fx:id="extraInfoText" focusColor="#ffffff00" layoutX="310.0" layoutY="10.0" prefHeight="180.0" prefWidth="600.0" style="-fx-background-color: white;" unFocusColor="#ffffff00" />
+      <JFXTextArea fx:id="extraInfoText" focusColor="#ffffff00" layoutX="310.0" layoutY="10.0" prefHeight="180.0" prefWidth="600.0" style="-fx-background-color: white;" unFocusColor="#ffffff00">
+         <font>
+            <Font size="24.0" />
+         </font></JFXTextArea>
    </children>
 </AnchorPane>
