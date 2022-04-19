@@ -2,7 +2,7 @@ package edu.wpi.cs3733.d22.teamY;
 
 public class Main {
 
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) {
 
     // Load all tables with values from CSV
     CSVBackup.loadFromCSV(EntryType.LOCATION);
@@ -10,6 +10,7 @@ public class Main {
     CSVBackup.loadFromCSV(EntryType.EMPLOYEE);
     CSVBackup.loadFromCSV(EntryType.REQUESTS);
 
+    CSVBackup.saveToCSV(EntryType.REQUESTS);
     // App.launch(App.class, args);
 
     // Backup all tables to CSV on shutdown

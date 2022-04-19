@@ -11,29 +11,33 @@ public enum EntryType {
   // Remember! For something to qualify as an entry, it must implement StringArrayConv
   // as this ensures that it's a type that can be properly formatted for CSV.
 
-  LOCATION(8, "TowerLocations", "locations_export", Location.class),
+  LOCATION(8, "CSVs/TowerLocations", "Export_CSVs/locations_export", Location.class),
 
-  MED_EQUIP(4, "MedEquip", "medEquipment_export", MedEquip.class),
+  MED_EQUIP(4, "CSVs/MedEquip", "Export_CSVs/medEquipment_export", MedEquip.class),
 
-  EMPLOYEE(14, "Employees", "employees_export", Employee.class),
+  EMPLOYEE(14, "CSVs/Employees", "Export_CSVs/employees_export", Employee.class),
 
-  REQUESTS(8, "Requests", "requests_export.csv", ServiceRequest.class),
+  REQUESTS(8, "CSVs/Requests", "Export_CSVs/requests_export", ServiceRequest.class),
 
-  MED_EQUIP_REQUEST(6, "MedEquipReq", "medEquipRequests_export", MedEquipReq.class),
+  MED_EQUIP_REQUEST(6, "MedEquipReq", "Export_CSVs/medEquipRequests_export", MedEquipReq.class),
 
-  LAB_REQUEST(6, "LabRequests", "labRequests_export", LabRequest.class),
+  LAB_REQUEST(6, "LabRequests", "Export_CSVs/labRequests_export", LabRequest.class),
 
-  FLORAL_REQUEST(6, "FloralRequests", "floralRequests_export", FloralRequest.class),
+  FLORAL_REQUEST(6, "FloralRequests", "Export_CSVs/floralRequests_export", FloralRequest.class),
 
-  LAUNDRY_REQUEST(6, "LaundryRequests", "laundryRequests_export", LaundryRequest.class),
+  LAUNDRY_REQUEST(6, "LaundryRequests", "Export_CSVs/laundryRequests_export", LaundryRequest.class),
 
-  MEAL_REQUEST(9, "MealRequests", "mealRequests_export", MealRequest.class),
+  MEAL_REQUEST(9, "MealRequests", "Export_CSVs/mealRequests_export", MealRequest.class),
 
   SECURITY_SERVICE_REQUEST(
-      7, "SecurityServiceRequests", "securityServiceRequests_export", SecurityServiceRequest.class),
+      7,
+      "SecurityServiceRequests",
+      "Export_CSVs/securityServiceRequests_export",
+      SecurityServiceRequest.class),
 
-  TRANSLATOR_REQUEST(6, "TranslatorRequests", "translatorRequests_export", TranslatorRequest.class),
-  MISC_REQUEST(6, "MiscRequests", "miscRequests_export", MiscRequest.class),
+  TRANSLATOR_REQUEST(
+      6, "TranslatorRequests", "Export_CSVs/translatorRequests_export", TranslatorRequest.class),
+  MISC_REQUEST(6, "MiscRequests", "Export_CSVs/miscRequests_export", MiscRequest.class),
 
 // region Enum Data / Methods
 /* Enum specification begins below... */ ;

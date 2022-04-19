@@ -15,13 +15,13 @@ public class ServiceRequest implements StringArrayConv {
   private String locationID;
   private String additionalNotes;
 
-  private String atr0;
+  private String atr0 = null;
 
-  private String atr1;
+  private String atr1 = null;
 
-  private String atr2;
+  private String atr2 = null;
 
-  private String atr3;
+  private String atr3 = null;
 
   /**
    * Generic Request Constructor ID Generation Handled by Constructor and Database
@@ -221,13 +221,28 @@ public class ServiceRequest implements StringArrayConv {
   public void fromStringArray(String[] args) {
     switch (args[0]) {
       case "FLORAL":
-        init(RequestTypes.FLORAL, args[1], args[2], args[3], new String[] {args[4]});
+        init(
+            RequestTypes.FLORAL,
+            args[1],
+            args[2],
+            args[3],
+            new String[] {args[4], args[5], args[6], args[7]});
         break;
       case "LAB":
-        init(RequestTypes.LAB, args[1], args[2], args[3], new String[] {args[4]});
+        init(
+            RequestTypes.LAB,
+            args[1],
+            args[2],
+            args[3],
+            new String[] {args[4], args[5], args[6], args[7]});
         break;
       case "LAUNDRY":
-        init(RequestTypes.LAUNDRY, args[1], args[2], args[3], new String[] {args[4]});
+        init(
+            RequestTypes.LAUNDRY,
+            args[1],
+            args[2],
+            args[3],
+            new String[] {args[4], args[5], args[6], args[7]});
         break;
       case "MEAL":
         init(
@@ -238,13 +253,28 @@ public class ServiceRequest implements StringArrayConv {
             new String[] {args[4], args[5], args[6], args[7]});
         break;
       case "MEDEQUIP":
-        init(RequestTypes.MEDEQUIP, args[1], args[2], args[3], new String[] {args[4]});
+        init(
+            RequestTypes.MEDEQUIP,
+            args[1],
+            args[2],
+            args[3],
+            new String[] {args[4], args[5], args[6], args[7]});
         break;
       case "SECURITY":
-        init(RequestTypes.SECURITY, args[1], args[2], args[3], new String[] {args[4], args[5]});
+        init(
+            RequestTypes.SECURITY,
+            args[1],
+            args[2],
+            args[3],
+            new String[] {args[4], args[5], args[6], args[7]});
         break;
       case "TRANSLATOR":
-        init(RequestTypes.TRANSLATOR, args[1], args[2], args[3], new String[] {args[4]});
+        init(
+            RequestTypes.TRANSLATOR,
+            args[1],
+            args[2],
+            args[3],
+            new String[] {args[4], args[5], args[6], args[7]});
         break;
     }
   }
