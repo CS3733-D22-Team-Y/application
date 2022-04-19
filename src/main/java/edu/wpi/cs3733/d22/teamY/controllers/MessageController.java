@@ -22,6 +22,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -82,8 +84,11 @@ public class MessageController {
 
   @FXML private Line chatHeaderLine;
 
-  String hiddenToField = "";
+  @FXML private Rectangle searchBoxCover;
 
+  ArrayList<String> hiddenToField = new ArrayList<>();
+
+  ArrayList<EmployeeResult> resultBank = new ArrayList<>();
   ArrayList<EmployeeResult> results = new ArrayList<>();
 
   ArrayList<Rectangle> chatBackgrounds = new ArrayList<>();
@@ -103,12 +108,21 @@ public class MessageController {
     //    System.out.println("Init message controller here: " + id + " " +
     // ChatManager.getChats().size());
     Firebase.chatRef.addChildEventListener(childEventListener);
+    results.clear();
+    resultBank.clear();
     List<Employee> employees = DBManager.getAll(Employee.class);
     for (Employee e : employees) {
       if (!e.getIDNumber().equals(id)) {
-        results.add(new EmployeeResult(e.getName(), e.getRole(), e.getIDNumber()));
+        EmployeeResult er = new EmployeeResult(e.getName(), e.getRole(), e.getIDNumber());
+        results.add(er);
+        resultBank.add(er);
       }
     }
+
+    toBox.setOnKeyReleased(
+        event -> {
+          getResults(event);
+        });
 
     this.refreshChats();
   }
@@ -150,6 +164,8 @@ public class MessageController {
   public void refreshMessages() {
     messageArea.getChildren().clear();
     Chat c = ChatManager.myChats.get(chatID);
+    System.out.println("Refreshing messages for " + chatID);
+    System.out.println("Chat is null? : " + (c == null));
     String csvNames = "Guest";
     try {
       csvNames = DBUtils.getNamesFromIds(c.getUsers(), true);
@@ -198,7 +214,7 @@ public class MessageController {
     setChatOpen(false);
     setChatPickerOpen(true);
     toBox.requestFocus();
-    this.getResults();
+    this.getResults(null);
   }
 
   private void setChatPickerOpen(boolean b) {
@@ -207,42 +223,24 @@ public class MessageController {
   }
 
   public void selectedChat() {
-    String text = toBox.getText().trim().replaceAll(" ", "");
-    if (text.length() > 0 && text.charAt(text.length() - 1) == ',') {
-      text = text.substring(0, text.length() - 1);
-    }
-    String[] splitText = text.split(",");
-    if (text.length() == 0) {
-      System.out.println("No text in to box");
-      return;
-    }
-    for (String s : splitText) {
-      if (s.length() == 0 || !isNumeric(s)) {
-        System.out.println("empty recipient");
-        return;
-      }
-      if (s.equals(PersonalSettings.currentEmployee.getIDNumber())) {
-        System.out.println("Cannot send to yourself");
-        return;
-      }
-    }
-    if (text.contains(",,")) {
-      System.out.println("empty recipient");
-      return;
-    }
-
-    chatID = Chat.getChatID(PersonalSettings.currentEmployee.getIDNumber(), splitText);
+    chatID = Chat.getChatID(PersonalSettings.currentEmployee.getIDNumber(), hiddenToField);
+    System.out.println("Selected chat: " + chatID);
     System.out.println("Attempting to start chat with ID" + chatID);
     if (!ChatManager.myChats.containsKey(chatID)) {
       // send initial message
       ChatManager.sendMessage(
-          "Chat Created", PersonalSettings.currentEmployee.getIDNumber(), splitText);
+          "Chat Created", PersonalSettings.currentEmployee.getIDNumber(), hiddenToField);
     } else {
       System.out.println("Chat already exists");
     }
     setChatPickerOpen(false);
-    setChatOpen(true);
     toBox.setText("");
+    hiddenToField.clear();
+    resetResults();
+    Platform.runLater(
+        () -> {
+          setChatOpen(true);
+        });
   }
 
   public boolean isNumeric(String str) {
@@ -255,15 +253,55 @@ public class MessageController {
   }
 
   // on key released handler for the to box:
-  public void getResults() {
-    // remove all spaces
-    toBox.setText(toBox.getText().replaceAll(" ", ""));
-    //    // remove all double commas
-    toBox.setText(toBox.getText().replaceAll(",,", ","));
+  public void getResults(KeyEvent event) {
+    if (event != null) {
+      // if left or right arrow key is pressed, do nothing
+      if (event.getCode() == KeyCode.LEFT || event.getCode() == KeyCode.RIGHT) {
+        // set the caret to the end of the text
+        toBox.positionCaret(toBox.getText().length());
+      }
+    }
+    //    // remove all spaces
+    //    toBox.setText(toBox.getText().replaceAll(" ", ""));
+    //    //    // remove all double commas
+    //    toBox.setText(toBox.getText().replaceAll(",,", ","));
+
+    int numCommas = 0;
+    // find number of commas
+    for (int i = 0; i < toBox.getText().length(); i++) {
+      if (toBox.getText().charAt(i) == ',') {
+        numCommas++;
+      }
+    }
+    int numHiddenCommas = hiddenToField.size();
+
+    // if the number of commas is greater than the number of hidden commas,
+    // remove the last comma and the text before it up to the last comma
+    if (numCommas > numHiddenCommas) {
+      String text = toBox.getText();
+      int index = text.lastIndexOf(",");
+      toBox.setText(text.substring(0, index));
+      addRecipientToChat(results.get(0).id, results.get(0).name);
+    }
+    if (numCommas < numHiddenCommas) {
+      String text = toBox.getText();
+      int index = text.lastIndexOf(",");
+      toBox.setText(text.substring(0, index + 1));
+      String id = hiddenToField.remove(hiddenToField.size() - 1);
+      for (EmployeeResult e : resultBank) {
+        if (e.id.equals(id)) {
+          results.add(e);
+          break;
+        }
+      }
+      showResults("");
+    }
+
     // set the cursor to the end of the text
     toBox.positionCaret(toBox.getText().length());
     String text = toBox.getText();
     String[] splitText = text.split(",");
+
     // show search results
     String query = "";
     if (text.length() > 0) {
@@ -314,28 +352,17 @@ public class MessageController {
     cloneResultName.setText(nameString);
     cloneResultRole.setText(roleString + "    |   ID#" + id);
 
-    // if the main clone pane is clicked, print the id
+    // if the main clone pane is clicked, add it to the chat
     clone.setOnMouseClicked(
         e -> {
-          boolean good = true;
-          String text = toBox.getText();
-          // if the text contains the id seperated by commas already dont add it again
-          if (text.contains("," + id + ",")) {
-            good = false;
-          }
-          if (text.length() >= id.length() + 1) {
-            if (text.substring(0, id.length() + 1).equals(id + ",")) {
-              good = false;
-            }
-          }
-
-          if (good) addRecipientToChat(id);
+          addRecipientToChat(id, nameString);
+          showResults("");
         });
 
     return clone;
   }
 
-  public void addRecipientToChat(String id) {
+  public void addRecipientToChat(String id, String name) {
     System.out.println("Adding " + id + " to chat");
     // remove everything before the last comma and add the new id
     String text = toBox.getText();
@@ -346,15 +373,28 @@ public class MessageController {
       // remove everything after the last comma
       text = text.substring(0, index);
       // add the new id
-      text += "," + id + ",";
+      text += "," + name + ",";
     } else {
-      text = id + ",";
+      text = name + ",";
     }
+
+    hiddenToField.add(id);
     // set the text
     toBox.setText(text);
     toBox.requestFocus();
     // set the cursor to the end of the text
     toBox.positionCaret(toBox.getText().length());
+    System.out.println("Hidden to field: ");
+    hiddenToField.forEach(System.out::println);
+
+    // remove that result from the results pane
+    results.removeIf(result -> result.id.equals(id));
+  }
+
+  // use the results bank to reset the results
+  public void resetResults() {
+    results.clear();
+    results.addAll(resultBank);
   }
 
   public Pane getMessageClone(Post p) {

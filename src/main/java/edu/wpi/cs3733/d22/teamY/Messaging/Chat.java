@@ -20,6 +20,17 @@ public class Chat {
     posts = new ArrayList<Post>();
   }
 
+  public static String getChatID(String myID, ArrayList<String> ids) {
+    String chatID = "";
+    ids.sort(String::compareTo);
+    for (String id : ids) {
+      chatID += id + ":";
+    }
+    // remove the last ":"
+    chatID = chatID.substring(0, chatID.length() - 1);
+    return chatID;
+  }
+
   public void addPost(Post p) {
     posts.add(p);
   }
