@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/Blank.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MiscRequestController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eeeeee" height="551.0" layoutX="-35.0" layoutY="-42.0" stroke="BLACK" strokeType="INSIDE" width="746.0" />
+      <Label layoutX="18.0" styleClass="title" text="Help : Profile">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Arial Rounded MT Bold" size="45.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="10.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="295.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <JFXTextArea fx:id="errorLabel" depthTest="DISABLE" disable="true" editable="false" focusColor="#ffffff00" layoutX="460.0" layoutY="720.0" opacity="0.97" prefHeight="10.0" prefWidth="243.0" style="-fx-text-fill: RED;" styleClass="plainText" unFocusColor="#ffffff00">
+         <font>
+            <Font name="Calibri" size="15.0" />
+         </font>
+      </JFXTextArea>
+      <MFXButton computeRadiusMultiplier="false" layoutX="590.0" layoutY="10.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+      </MFXButton>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="91.0" prefHeight="40.0" prefWidth="626.0" text="Fill in the textboxes with the info pertaining to you.">
+         <font>
+            <Font name="Microsoft Tai Le" size="25.0" />
+         </font>
+      </Label>
+      <Group fx:id="colorGizmo" layoutX="156.0" layoutY="159.0" />
+      <Label layoutX="18.0" layoutY="151.0" styleClass="inputLabel" text="Legal Name:">
+         <font>
+            <Font name="Calibri Bold" size="21.0" />
+         </font>
+      </Label>
+      <MFXTextField editable="false" floatMode="DISABLED" layoutX="156.0" layoutY="144.0" prefHeight="29.0" prefWidth="154.0" styleClass="requestInput" text="Your name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </MFXTextField>
+      <Label layoutX="375.0" layoutY="151.0" styleClass="inputLabel" text="Date of Birth:">
+         <font>
+            <Font name="Calibri Bold" size="21.0" />
+         </font>
+      </Label>
+      <MFXTextField editable="false" floatMode="DISABLED" layoutX="516.0" layoutY="144.0" prefHeight="29.0" prefWidth="154.0" styleClass="requestInput" text="Your birthdate">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </MFXTextField>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="214.0" prefHeight="40.0" prefWidth="626.0" text="You can also swap between light and dark mode.">
+         <font>
+            <Font name="Microsoft Tai Le" size="25.0" />
+         </font>
+      </Label>
+      <MFXButton layoutX="170.0" layoutY="271.0" prefHeight="50.0" prefWidth="175.0" styleClass="requestButton" text="Light Mode" />
+      <MFXButton layoutX="355.0" layoutY="271.0" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #444;" styleClass="requestButton" text="Dark Mode" textFill="WHITE" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="42.0" layoutY="379.0" prefHeight="40.0" prefWidth="626.0" text="(Profile picture functionality to be implemented later)">
+         <font>
+            <Font name="Microsoft Tai Le" size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

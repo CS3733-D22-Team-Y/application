@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXRadioButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/Blank.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MiscRequestController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eeeeee" height="551.0" layoutX="-35.0" layoutY="-42.0" stroke="BLACK" strokeType="INSIDE" width="746.0" />
+      <Label layoutX="18.0" styleClass="title" text="Help : Services">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Arial Rounded MT Bold" size="45.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="10.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="345.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <JFXTextArea fx:id="errorLabel" depthTest="DISABLE" disable="true" editable="false" focusColor="#ffffff00" layoutX="460.0" layoutY="720.0" opacity="0.97" prefHeight="10.0" prefWidth="243.0" style="-fx-text-fill: RED;" styleClass="plainText" unFocusColor="#ffffff00">
+         <font>
+            <Font name="Calibri" size="15.0" />
+         </font>
+      </JFXTextArea>
+      <MFXButton computeRadiusMultiplier="false" layoutX="590.0" layoutY="10.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+      </MFXButton>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="187.0" layoutY="85.0" prefHeight="40.0" prefWidth="325.0" text="1. Select the request type">
+         <font>
+            <Font name="Microsoft Tai Le" size="25.0" />
+         </font>
+      </Label>
+      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="96.0" layoutY="131.0" prefHeight="84.0" prefWidth="210.0" rippleAnimateBackground="false" rippleRadius="0.0" text="Medical&#10;Equipment" textAlignment="RIGHT" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </MFXButton>
+      <ImageView fitHeight="64.0" fitWidth="78.0" layoutX="105.0" layoutY="139.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons/medicalRequestFinal.png" />
+         </image>
+      </ImageView>
+      <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="378.0" layoutY="130.0" prefHeight="84.0" prefWidth="210.0" rippleAnimateBackground="false" rippleRadius="0.0" styleClass="submenuButton" text="Security&#10;Services" textAlignment="RIGHT" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </MFXButton>
+      <ImageView fitHeight="73.0" fitWidth="75.0" layoutX="388.0" layoutY="145.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons/securityRequestFinal.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="231.0" prefHeight="40.0" prefWidth="513.0" text="2. Fill in the text boxes with any necessary info">
+         <font>
+            <Font name="Microsoft Tai Le" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="148.0" layoutY="293.0" styleClass="inputLabel" text="Nurse:">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </Label>
+      <MFXTextField allowEdit="false" animated="false" floatMode="DISABLED" layoutX="293.0" layoutY="293.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput" text="Nurse's name">
+         <font>
+            <Font name="Microsoft Tai Le" size="20.0" />
+         </font>
+      </MFXTextField>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="140.0" layoutY="366.0" prefHeight="40.0" prefWidth="417.0" text="3. Select option bubbles if applicable">
+         <font>
+            <Font name="Microsoft Tai Le" size="25.0" />
+         </font>
+      </Label>
+      <MFXRadioButton layoutX="211.0" layoutY="421.0" radius="12.0" selected="true" styleClass="requestOption" text="Unwanted Guest">
+         <font>
+            <Font name="Calibri" size="30.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="Purpose" />
+         </toggleGroup>
+      </MFXRadioButton>
+   </children>
+</AnchorPane>
