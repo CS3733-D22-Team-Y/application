@@ -15,7 +15,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-public class ActiveServiceRequestController {
+public class ActiveServiceRequestController implements IController {
   public static LinkedList<SingularServiceRequestController> requestControllers =
       new LinkedList<>();
 
@@ -88,4 +88,12 @@ public class ActiveServiceRequestController {
     requestBox.getChildren().add(rqSet.getPane());
     rqSet.getController().populateFromRequestable(rqSet.getRequest());
   }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {}
 }

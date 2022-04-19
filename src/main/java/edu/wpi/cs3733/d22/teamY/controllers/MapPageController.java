@@ -26,7 +26,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
-public class MapPageController<T extends Requestable> {
+public class MapPageController<T extends Requestable> implements IController {
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {}
 
   enum MapMode {
     LOCATION("Locations"),

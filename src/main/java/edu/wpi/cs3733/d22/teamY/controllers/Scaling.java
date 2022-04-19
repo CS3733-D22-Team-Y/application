@@ -8,8 +8,8 @@ import javafx.scene.Node;
 import javafx.scene.layout.Region;
 
 public class Scaling {
-  private static final double WINDOW_DEFAULT_WIDTH = NewSceneLoading.activeWindow.getWidth();
-  private static final double WINDOW_DEFAULT_HEIGHT = NewSceneLoading.activeWindow.getHeight();
+  private static final double WINDOW_DEFAULT_WIDTH = 1200;
+  private static final double WINDOW_DEFAULT_HEIGHT = 800;
 
   public static void scaleItemAroundCenter(Region itemToScale) {
     double prefX = itemToScale.getLayoutX();
@@ -27,23 +27,29 @@ public class Scaling {
             currHeight.subtract(heightDiff).divide(WINDOW_DEFAULT_HEIGHT - heightDiff));
     itemToScale.scaleXProperty().bind(minScale);
     itemToScale.scaleYProperty().bind(minScale);
+
+    /*
+    double xScaleFactor = (WINDOW_DEFAULT_WIDTH - widthDiff) / 2;
+
     itemToScale
         .layoutXProperty()
-        .bind(
-            itemToScale
-                .scaleXProperty()
-                .multiply((WINDOW_DEFAULT_WIDTH - widthDiff) / 2)
-                .subtract((WINDOW_DEFAULT_WIDTH - widthDiff) / 2));
+        .bind(itemToScale.scaleXProperty().multiply(xScaleFactor).subtract(xScaleFactor));
 
-    double yScaleFactor = WINDOW_DEFAULT_HEIGHT / 2 - (heightDiff * 2);
+    double yScaleFactor = 320;
 
     itemToScale
         .layoutYProperty()
         .bind(itemToScale.scaleYProperty().multiply(yScaleFactor).subtract(yScaleFactor));
-    System.out.println(itemToScale.layoutXProperty().get());
+
+    System.out.println(xScaleFactor);
+    System.out.println(yScaleFactor);
+    System.out.println("\n\n\n\n\n");
+     */
 
     // sidebarFrame.scaleYProperty().bind(currScene.heightProperty().subtract(20).divide(780));
-    // sidebarFrame.layoutYProperty().bind(sidebarFrame.scaleYProperty().multiply(390).subtract(380));
+    // sidebarFrame.layoutYProperty().bind(sidebarFrame.scaleYProperty().multiply(780).subtract(780
+    // - (10 * 2)));
+    System.out.println("Scaling complete.");
   }
 
   public static void scaleItemAroundCenter(ObservableList<Node> items) {

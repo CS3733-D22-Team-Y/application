@@ -27,7 +27,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
-public class WelcomePageController {
+public class WelcomePageController implements IController {
 
   @FXML private MFXTextField username;
   @FXML private MFXPasswordField password;
@@ -360,4 +360,12 @@ public class WelcomePageController {
   public void createNewUser() throws Exception {
     NewSceneLoading.loadScene("views/CreateAccount.fxml");
   }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {}
 }

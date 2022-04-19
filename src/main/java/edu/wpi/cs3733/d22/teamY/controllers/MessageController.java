@@ -30,7 +30,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
-public class MessageController {
+public class MessageController implements IController {
 
   @FXML private MFXTextField messageText;
   @FXML private Button sendButton;
@@ -627,6 +627,14 @@ public class MessageController {
         @Override
         public void onCancelled(DatabaseError error) {}
       };
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {}
 
   class EmployeeResult {
     private String name, role, id;

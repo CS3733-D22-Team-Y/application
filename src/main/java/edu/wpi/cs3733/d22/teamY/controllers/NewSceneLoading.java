@@ -13,9 +13,11 @@ import javafx.stage.Window;
 public class NewSceneLoading {
   // Hashmap of scenes, key: path, content: scene
   private static final HashMap<String, Scene> allScenes = new HashMap<>();
+  private static final HashMap<String, IController> allControllers = new HashMap<>();
   private static AnchorPane sidebar;
   private static SideBarController sidebarController;
   public static Window activeWindow;
+  private static Scene currScene;
 
   static {
     try {
@@ -32,8 +34,11 @@ public class NewSceneLoading {
   // Function to load scene
   public static void addScene(String path) throws IOException {
     if (!allScenes.containsKey(path)) {
-      Parent root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource(path)));
+      FXMLLoader loader = new FXMLLoader(App.class.getResource(path));
+      Parent root = loader.load();
       Scene newScene = new Scene(root);
+      IController controller = loader.getController();
+      allControllers.put(path, controller);
       allScenes.put(path, newScene);
     }
   }
@@ -62,10 +67,20 @@ public class NewSceneLoading {
     Scene currScene = allScenes.get(path);
     try {
       addSidebarHelper(currScene);
-    } catch (IllegalArgumentException e) {
-    } catch (IOException e) {
+    } catch (IllegalArgumentException | IOException e) {
     }
+    IController controller = allControllers.get(path);
+
+    // Preserve height and width of scene
+    double height = activeWindow.getHeight();
+    double width = activeWindow.getWidth();
+
     App.getInstance().setScene(currScene);
+    controller.initializeScale();
+
+    // Preserve height and width of scene
+    activeWindow.setHeight(height);
+    activeWindow.setWidth(width);
   }
 
   public static void loadSidebar(AnchorPane sidebarPane) throws IOException {

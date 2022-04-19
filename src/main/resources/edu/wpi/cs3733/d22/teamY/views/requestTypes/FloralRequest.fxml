@@ -182,7 +182,7 @@
       </MFXRadioButton>
       <TextField fx:id="roomsHiddenField" layoutX="430.0" layoutY="210.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
       <JFXComboBox fx:id="roomsComboBox" layoutX="430.0" layoutY="210.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="inputField" unFocusColor="#ffffff00" />
-      <MFXButton computeRadiusMultiplier="false" layoutX="1090.0" layoutY="10.0" onAction="#test" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
+      <MFXButton computeRadiusMultiplier="false" layoutX="1090.0" layoutY="10.0" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>

@@ -14,7 +14,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
-public class MedEquipTablePageController {
+public class MedEquipTablePageController implements IController {
 
   @FXML private static TableView<MedEquip> medEquipTableView;
 
@@ -75,6 +75,14 @@ public class MedEquipTablePageController {
     equipmentTable.setText(totalResult);
     NewSceneLoading.loadSidebar(sidebarPane);
   }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {}
 
   public static class ChangeTheme {
     // Base pane for displaying new scenes

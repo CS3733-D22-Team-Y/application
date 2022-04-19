@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
@@ -19,7 +20,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class FloralRequestController {
+public class FloralRequestController implements IController {
   // Radio Buttons
   @FXML private MFXRadioButton getWellSoonBouquetRadioButton;
   @FXML private MFXRadioButton newBabyRadioButton;
@@ -53,10 +54,11 @@ public class FloralRequestController {
     NewSceneLoading.loadSidebar(sidebarPane);
   }
 
-  @FXML
-  private void test() {
-    // Scaling.scaleItemAroundCenter(getWellSoonBouquetRadioButton);
-    // Scaling.scaleItemAroundCenter(mainPane.getChildren());
+  public IController getController() {
+    return this;
+  }
+
+  public void initializeScale() {
     Scaling.scaleItemAroundCenter(mainPane);
   }
 

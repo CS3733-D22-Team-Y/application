@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 
-public class RequestMenuController {
+public class RequestMenuController implements IController {
 
   @FXML AnchorPane bgPane;
   @FXML private ToggleButton creatorToggle;
@@ -96,4 +96,12 @@ public class RequestMenuController {
     creator7.setVisible(state);
     creator8.setVisible(state);
   }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {}
 }

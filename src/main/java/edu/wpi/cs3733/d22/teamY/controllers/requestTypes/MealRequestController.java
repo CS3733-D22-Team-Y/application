@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
@@ -16,7 +17,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class MealRequestController {
+public class MealRequestController implements IController {
   // Text input
   @FXML private TextArea input_AdditionalNotes;
   @FXML private TextField input_AssignedNurse;
@@ -210,4 +211,12 @@ public class MealRequestController {
     errorLabel.setText("");
     roomsComboBox.setValue("");
   }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {}
 }

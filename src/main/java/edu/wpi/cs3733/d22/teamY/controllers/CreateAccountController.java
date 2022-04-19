@@ -13,7 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 
-public class CreateAccountController {
+public class CreateAccountController implements IController {
 
   @FXML MFXTextField username;
   @FXML MFXTextField password;
@@ -128,4 +128,12 @@ public class CreateAccountController {
     }
     return state;
   }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {}
 }

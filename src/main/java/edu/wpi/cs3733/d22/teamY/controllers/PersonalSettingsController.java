@@ -10,7 +10,7 @@ import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
-public class PersonalSettingsController {
+public class PersonalSettingsController implements IController {
 
   @FXML MFXTextField legalName;
   @FXML MFXTextField prefName;
@@ -162,4 +162,12 @@ public class PersonalSettingsController {
             Objects.requireNonNull(App.class.getResource("views/css/ThemeDark.css"))
                 .toExternalForm());
   }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {}
 }

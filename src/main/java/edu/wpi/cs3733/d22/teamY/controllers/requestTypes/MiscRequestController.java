@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.MiscRequest;
@@ -16,7 +17,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class MiscRequestController {
+public class MiscRequestController implements IController {
   @FXML private MFXTextField input_AssignedNurse;
   @FXML private JFXTextArea input_AdditionalNotes;
   @FXML private MFXTextField input_RequestName;
@@ -105,4 +106,12 @@ public class MiscRequestController {
         input_RequestName, input_AdditionalNotes, roomsHiddenField, input_AssignedNurse);
     roomsComboBox.setValue("");
   }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {}
 }
