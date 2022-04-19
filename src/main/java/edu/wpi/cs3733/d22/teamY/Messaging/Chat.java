@@ -22,6 +22,7 @@ public class Chat {
 
   public static String getChatID(String myID, ArrayList<String> ids) {
     String chatID = "";
+    ids.add(myID);
     ids.sort(String::compareTo);
     for (String id : ids) {
       chatID += id + ":";
