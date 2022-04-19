@@ -539,8 +539,8 @@ public class MessageController {
           setChatOpen(true);
           setChatPickerOpen(false);
           this.chatIndicator.setText("Chat with: " + finalCsvNames);
-//          setAllUnselected();
-//          bRectClone.setFill(Color.rgb(200, 200, 200));
+          //          setAllUnselected();
+          //          bRectClone.setFill(Color.rgb(200, 200, 200));
         });
 
     return clone;
