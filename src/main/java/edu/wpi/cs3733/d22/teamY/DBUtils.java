@@ -15,6 +15,57 @@ public class DBUtils {
 
   private DBUtils() {}
 
+  public static int checkAvailableEquipmentOnFloor(String floor, String equipType) {
+
+    List<MedEquip> floorEquip = getEquipmentOnFloor(floor, equipType);
+
+    int availableCounter = 0;
+    for(MedEquip m : floorEquip){
+      if(m.isClean().equals(1)){
+        availableCounter++;
+      }
+    }
+
+    return availableCounter;
+  }
+
+  public static int checkUnvailableEquipmentOnFloor(String floor, String equipType) {
+
+    List<MedEquip> floorEquip = getEquipmentOnFloor(floor, equipType);
+
+    int unavailableCounter = 0;
+    for(MedEquip m : floorEquip){
+      if(m.isClean().equals(0)){
+        unavailableCounter++;
+      }
+    }
+
+    return unavailableCounter;
+  }
+
+  private static List<MedEquip> getEquipmentOnFloor(String floor, String equipType){
+    List<Location> allFloorLocations = getLocationsOnFloor(floor);
+    ArrayList<String> floorIds = new ArrayList<>();
+    for(Location l : allFloorLocations){
+      floorIds.add(l.getNodeID());
+    }
+
+    Session s = SessionManager.getSession();
+    List<MedEquip> equipment =
+            s.createQuery("from MedEquip where equipType = :equipType and isClean = '1'").list();
+    s.close();
+
+
+    ArrayList<MedEquip> floorEquip = new ArrayList<>();
+    for(int i = 0; i < equipment.size(); i++){
+      String locID = equipment.get(i).getEquipLocId();
+      if(floorIds.contains(locID)){
+        floorEquip.add(equipment.get(i));
+      }
+    }
+    return floorEquip;
+  }
+
   public static List<Location> getLocationsOnFloor(String floor) {
     return DBManager.getAll(Location.class, new Where(Location.FLOOR, floor));
   }
