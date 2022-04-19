@@ -5,6 +5,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -14,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" stylesheets="@css/Fonts.css" prefHeight="800.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ActiveServiceRequestController">
+<AnchorPane fx:id="mainPane" prefHeight="800.0" prefWidth="930.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.ActiveServiceRequestController">
     <children>
       <Label styleClass="title" text="Active Service Requests">
          <textFill>
@@ -95,5 +97,10 @@
             <Font name="Calibri Italic" size="29.0" />
          </font>
       </Label>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="860.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/icons/Help.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
