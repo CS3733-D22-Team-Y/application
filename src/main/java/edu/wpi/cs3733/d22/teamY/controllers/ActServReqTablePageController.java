@@ -13,7 +13,7 @@ public class ActServReqTablePageController {
 
   @FXML private TableView<MedEquipReq> medEquipReqTableView;
 
-  @FXML Pane sidebarPane;
+  @FXML private AnchorPane sidebarPane;
   @FXML private JFXButton closeSidebarHiddenButton;
   @FXML private JFXHamburger sidebarHamburger;
 
@@ -60,6 +60,7 @@ public class ActServReqTablePageController {
     openSidebarLayout();
 
      */
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   public static class ChangeTheme {

@@ -5,7 +5,7 @@ import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
+import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class FloralRequestController {
   // Radio Buttons
@@ -30,7 +31,8 @@ public class FloralRequestController {
   @FXML private TextArea input_AdditionalNotes;
   // Error Label
   @FXML private TextArea errorLabel;
-
+  // Side bar
+  @FXML private AnchorPane sidebarPane;
   private Scene requestMenu = null;
 
   // Bouquet types text. These should be changed depending on what the names in the database are.
@@ -41,9 +43,10 @@ public class FloralRequestController {
   public FloralRequestController() {}
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
-  public void initialize() {
+  public void initialize() throws IOException {
 
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   @FXML
@@ -57,12 +60,13 @@ public class FloralRequestController {
    * @param additionalNotes Any additional notes.
    * @param bouquetTypeSelected The type of bouquet selected.
    */
-  private void submitRequest(String roomID, String additionalNotes, String bouquetTypeSelected)
+  private void submitRequest(
+      String roomID, String assignedNurse, String additionalNotes, String bouquetTypeSelected)
       throws IOException {
     DBManager.save(
         new ServiceRequest(
             RequestTypes.FLORAL,
-            "none",
+            assignedNurse,
             roomID,
             additionalNotes,
             1,
@@ -82,12 +86,13 @@ public class FloralRequestController {
         && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
+          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           getBouquetType());
       errorLabel.setText("");
-      SceneUtil.welcomePage.mainPage();
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/FloralRequest.fxml");
+      SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/SideBar.fxml");
+      NewSceneLoading.reloadScene("views/ActiveServiceRequest.fxml");
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
       resetAllFields();
     } else {
       errorLabel.setText("Missing Required Fields.");
@@ -101,12 +106,11 @@ public class FloralRequestController {
         || !input_AssignedNurse.getText().equals("")
         || !input_AdditionalNotes.getText().equals("")
         || !Objects.equals(roomsHiddenField.getText(), "")) {
-      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
-      if (!SceneLoading.stayOnPage) {
-        SceneUtil.welcomePage.mainPage();
+      if (SceneLoading.stayOnPage) {
+        NewSceneLoading.loadScene("views/requestTypes/FloralRequest.fxml");
       }
     } else {
-      SceneUtil.welcomePage.mainPage();
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
     }
   }
 

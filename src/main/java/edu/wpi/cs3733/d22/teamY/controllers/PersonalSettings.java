@@ -12,14 +12,26 @@ public class PersonalSettings {
   // Base pane for displaying new scenes
   @FXML private Pane mapPane;
   // Sidebar
-  @FXML private Pane sidebarPane;
+  @FXML private AnchorPane sidebarPane;
   @FXML private JFXButton closeSidebarHiddenButton;
   @FXML private JFXHamburger sidebarHamburger;
   AnchorPane sidebar = null;
   public static Employee currentEmployee =
       new Employee(
-          "-1", "Guest", "Guest", "Guest", "Guest", "Guest", "Guest", 0, "none", "Guest", " ", " ",
-          " ", " ");
+          "11",
+          "Admin",
+          "Admin",
+          "ADMIN",
+          "1",
+          "92668751",
+          "92668751",
+          5,
+          "yubikey:ignore;email:crhorn@wpi.edu;",
+          " ",
+          " ",
+          " ",
+          " ",
+          "none");
 
   @FXML
   void initialize() throws IOException {

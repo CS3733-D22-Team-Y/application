@@ -5,7 +5,7 @@ import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
+import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
@@ -14,6 +14,7 @@ import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class MealRequestController {
   // Text input
@@ -34,7 +35,8 @@ public class MealRequestController {
   @FXML private MFXRadioButton appleRadioButton;
   // Error Label
   @FXML private TextArea errorLabel;
-
+  // Side bar
+  @FXML private AnchorPane sidebarPane;
   // Combobox text items
   private final String textOther = "Other (specify)";
   private final String textNone = "None";
@@ -55,7 +57,7 @@ public class MealRequestController {
   public MealRequestController() throws IOException {}
 
   @FXML
-  public void initialize() {
+  public void initialize() throws IOException {
     // Required b/c SceneBuilder doesn't provide a ComboBox element editor
     dietaryRestrictionsSelectionBox
         .getItems()
@@ -64,6 +66,7 @@ public class MealRequestController {
 
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
     restrictionsHiddenField.setText("None");
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   @FXML
@@ -91,6 +94,7 @@ public class MealRequestController {
    */
   private void submitRequest(
       String roomID,
+      String assignedNurse,
       String additionalNotes,
       String mainChoice,
       String sideChoice,
@@ -99,7 +103,7 @@ public class MealRequestController {
     DBManager.save(
         new ServiceRequest(
             RequestTypes.MEAL,
-            "none",
+            assignedNurse,
             roomID,
             additionalNotes,
             1,
@@ -128,16 +132,16 @@ public class MealRequestController {
     if (mealSelected && sideSelected && allFields) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
+          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           getMainChoice(),
           getSideChoice(),
           dietaryRestrictionsSelectionBox.getValue(),
           input_AdditionalNotes.getText());
       errorLabel.setText("");
-      SceneUtil.welcomePage.mainPage();
-
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/MealRequest.fxml");
+      SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/SideBar.fxml");
+      NewSceneLoading.reloadScene("views/ActiveServiceRequest.fxml");
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
       resetAllFields();
     } else {
       if (allFields || sideSelected || mealSelected) {
@@ -163,11 +167,11 @@ public class MealRequestController {
     // Checks if a bouquet choice has been made
     if (mealSelected || sideSelected || allFields) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
-      if (!SceneLoading.stayOnPage) {
-        SceneUtil.welcomePage.mainPage();
+      if (SceneLoading.stayOnPage) {
+        NewSceneLoading.loadScene("views/requestTypes/MealRequest.fxml");
       }
     } else {
-      SceneUtil.welcomePage.mainPage();
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
     }
   }
 

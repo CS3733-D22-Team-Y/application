@@ -1,29 +1,19 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
-import edu.wpi.cs3733.d22.teamY.App;
 import java.io.IOException;
-import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
 public class SideBarController {
-  // Constant locations
-  protected static final Integer MAP_LIST_LOCATION = 0;
-  protected static final Integer SERVICES_LIST_LOCATION = 1;
-  protected static final Integer EQUIPMENT_LIST_LOCATION = 2;
-  protected static final Integer TASKS_LIST_LOCATION = 3;
-  protected static final Integer INBOX_LIST_LOCATION = 4;
-  protected static final Integer PROFILE_LIST_LOCATION = 5;
 
   @FXML AnchorPane mainPane;
-  @FXML Pane mainScreenPane;
 
   // Scaling
   @FXML private VBox bottomSidebarText;
@@ -72,24 +62,16 @@ public class SideBarController {
         profileHiddenRect,
         inboxHiddenRect,
         logoutHiddenRect);
-    SceneUtil.initializePanes(
-        mainScreenPane,
-        "views/Map.fxml",
-        "views/RequestMenu.fxml",
-        "views/MedEquipTable.fxml",
-        "views/ActiveServiceRequest.fxml",
-        "views/ActServReqTable.fxml",
-        "views/PersonalSettings.fxml",
-        "views/SecondaryMap_TEMPLATE.fxml");
-    SceneUtil.hideAllBackgrounds(mainScreenPane.getChildren());
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+
+    mainPane.setBackground(Background.EMPTY);
+    NewSceneLoading.sideBarController = this;
   }
 
   @FXML
-  void initializeScale() throws IOException {
-
-    currScene = bottomSidebarText.getScene();
+  void initializeScale(Scene currScene) throws IOException {
+    // currScene = bottomSidebarText.getScene();
     // Bottom sidebar text
+    /*
     bottomSidebarText.layoutYProperty().bind(currScene.heightProperty().subtract(200));
     bottomSidebarHiddenButtons.layoutYProperty().bind(currScene.heightProperty().subtract(200));
     bottomSidebarRectangles.layoutYProperty().bind(currScene.heightProperty().subtract(200));
@@ -123,9 +105,11 @@ public class SideBarController {
     sidebarBindToLabel(inboxHiddenRect, inboxButtonHitbox, inboxLabel);
     sidebarBindToLabel(profileHiddenRect, profileButtonHitbox, profileLabel);
     sidebarBindToLabel(logoutHiddenRect, logoutButtonHitbox, logoutLabel);
+     */
   }
 
   private void resizeMainScreen() {
+    /*
     mainScreenPane.scaleYProperty().bind(currScene.heightProperty().subtract(20).divide(780));
     mainScreenPane
         .layoutYProperty()
@@ -135,6 +119,7 @@ public class SideBarController {
     mainScreenPane
         .layoutXProperty()
         .bind(mainScreenPane.scaleXProperty().multiply(460).subtract(190));
+     */
   }
 
   private void sidebarBindToHeight(Shape... shapes) {
@@ -269,14 +254,17 @@ public class SideBarController {
 
   @FXML
   void loadMap() throws IOException {
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(MAP_LIST_LOCATION).setVisible(true);
+    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    // mainScreenPane.getChildren().get(MAP_LIST_LOCATION).setVisible(true);
+    // SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/RequestMenu.fxml");
+    NewSceneLoading.loadScene("views/Map.fxml");
     setButtonSelected(mapHiddenRect);
   }
 
   @FXML
   void loadViewServiceRequests() throws IOException {
     // Reset to the main request screen
+    /*
     AnchorPane bgPane =
         (AnchorPane) mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).lookup("#bgPane");
     SceneUtil.hideAllPanes(bgPane.getChildren());
@@ -284,56 +272,53 @@ public class SideBarController {
     // Main code
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).setVisible(true);
+     */
     setButtonSelected(servicesHiddenRect);
-    currScene
-        .getStylesheets()
-        .add(Objects.requireNonNull(App.class.getResource("views/css/Fonts.css")).toExternalForm());
-    if (PersonalSettings.currentEmployee.getTheme().equals("DARK")) {
-      currScene
-          .getStylesheets()
-          .add(
-              Objects.requireNonNull(App.class.getResource("views/css/ThemeDark.css"))
-                  .toExternalForm());
-    }
+    NewSceneLoading.loadScene("views/RequestMenu.fxml");
   }
 
   @FXML
   void loadEquipment() {
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(EQUIPMENT_LIST_LOCATION).setVisible(true);
+    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    // mainScreenPane.getChildren().get(EQUIPMENT_LIST_LOCATION).setVisible(true);
+    NewSceneLoading.loadScene("views/MedEquipTable.fxml");
     setButtonSelected(equipmentHiddenRect);
   }
 
   @FXML
   void loadTasks() {
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(TASKS_LIST_LOCATION).setVisible(true);
+    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    // mainScreenPane.getChildren().get(TASKS_LIST_LOCATION).setVisible(true);
     setButtonSelected(tasksHiddenRect);
+    NewSceneLoading.loadScene("views/ActiveServiceRequest.fxml");
   }
 
   @FXML
   void loadHome() {
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     setButtonSelected(homeHiddenRect);
   }
 
   @FXML
-  void loadInbox() {
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(INBOX_LIST_LOCATION).setVisible(true);
+  void loadInbox() throws IOException {
+    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    // mainScreenPane.getChildren().get(INBOX_LIST_LOCATION).setVisible(true);
     setButtonSelected(inboxHiddenRect);
+    NewSceneLoading.addScene("views/ChatSelector.fxml");
+    NewSceneLoading.loadScene("views/ChatSelector.fxml");
   }
 
   @FXML
   void loadProfile() {
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(PROFILE_LIST_LOCATION).setVisible(true);
+    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    // mainScreenPane.getChildren().get(PROFILE_LIST_LOCATION).setVisible(true);
     setButtonSelected(profileHiddenRect);
+    NewSceneLoading.loadScene("views/PersonalSettings.fxml");
   }
 
   @FXML
   void loadHome_noUpdateButton() {
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
+    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     SceneUtil.removeSelection(
         mapHiddenRect,
         servicesHiddenRect,

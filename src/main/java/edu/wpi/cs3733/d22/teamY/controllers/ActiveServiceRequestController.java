@@ -10,6 +10,7 @@ import java.util.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -23,6 +24,8 @@ public class ActiveServiceRequestController {
   @FXML private JFXTextArea extraInfoText;
 
   @FXML private Label nothingToSeeHere;
+
+  @FXML AnchorPane sidebarPane;
 
   private ArrayList<RequestSet> rqPairs;
 
@@ -62,6 +65,8 @@ public class ActiveServiceRequestController {
     nothingToSeeHere.setVisible(rqPairs.isEmpty());
 
     SceneUtil.serviceRequests = this;
+
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   public void fillInfoField(String info) {

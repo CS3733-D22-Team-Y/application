@@ -15,8 +15,8 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" prefHeight="780.0" prefWidth="920.0" stylesheets="@css/Blank.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MapPageController">
-   <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane fx:id="mainPane" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MapPageController">
+   <BorderPane layoutX="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="-270.0" AnchorPane.topAnchor="0.0">
       <center>
          <AnchorPane fx:id="mapRoot" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
       </center>
@@ -335,7 +335,7 @@
          </Pane>
       </bottom>
    </BorderPane>
-   <Pane fx:id="locationInfoPane" layoutX="701.0" prefHeight="780.0" prefWidth="219.0" visible="false">
+   <Pane fx:id="locationInfoPane" layoutX="971.0" prefHeight="780.0" prefWidth="219.0" visible="false">
       <children>
          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="780.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="219.0" />
          <VBox layoutX="1.0" layoutY="102.0" spacing="50.0">
@@ -386,7 +386,7 @@
          <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Close" />
       </children>
    </Pane>
-   <Pane fx:id="equipInfoPane" layoutX="701.0" prefHeight="780.0" prefWidth="219.0" visible="false">
+   <Pane fx:id="equipInfoPane" layoutX="971.0" prefHeight="780.0" prefWidth="219.0" visible="false">
       <children>
          <MFXButton />
          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="780.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="219.0" />
@@ -435,7 +435,7 @@
          </MFXButton>
       </children>
    </Pane>
-   <Pane fx:id="reqInfoPane" layoutX="711.0" prefHeight="790.0" prefWidth="219.0">
+   <Pane fx:id="reqInfoPane" layoutX="981.0" prefHeight="790.0" prefWidth="219.0">
       <children>
          <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="780.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="219.0" />
          <VBox layoutX="-20.0" layoutY="150.0" spacing="50.0">
@@ -487,7 +487,8 @@
          <Label layoutX="13.0" layoutY="480.0" text="Description:" />
       </children>
    </Pane>
-   <TextField fx:id="selectorBoxText1" editable="false" layoutX="787.0" layoutY="35.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: FFFFFFFF;" />
-   <MFXLegacyComboBox fx:id="modeBox" layoutX="770.0" layoutY="35.0" lineStrokeWidth="0.0" prefHeight="25.0" prefWidth="127.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="35.0" />
-   <TextField fx:id="selectorBoxText" editable="false" layoutX="787.0" layoutY="35.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: FFFFFFFF;" AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="35.0" />
+   <TextField fx:id="selectorBoxText1" editable="false" layoutX="1057.0" layoutY="35.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: FFFFFFFF;" />
+   <MFXLegacyComboBox fx:id="modeBox" layoutX="1043.0" layoutY="35.0" lineStrokeWidth="0.0" prefHeight="25.0" prefWidth="127.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="35.0" />
+   <TextField fx:id="selectorBoxText" editable="false" layoutX="1043.6000000000001" layoutY="35.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: FFFFFFFF;" AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="35.0" />
+   <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
 </AnchorPane>

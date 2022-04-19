@@ -16,9 +16,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="780.0" minWidth="920.0" prefHeight="780.0" prefWidth="920.0" stylesheets="@../css/Blank.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.SecurityRequestController">
+<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.SecurityRequestController">
     <children>
-        <Label styleClass="title" text="Security Request">
+        <Label layoutX="270.0" styleClass="title" text="Security Request">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -39,7 +39,7 @@
                 <Font name="Arial Rounded MT Bold" size="60.0" />
             </font>
         </Label>
-        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="270.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
             <fill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -57,18 +57,18 @@
                 </LinearGradient>
             </fill>
         </Rectangle>
-        <Label layoutX="15.0" layoutY="150.0" styleClass="inputLabel" text="Nurse:">
+        <Label layoutX="285.0" layoutY="150.0" styleClass="inputLabel" text="Nurse:">
             <font>
                 <Font name="Calibri Bold" size="30.0" />
             </font>
         </Label>
-        <Label layoutX="15.0" layoutY="200.0" styleClass="inputLabel" text="Room:">
+        <Label layoutX="285.0" layoutY="200.0" styleClass="inputLabel" text="Room:">
             <font>
                 <Font name="Calibri Bold" size="30.0" />
             </font>
         </Label>
-        <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="525.0" layoutX="10.0" layoutY="255.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
-        <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="15.0" layoutY="260.0" prefHeight="515.0" prefWidth="390.0" promptText="Additional Text..." unFocusColor="#ffffff00">
+        <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="525.0" layoutX="280.0" layoutY="255.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
+        <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="285.0" layoutY="260.0" prefHeight="515.0" prefWidth="390.0" promptText="Additional Text..." unFocusColor="#ffffff00">
             <font>
                 <Font name="Calibri" size="20.0" />
             </font>
@@ -76,22 +76,22 @@
             <String fx:value="inputLabel" />
             <String fx:value="requestInput" />
          </styleClass></JFXTextArea>
-        <MFXTextField fx:id="input_AssignedNurse" floatMode="DISABLED" layoutX="160.0" layoutY="150.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
+        <MFXTextField fx:id="input_AssignedNurse" floatMode="DISABLED" layoutX="430.0" layoutY="150.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
             <font>
                 <Font name="Calibri" size="20.0" />
             </font>
         </MFXTextField>
-        <MFXButton computeRadiusMultiplier="false" layoutX="710.0" layoutY="730.0" onAction="#resetAllFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" styleClass="requestButton" text="Reset" textFill="WHITE">
+        <MFXButton computeRadiusMultiplier="false" layoutX="980.0" layoutY="730.0" onAction="#resetAllFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" styleClass="requestButton" text="Reset" textFill="WHITE">
             <font>
                 <Font name="Calibri Bold" size="20.0" />
             </font>
         </MFXButton>
-        <MFXButton fx:id="submitButton" computeRadiusMultiplier="false" layoutX="820.0" layoutY="730.0" onAction="#submitButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Submit" textFill="WHITE">
+        <MFXButton fx:id="submitButton" computeRadiusMultiplier="false" layoutX="1090.0" layoutY="730.0" onAction="#submitButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Submit" textFill="WHITE">
             <font>
                 <Font name="Calibri Bold" size="20.0" />
             </font>
         </MFXButton>
-        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="110.0" prefWidth="300.0" styleClass="subtitle" text="Purpose" textAlignment="RIGHT">
+        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="890.0" layoutY="110.0" prefWidth="300.0" styleClass="subtitle" text="Purpose" textAlignment="RIGHT">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -112,7 +112,7 @@
                 <Font name="Arial Rounded MT Bold" size="45.0" />
             </font>
         </Label>
-        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="520.0" layoutY="175.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0">
+        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="790.0" layoutY="175.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0">
             <fill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -130,7 +130,7 @@
                 </LinearGradient>
             </fill>
         </Rectangle>
-      <MFXRadioButton fx:id="unwantedGuestRadioButton" layoutX="520.0" layoutY="200.0" onAction="#disableMiscBox" radius="12.0" styleClass="requestOption" text="Unwanted Guest">
+      <MFXRadioButton fx:id="unwantedGuestRadioButton" layoutX="790.0" layoutY="200.0" onAction="#disableMiscBox" radius="12.0" styleClass="requestOption" text="Unwanted Guest">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
@@ -138,27 +138,27 @@
             <ToggleGroup fx:id="Purpose" />
          </toggleGroup>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="disruptionRadioButton" layoutX="520.0" layoutY="250.0" onAction="#disableMiscBox" radius="12.0" styleClass="requestOption" text="Disruption" toggleGroup="$Purpose">
+      <MFXRadioButton fx:id="disruptionRadioButton" layoutX="790.0" layoutY="250.0" onAction="#disableMiscBox" radius="12.0" styleClass="requestOption" text="Disruption" toggleGroup="$Purpose">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="theftRadioButton" layoutX="520.0" layoutY="300.0" onAction="#disableMiscBox" radius="12.0" styleClass="requestOption" text="Suspected Theft" toggleGroup="$Purpose">
+      <MFXRadioButton fx:id="theftRadioButton" layoutX="790.0" layoutY="300.0" onAction="#disableMiscBox" radius="12.0" styleClass="requestOption" text="Suspected Theft" toggleGroup="$Purpose">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="otherRadioButton" layoutX="520.0" layoutY="350.0" onAction="#enableMiscBox" radius="12.0" styleClass="requestOption" text="Other:" toggleGroup="$Purpose">
+      <MFXRadioButton fx:id="otherRadioButton" layoutX="790.0" layoutY="350.0" onAction="#enableMiscBox" radius="12.0" styleClass="requestOption" text="Other:" toggleGroup="$Purpose">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXTextField fx:id="input_OtherText" allowEdit="false" floatMode="DISABLED" layoutX="650.0" layoutY="350.0" pickOnBounds="false" prefHeight="42.0" prefWidth="270.0" selectable="false" styleClass="requestInput">
+      <MFXTextField fx:id="input_OtherText" allowEdit="false" floatMode="DISABLED" layoutX="920.0" layoutY="350.0" pickOnBounds="false" prefHeight="42.0" prefWidth="270.0" selectable="false" styleClass="requestInput">
          <font>
             <Font name="Calibri" size="20.0" />
          </font>
       </MFXTextField>
-      <MFXRadioButton fx:id="mostUrgentRadioButton" layoutX="520.0" layoutY="500.0" radius="10.0" styleClass="requestOption" text="Most Urgent">
+      <MFXRadioButton fx:id="mostUrgentRadioButton" layoutX="790.0" layoutY="500.0" radius="10.0" styleClass="requestOption" text="Most Urgent">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
@@ -166,17 +166,17 @@
             <ToggleGroup fx:id="Problem" />
          </toggleGroup>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="urgentRadioButton" layoutX="520.0" layoutY="550.0" radius="10.0" styleClass="requestOption" text="Urgent" toggleGroup="$Problem">
+      <MFXRadioButton fx:id="urgentRadioButton" layoutX="790.0" layoutY="550.0" radius="10.0" styleClass="requestOption" text="Urgent" toggleGroup="$Problem">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="lowPriorityRadioButton" layoutX="520.0" layoutY="600.0" radius="10.0" styleClass="requestOption" text="Low Priority" toggleGroup="$Problem">
+      <MFXRadioButton fx:id="lowPriorityRadioButton" layoutX="790.0" layoutY="600.0" radius="10.0" styleClass="requestOption" text="Low Priority" toggleGroup="$Problem">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="410.0" prefHeight="66.0" prefWidth="400.0" styleClass="subtitle" text="Problem Level" textAlignment="RIGHT">
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="790.0" layoutY="410.0" prefHeight="66.0" prefWidth="400.0" styleClass="subtitle" text="Problem Level" textAlignment="RIGHT">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -197,7 +197,7 @@
             <Font name="Arial Rounded MT Bold" size="40.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="520.0" layoutY="475.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0">
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="790.0" layoutY="475.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -215,17 +215,18 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <JFXTextArea fx:id="errorLabel" depthTest="DISABLE" disable="true" editable="false" focusColor="#ffffff00" layoutX="675.0" layoutY="675.0" opacity="0.97" prefHeight="10.0" prefWidth="243.0" style="-fx-text-fill: RED;" styleClass="plainText" unFocusColor="#ffffff00">
+      <JFXTextArea fx:id="errorLabel" depthTest="DISABLE" disable="true" editable="false" focusColor="#ffffff00" layoutX="945.0" layoutY="675.0" opacity="0.97" prefHeight="10.0" prefWidth="243.0" style="-fx-text-fill: RED;" styleClass="plainText" unFocusColor="#ffffff00">
          <font>
             <Font name="Calibri" size="15.0" />
          </font>
       </JFXTextArea>
-      <TextField fx:id="roomsHiddenField" layoutX="160.0" layoutY="200.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
-      <JFXComboBox fx:id="roomsComboBox" layoutX="160.0" layoutY="200.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="inputField" unFocusColor="#ffffff00" />
-      <MFXButton computeRadiusMultiplier="false" layoutX="820.0" layoutY="-4.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
+      <TextField fx:id="roomsHiddenField" layoutX="430.0" layoutY="200.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
+      <JFXComboBox fx:id="roomsComboBox" layoutX="430.0" layoutY="200.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="inputField" unFocusColor="#ffffff00" />
+      <MFXButton computeRadiusMultiplier="false" layoutX="1090.0" layoutY="-4.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </MFXButton>
+      <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
     </children>
 </AnchorPane>
