@@ -4,8 +4,8 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.LaundryRequest;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class LaundryRequestController {
   // Radio Buttons
@@ -30,6 +31,8 @@ public class LaundryRequestController {
   @FXML private TextArea input_AdditionalNotes;
   // Error Label
   @FXML private TextArea errorLabel;
+  // Side bar
+  @FXML private AnchorPane sidebarPane;
 
   private Scene requestMenu = null;
 
@@ -39,8 +42,9 @@ public class LaundryRequestController {
 
   public LaundryRequestController() {}
 
-  public void initialize() {
+  public void initialize() throws IOException {
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   @FXML
@@ -57,13 +61,14 @@ public class LaundryRequestController {
    * @param additionalNotes Any additional notes.
    * @param laundryTypeSelected The type of result selected.
    */
-  private void submitRequest(String roomID, String additionalNotes, String laundryTypeSelected) {
+  private void submitRequest(
+      String roomID, String assignedNurse, String additionalNotes, String laundryTypeSelected) {
     String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.LAUNDRY_REQUEST));
     DBManager.save(
         new LaundryRequest(
             nextRequest,
             roomID,
-            "",
+            assignedNurse,
             RequestStatus.INCOMPLETE,
             additionalNotes,
             laundryTypeSelected));
@@ -80,12 +85,13 @@ public class LaundryRequestController {
         && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
+          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");
-      SceneUtil.welcomePage.mainPage();
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/LaundryRequest.fxml");
+      SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/SideBar.fxml");
+      NewSceneLoading.reloadScene("views/ActiveServiceRequest.fxml");
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
       resetAllFields();
     } else {
       errorLabel.setText("Missing Required Fields.");
@@ -99,11 +105,11 @@ public class LaundryRequestController {
         || !Objects.equals(roomsHiddenField.getText(), "")
         || !Objects.equals(input_AssignedNurse.getText(), "")) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
-      if (!SceneLoading.stayOnPage) {
-        SceneUtil.welcomePage.mainPage();
+      if (SceneLoading.stayOnPage) {
+        NewSceneLoading.loadScene("views/requestTypes/LaundryRequest.fxml");
       }
     } else {
-      SceneUtil.welcomePage.mainPage();
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
     }
   }
 

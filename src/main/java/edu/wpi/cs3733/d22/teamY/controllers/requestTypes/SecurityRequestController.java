@@ -5,8 +5,8 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.SecurityServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class SecurityRequestController {
   // Text input
@@ -39,7 +40,8 @@ public class SecurityRequestController {
   @FXML private MFXRadioButton lowPriorityRadioButton;
   // Error Label
   @FXML private TextArea errorLabel;
-
+  // Side bar
+  @FXML private AnchorPane sidebarPane;
   private Scene requestMenu = null;
 
   // Security types text. These should be changed depending on what the names in the database are.
@@ -57,8 +59,9 @@ public class SecurityRequestController {
   public SecurityRequestController() throws IOException {}
 
   @FXML
-  void initialize() {
+  void initialize() throws IOException {
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   @FXML
@@ -77,7 +80,11 @@ public class SecurityRequestController {
    * @param requestPriority The priority of the request.
    */
   private void submitRequest(
-      String roomID, String additionalNotes, String requestTypeSelected, String requestPriority) {
+      String roomID,
+      String assignedNurse,
+      String additionalNotes,
+      String requestTypeSelected,
+      String requestPriority) {
 
     String nextRequest =
         String.valueOf(DBUtils.getNextRequestNum(EntryType.SECURITY_SERVICE_REQUEST));
@@ -85,7 +92,7 @@ public class SecurityRequestController {
         new SecurityServiceRequest(
             nextRequest,
             roomID,
-            "",
+            assignedNurse,
             RequestStatus.INCOMPLETE,
             additionalNotes,
             requestTypeSelected,
@@ -114,13 +121,14 @@ public class SecurityRequestController {
     } else if (typeSelected && prioritySelected && allFields) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
+          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           getRequestType(),
           getRequestPriority());
       errorLabel.setText("");
-      SceneUtil.welcomePage.mainPage();
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/SecurityRequest.fxml");
+      SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/SideBar.fxml");
+      NewSceneLoading.reloadScene("views/ActiveServiceRequest.fxml");
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
       resetAllFields();
 
     } else {
@@ -147,11 +155,11 @@ public class SecurityRequestController {
 
     if (typeSelected || prioritySelected || allFields) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
-      if (!SceneLoading.stayOnPage) {
-        SceneUtil.welcomePage.mainPage();
+      if (SceneLoading.stayOnPage) {
+        NewSceneLoading.loadScene("views/requestTypes/SecurityRequest.fxml");
       }
     } else {
-      SceneUtil.welcomePage.mainPage();
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
     }
   }
 

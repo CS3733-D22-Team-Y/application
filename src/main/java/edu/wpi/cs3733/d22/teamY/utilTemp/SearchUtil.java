@@ -1,6 +1,8 @@
 package edu.wpi.cs3733.d22.teamY.utilTemp;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class SearchUtil {
   public static int compute_Levenshtein_distanceDP(String str1, String str2) {
@@ -59,5 +61,52 @@ public class SearchUtil {
   static int minm_edits(int... nums) {
 
     return Arrays.stream(nums).min().orElse(Integer.MAX_VALUE);
+  }
+
+  /**
+   * Sorts the given array of strings using the levenshtein distance to your search term.
+   *
+   * @param searchTerm the search term
+   * @param list the list of strings to sort
+   * @return the sorted list by levenshtein distance
+   */
+  public static ArrayList<String> search(String searchTerm, String[] list) {
+    ArrayList<String> sortedList = new ArrayList<>();
+    for (String s : list) {
+      sortedList.add(s);
+    }
+    // sort the list by levenshtein distance
+    sortedList.sort(Comparator.comparingInt(s -> compute_Levenshtein_distanceDP(searchTerm, s)));
+    return sortedList;
+  }
+
+  public static String getClosestMatch(String searchTerm, String[] list) {
+    return search(searchTerm, list).get(0);
+  }
+
+  /**
+   * wak algo that compares lev dist per word of s1 w length taken into account
+   *
+   * @param s1 A possible match
+   * @param query The search term
+   * @return A score for the match
+   */
+  public static int getMatchScore(String s1, String query) {
+    query = query.toLowerCase();
+    if (s1.length() == 0 || query.length() == 0) {
+      return 0;
+    }
+    String[] parsedName = s1.toLowerCase().split(" ");
+    int d1 = 100;
+    for (String s : parsedName) {
+      if (s.length() < query.length()) {
+        continue;
+      }
+      int dist = SearchUtil.compute_Levenshtein_distanceDP(s.substring(0, query.length()), query);
+      if (dist < d1) {
+        d1 = dist;
+      }
+    }
+    return d1;
   }
 }

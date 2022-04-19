@@ -5,8 +5,8 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.LabRequest;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
@@ -16,6 +16,7 @@ import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class LabRequestController {
 
@@ -33,7 +34,8 @@ public class LabRequestController {
   @FXML private MFXRadioButton mriRadioButton;
   // Error Label
   @FXML private TextArea errorLabel;
-
+  // Side bar
+  @FXML private AnchorPane sidebarPane;
   // Result types text. These should be changed depending on what the names in the database are.
   private final String bloodSampleText = "bloodSample";
   private final String urineSampleText = "urineSample";
@@ -42,8 +44,9 @@ public class LabRequestController {
   private final String mriText = "mri";
 
   @FXML
-  void initialize() {
+  void initialize() throws IOException {
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   @FXML
@@ -60,13 +63,14 @@ public class LabRequestController {
    * @param additionalNotes Any additional notes.
    * @param resultTypeSelected The type of result selected.
    */
-  private void submitRequest(String roomID, String additionalNotes, String resultTypeSelected) {
+  private void submitRequest(
+      String roomID, String assignedNurse, String additionalNotes, String resultTypeSelected) {
     String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.LAB_REQUEST));
     DBManager.save(
         new LabRequest(
             nextRequest,
             roomID,
-            "",
+            assignedNurse,
             RequestStatus.INCOMPLETE,
             additionalNotes,
             resultTypeSelected));
@@ -83,11 +87,13 @@ public class LabRequestController {
         && !Objects.equals(input_AssignedNurse.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
+          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");
-      SceneUtil.welcomePage.mainPage();
-      SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/requestTypes/LabResult.fxml");
+      SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/SideBar.fxml");
+      NewSceneLoading.reloadScene("views/ActiveServiceRequest.fxml");
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
       resetAllFields();
     } else {
       errorLabel.setText("Missing Required Fields.");
@@ -101,11 +107,11 @@ public class LabRequestController {
         || !Objects.equals(roomsHiddenField.getText(), "")
         || !Objects.equals(input_AssignedNurse.getText(), "")) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
-      if (!SceneLoading.stayOnPage) {
-        SceneUtil.welcomePage.mainPage();
+      if (SceneLoading.stayOnPage) {
+        NewSceneLoading.loadScene("views/requestTypes/LabResult.fxml");
       }
     } else {
-      SceneUtil.welcomePage.mainPage();
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
     }
   }
 
