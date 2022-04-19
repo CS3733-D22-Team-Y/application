@@ -5,8 +5,8 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
@@ -63,7 +63,8 @@ public class LabRequestController {
    * @param additionalNotes Any additional notes.
    * @param resultTypeSelected The type of result selected.
    */
-  private void submitRequest(String roomID, String assignedNurse, String additionalNotes, String resultTypeSelected) {
+  private void submitRequest(
+      String roomID, String assignedNurse, String additionalNotes, String resultTypeSelected) {
     DBManager.save(
         new ServiceRequest(
             RequestTypes.LAB,

@@ -67,7 +67,8 @@ public class TranslatorRequestController {
    * @param additionalNotes Any additional notes.
    * @param languageTypeSelected The type of language selected.
    */
-  private void submitRequest(String roomID, String assignedNuse, String additionalNotes, String languageTypeSelected) {
+  private void submitRequest(
+      String roomID, String assignedNuse, String additionalNotes, String languageTypeSelected) {
     DBManager.save(
         new ServiceRequest(
             RequestTypes.TRANSLATOR,

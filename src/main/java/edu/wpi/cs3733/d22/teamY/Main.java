@@ -19,7 +19,5 @@ public class Main {
     CSVBackup.saveToCSV(EntryType.LOCATION);
     CSVBackup.saveToCSV(EntryType.MED_EQUIP);
     CSVBackup.saveToCSV(EntryType.EMPLOYEE);
-
-
   }
 }
