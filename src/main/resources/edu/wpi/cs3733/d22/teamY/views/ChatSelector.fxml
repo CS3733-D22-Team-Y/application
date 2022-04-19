@@ -43,7 +43,6 @@
                                           <Font name="System Bold" size="26.0" />
                                        </font>
                                     </Label>
-                                    <Circle fx:id="bUnread" fill="DODGERBLUE" layoutX="14.0" layoutY="18.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
                                  </children>
                               </Pane>
                               <VBox fx:id="bNamePrevBox" alignment="CENTER" prefHeight="74.0" prefWidth="249.0">

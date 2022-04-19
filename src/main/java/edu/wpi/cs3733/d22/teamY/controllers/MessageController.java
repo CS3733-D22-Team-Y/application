@@ -39,7 +39,6 @@ public class MessageController {
   @FXML private Pane blankMessage;
   @FXML private Rectangle bRect;
   @FXML private HBox bHbox;
-  @FXML private Circle bUnread;
   @FXML private Pane bPicPane;
   @FXML private Circle bCircle;
   @FXML private Label bInitials;
@@ -83,7 +82,11 @@ public class MessageController {
 
   @FXML private Line chatHeaderLine;
 
+  String hiddenToField = "";
+
   ArrayList<EmployeeResult> results = new ArrayList<>();
+
+  ArrayList<Rectangle> chatBackgrounds = new ArrayList<>();
 
   private String chatID = "";
   private boolean chatOpen = false;
@@ -128,11 +131,14 @@ public class MessageController {
     chatSelector.getChildren().clear();
 
     HashMap<String, Chat> chats = ChatManager.getChats();
+    this.chatBackgrounds.clear();
 
     System.out.println(chats.size());
+    int count = 0;
     for (String key : chats.keySet()) {
-      Pane clone = getBlankMessageClone(key, chats.get(key));
+      Pane clone = getBlankMessageClone(key, chats.get(key), count % 2 == 0);
       chatSelector.getChildren().add(clone);
+      count++;
     }
     // scroll to bottom
     Platform.runLater(
@@ -401,12 +407,11 @@ public class MessageController {
     return clone;
   }
 
-  public Pane getBlankMessageClone(String chatID, Chat chat) {
+  public Pane getBlankMessageClone(String chatID, Chat chat, boolean grey) {
     // create a clone of the blank message pane and all its children
     Pane clone = getPaneClone(blankMessage);
     Rectangle bRectClone = getRectClone(bRect);
     HBox bHboxClone = getHboxClone(bHbox);
-    Circle bUnreadClone = getCircleClone(bUnread);
     Pane bPicPaneClone = getPaneClone(bPicPane);
     Circle bCircleClone = getCircleClone(bCircle);
     Label bInitialsClone = getLabelClone(bInitials);
@@ -428,7 +433,6 @@ public class MessageController {
     // set the circle and initials and unread to be children of the pic pane
     bPicPaneClone.getChildren().add(bCircleClone);
     bPicPaneClone.getChildren().add(bInitialsClone);
-    bPicPaneClone.getChildren().add(bUnreadClone);
 
     // set the name prev vbox to have the messagePreview and name as children
     bNamePrevBoxClone.getChildren().add(bNameClone);
@@ -439,6 +443,10 @@ public class MessageController {
 
     // set the preview text to be the chat's preview
     bPreviewClone.setText(chat.getPosts().get(chat.getPosts().size() - 1).getMessage());
+
+    bRectClone.setFill(Color.rgb(230, 230, 230));
+
+    chatBackgrounds.add(bRectClone);
 
     // set the name text to be employee's name
     String csvNames = "Guest";
@@ -469,9 +477,18 @@ public class MessageController {
           setChatOpen(true);
           setChatPickerOpen(false);
           this.chatIndicator.setText("Chat with: " + finalCsvNames);
+          setAllUnselected();
+          bRectClone.setFill(Color.rgb(200, 200, 200));
         });
 
     return clone;
+  }
+
+  private void setAllUnselected() {
+    chatBackgrounds.forEach(
+        c -> {
+          c.setFill(Color.rgb(230, 230, 230));
+        });
   }
 
   public Pane getPaneClone(Pane p) {
