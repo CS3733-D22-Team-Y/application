@@ -28,6 +28,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
 public class MessageController {
@@ -80,6 +81,8 @@ public class MessageController {
 
   @FXML private Label chatIndicator;
 
+  @FXML private Line chatHeaderLine;
+
   ArrayList<EmployeeResult> results = new ArrayList<>();
 
   private String chatID = "";
@@ -114,6 +117,7 @@ public class MessageController {
     messageAreaContainer.setVisible(chatOpen);
     messageArea.setVisible(chatOpen);
     chatIndicator.setVisible(chatOpen);
+    chatHeaderLine.setVisible(chatOpen);
     if (chatOpen) {
       refreshMessages();
       messageText.requestFocus();

@@ -152,16 +152,16 @@
                </children>
             </VBox>
          </content></MFXScrollPane>
-      <VBox fx:id="newChatArea" alignment="TOP_CENTER" layoutX="698.0" layoutY="58.0" prefHeight="723.0" prefWidth="489.0" visible="false">
+      <VBox fx:id="newChatArea" alignment="TOP_CENTER" layoutX="698.0" layoutY="58.0" prefHeight="723.0" prefWidth="489.0">
          <children>
             <Label prefHeight="48.0" prefWidth="158.0" text="Create a new chat">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <MFXTextField fx:id="toBox" onAction="#selectedChat" onKeyReleased="#getResults" prefHeight="64.0" prefWidth="488.0" promptText="Add by Name or ID#">
+            <MFXTextField fx:id="toBox" onAction="#selectedChat" onKeyReleased="#getResults" prefHeight="64.0" prefWidth="488.0" promptText="Search">
                <font>
-                  <Font size="18.0" />
+                  <Font size="22.0" />
                </font>
                <VBox.margin>
                   <Insets />
@@ -205,6 +205,6 @@
             <Insets left="10.0" />
          </padding>
       </Label>
-      <Line endX="-107.5" endY="-536.0" layoutX="785.0" layoutY="641.0" startX="415.0" startY="-536.0" />
+      <Line fx:id="chatHeaderLine" endX="-107.5" endY="-536.0" layoutX="785.0" layoutY="641.0" startX="415.0" startY="-536.0" />
     </children>
 </AnchorPane>
