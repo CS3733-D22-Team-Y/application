@@ -97,6 +97,9 @@ public class MessageController {
   private boolean chatOpen = false;
   private boolean newChatOpen = false;
 
+  private boolean initialized = false;
+  private String id = "";
+
   // initialize the controller
   public void initialize() throws IOException {
     messageText.setPromptText("Enter your message here");
@@ -107,7 +110,14 @@ public class MessageController {
     String id = PersonalSettings.currentEmployee.getIDNumber();
     //    System.out.println("Init message controller here: " + id + " " +
     // ChatManager.getChats().size());
-    Firebase.chatRef.addChildEventListener(childEventListener);
+    if (!initialized) {
+      id = PersonalSettings.currentEmployee.getIDNumber();
+      Firebase.chatRef.child(id).addChildEventListener(childEventListener);
+    } else {
+      Firebase.chatRef.child(id).removeEventListener(childEventListener);
+      id = PersonalSettings.currentEmployee.getIDNumber();
+      Firebase.chatRef.child(id).addChildEventListener(childEventListener);
+    }
     results.clear();
     resultBank.clear();
     List<Employee> employees = DBManager.getAll(Employee.class);
@@ -125,6 +135,7 @@ public class MessageController {
         });
 
     this.refreshChats();
+    this.initialized = true;
   }
 
   public void setChatOpen(boolean open) {
@@ -149,7 +160,8 @@ public class MessageController {
 
     System.out.println(chats.size());
     int count = 0;
-    for (String key : chats.keySet()) {
+    String[] keys = chats.keySet().toArray(new String[0]);
+    for (String key : keys) {
       Pane clone = getBlankMessageClone(key, chats.get(key), count % 2 == 0);
       chatSelector.getChildren().add(clone);
       count++;
@@ -223,6 +235,10 @@ public class MessageController {
   }
 
   public void selectedChat() {
+    if (hiddenToField.size() == 0) {
+      System.out.println("No users selected");
+      return;
+    }
     chatID = Chat.getChatID(PersonalSettings.currentEmployee.getIDNumber(), hiddenToField);
     System.out.println("Selected chat: " + chatID);
     System.out.println("Attempting to start chat with ID" + chatID);
@@ -504,7 +520,11 @@ public class MessageController {
     String initials = "G";
     String[] names = csvNames.split(",");
     if (names.length > 0) {
-      initials = names[0].substring(0, 1);
+      if (names[0].length() > 0) {
+        initials = names[0].substring(0, 1);
+      } else {
+        System.out.println("Couldn't do get initials of: '" + csvNames + "'");
+      }
     }
 
     bInitialsClone.setText(initials);
@@ -641,8 +661,12 @@ public class MessageController {
 
   ChildEventListener childEventListener =
       new ChildEventListener() {
+
         @Override
         public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
+          Chat c = snapshot.getValue(Chat.class);
+          ChatManager.myChats.put(snapshot.getKey(), c);
+          System.out.println("On Child added: \n" + snapshot.getKey() + " " + c);
           Platform.runLater(
               () -> {
                 refreshChats();
@@ -654,6 +678,12 @@ public class MessageController {
 
         @Override
         public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
+          Chat c = snapshot.getValue(Chat.class);
+          ChatManager.myChats.put(snapshot.getKey(), c);
+          for (String s : c.getUsers()) {
+            Firebase.chatRef.child(s).child(snapshot.getKey()).setValueAsync(c);
+          }
+          System.out.println("On Child changed: \n" + snapshot.getKey() + " " + c);
           Platform.runLater(
               () -> {
                 refreshChats();
@@ -665,6 +695,8 @@ public class MessageController {
 
         @Override
         public void onChildRemoved(DataSnapshot snapshot) {
+          ChatManager.myChats.remove(snapshot.getKey());
+          System.out.println("Removed chat from listener: \n" + snapshot.getKey());
           Platform.runLater(
               () -> {
                 refreshChats();
