@@ -1,4 +1,4 @@
-type,assignedNurse,locationID,additionalNotes,atr0,atr1,atr2,atr3
-FLORAL,Truman S. Harry,ySTOR00103,none,roses,<null>,<null>,<null>
-LAUNDRY,Doc M.D. Medicine,yPATI00103,none,dirty,<null>,<null>,<null>
-MEAL,Truman S. Harry,yPATI00803,none,pizza,apple,none,none
+type,assignedNurse,locationID,additionalNotes,requestPriority,status,atr0,atr1,atr2,atr3
+FLORAL,Truman S. Harry,ySTOR00103,none,1,INCOMPLETE,roses,<null>,<null>,<null>
+LAUNDRY,Doc M.D. Medicine,yPATI00103,none,1,INCOMPLETE,dirty,<null>,<null>,<null>
+MEAL,Truman S. Harry,yPATI00803,none,2,INCOMPLETE,pizza,apple,none,none

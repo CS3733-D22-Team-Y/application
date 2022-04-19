@@ -6,6 +6,7 @@ import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
+import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -64,6 +65,8 @@ public class FloralRequestController {
             "none",
             roomID,
             additionalNotes,
+            1,
+            RequestStatus.INCOMPLETE,
             new String[] {bouquetTypeSelected}));
 
     System.out.println("Saved FloralRequest");

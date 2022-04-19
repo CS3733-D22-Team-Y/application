@@ -15,6 +15,10 @@ public class ServiceRequest implements StringArrayConv {
   private String locationID;
   private String additionalNotes;
 
+  private int requestPriority;
+
+  private RequestStatus status;
+
   private String atr0 = null;
 
   private String atr1 = null;
@@ -40,8 +44,17 @@ public class ServiceRequest implements StringArrayConv {
       String assignedNurse,
       String locationID,
       String additionalNotes,
+      int requestPriority,
+      RequestStatus status,
       String[] customAttributes) {
-    init(type, assignedNurse, locationID, additionalNotes, customAttributes);
+    init(
+        type,
+        assignedNurse,
+        locationID,
+        additionalNotes,
+        requestPriority,
+        status,
+        customAttributes);
   }
 
   private void init(
@@ -49,11 +62,15 @@ public class ServiceRequest implements StringArrayConv {
       String assignedNurse,
       String locationID,
       String additionalNotes,
+      int requestPriority,
+      RequestStatus status,
       String[] customAttributes) {
     this.type = type;
     this.assignedNurse = assignedNurse;
     this.locationID = locationID;
     this.additionalNotes = additionalNotes;
+    this.requestPriority = requestPriority;
+    this.status = status;
 
     try {
       switch (type) {
@@ -61,6 +78,7 @@ public class ServiceRequest implements StringArrayConv {
         case LAUNDRY:
         case LAB:
         case TRANSLATOR:
+        case MEDEQUIP:
           atr0 = customAttributes[0];
           break;
         case MEAL:
@@ -68,9 +86,6 @@ public class ServiceRequest implements StringArrayConv {
           atr1 = customAttributes[1];
           atr2 = customAttributes[2];
           atr3 = customAttributes[3];
-          break;
-        case MEDEQUIP:
-          atr0 = customAttributes[0];
           break;
         case SECURITY:
           atr0 = customAttributes[0];
@@ -226,7 +241,9 @@ public class ServiceRequest implements StringArrayConv {
             args[1],
             args[2],
             args[3],
-            new String[] {args[4], args[5], args[6], args[7]});
+            Integer.parseInt(args[4]),
+            RequestStatus.toStatus(args[5]),
+            new String[] {args[6], args[7], args[8], args[9]});
         break;
       case "LAB":
         init(
@@ -234,7 +251,9 @@ public class ServiceRequest implements StringArrayConv {
             args[1],
             args[2],
             args[3],
-            new String[] {args[4], args[5], args[6], args[7]});
+            Integer.parseInt(args[4]),
+            RequestStatus.toStatus(args[5]),
+            new String[] {args[6], args[7], args[8], args[9]});
         break;
       case "LAUNDRY":
         init(
@@ -242,7 +261,9 @@ public class ServiceRequest implements StringArrayConv {
             args[1],
             args[2],
             args[3],
-            new String[] {args[4], args[5], args[6], args[7]});
+            Integer.parseInt(args[4]),
+            RequestStatus.toStatus(args[5]),
+            new String[] {args[6], args[7], args[8], args[9]});
         break;
       case "MEAL":
         init(
@@ -250,7 +271,9 @@ public class ServiceRequest implements StringArrayConv {
             args[1],
             args[2],
             args[3],
-            new String[] {args[4], args[5], args[6], args[7]});
+            Integer.parseInt(args[4]),
+            RequestStatus.toStatus(args[5]),
+            new String[] {args[6], args[7], args[8], args[9]});
         break;
       case "MEDEQUIP":
         init(
@@ -258,7 +281,9 @@ public class ServiceRequest implements StringArrayConv {
             args[1],
             args[2],
             args[3],
-            new String[] {args[4], args[5], args[6], args[7]});
+            Integer.parseInt(args[4]),
+            RequestStatus.toStatus(args[5]),
+            new String[] {args[6], args[7], args[8], args[9]});
         break;
       case "SECURITY":
         init(
@@ -266,7 +291,9 @@ public class ServiceRequest implements StringArrayConv {
             args[1],
             args[2],
             args[3],
-            new String[] {args[4], args[5], args[6], args[7]});
+            Integer.parseInt(args[4]),
+            RequestStatus.toStatus(args[5]),
+            new String[] {args[6], args[7], args[8], args[9]});
         break;
       case "TRANSLATOR":
         init(
@@ -274,7 +301,9 @@ public class ServiceRequest implements StringArrayConv {
             args[1],
             args[2],
             args[3],
-            new String[] {args[4], args[5], args[6], args[7]});
+            Integer.parseInt(args[4]),
+            RequestStatus.toStatus(args[5]),
+            new String[] {args[6], args[7], args[8], args[9]});
         break;
     }
   }

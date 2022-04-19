@@ -17,7 +17,7 @@ public enum EntryType {
 
   EMPLOYEE(14, "CSVs/Employees", "Export_CSVs/employees_export", Employee.class),
 
-  REQUESTS(8, "CSVs/Requests", "Export_CSVs/requests_export", ServiceRequest.class),
+  REQUESTS(10, "CSVs/Requests", "Export_CSVs/requests_export", ServiceRequest.class),
 
   MED_EQUIP_REQUEST(6, "MedEquipReq", "Export_CSVs/medEquipRequests_export", MedEquipReq.class),
 

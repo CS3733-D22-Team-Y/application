@@ -10,7 +10,7 @@ public class Main {
     CSVBackup.loadFromCSV(EntryType.EMPLOYEE);
     CSVBackup.loadFromCSV(EntryType.REQUESTS);
 
-    App.launch(App.class, args);
+    // App.launch(App.class, args);
 
     CSVBackup.saveToCSV(EntryType.REQUESTS);
     CSVBackup.saveToCSV(EntryType.LOCATION);

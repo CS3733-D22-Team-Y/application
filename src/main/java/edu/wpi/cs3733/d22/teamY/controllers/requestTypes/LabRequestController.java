@@ -7,6 +7,7 @@ import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
+import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -62,7 +63,13 @@ public class LabRequestController {
   private void submitRequest(String roomID, String additionalNotes, String resultTypeSelected) {
     DBManager.save(
         new ServiceRequest(
-            RequestTypes.LAB, "none", roomID, additionalNotes, new String[] {resultTypeSelected}));
+            RequestTypes.LAB,
+            "none",
+            roomID,
+            additionalNotes,
+            1,
+            RequestStatus.INCOMPLETE,
+            new String[] {resultTypeSelected}));
     System.out.println("Saved LabRequest");
   }
 
