@@ -10,14 +10,11 @@ public class Main {
     CSVBackup.loadFromCSV(EntryType.EMPLOYEE);
     CSVBackup.loadFromCSV(EntryType.REQUESTS);
 
-    CSVBackup.saveToCSV(EntryType.REQUESTS);
-    // App.launch(App.class, args);
+    App.launch(App.class, args);
 
-    // Backup all tables to CSV on shutdown
-    /*
-    for (EntryType e : EntryType.values()) {
-      CSVBackup.saveToCSV(e);
-    }
-     */
+    CSVBackup.saveToCSV(EntryType.REQUESTS);
+    CSVBackup.saveToCSV(EntryType.LOCATION);
+    CSVBackup.saveToCSV(EntryType.MED_EQUIP);
+    CSVBackup.saveToCSV(EntryType.EMPLOYEE);
   }
 }
