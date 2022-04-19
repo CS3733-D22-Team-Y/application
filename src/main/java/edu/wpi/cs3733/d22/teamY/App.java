@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.d22.teamY;
 
 import com.google.firebase.database.*;
+import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
 import java.util.Objects;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -37,6 +38,7 @@ public class App extends Application {
     instance = this; // instantiates instance
     primaryStage.setMinWidth(900);
     primaryStage.setMinHeight(600);
+    NewSceneLoading.activeWindow = primaryStage;
     this.primaryStage = primaryStage;
 
     primaryStage.getIcons().add(new Image(String.valueOf(App.class.getResource("icon.png"))));

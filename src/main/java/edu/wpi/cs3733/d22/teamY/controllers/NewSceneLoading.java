@@ -8,12 +8,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Window;
 
 public class NewSceneLoading {
   // Hashmap of scenes, key: path, content: scene
   private static final HashMap<String, Scene> allScenes = new HashMap<>();
   private static AnchorPane sidebar;
   private static SideBarController sidebarController;
+  public static Window activeWindow;
 
   static {
     try {

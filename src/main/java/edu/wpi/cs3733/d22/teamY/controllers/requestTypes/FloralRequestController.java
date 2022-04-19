@@ -5,6 +5,7 @@ import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.EntryType;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.FloralRequest;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
@@ -35,6 +36,9 @@ public class FloralRequestController {
   @FXML private AnchorPane sidebarPane;
   private Scene requestMenu = null;
 
+  @FXML AnchorPane mainPane;
+  @FXML AnchorPane testPane;
+
   // Bouquet types text. These should be changed depending on what the names in the database are.
   private final String getWellSoonBouquetText = "getWellSoon";
   private final String newBabyBouquetText = "newBaby";
@@ -47,6 +51,13 @@ public class FloralRequestController {
 
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
     NewSceneLoading.loadSidebar(sidebarPane);
+  }
+
+  @FXML
+  private void test() {
+    // Scaling.scaleItemAroundCenter(getWellSoonBouquetRadioButton);
+    // Scaling.scaleItemAroundCenter(mainPane.getChildren());
+    Scaling.scaleItemAroundCenter(mainPane);
   }
 
   @FXML

@@ -1,0 +1,63 @@
+package edu.wpi.cs3733.d22.teamY.controllers;
+
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.NumberBinding;
+import javafx.beans.property.ReadOnlyDoubleProperty;
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
+import javafx.scene.layout.Region;
+
+public class Scaling {
+  private static final double WINDOW_DEFAULT_WIDTH = NewSceneLoading.activeWindow.getWidth();
+  private static final double WINDOW_DEFAULT_HEIGHT = NewSceneLoading.activeWindow.getHeight();
+
+  public static void scaleItemAroundCenter(Region itemToScale) {
+    double prefX = itemToScale.getLayoutX();
+    double prefY = itemToScale.getLayoutY();
+    double prefHeight = itemToScale.getHeight();
+    double prefWidth = itemToScale.getWidth();
+    double widthDiff = WINDOW_DEFAULT_WIDTH - prefWidth;
+    double heightDiff = WINDOW_DEFAULT_HEIGHT - prefHeight;
+    ReadOnlyDoubleProperty currHeight = NewSceneLoading.activeWindow.heightProperty();
+    ReadOnlyDoubleProperty currWidth = NewSceneLoading.activeWindow.widthProperty();
+
+    NumberBinding minScale =
+        Bindings.min(
+            currWidth.subtract(widthDiff).divide(WINDOW_DEFAULT_WIDTH - widthDiff),
+            currHeight.subtract(heightDiff).divide(WINDOW_DEFAULT_HEIGHT - heightDiff));
+    itemToScale.scaleXProperty().bind(minScale);
+    itemToScale.scaleYProperty().bind(minScale);
+    itemToScale
+        .layoutXProperty()
+        .bind(
+            itemToScale
+                .scaleXProperty()
+                .multiply((WINDOW_DEFAULT_WIDTH - widthDiff) / 2)
+                .subtract((WINDOW_DEFAULT_WIDTH - widthDiff) / 2));
+
+    double yScaleFactor = WINDOW_DEFAULT_HEIGHT / 2 - (heightDiff * 2);
+
+    itemToScale
+        .layoutYProperty()
+        .bind(itemToScale.scaleYProperty().multiply(yScaleFactor).subtract(yScaleFactor));
+    System.out.println(itemToScale.layoutXProperty().get());
+
+    // sidebarFrame.scaleYProperty().bind(currScene.heightProperty().subtract(20).divide(780));
+    // sidebarFrame.layoutYProperty().bind(sidebarFrame.scaleYProperty().multiply(390).subtract(380));
+  }
+
+  public static void scaleItemAroundCenter(ObservableList<Node> items) {
+    for (Node currItem : items) {
+      try {
+        scaleItemAroundCenter((Region) currItem);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  private static double test() {
+    System.out.println("hi");
+    return 10;
+  }
+}
