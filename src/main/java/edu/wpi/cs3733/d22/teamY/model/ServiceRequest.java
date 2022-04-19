@@ -228,7 +228,15 @@ public class ServiceRequest implements StringArrayConv {
   @Override
   public String[] toStringArray() {
     return new String[] {
-      String.valueOf(type), assignedNurse, locationID, additionalNotes, atr0, atr1, atr2, atr3
+      String.valueOf(type),
+      assignedNurse,
+      locationID,
+      String.valueOf(requestPriority),
+      String.valueOf(status),
+      atr0,
+      atr1,
+      atr2,
+      atr3
     };
   }
 
