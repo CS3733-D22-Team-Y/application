@@ -9,9 +9,14 @@ public enum RequestTypes {
   SECURITY(2, new String[] {"requestTypeSelected", "securityRequestPriority"}),
 
   SPECIALIST(1, new String[] {"specialistType"}),
+  
+
   TRANSLATOR(1, new String[] {"requestTypeSelected"}),
 
-  FACILITIES(1, new String[] {"type"});
+  FACILITIES(1, new String[] {"type"}),
+
+  MISC(1, new String[] {"requestName"});
+
 
   private final int attribues;
   private final String[] attributeNames;
