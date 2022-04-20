@@ -237,7 +237,7 @@ public class DashboardController {
 
       // System.out.println("Weather updated successfully!!!");
     } catch (Exception ignored) {
-      ignored.printStackTrace();
+      //ignored.printStackTrace();
     }
   }
 
