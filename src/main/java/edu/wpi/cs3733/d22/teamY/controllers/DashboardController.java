@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.model.Requestable;
 import java.awt.*;
 import java.io.IOException;
@@ -28,7 +29,11 @@ public class DashboardController {
   public void initialize() throws IOException {
     // requestBox.setPrefHeight(1000);
     alertsBox.setBackground(Background.EMPTY);
-    addToBox("Hello there");
+
+    if (DBUtils.checkAvailableEquipmentOnFloor("3", "BED") > 1) {
+
+      addToBox("hello");
+    }
 
     // rqPairs = new ArrayList<>();
     /*
@@ -56,6 +61,8 @@ public class DashboardController {
     */
     NewSceneLoading.loadSidebar(sidebarPane);
   }
+
+  public static void reloadDashboard() {}
 
   private void addRequest(Requestable req) throws IOException {
 
