@@ -92,7 +92,7 @@ public class SecurityRequestController {
             assignedNurse,
             roomID,
             additionalNotes,
-            1,
+            10,
             RequestStatus.INCOMPLETE,
             new String[] {requestTypeSelected, requestPriority}));
     System.out.println("Saved SecurityServiceRequest");

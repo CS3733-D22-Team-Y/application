@@ -65,7 +65,7 @@ public class FacilitiesRequestController {
             "None",
             roomID,
             additionalNotes,
-            1,
+            3,
             RequestStatus.INCOMPLETE,
             new String[] {type}));
 

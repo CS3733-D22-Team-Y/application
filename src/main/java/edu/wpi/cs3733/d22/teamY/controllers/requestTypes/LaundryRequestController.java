@@ -69,7 +69,7 @@ public class LaundryRequestController {
             assignedNurse,
             roomID,
             additionalNotes,
-            1,
+            3,
             RequestStatus.INCOMPLETE,
             new String[] {laundryTypeSelected}));
     System.out.println("Saved Laundry Request");

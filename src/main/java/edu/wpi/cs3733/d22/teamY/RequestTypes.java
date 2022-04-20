@@ -17,7 +17,6 @@ public enum RequestTypes {
   FACILITIES(1, new String[] {"type"}, "Facilities Request"),
 
   MISC(1, new String[] {"requestName"}, "Uncategorized Task"),
-  
   ;
 
   private final int attribues;
