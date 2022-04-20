@@ -62,6 +62,8 @@ public class App extends Application {
     primaryStage.setScene(scene);
     primaryStage.show();
     // camera.newPfp();
+    windowX = primaryStage.getX();
+    windowY = primaryStage.getY();
     primaryStage.xProperty().addListener((obs, oldVal, newVal) -> windowY = newVal.doubleValue());
     primaryStage.yProperty().addListener((obs, oldVal, newVal) -> windowX = newVal.doubleValue());
   }
