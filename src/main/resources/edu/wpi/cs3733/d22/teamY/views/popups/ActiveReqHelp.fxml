@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTextArea?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
@@ -11,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/Blank.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MiscRequestController">
+<AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/Blank.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.HelpButtonController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eeeeee" height="551.0" layoutX="-35.0" layoutY="-42.0" stroke="BLACK" strokeType="INSIDE" width="746.0" />
       <Label layoutX="18.0" styleClass="title" text="Help : Active Requests">
@@ -53,12 +52,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <JFXTextArea fx:id="errorLabel" depthTest="DISABLE" disable="true" editable="false" focusColor="#ffffff00" layoutX="460.0" layoutY="720.0" opacity="0.97" prefHeight="10.0" prefWidth="243.0" style="-fx-text-fill: RED;" styleClass="plainText" unFocusColor="#ffffff00">
-         <font>
-            <Font name="Calibri" size="15.0" />
-         </font>
-      </JFXTextArea>
-      <MFXButton computeRadiusMultiplier="false" layoutX="590.0" layoutY="10.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
+      <MFXButton fx:id="backButton" computeRadiusMultiplier="false" layoutX="590.0" layoutY="10.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
@@ -69,23 +63,23 @@
          </font>
       </Label>
       <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#93cddc" height="100.0" layoutX="156.0" layoutY="159.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
-      <Group fx:id="colorGizmo" layoutX="156.0" layoutY="159.0">
+      <Group layoutX="156.0" layoutY="159.0">
          <children>
             <Rectangle arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
             <Rectangle fill="DODGERBLUE" height="100.0" layoutX="25.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="33.0" />
          </children>
       </Group>
-      <Label fx:id="reqType" layoutX="222.0" layoutY="163.0" text="Request Type">
+      <Label layoutX="222.0" layoutY="163.0" text="Request Type">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label fx:id="mapLocation" layoutX="222.0" layoutY="197.0" text="Location">
+      <Label layoutX="222.0" layoutY="197.0" text="Location">
          <font>
             <Font name="Calibri Italic" size="20.0" />
          </font>
       </Label>
-      <MFXButton layoutX="156.0" layoutY="159.0" onAction="#displayDetailedInfo" prefHeight="100.0" prefWidth="400.0" style="-fx-blend-mode: SCREEN; -fx-background-color: #000000;" text=" " />
+      <MFXButton layoutX="156.0" layoutY="159.0" prefHeight="100.0" prefWidth="400.0" style="-fx-blend-mode: SCREEN; -fx-background-color: #000000;" text=" " />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="116.0" prefHeight="40.0" prefWidth="626.0" text="in a tab.">
          <font>
             <Font name="Microsoft Tai Le" size="25.0" />

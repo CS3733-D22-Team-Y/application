@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="bgPane" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.RequestMenuController">
-   <AnchorPane fx:id="mainPane" layoutX="270.0" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <AnchorPane fx:id="mainPane" layoutX="270.0" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" onMouseClicked="#openServiceHelp" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
       <children>
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="520.0" layoutY="636.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="130.0" layoutY="636.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
@@ -208,6 +208,11 @@
       </children>
    </AnchorPane>
    <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
+   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1130.0" layoutY="20.0" onMouseClicked="#openServiceHelp" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@images/icons/Help.png" />
+      </image>
+   </ImageView>
    <stylesheets>
       <URL value="@css/Blank.css" />
       <URL value="@css/Blank.css" />

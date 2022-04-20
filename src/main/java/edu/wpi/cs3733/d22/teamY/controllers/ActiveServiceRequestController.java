@@ -88,4 +88,9 @@ public class ActiveServiceRequestController {
     requestBox.getChildren().add(rqSet.getPane());
     rqSet.getController().populateFromRequestable(rqSet.getRequest());
   }
+
+  @FXML
+  private void openActiveReqHelp() throws IOException {
+    SceneLoading.loadPopup("views/popups/ActiveReqHelp.fxml", "views/SideBar.fxml");
+  }
 }

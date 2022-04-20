@@ -135,15 +135,13 @@
             <String fx:value="primaryColor" />
          </styleClass>
       </MFXButton>
-      <MFXButton fx:id="lightModeButton" layoutX="470.0" layoutY="659.0" onAction="#lightMode" prefHeight="50.0" prefWidth="175.0" styleClass="requestButton" text="Light Mode" />
-      <MFXButton fx:id="darkModeButton" layoutX="655.0" layoutY="659.0" onAction="#darkMode" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #444;" styleClass="requestButton" text="Dark Mode" textFill="WHITE" />
-      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="850.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1130.0" layoutY="20.0" onMouseClicked="#openProfileHelp" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/icons/Help.png" />
          </image>
       </ImageView>
-      <MFXButton fx:id="lightModeButton" layoutX="740.0" layoutY="659.0" onAction="#lightMode" prefHeight="50.0" prefWidth="175.0" styleClass="requestButton" text="Light Mode" />
-      <MFXButton fx:id="darkModeButton" layoutX="925.0" layoutY="659.0" onAction="#darkMode" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #444;" styleClass="requestButton" text="Dark Mode" textFill="WHITE" />
+      <MFXButton fx:id="lightModeButton" layoutX="780.0" layoutY="657.0" onAction="#lightMode" prefHeight="50.0" prefWidth="175.0" styleClass="requestButton" text="Light Mode" />
+      <MFXButton fx:id="darkModeButton" layoutX="965.0" layoutY="657.0" onAction="#darkMode" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #444;" styleClass="requestButton" text="Dark Mode" textFill="WHITE" />
       <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
     </children>
 </AnchorPane>
