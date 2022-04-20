@@ -15,7 +15,7 @@ public class App extends Application {
   public static double windowX = 353;
   public static double windowY = 96;
 
-  private Stage primaryStage;
+  public static Stage primaryStage;
 
   // changes active scene
   public void setScene(Scene scene) {
