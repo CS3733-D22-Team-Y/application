@@ -79,6 +79,7 @@ public class ServiceRequest implements StringArrayConv {
         case LAB:
         case TRANSLATOR:
         case MEDEQUIP:
+        case SPECIALIST:
           atr0 = customAttributes[0];
           break;
         case MEAL:
@@ -112,6 +113,7 @@ public class ServiceRequest implements StringArrayConv {
       case MEDEQUIP:
       case LAUNDRY:
       case LAB:
+      case SPECIALIST:
         atr0 = value;
         break;
 
@@ -158,6 +160,7 @@ public class ServiceRequest implements StringArrayConv {
       case MEDEQUIP:
       case LAUNDRY:
       case LAB:
+      case SPECIALIST:
         return atr0;
       case MEAL:
         switch (key) {
@@ -306,6 +309,16 @@ public class ServiceRequest implements StringArrayConv {
       case "TRANSLATOR":
         init(
             RequestTypes.TRANSLATOR,
+            args[1],
+            args[2],
+            args[3],
+            Integer.parseInt(args[4]),
+            RequestStatus.toStatus(args[5]),
+            new String[] {args[6], args[7], args[8], args[9]});
+        break;
+      case "SPECIALIST":
+        init(
+            RequestTypes.SPECIALIST,
             args[1],
             args[2],
             args[3],
