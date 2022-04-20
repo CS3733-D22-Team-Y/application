@@ -283,6 +283,23 @@ public class DBUtils {
   }
 
   /**
+   * Returns a list of Nurses from DB.
+   *
+   * @return List of Nurses
+   */
+  public static List<Employee> getAllNurses() {
+    Session s = SessionManager.getSession();
+
+    List<Employee> nurses =
+        s.createQuery("from Employee where role = :role").setParameter("role", "Nurse" + "").list();
+    s.close();
+    if (nurses.size() < 1) {
+      return null;
+    }
+    return nurses;
+  }
+
+  /**
    * Returns if username already exists.
    *
    * @param hashedUsername hashed Username INTEGER
