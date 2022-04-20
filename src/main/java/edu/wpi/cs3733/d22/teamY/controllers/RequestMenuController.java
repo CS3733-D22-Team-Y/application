@@ -130,4 +130,9 @@ public class RequestMenuController {
     // loadRequestScreen(FACILITIES_RESULTS_INDEX);
     NewSceneLoading.loadScene("views/requestTypes/FacilitiesRequest.fxml");
   }
+
+  @FXML
+  private void openServiceHelp() throws IOException {
+    SceneLoading.loadPopup("views/popups/ServiceHelp.fxml", "views/SideBar.fxml");
+  }
 }
