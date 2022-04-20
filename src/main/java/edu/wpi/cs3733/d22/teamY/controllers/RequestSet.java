@@ -1,14 +1,15 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
-import edu.wpi.cs3733.d22.teamY.model.Requestable;
+import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import javafx.scene.layout.Pane;
 
 public class RequestSet {
   private SingularServiceRequestController controller;
   private Pane pane;
-  private Requestable request;
+  private ServiceRequest request;
 
-  public RequestSet(SingularServiceRequestController controller, Pane pane, Requestable request) {
+  public RequestSet(
+      SingularServiceRequestController controller, Pane pane, ServiceRequest request) {
     this.controller = controller;
     this.pane = pane;
     this.request = request;
@@ -30,11 +31,11 @@ public class RequestSet {
     this.pane = pane;
   }
 
-  public Requestable getRequest() {
+  public ServiceRequest getRequest() {
     return request;
   }
 
-  public void setRequest(Requestable request) {
+  public void setRequest(ServiceRequest request) {
     this.request = request;
   }
 }
