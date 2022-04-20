@@ -156,6 +156,6 @@
          </font>
       </MFXButton>
       <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
-      <MFXTextField fx:id="otherTextArea" floatMode="DISABLED" layoutX="790.0" layoutY="460.0" prefHeight="43.0" prefWidth="200.0" styleClass="inputField" />
+      <MFXTextField fx:id="otherTextArea" floatMode="DISABLED" layoutX="790.0" layoutY="460.0" prefHeight="43.0" prefWidth="250.0" styleClass="inputField" />
     </children>
 </AnchorPane>
