@@ -22,6 +22,34 @@
 
 <AnchorPane fx:id="mainPane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.DashboardController">
     <children>
+      <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
+         <image>
+            <Image url="@images/do-rgb.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: .8;" width="1200.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.42222025286541415">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
         <Label layoutX="270.0" styleClass="title" text="Dashboard">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
@@ -89,14 +117,27 @@
                <content>
                   <VBox fx:id="tasksBox" prefHeight="320.0" prefWidth="262.0">
                      <children>
-                        <TextArea editable="false" prefHeight="46.0" prefWidth="160.0" text="An active service request goes here." wrapText="true">
+                        <Label styleClass="title" text="You have no tasks assigned." wrapText="true">
                            <font>
-                              <Font size="13.0" />
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
                            </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </TextArea>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
                      </children>
                   </VBox>
                </content>
@@ -129,7 +170,30 @@
             </Label>
             <MFXScrollPane layoutX="10.0" layoutY="50.0" prefHeight="171.0" prefWidth="276.0" style="-fx-background-color: eceffc;">
                <content>
-                  <HBox fx:id="alertsBox" prefHeight="166.0" prefWidth="272.0" />
+                  <HBox fx:id="alertsBox" prefHeight="166.0" prefWidth="272.0">
+                     <children>
+                        <Label styleClass="title" text="No active alerts." wrapText="true">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                     </children></HBox>
                </content>
             </MFXScrollPane>
          </children>
@@ -578,6 +642,11 @@
                   </LinearGradient>
                </textFill>
             </Label>
+            <ImageView fitHeight="233.0" fitWidth="488.0" layoutX="14.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/temp_reqs.png" />
+               </image>
+            </ImageView>
          </children>
       </Group>
       <Group layoutX="890.0" layoutY="496.0">
@@ -610,7 +679,7 @@
                      <children>
                         <HBox prefHeight="55.0" prefWidth="262.0" style="-fx-padding: 2;">
                            <children>
-                              <TextArea editable="false" prefHeight="46.0" prefWidth="160.0" text="Sample message from a coworker." wrapText="true">
+                              <TextArea editable="false" prefHeight="46.0" prefWidth="160.0" text="Hi! How are you!" wrapText="true">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -619,7 +688,7 @@
                         </HBox>
                         <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="55.0" prefWidth="262.0" style="-fx-padding: 2;">
                            <children>
-                              <TextArea editable="false" prefHeight="46.0" prefWidth="160.0" text="Sample message to a coworker." wrapText="true">
+                              <TextArea editable="false" prefHeight="46.0" prefWidth="160.0" text="Great, thanks for asking!!! :)" wrapText="true">
                                  <font>
                                     <Font size="13.0" />
                                  </font>

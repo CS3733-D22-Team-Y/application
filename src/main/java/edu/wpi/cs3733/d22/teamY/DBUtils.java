@@ -317,6 +317,14 @@ public class DBUtils {
     return nurses;
   }
 
+  public static int getRequestCount() {
+    Session s = SessionManager.getSession();
+    int count =
+        ((Long) s.createQuery("select count(*) from ServiceRequest").uniqueResult()).intValue();
+    s.close();
+
+    return count;
+  }
   /**
    * Returns if username already exists.
    *
