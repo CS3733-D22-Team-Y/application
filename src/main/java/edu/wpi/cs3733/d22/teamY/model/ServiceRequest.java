@@ -394,22 +394,31 @@ public class ServiceRequest implements StringArrayConv {
     switch (type) {
       case FLORAL:
         sb.append(getSpecificText());
+        break;
       case SECURITY:
         sb.append(getSpecificText());
+        break;
       case LAUNDRY:
         sb.append(getSpecificText());
+        break;
       case LAB:
         sb.append(getSpecificText());
+        break;
       case MEAL:
         sb.append(getSpecificText());
+        break;
       case MEDEQUIP:
         sb.append(getSpecificText());
+        break;
       case SPECIALIST:
         sb.append(getSpecificText());
+        break;
       case TRANSLATOR:
         sb.append(getSpecificText());
+        break;
       case MISC:
         sb.append(getSpecificText());
+        break;
     }
     return sb.toString();
   }
