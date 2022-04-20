@@ -114,17 +114,7 @@ public class FloralRequestController implements IController {
 
   @FXML
   void backButton() throws IOException {
-    if (RequestControllerUtil.isRadioButtonSelected(
-            getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton)
-        || !input_AssignedNurse.getText().equals("")
-        || !input_AdditionalNotes.getText().equals("")
-        || !Objects.equals(roomsHiddenField.getText(), "")) {
-      if (SceneLoading.stayOnPage) {
-        NewSceneLoading.loadScene("views/requestTypes/FloralRequest.fxml");
-      }
-    } else {
-      NewSceneLoading.loadScene("views/RequestMenu.fxml");
-    }
+    NewSceneLoading.loadScene("views/RequestMenu.fxml");
   }
 
   // Returns the database name of the selected radio button.

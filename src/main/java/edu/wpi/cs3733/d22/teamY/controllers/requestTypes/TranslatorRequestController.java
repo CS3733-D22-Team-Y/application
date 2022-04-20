@@ -123,22 +123,7 @@ public class TranslatorRequestController implements IController {
 
   @FXML
   void backButton() throws IOException {
-    if (RequestControllerUtil.isRadioButtonSelected(
-            spanishRadioButton,
-            chineseRadioButton,
-            germanRadioButton,
-            arabicRadioButton,
-            otherRadioButton)
-        || !Objects.equals(roomsHiddenField.getText(), "")
-        || !Objects.equals(input_AssignedNurse.getText(), "")) {
-      SceneLoading.loadPopup(
-          "views/popups/ReqAbort.fxml", "views/requestTypes/TranslatorRequest.fxml");
-      if (SceneLoading.stayOnPage) {
-        NewSceneLoading.loadScene("views/requestTypes/TranslatorRequest.fxml");
-      }
-    } else {
-      NewSceneLoading.loadScene("views/RequestMenu.fxml");
-    }
+    NewSceneLoading.loadScene("views/RequestMenu.fxml");
   }
 
   // Returns the database name of the selected radio button.

@@ -4,7 +4,9 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
@@ -17,7 +19,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class SpecialistRequestController {
+public class SpecialistRequestController implements IController {
   // Radio Buttons
   @FXML private MFXRadioButton cardiologistButton;
   @FXML private MFXRadioButton neurologistButton;
@@ -32,6 +34,8 @@ public class SpecialistRequestController {
   // Side bar
   @FXML private AnchorPane sidebarPane;
   private Scene requestMenu = null;
+
+  @FXML AnchorPane mainPane;
 
   // Bouquet types text. These should be changed depending on what the names in the database are.
 
@@ -99,16 +103,7 @@ public class SpecialistRequestController {
 
   @FXML
   void backButton() throws IOException {
-    if (RequestControllerUtil.isRadioButtonSelected(
-            dermatologistButton, cardiologistButton, neurologistButton)
-        || !input_AdditionalNotes.getText().equals("")
-        || !Objects.equals(roomsHiddenField.getText(), "")) {
-      if (SceneLoading.stayOnPage) {
-        NewSceneLoading.loadScene("views/requestTypes/FloralRequest.fxml");
-      }
-    } else {
-      NewSceneLoading.loadScene("views/RequestMenu.fxml");
-    }
+    NewSceneLoading.loadScene("views/RequestMenu.fxml");
   }
 
   // Returns the database name of the selected radio button.
@@ -128,5 +123,15 @@ public class SpecialistRequestController {
     RequestControllerUtil.resetTextFields(roomsHiddenField, input_AdditionalNotes);
     errorLabel.setText("");
     roomsComboBox.setValue("");
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleItemAroundCenter(mainPane);
   }
 }

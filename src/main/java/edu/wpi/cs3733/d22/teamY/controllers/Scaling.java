@@ -28,18 +28,7 @@ public class Scaling {
     itemToScale.scaleXProperty().bind(minScale);
     itemToScale.scaleYProperty().bind(minScale);
 
-    // itemToScale.layoutXProperty().bind(minScale.multiply(1000).subtract(1000));
-    // itemToScale.layoutYProperty().bind(itemToScale.layoutXProperty());
-    /*
-    NumberBinding tempX = ((minScale.subtract(1)).multiply(WINDOW_DEFAULT_WIDTH));
-    NumberBinding correctX =
-        (minScale.subtract(1))
-            .multiply(.5 * prefWidth)
-            .add(minScale.subtract(50).multiply(10).add(490));
-    itemToScale.layoutXProperty().bind(correctX);
-     */
-
-    itemToScale.layoutXProperty().bind(minScale.multiply(390).subtract(380));
+    itemToScale.layoutYProperty().bind(minScale.multiply(390).subtract(380));
 
     // sidebarFrame.layoutYProperty().bind(sidebarFrame.scaleYProperty().multiply(390).subtract(380));
 
