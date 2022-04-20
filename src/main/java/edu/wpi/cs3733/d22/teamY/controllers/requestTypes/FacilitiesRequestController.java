@@ -5,7 +5,9 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
@@ -18,7 +20,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class FacilitiesRequestController {
+public class FacilitiesRequestController implements IController {
   // Radio Buttons
   @FXML private MFXRadioButton spillRadioButton;
   @FXML private MFXRadioButton hazRadioButton;
@@ -36,6 +38,8 @@ public class FacilitiesRequestController {
   // Side bar
   @FXML private AnchorPane sidebarPane;
   private Scene requestMenu = null;
+
+  @FXML AnchorPane mainPane;
 
   public FacilitiesRequestController() {}
 
@@ -138,5 +142,15 @@ public class FacilitiesRequestController {
     RequestControllerUtil.resetTextFields(roomsHiddenField, input_AdditionalNotes);
     errorLabel.setText("");
     roomsComboBox.setValue("");
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleItemAroundCenter(mainPane);
   }
 }
