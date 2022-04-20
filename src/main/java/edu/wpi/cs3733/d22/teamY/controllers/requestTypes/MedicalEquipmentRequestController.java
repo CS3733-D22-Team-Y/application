@@ -4,17 +4,18 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
-import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
-import edu.wpi.cs3733.d22.teamY.model.MedEquipReq;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
+import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class MedicalEquipmentRequestController {
   // Text Inputs
@@ -29,7 +30,8 @@ public class MedicalEquipmentRequestController {
   @FXML private MFXRadioButton infusionPumpRadioButton;
   @FXML private MFXRadioButton reclinerRadioButton;
   @FXML private TextArea errorLabel;
-
+  // Side bar
+  @FXML private AnchorPane sidebarPane;
   // Equipment types text. These should be changed depending on what the names in the database are.
   private final String bedText = "BED";
   private final String xrayText = "XRAY";
@@ -41,12 +43,13 @@ public class MedicalEquipmentRequestController {
   public MedicalEquipmentRequestController() throws IOException {}
 
   @FXML
-  private void initialize() {
+  private void initialize() throws IOException {
 
     updateAvailableEquip();
 
     System.out.println(RequestControllerUtil.allRoomsComboBox.getItems().size());
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   @FXML
@@ -91,21 +94,23 @@ public class MedicalEquipmentRequestController {
    * @param additionalNotes Any additional notes.
    * @param equipmentTypeSelected The type of bouquet selected.
    */
-  private void submitRequest(String roomID, String additionalNotes, String equipmentTypeSelected)
+  private void submitRequest(
+      String roomID, String assignedNurse, String additionalNotes, String equipmentTypeSelected)
       throws IOException {
-    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.MED_EQUIP_REQUEST));
+
     DBManager.save(
-        new MedEquipReq(
-            nextRequest,
+        new ServiceRequest(
+            RequestTypes.MEDEQUIP,
+            assignedNurse,
             roomID,
-            "",
-            RequestStatus.INCOMPLETE,
             additionalNotes,
-            equipmentTypeSelected));
+            1,
+            RequestStatus.INCOMPLETE,
+            new String[] {equipmentTypeSelected}));
     DBUtils.updateCleanStatus(equipmentTypeSelected, roomID);
     System.out.println("Saved MedEquipRequest");
     updateAvailableEquip();
-    SceneUtil.welcomePage.mainPage();
+    NewSceneLoading.loadScene("views/RequestMenu.fxml");
   }
 
   // Called when the submit button is pressed.
@@ -143,12 +148,14 @@ public class MedicalEquipmentRequestController {
     } else {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
+          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           getEquipmentType());
       errorLabel.setText("");
 
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/MedicalEquipmentRequest.fxml");
+      SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/SideBar.fxml");
+      NewSceneLoading.reloadScene("views/ActiveServiceRequest.fxml");
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
 
       resetAllFields();
     }
@@ -160,11 +167,11 @@ public class MedicalEquipmentRequestController {
         || RequestControllerUtil.isRadioButtonSelected(
             bedRadioButton, xrayRadioButton, infusionPumpRadioButton, reclinerRadioButton)) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
-      if (!SceneLoading.stayOnPage) {
-        SceneUtil.welcomePage.mainPage();
+      if (SceneLoading.stayOnPage) {
+        NewSceneLoading.loadScene("views/requestTypes/MedicalEquipmentRequest.fxml");
       }
     } else {
-      SceneUtil.welcomePage.mainPage();
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
     }
   }
 

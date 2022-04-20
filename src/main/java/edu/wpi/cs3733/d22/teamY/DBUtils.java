@@ -3,6 +3,7 @@ package edu.wpi.cs3733.d22.teamY;
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettings;
 import edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController;
 import edu.wpi.cs3733.d22.teamY.model.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -73,7 +74,7 @@ public class DBUtils {
     int available = 0;
 
     for (MedEquip i : equipment) {
-      if (i.isClean().equals("1")) {
+      if (i.getIsClean().equals("1")) {
         available++;
       }
     }
@@ -98,7 +99,7 @@ public class DBUtils {
     MedEquip thisEquip = equipment.get(0);
 
     thisEquip.setEquipLocId(locationID);
-    thisEquip.setClean("0");
+    thisEquip.setIsClean("0");
 
     DBManager.update(thisEquip);
   }
@@ -119,13 +120,18 @@ public class DBUtils {
 
     Employee thePerson = people.get(0);
     PersonalSettingsController.currentEmployee = thePerson; // TODO change
-
+    //    try {
+    ////      Firebase.init();
+    ////    } catch (IOException e) {
+    ////      e.printStackTrace();
+    ////    }
+    ////    System.out.println("Firebase initialized");
     return thePerson.getName();
   }
 
   // Gets an employee's preferred name from their ID
   @SuppressWarnings("Unchecked")
-  public static String getPrefNameFromID(String id) {
+  public static String getPrefNameFromID(String id) throws IOException {
     Session s = SessionManager.getSession();
     List<Employee> people =
         s.createQuery("from Employee where username = :id")
@@ -139,8 +145,46 @@ public class DBUtils {
 
     Employee thePerson = people.get(0);
     PersonalSettingsController.currentEmployee = thePerson; // TODO change
+    //    Firebase.init();
+    //    System.out.println("Firebase initialized");
 
     return thePerson.getPrefName();
+  }
+
+  public static String getNameFromActualID(String id) throws IOException {
+    Session s = SessionManager.getSession();
+    List<Employee> people =
+        s.createQuery("from Employee where id = :id").setParameter("id", id).list();
+    s.close();
+
+    if (people.size() == 0) {
+      return "";
+    }
+
+    Employee thePerson = people.get(0);
+
+    return thePerson.getName();
+  }
+
+  public static String getNamesFromIds(ArrayList<String> ids, boolean excludeMe)
+      throws IOException {
+    StringBuilder sb = new StringBuilder();
+
+    for (String id : ids) {
+      if (excludeMe && id.equals(PersonalSettingsController.currentEmployee.getIDNumber())) {
+        continue;
+      }
+      String name = getNameFromActualID(id);
+      if (name.equals("")) {
+        name = "ID# " + id;
+      }
+      sb.append(name);
+      sb.append(", ");
+    }
+    if (sb.length() > 0) {
+      sb.delete(sb.length() - 2, sb.length());
+    }
+    return sb.toString();
   }
 
   /**
@@ -169,7 +213,7 @@ public class DBUtils {
    * @return true if the employee had valid credentials, false otherwise
    */
   @SuppressWarnings("Unchecked")
-  public static boolean isValidLogin(String username, String password) {
+  public static boolean isValidLogin(String username, String password) throws IOException {
     Session s = SessionManager.getSession();
     // search for the employee with the given username and password
     List<Employee> employees =
@@ -180,6 +224,7 @@ public class DBUtils {
     s.close();
     if (employees.size() == 1) {
       PersonalSettings.currentEmployee = employees.get(0);
+      System.out.println("Valid Login");
       return true;
     }
     return false;

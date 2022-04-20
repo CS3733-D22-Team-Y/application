@@ -143,6 +143,8 @@ public class MapPageController<T extends Requestable> {
   @FXML MFXButton equipUp;
   @FXML MFXButton equipDown;
 
+  @FXML private AnchorPane sidebarPane;
+
   private TextField[] reqNumLabels;
   private TextField[] bedLabels;
   private TextField[] pumpLabels;
@@ -372,7 +374,7 @@ public class MapPageController<T extends Requestable> {
                         equipID.setText(String.valueOf(o.getEquipID()));
                         equipLocation.setText(o.getEquipLocId());
                         equipType.setText(o.getEquipType());
-                        equipClean.setText(o.isClean());
+                        equipClean.setText(o.getIsClean());
                       }
                       if (modeBox.getValue().equals("Service Requests")) {
                         if (requests.size() > 0) {
@@ -439,7 +441,8 @@ public class MapPageController<T extends Requestable> {
                               fuck,
                               equipType.getText(),
                               equipLocation.getText(),
-                              equipClean.getText());
+                              equipClean.getText(),
+                              ""); // TODO fix
                       DBManager.update(t);
                       DBManager.save(t);
 
@@ -560,6 +563,8 @@ public class MapPageController<T extends Requestable> {
     equipInfoPane.setVisible(false);
     reqInfoPane.setVisible(false);
     locationInfoPane.setVisible(false);
+
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   public void exit() {
@@ -615,8 +620,6 @@ public class MapPageController<T extends Requestable> {
     this.recLabels[index].setText(floorCounts.get(floor).get("RECLINER") + "");
     this.xLabels[index].setText(floorCounts.get(floor).get("XRAY") + "");
   }
-
-
 
   @FXML
   public void LL1Enter() {
@@ -695,7 +698,7 @@ public class MapPageController<T extends Requestable> {
     l5PopupPane.setOpacity(0);
   }
 
-  public ArrayList<Point> getHex(int n, double r, Point center){
+  public ArrayList<Point> getHex(int n, double r, Point center) {
     ArrayList<Point> res = new ArrayList<Point>();
     res.add(center);
     if (n != 1) {
@@ -706,23 +709,25 @@ public class MapPageController<T extends Requestable> {
 
   private ArrayList<Point> getHexRecursive(int n, double r, Point center, int layer) {
     ArrayList<Point> res = new ArrayList<Point>();
-    int num = 6*layer;
-    double dAngle = Math.toRadians(360.0/num);
-    for(int i = 0; i < num && n > 0; i++) {
-      res.add(new Point(center.x  + (2*r*layer+1) * Math.cos(dAngle*i), center.y  + (2*r*layer+1) * Math.sin(dAngle*i)));
+    int num = 6 * layer;
+    double dAngle = Math.toRadians(360.0 / num);
+    for (int i = 0; i < num && n > 0; i++) {
+      res.add(
+          new Point(
+              center.x + (2 * r * layer + 1) * Math.cos(dAngle * i),
+              center.y + (2 * r * layer + 1) * Math.sin(dAngle * i)));
       n = n - 1;
     }
     if (n != 0) {
       res.addAll(getHexRecursive(n, r, center, ++layer));
     }
     return res;
-
-
   }
 
-  class Point{
+  class Point {
     double x;
     double y;
+
     Point(double x, double y) {
       this.x = x;
       this.y = y;

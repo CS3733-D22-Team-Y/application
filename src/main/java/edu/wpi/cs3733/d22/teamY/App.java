@@ -1,10 +1,12 @@
 package edu.wpi.cs3733.d22.teamY;
 
+import com.google.firebase.database.*;
 import java.util.Objects;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
@@ -36,6 +38,9 @@ public class App extends Application {
     primaryStage.setMinWidth(900);
     primaryStage.setMinHeight(600);
     this.primaryStage = primaryStage;
+
+    primaryStage.getIcons().add(new Image(String.valueOf(App.class.getResource("icon.png"))));
+
     // Sets the primary scene (currently request menu) and displays it
     Parent root =
         FXMLLoader.load(Objects.requireNonNull(App.class.getResource("views/Welcome.fxml")));
@@ -44,14 +49,14 @@ public class App extends Application {
         .getStylesheets()
         .add(
             "https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Varela+Round&display=swap");
-    scene.getStylesheets().add("http://fonts.googleapis.com/css2?family=Varela+Round");
+    scene.getStylesheets().add("https://fonts.googleapis.com/css2?family=Varela+Round");
     scene
         .getStylesheets()
         .add(Objects.requireNonNull(App.class.getResource("views/css/Blank.css")).toExternalForm());
     scene
         .getStylesheets()
         .add(Objects.requireNonNull(App.class.getResource("views/css/Fonts.css")).toExternalForm());
-    primaryStage.setTitle("Bringham and Women's Hospital Equipment Tracker");
+    primaryStage.setTitle("Brigham and Women's Hospital Equipment Tracker");
     primaryStage.setScene(scene);
     primaryStage.show();
     // camera.newPfp();

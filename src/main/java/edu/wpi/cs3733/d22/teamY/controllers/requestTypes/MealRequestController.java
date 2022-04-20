@@ -3,17 +3,18 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
-import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
-import edu.wpi.cs3733.d22.teamY.model.MealRequest;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
+import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
 import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class MealRequestController {
   // Text input
@@ -34,7 +35,8 @@ public class MealRequestController {
   @FXML private MFXRadioButton appleRadioButton;
   // Error Label
   @FXML private TextArea errorLabel;
-
+  // Side bar
+  @FXML private AnchorPane sidebarPane;
   // Combobox text items
   private final String textOther = "Other (specify)";
   private final String textNone = "None";
@@ -55,7 +57,7 @@ public class MealRequestController {
   public MealRequestController() throws IOException {}
 
   @FXML
-  public void initialize() {
+  public void initialize() throws IOException {
     // Required b/c SceneBuilder doesn't provide a ComboBox element editor
     dietaryRestrictionsSelectionBox
         .getItems()
@@ -64,6 +66,7 @@ public class MealRequestController {
 
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
     restrictionsHiddenField.setText("None");
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   @FXML
@@ -82,8 +85,6 @@ public class MealRequestController {
    * Submits a service request.
    *
    * @param roomID The room ID.
-   * @param assignedNurse The assigned nurse.
-   * @param requestStatus The request status.
    * @param additionalNotes Any additional notes.
    * @param mainChoice The choice for the main meal.
    * @param sideChoice The choice for the side.
@@ -93,23 +94,21 @@ public class MealRequestController {
    */
   private void submitRequest(
       String roomID,
+      String assignedNurse,
       String additionalNotes,
       String mainChoice,
       String sideChoice,
       String allergies,
       String specialInstructions) {
-    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.MEAL_REQUEST));
     DBManager.save(
-        new MealRequest(
-            nextRequest,
+        new ServiceRequest(
+            RequestTypes.MEAL,
+            assignedNurse,
             roomID,
-            "",
-            RequestStatus.INCOMPLETE,
             additionalNotes,
-            mainChoice,
-            sideChoice,
-            allergies,
-            specialInstructions));
+            1,
+            RequestStatus.INCOMPLETE,
+            new String[] {mainChoice, sideChoice, allergies, specialInstructions}));
     System.out.println("Saved MealRequest");
   }
 
@@ -133,16 +132,16 @@ public class MealRequestController {
     if (mealSelected && sideSelected && allFields) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
+          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           getMainChoice(),
           getSideChoice(),
           dietaryRestrictionsSelectionBox.getValue(),
           input_AdditionalNotes.getText());
       errorLabel.setText("");
-      SceneUtil.welcomePage.mainPage();
-
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/MealRequest.fxml");
+      SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/SideBar.fxml");
+      NewSceneLoading.reloadScene("views/ActiveServiceRequest.fxml");
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
       resetAllFields();
     } else {
       if (allFields || sideSelected || mealSelected) {
@@ -168,11 +167,11 @@ public class MealRequestController {
     // Checks if a bouquet choice has been made
     if (mealSelected || sideSelected || allFields) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
-      if (!SceneLoading.stayOnPage) {
-        SceneUtil.welcomePage.mainPage();
+      if (SceneLoading.stayOnPage) {
+        NewSceneLoading.loadScene("views/requestTypes/MealRequest.fxml");
       }
     } else {
-      SceneUtil.welcomePage.mainPage();
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
     }
   }
 

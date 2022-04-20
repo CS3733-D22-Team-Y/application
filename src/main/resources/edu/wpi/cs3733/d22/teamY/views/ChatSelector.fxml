@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MessageController">
+    <children>
+        <Label alignment="CENTER" layoutX="333.0" layoutY="14.0" prefHeight="88.0" prefWidth="292.0" text="Messages" textFill="#20758b">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="60.0" />
+            </font>
+         <styleClass>
+            <String fx:value="title" />
+            <String fx:value="primaryColor" />
+         </styleClass>
+        </Label>
+      <MFXScrollPane hbarPolicy="NEVER" layoutX="278.0" layoutY="104.0" prefHeight="677.0" prefWidth="403.0">
+         <content>
+            <VBox fx:id="chatSelector">
+               <children>
+                  <Pane fx:id="blankMessage" prefHeight="88.0" prefWidth="399.0">
+                     <children>
+                        <Rectangle fx:id="bRect" arcHeight="5.0" fill="#bcbcbc" height="88.0" layoutX="-1.0" layoutY="-1.0" stroke="BLACK" strokeType="OUTSIDE" width="399.0" />
+                        <HBox fx:id="bHbox" alignment="CENTER" layoutY="8.0" prefWidth="396.0">
+                           <children>
+                              <Pane fx:id="bPicPane" prefHeight="74.0" prefWidth="70.0">
+                                 <children>
+                                    <Circle fx:id="bCircle" fill="WHITE" layoutX="37.0" layoutY="37.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Label fx:id="bInitials" layoutX="30.0" layoutY="18.0" text="L">
+                                       <font>
+                                          <Font name="System Bold" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <VBox fx:id="bNamePrevBox" alignment="CENTER" prefHeight="74.0" prefWidth="249.0">
+                                 <children>
+                                    <Label fx:id="bName" prefHeight="27.0" prefWidth="249.0" text="Nathan Pollock">
+                                       <font>
+                                          <Font name="System Bold" size="21.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="bPreview" prefHeight="27.0" prefWidth="249.0" text="Message Preview this is a test of the">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="bTimeVbox" alignment="TOP_RIGHT" prefHeight="74.0" prefWidth="62.0">
+                                 <children>
+                                    <Label fx:id="bTime" text="12:38 PM">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </content>
+      </MFXScrollPane>
+      <Pane fx:id="sendPane" layoutX="678.0" layoutY="726.0" visible="false">
+         <children>
+            <MFXButton fx:id="sendButton" layoutX="415.0" onAction="#send" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" text="Send" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="requestButton" />
+                  <String fx:value="primaryColor" />
+               </styleClass>
+            </MFXButton>
+            <MFXTextField fx:id="messageText" layoutX="6.0" onAction="#send" prefHeight="49.0" prefWidth="403.0" />
+         </children>
+      </Pane>
+      <Label fx:id="chatSelectLabel" layoutX="824.0" layoutY="349.0" text="Select a chat from the list" visible="false">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <MFXButton layoutX="548.0" layoutY="726.0" onAction="#startChat" prefHeight="50.0" prefWidth="124.0" style="-fx-background-color: #14667B;" text="Start Chat" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+         <styleClass>
+            <String fx:value="requestButton" />
+            <String fx:value="primaryColor" />
+         </styleClass>
+      </MFXButton>
+      <MFXScrollPane fx:id="messageAreaContainer" hbarPolicy="NEVER" layoutX="679.0" layoutY="104.0" prefHeight="618.0" prefWidth="515.0" visible="false">
+         <content>
+            <VBox fx:id="messageArea" alignment="BOTTOM_CENTER" prefHeight="616.0" prefWidth="521.0">
+               <children>
+                  <Pane fx:id="messageBarPane" maxHeight="500.0" minHeight="100.0" prefHeight="100.0" prefWidth="512.0">
+                     <children>
+                        <Pane fx:id="textContainer" layoutX="8.0" layoutY="27.0" maxHeight="500.0" prefHeight="72.0" prefWidth="496.0">
+                           <children>
+                              <Rectangle fx:id="messageBackground" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="72.0" layoutX="-3.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" width="489.0" />
+                              <Label fx:id="messageLabel" alignment="CENTER_RIGHT" layoutX="3.0" layoutY="4.0" maxHeight="500.0" maxWidth="515.0" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="64.0" prefWidth="478.0" text="few wor d few wordfew wordfew wordfew wordfew wordfew wordfew wordfew wordfew word" wrapText="true">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <HBox fx:id="messageInfoPanel" alignment="CENTER_LEFT" layoutX="6.0" layoutY="7.0">
+                           <children>
+                              <Label fx:id="author" text="Nathan Pollock">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="time" text="12:38 PM">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Pane>
+               </children>
+            </VBox>
+         </content></MFXScrollPane>
+      <VBox fx:id="newChatArea" alignment="TOP_CENTER" layoutX="698.0" layoutY="58.0" prefHeight="723.0" prefWidth="489.0">
+         <children>
+            <Label prefHeight="48.0" prefWidth="158.0" text="Create a new chat">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Pane>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <children>
+                  <MFXTextField fx:id="toBox" onAction="#selectedChat" prefHeight="64.0" prefWidth="488.0" promptText="Search">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </MFXTextField>
+                  <Rectangle fx:id="searchBoxCover" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="73.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="488.0" />
+               </children>
+            </Pane>
+            <MFXScrollPane fx:id="resultsArea" hbarPolicy="NEVER" prefHeight="610.0" prefWidth="503.0">
+               <content>
+                  <VBox fx:id="resultPane" prefHeight="608.0" prefWidth="488.0">
+                     <children>
+                        <Pane fx:id="resultItemPane" minHeight="-Infinity" prefHeight="65.0" prefWidth="488.0">
+                           <children>
+                              <Rectangle fx:id="resultRect" arcHeight="5.0" fill="#bcbcbc" height="64.0" layoutX="-2.0" layoutY="1.0" stroke="BLACK" strokeType="OUTSIDE" width="492.0" />
+                              <VBox fx:id="resultVbox" alignment="CENTER" prefHeight="64.0" prefWidth="488.0">
+                                 <children>
+                                    <Label fx:id="resultName" alignment="CENTER" prefHeight="31.0" prefWidth="485.0" text="Nathan Pollock #11">
+                                       <font>
+                                          <Font name="System Bold" size="21.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="resultRole" alignment="CENTER" prefHeight="27.0" prefWidth="485.0" text="Fulltime Backend">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+               </content></MFXScrollPane>
+         </children>
+      </VBox>
+      <Line endX="-100.0" endY="-536.0" layoutX="778.0" layoutY="536.0" startX="-100.0" startY="244.0" />
+      <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
+      <Label fx:id="chatIndicator" alignment="BOTTOM_LEFT" layoutX="679.0" layoutY="1.0" prefHeight="104.0" prefWidth="515.0" text="Chat with: Nathan , Connor, Emily, Yoshi, Ben, Dan, Wong, Wilson" visible="false" wrapText="true">
+         <font>
+            <Font size="28.0" />
+         </font>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </Label>
+      <Line fx:id="chatHeaderLine" endX="-107.5" endY="-536.0" layoutX="785.0" layoutY="641.0" startX="415.0" startY="-536.0" visible="false" />
+    </children>
+</AnchorPane>

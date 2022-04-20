@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXToggleButton;
 import edu.wpi.cs3733.d22.teamY.App;
 import edu.wpi.cs3733.d22.teamY.Auth;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.Messaging.Firebase;
 import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MainLoaderResult;
 import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.RequestControllerUtil;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
@@ -66,12 +67,33 @@ public class WelcomePageController {
 
   @FXML
   void initialize() throws IOException {
+    NewSceneLoading test = new NewSceneLoading();
     loginPane.setVisible(true);
     loading.setVisible(false);
     yubikeyPane.setVisible(false);
     dbMenu.getItems().addAll(dbOptions);
 
     loadingRightNow = false;
+
+    NewSceneLoading.addMultipleScenes(
+        "views/PersonalSettings.fxml",
+        "views/MedEquipTable.fxml",
+        "views/ActiveServiceRequest.fxml",
+        "views/AccountUpdate.fxml",
+        "views/CreateAccount.fxml",
+        "views/MedEquipTable.fxml",
+        "views/PersonalSettings.fxml",
+        "views/RequestMenu.fxml",
+        "views/requestTypes/FloralRequest.fxml",
+        "views/requestTypes/LabResult.fxml",
+        "views/requestTypes/LaundryRequest.fxml",
+        "views/requestTypes/MealRequest.fxml",
+        "views/requestTypes/MedicalEquipmentRequest.fxml",
+        "views/requestTypes/MiscRequest.fxml",
+        "views/requestTypes/SecurityRequest.fxml",
+        "views/requestTypes/TranslatorRequest.fxml",
+        "views/Map.fxml",
+        "views/requestTypes/SpecialistRequest.fxml");
   }
 
   @FXML
@@ -80,8 +102,9 @@ public class WelcomePageController {
     loadingRightNow = true;
 
     SceneUtil.welcomePage = this;
-    RequestControllerUtil.initialize();
+    // RequestControllerUtil.initialize();
 
+    /*
     FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
     App.getInstance().setScene(new Scene(loader.load()));
     SideBarController controller = loader.getController();
@@ -91,6 +114,28 @@ public class WelcomePageController {
     } catch (IOException ex) {
       ex.printStackTrace();
     }
+     */
+    NewSceneLoading.addMultipleScenes(
+        "views/AccountUpdate.fxml",
+        "views/ActiveServiceRequest.fxml",
+        "views/ActServReqTable.fxml",
+        "views/ChangeTheme.fxml",
+        "views/CreateAccount.fxml",
+        "views/LocTable.fxml",
+        "views/Map.fxml",
+        "views/MapIcon",
+        "views/MedEquipTable.fxml",
+        "views/PersonalSettings.fxml",
+        "views/RequestMenu.fxml",
+        "views/SecondaryMap_TEMPLATE.fxml",
+        "views/SideBar.fxml",
+        "views/SingularServiceRequest.fxml",
+        "views/SubMenu_TEMPLATE.fxml",
+        "views/Welcome.fxml",
+        "views/ConfirmClose.fxml",
+        "views/ReqAbort.fxml",
+        "views/ReqSubmitted.fxml");
+    // NewSceneLoading.loadScene("views/ActiveServiceRequest.fxml");
 
     loadingRightNow = false;
   }
@@ -107,7 +152,7 @@ public class WelcomePageController {
           App.getInstance().setScene(new Scene(loadMainTask.getValue().getParent()));
           SideBarController controller = loadMainTask.getValue().getLoader().getController();
           try {
-            controller.initializeScale();
+            // controller.initializeScale();
             controller.loadViewServiceRequests();
           } catch (IOException ex) {
             ex.printStackTrace();
@@ -125,7 +170,8 @@ public class WelcomePageController {
       new Task<>() {
         @Override
         protected MainLoaderResult call() throws IOException {
-          FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
+          FXMLLoader loader =
+              new FXMLLoader(App.class.getResource("views/ActiveServiceRequest.fxml"));
           return new MainLoaderResult(loader, loader.load());
         }
       };
@@ -141,6 +187,7 @@ public class WelcomePageController {
     //         && !lockOut
     //         && Auth.doAuth(username.getText())) {
     //       loginAnimation();
+
     if (username.getText().length() <= 0 || password.getText().length() <= 0) {
       showLoginFail(false);
       return;
@@ -149,12 +196,24 @@ public class WelcomePageController {
     if (DBUtils.isValidLogin(username.getText(), password.getText()) && !lockOut) {
       if (DBUtils.checkDefaultPassword(password.getText().hashCode())) {
         UpdateNewAccountController.userNameToChange(username.getText());
-        SceneLoading.loadScene("views/AccountUpdate.fxml");
+        NewSceneLoading.loadScene("views/AccountUpdate.fxml");
       }
       display2FAOptions();
+
     } else {
       showLoginFail(true);
     }
+
+    // NewSceneLoading.loadScene("views/SideBar.fxml");
+    // NewSceneLoading.loadScene("views/ActiveServiceRequest.fxml");
+
+    /*
+    try {
+      //controller.initializeScale();
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
+     */
   }
 
   private void showLoginFail(boolean deduct) {
@@ -208,11 +267,7 @@ public class WelcomePageController {
               new KeyFrame(
                   Duration.seconds(2),
                   (e) -> {
-                    try {
-                      SceneLoading.loadScene("views/Welcome.fxml");
-                    } catch (IOException ex) {
-                      ex.printStackTrace();
-                    }
+                    NewSceneLoading.loadScene("views/Welcome.fxml");
                   }));
       tl.play();
     }
@@ -289,23 +344,19 @@ public class WelcomePageController {
               new KeyFrame(
                   Duration.seconds(2),
                   (e) -> {
-                    try {
-                      SceneLoading.loadScene("views/Welcome.fxml");
-                    } catch (IOException ex) {
-                      ex.printStackTrace();
-                    }
+                    NewSceneLoading.loadScene("views/Welcome.fxml");
                   }));
       failed2FA.play();
     }
   }
 
   @FXML
-  void loginAnimation() {
+  void loginAnimation() throws IOException {
     loginPane.setVisible(false);
     loading.setVisible(true);
     String name = DBUtils.getPrefNameFromID(username.getText());
     Welcome.setText("Welcome, " + (name.trim().equals("") ? "Guest" : name));
-
+    Firebase.initListeners();
     try {
       mainPageThreaded();
     } catch (IOException e) {
@@ -327,10 +378,6 @@ public class WelcomePageController {
   }
 
   public void createNewUser() throws Exception {
-    try {
-      SceneLoading.loadScene("views/CreateAccount.fxml");
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    NewSceneLoading.loadScene("views/CreateAccount.fxml");
   }
 }

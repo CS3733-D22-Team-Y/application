@@ -20,7 +20,7 @@ public class MedEquipTablePageController {
 
   @FXML private TextArea equipmentTable;
 
-  @FXML Pane sidebarPane;
+  @FXML private AnchorPane sidebarPane;
   @FXML private JFXButton closeSidebarHiddenButton;
   @FXML private JFXHamburger sidebarHamburger;
 
@@ -41,7 +41,7 @@ public class MedEquipTablePageController {
 
       String shortName = DBUtils.convertIDToName(medEquips.get(i).getEquipLocId());
       String clean;
-      if (medEquips.get(i).isClean().equals("0")) {
+      if (medEquips.get(i).getIsClean().equals("0")) {
         clean = "used";
       } else {
         clean = "clean";
@@ -73,6 +73,7 @@ public class MedEquipTablePageController {
     }
 
     equipmentTable.setText(totalResult);
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   public static class ChangeTheme {

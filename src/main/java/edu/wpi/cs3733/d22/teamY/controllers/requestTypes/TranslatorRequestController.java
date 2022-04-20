@@ -3,11 +3,12 @@ package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
-import edu.wpi.cs3733.d22.teamY.EntryType;
+import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
-import edu.wpi.cs3733.d22.teamY.controllers.SceneUtil;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
-import edu.wpi.cs3733.d22.teamY.model.TranslatorRequest;
+import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
+import edu.wpi.cs3733.d22.teamY.utilTemp.Languages;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class TranslatorRequestController {
   // Radio Buttons
@@ -33,6 +35,8 @@ public class TranslatorRequestController {
   @FXML private TextArea input_AdditionalNotes;
   // Error Label
   @FXML private TextArea errorLabel;
+  // Side bar
+  @FXML private AnchorPane sidebarPane;
 
   // Language types text. These should be changed depending on what the names in the database are.
   private final String spanishText = "spanish";
@@ -41,11 +45,14 @@ public class TranslatorRequestController {
   private final String arabicText = "arabic";
   private final String otherText = "other";
 
+  public Languages langs = new Languages();
+
   public TranslatorRequestController() {}
 
   @FXML
-  void initialize() {
+  void initialize() throws IOException {
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   @FXML
@@ -60,18 +67,17 @@ public class TranslatorRequestController {
    * @param additionalNotes Any additional notes.
    * @param languageTypeSelected The type of language selected.
    */
-  private void submitRequest(String roomID, String additionalNotes, String languageTypeSelected) {
-    // Get request Num
-    String nextRequest = String.valueOf(DBUtils.getNextRequestNum(EntryType.TRANSLATOR_REQUEST));
-
+  private void submitRequest(
+      String roomID, String assignedNuse, String additionalNotes, String languageTypeSelected) {
     DBManager.save(
-        new TranslatorRequest(
-            nextRequest,
+        new ServiceRequest(
+            RequestTypes.TRANSLATOR,
+            assignedNuse,
             roomID,
-            "",
-            RequestStatus.INCOMPLETE,
             additionalNotes,
-            languageTypeSelected));
+            1,
+            RequestStatus.INCOMPLETE,
+            new String[] {languageTypeSelected}));
 
     System.out.println("Saved TranslatorRequest");
   }
@@ -79,10 +85,13 @@ public class TranslatorRequestController {
   // Called when the submit button is pressed.
   @FXML
   void submitButton() throws IOException {
-    // Checks if a bouquet choice has been made
+    // Checks if a language choice has been made
     if (RequestControllerUtil.isRadioButtonSelected(otherRadioButton)
         && Objects.equals(input_OtherLanguage.getText(), "")) {
       errorLabel.setText("Missing Required Fields.");
+    } else if (RequestControllerUtil.isRadioButtonSelected(otherRadioButton)
+        && !langs.isLanguage(input_OtherLanguage.getText())) {
+      errorLabel.setText("Language not valid.");
     } else if (RequestControllerUtil.isRadioButtonSelected(
             spanishRadioButton,
             chineseRadioButton,
@@ -90,15 +99,18 @@ public class TranslatorRequestController {
             arabicRadioButton,
             otherRadioButton)
         && !Objects.equals(roomsHiddenField.getText(), "")
-        && !Objects.equals(input_AssignedNurse.getText(), "")) {
+        && !Objects.equals(input_AssignedNurse.getText(), "")
+        && !(RequestControllerUtil.isRadioButtonSelected(otherRadioButton)
+            && Objects.equals(input_OtherLanguage.getText(), ""))) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
+          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           getLanguageType());
       errorLabel.setText("");
-      SceneUtil.welcomePage.mainPage();
-      SceneLoading.loadPopup(
-          "views/popups/ReqSubmitted.fxml", "views/requestTypes/TranslatorRequest.fxml");
+      SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/SideBar.fxml");
+      NewSceneLoading.reloadScene("views/ActiveServiceRequest.fxml");
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
       resetAllFields();
     } else {
       errorLabel.setText("Missing Required Fields.");
@@ -115,12 +127,13 @@ public class TranslatorRequestController {
             otherRadioButton)
         || !Objects.equals(roomsHiddenField.getText(), "")
         || !Objects.equals(input_AssignedNurse.getText(), "")) {
-      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
-      if (!SceneLoading.stayOnPage) {
-        SceneUtil.welcomePage.mainPage();
+      SceneLoading.loadPopup(
+          "views/popups/ReqAbort.fxml", "views/requestTypes/TranslatorRequest.fxml");
+      if (SceneLoading.stayOnPage) {
+        NewSceneLoading.loadScene("views/requestTypes/TranslatorRequest.fxml");
       }
     } else {
-      SceneUtil.welcomePage.mainPage();
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
     }
   }
 
@@ -130,7 +143,7 @@ public class TranslatorRequestController {
     if (chineseRadioButton.isSelected()) return chineseText;
     if (germanRadioButton.isSelected()) return germanText;
     if (arabicRadioButton.isSelected()) return arabicText;
-    if (otherRadioButton.isSelected()) return otherText;
+    if (otherRadioButton.isSelected()) return input_OtherLanguage.getText();
     // Should never happen
     return ("");
   }
