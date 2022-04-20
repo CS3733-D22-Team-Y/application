@@ -101,6 +101,11 @@ public class RequestMenuController {
   }
 
   @FXML
+  void loadMaintenanceReq() {
+    NewSceneLoading.loadScene("views/requestTypes/MaintenanceRequest.fxml");
+  }
+
+  @FXML
   void showCreators() {
     boolean state = creatorToggle.isSelected();
 

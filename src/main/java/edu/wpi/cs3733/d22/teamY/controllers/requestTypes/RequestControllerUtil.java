@@ -13,20 +13,27 @@ import javafx.scene.control.TextInputControl;
 
 public class RequestControllerUtil {
   public static JFXComboBox<String> allRoomsComboBox = new JFXComboBox<>();
-  public static JFXComboBox<String> allNursesComboBox = new JFXComboBox<>();
+  public static JFXComboBox<String> allmedEquipComboBox = new JFXComboBox<>();
 
   public static void initialize() {
-    LinkedList<String> locationItems = new LinkedList<>();
+    LinkedList<String> items = new LinkedList<>();
+    LinkedList<String> medEquip = new LinkedList<>();
     for (int i = 0; i < DBManager.getAll(Location.class).size(); i++) {
       locationItems.add(((Location) DBManager.getAll(Location.class).get(i)).getShortName());
     }
-    allRoomsComboBox.setItems(FXCollections.observableList(locationItems));
 
     LinkedList<String> nurseItems = new LinkedList<>();
     for (int i = 0; i < DBUtils.getAllNurses().size(); i++) {
       nurseItems.add(String.valueOf(DBUtils.getAllNurses().get(i).getName()));
     }
     allNursesComboBox.setItems(FXCollections.observableList(nurseItems));
+    allRoomsComboBox.setItems(FXCollections.observableList(items));
+
+    medEquip.add("Bed");
+    medEquip.add("Pump");
+    medEquip.add("X-Ray");
+    medEquip.add("Recliner");
+    allmedEquipComboBox.setItems((FXCollections.observableList(medEquip)));
   }
 
   // Checks if any of the given radio buttons are selected.

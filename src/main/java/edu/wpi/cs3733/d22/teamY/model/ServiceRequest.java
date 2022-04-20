@@ -92,6 +92,7 @@ public class ServiceRequest implements StringArrayConv {
           atr3 = customAttributes[3];
           break;
         case SECURITY:
+        case MAINTENANCE:
           atr0 = customAttributes[0];
           atr1 = customAttributes[1];
           break;
@@ -121,7 +122,15 @@ public class ServiceRequest implements StringArrayConv {
       case FACILITIES:
         atr0 = value;
         break;
-
+      case MAINTENANCE:
+        switch (key) {
+          case "requestTypeSelected":
+            atr0 = value;
+            break;
+          case "maintenanceRequestPriority":
+            atr1 = value;
+            break;
+        }
       case MEAL:
         switch (key) {
           case "mainChoice":
@@ -169,6 +178,13 @@ public class ServiceRequest implements StringArrayConv {
       case MISC:
       case FACILITIES:
         return atr0;
+      case MAINTENANCE:
+        switch (key) {
+          case "requestTypeSelected":
+            return atr0;
+          case "maintenanceRequestPriority":
+            return atr1;
+        }
       case MEAL:
         switch (key) {
           case "mainChoice":
@@ -369,6 +385,15 @@ public class ServiceRequest implements StringArrayConv {
             RequestStatus.toStatus(args[5]),
             new String[] {args[6], args[7], args[8], args[9]});
         break;
+      case "MAINTENANCE":
+        init(
+            RequestTypes.MAINTENANCE,
+            args[1],
+            args[2],
+            args[3],
+            Integer.parseInt(args[4]),
+            RequestStatus.toStatus(args[5]),
+            new String[] {args[6], args[7], args[8], args[9]});
     }
   }
 
@@ -378,8 +403,8 @@ public class ServiceRequest implements StringArrayConv {
         return "Bouquet Type: " + atr0;
       case SECURITY:
       case FACILITIES:
-        return "Type: " + atr0;
       case LAUNDRY:
+      case SPECIALIST:
         return "Type: " + atr0;
       case LAB:
         return "Result Type: " + atr0;
@@ -394,10 +419,13 @@ public class ServiceRequest implements StringArrayConv {
         return sb.toString();
       case MEDEQUIP:
         return "Equipment Type: " + atr0;
-      case SPECIALIST:
-        return "Type: " + atr0;
       case TRANSLATOR:
         return "Language: " + atr0;
+      case MAINTENANCE:
+        StringBuilder bs = new StringBuilder();
+        bs.append("Type: ").append(atr0);
+        bs.append("\nPriority: ").append(atr1);
+        return bs.toString();
     }
     return null;
   }
@@ -416,6 +444,7 @@ public class ServiceRequest implements StringArrayConv {
       case LAUNDRY:
       case SECURITY:
       case FACILITIES:
+      case MAINTENANCE:
         sb.append(getSpecificText());
         break;
     }
