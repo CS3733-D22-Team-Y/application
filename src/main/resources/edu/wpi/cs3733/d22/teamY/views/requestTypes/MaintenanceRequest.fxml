@@ -18,7 +18,7 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MaintenanceRequestController">
     <children>
-        <Label layoutX="270.0" styleClass="title" text="Maintenance Request">
+        <Label layoutX="270.0" layoutY="10.0" styleClass="title" text="Maintenance Request">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -39,7 +39,7 @@
                 <Font name="Arial Rounded MT Bold" size="60.0" />
             </font>
         </Label>
-        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="270.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="270.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
             <fill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -57,18 +57,13 @@
                 </LinearGradient>
             </fill>
         </Rectangle>
-        <Label layoutX="285.0" layoutY="150.0" styleClass="inputLabel" text="Nurse:">
+        <Label layoutX="285.0" layoutY="150.0" styleClass="inputLabel" text="Room:">
             <font>
                 <Font name="Calibri Bold" size="30.0" />
             </font>
         </Label>
-        <Label layoutX="285.0" layoutY="200.0" styleClass="inputLabel" text="Room:">
-            <font>
-                <Font name="Calibri Bold" size="30.0" />
-            </font>
-        </Label>
-        <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="525.0" layoutX="280.0" layoutY="255.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
-        <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="285.0" layoutY="260.0" prefHeight="515.0" prefWidth="390.0" promptText="Additional Text..." unFocusColor="#ffffff00">
+        <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="575.0" layoutX="280.0" layoutY="205.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
+        <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="285.0" layoutY="210.0" prefHeight="565.0" prefWidth="390.0" promptText="Additional Text..." unFocusColor="#ffffff00">
             <font>
                 <Font name="Calibri" size="20.0" />
             </font>
@@ -76,17 +71,12 @@
                 <String fx:value="inputLabel" />
                 <String fx:value="requestInput" />
             </styleClass></JFXTextArea>
-        <MFXTextField fx:id="input_AssignedNurse" floatMode="DISABLED" layoutX="430.0" layoutY="150.0" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" styleClass="requestInput">
-            <font>
-                <Font name="Calibri" size="20.0" />
-            </font>
-        </MFXTextField>
-        <MFXButton computeRadiusMultiplier="false" layoutX="980.0" layoutY="730.0" onAction="#resetAllFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" styleClass="requestButton" text="Reset" textFill="WHITE">
+        <MFXButton computeRadiusMultiplier="false" layoutX="980.0" layoutY="740.0" onAction="#resetAllFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" styleClass="requestButton" text="Reset" textFill="WHITE">
             <font>
                 <Font name="Calibri Bold" size="20.0" />
             </font>
         </MFXButton>
-        <MFXButton fx:id="submitButton" computeRadiusMultiplier="false" layoutX="1090.0" layoutY="730.0" onAction="#submitButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Submit" textFill="WHITE">
+        <MFXButton fx:id="submitButton" computeRadiusMultiplier="false" layoutX="1090.0" layoutY="740.0" onAction="#submitButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Submit" textFill="WHITE">
             <font>
                 <Font name="Calibri Bold" size="20.0" />
             </font>
@@ -220,9 +210,9 @@
                 <Font name="Calibri" size="15.0" />
             </font>
         </JFXTextArea>
-        <TextField fx:id="roomsHiddenField" layoutX="430.0" layoutY="200.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
-        <JFXComboBox fx:id="roomsComboBox" layoutX="430.0" layoutY="200.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="inputField" unFocusColor="#ffffff00" />
-        <MFXButton computeRadiusMultiplier="false" layoutX="1067.0" layoutY="30.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
+        <TextField fx:id="roomsHiddenField" layoutX="430.0" layoutY="150.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
+        <JFXComboBox fx:id="roomsComboBox" layoutX="430.0" layoutY="150.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="inputField" unFocusColor="#ffffff00" />
+        <MFXButton computeRadiusMultiplier="false" layoutX="1090.0" layoutY="10.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
             <font>
                 <Font name="Calibri Bold" size="20.0" />
             </font>
