@@ -23,12 +23,21 @@ public class Scaling {
 
     NumberBinding minScale =
         Bindings.min(
-            currWidth.subtract(widthDiff).divide(WINDOW_DEFAULT_WIDTH - widthDiff),
-            currHeight.subtract(heightDiff).divide(WINDOW_DEFAULT_HEIGHT - heightDiff));
+            currWidth
+                .subtract(.5 * widthDiff)
+                .divide(WINDOW_DEFAULT_WIDTH - widthDiff)
+                .multiply(.9),
+            currHeight
+                .subtract(.5 * heightDiff)
+                .divide(WINDOW_DEFAULT_HEIGHT - heightDiff)
+                .multiply(1));
     itemToScale.scaleXProperty().bind(minScale);
     itemToScale.scaleYProperty().bind(minScale);
 
-    itemToScale.layoutYProperty().bind(minScale.multiply(390).subtract(380));
+    itemToScale.layoutXProperty().bind(minScale.multiply(410).subtract(420));
+    itemToScale.layoutYProperty().bind(minScale.multiply(800 / 3).subtract(800 / 3 + 10));
+
+    // itemToScale.layoutYProperty().bind(minScale.multiply(390).subtract(380));
 
     // sidebarFrame.layoutYProperty().bind(sidebarFrame.scaleYProperty().multiply(390).subtract(380));
 
