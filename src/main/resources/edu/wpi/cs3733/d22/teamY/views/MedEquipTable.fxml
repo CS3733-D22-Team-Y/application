@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -11,6 +11,12 @@
 
 <AnchorPane fx:id="mainPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MedEquipTablePageController">
     <children>
+      <TextArea fx:id="equipmentTable" layoutX="450.0" layoutY="200.0" prefHeight="400.0" prefWidth="570.0" style="letter-spacing: em-wide; letter-spacing: 5px;">
+         <font>
+            <Font name="Monospaced Bold" size="12.0" />
+         </font>
+      </TextArea>
+      <Label layoutX="451.0" layoutY="181.0" prefHeight="18.0" prefWidth="570.0" style="-fx-background-color: GRAY;" text="Equipment ID                              Equipment Type           Location                                         Status" />
       <Label layoutX="270.0" styleClass="title" text="Medical Equipment">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -51,6 +57,5 @@
          </fill>
       </Rectangle>
       <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
-      <TableView fx:id="medEquipTableView" layoutX="307.0" layoutY="131.0" prefHeight="450.0" prefWidth="678.0" />
     </children>
 </AnchorPane>

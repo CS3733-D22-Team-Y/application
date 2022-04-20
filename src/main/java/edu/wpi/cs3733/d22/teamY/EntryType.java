@@ -13,7 +13,7 @@ public enum EntryType {
 
   LOCATION(8, "CSVs/TowerLocations", "Export_CSVs/locations_export", Location.class),
 
-  MED_EQUIP(5, "CSVs/MedEquip", "Export_CSVs/medEquipment_export", MedEquip.class),
+  MED_EQUIP(4, "CSVs/MedEquip", "Export_CSVs/medEquipment_export", MedEquip.class),
 
   EMPLOYEE(14, "CSVs/Employees", "Export_CSVs/employees_export", Employee.class),
 

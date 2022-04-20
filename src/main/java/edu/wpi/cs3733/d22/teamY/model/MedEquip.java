@@ -17,35 +17,31 @@ public class MedEquip implements StringArrayConv {
   private String equipType;
   private String equipLocId;
   private String isClean;
-  private String status;
 
   public static final String EQUIP_ID = "EQUIPID";
   public static final String EQUIP_LOC_ID = "EQUIPLOCID";
   public static final String EQUIP_TYPE = "EQUIPTYPE";
   public static final String IS_CLEAN = "ISCLEAN";
-  public static final String STATUS = "STATUS";
 
-  private void init(String eID, String eType, String eLocId, String clean, String status) {
+  private void init(String eID, String eType, String eLocId, String clean) {
     equipID = eID;
     equipType = eType;
     equipLocId = eLocId;
     isClean = clean;
-    this.status = status;
   }
 
   public MedEquip() {}
 
-  public MedEquip(
-      String equipID, String equipType, String equipLocId, String isClean, String status) {
-    init(equipID, equipType, equipLocId, isClean, status);
+  public MedEquip(String equipID, String equipType, String equipLocId, String isClean) {
+    init(equipID, equipType, equipLocId, isClean);
   }
 
   public void fromStringArray(String[] args) {
-    init(args[0], args[1], args[2], args[3], args[4]);
+    init(args[0], args[1], args[2], args[3]);
   }
 
   public String[] toStringArray() {
-    return new String[] {equipID, equipType, equipLocId, isClean, status};
+    return new String[] {equipID, equipType, equipLocId, isClean};
   }
 
   @Override
@@ -87,12 +83,8 @@ public class MedEquip implements StringArrayConv {
     return equipLocId;
   }
 
-  public String getIsClean() {
+  public String isClean() {
     return isClean;
-  }
-
-  public String getStatus() {
-    return status;
   }
 
   public void setEquipID(String eID) {
@@ -107,12 +99,8 @@ public class MedEquip implements StringArrayConv {
     equipLocId = eLocId;
   }
 
-  public void setIsClean(String clean) {
+  public void setClean(String clean) {
     isClean = clean;
-  }
-
-  public void setStatus(String status) {
-    this.status = status;
   }
   // endregion
 }
