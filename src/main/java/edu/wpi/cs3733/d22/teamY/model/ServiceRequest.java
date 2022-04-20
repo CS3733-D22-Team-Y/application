@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
+import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import javax.persistence.*;
 
@@ -327,5 +328,58 @@ public class ServiceRequest implements StringArrayConv {
             new String[] {args[6], args[7], args[8], args[9]});
         break;
     }
+  }
+
+  public String getSpecificText(){
+    switch(type){
+      case FLORAL:
+        return "Bouquet Type: " + atr0;
+      case SECURITY:
+        return "Type: " + atr0;
+      case LAUNDRY:
+        return "Type: " + atr0;
+      case LAB:
+        return "Result Type: " + atr0;
+      case MEAL:
+        StringBuilder sb = new StringBuilder();
+        sb.append("Entree: ").append(atr0);
+        sb.append("\nSide: ").append(atr1);
+        sb.append("\nDietary Restriction: ").append(atr2);
+        sb.append("\nSpecial Instructions:").append(atr3);
+        return sb.toString();
+      case MEDEQUIP:
+        return "Equipment Type: " + atr0;
+      case SPECIALIST:
+        return "Type: " + atr0;
+      case TRANSLATOR:
+        return "Language: " + atr0;
+    }
+    return null;
+  }
+
+  public String getInfoBoxText(){
+    StringBuilder sb = new StringBuilder();
+    sb.append("Room: ")
+        .append(DBUtils.convertIDToName(getLocationID()))
+        .append("\n");
+    switch(type){
+      case FLORAL:
+        sb.append(getSpecificText());
+      case SECURITY:
+        sb.append(getSpecificText());
+      case LAUNDRY:
+        sb.append(getSpecificText());
+      case LAB:
+        sb.append(getSpecificText());
+      case MEAL:
+        sb.append(getSpecificText());
+      case MEDEQUIP:
+        sb.append(getSpecificText());
+      case SPECIALIST:
+        sb.append(getSpecificText());
+      case TRANSLATOR:
+        sb.append(getSpecificText());
+    }
+    return "";
   }
 }
