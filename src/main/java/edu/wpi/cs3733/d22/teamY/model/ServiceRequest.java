@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
+import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import javax.persistence.*;
 
@@ -79,6 +80,9 @@ public class ServiceRequest implements StringArrayConv {
         case LAB:
         case TRANSLATOR:
         case MEDEQUIP:
+        case SPECIALIST:
+        case MISC:
+        case FACILITIES:
           atr0 = customAttributes[0];
           break;
         case MEAL:
@@ -88,6 +92,7 @@ public class ServiceRequest implements StringArrayConv {
           atr3 = customAttributes[3];
           break;
         case SECURITY:
+        case MAINTENANCE:
           atr0 = customAttributes[0];
           atr1 = customAttributes[1];
           break;
@@ -112,9 +117,20 @@ public class ServiceRequest implements StringArrayConv {
       case MEDEQUIP:
       case LAUNDRY:
       case LAB:
+      case SPECIALIST:
+      case MISC:
+      case FACILITIES:
         atr0 = value;
         break;
-
+      case MAINTENANCE:
+        switch (key) {
+          case "requestTypeSelected":
+            atr0 = value;
+            break;
+          case "maintenanceRequestPriority":
+            atr1 = value;
+            break;
+        }
       case MEAL:
         switch (key) {
           case "mainChoice":
@@ -158,7 +174,17 @@ public class ServiceRequest implements StringArrayConv {
       case MEDEQUIP:
       case LAUNDRY:
       case LAB:
+      case SPECIALIST:
+      case MISC:
+      case FACILITIES:
         return atr0;
+      case MAINTENANCE:
+        switch (key) {
+          case "requestTypeSelected":
+            return atr0;
+          case "maintenanceRequestPriority":
+            return atr1;
+        }
       case MEAL:
         switch (key) {
           case "mainChoice":
@@ -223,6 +249,22 @@ public class ServiceRequest implements StringArrayConv {
 
   public void setAdditionalNotes(String additionalNotes) {
     this.additionalNotes = additionalNotes;
+  }
+
+  public int getRequestPriority() {
+    return requestPriority;
+  }
+
+  public void setRequestPriority(int requestPriority) {
+    this.requestPriority = requestPriority;
+  }
+
+  public RequestStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(RequestStatus status) {
+    this.status = status;
   }
 
   @Override
@@ -313,6 +355,99 @@ public class ServiceRequest implements StringArrayConv {
             RequestStatus.toStatus(args[5]),
             new String[] {args[6], args[7], args[8], args[9]});
         break;
+      case "SPECIALIST":
+        init(
+            RequestTypes.SPECIALIST,
+            args[1],
+            args[2],
+            args[3],
+            Integer.parseInt(args[4]),
+            RequestStatus.toStatus(args[5]),
+            new String[] {args[6], args[7], args[8], args[9]});
+        break;
+      case "MISC":
+        init(
+            RequestTypes.MISC,
+            args[1],
+            args[2],
+            args[3],
+            Integer.parseInt(args[4]),
+            RequestStatus.toStatus(args[5]),
+            new String[] {args[6], args[7], args[8], args[9]});
+        break;
+      case "FACILITIES":
+        init(
+            RequestTypes.FACILITIES,
+            args[1],
+            args[2],
+            args[3],
+            Integer.parseInt(args[4]),
+            RequestStatus.toStatus(args[5]),
+            new String[] {args[6], args[7], args[8], args[9]});
+        break;
+      case "MAINTENANCE":
+        init(
+            RequestTypes.MAINTENANCE,
+            args[1],
+            args[2],
+            args[3],
+            Integer.parseInt(args[4]),
+            RequestStatus.toStatus(args[5]),
+            new String[] {args[6], args[7], args[8], args[9]});
     }
+  }
+
+  public String getSpecificText() {
+    switch (type) {
+      case FLORAL:
+        return "Bouquet Type: " + atr0;
+      case SECURITY:
+      case FACILITIES:
+      case LAUNDRY:
+      case SPECIALIST:
+        return "Type: " + atr0;
+      case LAB:
+        return "Result Type: " + atr0;
+      case MISC:
+        return "Request Name: " + atr0;
+      case MEAL:
+        StringBuilder sb = new StringBuilder();
+        sb.append("Entree: ").append(atr0);
+        sb.append("\nSide: ").append(atr1);
+        sb.append("\nDietary Restriction: ").append(atr2);
+        sb.append("\nSpecial Instructions:").append(atr3);
+        return sb.toString();
+      case MEDEQUIP:
+        return "Equipment Type: " + atr0;
+      case TRANSLATOR:
+        return "Language: " + atr0;
+      case MAINTENANCE:
+        StringBuilder bs = new StringBuilder();
+        bs.append("Type: ").append(atr0);
+        bs.append("\nPriority: ").append(atr1);
+        return bs.toString();
+    }
+    return null;
+  }
+
+  public String getInfoBoxText() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("Room: ").append(DBUtils.convertIDToName(getLocationID())).append("\n");
+    switch (type) {
+      case FLORAL:
+      case MISC:
+      case TRANSLATOR:
+      case SPECIALIST:
+      case MEDEQUIP:
+      case LAB:
+      case MEAL:
+      case LAUNDRY:
+      case SECURITY:
+      case FACILITIES:
+      case MAINTENANCE:
+        sb.append(getSpecificText());
+        break;
+    }
+    return sb.toString();
   }
 }

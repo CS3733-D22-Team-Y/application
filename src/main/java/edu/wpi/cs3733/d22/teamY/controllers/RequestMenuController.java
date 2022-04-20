@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
 import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.RequestControllerUtil;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -13,8 +14,20 @@ public class RequestMenuController {
   @FXML private ToggleButton creatorToggle;
   @FXML AnchorPane sidebarPane;
 
+  @FXML private MFXButton facilitiesButton;
+
   @FXML
-  private Label creator1, creator2, creator3, creator4, creator5, creator6, creator7, creator8;
+  private Label creator01,
+      creator02,
+      creator03,
+      creator04,
+      creator05,
+      creator06,
+      creator07,
+      creator08,
+      creator09,
+      creator10,
+      creator11;
 
   public RequestMenuController() {}
 
@@ -23,6 +36,18 @@ public class RequestMenuController {
     SceneUtil.requests = this;
     NewSceneLoading.loadSidebar(sidebarPane);
     RequestControllerUtil.initialize();
+
+    creator01.setVisible(false);
+    creator02.setVisible(false);
+    creator03.setVisible(false);
+    creator04.setVisible(false);
+    creator05.setVisible(false);
+    creator06.setVisible(false);
+    creator07.setVisible(false);
+    creator08.setVisible(false);
+    creator09.setVisible(false);
+    creator10.setVisible(false);
+    creator11.setVisible(false);
   }
 
   private void loadRequestScreen(int index) {
@@ -83,17 +108,35 @@ public class RequestMenuController {
   }
 
   @FXML
+  void loadSpecialistReq() {
+    NewSceneLoading.loadScene("views/requestTypes/SpecialistRequest.fxml");
+  }
+
+  @FXML
+  void loadMaintenanceReq() {
+    NewSceneLoading.loadScene("views/requestTypes/MaintenanceRequest.fxml");
+  }
+
+  @FXML
+  void loadFacilitiesReq() {
+    NewSceneLoading.loadScene("views/requestTypes/FacilitiesRequest.fxml");
+  }
+
+  @FXML
   void showCreators() {
     boolean state = creatorToggle.isSelected();
     System.out.println(state);
 
-    creator1.setVisible(state);
-    creator2.setVisible(state);
-    creator3.setVisible(state);
-    creator4.setVisible(state);
-    creator5.setVisible(state);
-    creator6.setVisible(state);
-    creator7.setVisible(state);
-    creator8.setVisible(state);
+    creator01.setVisible(state);
+    creator02.setVisible(state);
+    creator03.setVisible(state);
+    creator04.setVisible(state);
+    creator05.setVisible(state);
+    creator06.setVisible(state);
+    creator07.setVisible(state);
+    creator08.setVisible(state);
+    creator09.setVisible(state);
+    creator10.setVisible(state);
+    creator11.setVisible(state);
   }
 }

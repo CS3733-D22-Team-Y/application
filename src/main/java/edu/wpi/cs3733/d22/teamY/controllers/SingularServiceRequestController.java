@@ -1,7 +1,8 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
-import edu.wpi.cs3733.d22.teamY.model.Requestable;
+import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -21,26 +22,23 @@ public class SingularServiceRequestController {
   @FXML private Label reqType;
   @FXML private Label mapLocation;
 
+  @FXML private JFXTextArea extraInfoText;
   private String additional;
   private int priority;
 
-  public void populateFromRequestable(Requestable req) {
+  public void populateFromRequest(ServiceRequest req) {
     additional = req.getInfoBoxText();
     priority = req.getRequestPriority();
     setColor(priorityColor(priority));
 
-    assignedNurse.setText(DBUtils.getNameFromID(req.getAssignedNurse()));
-    reqType.setText(req.getTypeString());
-    mapLocation.setText(DBUtils.convertIDToName(req.getLocID()));
+    assignedNurse.setText(req.getAssignedNurse());
+    reqType.setText(req.getType().getFriendlyName());
+    mapLocation.setText(DBUtils.convertIDToName(req.getLocationID()));
+    fillInfoField(additional);
   }
 
   public int getPriority() {
     return priority;
-  }
-
-  @FXML
-  void displayDetailedInfo() {
-    SceneUtil.serviceRequests.fillInfoField(additional);
   }
 
   private void setColor(Color color) {
@@ -52,5 +50,9 @@ public class SingularServiceRequestController {
   public static Color priorityColor(int priority) {
     int p = Math.min(Math.max(priority, 0), 10);
     return Color.hsb((10 - p) * 12.8, 0.36, 0.98);
+  }
+
+  public void fillInfoField(String info) {
+    extraInfoText.setText(info);
   }
 }

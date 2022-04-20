@@ -15,6 +15,76 @@ public class DBUtils {
 
   private DBUtils() {}
 
+  public static List<MedEquip> findAllOfStatusOnFloor(String floor, String isClean) {
+    List<MedEquip> allEquipList = new ArrayList<>();
+    allEquipList.addAll(DBUtils.getEquipmentOnFloor(floor, "BED"));
+    allEquipList.addAll(DBUtils.getEquipmentOnFloor(floor, "PUMP"));
+    allEquipList.addAll(DBUtils.getEquipmentOnFloor(floor, "RECLINER"));
+    allEquipList.addAll(DBUtils.getEquipmentOnFloor(floor, "XRAY"));
+
+    List<MedEquip> returnList = new ArrayList<>();
+
+    for (MedEquip m : allEquipList) {
+      if (m.getIsClean().equals(isClean)) {
+        returnList.add(m);
+      }
+    }
+
+    return returnList;
+  }
+
+  public static int checkAvailableEquipmentOnFloor(String floor, String equipType) {
+
+    List<MedEquip> floorEquip = getEquipmentOnFloor(floor, equipType);
+
+    int availableCounter = 0;
+    for (MedEquip m : floorEquip) {
+      if (m.getIsClean().equals("1")) {
+        availableCounter++;
+      }
+    }
+
+    return availableCounter;
+  }
+
+  public static int checkUnavailableEquipmentOnFloor(String floor, String equipType) {
+
+    List<MedEquip> floorEquip = getEquipmentOnFloor(floor, equipType);
+
+    int unavailableCounter = 0;
+    for (MedEquip m : floorEquip) {
+      if (m.getIsClean().equals("0")) {
+        unavailableCounter++;
+      }
+    }
+
+    return unavailableCounter;
+  }
+
+  private static List<MedEquip> getEquipmentOnFloor(String floor, String equipType) {
+    List<Location> allFloorLocations = getLocationsOnFloor(floor);
+    ArrayList<String> floorIds = new ArrayList<>();
+    for (Location l : allFloorLocations) {
+      floorIds.add(l.getNodeID());
+    }
+
+    Session s = SessionManager.getSession();
+    List<MedEquip> equipment =
+        s.createQuery("from MedEquip where equipType = :equipType")
+            .setParameter("equipType", equipType)
+            .list();
+    s.close();
+
+    ArrayList<MedEquip> floorEquip = new ArrayList<>();
+    for (int i = 0; i < equipment.size(); i++) {
+      String locID = equipment.get(i).getEquipLocId();
+      if (floorIds.contains(locID)) {
+        floorEquip.add(equipment.get(i));
+      }
+    }
+    return floorEquip;
+  }
+
   public static List<Location> getLocationsOnFloor(String floor) {
     return DBManager.getAll(Location.class, new Where(Location.FLOOR, floor));
   }
@@ -74,7 +144,7 @@ public class DBUtils {
     int available = 0;
 
     for (MedEquip i : equipment) {
-      if (i.isClean().equals("1")) {
+      if (i.getIsClean().equals("1")) {
         available++;
       }
     }
@@ -99,7 +169,7 @@ public class DBUtils {
     MedEquip thisEquip = equipment.get(0);
 
     thisEquip.setEquipLocId(locationID);
-    thisEquip.setClean("0");
+    thisEquip.setIsClean("0");
 
     DBManager.update(thisEquip);
   }
@@ -228,6 +298,23 @@ public class DBUtils {
       return true;
     }
     return false;
+  }
+
+  /**
+   * Returns a list of Nurses from DB.
+   *
+   * @return List of Nurses
+   */
+  public static List<Employee> getAllNurses() {
+    Session s = SessionManager.getSession();
+
+    List<Employee> nurses =
+        s.createQuery("from Employee where role = :role").setParameter("role", "Nurse" + "").list();
+    s.close();
+    if (nurses.size() < 1) {
+      return null;
+    }
+    return nurses;
   }
 
   /**
