@@ -235,6 +235,22 @@ public class ServiceRequest implements StringArrayConv {
     this.additionalNotes = additionalNotes;
   }
 
+  public int getRequestPriority() {
+    return requestPriority;
+  }
+
+  public void setRequestPriority(int requestPriority) {
+    this.requestPriority = requestPriority;
+  }
+
+  public RequestStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(RequestStatus status) {
+    this.status = status;
+  }
+
   @Override
   public String[] toStringArray() {
     return new String[] {

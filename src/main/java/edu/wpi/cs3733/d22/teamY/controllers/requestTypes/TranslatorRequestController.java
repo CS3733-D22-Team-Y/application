@@ -82,7 +82,7 @@ public class TranslatorRequestController {
             assignedNuse,
             roomID,
             additionalNotes,
-            1,
+            2,
             RequestStatus.INCOMPLETE,
             new String[] {languageTypeSelected}));
 

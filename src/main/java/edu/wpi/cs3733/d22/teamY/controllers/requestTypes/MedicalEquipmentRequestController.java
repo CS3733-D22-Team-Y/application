@@ -110,7 +110,7 @@ public class MedicalEquipmentRequestController {
             assignedNurse,
             roomID,
             additionalNotes,
-            1,
+            8,
             RequestStatus.INCOMPLETE,
             new String[] {equipmentTypeSelected}));
     DBUtils.updateCleanStatus(equipmentTypeSelected, roomID);

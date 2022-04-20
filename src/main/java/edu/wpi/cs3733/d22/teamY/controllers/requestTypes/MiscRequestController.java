@@ -62,7 +62,7 @@ public class MiscRequestController {
             assignedNurse,
             roomID,
             additionalNotes,
-            1,
+            4,
             RequestStatus.INCOMPLETE,
             new String[] {requestName}));
     System.out.println("Saved MiscRequest");

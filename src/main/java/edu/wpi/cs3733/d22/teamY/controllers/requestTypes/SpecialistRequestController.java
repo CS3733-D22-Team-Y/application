@@ -68,7 +68,7 @@ public class SpecialistRequestController {
             "none",
             roomID,
             additionalNotes,
-            1,
+            9,
             RequestStatus.INCOMPLETE,
             new String[] {specialistTypeSelected}));
 
