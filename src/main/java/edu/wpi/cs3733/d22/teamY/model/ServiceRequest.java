@@ -377,23 +377,16 @@ public class ServiceRequest implements StringArrayConv {
     sb.append("Room: ").append(DBUtils.convertIDToName(getLocationID())).append("\n");
     switch (type) {
       case FLORAL:
-        sb.append(getSpecificText());
+      case MISC:
+      case TRANSLATOR:
+      case SPECIALIST:
+      case MEDEQUIP:
+      case LAB:
+      case MEAL:
+      case LAUNDRY:
       case SECURITY:
         sb.append(getSpecificText());
-      case LAUNDRY:
-        sb.append(getSpecificText());
-      case LAB:
-        sb.append(getSpecificText());
-      case MEAL:
-        sb.append(getSpecificText());
-      case MEDEQUIP:
-        sb.append(getSpecificText());
-      case SPECIALIST:
-        sb.append(getSpecificText());
-      case TRANSLATOR:
-        sb.append(getSpecificText());
-      case MISC:
-        sb.append(getSpecificText());
+        break;
     }
     return sb.toString();
   }
