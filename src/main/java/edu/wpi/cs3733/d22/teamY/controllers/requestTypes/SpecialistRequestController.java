@@ -9,7 +9,6 @@ import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
-import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.util.Objects;
 import javafx.fxml.FXML;
@@ -18,13 +17,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class FloralRequestController {
+public class SpecialistRequestController {
   // Radio Buttons
-  @FXML private MFXRadioButton getWellSoonBouquetRadioButton;
-  @FXML private MFXRadioButton newBabyRadioButton;
-  @FXML private MFXRadioButton bouquetOfTheDayRadioButton;
+  @FXML private MFXRadioButton cardiologistButton;
+  @FXML private MFXRadioButton neurologistButton;
+  @FXML private MFXRadioButton dermatologistButton;
   // Input fields
-  @FXML private MFXTextField input_AssignedNurse;
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
   // Additional Notes
@@ -36,11 +34,12 @@ public class FloralRequestController {
   private Scene requestMenu = null;
 
   // Bouquet types text. These should be changed depending on what the names in the database are.
-  private final String getWellSoonBouquetText = "getWellSoon";
-  private final String newBabyBouquetText = "newBaby";
-  private final String bouquetOfTheDayText = "bouquetOfDay";
 
-  public FloralRequestController() {}
+  private final String cardiologistText = "cardiologist";
+  private final String neurologistText = "neurologist";
+  private final String dermatologistText = "dermatologist";
+
+  public SpecialistRequestController() {}
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
   public void initialize() throws IOException {
@@ -58,22 +57,22 @@ public class FloralRequestController {
    *
    * @param roomID The room ID.
    * @param additionalNotes Any additional notes.
-   * @param bouquetTypeSelected The type of bouquet selected.
+   * @param specialistTypeSelected The type of bouquet selected.
    */
   private void submitRequest(
-      String roomID, String assignedNurse, String additionalNotes, String bouquetTypeSelected)
+      String roomID, String assignedNurse, String additionalNotes, String specialistTypeSelected)
       throws IOException {
     DBManager.save(
         new ServiceRequest(
-            RequestTypes.FLORAL,
-            assignedNurse,
+            RequestTypes.SPECIALIST,
+            "none",
             roomID,
             additionalNotes,
             1,
             RequestStatus.INCOMPLETE,
-            new String[] {bouquetTypeSelected}));
+            new String[] {specialistTypeSelected}));
 
-    System.out.println("Saved FloralRequest");
+    System.out.println("Saved SpecialistRequest");
   }
 
   // Called when the submit button is pressed.
@@ -81,14 +80,13 @@ public class FloralRequestController {
   void submitButton() throws IOException {
     // Checks if a bouquet choice has been made
     if (RequestControllerUtil.isRadioButtonSelected(
-            getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton)
-        && !Objects.equals(roomsHiddenField.getText(), "")
-        && !Objects.equals(input_AssignedNurse.getText(), "")) {
+            dermatologistButton, cardiologistButton, neurologistButton)
+        && !Objects.equals(roomsHiddenField.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          input_AssignedNurse.getText(),
+          "none",
           input_AdditionalNotes.getText(),
-          getBouquetType());
+          getSpecialistType());
       errorLabel.setText("");
       SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/SideBar.fxml");
       NewSceneLoading.reloadScene("views/ActiveServiceRequest.fxml");
@@ -102,8 +100,7 @@ public class FloralRequestController {
   @FXML
   void backButton() throws IOException {
     if (RequestControllerUtil.isRadioButtonSelected(
-            getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton)
-        || !input_AssignedNurse.getText().equals("")
+            dermatologistButton, cardiologistButton, neurologistButton)
         || !input_AdditionalNotes.getText().equals("")
         || !Objects.equals(roomsHiddenField.getText(), "")) {
       if (SceneLoading.stayOnPage) {
@@ -115,10 +112,10 @@ public class FloralRequestController {
   }
 
   // Returns the database name of the selected radio button.
-  private String getBouquetType() {
-    if (getWellSoonBouquetRadioButton.isSelected()) return getWellSoonBouquetText;
-    if (newBabyRadioButton.isSelected()) return newBabyBouquetText;
-    if (bouquetOfTheDayRadioButton.isSelected()) return bouquetOfTheDayText;
+  private String getSpecialistType() {
+    if (neurologistButton.isSelected()) return neurologistText;
+    if (cardiologistButton.isSelected()) return cardiologistText;
+    if (dermatologistButton.isSelected()) return dermatologistText;
     // Should never happen
     return ("");
   }
@@ -127,9 +124,8 @@ public class FloralRequestController {
   @FXML
   void resetAllFields() {
     RequestControllerUtil.resetRadioButtons(
-        getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton);
-    RequestControllerUtil.resetTextFields(
-        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
+        neurologistButton, cardiologistButton, dermatologistButton);
+    RequestControllerUtil.resetTextFields(roomsHiddenField, input_AdditionalNotes);
     errorLabel.setText("");
     roomsComboBox.setValue("");
   }
