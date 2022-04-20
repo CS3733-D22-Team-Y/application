@@ -79,7 +79,7 @@
             <Font name="Calibri Bold" size="21.0" />
          </font>
       </Label>
-      <MFXTextField editable="false" floatMode="DISABLED" layoutX="516.0" layoutY="144.0" prefHeight="29.0" prefWidth="154.0" styleClass="requestInput" text="Your birthdate">
+      <MFXTextField editable="false" floatMode="DISABLED" layoutX="516.0" layoutY="144.0" prefHeight="29.0" prefWidth="154.0" styleClass="requestInput" text="MM/DD/YYYY">
          <font>
             <Font size="20.0" />
          </font>
