@@ -14,7 +14,15 @@ public class RequestMenuController {
   @FXML AnchorPane sidebarPane;
 
   @FXML
-  private Label creator1, creator2, creator3, creator4, creator5, creator6, creator7, creator8;
+  private Label creator1,
+      creator2,
+      creator3,
+      creator4,
+      creator5,
+      creator6,
+      creator7,
+      creator8,
+      creator9;
 
   public RequestMenuController() {}
 
@@ -83,6 +91,11 @@ public class RequestMenuController {
   }
 
   @FXML
+  void loadSpecialistReq() {
+    NewSceneLoading.loadScene("views/requestTypes/SpecialistRequest.fxml");
+  }
+
+  @FXML
   void showCreators() {
     boolean state = creatorToggle.isSelected();
     System.out.println(state);
@@ -95,5 +108,6 @@ public class RequestMenuController {
     creator6.setVisible(state);
     creator7.setVisible(state);
     creator8.setVisible(state);
+    creator9.setVisible(state);
   }
 }
