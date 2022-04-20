@@ -5,6 +5,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.MakeSound;
 import edu.wpi.cs3733.d22.teamY.Messaging.Chat;
 import edu.wpi.cs3733.d22.teamY.Messaging.ChatManager;
 import edu.wpi.cs3733.d22.teamY.Messaging.Firebase;
@@ -669,6 +670,7 @@ public class MessageController {
           Chat c = snapshot.getValue(Chat.class);
           ChatManager.myChats.put(snapshot.getKey(), c);
           System.out.println("On Child added: \n" + snapshot.getKey() + " " + c);
+//          MakeSound.playNewMessage();
           Platform.runLater(
               () -> {
                 refreshChats();
@@ -682,6 +684,7 @@ public class MessageController {
         public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
           Chat c = snapshot.getValue(Chat.class);
           ChatManager.myChats.put(snapshot.getKey(), c);
+//          MakeSound.playNewMessage();
           for (String s : c.getUsers()) {
             Firebase.chatRef.child(s).child(snapshot.getKey()).setValueAsync(c);
           }
@@ -699,6 +702,7 @@ public class MessageController {
         public void onChildRemoved(DataSnapshot snapshot) {
           ChatManager.myChats.remove(snapshot.getKey());
           System.out.println("Removed chat from listener: \n" + snapshot.getKey());
+//          MakeSound.playNewMessage();
           Platform.runLater(
               () -> {
                 refreshChats();
@@ -710,6 +714,7 @@ public class MessageController {
 
         @Override
         public void onChildMoved(DataSnapshot snapshot, String previousChildName) {
+//          MakeSound.playNewMessage();
           Platform.runLater(
               () -> {
                 refreshChats();
