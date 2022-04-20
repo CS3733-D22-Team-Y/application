@@ -155,7 +155,7 @@ public class MapPageController<T extends Requestable> {
   int locationPinDefaultY = 500;
   ImageView locationPin;
 
-  Circle locationDot = new Circle(0, 0, 10, Color.RED);
+  Circle locationDot = new Circle(0, 0, 0, Color.RED);
 
   @FXML private AnchorPane sidebarPane;
 
@@ -270,8 +270,8 @@ public class MapPageController<T extends Requestable> {
                 Location created =
                     new Location(
                         Integer.toString((int) Math.round(Math.random() * 10000)),
-                        (int) Math.round(e.getX()),
-                        (int) Math.round(e.getY()),
+                        (int) Math.round(e.getX()) - (int) (48 * 1.0),
+                        (int) Math.round(e.getY()) - (int) (95 * .5),
                         newFloor.dbKey,
                         " ",
                         " ",
