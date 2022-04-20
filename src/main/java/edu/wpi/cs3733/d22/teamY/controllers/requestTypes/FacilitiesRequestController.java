@@ -1,97 +1,88 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
-import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
-import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
 import java.util.Objects;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class LaundryRequestController implements IController {
+public class FacilitiesRequestController {
   // Radio Buttons
-  @FXML private MFXRadioButton hazardousRadioButton;
-  @FXML private MFXRadioButton scrubsRadioButton;
-  @FXML private MFXRadioButton linensRadioButton;
-  // Text inputs
-  @FXML private TextField input_AssignedNurse;
+  @FXML private MFXRadioButton spillRadioButton;
+  @FXML private MFXRadioButton hazRadioButton;
+  @FXML private MFXRadioButton bathRadioButton;
+  @FXML private MFXRadioButton moveRadioButton;
+  @FXML private MFXRadioButton otherRadioButton;
+  @FXML private JFXTextArea otherTextArea;
+
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
-  // Additional  Notes
+  // Additional Notes
   @FXML private TextArea input_AdditionalNotes;
   // Error Label
   @FXML private TextArea errorLabel;
   // Side bar
   @FXML private AnchorPane sidebarPane;
-
-  @FXML private AnchorPane mainPane;
-
   private Scene requestMenu = null;
 
-  private final String hazardousText = "hazardous";
-  private final String scrubsText = "scrubs";
-  private final String linensText = "linens";
+  public FacilitiesRequestController() {}
 
-  public LaundryRequestController() {}
-
+  // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
   public void initialize() throws IOException {
+
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
     NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   @FXML
-  private void setRoomText() {
+  void setRoomText() {
     roomsHiddenField.setText(roomsComboBox.getValue());
   }
-
-  // BACKEND PEOPLE,THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
-
   /**
    * Submits a service request.
    *
    * @param roomID The room ID.
    * @param additionalNotes Any additional notes.
-   * @param laundryTypeSelected The type of result selected.
+   * @param type The type of request selected.
    */
-  private void submitRequest(
-      String roomID, String assignedNurse, String additionalNotes, String laundryTypeSelected) {
+  private void submitRequest(String roomID, String additionalNotes, String type)
+      throws IOException {
     DBManager.save(
         new ServiceRequest(
-            RequestTypes.LAUNDRY,
-            assignedNurse,
+            RequestTypes.FACILITIES,
+            "None",
             roomID,
             additionalNotes,
             3,
             RequestStatus.INCOMPLETE,
-            new String[] {laundryTypeSelected}));
-    System.out.println("Saved Laundry Request");
+            new String[] {type}));
+
+    System.out.println("Saved Facilities Request");
   }
 
   // Called when the submit button is pressed.
   @FXML
   void submitButton() throws IOException {
-    // Checks if a lab result choice has been made.
+    // Checks if a bouquet choice has been made
     if (RequestControllerUtil.isRadioButtonSelected(
-            hazardousRadioButton, linensRadioButton, scrubsRadioButton)
-        && !Objects.equals(roomsHiddenField.getText(), "")
-        && !Objects.equals(input_AssignedNurse.getText(), "")) {
+            spillRadioButton, hazRadioButton, bathRadioButton, moveRadioButton, otherRadioButton)
+        && !Objects.equals(roomsHiddenField.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
-          getResultType());
+          getFacilityType());
       errorLabel.setText("");
       SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/SideBar.fxml");
       NewSceneLoading.reloadScene("views/ActiveServiceRequest.fxml");
@@ -104,41 +95,48 @@ public class LaundryRequestController implements IController {
 
   @FXML
   void backButton() throws IOException {
-    NewSceneLoading.loadScene("views/RequestMenu.fxml");
+    Boolean typeSelected =
+        RequestControllerUtil.isRadioButtonSelected(
+            spillRadioButton, hazRadioButton, bathRadioButton, moveRadioButton, otherRadioButton);
+
+    Boolean allFields = !Objects.equals(roomsHiddenField.getText(), "");
+
+    if (typeSelected || allFields) {
+      SceneLoading.loadPopup(
+          "views/popups/ReqAbort.fxml", "views/requestTypes/FacilitiesRequest.fxml");
+      if (SceneLoading.stayOnPage) {
+        NewSceneLoading.loadScene("views/requestTypes/FacilitiesRequest.fxml");
+      }
+    } else {
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
+    }
   }
 
   // Returns the database name of the selected radio button.
-  private String getResultType() {
-    if (hazardousRadioButton.isSelected()) return hazardousText;
-    if (linensRadioButton.isSelected()) return linensText;
-    if (scrubsRadioButton.isSelected()) return scrubsText;
-    // Will never be used
-    return "";
+  private String getFacilityType() {
+    if (spillRadioButton.isSelected()) {
+      return "Spill";
+    }
+    if (hazRadioButton.isSelected()) {
+      return "Haz";
+    }
+    if (bathRadioButton.isSelected()) {
+      return "Bath";
+    }
+    if (otherRadioButton.isSelected()) {
+      return otherTextArea.getText();
+    }
+    // Should never happen
+    return ("");
   }
 
-  @FXML
-  void backToRequestMenu(ActionEvent event) throws IOException {
-    SceneLoading.loadScene("views/RequestMenu.fxml");
-    resetAllFields();
-  }
-
+  // Reset button functionality
   @FXML
   void resetAllFields() {
     RequestControllerUtil.resetRadioButtons(
-        scrubsRadioButton, linensRadioButton, hazardousRadioButton);
-    RequestControllerUtil.resetTextFields(
-        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
+        spillRadioButton, hazRadioButton, bathRadioButton, moveRadioButton, otherRadioButton);
+    RequestControllerUtil.resetTextFields(roomsHiddenField, input_AdditionalNotes);
     errorLabel.setText("");
     roomsComboBox.setValue("");
-  }
-
-  @Override
-  public IController getController() {
-    return this;
-  }
-
-  @Override
-  public void initializeScale() {
-    Scaling.scaleItemAroundCenter(mainPane);
   }
 }

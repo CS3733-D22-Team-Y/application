@@ -93,7 +93,9 @@ public class WelcomePageController implements IController {
         "views/requestTypes/SecurityRequest.fxml",
         "views/requestTypes/TranslatorRequest.fxml",
         // "views/Map.fxml",
-        "views/requestTypes/SpecialistRequest.fxml");
+        "views/requestTypes/SpecialistRequest.fxml",
+        "views/requestTypes/FacilitiesRequest.fxml",
+        "views/Dashboard.fxml");
   }
 
   @FXML
@@ -130,7 +132,7 @@ public class WelcomePageController implements IController {
     loadMainTask.setOnSucceeded(
         e -> {
           App.getInstance().setScene(new Scene(loadMainTask.getValue().getParent()));
-          SideBarController controller = loadMainTask.getValue().getLoader().getController();
+          SideBarController controller = NewSceneLoading.sideBarController;
           try {
             // controller.initializeScale();
             controller.loadViewServiceRequests();

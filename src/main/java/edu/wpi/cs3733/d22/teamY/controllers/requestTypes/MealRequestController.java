@@ -110,7 +110,7 @@ public class MealRequestController implements IController {
             assignedNurse,
             roomID,
             additionalNotes,
-            1,
+            5,
             RequestStatus.INCOMPLETE,
             new String[] {mainChoice, sideChoice, allergies, specialInstructions}));
     System.out.println("Saved MealRequest");

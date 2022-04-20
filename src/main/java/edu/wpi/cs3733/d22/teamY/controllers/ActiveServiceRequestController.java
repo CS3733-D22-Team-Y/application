@@ -31,30 +31,16 @@ public class ActiveServiceRequestController implements IController {
 
   private ArrayList<RequestSet> rqPairs;
 
-  private static final List<Class<? extends Requestable>> requestables =
-      Arrays.asList(
-          LabRequest.class,
-          MedEquipReq.class,
-          MealRequest.class,
-          TranslatorRequest.class,
-          FloralRequest.class,
-          LaundryRequest.class,
-          SecurityServiceRequest.class,
-          MiscRequest.class);
-
   public void initialize() throws IOException {
     // requestBox.setPrefHeight(1000);
     scrollBox.setBackground(Background.EMPTY);
 
     rqPairs = new ArrayList<>();
 
-    for (Class<? extends Requestable> rqClass : requestables) {
-
-      List<Requestable> reqs = DBManager.getAll(rqClass);
-      if (reqs != null) {
-        for (Requestable req : reqs) {
-          addRequest(req);
-        }
+    List<ServiceRequest> reqs = DBManager.getAll(ServiceRequest.class);
+    if (reqs != null) {
+      for (ServiceRequest req : reqs) {
+        addRequest(req);
       }
     }
 
@@ -75,7 +61,7 @@ public class ActiveServiceRequestController implements IController {
     extraInfoText.setText(info);
   }
 
-  private void addRequest(Requestable req) throws IOException {
+  private void addRequest(ServiceRequest req) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SingularServiceRequest.fxml"));
     Pane pane = loader.load();
     // SingularServiceRequestController controller = loader.getController();
@@ -88,7 +74,7 @@ public class ActiveServiceRequestController implements IController {
 
   private void addToBox(RequestSet rqSet) {
     requestBox.getChildren().add(rqSet.getPane());
-    rqSet.getController().populateFromRequestable(rqSet.getRequest());
+    rqSet.getController().populateFromRequest(rqSet.getRequest());
   }
 
   @Override

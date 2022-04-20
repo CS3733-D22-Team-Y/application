@@ -59,7 +59,7 @@ public class MiscRequestController implements IController {
             assignedNurse,
             roomID,
             additionalNotes,
-            1,
+            4,
             RequestStatus.INCOMPLETE,
             new String[] {requestName}));
     System.out.println("Saved MiscRequest");

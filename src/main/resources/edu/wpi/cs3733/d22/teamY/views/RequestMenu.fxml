@@ -211,6 +211,7 @@
          <Label fx:id="creator6" layoutX="749.0" layoutY="470.0" text="Emily Gorelik" visible="false" />
          <Label fx:id="creator7" layoutX="373.0" layoutY="610.0" text="Sky Tang" visible="false" />
          <Label fx:id="creator8" layoutX="754.0" layoutY="602.0" text="Jake Brady" visible="false" />
+         <Label fx:id="creator10" layoutX="835.0" layoutY="665.0" text="Nathan Pollock" visible="false" />
          <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="130.0" layoutY="636.0" onAction="#loadSpecialistReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Specialist" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
@@ -233,6 +234,7 @@
                <Image url="@images/icons/specialist.png" />
             </image>
          </ImageView>
+         <MFXButton fx:id="facilitiesButton" layoutX="845.0" layoutY="684.0" onAction="#loadFacilities" text="Facilities" />
       </children>
    </AnchorPane>
    <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />

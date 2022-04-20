@@ -79,7 +79,7 @@ public class TranslatorRequestController implements IController {
             assignedNuse,
             roomID,
             additionalNotes,
-            1,
+            2,
             RequestStatus.INCOMPLETE,
             new String[] {languageTypeSelected}));
 

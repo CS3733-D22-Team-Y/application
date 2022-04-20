@@ -72,7 +72,7 @@ public class SpecialistRequestController implements IController {
             "none",
             roomID,
             additionalNotes,
-            1,
+            9,
             RequestStatus.INCOMPLETE,
             new String[] {specialistTypeSelected}));
 
