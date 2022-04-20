@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXTextArea?>
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="serviceRequestDooDad" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SingularServiceRequestController">
+<AnchorPane fx:id="serviceRequestDooDad" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SingularServiceRequestController">
    <children>
-      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#93cddc" height="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="920.0" />
+      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#93cddc" height="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="910.0" />
       <Group fx:id="colorGizmo">
          <children>
             <Rectangle arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
@@ -32,8 +31,7 @@
             <Font name="Calibri" size="20.0" />
          </font>
       </Label>
-      <MFXButton prefHeight="200.0" prefWidth="920.0" style="-fx-blend-mode: SCREEN; -fx-background-color: #000000;" text=" " />
-      <JFXTextArea fx:id="extraInfoText" focusColor="#ffffff00" layoutX="310.0" layoutY="10.0" prefHeight="180.0" prefWidth="600.0" style="-fx-background-color: white;" unFocusColor="#ffffff00">
+      <JFXTextArea fx:id="extraInfoText" editable="false" focusColor="#ffffff00" layoutX="310.0" layoutY="10.0" prefHeight="180.0" prefWidth="590.0" style="-fx-background-color: white;" unFocusColor="#ffffff00">
          <font>
             <Font size="24.0" />
          </font></JFXTextArea>

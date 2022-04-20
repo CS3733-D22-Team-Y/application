@@ -35,7 +35,7 @@
          </font>
       </Label>
       <Accordion layoutX="342.0" layoutY="400.0" />
-      <MFXScrollPane fx:id="scrollBox" layoutX="284.0" layoutY="85.0" prefHeight="700.0" prefWidth="920.0">
+      <MFXScrollPane fx:id="scrollBox" hbarPolicy="NEVER" layoutX="270.0" layoutY="100.0" prefHeight="690.0" prefWidth="925.0">
          <content>
             <VBox fx:id="requestBox" prefHeight="10.0" prefWidth="400.0" />
          </content>
