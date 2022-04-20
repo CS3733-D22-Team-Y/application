@@ -24,9 +24,10 @@ public class LaundryRequestController {
   @FXML private MFXRadioButton scrubsRadioButton;
   @FXML private MFXRadioButton linensRadioButton;
   // Text inputs
-  @FXML private TextField input_AssignedNurse;
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
+  @FXML private JFXComboBox<String> nursesComboBox;
+  @FXML private TextField nursesHiddenField;
   // Additional  Notes
   @FXML private TextArea input_AdditionalNotes;
   // Error Label
@@ -43,13 +44,20 @@ public class LaundryRequestController {
   public LaundryRequestController() {}
 
   public void initialize() throws IOException {
+    resetAllFields();
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    nursesComboBox.setItems(RequestControllerUtil.allNursesComboBox.getItems());
     NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   @FXML
   private void setRoomText() {
     roomsHiddenField.setText(roomsComboBox.getValue());
+  }
+
+  @FXML
+  private void setNurseText() {
+    nursesHiddenField.setText(nursesComboBox.getValue());
   }
 
   // BACKEND PEOPLE,THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
@@ -82,10 +90,10 @@ public class LaundryRequestController {
     if (RequestControllerUtil.isRadioButtonSelected(
             hazardousRadioButton, linensRadioButton, scrubsRadioButton)
         && !Objects.equals(roomsHiddenField.getText(), "")
-        && !Objects.equals(input_AssignedNurse.getText(), "")) {
+        && !Objects.equals(nursesHiddenField.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          input_AssignedNurse.getText(),
+          nursesHiddenField.getText(),
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");
@@ -103,7 +111,7 @@ public class LaundryRequestController {
     if (RequestControllerUtil.isRadioButtonSelected(
             hazardousRadioButton, linensRadioButton, scrubsRadioButton)
         || !Objects.equals(roomsHiddenField.getText(), "")
-        || !Objects.equals(input_AssignedNurse.getText(), "")) {
+        || !Objects.equals(nursesHiddenField.getText(), "")) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/LaundryRequest.fxml");
@@ -133,8 +141,9 @@ public class LaundryRequestController {
     RequestControllerUtil.resetRadioButtons(
         scrubsRadioButton, linensRadioButton, hazardousRadioButton);
     RequestControllerUtil.resetTextFields(
-        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
+        roomsHiddenField, nursesHiddenField, input_AdditionalNotes);
     errorLabel.setText("");
     roomsComboBox.setValue("");
+    nursesComboBox.setValue("");
   }
 }

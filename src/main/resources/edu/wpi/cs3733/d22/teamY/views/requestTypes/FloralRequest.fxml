@@ -4,7 +4,6 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXRadioButton?>
-<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -76,11 +75,6 @@
             <font>
                 <Font name="Calibri" size="20.0" />
             </font></JFXTextArea>
-        <MFXTextField fx:id="input_AssignedNurse" floatMode="ABOVE" layoutX="430.0" layoutY="160.0" maxHeight="37.0" prefHeight="37.0" prefWidth="250.0" styleClass="requestInput">
-         <font>
-            <Font name="Calibri" size="20.0" />
-         </font>
-        </MFXTextField>
         <MFXButton computeRadiusMultiplier="false" layoutX="980.0" layoutY="740.0" onAction="#resetAllFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" styleClass="requestButton" text="Reset" textFill="WHITE">
             <font>
                 <Font name="Calibri Bold" size="20.0" />
@@ -156,5 +150,7 @@
          </font>
       </MFXButton>
       <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
+      <TextField fx:id="nursesHiddenField" layoutX="430.0" layoutY="160.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
+      <JFXComboBox fx:id="nursesComboBox" layoutX="430.0" layoutY="160.0" onAction="#setNurseText" prefHeight="42.0" prefWidth="250.0" styleClass="inputField" unFocusColor="#ffffff00" />
     </children>
 </AnchorPane>
