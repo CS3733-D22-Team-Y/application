@@ -24,6 +24,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
@@ -53,6 +54,7 @@ public class WelcomePageController implements IController {
   @FXML Label codeEntryLabel;
   @FXML JFXToggleButton dbSwitcherToggle;
   @FXML JFXComboBox<String> dbMenu;
+  @FXML AnchorPane mainPane;
 
   private boolean lockOut = false;
 
@@ -370,5 +372,7 @@ public class WelcomePageController implements IController {
   }
 
   @Override
-  public void initializeScale() {}
+  public void initializeScale() {
+    Scaling.scaleItemAroundCenter(mainPane);
+  }
 }

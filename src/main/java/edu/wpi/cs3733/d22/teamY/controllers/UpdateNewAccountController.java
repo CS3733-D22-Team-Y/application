@@ -8,6 +8,7 @@ import java.io.IOException;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Polygon;
 import javafx.util.Duration;
 
@@ -18,6 +19,8 @@ public class UpdateNewAccountController implements IController {
   @FXML Label passwordValidityError;
   @FXML MFXPasswordField confirmPasswordField;
   @FXML Label passwordsDoNotMatch;
+
+  @FXML AnchorPane mainPane;
 
   public static String user;
 
@@ -68,5 +71,7 @@ public class UpdateNewAccountController implements IController {
   }
 
   @Override
-  public void initializeScale() {}
+  public void initializeScale() {
+    Scaling.scaleItemAroundCenter(mainPane);
+  }
 }

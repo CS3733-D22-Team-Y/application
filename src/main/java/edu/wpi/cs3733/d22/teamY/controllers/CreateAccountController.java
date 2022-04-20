@@ -11,6 +11,7 @@ import java.io.IOException;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 public class CreateAccountController implements IController {
@@ -29,6 +30,8 @@ public class CreateAccountController implements IController {
   @FXML Label userExistsDisplay;
   @FXML Label invalidInputsDisplay;
   @FXML Label addUserSuccessDisplay;
+
+  @FXML AnchorPane mainPane;
 
   public void initialize() {
     invalidInputsDisplay.setVisible(false);
@@ -135,5 +138,7 @@ public class CreateAccountController implements IController {
   }
 
   @Override
-  public void initializeScale() {}
+  public void initializeScale() {
+    Scaling.scaleItemAroundCenter(mainPane);
+  }
 }

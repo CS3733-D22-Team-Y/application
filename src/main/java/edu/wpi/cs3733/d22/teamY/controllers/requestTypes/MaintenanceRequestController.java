@@ -5,7 +5,9 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
@@ -20,7 +22,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class MaintenanceRequestController {
+public class MaintenanceRequestController implements IController {
 
   @FXML private AnchorPane sidebarPane;
 
@@ -40,6 +42,8 @@ public class MaintenanceRequestController {
   @FXML private MFXRadioButton maintenanceRadioButton;
   @FXML private MFXRadioButton unsureRadioButton;
   @FXML private TextArea errorLabel;
+
+  @FXML private AnchorPane mainPane;
 
   private Scene requestMenu = null;
 
@@ -219,5 +223,15 @@ public class MaintenanceRequestController {
     errorLabel.setText("");
     roomsComboBox.setValue("");
     medEquipComboBox.setValue("");
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleItemAroundCenter(mainPane);
   }
 }

@@ -68,45 +68,7 @@ public class SideBarController {
   }
 
   @FXML
-  void initializeScale(Scene currScene) throws IOException {
-    // currScene = bottomSidebarText.getScene();
-    // Bottom sidebar text
-    /*
-    bottomSidebarText.layoutYProperty().bind(currScene.heightProperty().subtract(200));
-    bottomSidebarHiddenButtons.layoutYProperty().bind(currScene.heightProperty().subtract(200));
-    bottomSidebarRectangles.layoutYProperty().bind(currScene.heightProperty().subtract(200));
-    // Sidebar Rectangle
-    sidebarFrame.scaleYProperty().bind(currScene.heightProperty().subtract(20).divide(780));
-    sidebarFrame.layoutYProperty().bind(sidebarFrame.scaleYProperty().multiply(390).subtract(380));
-    // Top sidebar text
-    // System.out.println(currScene.heightProperty());
-    // Sidebar label adjusting
-    sidebarTopDynamicScale(mapLabel, 150, 50);
-    sidebarTopDynamicScale(servicesLabel, 101, 40.5);
-    sidebarTopDynamicScale(equipmentLabel, 52, 31);
-    sidebarTopDynamicScale(tasksLabel, 3, 21.5);
-    // Top sidebar buttons
-    sidebarBindToHeight(
-        mapHiddenRect,
-        servicesHiddenRect,
-        equipmentHiddenRect,
-        tasksHiddenRect,
-        mapButtonHitbox,
-        servicesButtonHitbox,
-        equipmentButtonHitbox,
-        tasksButtonHitbox);
-
-    sidebarBindToLabel(mapHiddenRect, mapButtonHitbox, mapLabel);
-    sidebarBindToLabel(servicesHiddenRect, servicesButtonHitbox, servicesLabel);
-    sidebarBindToLabel(equipmentHiddenRect, equipmentButtonHitbox, equipmentLabel);
-    sidebarBindToLabel(tasksHiddenRect, tasksButtonHitbox, tasksLabel);
-
-    sidebarBindToLabel(homeHiddenRect, homeButtonHitbox, homeLabel);
-    sidebarBindToLabel(inboxHiddenRect, inboxButtonHitbox, inboxLabel);
-    sidebarBindToLabel(profileHiddenRect, profileButtonHitbox, profileLabel);
-    sidebarBindToLabel(logoutHiddenRect, logoutButtonHitbox, logoutLabel);
-     */
-  }
+  void initializeScale(Scene currScene) throws IOException {}
 
   private void resizeMainScreen() {
     /*

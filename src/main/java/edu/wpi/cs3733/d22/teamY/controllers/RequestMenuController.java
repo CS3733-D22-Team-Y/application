@@ -16,6 +16,8 @@ public class RequestMenuController implements IController {
 
   @FXML private MFXButton facilitiesButton;
 
+  @FXML AnchorPane mainPane;
+
   @FXML
   private Label creator1,
       creator2,
@@ -137,5 +139,7 @@ public class RequestMenuController implements IController {
   }
 
   @Override
-  public void initializeScale() {}
+  public void initializeScale() {
+    Scaling.scaleItemAroundCenter(mainPane);
+  }
 }

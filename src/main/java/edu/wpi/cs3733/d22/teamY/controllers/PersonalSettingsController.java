@@ -24,6 +24,8 @@ public class PersonalSettingsController implements IController {
 
   @FXML AnchorPane sidebarPane;
 
+  @FXML AnchorPane mainPane;
+
   AnchorPane sidebar = null;
   public static Employee currentEmployee =
       new Employee(
@@ -169,5 +171,7 @@ public class PersonalSettingsController implements IController {
   }
 
   @Override
-  public void initializeScale() {}
+  public void initializeScale() {
+    Scaling.scaleItemAroundCenter(mainPane);
+  }
 }

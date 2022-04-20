@@ -26,6 +26,8 @@ public class MedEquipTablePageController implements IController {
 
   AnchorPane sidebar = null;
 
+  @FXML AnchorPane mainPane;
+
   @FXML
   public void initialize() throws IOException {
     List<MedEquip> medEquips;
@@ -82,7 +84,9 @@ public class MedEquipTablePageController implements IController {
   }
 
   @Override
-  public void initializeScale() {}
+  public void initializeScale() {
+    Scaling.scaleItemAroundCenter(mainPane);
+  }
 
   public static class ChangeTheme {
     // Base pane for displaying new scenes

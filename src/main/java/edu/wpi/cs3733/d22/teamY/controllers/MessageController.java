@@ -88,6 +88,8 @@ public class MessageController implements IController {
 
   @FXML private Rectangle selectedChatRect;
 
+  @FXML AnchorPane mainPane;
+
   ArrayList<String> hiddenToField = new ArrayList<>();
 
   ArrayList<EmployeeResult> resultBank = new ArrayList<>();
@@ -729,7 +731,9 @@ public class MessageController implements IController {
   }
 
   @Override
-  public void initializeScale() {}
+  public void initializeScale() {
+    Scaling.scaleItemAroundCenter(mainPane);
+  }
 
   class EmployeeResult {
     private String name, role, id;

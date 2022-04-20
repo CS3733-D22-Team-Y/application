@@ -28,14 +28,6 @@ import javafx.scene.shape.Circle;
 
 public class MapPageController<T extends Requestable> implements IController {
 
-  @Override
-  public IController getController() {
-    return this;
-  }
-
-  @Override
-  public void initializeScale() {}
-
   enum MapMode {
     LOCATION("Locations"),
     EQUIPMENT("Equipment"),
@@ -90,7 +82,7 @@ public class MapPageController<T extends Requestable> implements IController {
   private int currReqSelection = 0;
   @FXML private MFXLegacyComboBox<String> modeBox;
   @FXML private TextField selectorBoxText;
-  @FXML Pane mainPane;
+  @FXML AnchorPane mainPane;
   @FXML private Pane ll1MainPane;
   @FXML private Pane ll1PopupPane;
   @FXML private Pane ll2PopupPane;
@@ -740,5 +732,15 @@ public class MapPageController<T extends Requestable> implements IController {
       this.x = x;
       this.y = y;
     }
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleItemAroundCenter(mainPane);
   }
 }
