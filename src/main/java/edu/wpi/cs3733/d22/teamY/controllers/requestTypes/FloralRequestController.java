@@ -92,7 +92,7 @@ public class FloralRequestController {
         && !Objects.equals(nursesHiddenField.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          DBUtils.convertNameToID(nursesComboBox.getValue()),
+          nursesHiddenField.getText(),
           input_AdditionalNotes.getText(),
           getBouquetType());
       errorLabel.setText("");

@@ -80,7 +80,7 @@ public class MiscRequestController {
     } else {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          DBUtils.convertNameToID(nursesComboBox.getValue()),
+          nursesHiddenField.getText(),
           input_AdditionalNotes.getText(),
           input_RequestName.getText());
       errorLabel.setText("");

@@ -111,7 +111,7 @@ public class TranslatorRequestController {
             && Objects.equals(input_OtherLanguage.getText(), ""))) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          DBUtils.convertNameToID(nursesComboBox.getValue()),
+          nursesHiddenField.getText(),
           input_AdditionalNotes.getText(),
           getLanguageType());
       errorLabel.setText("");

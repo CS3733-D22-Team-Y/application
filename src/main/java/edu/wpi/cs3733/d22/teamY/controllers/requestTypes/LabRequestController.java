@@ -94,7 +94,7 @@ public class LabRequestController {
         && !Objects.equals(nursesHiddenField.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          DBUtils.convertNameToID(nursesComboBox.getValue()),
+          nursesHiddenField.getText(),
           input_AdditionalNotes.getText(),
           getResultType());
       errorLabel.setText("");

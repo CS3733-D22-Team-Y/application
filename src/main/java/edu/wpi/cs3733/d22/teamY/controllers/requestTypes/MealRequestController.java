@@ -141,7 +141,7 @@ public class MealRequestController {
     if (mealSelected && sideSelected && allFields) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          DBUtils.convertNameToID(nursesComboBox.getValue()),
+          nursesHiddenField.getText(),
           input_AdditionalNotes.getText(),
           getMainChoice(),
           getSideChoice(),

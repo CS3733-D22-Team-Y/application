@@ -126,7 +126,7 @@ public class SecurityRequestController {
     } else if (typeSelected && prioritySelected && allFields) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          DBUtils.convertNameToID(nursesComboBox.getValue()),
+          nursesHiddenField.getText(),
           input_AdditionalNotes.getText(),
           getRequestType(),
           getRequestPriority());

@@ -154,7 +154,7 @@ public class MedicalEquipmentRequestController {
     } else {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          DBUtils.convertNameToID(nursesComboBox.getValue()),
+          nursesHiddenField.getText(),
           input_AdditionalNotes.getText(),
           getEquipmentType());
       errorLabel.setText("");
