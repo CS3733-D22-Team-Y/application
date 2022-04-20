@@ -374,7 +374,7 @@ public class MapPageController<T extends Requestable> {
                         equipID.setText(String.valueOf(o.getEquipID()));
                         equipLocation.setText(o.getEquipLocId());
                         equipType.setText(o.getEquipType());
-                        equipClean.setText(o.isClean());
+                        equipClean.setText(o.getIsClean());
                       }
                       if (modeBox.getValue().equals("Service Requests")) {
                         if (requests.size() > 0) {
@@ -441,7 +441,8 @@ public class MapPageController<T extends Requestable> {
                               fuck,
                               equipType.getText(),
                               equipLocation.getText(),
-                              equipClean.getText());
+                              equipClean.getText(),
+                              ""); // TODO fix
                       DBManager.update(t);
                       DBManager.save(t);
 
