@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -148,11 +147,15 @@ public class MapPageController<T extends Requestable> {
   @FXML MFXButton equipUp;
   @FXML MFXButton equipDown;
 
+  Pane e = new Pane();
+
   Boolean locationDragStatus = false;
 
-  int locationDotDefaultX = 500;
-  int locationDotDefaultY = 500;
-  Circle locationDot = new Circle(locationDotDefaultX, locationDotDefaultY, 10, Color.RED);
+  int locationPinDefaultX = 500;
+  int locationPinDefaultY = 500;
+  ImageView locationPin;
+
+  Circle locationDot = new Circle(0, 0, 10, Color.RED);
 
   @FXML private AnchorPane sidebarPane;
 
@@ -167,6 +170,8 @@ public class MapPageController<T extends Requestable> {
 
   private static final int CIRCLE_RADIUS_PX = 10;
   private static final Paint CIRCLE_PAINT = Color.RED;
+  private final int pinDim = 100;
+  private final int pinDim2 = 25;
 
   // Screen size constants
   private static final int MAP_XMIN = 0;
@@ -314,14 +319,24 @@ public class MapPageController<T extends Requestable> {
                 // Create the circle for this location and add context menu handlers to it
                 Pane i = new Pane();
                 if (modeBox.getValue().equals("Locations")) {
-                  Circle c =
-                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
+                  //                  Circle c =
+                  //                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX,
+                  // CIRCLE_PAINT);
                   i.setLayoutX(l.getXCoord());
-                  i.setLayoutY(l.getYCoord());
-                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
-                  i.setPrefWidth(iconDim);
-                  i.setPrefHeight(iconDim);
-                  i.getChildren().add(frame);
+                  i.setLayoutY(l.getYCoord() - pinDim / 2);
+                  ImageView imageView = new ImageView();
+                  imageView.setImage(
+                      new Image(App.class.getResource("views/images/icons/pin.png").toString()));
+                  imageView.setFitHeight(pinDim);
+                  imageView.setFitWidth(pinDim);
+                  //                  imageView.setLayoutX(l.getXCoord() - pinDim / 2);
+                  //                  imageView.setLayoutY(l.getYCoord() - pinDim / 2);
+
+                  //                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim /
+                  // 2, Color.NAVY);
+                  i.setPrefWidth(pinDim);
+                  i.setPrefHeight(pinDim);
+                  i.getChildren().add(imageView);
                   mapElements.add(i);
                 } else if (modeBox.getValue().equals("Equipment") && hasEquipment) {
                   Circle c =
@@ -612,21 +627,29 @@ public class MapPageController<T extends Requestable> {
               if (locationDragStatus) {}
               locationDragStatus = false;
             });
-
+    locationPin = new ImageView();
+    locationPin.setImage(new Image(App.class.getResource("views/images/icons/pin.png").toString()));
+    locationPin.setFitHeight(25);
+    locationPin.setFitWidth(25);
+    locationPin.setLayoutX(1000);
+    locationPin.setLayoutY(30);
+    mainPane.getChildren().add(locationPin);
+    locationPin.setTranslateY(0);
+    locationPin.setTranslateX(0);
     mainPane.getChildren().add(locationDot);
 
     locationDot.setOnMouseDragEntered(e -> {});
 
-    locationDot.setOnMouseDragged(
+    locationPin.setOnMouseDragged(
         e -> {
-          locationDot.setCenterX(e.getX());
-          locationDot.setCenterY(e.getY());
+          locationPin.setLayoutX(e.getX());
+          locationPin.setLayoutY(e.getY());
         });
 
-    locationDot.setOnMouseReleased(
+    locationPin.setOnMouseReleased(
         e -> {
-          locationDot.setCenterX(locationDotDefaultX);
-          locationDot.setCenterY(locationDotDefaultY);
+          locationPin.setLayoutX(1000);
+          locationPin.setLayoutY(30);
           System.out.println(currentFloor);
           Robot bot = null;
           try {
