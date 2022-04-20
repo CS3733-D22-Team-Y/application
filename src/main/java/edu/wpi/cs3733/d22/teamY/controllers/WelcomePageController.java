@@ -156,7 +156,7 @@ public class WelcomePageController {
           SideBarController controller = NewSceneLoading.sideBarController;
           try {
             // controller.initializeScale();
-            controller.loadViewServiceRequests();
+            controller.loadDashboard(); // TODO
           } catch (IOException ex) {
             ex.printStackTrace();
           }
@@ -173,8 +173,7 @@ public class WelcomePageController {
       new Task<>() {
         @Override
         protected MainLoaderResult call() throws IOException {
-          FXMLLoader loader =
-              new FXMLLoader(App.class.getResource("views/ActiveServiceRequest.fxml"));
+          FXMLLoader loader = new FXMLLoader(App.class.getResource("views/Dashboard.fxml"));
           return new MainLoaderResult(loader, loader.load());
         }
       };
