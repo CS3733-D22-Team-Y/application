@@ -218,7 +218,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <ImageView fx:id="weatherIcon" fitHeight="82.0" fitWidth="82.0" layoutX="596.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="weatherIcon" fitHeight="82.0" fitWidth="82.0" layoutX="600.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
          <effect>
             <ColorAdjust brightness="0.18" />
          </effect>
