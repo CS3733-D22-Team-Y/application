@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
@@ -9,7 +10,6 @@ import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
-import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.util.Objects;
 import javafx.fxml.FXML;
@@ -20,11 +20,13 @@ import javafx.scene.layout.AnchorPane;
 
 public class FacilitiesRequestController {
   // Radio Buttons
-  @FXML private MFXRadioButton getWellSoonBouquetRadioButton;
-  @FXML private MFXRadioButton newBabyRadioButton;
-  @FXML private MFXRadioButton bouquetOfTheDayRadioButton;
-  // Input fields
-  @FXML private MFXTextField input_AssignedNurse;
+  @FXML private MFXRadioButton spillRadioButton;
+  @FXML private MFXRadioButton hazRadioButton;
+  @FXML private MFXRadioButton bathRadioButton;
+  @FXML private MFXRadioButton moveRadioButton;
+  @FXML private MFXRadioButton otherRadioButton;
+  @FXML private JFXTextArea otherTextArea;
+
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
   // Additional Notes
@@ -34,11 +36,6 @@ public class FacilitiesRequestController {
   // Side bar
   @FXML private AnchorPane sidebarPane;
   private Scene requestMenu = null;
-
-  // Bouquet types text. These should be changed depending on what the names in the database are.
-  private final String getWellSoonBouquetText = "getWellSoon";
-  private final String newBabyBouquetText = "newBaby";
-  private final String bouquetOfTheDayText = "bouquetOfDay";
 
   public FacilitiesRequestController() {}
 
@@ -50,7 +47,7 @@ public class FacilitiesRequestController {
   }
 
   @FXML
-  private void setRoomText() {
+  void setRoomText() {
     roomsHiddenField.setText(roomsComboBox.getValue());
   }
   /**
@@ -58,22 +55,21 @@ public class FacilitiesRequestController {
    *
    * @param roomID The room ID.
    * @param additionalNotes Any additional notes.
-   * @param bouquetTypeSelected The type of bouquet selected.
+   * @param type The type of request selected.
    */
-  private void submitRequest(
-      String roomID, String assignedNurse, String additionalNotes, String bouquetTypeSelected)
+  private void submitRequest(String roomID, String additionalNotes, String type)
       throws IOException {
     DBManager.save(
         new ServiceRequest(
-            RequestTypes.FLORAL,
-            assignedNurse,
+            RequestTypes.FACILITIES,
+            "None",
             roomID,
             additionalNotes,
             1,
             RequestStatus.INCOMPLETE,
-            new String[] {bouquetTypeSelected}));
+            new String[] {type}));
 
-    System.out.println("Saved FloralRequest");
+    System.out.println("Saved Facilities Request");
   }
 
   // Called when the submit button is pressed.
@@ -81,14 +77,12 @@ public class FacilitiesRequestController {
   void submitButton() throws IOException {
     // Checks if a bouquet choice has been made
     if (RequestControllerUtil.isRadioButtonSelected(
-            getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton)
-        && !Objects.equals(roomsHiddenField.getText(), "")
-        && !Objects.equals(input_AssignedNurse.getText(), "")) {
+            spillRadioButton, hazRadioButton, bathRadioButton, moveRadioButton, otherRadioButton)
+        && !Objects.equals(roomsHiddenField.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
-          getBouquetType());
+          getFacilityType());
       errorLabel.setText("");
       SceneLoading.loadPopup("views/popups/ReqSubmitted.fxml", "views/SideBar.fxml");
       NewSceneLoading.reloadScene("views/ActiveServiceRequest.fxml");
@@ -101,13 +95,17 @@ public class FacilitiesRequestController {
 
   @FXML
   void backButton() throws IOException {
-    if (RequestControllerUtil.isRadioButtonSelected(
-            getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton)
-        || !input_AssignedNurse.getText().equals("")
-        || !input_AdditionalNotes.getText().equals("")
-        || !Objects.equals(roomsHiddenField.getText(), "")) {
+    Boolean typeSelected =
+        RequestControllerUtil.isRadioButtonSelected(
+            spillRadioButton, hazRadioButton, bathRadioButton, moveRadioButton, otherRadioButton);
+
+    Boolean allFields = !Objects.equals(roomsHiddenField.getText(), "");
+
+    if (typeSelected || allFields) {
+      SceneLoading.loadPopup(
+          "views/popups/ReqAbort.fxml", "views/requestTypes/FacilitiesRequest.fxml");
       if (SceneLoading.stayOnPage) {
-        NewSceneLoading.loadScene("views/requestTypes/FloralRequest.fxml");
+        NewSceneLoading.loadScene("views/requestTypes/FacilitiesRequest.fxml");
       }
     } else {
       NewSceneLoading.loadScene("views/RequestMenu.fxml");
@@ -115,10 +113,19 @@ public class FacilitiesRequestController {
   }
 
   // Returns the database name of the selected radio button.
-  private String getBouquetType() {
-    if (getWellSoonBouquetRadioButton.isSelected()) return getWellSoonBouquetText;
-    if (newBabyRadioButton.isSelected()) return newBabyBouquetText;
-    if (bouquetOfTheDayRadioButton.isSelected()) return bouquetOfTheDayText;
+  private String getFacilityType() {
+    if (spillRadioButton.isSelected()) {
+      return "Spill";
+    }
+    if (hazRadioButton.isSelected()) {
+      return "Haz";
+    }
+    if (bathRadioButton.isSelected()) {
+      return "Bath";
+    }
+    if (otherRadioButton.isSelected()) {
+      return otherTextArea.getText();
+    }
     // Should never happen
     return ("");
   }
@@ -127,9 +134,8 @@ public class FacilitiesRequestController {
   @FXML
   void resetAllFields() {
     RequestControllerUtil.resetRadioButtons(
-        getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton);
-    RequestControllerUtil.resetTextFields(
-        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
+        spillRadioButton, hazRadioButton, bathRadioButton, moveRadioButton, otherRadioButton);
+    RequestControllerUtil.resetTextFields(roomsHiddenField, input_AdditionalNotes);
     errorLabel.setText("");
     roomsComboBox.setValue("");
   }
