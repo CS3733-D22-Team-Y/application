@@ -12,6 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class App extends Application {
+  public static double windowX = 353;
+  public static double windowY = 96;
 
   private Stage primaryStage;
 
@@ -60,6 +62,8 @@ public class App extends Application {
     primaryStage.setScene(scene);
     primaryStage.show();
     // camera.newPfp();
+    primaryStage.xProperty().addListener((obs, oldVal, newVal) -> windowY = newVal.doubleValue());
+    primaryStage.yProperty().addListener((obs, oldVal, newVal) -> windowX = newVal.doubleValue());
   }
 
   @Override

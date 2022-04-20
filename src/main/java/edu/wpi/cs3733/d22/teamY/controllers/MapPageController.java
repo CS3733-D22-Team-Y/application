@@ -11,13 +11,18 @@ import edu.wpi.cs3733.d22.teamY.model.Requestable;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox;
+import java.awt.*;
+import java.awt.event.*;
 import java.io.IOException;
 import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
@@ -601,33 +606,21 @@ public class MapPageController<T extends Requestable> {
 
     mapComponent
         .getMapPane()
-        .setOnMouseDragExited(
+        .setOnMouseReleased(
             e -> {
               System.out.println("Mouse released");
-              if (locationDragStatus) {
-                Location newLocation =
-                    new Location(
-                        Integer.toString((int) Math.round(Math.random() * 1000)),
-                        (int) e.getX(),
-                        (int) e.getY(),
-                        currentFloor,
-                        "",
-                        "",
-                        "",
-                        "");
-                DBManager.save(newLocation);
-                System.out.println("Location saved");
-              }
+              if (locationDragStatus) {}
               locationDragStatus = false;
             });
 
     mainPane.getChildren().add(locationDot);
 
+    locationDot.setOnMouseDragEntered(e -> {});
+
     locationDot.setOnMouseDragged(
         e -> {
           locationDot.setCenterX(e.getX());
           locationDot.setCenterY(e.getY());
-          locationDragStatus = true;
         });
 
     locationDot.setOnMouseReleased(
@@ -635,6 +628,21 @@ public class MapPageController<T extends Requestable> {
           locationDot.setCenterX(locationDotDefaultX);
           locationDot.setCenterY(locationDotDefaultY);
           System.out.println(currentFloor);
+          Robot bot = null;
+          try {
+            bot = new Robot();
+          } catch (AWTException ex) {
+            ex.printStackTrace();
+          }
+          int mask = InputEvent.BUTTON1_DOWN_MASK;
+          assert bot != null;
+          bot.mouseMove((int) (e.getX() + App.windowX), (int) (e.getY() + App.windowY));
+          bot.mousePress(mask);
+          bot.mouseRelease(mask);
+
+          bot.mousePress(mask);
+          bot.mouseRelease(mask);
+          System.out.println(e.getX() + " " + e.getY());
         });
   }
 
