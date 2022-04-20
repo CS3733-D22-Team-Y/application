@@ -627,6 +627,7 @@ public class MapPageController<T extends Requestable> {
               if (locationDragStatus) {}
               locationDragStatus = false;
             });
+
     locationPin = new ImageView();
     locationPin.setImage(new Image(App.class.getResource("views/images/icons/pin.png").toString()));
     locationPin.setFitHeight(25);
@@ -642,8 +643,8 @@ public class MapPageController<T extends Requestable> {
 
     locationPin.setOnMouseDragged(
         e -> {
-          locationPin.setLayoutX(e.getX());
-          locationPin.setLayoutY(e.getY());
+          locationPin.setLayoutX(e.getX() + locationPin.getLayoutX() - 48 * .25);
+          locationPin.setLayoutY(e.getY() + locationPin.getLayoutY() - 95 * .25);
         });
 
     locationPin.setOnMouseReleased(
