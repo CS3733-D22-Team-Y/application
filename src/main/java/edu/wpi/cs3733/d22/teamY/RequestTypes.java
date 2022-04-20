@@ -14,7 +14,10 @@ public enum RequestTypes {
   SPECIALIST(1, new String[] {"specialistType"}, "Specialist"),
   TRANSLATOR(1, new String[] {"requestTypeSelected"}, "Medical Translator"),
 
-  MISC(1, new String[] {"requestName"}, "Task (Uncategorized)"),
+  FACILITIES(1, new String[] {"type"}, "Facilities Request"),
+
+  MISC(1, new String[] {"requestName"}, "Uncategorized Task"),
+  
   ;
 
   private final int attribues;
