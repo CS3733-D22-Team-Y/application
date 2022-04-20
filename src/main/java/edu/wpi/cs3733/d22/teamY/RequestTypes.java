@@ -12,9 +12,10 @@ public enum RequestTypes {
   SECURITY(2, new String[] {"requestTypeSelected", "securityRequestPriority"}, "Security Alert"),
 
   SPECIALIST(1, new String[] {"specialistType"}, "Specialist"),
-  TRANSLATOR(1, new String[] {"requestTypeSelected"}, "Medical Translator");
+  TRANSLATOR(1, new String[] {"requestTypeSelected"}, "Medical Translator"),
 
   MISC(1, new String[] {"requestName"}, "Task (Uncategorized)"),
+  ;
 
   private final int attribues;
   private final String[] attributeNames;
