@@ -74,7 +74,7 @@ public class DBUtils {
     int available = 0;
 
     for (MedEquip i : equipment) {
-      if (i.isClean().equals("1")) {
+      if (i.getIsClean().equals("1")) {
         available++;
       }
     }
@@ -99,7 +99,7 @@ public class DBUtils {
     MedEquip thisEquip = equipment.get(0);
 
     thisEquip.setEquipLocId(locationID);
-    thisEquip.setClean("0");
+    thisEquip.setIsClean("0");
 
     DBManager.update(thisEquip);
   }
@@ -228,6 +228,23 @@ public class DBUtils {
       return true;
     }
     return false;
+  }
+
+  /**
+   * Returns a list of Nurses from DB.
+   *
+   * @return List of Nurses
+   */
+  public static List<Employee> getAllNurses() {
+    Session s = SessionManager.getSession();
+
+    List<Employee> nurses =
+        s.createQuery("from Employee where role = :role").setParameter("role", "Nurse" + "").list();
+    s.close();
+    if (nurses.size() < 1) {
+      return null;
+    }
+    return nurses;
   }
 
   /**

@@ -22,12 +22,15 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
 public class MessageController implements IController {
@@ -38,7 +41,6 @@ public class MessageController implements IController {
   @FXML private Pane blankMessage;
   @FXML private Rectangle bRect;
   @FXML private HBox bHbox;
-  @FXML private Circle bUnread;
   @FXML private Pane bPicPane;
   @FXML private Circle bCircle;
   @FXML private Label bInitials;
@@ -80,11 +82,25 @@ public class MessageController implements IController {
 
   @FXML private Label chatIndicator;
 
+  @FXML private Line chatHeaderLine;
+
+  @FXML private Rectangle searchBoxCover;
+
+  @FXML private Rectangle selectedChatRect;
+
+  ArrayList<String> hiddenToField = new ArrayList<>();
+
+  ArrayList<EmployeeResult> resultBank = new ArrayList<>();
   ArrayList<EmployeeResult> results = new ArrayList<>();
+
+  ArrayList<Rectangle> chatBackgrounds = new ArrayList<>();
 
   private String chatID = "";
   private boolean chatOpen = false;
   private boolean newChatOpen = false;
+
+  private boolean initialized = false;
+  private String id = "";
 
   // initialize the controller
   public void initialize() throws IOException {
@@ -96,15 +112,32 @@ public class MessageController implements IController {
     String id = PersonalSettings.currentEmployee.getIDNumber();
     //    System.out.println("Init message controller here: " + id + " " +
     // ChatManager.getChats().size());
-    Firebase.chatRef.addChildEventListener(childEventListener);
+    if (!initialized) {
+      id = PersonalSettings.currentEmployee.getIDNumber();
+      Firebase.chatRef.child(id).addChildEventListener(childEventListener);
+    } else {
+      Firebase.chatRef.child(id).removeEventListener(childEventListener);
+      id = PersonalSettings.currentEmployee.getIDNumber();
+      Firebase.chatRef.child(id).addChildEventListener(childEventListener);
+    }
+    results.clear();
+    resultBank.clear();
     List<Employee> employees = DBManager.getAll(Employee.class);
     for (Employee e : employees) {
       if (!e.getIDNumber().equals(id)) {
-        results.add(new EmployeeResult(e.getName(), e.getRole(), e.getIDNumber()));
+        EmployeeResult er = new EmployeeResult(e.getName(), e.getRole(), e.getIDNumber());
+        results.add(er);
+        resultBank.add(er);
       }
     }
 
+    toBox.setOnKeyReleased(
+        event -> {
+          getResults(event);
+        });
+
     this.refreshChats();
+    this.initialized = true;
   }
 
   public void setChatOpen(boolean open) {
@@ -114,6 +147,7 @@ public class MessageController implements IController {
     messageAreaContainer.setVisible(chatOpen);
     messageArea.setVisible(chatOpen);
     chatIndicator.setVisible(chatOpen);
+    chatHeaderLine.setVisible(chatOpen);
     if (chatOpen) {
       refreshMessages();
       messageText.requestFocus();
@@ -124,11 +158,15 @@ public class MessageController implements IController {
     chatSelector.getChildren().clear();
 
     HashMap<String, Chat> chats = ChatManager.getChats();
+    this.chatBackgrounds.clear();
 
     System.out.println(chats.size());
-    for (String key : chats.keySet()) {
-      Pane clone = getBlankMessageClone(key, chats.get(key));
+    int count = 0;
+    String[] keys = chats.keySet().toArray(new String[0]);
+    for (String key : keys) {
+      Pane clone = getBlankMessageClone(key, chats.get(key), count % 2 == 0);
       chatSelector.getChildren().add(clone);
+      count++;
     }
     // scroll to bottom
     Platform.runLater(
@@ -140,6 +178,8 @@ public class MessageController implements IController {
   public void refreshMessages() {
     messageArea.getChildren().clear();
     Chat c = ChatManager.myChats.get(chatID);
+    System.out.println("Refreshing messages for " + chatID);
+    System.out.println("Chat is null? : " + (c == null));
     String csvNames = "Guest";
     try {
       csvNames = DBUtils.getNamesFromIds(c.getUsers(), true);
@@ -188,7 +228,7 @@ public class MessageController implements IController {
     setChatOpen(false);
     setChatPickerOpen(true);
     toBox.requestFocus();
-    this.getResults();
+    this.getResults(null);
   }
 
   private void setChatPickerOpen(boolean b) {
@@ -197,42 +237,28 @@ public class MessageController implements IController {
   }
 
   public void selectedChat() {
-    String text = toBox.getText().trim().replaceAll(" ", "");
-    if (text.length() > 0 && text.charAt(text.length() - 1) == ',') {
-      text = text.substring(0, text.length() - 1);
-    }
-    String[] splitText = text.split(",");
-    if (text.length() == 0) {
-      System.out.println("No text in to box");
+    if (hiddenToField.size() == 0) {
+      System.out.println("No users selected");
       return;
     }
-    for (String s : splitText) {
-      if (s.length() == 0 || !isNumeric(s)) {
-        System.out.println("empty recipient");
-        return;
-      }
-      if (s.equals(PersonalSettings.currentEmployee.getIDNumber())) {
-        System.out.println("Cannot send to yourself");
-        return;
-      }
-    }
-    if (text.contains(",,")) {
-      System.out.println("empty recipient");
-      return;
-    }
-
-    chatID = Chat.getChatID(PersonalSettings.currentEmployee.getIDNumber(), splitText);
+    chatID = Chat.getChatID(PersonalSettings.currentEmployee.getIDNumber(), hiddenToField);
+    System.out.println("Selected chat: " + chatID);
     System.out.println("Attempting to start chat with ID" + chatID);
     if (!ChatManager.myChats.containsKey(chatID)) {
       // send initial message
       ChatManager.sendMessage(
-          "Chat Created", PersonalSettings.currentEmployee.getIDNumber(), splitText);
+          "Chat Created", PersonalSettings.currentEmployee.getIDNumber(), hiddenToField);
     } else {
       System.out.println("Chat already exists");
     }
     setChatPickerOpen(false);
-    setChatOpen(true);
     toBox.setText("");
+    hiddenToField.clear();
+    resetResults();
+    Platform.runLater(
+        () -> {
+          setChatOpen(true);
+        });
   }
 
   public boolean isNumeric(String str) {
@@ -245,15 +271,55 @@ public class MessageController implements IController {
   }
 
   // on key released handler for the to box:
-  public void getResults() {
-    // remove all spaces
-    toBox.setText(toBox.getText().replaceAll(" ", ""));
-    //    // remove all double commas
-    toBox.setText(toBox.getText().replaceAll(",,", ","));
+  public void getResults(KeyEvent event) {
+    if (event != null) {
+      // if left or right arrow key is pressed, do nothing
+      if (event.getCode() == KeyCode.LEFT || event.getCode() == KeyCode.RIGHT) {
+        // set the caret to the end of the text
+        toBox.positionCaret(toBox.getText().length());
+      }
+    }
+    //    // remove all spaces
+    //    toBox.setText(toBox.getText().replaceAll(" ", ""));
+    //    //    // remove all double commas
+    //    toBox.setText(toBox.getText().replaceAll(",,", ","));
+
+    int numCommas = 0;
+    // find number of commas
+    for (int i = 0; i < toBox.getText().length(); i++) {
+      if (toBox.getText().charAt(i) == ',') {
+        numCommas++;
+      }
+    }
+    int numHiddenCommas = hiddenToField.size();
+
+    // if the number of commas is greater than the number of hidden commas,
+    // remove the last comma and the text before it up to the last comma
+    if (numCommas > numHiddenCommas) {
+      String text = toBox.getText();
+      int index = text.lastIndexOf(",");
+      toBox.setText(text.substring(0, index));
+      addRecipientToChat(results.get(0).id, results.get(0).name);
+    }
+    if (numCommas < numHiddenCommas) {
+      String text = toBox.getText();
+      int index = text.lastIndexOf(",");
+      toBox.setText(text.substring(0, index + 1));
+      String id = hiddenToField.remove(hiddenToField.size() - 1);
+      for (EmployeeResult e : resultBank) {
+        if (e.id.equals(id)) {
+          results.add(e);
+          break;
+        }
+      }
+      showResults("");
+    }
+
     // set the cursor to the end of the text
     toBox.positionCaret(toBox.getText().length());
     String text = toBox.getText();
     String[] splitText = text.split(",");
+
     // show search results
     String query = "";
     if (text.length() > 0) {
@@ -304,28 +370,17 @@ public class MessageController implements IController {
     cloneResultName.setText(nameString);
     cloneResultRole.setText(roleString + "    |   ID#" + id);
 
-    // if the main clone pane is clicked, print the id
+    // if the main clone pane is clicked, add it to the chat
     clone.setOnMouseClicked(
         e -> {
-          boolean good = true;
-          String text = toBox.getText();
-          // if the text contains the id seperated by commas already dont add it again
-          if (text.contains("," + id + ",")) {
-            good = false;
-          }
-          if (text.length() >= id.length() + 1) {
-            if (text.substring(0, id.length() + 1).equals(id + ",")) {
-              good = false;
-            }
-          }
-
-          if (good) addRecipientToChat(id);
+          addRecipientToChat(id, nameString);
+          showResults("");
         });
 
     return clone;
   }
 
-  public void addRecipientToChat(String id) {
+  public void addRecipientToChat(String id, String name) {
     System.out.println("Adding " + id + " to chat");
     // remove everything before the last comma and add the new id
     String text = toBox.getText();
@@ -336,15 +391,28 @@ public class MessageController implements IController {
       // remove everything after the last comma
       text = text.substring(0, index);
       // add the new id
-      text += "," + id + ",";
+      text += "," + name + ",";
     } else {
-      text = id + ",";
+      text = name + ",";
     }
+
+    hiddenToField.add(id);
     // set the text
     toBox.setText(text);
     toBox.requestFocus();
     // set the cursor to the end of the text
     toBox.positionCaret(toBox.getText().length());
+    System.out.println("Hidden to field: ");
+    hiddenToField.forEach(System.out::println);
+
+    // remove that result from the results pane
+    results.removeIf(result -> result.id.equals(id));
+  }
+
+  // use the results bank to reset the results
+  public void resetResults() {
+    results.clear();
+    results.addAll(resultBank);
   }
 
   public Pane getMessageClone(Post p) {
@@ -397,12 +465,11 @@ public class MessageController implements IController {
     return clone;
   }
 
-  public Pane getBlankMessageClone(String chatID, Chat chat) {
+  public Pane getBlankMessageClone(String chatID, Chat chat, boolean grey) {
     // create a clone of the blank message pane and all its children
     Pane clone = getPaneClone(blankMessage);
     Rectangle bRectClone = getRectClone(bRect);
     HBox bHboxClone = getHboxClone(bHbox);
-    Circle bUnreadClone = getCircleClone(bUnread);
     Pane bPicPaneClone = getPaneClone(bPicPane);
     Circle bCircleClone = getCircleClone(bCircle);
     Label bInitialsClone = getLabelClone(bInitials);
@@ -424,7 +491,6 @@ public class MessageController implements IController {
     // set the circle and initials and unread to be children of the pic pane
     bPicPaneClone.getChildren().add(bCircleClone);
     bPicPaneClone.getChildren().add(bInitialsClone);
-    bPicPaneClone.getChildren().add(bUnreadClone);
 
     // set the name prev vbox to have the messagePreview and name as children
     bNamePrevBoxClone.getChildren().add(bNameClone);
@@ -435,6 +501,10 @@ public class MessageController implements IController {
 
     // set the preview text to be the chat's preview
     bPreviewClone.setText(chat.getPosts().get(chat.getPosts().size() - 1).getMessage());
+
+    bRectClone.setFill(Color.rgb(230, 230, 230));
+
+    chatBackgrounds.add(bRectClone);
 
     // set the name text to be employee's name
     String csvNames = "Guest";
@@ -452,7 +522,11 @@ public class MessageController implements IController {
     String initials = "G";
     String[] names = csvNames.split(",");
     if (names.length > 0) {
-      initials = names[0].substring(0, 1);
+      if (names[0].length() > 0) {
+        initials = names[0].substring(0, 1);
+      } else {
+        System.out.println("Couldn't do get initials of: '" + csvNames + "'");
+      }
     }
 
     bInitialsClone.setText(initials);
@@ -465,9 +539,18 @@ public class MessageController implements IController {
           setChatOpen(true);
           setChatPickerOpen(false);
           this.chatIndicator.setText("Chat with: " + finalCsvNames);
+          //          setAllUnselected();
+          //          bRectClone.setFill(Color.rgb(200, 200, 200));
         });
 
     return clone;
+  }
+
+  private void setAllUnselected() {
+    chatBackgrounds.forEach(
+        c -> {
+          c.setFill(Color.rgb(230, 230, 230));
+        });
   }
 
   public Pane getPaneClone(Pane p) {
@@ -580,8 +663,12 @@ public class MessageController implements IController {
 
   ChildEventListener childEventListener =
       new ChildEventListener() {
+
         @Override
         public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
+          Chat c = snapshot.getValue(Chat.class);
+          ChatManager.myChats.put(snapshot.getKey(), c);
+          System.out.println("On Child added: \n" + snapshot.getKey() + " " + c);
           Platform.runLater(
               () -> {
                 refreshChats();
@@ -593,6 +680,12 @@ public class MessageController implements IController {
 
         @Override
         public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
+          Chat c = snapshot.getValue(Chat.class);
+          ChatManager.myChats.put(snapshot.getKey(), c);
+          for (String s : c.getUsers()) {
+            Firebase.chatRef.child(s).child(snapshot.getKey()).setValueAsync(c);
+          }
+          System.out.println("On Child changed: \n" + snapshot.getKey() + " " + c);
           Platform.runLater(
               () -> {
                 refreshChats();
@@ -604,6 +697,8 @@ public class MessageController implements IController {
 
         @Override
         public void onChildRemoved(DataSnapshot snapshot) {
+          ChatManager.myChats.remove(snapshot.getKey());
+          System.out.println("Removed chat from listener: \n" + snapshot.getKey());
           Platform.runLater(
               () -> {
                 refreshChats();

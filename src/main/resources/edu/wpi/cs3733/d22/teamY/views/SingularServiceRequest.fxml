@@ -1,36 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="serviceRequestDooDad" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SingularServiceRequestController">
+<AnchorPane fx:id="serviceRequestDooDad" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.SingularServiceRequestController">
    <children>
-      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#93cddc" height="100.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
-      <Group fx:id="colorGizmo" layoutY="10.0">
+      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#93cddc" height="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="910.0" />
+      <Group fx:id="colorGizmo">
          <children>
-            <Rectangle arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
-            <Rectangle fill="DODGERBLUE" height="100.0" layoutX="25.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="33.0" />
+            <Rectangle arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
+            <Rectangle fill="DODGERBLUE" height="200.0" layoutX="25.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="33.0" />
          </children>
       </Group>
-      <Label fx:id="reqType" layoutX="66.0" layoutY="14.0" text="Type">
+      <Label fx:id="reqType" alignment="TOP_LEFT" layoutX="65.0" layoutY="14.0" maxWidth="240.0" prefHeight="80.0" prefWidth="240.0" text="Type" wrapText="true">
          <font>
             <Font name="Calibri Bold" size="30.0" />
          </font>
       </Label>
-      <Label fx:id="mapLocation" layoutX="66.0" layoutY="48.0" text="Label">
+      <Label fx:id="mapLocation" layoutX="65.0" layoutY="80.0" text="Label">
          <font>
             <Font name="Calibri Italic" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="assignedNurse" layoutX="66.0" layoutY="71.0" text="Label">
+      <Label fx:id="assignedNurse" layoutX="65.0" layoutY="100.0" text="Label">
          <font>
             <Font name="Calibri" size="20.0" />
          </font>
       </Label>
-      <MFXButton layoutY="10.0" onAction="#displayDetailedInfo" prefHeight="100.0" prefWidth="400.0" style="-fx-blend-mode: SCREEN; -fx-background-color: #000000;" text=" " />
+      <JFXTextArea fx:id="extraInfoText" editable="false" focusColor="#ffffff00" layoutX="310.0" layoutY="10.0" prefHeight="180.0" prefWidth="590.0" style="-fx-background-color: white;" unFocusColor="#ffffff00">
+         <font>
+            <Font size="24.0" />
+         </font></JFXTextArea>
    </children>
 </AnchorPane>

@@ -297,6 +297,7 @@ public class SideBarController {
   void loadHome() {
     // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     setButtonSelected(homeHiddenRect);
+    NewSceneLoading.loadScene("views/Dashboard.fxml");
   }
 
   @FXML

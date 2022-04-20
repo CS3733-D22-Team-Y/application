@@ -87,5 +87,6 @@
          </fill>
       </Rectangle>
       <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
+      <TextArea fx:id="equipmentTable" layoutX="349.0" layoutY="141.0" prefHeight="423.0" prefWidth="604.0" />
     </children>
 </AnchorPane>

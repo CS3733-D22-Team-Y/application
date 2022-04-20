@@ -41,7 +41,7 @@ public class MedEquipTablePageController implements IController {
 
       String shortName = DBUtils.convertIDToName(medEquips.get(i).getEquipLocId());
       String clean;
-      if (medEquips.get(i).isClean().equals("0")) {
+      if (medEquips.get(i).getIsClean().equals("0")) {
         clean = "used";
       } else {
         clean = "clean";
