@@ -1,7 +1,10 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
 import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.Requestable;
+import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import java.awt.*;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -18,7 +21,7 @@ public class DashboardController {
   // Side bar
   @FXML private AnchorPane sidebarPane;
 
-  @FXML private VBox alertsBox;
+  @FXML private HBox alertsBox;
 
   @FXML private TextArea testAlert;
 
@@ -30,9 +33,115 @@ public class DashboardController {
     // requestBox.setPrefHeight(1000);
     alertsBox.setBackground(Background.EMPTY);
 
-    if (DBUtils.checkAvailableEquipmentOnFloor("3", "BED") > 1) {
+    if (DBUtils.checkAvailableEquipmentOnFloor("3", "PUMP") < 5) {
 
-      addToBox("hello");
+      addToBox("Floor 3 has less than 5 Infusion Pumps");
+      new ServiceRequest(
+          RequestTypes.MEDEQUIP,
+          "",
+          "",
+          "supply an infusion pump to floor 3",
+          1,
+          RequestStatus.INCOMPLETE,
+          new String[] {"PUMP"});
+    }
+    if (DBUtils.checkAvailableEquipmentOnFloor("4", "PUMP") < 5) {
+
+      addToBox("Floor 4 has less than 5 Infusion Pumps");
+      new ServiceRequest(
+          RequestTypes.MEDEQUIP,
+          "",
+          "",
+          "supply an infusion pump to floor 4",
+          1,
+          RequestStatus.INCOMPLETE,
+          new String[] {"PUMP"});
+    }
+    if (DBUtils.checkAvailableEquipmentOnFloor("5", "PUMP") < 5) {
+
+      addToBox("Floor 5 has less than 5 Infusion Pumps");
+      new ServiceRequest(
+          RequestTypes.MEDEQUIP,
+          "",
+          "",
+          "supply an infusion pump to floor 5",
+          1,
+          RequestStatus.INCOMPLETE,
+          new String[] {"PUMP"});
+    }
+
+    if (DBUtils.checkUnavailableEquipmentOnFloor("3", "PUMP") >= 10) {
+
+      addToBox("Floor 3 has 10 dirty Infusion Pumps");
+      new ServiceRequest(
+          RequestTypes.MEDEQUIP,
+          "",
+          "",
+          "clean an infusion pump on floor 3",
+          1,
+          RequestStatus.INCOMPLETE,
+          new String[] {"PUMP"});
+    }
+    if (DBUtils.checkUnavailableEquipmentOnFloor("4", "PUMP") >= 10) {
+
+      addToBox("Floor 4 has 10 dirty Infusion Pumps");
+      new ServiceRequest(
+          RequestTypes.MEDEQUIP,
+          "",
+          "",
+          "clean an infusion pump on floor 4",
+          1,
+          RequestStatus.INCOMPLETE,
+          new String[] {"PUMP"});
+    }
+    if (DBUtils.checkUnavailableEquipmentOnFloor("5", "PUMP") >= 10) {
+
+      addToBox("Floor 5 has 10 dirty Infusion Pumps");
+      new ServiceRequest(
+          RequestTypes.MEDEQUIP,
+          "",
+          "",
+          "clean an infusion pump on floor 5",
+          1,
+          RequestStatus.INCOMPLETE,
+          new String[] {"PUMP"});
+    }
+
+    if (DBUtils.checkUnavailableEquipmentOnFloor("3", "BED") >= 6) {
+
+      addToBox("Floor 3 has 6 dirty beds");
+      new ServiceRequest(
+          RequestTypes.MEDEQUIP,
+          "",
+          "",
+          "clean a bed on floor 3",
+          1,
+          RequestStatus.INCOMPLETE,
+          new String[] {"PUMP"});
+    }
+    if (DBUtils.checkUnavailableEquipmentOnFloor("4", "BED") >= 6) {
+
+      addToBox("Floor 4 has 6 dirty beds");
+      new ServiceRequest(
+          RequestTypes.MEDEQUIP,
+          "",
+          "",
+          "clean a bed on floor 4",
+          1,
+          RequestStatus.INCOMPLETE,
+          new String[] {"PUMP"});
+    }
+    if (DBUtils.checkUnavailableEquipmentOnFloor("5", "BED") >= 6) {
+
+      addToBox("Floor 5 has 6 dirty beds");
+      new ServiceRequest(
+          RequestTypes.MEDEQUIP,
+          "",
+          "",
+          "clean a bed on floor 5",
+          1,
+          RequestStatus.INCOMPLETE,
+          new String[] {"PUMP"});
     }
 
     // rqPairs = new ArrayList<>();

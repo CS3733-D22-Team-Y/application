@@ -498,7 +498,7 @@
       </ImageView>
       <MFXScrollPane layoutX="597.0" layoutY="305.0" prefHeight="171.0" prefWidth="276.0" style="-fx-background-color: eceffc;">
          <content>
-            <VBox fx:id="alertsBox" prefHeight="167.0" prefWidth="262.0" />
+            <HBox fx:id="alertsBox" prefHeight="166.0" prefWidth="272.0" />
          </content>
       </MFXScrollPane>
       <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />

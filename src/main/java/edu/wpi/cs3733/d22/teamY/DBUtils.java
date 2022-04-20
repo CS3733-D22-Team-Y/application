@@ -21,7 +21,7 @@ public class DBUtils {
 
     int availableCounter = 0;
     for (MedEquip m : floorEquip) {
-      if (m.isClean().equals("1")) {
+      if (m.getIsClean().equals("1")) {
         availableCounter++;
       }
     }
@@ -29,13 +29,13 @@ public class DBUtils {
     return availableCounter;
   }
 
-  public static int checkUnvailableEquipmentOnFloor(String floor, String equipType) {
+  public static int checkUnavailableEquipmentOnFloor(String floor, String equipType) {
 
     List<MedEquip> floorEquip = getEquipmentOnFloor(floor, equipType);
 
     int unavailableCounter = 0;
     for (MedEquip m : floorEquip) {
-      if (m.isClean().equals("0")) {
+      if (m.getIsClean().equals("0")) {
         unavailableCounter++;
       }
     }
