@@ -156,7 +156,7 @@ public class WelcomePageController {
           SideBarController controller = NewSceneLoading.sideBarController;
           try {
             // controller.initializeScale();
-            controller.loadDashboard(); // TODO
+            controller.loadDashboard();
           } catch (IOException ex) {
             ex.printStackTrace();
           }
