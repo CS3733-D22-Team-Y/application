@@ -15,7 +15,7 @@ public class DBUtils {
 
   private DBUtils() {}
 
-  public static List<MedEquip> findAllOfStatusOnFloor(String floor, String isClean){
+  public static List<MedEquip> findAllOfStatusOnFloor(String floor, String isClean) {
     List<MedEquip> allEquipList = new ArrayList<>();
     allEquipList.addAll(DBUtils.getEquipmentOnFloor(floor, "BED"));
     allEquipList.addAll(DBUtils.getEquipmentOnFloor(floor, "PUMP"));
@@ -24,15 +24,13 @@ public class DBUtils {
 
     List<MedEquip> returnList = new ArrayList<>();
 
-    for(MedEquip m : allEquipList){
-      if(m.getIsClean().equals(isClean)){
+    for (MedEquip m : allEquipList) {
+      if (m.getIsClean().equals(isClean)) {
         returnList.add(m);
       }
-
     }
 
     return returnList;
-
   }
 
   public static int checkAvailableEquipmentOnFloor(String floor, String equipType) {
