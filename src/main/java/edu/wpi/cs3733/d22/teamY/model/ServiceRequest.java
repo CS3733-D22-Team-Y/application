@@ -81,6 +81,7 @@ public class ServiceRequest implements StringArrayConv {
         case TRANSLATOR:
         case MEDEQUIP:
         case SPECIALIST:
+        case MISC:
           atr0 = customAttributes[0];
           break;
         case MEAL:
@@ -115,6 +116,7 @@ public class ServiceRequest implements StringArrayConv {
       case LAUNDRY:
       case LAB:
       case SPECIALIST:
+      case MISC:
         atr0 = value;
         break;
 
@@ -162,6 +164,7 @@ public class ServiceRequest implements StringArrayConv {
       case LAUNDRY:
       case LAB:
       case SPECIALIST:
+      case MISC:
         return atr0;
       case MEAL:
         switch (key) {
@@ -327,11 +330,21 @@ public class ServiceRequest implements StringArrayConv {
             RequestStatus.toStatus(args[5]),
             new String[] {args[6], args[7], args[8], args[9]});
         break;
+      case "MISC":
+        init(
+            RequestTypes.MISC,
+            args[1],
+            args[2],
+            args[3],
+            Integer.parseInt(args[4]),
+            RequestStatus.toStatus(args[5]),
+            new String[] {args[6], args[7], args[8], args[9]});
+        break;
     }
   }
 
-  public String getSpecificText(){
-    switch(type){
+  public String getSpecificText() {
+    switch (type) {
       case FLORAL:
         return "Bouquet Type: " + atr0;
       case SECURITY:
@@ -340,6 +353,8 @@ public class ServiceRequest implements StringArrayConv {
         return "Type: " + atr0;
       case LAB:
         return "Result Type: " + atr0;
+      case MISC:
+        return "Request Name: " + atr0;
       case MEAL:
         StringBuilder sb = new StringBuilder();
         sb.append("Entree: ").append(atr0);
@@ -357,12 +372,10 @@ public class ServiceRequest implements StringArrayConv {
     return null;
   }
 
-  public String getInfoBoxText(){
+  public String getInfoBoxText() {
     StringBuilder sb = new StringBuilder();
-    sb.append("Room: ")
-        .append(DBUtils.convertIDToName(getLocationID()))
-        .append("\n");
-    switch(type){
+    sb.append("Room: ").append(DBUtils.convertIDToName(getLocationID())).append("\n");
+    switch (type) {
       case FLORAL:
         sb.append(getSpecificText());
       case SECURITY:
@@ -378,6 +391,8 @@ public class ServiceRequest implements StringArrayConv {
       case SPECIALIST:
         sb.append(getSpecificText());
       case TRANSLATOR:
+        sb.append(getSpecificText());
+      case MISC:
         sb.append(getSpecificText());
     }
     return sb.toString();
