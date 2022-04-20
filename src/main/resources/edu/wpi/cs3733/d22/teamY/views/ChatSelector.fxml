@@ -43,7 +43,6 @@
                                           <Font name="System Bold" size="26.0" />
                                        </font>
                                     </Label>
-                                    <Circle fx:id="bUnread" fill="DODGERBLUE" layoutX="14.0" layoutY="18.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
                                  </children>
                               </Pane>
                               <VBox fx:id="bNamePrevBox" alignment="CENTER" prefHeight="74.0" prefWidth="249.0">
@@ -152,21 +151,26 @@
                </children>
             </VBox>
          </content></MFXScrollPane>
-      <VBox fx:id="newChatArea" alignment="TOP_CENTER" layoutX="698.0" layoutY="58.0" prefHeight="723.0" prefWidth="489.0" visible="false">
+      <VBox fx:id="newChatArea" alignment="TOP_CENTER" layoutX="698.0" layoutY="58.0" prefHeight="723.0" prefWidth="489.0">
          <children>
             <Label prefHeight="48.0" prefWidth="158.0" text="Create a new chat">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <MFXTextField fx:id="toBox" onAction="#selectedChat" onKeyReleased="#getResults" prefHeight="64.0" prefWidth="488.0" promptText="Add by Name or ID#">
-               <font>
-                  <Font size="18.0" />
-               </font>
+            <Pane>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
-            </MFXTextField>
+               <children>
+                  <MFXTextField fx:id="toBox" onAction="#selectedChat" prefHeight="64.0" prefWidth="488.0" promptText="Search">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </MFXTextField>
+                  <Rectangle fx:id="searchBoxCover" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="73.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="488.0" />
+               </children>
+            </Pane>
             <MFXScrollPane fx:id="resultsArea" hbarPolicy="NEVER" prefHeight="610.0" prefWidth="503.0">
                <content>
                   <VBox fx:id="resultPane" prefHeight="608.0" prefWidth="488.0">
@@ -197,7 +201,7 @@
       </VBox>
       <Line endX="-100.0" endY="-536.0" layoutX="778.0" layoutY="536.0" startX="-100.0" startY="244.0" />
       <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
-      <Label fx:id="chatIndicator" alignment="BOTTOM_LEFT" layoutX="679.0" layoutY="1.0" prefHeight="104.0" prefWidth="515.0" text="Chat with: Nathan , Connor, Emily, Yoshi, Ben, Dan, Wong, Wilson" wrapText="true">
+      <Label fx:id="chatIndicator" alignment="BOTTOM_LEFT" layoutX="679.0" layoutY="1.0" prefHeight="104.0" prefWidth="515.0" text="Chat with: Nathan , Connor, Emily, Yoshi, Ben, Dan, Wong, Wilson" visible="false" wrapText="true">
          <font>
             <Font size="28.0" />
          </font>
@@ -205,6 +209,6 @@
             <Insets left="10.0" />
          </padding>
       </Label>
-      <Line endX="-107.5" endY="-536.0" layoutX="785.0" layoutY="641.0" startX="415.0" startY="-536.0" />
+      <Line fx:id="chatHeaderLine" endX="-107.5" endY="-536.0" layoutX="785.0" layoutY="641.0" startX="415.0" startY="-536.0" visible="false" />
     </children>
 </AnchorPane>
