@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.d22.teamY;
 
 public enum RequestTypes {
-
   FLORAL(1, new String[] {"bouquetTypeSelected"}, "Bouquet Delivery"),
   LAB(1, new String[] {"resultType"}, "Lab Work"),
   LAUNDRY(1, new String[] {"laundryTypeSelected"}, "Laundry Services"),
@@ -15,8 +14,8 @@ public enum RequestTypes {
   TRANSLATOR(1, new String[] {"requestTypeSelected"}, "Medical Translator"),
   FACILITIES(1, new String[] {"type"}, "Facilities Request"),
   MISC(1, new String[] {"requestName"}, "Uncategorized Task"),
-  MAINTENANCE(2, new String[] {"requestTypeSelected", "maintenanceRequestPriority"}, "Maintenance Request")
-  ;
+  MAINTENANCE(
+      2, new String[] {"requestTypeSelected", "maintenanceRequestPriority"}, "Maintenance Request");
 
   private final int attribues;
   private final String[] attributeNames;
