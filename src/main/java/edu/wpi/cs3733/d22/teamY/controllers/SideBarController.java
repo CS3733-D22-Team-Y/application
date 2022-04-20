@@ -219,7 +219,7 @@ public class SideBarController {
     // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     // mainScreenPane.getChildren().get(MAP_LIST_LOCATION).setVisible(true);
     // SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/RequestMenu.fxml");
-    NewSceneLoading.loadScene("views/RequestMenu.fxml");
+    NewSceneLoading.loadScene("views/Map.fxml");
     setButtonSelected(mapHiddenRect);
   }
 
