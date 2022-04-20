@@ -6,6 +6,7 @@ import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
@@ -38,6 +39,8 @@ public class TranslatorRequestController implements IController {
   @FXML private TextArea errorLabel;
   // Side bar
   @FXML private AnchorPane sidebarPane;
+
+  @FXML private AnchorPane mainPane;
 
   // Language types text. These should be changed depending on what the names in the database are.
   private final String spanishText = "spanish";
@@ -186,5 +189,7 @@ public class TranslatorRequestController implements IController {
   }
 
   @Override
-  public void initializeScale() {}
+  public void initializeScale() {
+    Scaling.scaleItemAroundCenter(mainPane);
+  }
 }

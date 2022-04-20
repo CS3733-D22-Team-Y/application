@@ -7,6 +7,7 @@ import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
@@ -40,6 +41,8 @@ public class MedicalEquipmentRequestController implements IController {
   private final String reclinerText = "RECLINER";
 
   private Scene requestMenu = null;
+
+  @FXML private AnchorPane mainPane;
 
   public MedicalEquipmentRequestController() throws IOException {}
 
@@ -206,5 +209,7 @@ public class MedicalEquipmentRequestController implements IController {
   }
 
   @Override
-  public void initializeScale() {}
+  public void initializeScale() {
+    Scaling.scaleItemAroundCenter(mainPane);
+  }
 }

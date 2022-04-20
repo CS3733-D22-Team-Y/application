@@ -7,6 +7,7 @@ import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
@@ -44,6 +45,8 @@ public class SecurityRequestController implements IController {
   // Side bar
   @FXML private AnchorPane sidebarPane;
   private Scene requestMenu = null;
+
+  @FXML private AnchorPane mainPane;
 
   // Security types text. These should be changed depending on what the names in the database are.
   private static final String unwantedGuestText = "unwantedGuest";
@@ -225,5 +228,7 @@ public class SecurityRequestController implements IController {
   }
 
   @Override
-  public void initializeScale() {}
+  public void initializeScale() {
+    Scaling.scaleItemAroundCenter(mainPane);
+  }
 }

@@ -27,6 +27,8 @@ public class ActiveServiceRequestController implements IController {
 
   @FXML AnchorPane sidebarPane;
 
+  @FXML private AnchorPane mainPane;
+
   private ArrayList<RequestSet> rqPairs;
 
   private static final List<Class<? extends Requestable>> requestables =
@@ -95,5 +97,7 @@ public class ActiveServiceRequestController implements IController {
   }
 
   @Override
-  public void initializeScale() {}
+  public void initializeScale() {
+    Scaling.scaleItemAroundCenter(mainPane);
+  }
 }
