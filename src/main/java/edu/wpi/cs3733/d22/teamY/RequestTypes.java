@@ -14,6 +14,8 @@ public enum RequestTypes {
   SPECIALIST(1, new String[] {"specialistType"}, "Specialist"),
   TRANSLATOR(1, new String[] {"requestTypeSelected"}, "Medical Translator");
 
+  MISC(1, new String[] {"requestName"}, "Task (Uncategorized)"),
+
   private final int attribues;
   private final String[] attributeNames;
   private final String friendlyName;
