@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/Blank.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.HelpButtonController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eeeeee" height="551.0" layoutX="-35.0" layoutY="-42.0" stroke="BLACK" strokeType="INSIDE" width="746.0" />
+      <Label layoutX="18.0" styleClass="title" text="Help : Active Requests">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Arial Rounded MT Bold" size="45.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="10.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="505.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <MFXButton fx:id="backButton" computeRadiusMultiplier="false" layoutX="590.0" layoutY="10.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+      </MFXButton>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="40.0" layoutY="83.0" prefHeight="40.0" prefWidth="626.0" text="All active requests will be displayed with some basic info">
+         <font>
+            <Font name="Microsoft Tai Le" size="25.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#93cddc" height="100.0" layoutX="156.0" layoutY="159.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
+      <Group layoutX="156.0" layoutY="159.0">
+         <children>
+            <Rectangle arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
+            <Rectangle fill="DODGERBLUE" height="100.0" layoutX="25.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="33.0" />
+         </children>
+      </Group>
+      <Label layoutX="222.0" layoutY="163.0" text="Request Type">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="222.0" layoutY="197.0" text="Location">
+         <font>
+            <Font name="Calibri Italic" size="20.0" />
+         </font>
+      </Label>
+      <MFXButton layoutX="156.0" layoutY="159.0" prefHeight="100.0" prefWidth="400.0" style="-fx-blend-mode: SCREEN; -fx-background-color: #000000;" text=" " />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="116.0" prefHeight="40.0" prefWidth="626.0" text="in a tab.">
+         <font>
+            <Font name="Microsoft Tai Le" size="25.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="59.0" layoutY="271.0" prefHeight="40.0" prefWidth="581.0" text="Clicking on a tab will display more info on the right.">
+         <font>
+            <Font name="Microsoft Tai Le" size="25.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" layoutX="332.0" layoutY="364.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6549019813537598" green="0.9764705896377563" blue="0.6235294342041016" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.31992337164750956">
+                     <color>
+                        <Color red="0.6549019813537598" green="0.9764705896377563" blue="0.6235294342041016" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.8122605363984674">
+                     <color>
+                        <Color red="0.9764705896377563" green="0.9254902005195618" blue="0.6235294342041016" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9764705896377563" green="0.9254902005195618" blue="0.6235294342041016" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" layoutX="429.0" layoutY="364.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9764705896377563" green="0.9254902005195618" blue="0.6235294342041016" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.28544061302681983">
+                     <color>
+                        <Color red="0.9764705896377563" green="0.9254902005195618" blue="0.6235294342041016" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9764705896377563" green="0.7764706015586853" blue="0.6235294342041016" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" layoutX="526.0" layoutY="364.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9764705896377563" green="0.7764706015586853" blue="0.6235294342041016" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.2854406130268197">
+                     <color>
+                        <Color red="0.9764705896377563" green="0.7764706015586853" blue="0.6235294342041016" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9764705896377563" green="0.6235294342041016" blue="0.6235294342041016" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="315.0" layoutY="323.0" prefHeight="40.0" prefWidth="66.0" text="Low">
+         <font>
+            <Font name="Microsoft Tai Le" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="571.0" layoutY="323.0" prefHeight="40.0" prefWidth="66.0" text="High">
+         <font>
+            <Font name="Microsoft Tai Le" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="432.0" layoutY="323.0" prefHeight="40.0" prefWidth="76.0" text="Medium">
+         <font>
+            <Font name="Microsoft Tai Le" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="344.0" prefHeight="40.0" prefWidth="290.0" text="The color next to the">
+         <font>
+            <Font name="Microsoft Tai Le" size="25.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="374.0" prefHeight="40.0" prefWidth="290.0" text="request shows the">
+         <font>
+            <Font name="Microsoft Tai Le" size="25.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="404.0" prefHeight="40.0" prefWidth="290.0" text="request's urgency.">
+         <font>
+            <Font name="Microsoft Tai Le" size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
