@@ -20,6 +20,7 @@ public class RequestControllerUtil {
     for (int i = 0; i < DBManager.getAll(Location.class).size(); i++) {
       items.add(((Location) DBManager.getAll(Location.class).get(i)).getShortName());
     }
+
     allRoomsComboBox.setItems(FXCollections.observableList(items));
     medEquip.add("Bed");
     medEquip.add("Pump");

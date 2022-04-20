@@ -2,7 +2,7 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
-import edu.wpi.cs3733.d22.teamY.model.Requestable;
+import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -26,14 +26,14 @@ public class SingularServiceRequestController {
   private String additional;
   private int priority;
 
-  public void populateFromRequestable(Requestable req) {
+  public void populateFromRequest(ServiceRequest req) {
     additional = req.getInfoBoxText();
     priority = req.getRequestPriority();
     setColor(priorityColor(priority));
 
     assignedNurse.setText(DBUtils.getNameFromID(req.getAssignedNurse()));
-    reqType.setText(req.getTypeString());
-    mapLocation.setText(DBUtils.convertIDToName(req.getLocID()));
+    reqType.setText(req.getType().getFriendlyName());
+    mapLocation.setText(DBUtils.convertIDToName(req.getLocationID()));
     fillInfoField(additional);
   }
 
