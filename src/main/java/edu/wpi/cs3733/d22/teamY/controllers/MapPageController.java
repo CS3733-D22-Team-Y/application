@@ -661,9 +661,6 @@ public class MapPageController<T extends Requestable> {
           }
           int mask = InputEvent.BUTTON1_DOWN_MASK;
           assert bot != null;
-          bot.mouseMove(
-              (int) (e.getX() + App.primaryStage.getX()),
-              (int) (e.getY() + App.primaryStage.getY()) + 20);
           bot.mousePress(mask);
           bot.mouseRelease(mask);
 
