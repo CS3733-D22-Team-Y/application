@@ -150,7 +150,7 @@ public class WelcomePageController {
     loadMainTask.setOnSucceeded(
         e -> {
           App.getInstance().setScene(new Scene(loadMainTask.getValue().getParent()));
-          SideBarController controller = loadMainTask.getValue().getLoader().getController();
+          SideBarController controller = NewSceneLoading.sideBarController;
           try {
             // controller.initializeScale();
             controller.loadViewServiceRequests();
