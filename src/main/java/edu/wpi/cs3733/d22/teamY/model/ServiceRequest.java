@@ -229,6 +229,22 @@ public class ServiceRequest implements StringArrayConv {
     this.additionalNotes = additionalNotes;
   }
 
+  public int getRequestPriority() {
+    return requestPriority;
+  }
+
+  public void setRequestPriority(int requestPriority) {
+    this.requestPriority = requestPriority;
+  }
+
+  public RequestStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(RequestStatus status) {
+    this.status = status;
+  }
+
   @Override
   public String[] toStringArray() {
     return new String[] {
@@ -330,8 +346,8 @@ public class ServiceRequest implements StringArrayConv {
     }
   }
 
-  public String getSpecificText(){
-    switch(type){
+  public String getSpecificText() {
+    switch (type) {
       case FLORAL:
         return "Bouquet Type: " + atr0;
       case SECURITY:
@@ -357,12 +373,10 @@ public class ServiceRequest implements StringArrayConv {
     return null;
   }
 
-  public String getInfoBoxText(){
+  public String getInfoBoxText() {
     StringBuilder sb = new StringBuilder();
-    sb.append("Room: ")
-        .append(DBUtils.convertIDToName(getLocationID()))
-        .append("\n");
-    switch(type){
+    sb.append("Room: ").append(DBUtils.convertIDToName(getLocationID())).append("\n");
+    switch (type) {
       case FLORAL:
         sb.append(getSpecificText());
       case SECURITY:
