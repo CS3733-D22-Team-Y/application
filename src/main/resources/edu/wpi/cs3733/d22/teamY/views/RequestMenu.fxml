@@ -56,13 +56,13 @@
                <Font name="Arial Rounded MT Bold" size="60.0" />
             </font>
          </Label>
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="10.0" layoutY="110.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutY="152.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="10.0" layoutY="162.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/medicalRequestFinal.png" />
             </image>
          </ImageView>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutY="100.0" onAction="#loadMedEquipReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Medical&#10;Equipment" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutY="152.0" onAction="#loadMedEquipReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Medical&#10;Equipment" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="29.0" />
             </font>
@@ -70,14 +70,14 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <Label fx:id="creator01" alignment="CENTER_RIGHT" layoutX="132.0" layoutY="101.0" prefHeight="17.0" prefWidth="167.0" text="Engjell Ramadani" textAlignment="RIGHT" />
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="310.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="320.0" layoutY="120.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <Label fx:id="creator01" alignment="CENTER_RIGHT" layoutX="132.0" layoutY="153.0" prefHeight="17.0" prefWidth="167.0" text="Engjell Ramadani" textAlignment="RIGHT" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="310.0" layoutY="152.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="320.0" layoutY="172.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/securityRequestFinal.png" />
             </image>
          </ImageView>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="310.0" layoutY="100.0" onAction="#loadSecurityReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Security&#10;Services" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="310.0" layoutY="152.0" onAction="#loadSecurityReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Security&#10;Services" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -85,14 +85,14 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <Label fx:id="creator02" alignment="CENTER_RIGHT" layoutX="442.0" layoutY="101.0" prefHeight="17.0" prefWidth="167.0" text="Nicholas Heineman" textAlignment="RIGHT" />
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="620.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="630.0" layoutY="110.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <Label fx:id="creator02" alignment="CENTER_RIGHT" layoutX="442.0" layoutY="153.0" prefHeight="17.0" prefWidth="167.0" text="Nicholas Heineman" textAlignment="RIGHT" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="620.0" layoutY="152.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="630.0" layoutY="162.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/mealRequestFinal.png" />
             </image>
          </ImageView>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="100.0" onAction="#loadMealReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Meal&#10;Delivery" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="152.0" onAction="#loadMealReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Meal&#10;Delivery" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -100,14 +100,14 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <Label fx:id="creator03" alignment="CENTER_RIGHT" layoutX="752.0" layoutY="101.0" prefHeight="17.0" prefWidth="167.0" text="Nathan Anderson" textAlignment="RIGHT" />
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutY="248.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="10.0" layoutY="268.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <Label fx:id="creator03" alignment="CENTER_RIGHT" layoutX="752.0" layoutY="153.0" prefHeight="17.0" prefWidth="167.0" text="Nathan Anderson" textAlignment="RIGHT" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutY="300.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="10.0" layoutY="320.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/laundryRequestFinal.png" />
             </image>
          </ImageView>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutY="248.0" onAction="#loadLaundryReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Laundry&#10;Services" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutY="300.0" onAction="#loadLaundryReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Laundry&#10;Services" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -115,14 +115,14 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <Label fx:id="creator04" alignment="CENTER_RIGHT" layoutX="132.0" layoutY="251.0" prefHeight="17.0" prefWidth="167.0" text="John Carrotta" textAlignment="RIGHT" />
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="310.0" layoutY="248.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="338.0" layoutY="254.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <Label fx:id="creator04" alignment="CENTER_RIGHT" layoutX="132.0" layoutY="303.0" prefHeight="17.0" prefWidth="167.0" text="John Carrotta" textAlignment="RIGHT" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="310.0" layoutY="300.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="338.0" layoutY="306.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/labRequestFinal.png" />
             </image>
          </ImageView>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="310.0" layoutY="248.0" onAction="#loadLabReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Lab Work" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="310.0" layoutY="300.0" onAction="#loadLabReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Lab Work" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -130,14 +130,14 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <Label fx:id="creator05" alignment="CENTER_RIGHT" layoutX="442.0" layoutY="251.0" prefHeight="17.0" prefWidth="167.0" text="Sky Tang" textAlignment="RIGHT" />
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="620.0" layoutY="251.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="655.0" layoutY="255.0" opacity="0.85" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: -25;">
+         <Label fx:id="creator05" alignment="CENTER_RIGHT" layoutX="442.0" layoutY="303.0" prefHeight="17.0" prefWidth="167.0" text="Sky Tang" textAlignment="RIGHT" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="620.0" layoutY="303.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="655.0" layoutY="307.0" opacity="0.85" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: -25;">
             <image>
                <Image url="@images/icons/floralRequestFinal.png" />
             </image>
          </ImageView>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="251.0" onAction="#loadFloralReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Bouquet&#10;Delivery" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="303.0" onAction="#loadFloralReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Bouquet&#10;Delivery" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -145,14 +145,14 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <Label fx:id="creator06" alignment="CENTER_RIGHT" layoutX="752.0" layoutY="251.0" prefHeight="17.0" prefWidth="167.0" text="Jake Brady" textAlignment="RIGHT" />
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutY="392.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="19.0" layoutY="396.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <Label fx:id="creator06" alignment="CENTER_RIGHT" layoutX="752.0" layoutY="303.0" prefHeight="17.0" prefWidth="167.0" text="Jake Brady" textAlignment="RIGHT" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutY="444.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="19.0" layoutY="448.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/translateRequestFinal.png" />
             </image>
          </ImageView>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutY="392.0" onAction="#loadTranslatorReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Translator" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutY="444.0" onAction="#loadTranslatorReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Translator" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -160,14 +160,14 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <Label fx:id="creator07" alignment="CENTER_RIGHT" layoutX="131.0" layoutY="394.0" prefHeight="17.0" prefWidth="167.0" text="Emily Gorelik" textAlignment="RIGHT" />
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="465.0" layoutY="534.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="480.0" layoutY="544.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <Label fx:id="creator07" alignment="CENTER_RIGHT" layoutX="131.0" layoutY="446.0" prefHeight="17.0" prefWidth="167.0" text="Emily Gorelik" textAlignment="RIGHT" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="465.0" layoutY="586.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="480.0" layoutY="596.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/miscellaneousRequestFinal.png" />
             </image>
          </ImageView>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="465.0" layoutY="534.0" onAction="#loadOtherReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Other" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="465.0" layoutY="586.0" onAction="#loadOtherReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Other" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -175,14 +175,14 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <Label fx:id="creator11" alignment="CENTER_RIGHT" layoutX="599.0" layoutY="535.0" prefHeight="17.0" prefWidth="167.0" text="Emily Gorelik" textAlignment="RIGHT" />
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="310.0" layoutY="392.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="315.0" layoutY="398.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <Label fx:id="creator11" alignment="CENTER_RIGHT" layoutX="599.0" layoutY="587.0" prefHeight="17.0" prefWidth="167.0" text="Emily Gorelik" textAlignment="RIGHT" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="310.0" layoutY="444.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="315.0" layoutY="450.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/icons/specialist.png" />
+               <Image url="@images/icons/doctor.png" />
             </image>
          </ImageView>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="310.0" layoutY="392.0" onAction="#loadSpecialistReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Specialist" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="310.0" layoutY="444.0" onAction="#loadSpecialistReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Specialist" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -190,10 +190,13 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <Label fx:id="creator08" alignment="CENTER_RIGHT" layoutX="442.0" layoutY="394.0" prefHeight="17.0" prefWidth="167.0" text="Benjamin Schmitt" textAlignment="RIGHT" />
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="620.0" layoutY="392.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="633.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true" />
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="392.0" onAction="#loadMaintenanceReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Repairs" textAlignment="RIGHT" wrapText="true">
+         <Label fx:id="creator08" alignment="CENTER_RIGHT" layoutX="442.0" layoutY="446.0" prefHeight="17.0" prefWidth="167.0" text="Benjamin Schmitt" textAlignment="RIGHT" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="620.0" layoutY="444.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="633.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/tools.png" />
+            </image></ImageView>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="444.0" onAction="#loadMaintenanceReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Repairs" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -201,10 +204,13 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <Label fx:id="creator09" alignment="CENTER_RIGHT" layoutX="752.0" layoutY="394.0" prefHeight="17.0" prefWidth="167.0" text="Ethan Catania" textAlignment="RIGHT" />
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="155.0" layoutY="534.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="165.0" layoutY="544.0" pickOnBounds="true" preserveRatio="true" />
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="155.0" layoutY="534.0" onAction="#loadFacilitiesReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Facilites" textAlignment="RIGHT" wrapText="true">
+         <Label fx:id="creator09" alignment="CENTER_RIGHT" layoutX="752.0" layoutY="446.0" prefHeight="17.0" prefWidth="167.0" text="Ethan Catania" textAlignment="RIGHT" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="155.0" layoutY="586.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="165.0" layoutY="596.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/trash.png" />
+            </image></ImageView>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="155.0" layoutY="586.0" onAction="#loadFacilitiesReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Facilites" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -212,7 +218,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <Label fx:id="creator10" alignment="CENTER_RIGHT" layoutX="287.0" layoutY="535.0" prefHeight="17.0" prefWidth="167.0" text="Nathan Pollack" textAlignment="RIGHT" />
+         <Label fx:id="creator10" alignment="CENTER_RIGHT" layoutX="287.0" layoutY="587.0" prefHeight="17.0" prefWidth="167.0" text="Nathan Pollack" textAlignment="RIGHT" />
          <JFXToggleButton fx:id="creatorToggle" contentDisplay="RIGHT" layoutX="726.0" layoutY="734.0" onAction="#showCreators" size="12.0" text="Show Creators">
             <font>
                <Font name="Calibri" size="20.0" />
