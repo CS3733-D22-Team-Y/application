@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.model.Requestable;
 import javafx.fxml.FXML;
@@ -21,6 +22,7 @@ public class SingularServiceRequestController {
   @FXML private Label reqType;
   @FXML private Label mapLocation;
 
+  @FXML private JFXTextArea extraInfoText;
   private String additional;
   private int priority;
 
@@ -32,15 +34,11 @@ public class SingularServiceRequestController {
     assignedNurse.setText(DBUtils.getNameFromID(req.getAssignedNurse()));
     reqType.setText(req.getTypeString());
     mapLocation.setText(DBUtils.convertIDToName(req.getLocID()));
+    fillInfoField(additional);
   }
 
   public int getPriority() {
     return priority;
-  }
-
-  @FXML
-  void displayDetailedInfo() {
-    SceneUtil.serviceRequests.fillInfoField(additional);
   }
 
   private void setColor(Color color) {
@@ -52,5 +50,9 @@ public class SingularServiceRequestController {
   public static Color priorityColor(int priority) {
     int p = Math.min(Math.max(priority, 0), 10);
     return Color.hsb((10 - p) * 12.8, 0.36, 0.98);
+  }
+
+  public void fillInfoField(String info) {
+    extraInfoText.setText(info);
   }
 }
