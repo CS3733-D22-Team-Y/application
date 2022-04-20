@@ -71,7 +71,7 @@ public class LabRequestController {
             assignedNurse,
             roomID,
             additionalNotes,
-            1,
+            7,
             RequestStatus.INCOMPLETE,
             new String[] {resultTypeSelected}));
     System.out.println("Saved LabRequest");
