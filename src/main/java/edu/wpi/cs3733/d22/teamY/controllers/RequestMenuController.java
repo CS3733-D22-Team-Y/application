@@ -139,4 +139,9 @@ public class RequestMenuController {
     creator10.setVisible(state);
     creator11.setVisible(state);
   }
+
+  @FXML
+  void openHelp() throws IOException {
+    SceneLoading.loadPopup("views/popups/ServiceHelp.fxml", "views/SideBar.fxml");
+  }
 }

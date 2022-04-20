@@ -227,6 +227,11 @@
       </children>
    </AnchorPane>
    <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
+   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1130.0" layoutY="20.0" onMouseClicked="#openHelp" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@images/icons/Help.png" />
+      </image>
+   </ImageView>
    <stylesheets>
       <URL value="@css/Blank.css" />
       <URL value="@css/Blank.css" />
