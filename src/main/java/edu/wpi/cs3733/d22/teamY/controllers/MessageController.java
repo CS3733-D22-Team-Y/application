@@ -78,8 +78,6 @@ public class MessageController {
 
   @FXML private Pane resultPane;
 
-  @FXML private Label chatIndicator;
-
   ArrayList<EmployeeResult> results = new ArrayList<>();
 
   private String chatID = "";
@@ -99,9 +97,7 @@ public class MessageController {
     Firebase.chatRef.addChildEventListener(childEventListener);
     List<Employee> employees = DBManager.getAll(Employee.class);
     for (Employee e : employees) {
-      if (!e.getIDNumber().equals(id)) {
-        results.add(new EmployeeResult(e.getName(), e.getRole(), e.getIDNumber()));
-      }
+      results.add(new EmployeeResult(e.getName(), e.getRole(), e.getIDNumber()));
     }
 
     this.refreshChats();
@@ -113,7 +109,6 @@ public class MessageController {
     chatSelectLabel.setVisible(!chatOpen);
     messageAreaContainer.setVisible(chatOpen);
     messageArea.setVisible(chatOpen);
-    chatIndicator.setVisible(chatOpen);
     if (chatOpen) {
       refreshMessages();
       messageText.requestFocus();
@@ -140,13 +135,6 @@ public class MessageController {
   public void refreshMessages() {
     messageArea.getChildren().clear();
     Chat c = ChatManager.myChats.get(chatID);
-    String csvNames = "Guest";
-    try {
-      csvNames = DBUtils.getNamesFromIds(c.getUsers(), true);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    this.chatIndicator.setText("Chat with: " + csvNames);
     ArrayList<Post> posts = new ArrayList<>();
     try {
       posts = c.getPosts();
@@ -232,7 +220,6 @@ public class MessageController {
     }
     setChatPickerOpen(false);
     setChatOpen(true);
-    toBox.setText("");
   }
 
   public boolean isNumeric(String str) {
@@ -265,21 +252,13 @@ public class MessageController {
     // if a comma was the last character, query is empty
 
     showResults(query);
-
-    // scroll to top
-    Platform.runLater(
-        () -> {
-          resultsArea.setVvalue(0.0);
-        });
   }
 
   public void showResults(String query) {
     // clear the list
     resultPane.getChildren().clear();
     // get the results
-    results.sort(
-        Comparator.comparingInt(
-            o -> SearchUtil.getMatchScore(o.getName() + " " + o.role + " " + o.id, query)));
+    results.sort(Comparator.comparingInt(o -> SearchUtil.getMatchScore(o.getName(), query)));
     // add the results to the result pane
     for (EmployeeResult result : results) {
       resultPane.getChildren().add(result.getResultPane());
@@ -307,19 +286,7 @@ public class MessageController {
     // if the main clone pane is clicked, print the id
     clone.setOnMouseClicked(
         e -> {
-          boolean good = true;
-          String text = toBox.getText();
-          // if the text contains the id seperated by commas already dont add it again
-          if (text.contains("," + id + ",")) {
-            good = false;
-          }
-          if (text.length() >= id.length() + 1) {
-            if (text.substring(0, id.length() + 1).equals(id + ",")) {
-              good = false;
-            }
-          }
-
-          if (good) addRecipientToChat(id);
+          addRecipientToChat(id);
         });
 
     return clone;
@@ -458,13 +425,10 @@ public class MessageController {
     bInitialsClone.setText(initials);
 
     // on click of the message, set the chatID to the chatID of the message
-    String finalCsvNames = csvNames;
     bHboxClone.setOnMouseClicked(
         e -> {
           this.chatID = chatID;
           setChatOpen(true);
-          setChatPickerOpen(false);
-          this.chatIndicator.setText("Chat with: " + finalCsvNames);
         });
 
     return clone;
