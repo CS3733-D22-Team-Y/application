@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,6 +15,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -169,7 +171,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label fx:id="timeDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="682.0" layoutY="134.0" styleClass="title" text="12:00pm">
+      <Label fx:id="timeDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="678.0" layoutY="120.0" prefHeight="54.0" prefWidth="196.0" styleClass="title" text="Offline">
          <font>
             <Font name="Arial Rounded MT Bold" size="46.0" />
          </font>
@@ -181,6 +183,11 @@
                         <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
                      </color>
                   </Stop>
+                  <Stop offset="0.10439560439560441">
+                     <color>
+                        <Color red="0.16862745583057404" green="0.16862745583057404" blue="0.16862745583057404" />
+                     </color>
+                  </Stop>
                   <Stop offset="1.0">
                      <color>
                         <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
@@ -190,7 +197,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label fx:id="dateDisplay" contentDisplay="CENTER" layoutX="688.0" layoutY="191.0" styleClass="title" text="Wednesday, Feb 19" textAlignment="CENTER">
+      <Label fx:id="dateDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="688.0" layoutY="174.0" prefHeight="22.0" prefWidth="185.0" styleClass="title" textAlignment="CENTER">
          <font>
             <Font name="Arial Rounded MT Bold" size="19.0" />
          </font>
@@ -211,10 +218,10 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <ImageView fx:id="weatherIcon" fitHeight="82.0" fitWidth="82.0" layoutX="595.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/icons/blanketsIcon.png" />
-         </image>
+      <ImageView fx:id="weatherIcon" fitHeight="82.0" fitWidth="82.0" layoutX="596.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+         <effect>
+            <ColorAdjust brightness="0.18" />
+         </effect>
       </ImageView>
       <MFXScrollPane layoutX="293.0" layoutY="151.0" prefHeight="326.0" prefWidth="276.0" style="-fx-background-color: eceffc;">
          <content>
@@ -471,30 +478,45 @@
             <Font name="Arial Rounded MT Bold" size="19.0" />
          </font>
       </Label>
-      <ImageView fx:id="dirtyWarning1" fitHeight="44.0" fitWidth="45.0" layoutX="1139.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="dirtyWarning1" fitHeight="44.0" fitWidth="45.0" layoutX="1135.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/icons/blanketsIcon.png" />
+            <Image url="@images/icons/dash/warning.png" />
          </image>
+         <effect>
+            <ColorAdjust brightness="0.18" />
+         </effect>
       </ImageView>
-      <ImageView fx:id="dirtyWarning2" fitHeight="44.0" fitWidth="45.0" layoutX="1139.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="dirtyWarning2" fitHeight="44.0" fitWidth="45.0" layoutX="1135.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/icons/blanketsIcon.png" />
+            <Image url="@images/icons/dash/warning.png" />
          </image>
+         <effect>
+            <ColorAdjust brightness="0.18" />
+         </effect>
       </ImageView>
-      <ImageView fx:id="dirtyWarning3" fitHeight="44.0" fitWidth="45.0" layoutX="1139.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="dirtyWarning3" fitHeight="44.0" fitWidth="45.0" layoutX="1135.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/icons/blanketsIcon.png" />
+            <Image url="@images/icons/dash/warning.png" />
          </image>
+         <effect>
+            <ColorAdjust brightness="0.18" />
+         </effect>
       </ImageView>
-      <ImageView fx:id="dirtyWarning4" fitHeight="44.0" fitWidth="45.0" layoutX="1139.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="dirtyWarning4" fitHeight="44.0" fitWidth="45.0" layoutX="1135.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/icons/blanketsIcon.png" />
+            <Image url="@images/icons/dash/warning.png" />
          </image>
+         <effect>
+            <ColorAdjust brightness="0.18" />
+         </effect>
       </ImageView>
-      <ImageView fx:id="dirtyWarning5" fitHeight="44.0" fitWidth="45.0" layoutX="1139.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="dirtyWarning5" fitHeight="44.0" fitWidth="45.0" layoutX="1135.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/icons/blanketsIcon.png" />
+            <Image url="@images/icons/dash/warning.png" />
          </image>
+         <effect>
+            <ColorAdjust brightness="0.18" />
+         </effect>
       </ImageView>
       <MFXScrollPane layoutX="597.0" layoutY="305.0" prefHeight="171.0" prefWidth="276.0" style="-fx-background-color: eceffc;">
          <content>
@@ -513,5 +535,94 @@
          </content>
       </MFXScrollPane>
       <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
+      <Label fx:id="fahrenheit" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="756.0" layoutY="198.0" prefHeight="31.0" prefWidth="54.0" styleClass="title" text="-" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="26.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="celsius" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="685.0" layoutY="198.0" prefHeight="31.0" prefWidth="54.0" styleClass="title" text="-" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="26.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.16862745583057404" green="0.16862745583057404" blue="0.16862745583057404" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="dateDisplay112" alignment="CENTER" contentDisplay="CENTER" layoutX="735.0" layoutY="199.0" prefHeight="22.0" prefWidth="29.0" styleClass="title" text="°C" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="19.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="dateDisplay1121" alignment="CENTER" contentDisplay="CENTER" layoutX="805.0" layoutY="200.0" prefHeight="22.0" prefWidth="29.0" styleClass="title" text="°F" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="19.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Line endX="170.0" endY="-20.399993896484375" layoutX="600.0" layoutY="225.0" startX="170.0" startY="-2.800018310546875" strokeLineCap="ROUND" strokeWidth="4.0">
+         <effect>
+            <ColorAdjust brightness="0.18" />
+         </effect>
+      </Line>
     </children>
 </AnchorPane>
