@@ -380,6 +380,6 @@ public class ServiceRequest implements StringArrayConv {
       case TRANSLATOR:
         sb.append(getSpecificText());
     }
-    return "";
+    return sb.toString();
   }
 }
