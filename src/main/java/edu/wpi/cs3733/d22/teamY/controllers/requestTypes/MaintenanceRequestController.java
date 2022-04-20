@@ -116,13 +116,10 @@ public class MaintenanceRequestController {
 
     Boolean allFields =
         !Objects.equals(roomsHiddenField.getText(), "")
-            && !Objects.equals(input_AssignedNurse.getText(), "")
-            && !Objects.equals(medEquipHiddenField.getText(), "");
+            || !Objects.equals(input_AssignedNurse.getText(), "")
+            || !Objects.equals(medEquipHiddenField.getText(), "");
 
-    if (RequestControllerUtil.isRadioButtonSelected(otherRadioButton)
-        && Objects.equals(input_OtherText.getText(), "")) {
-      errorLabel.setText("Missing Required Fields.");
-    } else if (typeSelected && prioritySelected && allFields) {
+    if (typeSelected && prioritySelected && allFields) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
           input_AssignedNurse.getText(),
@@ -134,10 +131,9 @@ public class MaintenanceRequestController {
       NewSceneLoading.reloadScene("views/ActiveServiceRequest.fxml");
       NewSceneLoading.loadScene("views/RequestMenu.fxml");
       resetAllFields();
-
     } else {
       // Print error messages
-      if (typeSelected || prioritySelected || allFields || !allFields) {
+      if (typeSelected || prioritySelected || allFields || allFields) {
         errorLabel.setText("Missing Required Fields.");
       }
     }
