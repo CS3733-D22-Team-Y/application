@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXRadioButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -60,13 +61,13 @@
                 </LinearGradient>
             </fill>
         </Rectangle>
-        <Label layoutX="285.0" layoutY="210.0" styleClass="inputLabel" text="Room:">
+        <Label layoutX="285.0" layoutY="150.0" styleClass="inputLabel" text="Room:">
             <font>
                 <Font name="Calibri Bold" size="30.0" />
             </font>
         </Label>
-        <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="525.0" layoutX="280.0" layoutY="265.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
-        <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="285.0" layoutY="270.0" prefHeight="515.0" prefWidth="390.0" promptText="Additional Text..." styleClass="requestInput" unFocusColor="#ffffff00">
+        <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="575.0" layoutX="280.0" layoutY="215.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
+        <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="285.0" layoutY="220.0" prefHeight="565.0" prefWidth="390.0" promptText="Additional Text..." styleClass="requestInput" unFocusColor="#ffffff00">
             <font>
                 <Font name="Calibri" size="20.0" />
             </font></JFXTextArea>
@@ -119,7 +120,7 @@
                 </LinearGradient>
             </fill>
         </Rectangle>
-      <MFXRadioButton fx:id="hazRadioButton" layoutX="790.0" layoutY="262.0" radius="12.0" styleClass="requestOption" text="Hazardous Waste">
+      <MFXRadioButton fx:id="hazRadioButton" layoutX="790.0" layoutY="262.0" onAction="#disableMiscBox" radius="12.0" styleClass="requestOption" text="Hazardous Waste">
          <toggleGroup>
             <ToggleGroup fx:id="boquetOptions" />
          </toggleGroup>
@@ -127,38 +128,34 @@
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="spillRadioButton" layoutX="790.0" layoutY="210.0" radius="12.0" styleClass="requestOption" text="Spill" toggleGroup="$boquetOptions">
+      <MFXRadioButton fx:id="spillRadioButton" layoutX="790.0" layoutY="210.0" onAction="#disableMiscBox" radius="12.0" styleClass="requestOption" text="Spill" toggleGroup="$boquetOptions">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="bathRadioButton" layoutX="790.0" layoutY="312.0" radius="12.0" styleClass="requestOption" text="Bathroom Cleanup" toggleGroup="$boquetOptions">
+      <MFXRadioButton fx:id="bathRadioButton" layoutX="790.0" layoutY="312.0" onAction="#disableMiscBox" radius="12.0" styleClass="requestOption" text="Bathroom Cleanup" toggleGroup="$boquetOptions">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="moveRadioButton" layoutX="790.0" layoutY="367.0" radius="12.0" styleClass="requestOption" text="Move Equipment" toggleGroup="$boquetOptions">
+      <MFXRadioButton fx:id="moveRadioButton" layoutX="790.0" layoutY="367.0" onAction="#disableMiscBox" radius="12.0" styleClass="requestOption" text="Move Equipment" toggleGroup="$boquetOptions">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <MFXRadioButton fx:id="otherRadioButton" layoutX="790.0" layoutY="419.0" radius="12.0" styleClass="requestOption" text="Other" toggleGroup="$boquetOptions">
+      <MFXRadioButton fx:id="otherRadioButton" layoutX="790.0" layoutY="419.0" onAction="#enableMiscBox" radius="12.0" styleClass="requestOption" text="Other" toggleGroup="$boquetOptions">
          <font>
             <Font name="Calibri" size="30.0" />
          </font>
       </MFXRadioButton>
-      <TextField fx:id="roomsHiddenField" layoutX="430.0" layoutY="210.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
-      <JFXComboBox fx:id="roomsComboBox" layoutX="430.0" layoutY="210.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="inputField" unFocusColor="#ffffff00" />
+      <TextField fx:id="roomsHiddenField" layoutX="430.0" layoutY="150.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
+      <JFXComboBox fx:id="roomsComboBox" layoutX="430.0" layoutY="150.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="inputField" unFocusColor="#ffffff00" />
       <MFXButton computeRadiusMultiplier="false" layoutX="1090.0" layoutY="10.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </MFXButton>
       <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
-      <JFXTextArea fx:id="otherTextArea" focusColor="#ffffff00" layoutX="790.0" layoutY="461.0" prefHeight="265.0" prefWidth="400.0" promptText="Specify another option..." styleClass="requestInput" unFocusColor="#ffffff00">
-         <font>
-            <Font name="Calibri" size="20.0" />
-         </font>
-      </JFXTextArea>
+      <MFXTextField fx:id="otherTextArea" floatMode="DISABLED" layoutX="790.0" layoutY="460.0" prefHeight="43.0" prefWidth="250.0" styleClass="inputField" />
     </children>
 </AnchorPane>
