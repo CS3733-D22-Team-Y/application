@@ -5,9 +5,7 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
-import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
-import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
@@ -22,51 +20,49 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class SecurityRequestController implements IController {
-  // Text input
-  @FXML private JFXComboBox<String> nursesComboBox;
-  @FXML private TextField nursesHiddenField;
+public class MaintenanceRequestController {
+
+  @FXML private AnchorPane sidebarPane;
+
+  @FXML private JFXComboBox<String> medEquipComboBox;
+  @FXML private MFXTextField input_AssignedNurse;
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
-
+  @FXML private TextField medEquipHiddenField;
   @FXML private JFXTextArea input_AdditionalNotes;
-
   @FXML private MFXTextField input_OtherText;
-  // Radio buttons
-  @FXML private MFXRadioButton unwantedGuestRadioButton;
-  @FXML private MFXRadioButton disruptionRadioButton;
-  @FXML private MFXRadioButton theftRadioButton;
+  @FXML private MFXRadioButton medEquipRadioButton;
+  @FXML private MFXRadioButton elevatorRadioButton;
+  @FXML private MFXRadioButton lightsRadioButton;
   @FXML private MFXRadioButton otherRadioButton;
 
-  @FXML private MFXRadioButton mostUrgentRadioButton;
-  @FXML private MFXRadioButton urgentRadioButton;
-  @FXML private MFXRadioButton lowPriorityRadioButton;
-  // Error Label
+  @FXML private MFXRadioButton replacementRadioButton;
+  @FXML private MFXRadioButton maintenanceRadioButton;
+  @FXML private MFXRadioButton unsureRadioButton;
   @FXML private TextArea errorLabel;
-  // Side bar
-  @FXML private AnchorPane sidebarPane;
+
   private Scene requestMenu = null;
 
-  @FXML private AnchorPane mainPane;
-
-  // Security types text. These should be changed depending on what the names in the database are.
-  private static final String unwantedGuestText = "unwantedGuest";
-  private static final String disruptionText = "disruption";
-  private static final String theftText = "theft";
+  //
+  //  Maintenance types text. These should be changed depending on what the names in the database
+  // are.
+  private static final String medicalEquipmentText = "medicalEquipment";
+  private static final String elevatorText = "elevator";
+  private static final String lightsText = "lights";
   private static final String otherText = "other";
 
-  // Security priority text. These should be changed depending on what the names in  the database
+  // Maintenance priority text. These should be changed depending on what the names in  the database
   // are.
-  private static final String mostUrgentText = "mostUrgent";
-  private static final String urgentText = "urgent";
-  private static final String lowPriorityText = "lowPriority";
+  private static final String maintenanceText = "maintenance";
+  private static final String replacementText = "replacement";
+  private static final String unsureText = "unsure";
 
-  public SecurityRequestController() throws IOException {}
+  public MaintenanceRequestController() throws IOException {}
 
   @FXML
   void initialize() throws IOException {
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
-    nursesComboBox.setItems(RequestControllerUtil.allNursesComboBox.getItems());
+    medEquipComboBox.setItems(RequestControllerUtil.allmedEquipComboBox.getItems());
     NewSceneLoading.loadSidebar(sidebarPane);
   }
 
@@ -76,11 +72,9 @@ public class SecurityRequestController implements IController {
   }
 
   @FXML
-  private void setNurseText() {
-    nursesHiddenField.setText(nursesComboBox.getValue());
+  private void setMedicalEquipmentText() {
+    medEquipHiddenField.setText(medEquipComboBox.getValue());
   }
-
-  // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
 
   /**
    * Submits a service request.
@@ -88,25 +82,25 @@ public class SecurityRequestController implements IController {
    * @param roomID The room ID.
    * @param additionalNotes Any additional notes.
    * @param requestTypeSelected The type of request selected.
-   * @param requestPriority The priority of the request.
+   * @param maintenanceRequestPriority The priority of the request.
    */
   private void submitRequest(
       String roomID,
       String assignedNurse,
       String additionalNotes,
       String requestTypeSelected,
-      String requestPriority) {
+      String maintenanceRequestPriority) {
 
     DBManager.save(
         new ServiceRequest(
-            RequestTypes.SECURITY,
+            RequestTypes.MAINTENANCE,
             assignedNurse,
             roomID,
             additionalNotes,
-            10,
+            1,
             RequestStatus.INCOMPLETE,
-            new String[] {requestTypeSelected, requestPriority}));
-    System.out.println("Saved SecurityServiceRequest");
+            new String[] {requestTypeSelected, maintenanceRequestPriority}));
+    System.out.println("Saved Maintenance Request");
   }
 
   // Called when the submit button is pressed.
@@ -114,23 +108,21 @@ public class SecurityRequestController implements IController {
   void submitButton() throws IOException {
     Boolean typeSelected =
         RequestControllerUtil.isRadioButtonSelected(
-            disruptionRadioButton, theftRadioButton, unwantedGuestRadioButton, otherRadioButton);
+            medEquipRadioButton, elevatorRadioButton, lightsRadioButton, otherRadioButton);
 
     Boolean prioritySelected =
         RequestControllerUtil.isRadioButtonSelected(
-            urgentRadioButton, mostUrgentRadioButton, lowPriorityRadioButton);
+            replacementRadioButton, maintenanceRadioButton, unsureRadioButton);
 
     Boolean allFields =
         !Objects.equals(roomsHiddenField.getText(), "")
-            && !Objects.equals(nursesHiddenField.getText(), "");
+            || !Objects.equals(input_AssignedNurse.getText(), "")
+            || !Objects.equals(medEquipHiddenField.getText(), "");
 
-    if (RequestControllerUtil.isRadioButtonSelected(otherRadioButton)
-        && Objects.equals(input_OtherText.getText(), "")) {
-      errorLabel.setText("Missing Required Fields.");
-    } else if (typeSelected && prioritySelected && allFields) {
+    if (typeSelected && prioritySelected && allFields) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          nursesHiddenField.getText(),
+          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           getRequestType(),
           getRequestPriority());
@@ -139,10 +131,9 @@ public class SecurityRequestController implements IController {
       NewSceneLoading.reloadScene("views/ActiveServiceRequest.fxml");
       NewSceneLoading.loadScene("views/RequestMenu.fxml");
       resetAllFields();
-
     } else {
       // Print error messages
-      if (typeSelected || prioritySelected || allFields || !allFields) {
+      if (typeSelected || prioritySelected || allFields || allFields) {
         errorLabel.setText("Missing Required Fields.");
       }
     }
@@ -150,14 +141,33 @@ public class SecurityRequestController implements IController {
 
   @FXML
   void backButton() throws IOException {
-    NewSceneLoading.loadScene("views/RequestMenu.fxml");
+    Boolean typeSelected =
+        RequestControllerUtil.isRadioButtonSelected(
+            medEquipRadioButton, lightsRadioButton, elevatorRadioButton, otherRadioButton);
+
+    Boolean prioritySelected =
+        RequestControllerUtil.isRadioButtonSelected(
+            replacementRadioButton, maintenanceRadioButton, unsureRadioButton);
+
+    Boolean allFields =
+        !Objects.equals(roomsHiddenField.getText(), "")
+            || !Objects.equals(input_AssignedNurse.getText(), "");
+
+    if (typeSelected || prioritySelected || allFields) {
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
+      if (SceneLoading.stayOnPage) {
+        NewSceneLoading.loadScene("views/requestTypes/MaintenanceRequest.fxml");
+      }
+    } else {
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
+    }
   }
 
   // Returns the database name of the selected radio button.
   private String getRequestType() {
-    if (theftRadioButton.isSelected()) return theftText;
-    if (disruptionRadioButton.isSelected()) return disruptionText;
-    if (unwantedGuestRadioButton.isSelected()) return unwantedGuestText;
+    if (medEquipRadioButton.isSelected()) return medicalEquipmentText;
+    if (elevatorRadioButton.isSelected()) return elevatorText;
+    if (lightsRadioButton.isSelected()) return lightsText;
     if (otherRadioButton.isSelected()) return otherText;
     // Should never happen
     return ("");
@@ -165,9 +175,9 @@ public class SecurityRequestController implements IController {
 
   // Returns the database name of the selected radio button.
   private String getRequestPriority() {
-    if (lowPriorityRadioButton.isSelected()) return lowPriorityText;
-    if (urgentRadioButton.isSelected()) return urgentText;
-    if (mostUrgentRadioButton.isSelected()) return mostUrgentText;
+    if (maintenanceRadioButton.isSelected()) return maintenanceText;
+    if (replacementRadioButton.isSelected()) return replacementText;
+    if (unsureRadioButton.isSelected()) return unsureText;
     // Should never happen
     return ("");
   }
@@ -196,28 +206,18 @@ public class SecurityRequestController implements IController {
   void resetAllFields() {
     // Text input
     RequestControllerUtil.resetTextFields(
-        roomsHiddenField, nursesHiddenField, input_AdditionalNotes, input_OtherText);
+        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes, input_OtherText);
     // Report type radio buttons
     RequestControllerUtil.resetRadioButtons(
-        unwantedGuestRadioButton,
-        disruptionRadioButton,
-        theftRadioButton,
+        maintenanceRadioButton,
+        medEquipRadioButton,
+        elevatorRadioButton,
         otherRadioButton,
-        mostUrgentRadioButton,
-        urgentRadioButton,
-        lowPriorityRadioButton);
+        lightsRadioButton,
+        unsureRadioButton,
+        replacementRadioButton);
     errorLabel.setText("");
     roomsComboBox.setValue("");
-    nursesComboBox.setValue("");
-  }
-
-  @Override
-  public IController getController() {
-    return this;
-  }
-
-  @Override
-  public void initializeScale() {
-    Scaling.scaleItemAroundCenter(mainPane);
+    medEquipComboBox.setValue("");
   }
 }

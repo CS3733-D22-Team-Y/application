@@ -94,6 +94,7 @@ public class WelcomePageController implements IController {
         "views/requestTypes/TranslatorRequest.fxml",
         /*"views/Map.fxml",*/
         "views/requestTypes/SpecialistRequest.fxml",
+        "views/requestTypes/MaintenanceRequest.fxml",
         "views/requestTypes/FacilitiesRequest.fxml",
         "views/Dashboard.fxml");
   }

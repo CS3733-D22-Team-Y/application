@@ -11,7 +11,6 @@ import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
-import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.util.Objects;
 import javafx.fxml.FXML;
@@ -26,9 +25,10 @@ public class FloralRequestController implements IController {
   @FXML private MFXRadioButton newBabyRadioButton;
   @FXML private MFXRadioButton bouquetOfTheDayRadioButton;
   // Input fields
-  @FXML private MFXTextField input_AssignedNurse;
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
+  @FXML private JFXComboBox<String> nursesComboBox;
+  @FXML private TextField nursesHiddenField;
   // Additional Notes
   @FXML private TextArea input_AdditionalNotes;
   // Error Label
@@ -49,8 +49,9 @@ public class FloralRequestController implements IController {
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
   public void initialize() throws IOException {
-
+    resetAllFields();
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    nursesComboBox.setItems(RequestControllerUtil.allNursesComboBox.getItems());
     NewSceneLoading.loadSidebar(sidebarPane);
   }
 
@@ -65,6 +66,11 @@ public class FloralRequestController implements IController {
   @FXML
   private void setRoomText() {
     roomsHiddenField.setText(roomsComboBox.getValue());
+  }
+
+  @FXML
+  private void setNurseText() {
+    nursesHiddenField.setText(nursesComboBox.getValue());
   }
   /**
    * Submits a service request.
@@ -96,10 +102,10 @@ public class FloralRequestController implements IController {
     if (RequestControllerUtil.isRadioButtonSelected(
             getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton)
         && !Objects.equals(roomsHiddenField.getText(), "")
-        && !Objects.equals(input_AssignedNurse.getText(), "")) {
+        && !Objects.equals(nursesHiddenField.getText(), "")) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          input_AssignedNurse.getText(),
+          nursesHiddenField.getText(),
           input_AdditionalNotes.getText(),
           getBouquetType());
       errorLabel.setText("");
@@ -132,8 +138,9 @@ public class FloralRequestController implements IController {
     RequestControllerUtil.resetRadioButtons(
         getWellSoonBouquetRadioButton, newBabyRadioButton, bouquetOfTheDayRadioButton);
     RequestControllerUtil.resetTextFields(
-        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
+        roomsHiddenField, nursesHiddenField, input_AdditionalNotes);
     errorLabel.setText("");
     roomsComboBox.setValue("");
+    nursesComboBox.setValue("");
   }
 }

@@ -220,7 +220,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="636.0" onAction="#loadSpecialistReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="EXTRA" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="520.0" layoutY="636.0" onAction="#loadMaintenanceReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="EXTRA" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
