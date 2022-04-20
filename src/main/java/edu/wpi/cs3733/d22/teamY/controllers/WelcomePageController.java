@@ -94,7 +94,7 @@ public class WelcomePageController {
         "views/requestTypes/TranslatorRequest.fxml",
         "views/Map.fxml",
         "views/requestTypes/SpecialistRequest.fxml",
-        "views/requestTypes/FacilitiesRequest.fxml");
+        "views/requestTypes/MaintenanceRequest.fxml");
   }
 
   @FXML

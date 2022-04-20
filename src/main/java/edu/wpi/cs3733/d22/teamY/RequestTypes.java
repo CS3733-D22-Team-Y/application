@@ -7,6 +7,7 @@ public enum RequestTypes {
   MEAL(4, new String[] {"mainChoice", "sideChoice", "allergies", "specialInstructions"}),
   MEDEQUIP(1, new String[] {"equipmentTypeSelected"}),
   SECURITY(2, new String[] {"requestTypeSelected", "securityRequestPriority"}),
+  MAINTENANCE(2, new String[] {"requestTypeSelected", "maintenanceRequestPriority"}),
 
   SPECIALIST(1, new String[] {"specialistType"}),
 
