@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
 import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.RequestControllerUtil;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -13,6 +14,8 @@ public class RequestMenuController {
   @FXML private ToggleButton creatorToggle;
   @FXML AnchorPane sidebarPane;
 
+  @FXML private MFXButton facilitiesButton;
+
   @FXML
   private Label creator1,
       creator2,
@@ -22,7 +25,8 @@ public class RequestMenuController {
       creator6,
       creator7,
       creator8,
-      creator9;
+      creator9,
+      creator10;
 
   public RequestMenuController() {}
 
@@ -31,6 +35,7 @@ public class RequestMenuController {
     SceneUtil.requests = this;
     NewSceneLoading.loadSidebar(sidebarPane);
     RequestControllerUtil.initialize();
+    facilitiesButton.setVisible(false);
   }
 
   private void loadRequestScreen(int index) {
@@ -96,8 +101,16 @@ public class RequestMenuController {
   }
 
   @FXML
+  void loadMaintenanceReq() {
+    NewSceneLoading.loadScene("views/requestTypes/MaintenanceRequest.fxml");
+  }
+
+  @FXML
   void showCreators() {
     boolean state = creatorToggle.isSelected();
+
+    facilitiesButton.setVisible(state);
+
     System.out.println(state);
 
     creator1.setVisible(state);
@@ -109,6 +122,13 @@ public class RequestMenuController {
     creator7.setVisible(state);
     creator8.setVisible(state);
     creator9.setVisible(state);
+    creator10.setVisible(state);
+  }
+
+  @FXML
+  void loadFacilities() {
+    // loadRequestScreen(FACILITIES_RESULTS_INDEX);
+    NewSceneLoading.loadScene("views/requestTypes/FacilitiesRequest.fxml");
   }
 
   @FXML

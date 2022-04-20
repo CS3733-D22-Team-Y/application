@@ -19,7 +19,8 @@ import javafx.scene.layout.AnchorPane;
 
 public class MedicalEquipmentRequestController {
   // Text Inputs
-  @FXML private TextField input_AssignedNurse;
+  @FXML private JFXComboBox<String> nursesComboBox;
+  @FXML private TextField nursesHiddenField;
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
 
@@ -47,14 +48,19 @@ public class MedicalEquipmentRequestController {
 
     updateAvailableEquip();
 
-    System.out.println(RequestControllerUtil.allRoomsComboBox.getItems().size());
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    nursesComboBox.setItems(RequestControllerUtil.allNursesComboBox.getItems());
     NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   @FXML
   private void setRoomText() {
     roomsHiddenField.setText(roomsComboBox.getValue());
+  }
+
+  @FXML
+  private void setNurseText() {
+    nursesHiddenField.setText(nursesComboBox.getValue());
   }
 
   private void updateAvailableEquip() {
@@ -104,7 +110,7 @@ public class MedicalEquipmentRequestController {
             assignedNurse,
             roomID,
             additionalNotes,
-            1,
+            8,
             RequestStatus.INCOMPLETE,
             new String[] {equipmentTypeSelected}));
     DBUtils.updateCleanStatus(equipmentTypeSelected, roomID);
@@ -118,7 +124,7 @@ public class MedicalEquipmentRequestController {
   void submitButton() throws IOException {
     // Checks if a bouquet choice has been made
 
-    if (roomsHiddenField.getText().equals("") || input_AssignedNurse.getText().equals("")) {
+    if (roomsHiddenField.getText().equals("") || nursesHiddenField.getText().equals("")) {
       errorLabel.setText("Missing Required Fields.");
 
     } else if (!RequestControllerUtil.isRadioButtonSelected(
@@ -148,7 +154,7 @@ public class MedicalEquipmentRequestController {
     } else {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          input_AssignedNurse.getText(),
+          nursesHiddenField.getText(),
           input_AdditionalNotes.getText(),
           getEquipmentType());
       errorLabel.setText("");
@@ -163,7 +169,7 @@ public class MedicalEquipmentRequestController {
 
   @FXML
   void backButton() throws IOException {
-    if ((!roomsHiddenField.getText().equals("") || !input_AssignedNurse.getText().equals(""))
+    if ((!roomsHiddenField.getText().equals("") || !nursesHiddenField.getText().equals(""))
         || RequestControllerUtil.isRadioButtonSelected(
             bedRadioButton, xrayRadioButton, infusionPumpRadioButton, reclinerRadioButton)) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
@@ -191,11 +197,12 @@ public class MedicalEquipmentRequestController {
   @FXML
   void resetAllFields() {
     RequestControllerUtil.resetTextFields(
-        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
+        roomsHiddenField, nursesHiddenField, input_AdditionalNotes);
     // Radio buttons
     RequestControllerUtil.resetRadioButtons(
         bedRadioButton, xrayRadioButton, infusionPumpRadioButton, reclinerRadioButton);
     errorLabel.setText("");
     roomsComboBox.setValue("");
+    nursesComboBox.setValue("");
   }
 }

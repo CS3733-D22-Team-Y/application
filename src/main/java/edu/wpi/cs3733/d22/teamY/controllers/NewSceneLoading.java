@@ -60,8 +60,7 @@ public class NewSceneLoading {
     Scene currScene = allScenes.get(path);
     try {
       addSidebarHelper(currScene);
-    } catch (IllegalArgumentException e) {
-    } catch (IOException e) {
+    } catch (IllegalArgumentException | IOException ignored) {
     }
     App.getInstance().setScene(currScene);
   }
