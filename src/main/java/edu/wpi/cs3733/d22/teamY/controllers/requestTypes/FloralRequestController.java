@@ -44,7 +44,7 @@ public class FloralRequestController {
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
   public void initialize() throws IOException {
-
+    resetAllFields();
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
     nursesComboBox.setItems(RequestControllerUtil.allNursesComboBox.getItems());
     NewSceneLoading.loadSidebar(sidebarPane);
@@ -138,5 +138,6 @@ public class FloralRequestController {
         roomsHiddenField, nursesHiddenField, input_AdditionalNotes);
     errorLabel.setText("");
     roomsComboBox.setValue("");
+    nursesComboBox.setValue("");
   }
 }

@@ -28,7 +28,8 @@ public class TranslatorRequestController {
 
   @FXML private MFXTextField input_OtherLanguage;
   // Input fields
-  @FXML private MFXTextField input_AssignedNurse;
+  @FXML private JFXComboBox<String> nursesComboBox;
+  @FXML private TextField nursesHiddenField;
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
   // Additional Notes
@@ -52,12 +53,18 @@ public class TranslatorRequestController {
   @FXML
   void initialize() throws IOException {
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    nursesComboBox.setItems(RequestControllerUtil.allNursesComboBox.getItems());
     NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   @FXML
   private void setRoomText() {
     roomsHiddenField.setText(roomsComboBox.getValue());
+  }
+
+  @FXML
+  private void setNurseText() {
+    nursesHiddenField.setText(nursesComboBox.getValue());
   }
 
   /**
@@ -99,12 +106,12 @@ public class TranslatorRequestController {
             arabicRadioButton,
             otherRadioButton)
         && !Objects.equals(roomsHiddenField.getText(), "")
-        && !Objects.equals(input_AssignedNurse.getText(), "")
+        && !Objects.equals(nursesHiddenField.getText(), "")
         && !(RequestControllerUtil.isRadioButtonSelected(otherRadioButton)
             && Objects.equals(input_OtherLanguage.getText(), ""))) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          input_AssignedNurse.getText(),
+          DBUtils.convertNameToID(nursesComboBox.getValue()),
           input_AdditionalNotes.getText(),
           getLanguageType());
       errorLabel.setText("");
@@ -126,7 +133,7 @@ public class TranslatorRequestController {
             arabicRadioButton,
             otherRadioButton)
         || !Objects.equals(roomsHiddenField.getText(), "")
-        || !Objects.equals(input_AssignedNurse.getText(), "")) {
+        || !Objects.equals(nursesHiddenField.getText(), "")) {
       SceneLoading.loadPopup(
           "views/popups/ReqAbort.fxml", "views/requestTypes/TranslatorRequest.fxml");
       if (SceneLoading.stayOnPage) {
@@ -174,7 +181,7 @@ public class TranslatorRequestController {
         arabicRadioButton,
         otherRadioButton);
     RequestControllerUtil.resetTextFields(
-        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes);
+        roomsHiddenField, nursesHiddenField, input_AdditionalNotes);
     errorLabel.setText("");
     roomsComboBox.setValue("");
   }

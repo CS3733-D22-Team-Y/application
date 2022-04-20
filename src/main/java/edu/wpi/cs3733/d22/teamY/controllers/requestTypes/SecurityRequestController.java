@@ -22,7 +22,8 @@ import javafx.scene.layout.AnchorPane;
 
 public class SecurityRequestController {
   // Text input
-  @FXML private MFXTextField input_AssignedNurse;
+  @FXML private JFXComboBox<String> nursesComboBox;
+  @FXML private TextField nursesHiddenField;
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
 
@@ -61,12 +62,18 @@ public class SecurityRequestController {
   @FXML
   void initialize() throws IOException {
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    nursesComboBox.setItems(RequestControllerUtil.allNursesComboBox.getItems());
     NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   @FXML
   private void setRoomText() {
     roomsHiddenField.setText(roomsComboBox.getValue());
+  }
+
+  @FXML
+  private void setNurseText() {
+    nursesHiddenField.setText(nursesComboBox.getValue());
   }
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
@@ -111,7 +118,7 @@ public class SecurityRequestController {
 
     Boolean allFields =
         !Objects.equals(roomsHiddenField.getText(), "")
-            && !Objects.equals(input_AssignedNurse.getText(), "");
+            && !Objects.equals(nursesHiddenField.getText(), "");
 
     if (RequestControllerUtil.isRadioButtonSelected(otherRadioButton)
         && Objects.equals(input_OtherText.getText(), "")) {
@@ -119,7 +126,7 @@ public class SecurityRequestController {
     } else if (typeSelected && prioritySelected && allFields) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          input_AssignedNurse.getText(),
+          DBUtils.convertNameToID(nursesComboBox.getValue()),
           input_AdditionalNotes.getText(),
           getRequestType(),
           getRequestPriority());
@@ -149,7 +156,7 @@ public class SecurityRequestController {
 
     Boolean allFields =
         !Objects.equals(roomsHiddenField.getText(), "")
-            || !Objects.equals(input_AssignedNurse.getText(), "");
+            || !Objects.equals(nursesHiddenField.getText(), "");
 
     if (typeSelected || prioritySelected || allFields) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
@@ -204,7 +211,7 @@ public class SecurityRequestController {
   void resetAllFields() {
     // Text input
     RequestControllerUtil.resetTextFields(
-        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes, input_OtherText);
+        roomsHiddenField, nursesHiddenField, input_AdditionalNotes, input_OtherText);
     // Report type radio buttons
     RequestControllerUtil.resetRadioButtons(
         unwantedGuestRadioButton,
@@ -216,5 +223,6 @@ public class SecurityRequestController {
         lowPriorityRadioButton);
     errorLabel.setText("");
     roomsComboBox.setValue("");
+    nursesComboBox.setValue("");
   }
 }
