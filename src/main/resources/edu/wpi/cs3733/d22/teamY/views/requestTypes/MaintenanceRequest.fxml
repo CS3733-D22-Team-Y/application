@@ -48,6 +48,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="800.0" layoutX="265.0" opacity="0.66" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="935.0" />
       <JFXComboBox fx:id="medEquipComboBox" layoutX="790.0" layoutY="250.0" onAction="#setMedicalEquipmentText" prefHeight="43.0" prefWidth="151.0" styleClass="inputField" unFocusColor="#ffffff00" />
         <Label layoutX="270.0" layoutY="10.0" styleClass="title" text="Maintenance Request">
             <textFill>

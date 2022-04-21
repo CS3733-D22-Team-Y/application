@@ -47,6 +47,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="800.0" layoutX="265.0" opacity="0.66" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="935.0" />
       <JFXTextArea fx:id="errorLabel" depthTest="DISABLE" disable="true" editable="false" focusColor="#ffffff00" layoutX="945.0" layoutY="685.0" opacity="0.97" prefHeight="10.0" prefWidth="243.0" style="-fx-text-fill: RED;" styleClass="plainText" unFocusColor="#ffffff00">
          <font>
             <Font name="Calibri" size="15.0" />

@@ -48,6 +48,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="800.0" layoutX="265.0" opacity="0.66" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="935.0" />
         <Label layoutX="270.0" layoutY="10.0" styleClass="title" text="Security Request">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">

@@ -63,8 +63,21 @@ public class Scaling {
     ReadOnlyDoubleProperty currHeight = NewSceneLoading.activeWindow.heightProperty();
     ReadOnlyDoubleProperty currWidth = NewSceneLoading.activeWindow.widthProperty();
 
+    double windowCurrWidth = NewSceneLoading.activeWindow.getWidth();
+    double windowCurrHeight = NewSceneLoading.activeWindow.getHeight();
+
     NumberBinding maxScale =
         Bindings.max(
             currWidth.divide(WINDOW_DEFAULT_WIDTH), currHeight.divide(WINDOW_DEFAULT_HEIGHT));
+
+    image.scaleXProperty().bind(maxScale);
+    image.scaleYProperty().bind(maxScale);
+    image.layoutXProperty().bind(maxScale.multiply(windowCurrWidth / 2).subtract(windowCurrWidth / 2));
+    image.layoutYProperty().bind(maxScale.multiply(windowCurrHeight / 2).subtract(windowCurrHeight / 2));
+
+    gradient.scaleXProperty().bind(maxScale);
+    gradient.scaleYProperty().bind(maxScale);
+    gradient.layoutXProperty().bind(maxScale.multiply(windowCurrWidth / 2).subtract(windowCurrWidth / 2));
+    gradient.layoutYProperty().bind(maxScale.multiply(windowCurrHeight / 2).subtract(windowCurrHeight / 2));
   }
 }
