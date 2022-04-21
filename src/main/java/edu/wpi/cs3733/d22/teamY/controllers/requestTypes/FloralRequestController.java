@@ -60,7 +60,7 @@ public class FloralRequestController implements IController {
   }
 
   public void initializeScale() {
-    Scaling.scaleItemAroundCenter(mainPane);
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
   }
 
   @FXML

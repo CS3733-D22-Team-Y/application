@@ -177,6 +177,6 @@ public class PersonalSettingsController implements IController {
 
   @Override
   public void initializeScale() {
-    Scaling.scaleItemAroundCenter(mainPane);
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
   }
 }

@@ -844,6 +844,6 @@ public class MapPageController<T extends Requestable> implements IController {
 
   @Override
   public void initializeScale() {
-    Scaling.scaleItemAroundCenter(mainPane);
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
   }
 }

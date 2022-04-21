@@ -85,7 +85,7 @@ public class MedEquipTablePageController implements IController {
 
   @Override
   public void initializeScale() {
-    Scaling.scaleItemAroundCenter(mainPane);
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
   }
 
   public static class ChangeTheme {

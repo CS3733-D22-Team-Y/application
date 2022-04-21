@@ -732,7 +732,7 @@ public class MessageController implements IController {
 
   @Override
   public void initializeScale() {
-    Scaling.scaleItemAroundCenter(mainPane);
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
   }
 
   class EmployeeResult {
