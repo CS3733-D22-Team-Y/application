@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/Blank.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.AboutUsController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eeeeee" height="551.0" layoutX="-35.0" layoutY="-42.0" stroke="BLACK" strokeType="INSIDE" width="750.0" />
+      <Label layoutX="18.0" styleClass="title" text="About Us">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Arial Rounded MT Bold" size="45.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="10.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="215.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <MFXButton fx:id="backButton" computeRadiusMultiplier="false" layoutX="590.0" layoutY="10.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+      </MFXButton>
+      <Label layoutX="31.0" layoutY="479.0" text="The Brigham &amp; Women’s Hospital maps and data used in this application are copyrighted and provided for the sole use of educational purposes.">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="81.0" text="Our team is the Yowling Yodeling Yoshis, or Team Y, from the class CS3733 D22. This application">
+         <font>
+            <Font name="Microsoft New Tai Lue" size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="31.0" layoutY="104.0" text="would not be possible without our teacher, Professor Wilson Wong, the Teaching Assistant">
+         <font>
+            <Font name="Microsoft New Tai Lue" size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="127.0" text="assigned to us, Roman Wicky Van Doyer, and each of our team's hardworking members. Below">
+         <font>
+            <Font name="Microsoft New Tai Lue" size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="28.0" layoutY="150.0" text="is a list of photos of each of the members of Team Y. Click on a portrait for more info about">
+         <font>
+            <Font name="Microsoft New Tai Lue" size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="173.0" text="that member. Thank you for utilizing our application!">
+         <font>
+            <Font name="Microsoft New Tai Lue" size="16.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="loadConnor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="21.0" layoutY="213.0" onMouseClicked="#loadConnor" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Rectangle fx:id="loadBen" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="138.0" layoutY="213.0" onMouseClicked="#loadBen" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Rectangle fx:id="loadJohn" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="606.0" layoutY="213.0" onMouseClicked="#loadJohn" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Rectangle fx:id="loadSky" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="489.0" layoutY="213.0" onMouseClicked="#loadSky" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Rectangle fx:id="loadNathanA" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="372.0" layoutY="213.0" onMouseClicked="#loadNathanA" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Rectangle fx:id="loadEmily" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="255.0" layoutY="213.0" onMouseClicked="#loadEmily" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="288.0" text="Connor" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="305.0" text="Horn" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="156.0" layoutY="305.0" text="Schmitt" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="166.0" layoutY="285.0" prefHeight="23.0" prefWidth="20.0" text="Ben" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="278.0" layoutY="288.0" text="Emily" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="274.0" layoutY="305.0" text="Gorelik" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="390.0" layoutY="288.0" text="Nathan" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="384.0" layoutY="305.0" text="Anderson" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="517.0" layoutY="288.0" text="Sky" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="513.0" layoutY="305.0" text="Tang" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="631.0" layoutY="288.0" text="John" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="622.0" layoutY="305.0" text="Carrotta" />
+      <Rectangle fx:id="loadJake" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="32.0" layoutY="346.0" onMouseClicked="#loadJake" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Rectangle fx:id="loadEngjell" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="172.0" layoutY="346.0" onMouseClicked="#loadEngjell" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Rectangle fx:id="loadNicholas" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="312.0" layoutY="346.0" onMouseClicked="#loadNicholas" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Rectangle fx:id="loadNathanP" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="452.0" layoutY="346.0" onMouseClicked="#loadNathanP" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Rectangle fx:id="loadEthan" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="592.0" layoutY="346.0" onMouseClicked="#loadEthan" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="58.0" layoutY="421.0" text="Jake" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="54.0" layoutY="438.0" text="Brady" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="192.0" layoutY="421.0" text="Engjell" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="438.0" text="Ramadani" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="327.0" layoutY="421.0" text="Nicholas" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="323.0" layoutY="438.0" text="Heineman" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="470.0" layoutY="421.0" text="Nathan" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="470.0" layoutY="438.0" text="Pollock" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="615.0" layoutY="421.0" text="Ethan" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="610.0" layoutY="438.0" text="Catania" />
+   </children>
+</AnchorPane>

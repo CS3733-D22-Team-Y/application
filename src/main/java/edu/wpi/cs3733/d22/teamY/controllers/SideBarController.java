@@ -49,6 +49,10 @@ public class SideBarController {
   @FXML private Rectangle profileButtonHitbox;
   @FXML private Rectangle logoutButtonHitbox;
 
+  // About Us stuff
+  @FXML private Label aboutUsButton;
+  AboutUsController About = new AboutUsController();
+
   Scene currScene;
 
   @FXML
@@ -336,6 +340,12 @@ public class SideBarController {
         profileHiddenRect,
         inboxHiddenRect,
         logoutHiddenRect);
+  }
+
+  @FXML
+  private void openAboutUs() throws IOException {
+    SceneLoading.loadPopup("views/popups/AboutUs.fxml", "views/SideBar.fxml");
+    About.initialize();
   }
 
   @FXML private TextField searchBar;

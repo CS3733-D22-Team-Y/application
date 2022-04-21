@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" maxHeight="175.0" maxWidth="125.0" minHeight="175.0" minWidth="125.0" prefHeight="175.0" prefWidth="125.0" stylesheets="@../css/Blank.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.PortraitController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14667b" height="186.0" layoutX="-5.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" width="136.0" />
+      <Rectangle fx:id="imagePlaceholder" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="25.0" layoutY="25.0" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Label fx:id="nameText" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="5.0" text="Name text" textFill="WHITE" />
+      <Label fx:id="roleText" alignment="CENTER" contentDisplay="CENTER" layoutX="40.0" layoutY="100.0" text="Role text" textFill="WHITE" />
+      <JFXTextArea fx:id="quoteText" editable="false" focusColor="#ffffff00" layoutX="5.0" layoutY="120.0" maxHeight="50.0" maxWidth="115.0" minHeight="50.0" minWidth="115.0" prefColumnCount="0" prefHeight="50.0" prefRowCount="0" prefWidth="115.0" style="-fx-background-color: white;" text="Quote text" unFocusColor="#ffffff00">
+         <font>
+            <Font name="Microsoft New Tai Lue" size="10.0" />
+         </font>
+      </JFXTextArea>
+      <ImageView fx:id="backButton" fitHeight="10.0" fitWidth="10.0" layoutX="112.0" layoutY="3.0" onMouseClicked="#backButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons/X.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
