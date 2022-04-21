@@ -30,15 +30,19 @@ public class Scaling {
 
     NumberBinding minScale =
         Bindings.min(
-            currWidth.divide(WINDOW_DEFAULT_WIDTH).multiply(1200 / WINDOW_DEFAULT_WIDTH),
-            currHeight.divide(WINDOW_DEFAULT_HEIGHT).multiply(800 / WINDOW_DEFAULT_HEIGHT));
+            currWidth.divide(WINDOW_DEFAULT_WIDTH), currHeight.divide(WINDOW_DEFAULT_HEIGHT));
     itemToScale.scaleXProperty().bind(minScale);
     itemToScale.scaleYProperty().bind(minScale);
 
-    // itemToScale.layoutXProperty().bind(minScale.multiply(410).subtract(370));
-    // itemToScale.layoutYProperty().bind(minScale.multiply(800 / 3).subtract(800 / 3 - 30));
-    itemToScale.layoutXProperty().bind(minScale.multiply(520).subtract(520));
-    itemToScale.layoutYProperty().bind(minScale.multiply(310).subtract(310));
+    double a = (WINDOW_DEFAULT_WIDTH + widthDiff) / 2;
+    double b = (WINDOW_DEFAULT_HEIGHT + heightDiff) / 2;
+
+    itemToScale
+        .layoutXProperty()
+        .bind(minScale.multiply(WINDOW_DEFAULT_WIDTH / 2).subtract(WINDOW_DEFAULT_WIDTH / 2));
+    itemToScale
+        .layoutYProperty()
+        .bind(minScale.multiply(WINDOW_DEFAULT_HEIGHT / 2).subtract(WINDOW_DEFAULT_HEIGHT / 2));
 
     // itemToScale.layoutYProperty().bind(minScale.multiply(390).subtract(380));
 
