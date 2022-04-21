@@ -35,8 +35,8 @@ public class Scaling {
     itemToScale.scaleXProperty().bind(minScale);
     itemToScale.scaleYProperty().bind(minScale);
 
-    itemToScale.layoutXProperty().bind(minScale.multiply(410).subtract(440));
-    itemToScale.layoutYProperty().bind(minScale.multiply(800 / 3).subtract(800 / 3 + 10));
+    itemToScale.layoutXProperty().bind(minScale.multiply(410).subtract(400));
+    itemToScale.layoutYProperty().bind(minScale.multiply(800 / 3).subtract(800 / 3 + 20));
 
     // itemToScale.layoutYProperty().bind(minScale.multiply(390).subtract(380));
 

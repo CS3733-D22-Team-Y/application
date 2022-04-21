@@ -241,8 +241,8 @@ public class SideBarController {
     SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).setVisible(true);
      */
-    setButtonSelected(servicesHiddenRect);
     NewSceneLoading.loadScene("views/RequestMenu.fxml");
+    setButtonSelected(servicesHiddenRect);
   }
 
   @FXML
