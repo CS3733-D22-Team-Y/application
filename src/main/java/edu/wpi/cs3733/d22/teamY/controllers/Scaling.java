@@ -8,8 +8,15 @@ import javafx.scene.Node;
 import javafx.scene.layout.Region;
 
 public class Scaling {
-  private static final double WINDOW_DEFAULT_WIDTH = 1200;
-  private static final double WINDOW_DEFAULT_HEIGHT = 800;
+  private static double WINDOW_DEFAULT_WIDTH;
+  private static double WINDOW_DEFAULT_HEIGHT;
+
+  public static void initialize() {
+    WINDOW_DEFAULT_WIDTH = NewSceneLoading.activeWindow.getWidth();
+    WINDOW_DEFAULT_HEIGHT = NewSceneLoading.activeWindow.getHeight();
+    System.out.println(WINDOW_DEFAULT_WIDTH);
+    System.out.println(WINDOW_DEFAULT_HEIGHT);
+  }
 
   public static void scaleItemAroundCenter(Region itemToScale) {
     double prefX = itemToScale.getLayoutX();
@@ -23,14 +30,8 @@ public class Scaling {
 
     NumberBinding minScale =
         Bindings.min(
-            currWidth
-                .subtract(.5 * widthDiff)
-                .divide(WINDOW_DEFAULT_WIDTH - widthDiff)
-                .multiply(1.06),
-            currHeight
-                .subtract(.5 * heightDiff)
-                .divide(WINDOW_DEFAULT_HEIGHT - heightDiff)
-                .multiply(.99));
+            currWidth.subtract(widthDiff).divide(WINDOW_DEFAULT_WIDTH),
+            currHeight.subtract(heightDiff).divide(WINDOW_DEFAULT_HEIGHT));
     itemToScale.scaleXProperty().bind(minScale);
     itemToScale.scaleYProperty().bind(minScale);
 

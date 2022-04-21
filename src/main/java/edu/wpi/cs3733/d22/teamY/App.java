@@ -2,6 +2,7 @@ package edu.wpi.cs3733.d22.teamY;
 
 import com.google.firebase.database.*;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import java.util.Objects;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -61,6 +62,7 @@ public class App extends Application {
     primaryStage.setTitle("Brigham and Women's Hospital Equipment Tracker");
     primaryStage.setScene(scene);
     primaryStage.show();
+    Scaling.initialize();
     // camera.newPfp();
   }
 
