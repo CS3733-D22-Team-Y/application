@@ -77,6 +77,11 @@ public class ActiveServiceRequestController implements IController {
     rqSet.getController().populateFromRequest(rqSet.getRequest());
   }
 
+  @FXML
+  private void openActiveReqHelp() throws IOException {
+    SceneLoading.loadPopup("views/popups/ActiveReqHelp.fxml", "views/SideBar.fxml");
+  }
+
   @Override
   public IController getController() {
     return this;

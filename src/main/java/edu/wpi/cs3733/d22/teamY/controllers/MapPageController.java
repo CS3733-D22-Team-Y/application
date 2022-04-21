@@ -11,13 +11,17 @@ import edu.wpi.cs3733.d22.teamY.model.Requestable;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox;
+import java.awt.*;
+import java.awt.event.*;
 import java.io.IOException;
 import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
@@ -71,7 +75,7 @@ public class MapPageController<T extends Requestable> implements IController {
   @FXML private MFXTextField reqNurseBox;
   @FXML private JFXTextArea reqDescriptionBox;
   @FXML private MFXButton reqSubmit;
-
+  String currentFloor = "1";
   @FXML private Pane reqInfoPane;
 
   // end req stuff
@@ -143,6 +147,16 @@ public class MapPageController<T extends Requestable> implements IController {
   @FXML MFXButton equipUp;
   @FXML MFXButton equipDown;
 
+  Pane e = new Pane();
+
+  Boolean locationDragStatus = false;
+
+  int locationPinDefaultX = 500;
+  int locationPinDefaultY = 500;
+  ImageView locationPin;
+
+  Circle locationDot = new Circle(0, 0, 0, Color.RED);
+
   @FXML private AnchorPane sidebarPane;
 
   private TextField[] reqNumLabels;
@@ -156,6 +170,8 @@ public class MapPageController<T extends Requestable> implements IController {
 
   private static final int CIRCLE_RADIUS_PX = 10;
   private static final Paint CIRCLE_PAINT = Color.RED;
+  private final int pinDim = 100;
+  private final int pinDim2 = 25;
 
   // Screen size constants
   private static final int MAP_XMIN = 0;
@@ -254,8 +270,8 @@ public class MapPageController<T extends Requestable> implements IController {
                 Location created =
                     new Location(
                         Integer.toString((int) Math.round(Math.random() * 10000)),
-                        (int) Math.round(e.getX()),
-                        (int) Math.round(e.getY()),
+                        (int) Math.round(e.getX()) - (int) (48 * 1.0),
+                        (int) Math.round(e.getY()) - (int) (95 * .5),
                         newFloor.dbKey,
                         " ",
                         " ",
@@ -303,14 +319,24 @@ public class MapPageController<T extends Requestable> implements IController {
                 // Create the circle for this location and add context menu handlers to it
                 Pane i = new Pane();
                 if (modeBox.getValue().equals("Locations")) {
-                  Circle c =
-                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
+                  //                  Circle c =
+                  //                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX,
+                  // CIRCLE_PAINT);
                   i.setLayoutX(l.getXCoord());
-                  i.setLayoutY(l.getYCoord());
-                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
-                  i.setPrefWidth(iconDim);
-                  i.setPrefHeight(iconDim);
-                  i.getChildren().add(frame);
+                  i.setLayoutY(l.getYCoord() - pinDim / 2);
+                  ImageView imageView = new ImageView();
+                  imageView.setImage(
+                      new Image(App.class.getResource("views/images/icons/pin.png").toString()));
+                  imageView.setFitHeight(pinDim);
+                  imageView.setFitWidth(pinDim);
+                  //                  imageView.setLayoutX(l.getXCoord() - pinDim / 2);
+                  //                  imageView.setLayoutY(l.getYCoord() - pinDim / 2);
+
+                  //                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim /
+                  // 2, Color.NAVY);
+                  i.setPrefWidth(pinDim);
+                  i.setPrefHeight(pinDim);
+                  i.getChildren().add(imageView);
                   mapElements.add(i);
                 } else if (modeBox.getValue().equals("Equipment") && hasEquipment) {
                   Circle c =
@@ -542,15 +568,43 @@ public class MapPageController<T extends Requestable> implements IController {
         FXCollections.observableArrayList("Locations", "Equipment", "Service Requests"));
     modeBox.setValue("Locations");
     selectorBoxText.setText("Locations");
-    mapRoot.getChildren().add(0, mapComponent.getRootPane());
+    mapRoot.getChildren().add(mapComponent.getRootPane());
     modeBox.setValue("Locations");
-    floorLL1Button.setOnAction(e -> switchMap(Floors.LOWER_LEVEL_1, mapMode));
-    floorLL2Button.setOnAction(e -> switchMap(Floors.LOWER_LEVEL_2, mapMode));
-    floor1Button.setOnAction(e -> switchMap(Floors.FIRST_FLOOR, mapMode));
-    floor2Button.setOnAction(e -> switchMap(Floors.SECOND_FLOOR, mapMode));
-    floor3Button.setOnAction(e -> switchMap(Floors.THIRD_FLOOR, mapMode));
-    floor4Button.setOnAction(e -> switchMap(Floors.FOURTH_FLOOR, mapMode));
-    floor5Button.setOnAction(e -> switchMap(Floors.FIFTH_FLOOR, mapMode));
+    floorLL1Button.setOnAction(
+        e -> {
+          switchMap(Floors.LOWER_LEVEL_1, mapMode);
+          currentFloor = "ll1";
+        });
+    floorLL2Button.setOnAction(
+        e -> {
+          switchMap(Floors.LOWER_LEVEL_2, mapMode);
+          currentFloor = "ll2";
+        });
+    floor1Button.setOnAction(
+        e -> {
+          switchMap(Floors.FIRST_FLOOR, mapMode);
+          currentFloor = "1";
+        });
+    floor2Button.setOnAction(
+        e -> {
+          switchMap(Floors.SECOND_FLOOR, mapMode);
+          currentFloor = "2";
+        });
+    floor3Button.setOnAction(
+        e -> {
+          switchMap(Floors.THIRD_FLOOR, mapMode);
+          currentFloor = "3";
+        });
+    floor4Button.setOnAction(
+        e -> {
+          switchMap(Floors.FOURTH_FLOOR, mapMode);
+          currentFloor = "4";
+        });
+    floor5Button.setOnAction(
+        e -> {
+          switchMap(Floors.FIFTH_FLOOR, mapMode);
+          currentFloor = "5";
+        });
     modeBox.setOnAction(
         e -> {
           selectorBoxText.setText(modeBox.getValue());
@@ -565,6 +619,55 @@ public class MapPageController<T extends Requestable> implements IController {
     locationInfoPane.setVisible(false);
 
     NewSceneLoading.loadSidebar(sidebarPane);
+
+    mapComponent
+        .getMapPane()
+        .setOnMouseReleased(
+            e -> {
+              System.out.println("Mouse released");
+              if (locationDragStatus) {}
+              locationDragStatus = false;
+            });
+
+    locationPin = new ImageView();
+    locationPin.setImage(new Image(App.class.getResource("views/images/icons/pin.png").toString()));
+    locationPin.setFitHeight(25);
+    locationPin.setFitWidth(25);
+    locationPin.setLayoutX(1000);
+    locationPin.setLayoutY(30);
+    mainPane.getChildren().add(locationPin);
+    locationPin.setTranslateY(0);
+    locationPin.setTranslateX(0);
+    mainPane.getChildren().add(locationDot);
+
+    locationDot.setOnMouseDragEntered(e -> {});
+
+    locationPin.setOnMouseDragged(
+        e -> {
+          locationPin.setLayoutX(e.getX() + locationPin.getLayoutX() - 48 * .25);
+          locationPin.setLayoutY(e.getY() + locationPin.getLayoutY() - 95 * .25);
+        });
+
+    locationPin.setOnMouseReleased(
+        e -> {
+          locationPin.setLayoutX(1000);
+          locationPin.setLayoutY(30);
+          System.out.println(currentFloor);
+          Robot bot = null;
+          try {
+            bot = new Robot();
+          } catch (AWTException ex) {
+            ex.printStackTrace();
+          }
+          int mask = InputEvent.BUTTON1_DOWN_MASK;
+          assert bot != null;
+          bot.mousePress(mask);
+          bot.mouseRelease(mask);
+
+          bot.mousePress(mask);
+          bot.mouseRelease(mask);
+          System.out.println(e.getX() + " " + e.getY());
+        });
   }
 
   public void exit() {

@@ -120,7 +120,10 @@
                   <String fx:value="primaryColor" />
                </styleClass>
             </MFXButton>
-            <MFXTextField fx:id="messageText" layoutX="6.0" onAction="#send" prefHeight="49.0" prefWidth="403.0" />
+            <MFXTextField fx:id="messageText" layoutX="6.0" onAction="#send" prefHeight="49.0" prefWidth="403.0">
+               <font>
+                  <Font size="20.0" />
+               </font></MFXTextField>
          </children>
       </Pane>
       <Label fx:id="chatSelectLabel" layoutX="824.0" layoutY="349.0" text="Select a chat from the list" visible="false">

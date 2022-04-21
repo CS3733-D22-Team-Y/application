@@ -165,6 +165,11 @@ public class PersonalSettingsController implements IController {
                 .toExternalForm());
   }
 
+  @FXML
+  private void openProfileHelp() throws IOException {
+    SceneLoading.loadPopup("views/popups/ProfileHelp.fxml", "views/SideBar.fxml");
+  }
+
   @Override
   public IController getController() {
     return this;

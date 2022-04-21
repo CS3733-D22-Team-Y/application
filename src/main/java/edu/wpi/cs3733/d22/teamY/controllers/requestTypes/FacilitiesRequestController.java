@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers.requestTypes;
 
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
@@ -12,6 +11,7 @@ import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.util.Objects;
 import javafx.fxml.FXML;
@@ -27,7 +27,7 @@ public class FacilitiesRequestController implements IController {
   @FXML private MFXRadioButton bathRadioButton;
   @FXML private MFXRadioButton moveRadioButton;
   @FXML private MFXRadioButton otherRadioButton;
-  @FXML private JFXTextArea otherTextArea;
+  @FXML private MFXTextField otherTextArea;
 
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
@@ -132,6 +132,19 @@ public class FacilitiesRequestController implements IController {
     }
     // Should never happen
     return ("");
+  }
+
+  @FXML
+  void enableMiscBox() {
+    otherTextArea.setAllowEdit(true);
+    otherTextArea.setSelectable(true);
+  }
+
+  @FXML
+  void disableMiscBox() {
+    otherTextArea.setAllowEdit(false);
+    otherTextArea.setSelectable(false);
+    RequestControllerUtil.resetTextFields(otherTextArea);
   }
 
   // Reset button functionality

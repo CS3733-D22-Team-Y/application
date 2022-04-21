@@ -48,7 +48,6 @@
                 <Font name="System Bold" size="54.0" />
             </font>
         </Label>
-      <Pane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
       <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
     </children>
 </AnchorPane>

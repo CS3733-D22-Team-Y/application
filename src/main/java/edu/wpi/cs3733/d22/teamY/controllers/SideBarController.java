@@ -224,6 +224,12 @@ public class SideBarController {
   }
 
   @FXML
+  void loadDashboard() throws IOException {
+    setButtonSelected(homeHiddenRect);
+    NewSceneLoading.loadScene("views/Dashboard.fxml");
+  }
+
+  @FXML
   void loadViewServiceRequests() throws IOException {
     // Reset to the main request screen
     /*

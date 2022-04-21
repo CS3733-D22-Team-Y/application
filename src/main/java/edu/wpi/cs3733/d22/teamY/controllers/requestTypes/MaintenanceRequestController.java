@@ -27,7 +27,6 @@ public class MaintenanceRequestController implements IController {
   @FXML private AnchorPane sidebarPane;
 
   @FXML private JFXComboBox<String> medEquipComboBox;
-  @FXML private MFXTextField input_AssignedNurse;
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
   @FXML private TextField medEquipHiddenField;
@@ -90,7 +89,6 @@ public class MaintenanceRequestController implements IController {
    */
   private void submitRequest(
       String roomID,
-      String assignedNurse,
       String additionalNotes,
       String requestTypeSelected,
       String maintenanceRequestPriority) {
@@ -98,7 +96,7 @@ public class MaintenanceRequestController implements IController {
     DBManager.save(
         new ServiceRequest(
             RequestTypes.MAINTENANCE,
-            assignedNurse,
+            "none",
             roomID,
             additionalNotes,
             1,
@@ -120,13 +118,11 @@ public class MaintenanceRequestController implements IController {
 
     Boolean allFields =
         !Objects.equals(roomsHiddenField.getText(), "")
-            || !Objects.equals(input_AssignedNurse.getText(), "")
             || !Objects.equals(medEquipHiddenField.getText(), "");
 
     if (typeSelected && prioritySelected && allFields) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          input_AssignedNurse.getText(),
           input_AdditionalNotes.getText(),
           getRequestType(),
           getRequestPriority());
@@ -153,9 +149,7 @@ public class MaintenanceRequestController implements IController {
         RequestControllerUtil.isRadioButtonSelected(
             replacementRadioButton, maintenanceRadioButton, unsureRadioButton);
 
-    Boolean allFields =
-        !Objects.equals(roomsHiddenField.getText(), "")
-            || !Objects.equals(input_AssignedNurse.getText(), "");
+    Boolean allFields = !Objects.equals(roomsHiddenField.getText(), "");
 
     if (typeSelected || prioritySelected || allFields) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
@@ -209,8 +203,7 @@ public class MaintenanceRequestController implements IController {
   @FXML
   void resetAllFields() {
     // Text input
-    RequestControllerUtil.resetTextFields(
-        roomsHiddenField, input_AssignedNurse, input_AdditionalNotes, input_OtherText);
+    RequestControllerUtil.resetTextFields(roomsHiddenField, input_AdditionalNotes, input_OtherText);
     // Report type radio buttons
     RequestControllerUtil.resetRadioButtons(
         maintenanceRadioButton,

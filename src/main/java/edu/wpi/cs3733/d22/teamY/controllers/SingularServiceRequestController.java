@@ -31,7 +31,7 @@ public class SingularServiceRequestController implements IController {
     priority = req.getRequestPriority();
     setColor(priorityColor(priority));
 
-    assignedNurse.setText(DBUtils.getNameFromID(req.getAssignedNurse()));
+    assignedNurse.setText(req.getAssignedNurse());
     reqType.setText(req.getType().getFriendlyName());
     mapLocation.setText(DBUtils.convertIDToName(req.getLocationID()));
     fillInfoField(additional);

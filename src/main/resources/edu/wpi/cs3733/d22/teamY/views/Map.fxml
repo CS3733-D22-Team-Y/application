@@ -21,16 +21,16 @@
          <AnchorPane fx:id="mapRoot" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
       </center>
       <bottom>
-         <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <Pane pickOnBounds="false" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-               <Pane fx:id="ll1MainPane" layoutX="10.0" layoutY="-110.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
+               <Pane fx:id="ll1MainPane" layoutX="10.0" layoutY="-110.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
                   <children>
                      <MFXButton fx:id="floorLL1Button" layoutY="250.0" onMouseEntered="#LL1Enter" onMouseExited="#LL1Exit" prefHeight="50.0" prefWidth="50.0" text="LL1">
                         <font>
                            <Font size="15.0" />
                         </font>
                      </MFXButton>
-                     <Pane fx:id="ll1PopupPane" prefHeight="250.0" prefWidth="50.0">
+                     <Pane fx:id="ll1PopupPane" mouseTransparent="true" pickOnBounds="false" prefHeight="250.0" prefWidth="50.0">
                         <children>
                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutX="-1.0" layoutY="98.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
@@ -67,14 +67,14 @@
                      </Pane>
                   </children>
                </Pane>
-               <Pane fx:id="ll1MainPane1" layoutX="70.0" layoutY="-110.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
+               <Pane fx:id="ll1MainPane1" layoutX="70.0" layoutY="-110.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
                   <children>
                      <MFXButton fx:id="floorLL2Button" layoutY="250.0" onMouseEntered="#LL2Enter" onMouseExited="#LL2Exit" prefHeight="50.0" prefWidth="50.0" text="LL2">
                         <font>
                            <Font size="15.0" />
                         </font>
                      </MFXButton>
-                     <Pane fx:id="ll2PopupPane" prefHeight="250.0" prefWidth="50.0">
+                     <Pane fx:id="ll2PopupPane" mouseTransparent="true" prefHeight="250.0" prefWidth="50.0">
                         <children>
                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
@@ -111,14 +111,14 @@
                      </Pane>
                   </children>
                </Pane>
-               <Pane fx:id="ll1MainPane11" layoutX="130.0" layoutY="-110.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
+               <Pane fx:id="ll1MainPane11" layoutX="130.0" layoutY="-110.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
                   <children>
                      <MFXButton fx:id="floor1Button" layoutY="250.0" onMouseEntered="#L1Enter" onMouseExited="#L1Exit" prefHeight="50.0" prefWidth="50.0" text="1">
                         <font>
                            <Font size="15.0" />
                         </font>
                      </MFXButton>
-                     <Pane fx:id="l1PopupPane" prefHeight="250.0" prefWidth="50.0">
+                     <Pane fx:id="l1PopupPane" mouseTransparent="true" prefHeight="250.0" prefWidth="50.0">
                         <children>
                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
@@ -155,14 +155,14 @@
                      </Pane>
                   </children>
                </Pane>
-               <Pane fx:id="ll1MainPane111" layoutX="190.0" layoutY="-110.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
+               <Pane fx:id="ll1MainPane111" layoutX="190.0" layoutY="-110.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
                   <children>
                      <MFXButton fx:id="floor2Button" layoutY="250.0" onMouseEntered="#L2Enter" onMouseExited="#L2Exit" prefHeight="50.0" prefWidth="50.0" text="2">
                         <font>
                            <Font size="15.0" />
                         </font>
                      </MFXButton>
-                     <Pane fx:id="l2PopupPane" prefHeight="250.0" prefWidth="50.0">
+                     <Pane fx:id="l2PopupPane" mouseTransparent="true" prefHeight="250.0" prefWidth="50.0">
                         <children>
                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
@@ -199,9 +199,9 @@
                      </Pane>
                   </children>
                </Pane>
-               <Pane fx:id="ll1MainPane1111" layoutX="250.0" layoutY="-110.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
+               <Pane fx:id="ll1MainPane1111" layoutX="250.0" layoutY="-110.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
                   <children>
-                     <Pane fx:id="l3PopupPane" prefHeight="250.0" prefWidth="50.0">
+                     <Pane fx:id="l3PopupPane" mouseTransparent="true" prefHeight="250.0" prefWidth="50.0">
                         <children>
                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
@@ -243,14 +243,14 @@
                      </MFXButton>
                   </children>
                </Pane>
-               <Pane fx:id="ll1MainPane11111" layoutX="310.0" layoutY="-110.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
+               <Pane fx:id="ll1MainPane11111" layoutX="310.0" layoutY="-110.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
                   <children>
                      <MFXButton fx:id="floor4Button" layoutY="250.0" onMouseEntered="#L4Enter" onMouseExited="#L4Exit" prefHeight="50.0" prefWidth="50.0" text="4">
                         <font>
                            <Font size="15.0" />
                         </font>
                      </MFXButton>
-                     <Pane fx:id="l4PopupPane" prefHeight="250.0" prefWidth="50.0">
+                     <Pane fx:id="l4PopupPane" mouseTransparent="true" prefHeight="250.0" prefWidth="50.0">
                         <children>
                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
@@ -287,14 +287,14 @@
                      </Pane>
                   </children>
                </Pane>
-               <Pane fx:id="ll1MainPane111111" layoutX="370.0" layoutY="-110.0" maxHeight="300.0" prefHeight="50.0" prefWidth="50.0">
+               <Pane fx:id="ll1MainPane111111" layoutX="370.0" layoutY="-110.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
                   <children>
                      <MFXButton fx:id="floor5Button" layoutY="250.0" onMouseEntered="#L5Enter" onMouseExited="#L5Exit" prefHeight="50.0" prefWidth="50.0" text="5">
                         <font>
                            <Font size="15.0" />
                         </font>
                      </MFXButton>
-                     <Pane fx:id="l5PopupPane" prefHeight="250.0" prefWidth="50.0">
+                     <Pane fx:id="l5PopupPane" mouseTransparent="true" prefHeight="250.0" prefWidth="50.0">
                         <children>
                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutY="98.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
                            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
@@ -470,8 +470,8 @@
                <MFXTextField fx:id="reqNurseBox" floatMode="DISABLED" prefHeight="13.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
             </children>
          </VBox>
-         <MFXButton fx:id="reqSubmit" layoutX="110.0" layoutY="675.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />
-         <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Submit" />
+         <MFXButton fx:id="reqSubmit" layoutX="100.0" layoutY="650.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />
+         <MFXButton layoutX="20.0" layoutY="650.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Submit" />
          <MFXButton layoutX="1.0" layoutY="69.0" onAction="#left" prefHeight="56.0" prefWidth="54.0" text="&lt;">
             <font>
                <Font size="30.0" />
@@ -485,6 +485,11 @@
          <MFXTextField fx:id="currReqDisplay" allowEdit="false" floatMode="DISABLED" layoutX="43.0" layoutY="83.0" prefHeight="12.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
          <JFXTextArea fx:id="reqDescriptionBox" layoutX="19.0" layoutY="491.0" prefHeight="151.0" prefWidth="179.0" style="-fx-font-size: 12;" text="No Description Provided" />
          <Label layoutX="13.0" layoutY="480.0" text="Description:" />
+         <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="86.0" layoutY="711.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/Help.png" />
+            </image>
+         </ImageView>
       </children>
    </Pane>
    <TextField fx:id="selectorBoxText1" editable="false" layoutX="1057.0" layoutY="35.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: FFFFFFFF;" />

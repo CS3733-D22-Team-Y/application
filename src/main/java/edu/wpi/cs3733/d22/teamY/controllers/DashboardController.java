@@ -74,6 +74,8 @@ public class DashboardController implements IController {
   @FXML private Label dirty4;
   @FXML private Label dirty5;
 
+  @FXML private Label activeRequestCount;
+
   @FXML private ImageView dirtyWarning1;
   @FXML private ImageView dirtyWarning2;
   @FXML private ImageView dirtyWarning3;
@@ -102,7 +104,7 @@ public class DashboardController implements IController {
   }
 
   public void initialize() throws IOException {
-
+    activeRequestCount.setText(String.valueOf(DBUtils.getRequestCount()));
     floorsClean =
         new Label[] {
           clean1, clean2, clean3, clean4, clean5,
