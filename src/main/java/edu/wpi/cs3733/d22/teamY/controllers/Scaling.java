@@ -39,13 +39,16 @@ public class Scaling {
     itemToScale.scaleXProperty().bind(minScale);
     itemToScale.scaleYProperty().bind(minScale);
 
+    ReadOnlyDoubleProperty a = NewSceneLoading.activeWindow.widthProperty();
+    ReadOnlyDoubleProperty b = NewSceneLoading.activeWindow.heightProperty();
+
     // Not perfect, but good enough for now
     itemToScale
         .layoutXProperty()
-        .bind(minScale.multiply(windowCurrWidth / 2).subtract(windowCurrWidth / 2));
+        .bind(minScale.multiply(a.divide(2)).subtract(a.divide(2).multiply(1213 / 1200)));
     itemToScale
         .layoutYProperty()
-        .bind(minScale.multiply(windowCurrHeight / 2).subtract(windowCurrHeight / 2));
+        .bind(minScale.multiply(b.divide(2)).subtract(b.divide(2).multiply(837 / 800)));
 
     System.out.println("Scaling complete.");
   }
@@ -61,8 +64,6 @@ public class Scaling {
   }
 
   public static void scaleBackground(ImageView image, Rectangle gradient) {
-    double windowCurrWidth = NewSceneLoading.activeWindow.getWidth();
-    double windowCurrHeight = NewSceneLoading.activeWindow.getHeight();
 
     NumberBinding maxScale =
         Bindings.max(
