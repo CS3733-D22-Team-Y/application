@@ -18,7 +18,9 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
 
 public class LaundryRequestController implements IController {
   // Radio Buttons
@@ -38,6 +40,8 @@ public class LaundryRequestController implements IController {
   @FXML private AnchorPane sidebarPane;
 
   @FXML private AnchorPane mainPane;
+  @FXML ImageView bgImage;
+  @FXML Rectangle bgGradient;
 
   private Scene requestMenu = null;
 
@@ -149,5 +153,7 @@ public class LaundryRequestController implements IController {
   @Override
   public void initializeScale() {
     Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage, bgGradient);
+    // bgImage.scaleYProperty().bind(NewSceneLoading.activeWindow.heightProperty());
   }
 }
