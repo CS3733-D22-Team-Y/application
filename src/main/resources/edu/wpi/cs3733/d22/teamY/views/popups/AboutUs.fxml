@@ -2,6 +2,7 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -109,6 +110,17 @@
       <Rectangle fx:id="loadNicholas" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="312.0" layoutY="346.0" onMouseClicked="#loadNicholas" stroke="BLACK" strokeType="INSIDE" width="75.0" />
       <Rectangle fx:id="loadNathanP" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="452.0" layoutY="346.0" onMouseClicked="#loadNathanP" stroke="BLACK" strokeType="INSIDE" width="75.0" />
       <Rectangle fx:id="loadEthan" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="592.0" layoutY="346.0" onMouseClicked="#loadEthan" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="21.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="138.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="255.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="372.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="489.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="606.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="32.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="172.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="312.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="452.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="592.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="58.0" layoutY="421.0" text="Jake" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="54.0" layoutY="438.0" text="Brady" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="192.0" layoutY="421.0" text="Engjell" />
