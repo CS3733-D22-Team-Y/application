@@ -1,7 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
 import io.github.palexdev.materialfx.controls.MFXButton;
-
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.shape.Rectangle;
@@ -26,6 +25,7 @@ public class AboutUsController {
 
   @FXML
   void initialize() throws IOException {
+
     SceneUtil.removeOpacity(
         loadConnor,
         loadBen,
@@ -47,7 +47,7 @@ public class AboutUsController {
     stage.close();
   }
 
-  //Linking to PortraitController
+  // Linking to PortraitController
   PortraitController portrait = new PortraitController();
 
   // Structured array for convenient portrait loading

@@ -87,12 +87,28 @@
             <Font name="Microsoft New Tai Lue" size="16.0" />
          </font>
       </Label>
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="21.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="138.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="255.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="372.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="489.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="606.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="32.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="172.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="312.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="452.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="592.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
       <Rectangle fx:id="loadConnor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="21.0" layoutY="213.0" onMouseClicked="#loadConnor" stroke="BLACK" strokeType="INSIDE" width="75.0" />
       <Rectangle fx:id="loadBen" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="138.0" layoutY="213.0" onMouseClicked="#loadBen" stroke="BLACK" strokeType="INSIDE" width="75.0" />
       <Rectangle fx:id="loadJohn" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="606.0" layoutY="213.0" onMouseClicked="#loadJohn" stroke="BLACK" strokeType="INSIDE" width="75.0" />
       <Rectangle fx:id="loadSky" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="489.0" layoutY="213.0" onMouseClicked="#loadSky" stroke="BLACK" strokeType="INSIDE" width="75.0" />
       <Rectangle fx:id="loadNathanA" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="372.0" layoutY="213.0" onMouseClicked="#loadNathanA" stroke="BLACK" strokeType="INSIDE" width="75.0" />
       <Rectangle fx:id="loadEmily" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="255.0" layoutY="213.0" onMouseClicked="#loadEmily" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Rectangle fx:id="loadJake" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="32.0" layoutY="346.0" onMouseClicked="#loadJake" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Rectangle fx:id="loadEngjell" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="172.0" layoutY="346.0" onMouseClicked="#loadEngjell" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Rectangle fx:id="loadNicholas" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="312.0" layoutY="346.0" onMouseClicked="#loadNicholas" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Rectangle fx:id="loadNathanP" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="452.0" layoutY="346.0" onMouseClicked="#loadNathanP" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+      <Rectangle fx:id="loadEthan" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="592.0" layoutY="346.0" onMouseClicked="#loadEthan" stroke="BLACK" strokeType="INSIDE" width="75.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="288.0" text="Connor" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="305.0" text="Horn" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="156.0" layoutY="305.0" text="Schmitt" />
@@ -105,22 +121,6 @@
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="513.0" layoutY="305.0" text="Tang" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="631.0" layoutY="288.0" text="John" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="622.0" layoutY="305.0" text="Carrotta" />
-      <Rectangle fx:id="loadJake" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="32.0" layoutY="346.0" onMouseClicked="#loadJake" stroke="BLACK" strokeType="INSIDE" width="75.0" />
-      <Rectangle fx:id="loadEngjell" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="172.0" layoutY="346.0" onMouseClicked="#loadEngjell" stroke="BLACK" strokeType="INSIDE" width="75.0" />
-      <Rectangle fx:id="loadNicholas" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="312.0" layoutY="346.0" onMouseClicked="#loadNicholas" stroke="BLACK" strokeType="INSIDE" width="75.0" />
-      <Rectangle fx:id="loadNathanP" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="452.0" layoutY="346.0" onMouseClicked="#loadNathanP" stroke="BLACK" strokeType="INSIDE" width="75.0" />
-      <Rectangle fx:id="loadEthan" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="592.0" layoutY="346.0" onMouseClicked="#loadEthan" stroke="BLACK" strokeType="INSIDE" width="75.0" />
-      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="21.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="138.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="255.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="372.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="489.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="606.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="32.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="172.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="312.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="452.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="592.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="58.0" layoutY="421.0" text="Jake" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="54.0" layoutY="438.0" text="Brady" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="192.0" layoutY="421.0" text="Engjell" />
