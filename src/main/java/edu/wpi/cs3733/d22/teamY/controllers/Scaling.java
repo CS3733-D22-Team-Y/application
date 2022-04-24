@@ -16,45 +16,50 @@ public class Scaling {
   private static ReadOnlyDoubleProperty currHeight = NewSceneLoading.activeWindow.heightProperty();
   private static ReadOnlyDoubleProperty currWidth = NewSceneLoading.activeWindow.widthProperty();
 
+  /**
+   * Initializes the window to the current height and width. Should be run when the very first window opens (in this case, in App.java).
+   */
   public static void initialize() {
     WINDOW_DEFAULT_WIDTH = NewSceneLoading.activeWindow.getWidth();
     WINDOW_DEFAULT_HEIGHT = NewSceneLoading.activeWindow.getHeight();
-    System.out.println(WINDOW_DEFAULT_WIDTH);
-    System.out.println(WINDOW_DEFAULT_HEIGHT);
   }
 
+  /**
+   * Scales an item that is intended to be fullscreen around the top left corner.
+   * The item is scaled so that all of it will always be visible and the aspect ratio is preserved.
+   * @param itemToScale The item to scale.
+   */
   public static void scaleFullscreenItemAroundTopLeft(Region itemToScale) {
-    double prefX = itemToScale.getLayoutX();
-    double prefY = itemToScale.getLayoutY();
     double prefHeight = itemToScale.getHeight();
     double prefWidth = itemToScale.getWidth();
-    double widthDiff = WINDOW_DEFAULT_WIDTH - prefWidth;
-    double heightDiff = WINDOW_DEFAULT_HEIGHT - prefHeight;
-    double windowCurrWidth = NewSceneLoading.activeWindow.getWidth();
-    double windowCurrHeight = NewSceneLoading.activeWindow.getHeight();
 
+    // Scales the item according to the size of the screen.
+    // Figure out the minimum scale to ensure the given images are always fully in the window.
     NumberBinding minScale =
         Bindings.min(
             currWidth.divide(WINDOW_DEFAULT_WIDTH), currHeight.divide(WINDOW_DEFAULT_HEIGHT));
+    // Bind the scale.
     itemToScale.scaleXProperty().bind(minScale);
     itemToScale.scaleYProperty().bind(minScale);
 
-    ReadOnlyDoubleProperty width = NewSceneLoading.activeWindow.widthProperty();
-    ReadOnlyDoubleProperty height = NewSceneLoading.activeWindow.heightProperty();
+    // Changes the layout of the item to account for the scale around the center.
+    // Not perfect, but good enough for now
     double widthFactor = 2f * WINDOW_DEFAULT_WIDTH / 1200f;
     double heightFactor = 2f * WINDOW_DEFAULT_HEIGHT / 800f;
-
-    // Not perfect, but good enough for now
+    // Set the layout.
     itemToScale
         .layoutXProperty()
-        .bind(minScale.multiply(width.divide(widthFactor)).subtract(width.divide(widthFactor)));
+        .bind(minScale.multiply(currWidth.divide(widthFactor)).subtract(currWidth.divide(widthFactor)));
     itemToScale
         .layoutYProperty()
-        .bind(minScale.multiply(height.divide(heightFactor)).subtract(height.divide(heightFactor)));
-
-    System.out.println("Scaling complete.");
+        .bind(minScale.multiply(currHeight.divide(heightFactor)).subtract(currHeight.divide(heightFactor)));
   }
 
+  /**
+   * Scales a list of items, all intended to be fullscreen, around the top left.
+   * The items are scaled so that all of them will always be visible and the aspect ratio is preserved.
+   * @param items The items to scale.
+   */
   public static void scaleFullscreenItemAroundTopLeft(ObservableList<Node> items) {
     for (Node currItem : items) {
       try {
@@ -65,7 +70,14 @@ public class Scaling {
     }
   }
 
+  /**
+   * Scales the desired background to always fill the screen.
+   * @param image The ImageView to be scaled
+   * @param gradient The gradient that covers the image.
+   */
   public static void scaleBackground(ImageView image, Rectangle gradient) {
+    double windowCurrWidth = NewSceneLoading.activeWindow.getWidth();
+    double windowCurrHeight = NewSceneLoading.activeWindow.getHeight();
 
     NumberBinding maxScale =
         Bindings.max(
