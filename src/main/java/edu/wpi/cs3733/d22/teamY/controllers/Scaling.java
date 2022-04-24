@@ -39,14 +39,18 @@ public class Scaling {
     itemToScale.scaleXProperty().bind(minScale);
     itemToScale.scaleYProperty().bind(minScale);
 
-    ReadOnlyDoubleProperty a = NewSceneLoading.activeWindow.widthProperty();
-    ReadOnlyDoubleProperty b = NewSceneLoading.activeWindow.heightProperty();
-    double c = 2 * 1213 / 837;
-    System.out.println(c);
+    ReadOnlyDoubleProperty width = NewSceneLoading.activeWindow.widthProperty();
+    ReadOnlyDoubleProperty height = NewSceneLoading.activeWindow.heightProperty();
+    double widthFactor = 2f * WINDOW_DEFAULT_WIDTH / 1200f;
+    double heightFactor = 2f * WINDOW_DEFAULT_HEIGHT / 800f;
 
     // Not perfect, but good enough for now
-    itemToScale.layoutXProperty().bind(minScale.multiply(a.divide(c)).subtract(a.divide(c)));
-    itemToScale.layoutYProperty().bind(minScale.multiply(b.divide(c)).subtract(b.divide(c)));
+    itemToScale
+        .layoutXProperty()
+        .bind(minScale.multiply(width.divide(widthFactor)).subtract(width.divide(widthFactor)));
+    itemToScale
+        .layoutYProperty()
+        .bind(minScale.multiply(height.divide(heightFactor)).subtract(height.divide(heightFactor)));
 
     System.out.println("Scaling complete.");
   }
