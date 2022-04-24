@@ -247,6 +247,11 @@
                <Font name="Calibri" size="20.0" />
             </font>
          </JFXToggleButton>
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="280.0" layoutY="170.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/medicalRequestFinal.png" />
+            </image>
+         </ImageView>
       </children>
    </AnchorPane>
    <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
