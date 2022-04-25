@@ -11,14 +11,12 @@ import edu.wpi.cs3733.d22.teamY.model.Requestable;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
-import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -85,8 +83,8 @@ public class MapPageController<T extends Requestable> {
   private String fuck = "shit";
   private ArrayList<T> fuck2 = new ArrayList<>();
   private int currReqSelection = 0;
-  @FXML private MFXLegacyComboBox<String> modeBox;
-  @FXML private TextField selectorBoxText;
+  // @FXML private MFXLegacyComboBox<String> modeBox;
+  // @FXML private TextField selectorBoxText;
   @FXML Pane mainPane;
   @FXML private Pane ll1MainPane;
   @FXML private Pane ll1PopupPane;
@@ -582,10 +580,12 @@ public class MapPageController<T extends Requestable> {
     this.xLabels[5] = l4X;
     this.xLabels[6] = l5X;
 
+    /*
     modeBox.setItems(
         FXCollections.observableArrayList("Locations", "Equipment", "Service Requests"));
     modeBox.setValue("Locations");
-    selectorBoxText.setText("Locations");
+     */
+    // selectorBoxText.setText("Locations");
     mapRoot.getChildren().add(mapComponent.getRootPane());
     // modeBox.setValue("Locations");
     floorLL1Button.setOnAction(
@@ -623,12 +623,14 @@ public class MapPageController<T extends Requestable> {
           switchMap(Floors.FIFTH_FLOOR, mapMode);
           currentFloor = "5";
         });
+    /*
     modeBox.setOnAction(
         e -> {
           selectorBoxText.setText(modeBox.getValue());
           exit();
           switchMap(lastFloor, mapMode);
         });
+     */
 
     // Load initial floor and mode
     switchMap(lastFloor, MapMode.LOCATION);

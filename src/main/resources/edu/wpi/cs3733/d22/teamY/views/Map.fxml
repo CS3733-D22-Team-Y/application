@@ -4,7 +4,6 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
-<?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -493,9 +492,6 @@
          </ImageView>
       </children>
    </Pane>
-   <TextField fx:id="selectorBoxText1" editable="false" layoutX="1057.0" layoutY="35.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: FFFFFFFF;" />
-   <MFXLegacyComboBox fx:id="modeBox" layoutX="1043.0" layoutY="35.0" lineStrokeWidth="0.0" prefHeight="25.0" prefWidth="127.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="35.0" />
-   <TextField fx:id="selectorBoxText" editable="false" layoutX="1043.6000000000001" layoutY="35.0" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: FFFFFFFF;" AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="35.0" />
    <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
    <MFXCheckbox fx:id="locationsCheckbox" layoutX="276.0" layoutY="13.0" text="Locations" />
    <MFXCheckbox fx:id="medCheckbox" layoutX="276.0" layoutY="38.0" text="Medical Equipment" />
