@@ -67,7 +67,12 @@ public class AboutUsController {
   String[] engjell = {"Engjell Ramadani", "Front End", "Quote", "views/images/Engjell.jpg"};
   String[] nicholas = {"Nicholas Heineman", "Front End", "Quote", "views/images/Nicholas.jpg"};
   String[] nathanP = {"Nathan Pollock", "Back End", "Quote", "views/images/NathanP.jpg"};
-  String[] ethan = {"Ethan Catania", "Full Stack", "Quote", "views/images/Ethan.jpg"};
+  String[] ethan = {
+    "Ethan Catania",
+    "Full Stack",
+    "Dude, get GitHub Desktop - Ben Schmitt",
+    "views/images/Ethan.jpg"
+  };
 
   // Functions to load specific info into the Portrait template
   @FXML
