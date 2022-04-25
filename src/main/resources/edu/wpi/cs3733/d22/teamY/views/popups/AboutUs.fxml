@@ -2,6 +2,7 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
@@ -87,6 +88,50 @@
             <Font name="Microsoft New Tai Lue" size="16.0" />
          </font>
       </Label>
+      <ImageView fx:id="loadConnor" fitHeight="75.0" fitWidth="75.0" layoutX="21.0" layoutY="213.0" onMouseClicked="#loadConnor" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Connor.jpg" />
+         </image></ImageView>
+      <ImageView fx:id="loadBen" fitHeight="75.0" fitWidth="75.0" layoutX="138.0" layoutY="213.0" onMouseClicked="#loadBen" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Ben.jpg" />
+         </image></ImageView>
+      <ImageView fx:id="loadEmily" fitHeight="75.0" fitWidth="75.0" layoutX="255.0" layoutY="213.0" onMouseClicked="#loadEmily" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Emily.jpg" />
+         </image></ImageView>
+      <ImageView fx:id="loadNathanA" fitHeight="75.0" fitWidth="75.0" layoutX="372.0" layoutY="213.0" onMouseClicked="#loadNathanA" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/NathanA.jpg" />
+         </image></ImageView>
+      <ImageView fx:id="loadSky" fitHeight="75.0" fitWidth="75.0" layoutX="489.0" layoutY="213.0" onMouseClicked="#loadSky" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Sky.jpg" />
+         </image></ImageView>
+      <ImageView fx:id="loadJohn" fitHeight="75.0" fitWidth="75.0" layoutX="606.0" layoutY="213.0" onMouseClicked="#loadJohn" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/John.jpg" />
+         </image></ImageView>
+      <ImageView fx:id="loadJake" fitHeight="75.0" fitWidth="75.0" layoutX="32.0" layoutY="346.0" onMouseClicked="#loadJake" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Jake.png" />
+         </image></ImageView>
+      <ImageView fx:id="loadEngjell" fitHeight="75.0" fitWidth="75.0" layoutX="172.0" layoutY="346.0" onMouseClicked="#loadEngjell" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Engjell.jpg" />
+         </image></ImageView>
+      <ImageView fx:id="loadNicholas" fitHeight="75.0" fitWidth="75.0" layoutX="312.0" layoutY="346.0" onMouseClicked="#loadNicholas" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Nicholas.png" />
+         </image></ImageView>
+      <ImageView fx:id="loadNathanP" fitHeight="75.0" fitWidth="75.0" layoutX="452.0" layoutY="346.0" onMouseClicked="#loadNathanP" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/NathanP.jpg" />
+         </image></ImageView>
+      <ImageView fx:id="loadEthan" fitHeight="75.0" fitWidth="75.0" layoutX="592.0" layoutY="346.0" onMouseClicked="#loadEthan" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Ethan.jpg" />
+         </image></ImageView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="288.0" text="Connor" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="305.0" text="Horn" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="156.0" layoutY="305.0" text="Schmitt" />
