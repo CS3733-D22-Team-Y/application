@@ -308,6 +308,7 @@ public class WelcomePageController {
     faPane.setVisible(true);
 
     if (!didAuth) {
+      System.out.println("No 2FA methods available!");
       loginAnimation();
     }
   }
