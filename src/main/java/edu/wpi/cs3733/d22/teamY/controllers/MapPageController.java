@@ -312,6 +312,8 @@ public class MapPageController<T extends Requestable> {
                 boolean hasEquipment = equip.size() > 0;
                 List<T> requests = DBUtils.getAllServiceReqsAtLocation(l);
 
+                boolean medEquipAdded = false, serviceRequestAdded = false;
+
                 // equipTypes: list of equipment types in the location.  if room has
                 // multiple of one
                 // type, only 1 element is in the list still
@@ -320,15 +322,15 @@ public class MapPageController<T extends Requestable> {
 
                 // Checks if the point is in a valid position
                 // Create the circle for this location and add context menu handlers to it
-                Pane i = new Pane();
-                Pane j = new Pane();
-                Pane k = new Pane();
+                Pane newLocation = new Pane();
+                Pane newMedEquip = new Pane();
+                Pane newServiceRequest = new Pane();
                 // connor why >:(
                 //                  Circle c =
                 //                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX,
                 // CIRCLE_PAINT);
-                i.setLayoutX(l.getXCoord());
-                i.setLayoutY(l.getYCoord() - pinDim / 2);
+                newLocation.setLayoutX(l.getXCoord());
+                newLocation.setLayoutY(l.getYCoord() - pinDim / 2);
                 ImageView imageView = new ImageView();
                 imageView.setImage(
                     new Image(App.class.getResource("views/images/icons/pin.png").toString()));
@@ -339,17 +341,17 @@ public class MapPageController<T extends Requestable> {
 
                 //                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim /
                 // 2, Color.NAVY);
-                i.setPrefWidth(pinDim);
-                i.setPrefHeight(pinDim);
-                i.getChildren().add(imageView);
-                i.visibleProperty().bind(locationsCheckbox.selectedProperty());
-                mapElements.add(i);
+                newLocation.setPrefWidth(pinDim);
+                newLocation.setPrefHeight(pinDim);
+                newLocation.getChildren().add(imageView);
+                newLocation.visibleProperty().bind(locationsCheckbox.selectedProperty());
+                mapElements.add(newLocation);
                 // Add equipment bubbles
                 if (hasEquipment) {
                   Circle c =
                       new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
-                  j.setLayoutX(l.getXCoord() + 20);
-                  j.setLayoutY(l.getYCoord());
+                  newMedEquip.setLayoutX(l.getXCoord() + 20);
+                  newMedEquip.setLayoutY(l.getYCoord());
                   Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
                   ImageView equipIcon = new ImageView();
                   if (equip.size() < 9) {
@@ -367,36 +369,41 @@ public class MapPageController<T extends Requestable> {
                   }
                   equipIcon.setFitWidth(iconDim);
                   equipIcon.setFitHeight(iconDim);
-                  j.setPrefWidth(iconDim);
-                  j.setPrefHeight(iconDim);
-                  j.getChildren().add(frame);
-                  j.getChildren().add(equipIcon);
-                  j.visibleProperty().bind(medCheckbox.selectedProperty());
-                  mapElements.add(j);
+                  newMedEquip.setPrefWidth(iconDim);
+                  newMedEquip.setPrefHeight(iconDim);
+                  newMedEquip.getChildren().add(frame);
+                  newMedEquip.getChildren().add(equipIcon);
+                  newMedEquip.visibleProperty().bind(medCheckbox.selectedProperty());
+                  mapElements.add(newMedEquip);
+                  medEquipAdded = true;
                 }
                 // Add service request bubbles
                 if (requests.size() > 0) {
                   Circle c =
                       new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
-                  k.setLayoutX(l.getXCoord() - 20);
-                  k.setLayoutY(l.getYCoord());
+                  newServiceRequest.setLayoutX(l.getXCoord() - 20);
+                  newServiceRequest.setLayoutY(l.getYCoord());
                   Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.RED);
-                  k.setPrefWidth(iconDim);
-                  k.setPrefHeight(iconDim);
-                  k.getChildren().add(frame);
-                  k.visibleProperty().bind(servicesCheckbox.selectedProperty());
-                  mapElements.add(i);
+                  newServiceRequest.setPrefWidth(iconDim);
+                  newServiceRequest.setPrefHeight(iconDim);
+                  newServiceRequest.getChildren().add(frame);
+                  newServiceRequest.visibleProperty().bind(servicesCheckbox.selectedProperty());
+                  mapElements.add(newLocation);
+                  serviceRequestAdded = true;
                 }
 
-                i.setOnContextMenuRequested(
+                // Set behavior for the location pins
+                newLocation.setOnContextMenuRequested(
                     e -> {
                       if (currentEquip > equip.size() - 1) {
                         currentEquip = 0;
                       }
                       fuck = String.valueOf(l.getNodeID());
+                      // Show only the correct pane
                       locationInfoPane.setVisible(true);
                       equipInfoPane.setVisible(false);
                       reqInfoPane.setVisible(false);
+
                       locationX.setText(String.valueOf(l.getXCoord()));
                       locationY.setText(String.valueOf(l.getYCoord()));
                       locationBuilding.setText(l.getBuilding());
@@ -404,39 +411,49 @@ public class MapPageController<T extends Requestable> {
                       locationLong.setText(l.getLongName());
                       locationID.setText(String.valueOf(l.getNodeID()));
                     });
-                j.setOnContextMenuRequested(
-                    e -> {
-                      equipInfoPane.setVisible(true);
-                      locationInfoPane.setVisible(false);
-                      reqInfoPane.setVisible(false);
-                      MedEquip o = equip.get(currentEquip);
-                      fuck = String.valueOf(o.getEquipID());
-                      equipID.setText(String.valueOf(o.getEquipID()));
-                      equipLocation.setText(o.getEquipLocId());
-                      equipType.setText(o.getEquipType());
-                      equipClean.setText(o.getIsClean());
-                    });
-                k.setOnContextMenuRequested(
-                    e -> {
-                      if (requests.size() > 0) {
-                        fuck2.clear();
-                        for (T r : requests) {
-                          fuck2.add(r);
-                        }
-                        reqInfoPane.setVisible(true);
+                if (medEquipAdded) {
+                  // Set behavior for the equipment circles
+                  newMedEquip.setOnContextMenuRequested(
+                      e -> {
+                        // Show only the correct pane
+                        equipInfoPane.setVisible(true);
                         locationInfoPane.setVisible(false);
-                        equipInfoPane.setVisible(false);
-                        this.currReqSelection %= fuck2.size();
-                        currReqDisplay.setText(fuck2.get(this.currReqSelection).getTypeString());
-                        this.reqLocationBox.setText(fuck2.get(this.currReqSelection).getLocID());
-                        this.reqDescriptionBox.setText(
-                            fuck2.get(this.currReqSelection).getAdditionalNotes());
-                        this.reqStatusBox.setText(fuck2.get(this.currReqSelection).getStatus());
-                        this.reqTypeBox.setText(fuck2.get(this.currReqSelection).getTypeString());
-                        this.reqNurseBox.setText(
-                            fuck2.get(this.currReqSelection).getAssignedNurse());
-                      }
-                    });
+                        reqInfoPane.setVisible(false);
+
+                        MedEquip o = equip.get(currentEquip);
+                        fuck = String.valueOf(o.getEquipID());
+                        equipID.setText(String.valueOf(o.getEquipID()));
+                        equipLocation.setText(o.getEquipLocId());
+                        equipType.setText(o.getEquipType());
+                        equipClean.setText(o.getIsClean());
+                      });
+                }
+                if (serviceRequestAdded) {
+                  // Set behavior for the requests circle
+                  newServiceRequest.setOnContextMenuRequested(
+                      e -> {
+                        if (requests.size() > 0) {
+                          fuck2.clear();
+                          for (T r : requests) {
+                            fuck2.add(r);
+                          }
+                          // Show only the correct pane
+                          reqInfoPane.setVisible(true);
+                          locationInfoPane.setVisible(false);
+                          equipInfoPane.setVisible(false);
+
+                          this.currReqSelection %= fuck2.size();
+                          currReqDisplay.setText(fuck2.get(this.currReqSelection).getTypeString());
+                          this.reqLocationBox.setText(fuck2.get(this.currReqSelection).getLocID());
+                          this.reqDescriptionBox.setText(
+                              fuck2.get(this.currReqSelection).getAdditionalNotes());
+                          this.reqStatusBox.setText(fuck2.get(this.currReqSelection).getStatus());
+                          this.reqTypeBox.setText(fuck2.get(this.currReqSelection).getTypeString());
+                          this.reqNurseBox.setText(
+                              fuck2.get(this.currReqSelection).getAssignedNurse());
+                        }
+                      });
+                }
 
                 locationSubmit.setOnMouseClicked(
                     e -> {
