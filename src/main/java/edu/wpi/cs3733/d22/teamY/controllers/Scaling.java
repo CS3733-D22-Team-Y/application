@@ -17,7 +17,8 @@ public class Scaling {
   private static ReadOnlyDoubleProperty currWidth = NewSceneLoading.activeWindow.widthProperty();
 
   /**
-   * Initializes the window to the current height and width. Should be run when the very first window opens (in this case, in App.java).
+   * Initializes the window to the current height and width. Should be run when the very first
+   * window opens (in this case, in App.java).
    */
   public static void initialize() {
     WINDOW_DEFAULT_WIDTH = NewSceneLoading.activeWindow.getWidth();
@@ -25,8 +26,9 @@ public class Scaling {
   }
 
   /**
-   * Scales an item that is intended to be fullscreen around the top left corner.
-   * The item is scaled so that all of it will always be visible and the aspect ratio is preserved.
+   * Scales an item that is intended to be fullscreen around the top left corner. The item is scaled
+   * so that all of it will always be visible and the aspect ratio is preserved.
+   *
    * @param itemToScale The item to scale.
    */
   public static void scaleFullscreenItemAroundTopLeft(Region itemToScale) {
@@ -49,15 +51,22 @@ public class Scaling {
     // Set the layout.
     itemToScale
         .layoutXProperty()
-        .bind(minScale.multiply(currWidth.divide(widthFactor)).subtract(currWidth.divide(widthFactor)));
+        .bind(
+            minScale
+                .multiply(currWidth.divide(widthFactor))
+                .subtract(currWidth.divide(widthFactor)));
     itemToScale
         .layoutYProperty()
-        .bind(minScale.multiply(currHeight.divide(heightFactor)).subtract(currHeight.divide(heightFactor)));
+        .bind(
+            minScale
+                .multiply(currHeight.divide(heightFactor))
+                .subtract(currHeight.divide(heightFactor)));
   }
 
   /**
-   * Scales a list of items, all intended to be fullscreen, around the top left.
-   * The items are scaled so that all of them will always be visible and the aspect ratio is preserved.
+   * Scales a list of items, all intended to be fullscreen, around the top left. The items are
+   * scaled so that all of them will always be visible and the aspect ratio is preserved.
+   *
    * @param items The items to scale.
    */
   public static void scaleFullscreenItemAroundTopLeft(ObservableList<Node> items) {
@@ -72,6 +81,7 @@ public class Scaling {
 
   /**
    * Scales the desired background to always fill the screen.
+   *
    * @param image The ImageView to be scaled
    * @param gradient The gradient that covers the image.
    */
