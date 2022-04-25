@@ -12,9 +12,10 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14667b" height="186.0" layoutX="-5.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" width="136.0" />
       <Rectangle fx:id="portraitButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="25.0" layoutY="25.0" stroke="BLACK" strokeType="INSIDE" width="75.0" />
-      <Label fx:id="nameText" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="5.0" text="Name text" textFill="WHITE" />
       <Label fx:id="roleText" alignment="CENTER" contentDisplay="CENTER" layoutX="40.0" layoutY="100.0" text="Role text" textFill="WHITE" />
       <JFXTextArea fx:id="quoteText" editable="false" focusColor="#ffffff00" layoutX="5.0" layoutY="120.0" maxHeight="50.0" maxWidth="115.0" minHeight="50.0" minWidth="115.0" prefColumnCount="0" prefHeight="50.0" prefRowCount="0" prefWidth="115.0" style="-fx-background-color: white;" text="Quote text" unFocusColor="#ffffff00">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14667b" height="372.0" layoutX="-5.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" width="272.0" />
+      <Label fx:id="nameText" alignment="CENTER" contentDisplay="CENTER" layoutX="70.0" layoutY="10.0" text="Name text" textFill="WHITE">
          <font>
             <Font name="Microsoft New Tai Lue" size="10.0" />
          </font>
@@ -24,6 +25,7 @@
             <Image url="@../images/icons/X.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="portraitImage" fitHeight="75.0" fitWidth="75.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="portraitImage" fitHeight="150.0" fitWidth="150.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+      <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="150.0" layoutX="50.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
    </children>
 </AnchorPane>

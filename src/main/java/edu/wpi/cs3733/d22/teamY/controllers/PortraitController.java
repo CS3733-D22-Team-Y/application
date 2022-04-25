@@ -30,11 +30,25 @@ public class PortraitController {
         portraitImage = (new ImageView(new Image(new FileInputStream(name[3]))));
     }
 
+
     @FXML
     private void backButton() {
         Stage stage;
         stage = (Stage) backButton.getScene().getWindow();
         stage.close();
     }
+
+  @FXML private Rectangle rectangle;
+
+  // Function to put the right text and image stuff in the right places in the portrait template
+  @FXML
+  void rewriteInfo(String[] name) throws FileNotFoundException {
+    SceneUtil.removeOpacity(rectangle);
+
+    nameText.setText(name[0]);
+    roleText.setText(name[1]);
+    quoteText.setText(name[2]);
+    // portraitImage = new ImageView(new Image(new FileInputStream(name[3])));
+  }
 
 }
