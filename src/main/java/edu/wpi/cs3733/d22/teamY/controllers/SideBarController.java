@@ -377,7 +377,10 @@ public class SideBarController {
   @FXML
   public void doSearch() throws IOException {
     String goTo = getDirectory(listView.getSelectionModel().getSelectedItem());
-    SceneLoading.loadScene(goTo);
+    NewSceneLoading.reloadScene(goTo);
+    NewSceneLoading.loadScene(goTo);
+    this.searchBar.setText("");
+    this.listView.setVisible(false);
   }
 
   @FXML
@@ -424,7 +427,12 @@ public class SideBarController {
     page = page.replaceAll(" ", "");
     page = page.replaceAll("ellaneous", "");
     // page = page.replaceAll("Inbox", "")
-    page = "views/" + page + ".fxml";
+
+    if (page.toLowerCase().contains("map") || page.toLowerCase().contains("menu")) {
+      page = "views/" + page + ".fxml";
+    } else {
+      page = "views/requestTypes/" + page + ".fxml";
+    }
     return page;
   }
 
