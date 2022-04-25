@@ -323,6 +323,7 @@ public class MapPageController<T extends Requestable> {
                 // Checks if the point is in a valid position
                 // Create the circle for this location and add context menu handlers to it
                 Pane i = new Pane();
+                //connor why >:(
                 if (modeBox.getValue().equals("Locations")) {
                   //                  Circle c =
                   //                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX,
