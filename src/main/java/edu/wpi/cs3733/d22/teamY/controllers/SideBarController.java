@@ -345,7 +345,6 @@ public class SideBarController {
   @FXML
   private void openAboutUs() throws IOException {
     SceneLoading.loadPopup("views/popups/AboutUs.fxml", "views/SideBar.fxml");
-    About.initialize();
   }
 
   @FXML private TextField searchBar;

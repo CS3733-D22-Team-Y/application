@@ -2,13 +2,12 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 
 import edu.wpi.cs3733.d22.teamY.App;
 import io.github.palexdev.materialfx.controls.MFXButton;
-
 import java.io.IOException;
 import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -17,34 +16,18 @@ public class AboutUsController {
 
   @FXML private MFXButton backButton;
 
-  // Rectangles with images
-  @FXML private Rectangle loadConnor;
-  @FXML private Rectangle loadBen;
-  @FXML private Rectangle loadEmily;
-  @FXML private Rectangle loadNathanA;
-  @FXML private Rectangle loadSky;
-  @FXML private Rectangle loadJohn;
-  @FXML private Rectangle loadJake;
-  @FXML private Rectangle loadEngjell;
-  @FXML private Rectangle loadNicholas;
-  @FXML private Rectangle loadNathanP;
-  @FXML private Rectangle loadEthan;
-
-  @FXML
-  void initialize() throws IOException {
-    SceneUtil.removeOpacity(
-        loadConnor,
-        loadBen,
-        loadEmily,
-        loadNathanA,
-        loadSky,
-        loadJohn,
-        loadJake,
-        loadEngjell,
-        loadNicholas,
-        loadNathanP,
-        loadEthan);
-  }
+  // ImageViews with images
+  @FXML private ImageView loadConnor;
+  @FXML private ImageView loadBen;
+  @FXML private ImageView loadEmily;
+  @FXML private ImageView loadNathanA;
+  @FXML private ImageView loadSky;
+  @FXML private ImageView loadJohn;
+  @FXML private ImageView loadJake;
+  @FXML private ImageView loadEngjell;
+  @FXML private ImageView loadNicholas;
+  @FXML private ImageView loadNathanP;
+  @FXML private ImageView loadEthan;
 
   @FXML
   private void backButton() {
@@ -71,17 +54,32 @@ public class AboutUsController {
 
   // Structured array for convenient portrait loading
   // [String, String, String, String] = [Name, Role, Quote, Image path]
-  String[] connor = {"Connor Horn", "Lead Software", "Quote", "views/images/Connor"};
-  String[] ben = {"Ben Schmitt", "Assistant Lead", "Quote", "views/images/Ben"};
-  String[] emily = {"Emily Gorelik", "Assistant Lead", "Quote", "views/images/Emily"};
-  String[] nathanA = {"Nathan Anderson", "Product Owner", "Quote", "views/images/NathanA"};
-  String[] sky = {"Sky Tang", "Product Manager", "Quote", "views/images/Sky"};
-  String[] john = {"John Carrotta", "Scrum Master", "Quote", "views/images/John"};
-  String[] jake = {"Jake Brady", "Document Analyst", "Quote", "views/images/Jake"};
-  String[] engjell = {"Engjell Ramadani", "Front End", "Quote", "views/images/Engjell"};
-  String[] nicholas = {"Nicholas Heineman", "Front End", "Quote", "views/images/Nicholas"};
-  String[] nathanP = {"Nathan Pollock", "Back End", "Quote", "views/images/NathanP"};
-  String[] ethan = {"Ethan Catania", "Full Stack", "Quote", "views/images/Ethan"};
+  String[] connor = {"Connor Horn", "Lead Software", "Quote", "views/images/Connor.jpg"};
+  String[] ben = {"Ben Schmitt", "Assistant Lead", "Quote", "views/images/Ben.jpg"};
+  String[] emily = {"Emily Gorelik", "Assistant Lead", "Quote", "views/images/Emily.jpg"};
+  String[] nathanA = {"Nathan Anderson", "Product Owner", "Quote", "views/images/NathanA.jpg"};
+  String[] sky = {
+    "Sky Tang",
+    "Product Manager",
+    "We're all different people throughout our lives, and that's okay, that's good, you've gotta keep moving, so long as you remember all the people that you used to be - Matt Smith",
+    "views/images/Sky.jpg"
+  };
+  String[] john = {
+    "John Carrotta",
+    "Scrum Master",
+    "Break main and it's hands on sight - Basically everyone",
+    "views/images/John.jpg"
+  };
+  String[] jake = {
+    "Jake Brady",
+    "Document Analyst",
+    "I'm the video game boy, I'm the one who wins! - Arin Hanson",
+    "views/images/Jake.jpg"
+  };
+  String[] engjell = {"Engjell Ramadani", "Front End", "Quote", "views/images/Engjell.jpg"};
+  String[] nicholas = {"Nicholas Heineman", "Front End", "Quote", "views/images/Nicholas.jpg"};
+  String[] nathanP = {"Nathan Pollock", "Back End", "Quote", "views/images/NathanP.jpg"};
+  String[] ethan = {"Ethan Catania", "Full Stack", "Quote", "views/images/Ethan.jpg"};
 
   // Functions to load specific info into the Portrait template
   @FXML
