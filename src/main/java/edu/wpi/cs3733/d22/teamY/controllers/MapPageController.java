@@ -9,6 +9,7 @@ import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.MedEquip;
 import edu.wpi.cs3733.d22.teamY.model.Requestable;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox;
 import java.awt.*;
@@ -146,6 +147,10 @@ public class MapPageController<T extends Requestable> {
   @FXML MFXButton equipSubmit;
   @FXML MFXButton equipUp;
   @FXML MFXButton equipDown;
+
+  @FXML private MFXCheckbox locationsCheckbox;
+  @FXML private MFXCheckbox medCheckbox;
+  @FXML private MFXCheckbox servicesCheckbox;
 
   Pane e = new Pane();
 
@@ -301,7 +306,7 @@ public class MapPageController<T extends Requestable> {
           // And iterates over them
           .forEach(
               (l) -> {
-                System.out.println(l.getXCoord() + "," + l.getYCoord());
+                // System.out.println(l.getXCoord() + "," + l.getYCoord());
                 List<MedEquip> equip = DBUtils.getEquipmentAtLocation(l);
                 Set<String> equipTypes =
                     equip.stream().map(MedEquip::getEquipType).collect(Collectors.toSet());
@@ -337,6 +342,7 @@ public class MapPageController<T extends Requestable> {
                   i.setPrefWidth(pinDim);
                   i.setPrefHeight(pinDim);
                   i.getChildren().add(imageView);
+                  i.visibleProperty().bind(locationsCheckbox.selectedProperty());
                   mapElements.add(i);
                 } else if (modeBox.getValue().equals("Equipment") && hasEquipment) {
                   Circle c =
@@ -364,6 +370,7 @@ public class MapPageController<T extends Requestable> {
                   i.setPrefHeight(iconDim);
                   i.getChildren().add(frame);
                   i.getChildren().add(equipIcon);
+                  i.visibleProperty().bind(medCheckbox.selectedProperty());
                   mapElements.add(i);
                 } // Service Requests
                 else if (modeBox.getValue().equals("Service Requests") && requests.size() > 0) {
@@ -375,6 +382,7 @@ public class MapPageController<T extends Requestable> {
                   i.setPrefWidth(iconDim);
                   i.setPrefHeight(iconDim);
                   i.getChildren().add(frame);
+                  i.visibleProperty().bind(servicesCheckbox.selectedProperty());
                   mapElements.add(i);
                 }
 
@@ -668,6 +676,10 @@ public class MapPageController<T extends Requestable> {
           bot.mouseRelease(mask);
           System.out.println(e.getX() + " " + e.getY());
         });
+
+    locationsCheckbox.setSelected(true);
+    medCheckbox.setSelected(true);
+    servicesCheckbox.setSelected(true);
   }
 
   public void exit() {
