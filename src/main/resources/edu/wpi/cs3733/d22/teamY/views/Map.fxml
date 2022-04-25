@@ -492,8 +492,14 @@
          </ImageView>
       </children>
    </Pane>
+   <Rectangle arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="81.0" layoutX="990.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+   <VBox layoutX="1030.0" layoutY="5.0" spacing="5.0">
+      <children>
+         <MFXCheckbox fx:id="locationsCheckbox" text="Locations" />
+         <MFXCheckbox fx:id="medCheckbox" text="Medical Equipment" />
+         <MFXCheckbox fx:id="servicesCheckbox" text="Service Requests" />
+      </children>
+   </VBox>
+   <Label layoutX="995.0" layoutY="40.0" text="Add" />
    <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
-   <MFXCheckbox fx:id="locationsCheckbox" layoutX="276.0" layoutY="13.0" text="Locations" />
-   <MFXCheckbox fx:id="medCheckbox" layoutX="276.0" layoutY="38.0" text="Medical Equipment" />
-   <MFXCheckbox fx:id="servicesCheckbox" layoutX="276.0" layoutY="63.0" text="Service Requests" />
 </AnchorPane>
