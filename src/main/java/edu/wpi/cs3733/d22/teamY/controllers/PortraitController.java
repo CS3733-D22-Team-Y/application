@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class PortraitController {
@@ -18,9 +19,13 @@ public class PortraitController {
 
   @FXML private JFXTextArea quoteText;
 
+  @FXML private Rectangle rectangle;
+
   // Function to put the right text and image stuff in the right places in the portrait template
   @FXML
   void rewriteInfo(String[] name) throws FileNotFoundException {
+    SceneUtil.removeOpacity(rectangle);
+
     nameText.setText(name[0]);
     roleText.setText(name[1]);
     quoteText.setText(name[2]);

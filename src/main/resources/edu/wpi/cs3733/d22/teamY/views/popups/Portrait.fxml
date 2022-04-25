@@ -11,7 +11,6 @@
 <AnchorPane fx:id="mainPane" maxHeight="350.0" maxWidth="250.0" minHeight="350.0" minWidth="250.0" prefHeight="350.0" prefWidth="250.0" stylesheets="@../css/Blank.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.PortraitController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14667b" height="372.0" layoutX="-5.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" width="272.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="150.0" layoutX="50.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
       <Label fx:id="nameText" alignment="CENTER" contentDisplay="CENTER" layoutX="70.0" layoutY="10.0" text="Name text" textFill="WHITE">
          <font>
             <Font size="24.0" />
@@ -30,6 +29,7 @@
             <Image url="@../images/icons/X.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="portraitImage" fitHeight="75.0" fitWidth="75.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="portraitImage" fitHeight="150.0" fitWidth="150.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+      <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="150.0" layoutX="50.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
    </children>
 </AnchorPane>

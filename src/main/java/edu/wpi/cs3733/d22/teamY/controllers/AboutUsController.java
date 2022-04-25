@@ -1,10 +1,16 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import edu.wpi.cs3733.d22.teamY.App;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.io.IOException;
+import java.util.Objects;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class AboutUsController {
 
@@ -47,8 +53,21 @@ public class AboutUsController {
     stage.close();
   }
 
-  // Linking to PortraitController
-  PortraitController portrait = new PortraitController();
+  private void newLoadPopup(String[] name) throws IOException {
+    Stage stage = new Stage(StageStyle.UNDECORATED);
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("views/popups/Portrait.fxml"));
+    Scene sceneToLoad = new Scene(loader.load());
+    Scene parentScene =
+        new Scene(
+            FXMLLoader.load(
+                Objects.requireNonNull(App.class.getResource("views/popups/AboutUs.fxml"))));
+    PortraitController portrait = loader.getController();
+    portrait.rewriteInfo(name);
+    stage.setScene(sceneToLoad);
+    stage.initModality(Modality.APPLICATION_MODAL);
+    stage.initOwner(parentScene.getWindow());
+    stage.showAndWait();
+  }
 
   // Structured array for convenient portrait loading
   // [String, String, String, String] = [Name, Role, Quote, Image path]
@@ -67,67 +86,56 @@ public class AboutUsController {
   // Functions to load specific info into the Portrait template
   @FXML
   private void loadConnor() throws IOException {
-    portrait.rewriteInfo(connor);
-    SceneLoading.loadPopup("views/popups/Portrait.fxml", "views/popups/AboutUs.fxml");
+    newLoadPopup(connor);
   }
 
   @FXML
   private void loadBen() throws IOException {
-    portrait.rewriteInfo(ben);
-    SceneLoading.loadPopup("views/popups/Portrait.fxml", "views/popups/AboutUs.fxml");
+    newLoadPopup(ben);
   }
 
   @FXML
   private void loadEmily() throws IOException {
-    portrait.rewriteInfo(emily);
-    SceneLoading.loadPopup("views/popups/Portrait.fxml", "views/popups/AboutUs.fxml");
+    newLoadPopup(emily);
   }
 
   @FXML
   private void loadNathanA() throws IOException {
-    portrait.rewriteInfo(nathanA);
-    SceneLoading.loadPopup("views/popups/Portrait.fxml", "views/popups/AboutUs.fxml");
+    newLoadPopup(nathanA);
   }
 
   @FXML
   private void loadSky() throws IOException {
-    portrait.rewriteInfo(sky);
-    SceneLoading.loadPopup("views/popups/Portrait.fxml", "views/popups/AboutUs.fxml");
+    newLoadPopup(sky);
   }
 
   @FXML
   private void loadJohn() throws IOException {
-    portrait.rewriteInfo(john);
-    SceneLoading.loadPopup("views/popups/Portrait.fxml", "views/popups/AboutUs.fxml");
+    newLoadPopup(john);
   }
 
   @FXML
   private void loadJake() throws IOException {
-    portrait.rewriteInfo(jake);
-    SceneLoading.loadPopup("views/popups/Portrait.fxml", "views/popups/AboutUs.fxml");
+    newLoadPopup(jake);
   }
 
   @FXML
   private void loadEngjell() throws IOException {
-    portrait.rewriteInfo(engjell);
-    SceneLoading.loadPopup("views/popups/Portrait.fxml", "views/popups/AboutUs.fxml");
+    newLoadPopup(engjell);
   }
 
   @FXML
   private void loadNicholas() throws IOException {
-    portrait.rewriteInfo(nicholas);
-    SceneLoading.loadPopup("views/popups/Portrait.fxml", "views/popups/AboutUs.fxml");
+    newLoadPopup(nicholas);
   }
 
   @FXML
   private void loadNathanP() throws IOException {
-    portrait.rewriteInfo(nathanP);
-    SceneLoading.loadPopup("views/popups/Portrait.fxml", "views/popups/AboutUs.fxml");
+    newLoadPopup(nathanP);
   }
 
   @FXML
   private void loadEthan() throws IOException {
-    portrait.rewriteInfo(ethan);
-    SceneLoading.loadPopup("views/popups/Portrait.fxml", "views/popups/AboutUs.fxml");
+    newLoadPopup(ethan);
   }
 }
