@@ -46,8 +46,8 @@ public class Scaling {
 
     // Changes the layout of the item to account for the scale around the center.
     // Not perfect, but good enough for now
-    double widthFactor = 2f; // 1.5f * WINDOW_DEFAULT_WIDTH / 1200f;
-    double heightFactor = 2f; // 1.5f * WINDOW_DEFAULT_HEIGHT / 800f;
+    double widthFactor = 2.2f;
+    double heightFactor = 2.2f;
     System.out.println("Width factor: " + widthFactor);
     System.out.println("Height Factor: " + heightFactor);
     // Set the layout.

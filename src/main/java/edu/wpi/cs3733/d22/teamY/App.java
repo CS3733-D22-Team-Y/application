@@ -39,8 +39,8 @@ public class App extends Application {
   @Override
   public void start(Stage primaryStage) throws Exception {
     instance = this; // instantiates instance
-    primaryStage.setMinWidth(900);
-    primaryStage.setMinHeight(600);
+    primaryStage.setMinWidth(1200);
+    primaryStage.setMinHeight(800);
     NewSceneLoading.activeWindow = primaryStage;
     this.primaryStage = primaryStage;
 
