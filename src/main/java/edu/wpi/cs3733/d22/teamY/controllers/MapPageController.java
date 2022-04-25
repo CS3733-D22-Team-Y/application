@@ -670,8 +670,8 @@ public class MapPageController<T extends Requestable> {
     locationPin.setImage(new Image(App.class.getResource("views/images/icons/pin.png").toString()));
     locationPin.setFitHeight(25);
     locationPin.setFitWidth(25);
-    locationPin.setLayoutX(995);
-    locationPin.setLayoutY(10);
+    locationPin.setLayoutX(985);
+    locationPin.setLayoutY(20);
     mainPane.getChildren().add(locationPin);
     locationPin.setTranslateY(0);
     locationPin.setTranslateX(0);
@@ -687,8 +687,8 @@ public class MapPageController<T extends Requestable> {
 
     locationPin.setOnMouseReleased(
         e -> {
-          locationPin.setLayoutX(995);
-          locationPin.setLayoutY(10);
+          locationPin.setLayoutX(985);
+          locationPin.setLayoutY(20);
           System.out.println(currentFloor);
           Robot bot = null;
           try {
