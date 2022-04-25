@@ -27,6 +27,7 @@ public class MedEquipTablePageController {
   @FXML
   public void initialize() throws IOException {
 
+    //Snag all of the equipment from the database.
     List<MedEquip> medEquips;
     try {
       medEquips = DBManager.getAll(MedEquip.class);
@@ -35,6 +36,7 @@ public class MedEquipTablePageController {
       medEquips = Collections.emptyList();
     }
 
+    //Setup columns and how the data is displayed
     TableColumn<MedEquip, String> equipIDCol = new TableColumn<>("Equipment ID");
     equipIDCol.setCellValueFactory(new PropertyValueFactory<>("equipID"));
 
@@ -50,12 +52,14 @@ public class MedEquipTablePageController {
     TableColumn<MedEquip, String> statusCol = new TableColumn<>("Equipment Status");
     statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
 
+    //Add columns into the tableview
     medEquipTableView.getColumns().add(equipIDCol);
     medEquipTableView.getColumns().add(equipTypeCol);
     medEquipTableView.getColumns().add(equipLocIdCol);
     medEquipTableView.getColumns().add(isCleanCol);
     medEquipTableView.getColumns().add(statusCol);
 
+    //Add data to the tableview
     for (MedEquip e : medEquips) {
       // You can change how the data is displayed here
       medEquipTableView.getItems().add(e);
