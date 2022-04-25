@@ -4,6 +4,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -87,6 +88,6 @@
          </fill>
       </Rectangle>
       <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
-      <TextArea fx:id="equipmentTable" layoutX="349.0" layoutY="141.0" prefHeight="423.0" prefWidth="604.0" />
+      <TableView fx:id="medEquipTableView" layoutX="320.0" layoutY="117.0" prefHeight="550.0" prefWidth="700.0" />
     </children>
 </AnchorPane>

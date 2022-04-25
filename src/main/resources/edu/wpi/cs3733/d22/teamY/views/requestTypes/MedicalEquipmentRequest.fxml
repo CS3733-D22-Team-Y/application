@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -22,24 +23,22 @@
          <image>
             <Image url="@../images/do-rgb.jpg" />
          </image>
+         <effect>
+            <BoxBlur height="7.0" iterations="2" width="7.0" />
+         </effect>
       </ImageView>
-      <Rectangle height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: .8;" width="1200.0">
+      <Rectangle height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: .9;" width="1200.0">
          <fill>
-            <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.5681818543058453">
                <stops>
                   <Stop>
                      <color>
                         <Color red="1.0" green="1.0" blue="1.0" />
                      </color>
                   </Stop>
-                  <Stop offset="0.42222025286541415">
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
-                     </color>
-                  </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.32534247636795044" />
                      </color>
                   </Stop>
                </stops>
@@ -79,7 +78,7 @@
          </font>
       </Label>
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="525.0" layoutX="280.0" layoutY="265.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
-      <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="285.0" layoutY="270.0" prefHeight="515.0" prefWidth="390.0" text="Additional Text..." styleClass="requestInput" unFocusColor="#ffffff00">
+      <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="285.0" layoutY="270.0" prefHeight="515.0" prefWidth="390.0" styleClass="requestInput" text="Additional Text..." unFocusColor="#ffffff00">
          <font>
             <Font name="Calibri" size="20.0" />
          </font></JFXTextArea>
