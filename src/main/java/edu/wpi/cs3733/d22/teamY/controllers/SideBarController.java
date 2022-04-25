@@ -1,6 +1,12 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
+import edu.wpi.cs3733.d22.teamY.utilTemp.SearchUtil;
+import io.github.palexdev.materialfx.controls.legacy.MFXLegacyListView;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Locale;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -20,6 +26,9 @@ public class SideBarController {
   @FXML private Rectangle sidebarFrame;
   @FXML private VBox bottomSidebarHiddenButtons;
   @FXML private VBox bottomSidebarRectangles;
+  @FXML private VBox menuVBox1;
+  @FXML private VBox menuVBox2;
+  @FXML private VBox menuVBox3;
   // @FXML private VBox topSidebarText;
   @FXML private Label mapLabel;
   @FXML private Label servicesLabel;
@@ -49,6 +58,10 @@ public class SideBarController {
   @FXML private Rectangle profileButtonHitbox;
   @FXML private Rectangle logoutButtonHitbox;
 
+  // List view stuff
+  @FXML private MFXLegacyListView<String> listView;
+  private ObservableList keyWords = FXCollections.observableArrayList();
+
   Scene currScene;
 
   @FXML
@@ -65,6 +78,22 @@ public class SideBarController {
 
     mainPane.setBackground(Background.EMPTY);
     NewSceneLoading.sideBarController = this;
+
+    /*FilteredList filter = new FilteredList(keyWords, s -> true);
+    this.searchBar
+        .textProperty()
+        .addListener(
+            obs -> {
+              String filterS = this.searchBar.getText();
+              if (filterS == null || filterS.length() == 0) {
+                filter.setPredicate(s -> true);
+              } else {
+                filter.setPredicate(s -> ((String) s).contains(filterS.toLowerCase()));
+              }
+            });*/
+
+    // this.listView.setItems(filter);
+    this.listView.setItems(keyWords);
   }
 
   @FXML
@@ -347,39 +376,56 @@ public class SideBarController {
    */
   @FXML
   public void doSearch() throws IOException {
-    String entry = searchBar.getText();
+    String goTo = getDirectory(listView.getSelectionModel().getSelectedItem());
+    SceneLoading.loadScene(goTo);
+  }
 
-    // Valid pages: !!! NEEDS TO UPDATE EVERYTIME NEW PAGE IS ADDED !!!
+  @FXML
+  public void getSearchItems() {
+    String entry = this.searchBar.getText();
+    entry = entry.toLowerCase(Locale.ROOT);
+
     String[] pages = {
-      "floral",
-      "lab",
-      "laundry",
-      "meal",
-      "medical",
-      "security",
-      "map",
-      "settings",
-      "menu",
-      "request",
-      "profile",
-      "translator",
-      "tasks"
+      "Facilities Services",
+      "Floral Services",
+      "Lab Results",
+      "Laundry Services",
+      "Maintenance Services",
+      "Meal Services",
+      "Medical Equipment Services",
+      "Miscellaneous Services",
+      "Security Services",
+      "Specialist Services",
+      "Translator Services",
+      "Map",
+      /*"Inbox",*/
+      "Personal Settings",
+      "Request Menu"
     };
 
-    // The following lines of code filters and processes search request
-    entry = entry.toLowerCase();
-    entry.replaceAll(" ", "");
-    entry.replaceAll("active", "table");
-    entry.replaceAll("current", "table");
-    entry.replaceAll("equipment", "medical");
-
-    // Will see if this request exists
-    String isValid = getPage(entry, pages);
-    if (isValid == "ERROR") {
-      // TODO: Levenshtein distance computations
+    if (entry.length() != 0 || entry != null) {
+      populateListView(entry, pages);
     } else {
-      entry = isValid;
+      this.listView.setVisible(false);
     }
+  }
+
+  public void populateListView(String entry, String[] pagesArray) {
+    ArrayList<String> sorted = SearchUtil.search(entry, pagesArray);
+    this.keyWords.clear();
+    this.keyWords.addAll(sorted.get(0), sorted.get(1), sorted.get(2));
+    this.listView.setVisible(true);
+    this.listView.getSelectionModel().selectFirst();
+  }
+
+  public String getDirectory(String page) {
+    page = page.replaceAll("Services", "Request");
+    page = page.replaceAll("Results", "Result");
+    page = page.replaceAll(" ", "");
+    page = page.replaceAll("ellaneous", "");
+    // page = page.replaceAll("Inbox", "")
+    page = "views/" + page + ".fxml";
+    return page;
   }
 
   /** Helper method for doSearch Will determine if a valid page exists */

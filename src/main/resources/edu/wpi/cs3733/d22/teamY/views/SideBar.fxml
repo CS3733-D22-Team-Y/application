@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyListView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -52,12 +53,12 @@
             <Image url="@images/sidebarLogo.png" />
          </image>
       </ImageView>
-      <TextField fx:id="searchBar" layoutX="20.0" layoutY="130.0" onAction="#doSearch" prefHeight="53.0" prefWidth="230.0" promptText="Search..." styleClass="inputField" AnchorPane.topAnchor="130.0">
+      <TextField fx:id="searchBar" layoutX="20.0" layoutY="130.0" onAction="#doSearch" onKeyPressed="#getSearchItems" prefHeight="53.0" prefWidth="230.0" promptText="Search..." styleClass="inputField" AnchorPane.topAnchor="130.0">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <VBox layoutX="10.0" layoutY="200.0" prefHeight="175.0" prefWidth="250.0" AnchorPane.topAnchor="190.0">
+      <VBox fx:id="menuVBox1" layoutX="10.0" layoutY="200.0" prefHeight="175.0" prefWidth="250.0" AnchorPane.topAnchor="190.0">
          <children>
             <Rectangle fx:id="mapHiddenRect" fill="#2e2e2eef" height="64.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
             <Rectangle fx:id="servicesHiddenRect" fill="#2e2e2eef" height="64.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
@@ -65,7 +66,7 @@
             <Rectangle fx:id="tasksHiddenRect" fill="#2e2e2eef" height="64.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
          </children>
       </VBox>
-      <VBox layoutX="20.0" layoutY="210.0" spacing="20.0" AnchorPane.topAnchor="200.0">
+      <VBox fx:id="menuVBox2" layoutX="20.0" layoutY="210.0" spacing="20.0" AnchorPane.topAnchor="200.0">
          <children>
             <Label fx:id="mapLabel" styleClass="sidebarTopOptions" text="Map" textFill="WHITE">
                <font>
@@ -177,7 +178,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="10.0" layoutY="200.0" prefHeight="175.0" prefWidth="250.0" AnchorPane.topAnchor="190.0">
+      <VBox fx:id="menuVBox3" layoutX="10.0" layoutY="200.0" prefHeight="175.0" prefWidth="250.0" AnchorPane.topAnchor="190.0">
          <children>
             <Rectangle fx:id="mapButtonHitbox" fill="#2e2e2e00" height="64.0" onMouseClicked="#loadMap" onMouseEntered="#startMapButtonHover" onMouseExited="#endMapButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
             <Rectangle fx:id="servicesButtonHitbox" fill="#2e2e2e00" height="64.0" onMouseClicked="#loadViewServiceRequests" onMouseEntered="#startServicesButtonHover" onMouseExited="#endServicesButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
@@ -193,5 +194,6 @@
             <Rectangle fx:id="logoutButtonHitbox" fill="#2e2e2e00" height="31.0" onMouseClicked="#killApplication" onMouseEntered="#startLogoutButtonHover" onMouseExited="#endLogoutButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
          </children>
       </VBox>
+      <MFXLegacyListView fx:id="listView" layoutX="20.0" layoutY="185.0" onMouseClicked="#doSearch" prefHeight="150.0" prefWidth="230.0" visible="false" />
    </children>
 </AnchorPane>
