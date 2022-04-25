@@ -53,7 +53,7 @@
             <Image url="@images/sidebarLogo.png" />
          </image>
       </ImageView>
-      <TextField fx:id="searchBar" layoutX="20.0" layoutY="130.0" onAction="#doSearch" onKeyPressed="#getSearchItems" prefHeight="53.0" prefWidth="230.0" promptText="Search..." styleClass="inputField" AnchorPane.topAnchor="130.0">
+      <TextField fx:id="searchBar" layoutX="20.0" layoutY="130.0" onAction="#doSearch" onKeyReleased="#getSearchItems" prefHeight="53.0" prefWidth="230.0" promptText="Search..." styleClass="inputField" AnchorPane.topAnchor="130.0">
          <font>
             <Font size="16.0" />
          </font>
