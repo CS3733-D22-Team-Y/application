@@ -50,7 +50,6 @@ public class MedEquipTablePageController {
     TableColumn<MedEquip, String> statusCol = new TableColumn<>("Equipment Status");
     statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-
     medEquipTableView.getColumns().add(equipIDCol);
     medEquipTableView.getColumns().add(equipTypeCol);
     medEquipTableView.getColumns().add(equipLocIdCol);
@@ -58,7 +57,7 @@ public class MedEquipTablePageController {
     medEquipTableView.getColumns().add(statusCol);
 
     for (MedEquip e : medEquips) {
-      //You can change how the data is displayed here
+      // You can change how the data is displayed here
       medEquipTableView.getItems().add(e);
     }
 
