@@ -144,4 +144,10 @@ public class RequestMenuController {
   void openHelp() throws IOException {
     SceneLoading.loadPopup("views/popups/ServiceHelp.fxml", "views/SideBar.fxml");
   }
+
+  @FXML
+  void loadTeamB(){}
+
+  @FXML
+  void loadTeamZ(){}
 }
