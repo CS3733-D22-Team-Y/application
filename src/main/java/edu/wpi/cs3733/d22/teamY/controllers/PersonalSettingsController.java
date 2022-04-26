@@ -8,7 +8,9 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.util.Objects;
 import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
 
 public class PersonalSettingsController implements IController {
 
@@ -24,9 +26,10 @@ public class PersonalSettingsController implements IController {
 
   @FXML AnchorPane sidebarPane;
 
-  @FXML AnchorPane mainPane;
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
+  @FXML private Rectangle bgGradient;
 
-  AnchorPane sidebar = null;
   public static Employee currentEmployee =
       new Employee(
           "-1", "Guest", "Guest", "Guest", "Guest", "Guest", "Guest", 0, "none", "Guest", " ", " ",
@@ -178,5 +181,6 @@ public class PersonalSettingsController implements IController {
   @Override
   public void initializeScale() {
     Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage, bgGradient);
   }
 }

@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
+import javafx.scene.shape.Rectangle;
 
 public class Scaling {
   private static double WINDOW_DEFAULT_WIDTH;
@@ -106,5 +107,21 @@ public class Scaling {
         .layoutYProperty()
         .bind(maxScale.multiply(windowCurrHeight / 2).subtract(windowCurrHeight / 2));
      */
+  }
+
+  public static void scaleBackground(ImageView image, Rectangle gradient) {
+    double windowCurrWidth = NewSceneLoading.activeWindow.getWidth();
+    double windowCurrHeight = NewSceneLoading.activeWindow.getHeight();
+
+    NumberBinding maxScale =
+        Bindings.max(
+            currWidth.divide(WINDOW_DEFAULT_WIDTH / 2),
+            currHeight.divide(WINDOW_DEFAULT_HEIGHT / 2));
+
+    image.scaleXProperty().bind(maxScale);
+    image.scaleYProperty().bind(maxScale);
+
+    gradient.scaleXProperty().bind(maxScale);
+    gradient.scaleYProperty().bind(maxScale);
   }
 }

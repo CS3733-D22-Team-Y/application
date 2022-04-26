@@ -26,6 +26,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.shape.Rectangle;
 
 public class DashboardController implements IController {
 
@@ -82,7 +83,9 @@ public class DashboardController implements IController {
   @FXML private ImageView dirtyWarning4;
   @FXML private ImageView dirtyWarning5;
 
-  @FXML AnchorPane mainPane;
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
+  @FXML private Rectangle bgGradient;
 
   private Label[] floorsClean;
   private Label[] floorsDirty;
@@ -402,5 +405,6 @@ public class DashboardController implements IController {
   @Override
   public void initializeScale() {
     Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage, bgGradient);
   }
 }

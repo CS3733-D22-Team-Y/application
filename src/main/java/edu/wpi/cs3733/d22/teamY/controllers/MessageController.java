@@ -23,6 +23,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -91,7 +92,9 @@ public class MessageController implements IController {
 
   @FXML private Rectangle selectedChatRect;
 
-  @FXML AnchorPane mainPane;
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
+  @FXML private Rectangle bgGradient;
 
   @FXML ArrayList<String> hiddenToField = new ArrayList<>();
 
@@ -758,7 +761,8 @@ public class MessageController implements IController {
 
   @Override
   public void initializeScale() {
-    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    // Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage, bgGradient);
   }
 
   class EmployeeResult {

@@ -10,10 +10,12 @@ import java.util.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 
 public class ActiveServiceRequestController implements IController {
   public static LinkedList<SingularServiceRequestController> requestControllers =
@@ -28,6 +30,8 @@ public class ActiveServiceRequestController implements IController {
   @FXML AnchorPane sidebarPane;
 
   @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
+  @FXML private Rectangle bgGradient;
 
   private ArrayList<RequestSet> rqPairs;
 
@@ -90,5 +94,6 @@ public class ActiveServiceRequestController implements IController {
   @Override
   public void initializeScale() {
     Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage, bgGradient);
   }
 }

@@ -13,14 +13,14 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Blank.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.CreateAccountController">
+<AnchorPane fx:id="bgPane" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Blank.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.CreateAccountController">
     <children>
-      <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
+      <ImageView fx:id="bgImage" fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
          <image>
             <Image url="@images/do-rgb.jpg" />
          </image>
       </ImageView>
-      <Rectangle height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: .8;" width="1200.0">
+      <Rectangle fx:id="bgGradient" height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: .8;" width="1200.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0">
                <stops>
@@ -43,136 +43,140 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-        <Label layoutX="10.0" styleClass="title" text="Create An Account" textFill="#20758b">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="60.0" />
-            </font>
-        </Label>
-      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-        <Circle centerX="395.0" centerY="120.0" fill="#20758b" layoutX="200.0" layoutY="127.0" radius="100.0" stroke="#20758b" strokeType="INSIDE" />
-        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="495.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" />
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#c2c2c2" height="400.0" layoutX="10.0" layoutY="390.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1180.0" />
-      <Label layoutX="96.0" layoutY="509.0" styleClass="inputLabel" text="Legal Name:">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </Label>
-      <Label layoutX="96.0" layoutY="581.0" styleClass="inputLabel" text="Preferred Name:">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </Label>
-      <Label layoutX="96.0" layoutY="653.0" styleClass="inputLabel" text="Title:">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </Label>
-      <Label layoutX="678.0" layoutY="654.0" styleClass="inputLabel" text="Email:">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </Label>
-      <MFXTextField fx:id="username" floatMode="DISABLED" layoutX="325.0" layoutY="437.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </MFXTextField>
-      <MFXTextField fx:id="legalName" floatMode="DISABLED" layoutX="325.0" layoutY="509.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </MFXTextField>
-      <MFXTextField fx:id="prefName" floatMode="DISABLED" layoutX="325.0" layoutY="581.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </MFXTextField>
-      <MFXTextField fx:id="role" floatMode="DISABLED" layoutX="325.0" layoutY="653.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </MFXTextField>
-      <Label layoutX="678.0" layoutY="438.0" styleClass="inputLabel" text="Date of Birth:">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </Label>
-      <Label layoutX="678.0" layoutY="510.0" styleClass="inputLabel" text="Pronouns:">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </Label>
-      <Label layoutX="678.0" layoutY="582.0" styleClass="inputLabel" text="Phone:">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </Label>
-      <MFXButton fx:id="applyButton" layoutX="1060.0" layoutY="730.0" onAction="#createUser" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #14667B;" styleClass="loginButton" text="Apply" textFill="WHITE">
-         <font>
-            <Font name="Calibri Bold" size="20.0" />
-         </font>
-      </MFXButton>
-      <MFXButton fx:id="backButton" layoutX="1070.0" layoutY="10.0" onAction="#goBackToMain" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #14667B;" styleClass="loginButton" text="Back" textFill="WHITE">
-         <font>
-            <Font name="Calibri Bold" size="20.0" />
-         </font>
-      </MFXButton>
-      <MFXTextField fx:id="dob" floatMode="DISABLED" layoutX="874.0" layoutY="438.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </MFXTextField>
-      <MFXTextField fx:id="pronouns" floatMode="DISABLED" layoutX="874.0" layoutY="510.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </MFXTextField>
-      <MFXTextField fx:id="phone" floatMode="DISABLED" layoutX="874.0" layoutY="582.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </MFXTextField>
-      <MFXTextField fx:id="email" floatMode="DISABLED" layoutX="874.0" layoutY="654.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </MFXTextField>
-      <Label layoutX="96.0" layoutY="437.0" styleClass="inputLabel" text="Username:">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </Label>
-      <Label fx:id="userExistsDisplay" layoutX="97.0" layoutY="251.0" styleClass="plainText" text="Error: Username Already Exists" textFill="RED" visible="false">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Label>
-      <Label fx:id="invalidInputsDisplay" layoutX="58.0" layoutY="211.0" styleClass="plainText" text="Error:  Missing required input field(s)" textFill="RED" visible="false">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Label>
-      <Label fx:id="addUserSuccessDisplay" layoutX="751.0" layoutY="228.0" styleClass="plainText" text="User Added Successfully!" textFill="#34b900" visible="false">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Label>
+      <AnchorPane fx:id="mainPane">
+         <children>
+              <Label layoutX="10.0" styleClass="title" text="Create An Account" textFill="#20758b">
+                  <font>
+                      <Font name="Arial Rounded MT Bold" size="60.0" />
+                  </font>
+              </Label>
+            <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="10.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+              <Circle centerX="395.0" centerY="120.0" fill="#20758b" layoutX="200.0" layoutY="127.0" radius="100.0" stroke="#20758b" strokeType="INSIDE" />
+              <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="495.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" />
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#c2c2c2" height="400.0" layoutX="10.0" layoutY="390.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1180.0" />
+            <Label layoutX="96.0" layoutY="509.0" styleClass="inputLabel" text="Legal Name:">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="96.0" layoutY="581.0" styleClass="inputLabel" text="Preferred Name:">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="96.0" layoutY="653.0" styleClass="inputLabel" text="Title:">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="678.0" layoutY="654.0" styleClass="inputLabel" text="Email:">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <MFXTextField fx:id="username" floatMode="DISABLED" layoutX="325.0" layoutY="437.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXTextField>
+            <MFXTextField fx:id="legalName" floatMode="DISABLED" layoutX="325.0" layoutY="509.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXTextField>
+            <MFXTextField fx:id="prefName" floatMode="DISABLED" layoutX="325.0" layoutY="581.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXTextField>
+            <MFXTextField fx:id="role" floatMode="DISABLED" layoutX="325.0" layoutY="653.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXTextField>
+            <Label layoutX="678.0" layoutY="438.0" styleClass="inputLabel" text="Date of Birth:">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="678.0" layoutY="510.0" styleClass="inputLabel" text="Pronouns:">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="678.0" layoutY="582.0" styleClass="inputLabel" text="Phone:">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <MFXButton fx:id="applyButton" layoutX="1060.0" layoutY="730.0" onAction="#createUser" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #14667B;" styleClass="loginButton" text="Apply" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+            </MFXButton>
+            <MFXButton fx:id="backButton" layoutX="1070.0" layoutY="10.0" onAction="#goBackToMain" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #14667B;" styleClass="loginButton" text="Back" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+            </MFXButton>
+            <MFXTextField fx:id="dob" floatMode="DISABLED" layoutX="874.0" layoutY="438.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXTextField>
+            <MFXTextField fx:id="pronouns" floatMode="DISABLED" layoutX="874.0" layoutY="510.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXTextField>
+            <MFXTextField fx:id="phone" floatMode="DISABLED" layoutX="874.0" layoutY="582.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXTextField>
+            <MFXTextField fx:id="email" floatMode="DISABLED" layoutX="874.0" layoutY="654.0" prefHeight="42.0" prefWidth="250.0" styleClass="inputField">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXTextField>
+            <Label layoutX="96.0" layoutY="437.0" styleClass="inputLabel" text="Username:">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="userExistsDisplay" layoutX="97.0" layoutY="251.0" styleClass="plainText" text="Error: Username Already Exists" textFill="RED" visible="false">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="invalidInputsDisplay" layoutX="58.0" layoutY="211.0" styleClass="plainText" text="Error:  Missing required input field(s)" textFill="RED" visible="false">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="addUserSuccessDisplay" layoutX="751.0" layoutY="228.0" styleClass="plainText" text="User Added Successfully!" textFill="#34b900" visible="false">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>
