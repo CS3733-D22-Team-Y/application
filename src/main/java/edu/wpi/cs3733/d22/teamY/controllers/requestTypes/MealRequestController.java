@@ -165,7 +165,29 @@ public class MealRequestController implements IController {
 
   @FXML
   void backButton() throws IOException {
-    NewSceneLoading.loadScene("views/RequestMenu.fxml");
+    Boolean mealSelected =
+        RequestControllerUtil.isRadioButtonSelected(
+            pizzaRadioButton, burgerRadioButton, saladRadioButton);
+
+    Boolean allFields =
+        !Objects.equals(roomsHiddenField.getText(), "")
+            || !Objects.equals(nursesHiddenField.getText(), "");
+
+    Boolean sideSelected =
+        RequestControllerUtil.isRadioButtonSelected(
+            riceRadioButton, peasRadioButton, appleRadioButton);
+
+    // Checks if a bouquet choice has been made
+    if (mealSelected || sideSelected || allFields) {
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
+      if (SceneLoading.stayOnPage) {
+        NewSceneLoading.loadScene("views/requestTypes/MealRequest.fxml");
+      } else {
+        NewSceneLoading.loadScene("views/RequestMenu.fxml");
+      }
+    } else {
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
+    }
   }
 
   private String getMainChoice() {

@@ -103,7 +103,18 @@ public class SpecialistRequestController implements IController {
 
   @FXML
   void backButton() throws IOException {
-    NewSceneLoading.loadScene("views/RequestMenu.fxml");
+    if (RequestControllerUtil.isRadioButtonSelected(
+            dermatologistButton, cardiologistButton, neurologistButton)
+        || !input_AdditionalNotes.getText().equals("")
+        || !Objects.equals(roomsHiddenField.getText(), "")) {
+      if (SceneLoading.stayOnPage) {
+        NewSceneLoading.loadScene("views/requestTypes/FloralRequest.fxml");
+      } else {
+        NewSceneLoading.loadScene("views/RequestMenu.fxml");
+      }
+    } else {
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
+    }
   }
 
   // Returns the database name of the selected radio button.

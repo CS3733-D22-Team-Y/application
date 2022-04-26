@@ -173,7 +173,18 @@ public class MedicalEquipmentRequestController implements IController {
 
   @FXML
   void backButton() throws IOException {
-    NewSceneLoading.loadScene("views/RequestMenu.fxml");
+    if ((!roomsHiddenField.getText().equals("") || !nursesHiddenField.getText().equals(""))
+        || RequestControllerUtil.isRadioButtonSelected(
+            bedRadioButton, xrayRadioButton, infusionPumpRadioButton, reclinerRadioButton)) {
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
+      if (SceneLoading.stayOnPage) {
+        NewSceneLoading.loadScene("views/requestTypes/MedicalEquipmentRequest.fxml");
+      } else {
+        NewSceneLoading.loadScene("views/RequestMenu.fxml");
+      }
+    } else {
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
+    }
   }
 
   // Called when the submit button is pressed.

@@ -155,6 +155,8 @@ public class MaintenanceRequestController implements IController {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/MaintenanceRequest.fxml");
+      } else {
+        NewSceneLoading.loadScene("views/RequestMenu.fxml");
       }
     } else {
       NewSceneLoading.loadScene("views/RequestMenu.fxml");

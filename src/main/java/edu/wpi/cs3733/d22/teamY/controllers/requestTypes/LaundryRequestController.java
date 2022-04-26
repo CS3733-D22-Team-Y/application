@@ -116,7 +116,19 @@ public class LaundryRequestController implements IController {
 
   @FXML
   void backButton() throws IOException {
-    NewSceneLoading.loadScene("views/RequestMenu.fxml");
+    if (RequestControllerUtil.isRadioButtonSelected(
+            hazardousRadioButton, linensRadioButton, scrubsRadioButton)
+        || !Objects.equals(roomsHiddenField.getText(), "")
+        || !Objects.equals(nursesHiddenField.getText(), "")) {
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
+      if (SceneLoading.stayOnPage) {
+        NewSceneLoading.loadScene("views/requestTypes/LaundryRequest.fxml");
+      } else {
+        NewSceneLoading.loadScene("views/RequestMenu.fxml");
+      }
+    } else {
+      NewSceneLoading.loadScene("views/RequestMenu.fxml");
+    }
   }
 
   // Returns the database name of the selected radio button.
