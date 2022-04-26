@@ -10,6 +10,7 @@ import edu.wpi.cs3733.d22.teamY.model.Requestable;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import java.awt.*;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -26,6 +27,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javax.sound.sampled.*;
 
 public class DashboardController {
 
@@ -87,6 +89,17 @@ public class DashboardController {
   private ImageView[] floorsDirtyWarning;
 
   private Scene requestMenu = null;
+
+  Long currentFrame;
+  Clip clip;
+
+  // current status of clip
+  String status;
+
+  private boolean playing;
+  private boolean paused;
+  private boolean loaded = false;
+  static AudioInputStream audioInputStream;
 
   public DashboardController() {}
 
@@ -391,4 +404,48 @@ public class DashboardController {
     }
     return path + im + ".png";
   }
+
+  public void play() {
+    String filePath = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/sample1.wav";
+    try {
+      File file = new File(filePath);
+      if (file.exists()) {
+        if (!playing && !loaded) {
+          playing = true;
+          audioInputStream = AudioSystem.getAudioInputStream(file);
+          clip = AudioSystem.getClip();
+          clip.open(audioInputStream);
+          audioInputStream.close();
+          // clip.setFramePosition(0);
+          clip.start();
+          loaded = true;
+        } else if (!playing) {
+          clip.start();
+          playing = true;
+        }
+      } else System.out.println("File Not Found");
+    } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  public void pause() {
+    long clipPosition = clip.getMicrosecondPosition();
+    clip.stop();
+    playing = false;
+    paused = true;
+  }
+
+  public void next() {}
+
+  public void close() {
+    clip.stop();
+    clip.close();
+    playing = false;
+    paused = true;
+  }
+
+  public void prev() {}
+
+  public void shuffle() {}
 }

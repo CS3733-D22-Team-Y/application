@@ -2,11 +2,9 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -601,47 +599,30 @@
             </ImageView>
          </children>
       </Group>
-      <Group layoutX="890.0" layoutY="496.0">
-         <children>
-            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
-            <Label layoutX="10.0" layoutY="10.0" styleClass="title" text="Messages">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-            </Label>
-            <MFXScrollPane layoutX="10.0" layoutY="49.0" prefHeight="207.0" prefWidth="276.0" style="-fx-background-color: #93cddc;">
-               <content>
-                  <VBox fx:id="messageBox" prefHeight="271.0" prefWidth="262.0">
-                     <children>
-                        <HBox prefHeight="55.0" prefWidth="262.0" style="-fx-padding: 2;">
-                           <children>
-                              <TextArea editable="false" prefHeight="46.0" prefWidth="160.0" text="Hi! How are you!" wrapText="true">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                              </TextArea>
-                           </children>
-                        </HBox>
-                        <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="55.0" prefWidth="262.0" style="-fx-padding: 2;">
-                           <children>
-                              <TextArea editable="false" prefHeight="46.0" prefWidth="160.0" text="Great, thanks for asking!!! :)" wrapText="true">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                              </TextArea>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-               </content>
-            </MFXScrollPane>
-            <TextField fx:id="messageInputBox" layoutX="10.0" layoutY="256.0" prefHeight="26.0" prefWidth="218.0" promptText="type your message here..." />
-            <MFXButton fx:id="messageSendButton" layoutX="232.0" layoutY="256.0" prefHeight="26.0" prefWidth="48.0" style="-fx-background-color: #1b89a6;" text="Send" textFill="WHITE" />
-         </children>
-      </Group>
       <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
+      <AnchorPane fx:id="Pane" layoutX="888.0" layoutY="491.0" prefHeight="300.0" prefWidth="300.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#93cddc" height="300.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+            <ImageView fitHeight="212.0" fitWidth="172.0" layoutX="64.0" layoutY="27.0">
+               <image>
+                  <Image url="@../../../../../../../../../../../../R/Background.jpg" />
+               </image>
+               <effect>
+                  <BoxBlur />
+               </effect>
+            </ImageView>
+            <MFXButton fx:id="PlayButton" layoutX="112.0" layoutY="230.0" onAction="#play" text="Play" />
+            <MFXButton fx:id="nextButton" layoutX="245.0" layoutY="230.0" onAction="#next" text="Next" />
+            <MFXButton fx:id="shufflleButton" layoutX="123.0" layoutY="270.0" onAction="#shuffle" text="Shuffle" />
+            <MFXButton fx:id="PrevButton" layoutX="15.0" layoutY="230.0" onAction="#prev" text="Prev" />
+            <MFXButton fx:id="closeButton" layoutX="14.0" layoutY="14.0" onAction="#close" text="Close" />
+            <ImageView fitHeight="185.0" fitWidth="172.0" layoutX="64.0" layoutY="40.0">
+               <image>
+                  <Image url="@../../../../../../../../../../../../R/yoshiHeadphones.png" />
+               </image>
+            </ImageView>
+            <MFXButton fx:id="pauseButton" layoutX="172.0" layoutY="228.0" onAction="#pause" text="Pause" />
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>
