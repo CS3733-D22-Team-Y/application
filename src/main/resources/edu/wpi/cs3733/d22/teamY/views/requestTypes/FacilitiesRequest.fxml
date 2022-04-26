@@ -28,9 +28,9 @@
             <BoxBlur height="7.0" iterations="2" width="7.0" />
          </effect>
       </ImageView>
-      <Rectangle height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: .9;" width="1200.0">
+      <Rectangle height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: .9;" visible="false" width="1200.0">
          <fill>
-            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.5681818543058453">
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0">
                <stops>
                   <Stop>
                      <color>

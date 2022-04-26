@@ -85,9 +85,8 @@ public class Scaling {
    * Scales the desired background to always fill the screen.
    *
    * @param image The ImageView to be scaled
-   * @param gradient The gradient that covers the image.
    */
-  public static void scaleBackground(ImageView image, Rectangle gradient) {
+  public static void scaleBackground(ImageView image) {
     double windowCurrWidth = NewSceneLoading.activeWindow.getWidth();
     double windowCurrHeight = NewSceneLoading.activeWindow.getHeight();
 
@@ -105,17 +104,6 @@ public class Scaling {
         .bind(maxScale.multiply(windowCurrWidth / 2).subtract(windowCurrWidth / 2));
 
     image
-        .layoutYProperty()
-        .bind(maxScale.multiply(windowCurrHeight / 2).subtract(windowCurrHeight / 2));
-     */
-
-    gradient.scaleXProperty().bind(maxScale);
-    gradient.scaleYProperty().bind(maxScale);
-    /*
-    gradient
-        .layoutXProperty()
-        .bind(maxScale.multiply(windowCurrWidth / 2).subtract(windowCurrWidth / 2));
-    gradient
         .layoutYProperty()
         .bind(maxScale.multiply(windowCurrHeight / 2).subtract(windowCurrHeight / 2));
      */

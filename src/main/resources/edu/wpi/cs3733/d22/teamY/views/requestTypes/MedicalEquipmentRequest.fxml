@@ -27,24 +27,6 @@
             <BoxBlur height="7.0" iterations="2" width="7.0" />
          </effect>
       </ImageView>
-      <Rectangle height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: .9;" width="1200.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.5681818543058453">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.32534247636795044" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="800.0" layoutX="265.0" opacity="0.66" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="935.0" />
       <Label layoutX="270.0" layoutY="10.0" styleClass="title" text="Medical Equipment Request">
          <textFill>
