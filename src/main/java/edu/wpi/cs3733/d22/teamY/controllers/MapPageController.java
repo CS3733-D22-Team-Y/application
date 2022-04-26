@@ -350,9 +350,7 @@ public class MapPageController<T extends Requestable> implements IController {
                 mapElements.add(newLocation);
                 allLocations.add(newLocation);
                 // TODO: Add all loc IDs to the list
-                // allLocationIDs.add(newLocation.getId());
                 allLocationIDs.add(l.getNodeID());
-                System.out.println("loc id: " + l.getNodeID());
                 // Add equipment bubbles
                 if (hasEquipment) {
                   Circle c =
@@ -604,7 +602,7 @@ public class MapPageController<T extends Requestable> implements IController {
   private String findNearestLoc(
       double xCoord, double yCoord, List<Node> allLocations, List<String> allLocationIDs) {
     int bestID = 0;
-    double lowestDistance = 0;
+    double lowestDistance = 5000;
 
     for (int i = 0; i < allLocations.size(); i++) {
       Node currNode = allLocations.get(i);
@@ -613,11 +611,11 @@ public class MapPageController<T extends Requestable> implements IController {
       double xDist = Math.abs(nodeX - xCoord);
       double yDist = Math.abs(nodeY - yCoord);
       double totalDist = Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
-      if (totalDist > lowestDistance) {
+      if (totalDist < lowestDistance) {
+        lowestDistance = totalDist;
         bestID = i;
       }
     }
-    System.out.println("Best ID: " + bestID);
     return allLocationIDs.get(bestID);
   }
 
