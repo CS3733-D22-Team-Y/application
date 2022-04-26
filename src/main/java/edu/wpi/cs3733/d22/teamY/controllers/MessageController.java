@@ -5,6 +5,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.MakeSound;
 import edu.wpi.cs3733.d22.teamY.Messaging.Chat;
 import edu.wpi.cs3733.d22.teamY.Messaging.ChatManager;
 import edu.wpi.cs3733.d22.teamY.Messaging.Firebase;
@@ -71,6 +72,8 @@ public class MessageController {
 
   @FXML private AnchorPane sidebarPane;
 
+  private boolean canPlay = false;
+
   // variables associated with a result in the search
   @FXML private Pane resultItemPane;
   @FXML private Rectangle resultRect;
@@ -88,12 +91,15 @@ public class MessageController {
 
   @FXML private Rectangle selectedChatRect;
 
-  ArrayList<String> hiddenToField = new ArrayList<>();
+  @FXML ArrayList<String> hiddenToField = new ArrayList<>();
 
   ArrayList<EmployeeResult> resultBank = new ArrayList<>();
   ArrayList<EmployeeResult> results = new ArrayList<>();
 
   ArrayList<Rectangle> chatBackgrounds = new ArrayList<>();
+
+  long startTime = -1;
+  private final long notifDelay = 1000;
 
   private String chatID = "";
   private boolean chatOpen = false;
@@ -104,6 +110,7 @@ public class MessageController {
 
   // initialize the controller
   public void initialize() throws IOException {
+    startTime = System.currentTimeMillis();
     messageText.setPromptText("Enter your message here");
     messageArea.getChildren().clear();
     resultPane.getChildren().clear();
@@ -138,6 +145,19 @@ public class MessageController {
 
     this.refreshChats();
     this.initialized = true;
+  }
+
+  public boolean canPlayMessage() {
+    if (!canPlay) {
+      canPlay = System.currentTimeMillis() - startTime > notifDelay;
+    }
+    return canPlay;
+  }
+
+  public void play() {
+    if (canPlayMessage()) {
+      MakeSound.playNewMessage();
+    }
   }
 
   public void setChatOpen(boolean open) {
@@ -222,6 +242,8 @@ public class MessageController {
         PersonalSettings.currentEmployee.getIDNumber(),
         ChatManager.myChats.get(chatID).getUsers());
     messageText.setText("");
+    startTime = System.currentTimeMillis();
+    canPlay = false;
   }
 
   public void startChat() {
@@ -676,6 +698,7 @@ public class MessageController {
                   refreshMessages();
                 }
               });
+          play();
         }
 
         @Override
@@ -693,6 +716,7 @@ public class MessageController {
                   refreshMessages();
                 }
               });
+          play();
         }
 
         @Override
@@ -706,6 +730,7 @@ public class MessageController {
                   refreshMessages();
                 }
               });
+          play();
         }
 
         @Override
@@ -717,6 +742,7 @@ public class MessageController {
                   refreshMessages();
                 }
               });
+          play();
         }
 
         @Override
