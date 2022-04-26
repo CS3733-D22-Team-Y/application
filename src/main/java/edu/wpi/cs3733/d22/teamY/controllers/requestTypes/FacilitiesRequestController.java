@@ -106,6 +106,8 @@ public class FacilitiesRequestController {
           "views/popups/ReqAbort.fxml", "views/requestTypes/FacilitiesRequest.fxml");
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/FacilitiesRequest.fxml");
+      } else {
+        NewSceneLoading.loadScene("views/RequestMenu.fxml");
       }
     } else {
       NewSceneLoading.loadScene("views/RequestMenu.fxml");

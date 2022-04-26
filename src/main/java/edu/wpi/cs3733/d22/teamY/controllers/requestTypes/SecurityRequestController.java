@@ -162,6 +162,8 @@ public class SecurityRequestController {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/SecurityRequest.fxml");
+      } else {
+        NewSceneLoading.loadScene("views/RequestMenu.fxml");
       }
     } else {
       NewSceneLoading.loadScene("views/RequestMenu.fxml");
