@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/Blank.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.HelpButtonController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eeeeee" height="551.0" layoutX="-35.0" layoutY="-42.0" stroke="BLACK" strokeType="INSIDE" width="746.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eeeeee" height="500.0" stroke="BLACK" strokeType="INSIDE" width="700.0" />
       <Label layoutX="18.0" styleClass="title" text="Help : Active Requests">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -85,7 +85,7 @@
             <Font name="Microsoft Tai Le" size="25.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="59.0" layoutY="271.0" prefHeight="40.0" prefWidth="581.0" text="Clicking on a tab will display more info on the right.">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="271.0" prefHeight="40.0" prefWidth="682.0" text="Additional info is shown on the right side of each request.">
          <font>
             <Font name="Microsoft Tai Le" size="25.0" />
          </font>

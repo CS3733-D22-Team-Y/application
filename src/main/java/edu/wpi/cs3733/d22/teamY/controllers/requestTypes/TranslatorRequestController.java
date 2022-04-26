@@ -138,6 +138,8 @@ public class TranslatorRequestController {
           "views/popups/ReqAbort.fxml", "views/requestTypes/TranslatorRequest.fxml");
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/TranslatorRequest.fxml");
+      } else {
+        NewSceneLoading.loadScene("views/RequestMenu.fxml");
       }
     } else {
       NewSceneLoading.loadScene("views/RequestMenu.fxml");

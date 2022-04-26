@@ -114,6 +114,8 @@ public class FloralRequestController {
         || !Objects.equals(roomsHiddenField.getText(), "")) {
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/FloralRequest.fxml");
+      } else {
+        NewSceneLoading.loadScene("views/RequestMenu.fxml");
       }
     } else {
       NewSceneLoading.loadScene("views/RequestMenu.fxml");
