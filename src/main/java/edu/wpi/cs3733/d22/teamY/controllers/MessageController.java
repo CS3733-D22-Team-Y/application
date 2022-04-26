@@ -91,9 +91,7 @@ public class MessageController {
 
   @FXML private Rectangle selectedChatRect;
 
-  @FXML
-
-  ArrayList<String> hiddenToField = new ArrayList<>();
+  @FXML ArrayList<String> hiddenToField = new ArrayList<>();
 
   ArrayList<EmployeeResult> resultBank = new ArrayList<>();
   ArrayList<EmployeeResult> results = new ArrayList<>();
@@ -149,15 +147,15 @@ public class MessageController {
     this.initialized = true;
   }
 
-  public boolean canPlayMessage(){
-    if(!canPlay){
-    canPlay = System.currentTimeMillis() - startTime > notifDelay;
+  public boolean canPlayMessage() {
+    if (!canPlay) {
+      canPlay = System.currentTimeMillis() - startTime > notifDelay;
     }
     return canPlay;
   }
 
-  public void play(){
-    if(canPlayMessage()){
+  public void play() {
+    if (canPlayMessage()) {
       MakeSound.playNewMessage();
     }
   }
@@ -244,6 +242,8 @@ public class MessageController {
         PersonalSettings.currentEmployee.getIDNumber(),
         ChatManager.myChats.get(chatID).getUsers());
     messageText.setText("");
+    startTime = System.currentTimeMillis();
+    canPlay = false;
   }
 
   public void startChat() {
@@ -691,7 +691,6 @@ public class MessageController {
           Chat c = snapshot.getValue(Chat.class);
           ChatManager.myChats.put(snapshot.getKey(), c);
           System.out.println("On Child added: \n" + snapshot.getKey() + " " + c);
-play();
           Platform.runLater(
               () -> {
                 refreshChats();
@@ -699,13 +698,16 @@ play();
                   refreshMessages();
                 }
               });
+          Platform.runLater(
+              () -> {
+                play();
+              });
         }
 
         @Override
         public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
           Chat c = snapshot.getValue(Chat.class);
           ChatManager.myChats.put(snapshot.getKey(), c);
-play();
           for (String s : c.getUsers()) {
             Firebase.chatRef.child(s).child(snapshot.getKey()).setValueAsync(c);
           }
@@ -717,13 +719,16 @@ play();
                   refreshMessages();
                 }
               });
+          Platform.runLater(
+              () -> {
+                play();
+              });
         }
 
         @Override
         public void onChildRemoved(DataSnapshot snapshot) {
           ChatManager.myChats.remove(snapshot.getKey());
           System.out.println("Removed chat from listener: \n" + snapshot.getKey());
-play();
           Platform.runLater(
               () -> {
                 refreshChats();
@@ -731,17 +736,24 @@ play();
                   refreshMessages();
                 }
               });
+          Platform.runLater(
+              () -> {
+                play();
+              });
         }
 
         @Override
         public void onChildMoved(DataSnapshot snapshot, String previousChildName) {
-play();
           Platform.runLater(
               () -> {
                 refreshChats();
                 if (chatOpen) {
                   refreshMessages();
                 }
+              });
+          Platform.runLater(
+              () -> {
+                play();
               });
         }
 
