@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class SecurityRequestController implements IController {
@@ -48,6 +49,7 @@ public class SecurityRequestController implements IController {
   private Scene requestMenu = null;
 
   @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
 
   // Security types text. These should be changed depending on what the names in the database are.
   private static final String unwantedGuestText = "unwantedGuest";
@@ -240,5 +242,6 @@ public class SecurityRequestController implements IController {
   @Override
   public void initializeScale() {
     Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }

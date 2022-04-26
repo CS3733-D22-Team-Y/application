@@ -18,6 +18,7 @@ import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class TranslatorRequestController implements IController {
@@ -42,6 +43,7 @@ public class TranslatorRequestController implements IController {
   @FXML private AnchorPane sidebarPane;
 
   @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
 
   // Language types text. These should be changed depending on what the names in the database are.
   private final String spanishText = "spanish";
@@ -200,5 +202,6 @@ public class TranslatorRequestController implements IController {
   @Override
   public void initializeScale() {
     Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }

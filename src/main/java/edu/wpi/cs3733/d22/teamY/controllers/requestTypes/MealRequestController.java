@@ -16,6 +16,7 @@ import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class MealRequestController implements IController {
@@ -42,6 +43,7 @@ public class MealRequestController implements IController {
   @FXML private AnchorPane sidebarPane;
 
   @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
   // Combobox text items
   private final String textOther = "Other (specify)";
   private final String textNone = "None";
@@ -235,5 +237,6 @@ public class MealRequestController implements IController {
   @Override
   public void initializeScale() {
     Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }

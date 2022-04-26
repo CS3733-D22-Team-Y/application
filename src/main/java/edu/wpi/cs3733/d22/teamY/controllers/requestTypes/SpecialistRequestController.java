@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class SpecialistRequestController implements IController {
@@ -35,7 +36,8 @@ public class SpecialistRequestController implements IController {
   @FXML private AnchorPane sidebarPane;
   private Scene requestMenu = null;
 
-  @FXML AnchorPane mainPane;
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
 
   // Bouquet types text. These should be changed depending on what the names in the database are.
 
@@ -144,5 +146,6 @@ public class SpecialistRequestController implements IController {
   @Override
   public void initializeScale() {
     Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }

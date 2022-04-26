@@ -17,6 +17,7 @@ import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class LabRequestController implements IController {
@@ -46,6 +47,7 @@ public class LabRequestController implements IController {
   private final String mriText = "mri";
 
   @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
 
   @FXML
   void initialize() throws IOException {
@@ -165,5 +167,6 @@ public class LabRequestController implements IController {
   @Override
   public void initializeScale() {
     Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }

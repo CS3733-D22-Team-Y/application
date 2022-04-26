@@ -15,9 +15,9 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.util.Objects;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class FacilitiesRequestController implements IController {
@@ -37,9 +37,9 @@ public class FacilitiesRequestController implements IController {
   @FXML private TextArea errorLabel;
   // Side bar
   @FXML private AnchorPane sidebarPane;
-  private Scene requestMenu = null;
 
-  @FXML AnchorPane mainPane;
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
 
   public FacilitiesRequestController() {}
 
@@ -167,5 +167,6 @@ public class FacilitiesRequestController implements IController {
   @Override
   public void initializeScale() {
     Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }

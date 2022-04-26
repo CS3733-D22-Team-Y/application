@@ -7,7 +7,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
-import javafx.scene.shape.Rectangle;
 
 public class Scaling {
   private static double WINDOW_DEFAULT_WIDTH;

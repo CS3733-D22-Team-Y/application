@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class FloralRequestController implements IController {
@@ -37,8 +38,8 @@ public class FloralRequestController implements IController {
   @FXML private AnchorPane sidebarPane;
   private Scene requestMenu = null;
 
-  @FXML AnchorPane mainPane;
-  @FXML AnchorPane testPane;
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
 
   // Bouquet types text. These should be changed depending on what the names in the database are.
   private final String getWellSoonBouquetText = "getWellSoon";
@@ -53,14 +54,6 @@ public class FloralRequestController implements IController {
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
     nursesComboBox.setItems(RequestControllerUtil.allNursesComboBox.getItems());
     NewSceneLoading.loadSidebar(sidebarPane);
-  }
-
-  public IController getController() {
-    return this;
-  }
-
-  public void initializeScale() {
-    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
   }
 
   @FXML
@@ -154,5 +147,14 @@ public class FloralRequestController implements IController {
     errorLabel.setText("");
     roomsComboBox.setValue("");
     nursesComboBox.setValue("");
+  }
+
+  public IController getController() {
+    return this;
+  }
+
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }

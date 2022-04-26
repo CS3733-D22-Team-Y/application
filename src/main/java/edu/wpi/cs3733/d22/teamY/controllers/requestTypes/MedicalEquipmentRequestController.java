@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class MedicalEquipmentRequestController implements IController {
@@ -44,6 +45,7 @@ public class MedicalEquipmentRequestController implements IController {
   private Scene requestMenu = null;
 
   @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
 
   public MedicalEquipmentRequestController() throws IOException {}
 
@@ -220,5 +222,6 @@ public class MedicalEquipmentRequestController implements IController {
   @Override
   public void initializeScale() {
     Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }

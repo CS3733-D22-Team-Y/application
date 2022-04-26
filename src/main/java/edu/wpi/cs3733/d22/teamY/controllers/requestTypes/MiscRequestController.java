@@ -16,6 +16,7 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class MiscRequestController implements IController {
@@ -30,6 +31,7 @@ public class MiscRequestController implements IController {
   @FXML private AnchorPane sidebarPane;
 
   @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
 
   public MiscRequestController() {}
 
@@ -128,5 +130,6 @@ public class MiscRequestController implements IController {
   @Override
   public void initializeScale() {
     Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }

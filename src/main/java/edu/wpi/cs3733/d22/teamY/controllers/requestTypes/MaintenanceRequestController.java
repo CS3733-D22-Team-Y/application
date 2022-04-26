@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class MaintenanceRequestController implements IController {
@@ -43,6 +44,7 @@ public class MaintenanceRequestController implements IController {
   @FXML private TextArea errorLabel;
 
   @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
 
   private Scene requestMenu = null;
 
@@ -228,5 +230,6 @@ public class MaintenanceRequestController implements IController {
   @Override
   public void initializeScale() {
     Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }
