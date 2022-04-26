@@ -154,4 +154,8 @@ public class RequestMenuController implements IController {
   public void initializeScale() {
     Scaling.scaleFullscreenItemAroundTopLeft(bgPane);
   }
+
+  public void loadTeamB(){}
+
+  public void loadTeamZ(){}
 }
