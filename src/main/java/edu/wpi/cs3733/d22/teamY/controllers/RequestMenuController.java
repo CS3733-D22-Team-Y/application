@@ -146,8 +146,20 @@ public class RequestMenuController {
   }
 
   @FXML
-  void loadTeamB(){}
+  void loadTeamB(){
+    try {
+      Runtime.getRuntime().exec("java -jar src\\main\\resources\\edu\\wpi\\cs3733\\d22\\teamY\\APIs\\TeamBAPI.jar");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
 
   @FXML
-  void loadTeamZ(){}
+  void loadTeamZ(){
+    try {
+      Runtime.getRuntime().exec("java -jar src\\main\\resources\\edu\\wpi\\cs3733\\d22\\teamY\\APIs\\ExternalTransportAPI.jar");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
 }

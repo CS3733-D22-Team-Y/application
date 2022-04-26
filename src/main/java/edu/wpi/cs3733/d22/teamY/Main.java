@@ -12,12 +12,7 @@ public class Main {
     CSVBackup.loadFromCSV(EntryType.MED_EQUIP);
     CSVBackup.loadFromCSV(EntryType.EMPLOYEE);
     CSVBackup.loadFromCSV(EntryType.REQUESTS);
-    /**
-    System.out.println(
-        Runtime.getRuntime()
-            .exec(
-                "java -jar src\\main\\resources\\edu\\wpi\\cs3733\\d22\\teamY\\APIs\\ExternalTransportAPI.jar"));
-     */
+
 
 
     App.launch(App.class, args);
