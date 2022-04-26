@@ -449,7 +449,6 @@ public class MapPageController<T extends Requestable> implements IController {
                                 o.getIsClean(),
                                 o.getStatus());
                         DBManager.update(newEquip);
-                        DBManager.save(newEquip);
                         equip.add(newEquip);
                         switchMap(newFloor, mapMode);
                       });
