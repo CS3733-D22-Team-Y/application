@@ -698,10 +698,7 @@ public class MessageController {
                   refreshMessages();
                 }
               });
-          Platform.runLater(
-              () -> {
                 play();
-              });
         }
 
         @Override
@@ -719,10 +716,7 @@ public class MessageController {
                   refreshMessages();
                 }
               });
-          Platform.runLater(
-              () -> {
                 play();
-              });
         }
 
         @Override
@@ -736,10 +730,7 @@ public class MessageController {
                   refreshMessages();
                 }
               });
-          Platform.runLater(
-              () -> {
                 play();
-              });
         }
 
         @Override
@@ -751,10 +742,7 @@ public class MessageController {
                   refreshMessages();
                 }
               });
-          Platform.runLater(
-              () -> {
                 play();
-              });
         }
 
         @Override
