@@ -94,7 +94,10 @@ public class DashboardController {
   Clip clip;
 
   // current status of clip
-  String status;
+  String a = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/sample1.wav";
+  String b = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/Beethoven-Fur Elise (1).wav";
+  String c =
+      "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/my-life-would-suck-without-you_3CUeBGe.wav";
 
   private boolean playing;
   private boolean paused;
@@ -406,7 +409,7 @@ public class DashboardController {
   }
 
   public void play() {
-    String filePath = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/sample1.wav";
+    String filePath = b;
     try {
       File file = new File(filePath);
       if (file.exists()) {

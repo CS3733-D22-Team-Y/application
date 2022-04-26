@@ -303,7 +303,7 @@ public class SideBarController {
   void loadHome() throws IOException {
     // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     setButtonSelected(homeHiddenRect);
-    NewSceneLoading.reloadScene("views/Dashboard.fxml");
+    // NewSceneLoading.reloadScene("views/Dashboard.fxml");
     NewSceneLoading.loadScene("views/Dashboard.fxml");
   }
 
