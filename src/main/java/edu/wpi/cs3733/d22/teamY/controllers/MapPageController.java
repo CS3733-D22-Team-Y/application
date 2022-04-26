@@ -176,6 +176,9 @@ public class MapPageController<T extends Requestable> implements IController {
   private final int pinDim = 100;
   private final int pinDim2 = 25;
 
+  // Snapping
+  private static final double LARGEST_SNAP_DISTANCE = 200;
+
   // Screen size constants
   private static final int MAP_XMIN = 0;
   private static final int MAP_YMIN = 0;
@@ -435,16 +438,17 @@ public class MapPageController<T extends Requestable> implements IController {
                   // Dragging the pin
                   newMedEquip.setOnMouseDragged(
                       e -> {
-                        MapComponent.setIsDraggingPin(true);
-                        newMedEquip.setLayoutX(e.getX() + newMedEquip.getLayoutX() - 48 * .25);
-                        newMedEquip.setLayoutY(e.getY() + newMedEquip.getLayoutY() - 95 * .25);
+                        if (e.isPrimaryButtonDown()) {
+                          MapComponent.setIsDraggingPin(true);
+                          newMedEquip.setLayoutX(e.getX() + newMedEquip.getLayoutX() - 48 * .25);
+                          newMedEquip.setLayoutY(e.getY() + newMedEquip.getLayoutY() - 95 * .25);
+                        }
                       });
                   newMedEquip.setOnMouseReleased(
                       e -> {
                         MapComponent.setIsDraggingPin(false);
                         // Add the updated equipment
                         MedEquip equipPiece = equip.get(currentEquip);
-                        System.out.println(equipPiece.getEquipLocId());
                         MedEquip newEquip =
                             new MedEquip(
                                 String.valueOf(equipPiece.getEquipID()),
@@ -457,7 +461,6 @@ public class MapPageController<T extends Requestable> implements IController {
                                     equipPiece.getEquipLocId()),
                                 equipPiece.getIsClean(),
                                 equipPiece.getStatus());
-                        System.out.println(newEquip.getEquipLocId() + "\n");
                         DBManager.update(newEquip);
                         equip.add(newEquip);
                         switchMap(newFloor, mapMode);
@@ -569,10 +572,9 @@ public class MapPageController<T extends Requestable> implements IController {
       List<Node> allLocations,
       List<String> allLocationIDs,
       String defaultNodeToSnapTo) {
-    final double DEFAULT_LOWEST_DISTANCE = 200;
 
     int bestID = 0;
-    double lowestDistance = DEFAULT_LOWEST_DISTANCE;
+    double lowestDistance = LARGEST_SNAP_DISTANCE;
 
     for (int i = 0; i < allLocations.size(); i++) {
       Node currNode = allLocations.get(i);
@@ -586,8 +588,7 @@ public class MapPageController<T extends Requestable> implements IController {
         bestID = i;
       }
     }
-    System.out.println(defaultNodeToSnapTo);
-    if (lowestDistance == DEFAULT_LOWEST_DISTANCE) return defaultNodeToSnapTo;
+    if (lowestDistance >= LARGEST_SNAP_DISTANCE) return defaultNodeToSnapTo;
     else return allLocationIDs.get(bestID);
   }
 

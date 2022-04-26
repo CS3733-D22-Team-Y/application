@@ -84,7 +84,7 @@ public class MapComponent {
     double scale = oldScale * delta;
     if (scale < 0.1) scale = 0.1;
     if (scale > 1) scale = 1;
-    System.out.println("ZOOM: " + scale);
+    // System.out.println("ZOOM: " + scale);
 
     double f = (scale / oldScale) - 1;
 
