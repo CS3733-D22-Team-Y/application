@@ -72,6 +72,8 @@ public class MessageController {
 
   @FXML private AnchorPane sidebarPane;
 
+  private boolean canPlay = false;
+
   // variables associated with a result in the search
   @FXML private Pane resultItemPane;
   @FXML private Rectangle resultRect;
@@ -89,12 +91,17 @@ public class MessageController {
 
   @FXML private Rectangle selectedChatRect;
 
+  @FXML
+
   ArrayList<String> hiddenToField = new ArrayList<>();
 
   ArrayList<EmployeeResult> resultBank = new ArrayList<>();
   ArrayList<EmployeeResult> results = new ArrayList<>();
 
   ArrayList<Rectangle> chatBackgrounds = new ArrayList<>();
+
+  long startTime = -1;
+  private final long notifDelay = 1000;
 
   private String chatID = "";
   private boolean chatOpen = false;
@@ -105,6 +112,7 @@ public class MessageController {
 
   // initialize the controller
   public void initialize() throws IOException {
+    startTime = System.currentTimeMillis();
     messageText.setPromptText("Enter your message here");
     messageArea.getChildren().clear();
     resultPane.getChildren().clear();
@@ -139,6 +147,19 @@ public class MessageController {
 
     this.refreshChats();
     this.initialized = true;
+  }
+
+  public boolean canPlayMessage(){
+    if(!canPlay){
+    canPlay = System.currentTimeMillis() - startTime > notifDelay;
+    }
+    return canPlay;
+  }
+
+  public void play(){
+    if(canPlayMessage()){
+      MakeSound.playNewMessage();
+    }
   }
 
   public void setChatOpen(boolean open) {
@@ -670,7 +691,7 @@ public class MessageController {
           Chat c = snapshot.getValue(Chat.class);
           ChatManager.myChats.put(snapshot.getKey(), c);
           System.out.println("On Child added: \n" + snapshot.getKey() + " " + c);
-//          MakeSound.playNewMessage();
+play();
           Platform.runLater(
               () -> {
                 refreshChats();
@@ -684,7 +705,7 @@ public class MessageController {
         public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
           Chat c = snapshot.getValue(Chat.class);
           ChatManager.myChats.put(snapshot.getKey(), c);
-//          MakeSound.playNewMessage();
+play();
           for (String s : c.getUsers()) {
             Firebase.chatRef.child(s).child(snapshot.getKey()).setValueAsync(c);
           }
@@ -702,7 +723,7 @@ public class MessageController {
         public void onChildRemoved(DataSnapshot snapshot) {
           ChatManager.myChats.remove(snapshot.getKey());
           System.out.println("Removed chat from listener: \n" + snapshot.getKey());
-//          MakeSound.playNewMessage();
+play();
           Platform.runLater(
               () -> {
                 refreshChats();
@@ -714,7 +735,7 @@ public class MessageController {
 
         @Override
         public void onChildMoved(DataSnapshot snapshot, String previousChildName) {
-//          MakeSound.playNewMessage();
+play();
           Platform.runLater(
               () -> {
                 refreshChats();
