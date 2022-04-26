@@ -213,7 +213,8 @@ public class SideBarController {
   }
 
   @FXML
-  void loadEquipment() {
+  void loadEquipment() throws IOException {
+    NewSceneLoading.reloadScene("views/MedEquipTable.fxml");
     NewSceneLoading.loadScene("views/MedEquipTable.fxml");
     setButtonSelected(equipmentHiddenRect);
   }

@@ -444,7 +444,7 @@ public class MapPageController<T extends Requestable> implements IController {
                         MapComponent.setIsDraggingPin(false);
                         // Add the updated equipment
                         MedEquip equipPiece = equip.get(currentEquip);
-                        // for testing: yPATI01005
+                        System.out.println(equipPiece.getEquipLocId());
                         MedEquip newEquip =
                             new MedEquip(
                                 String.valueOf(equipPiece.getEquipID()),
@@ -453,51 +453,15 @@ public class MapPageController<T extends Requestable> implements IController {
                                     newMedEquip.getLayoutX() - 48 * .25,
                                     newMedEquip.getLayoutY() - 95 * .25,
                                     allLocations,
-                                    allLocationIDs),
+                                    allLocationIDs,
+                                    equipPiece.getEquipLocId()),
                                 equipPiece.getIsClean(),
                                 equipPiece.getStatus());
+                        System.out.println(newEquip.getEquipLocId() + "\n");
                         DBManager.update(newEquip);
                         equip.add(newEquip);
                         switchMap(newFloor, mapMode);
                       });
-                  /*
-                  equipSubmit.setOnMouseClicked(
-                    e -> {
-                      MedEquip t =
-                          new MedEquip(
-                              fuck,
-                              equipType.getText(),
-                              equipLocation.getText(),
-                              equipClean.getText(),
-                              ""); // TODO fix
-                      DBManager.update(t);
-                      DBManager.save(t);
-                      equip.add(t);
-                      switchMap(newFloor, mapMode);
-                    });
-                   */
-                  /*
-                  locationPin.setOnMouseReleased(
-                          e -> {
-                            locationPin.setLayoutX(985);
-                            locationPin.setLayoutY(20);
-                            System.out.println(currentFloor);
-                            Robot bot = null;
-                            try {
-                              bot = new Robot();
-                            } catch (AWTException ex) {
-                              ex.printStackTrace();
-                            }
-                            int mask = InputEvent.BUTTON1_DOWN_MASK;
-                            assert bot != null;
-                            bot.mousePress(mask);
-                            bot.mouseRelease(mask);
-
-                            bot.mousePress(mask);
-                            bot.mouseRelease(mask);
-                            System.out.println(e.getX() + " " + e.getY());
-                          });
-                   */
                 }
                 if (serviceRequestAdded) {
                   // Set behavior for the requests circle
@@ -600,9 +564,15 @@ public class MapPageController<T extends Requestable> implements IController {
   }
 
   private String findNearestLoc(
-      double xCoord, double yCoord, List<Node> allLocations, List<String> allLocationIDs) {
+      double xCoord,
+      double yCoord,
+      List<Node> allLocations,
+      List<String> allLocationIDs,
+      String defaultNodeToSnapTo) {
+    final double DEFAULT_LOWEST_DISTANCE = 200;
+
     int bestID = 0;
-    double lowestDistance = 5000;
+    double lowestDistance = DEFAULT_LOWEST_DISTANCE;
 
     for (int i = 0; i < allLocations.size(); i++) {
       Node currNode = allLocations.get(i);
@@ -616,7 +586,9 @@ public class MapPageController<T extends Requestable> implements IController {
         bestID = i;
       }
     }
-    return allLocationIDs.get(bestID);
+    System.out.println(defaultNodeToSnapTo);
+    if (lowestDistance == DEFAULT_LOWEST_DISTANCE) return defaultNodeToSnapTo;
+    else return allLocationIDs.get(bestID);
   }
 
   public void initialize() throws IOException {
