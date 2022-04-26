@@ -13,8 +13,6 @@ public class Main {
     CSVBackup.loadFromCSV(EntryType.EMPLOYEE);
     CSVBackup.loadFromCSV(EntryType.REQUESTS);
 
-
-
     App.launch(App.class, args);
 
     CSVBackup.saveToCSV(EntryType.REQUESTS);
