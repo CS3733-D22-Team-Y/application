@@ -11,6 +11,7 @@ import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MainLoaderResult;
 import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.RequestControllerUtil;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
@@ -26,6 +27,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import javax.sound.sampled.*;
 
 public class WelcomePageController {
 
@@ -64,6 +66,16 @@ public class WelcomePageController {
   String universalCode;
 
   String[] dbOptions = new String[] {"Embedded", "Client-Server", "GoogleCloud"};
+
+  Long currentFrame;
+  Clip clip;
+
+  // current status of clip
+  String status;
+
+  private boolean playing;
+  private boolean paused;
+  private boolean loaded = false;
 
   @FXML
   void initialize() throws IOException {
@@ -382,4 +394,49 @@ public class WelcomePageController {
   public void createNewUser() throws Exception {
     NewSceneLoading.loadScene("views/CreateAccount.fxml");
   }
+
+  public void play() {
+    AudioInputStream audioInputStream;
+    String filePath = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/sample1.wav";
+    try {
+      File file = new File(filePath);
+      if (file.exists()) {
+        if (!playing && !loaded) {
+          playing = true;
+          audioInputStream = AudioSystem.getAudioInputStream(file);
+          clip = AudioSystem.getClip();
+          clip.open(audioInputStream);
+          audioInputStream.close();
+          clip.setFramePosition(0);
+          clip.start();
+          loaded = true;
+        } else if (!playing) {
+          clip.start();
+          playing = true;
+        }
+      } else System.out.println("File Not Found");
+    } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  public void pause() {
+    long clipPosition = clip.getMicrosecondPosition();
+    clip.stop();
+    playing = false;
+    paused = true;
+  }
+
+  public void next() {}
+
+  public void close() {
+    clip.stop();
+    clip.close();
+    playing = false;
+    paused = true;
+  }
+
+  public void prev() {}
+
+  public void shuffle() {}
 }

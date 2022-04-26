@@ -5,6 +5,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
 <?import io.github.palexdev.materialfx.controls.MFXProgressSpinner?>
+<?import io.github.palexdev.materialfx.controls.MFXSlider?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -303,5 +304,22 @@
             </LinearGradient>
          </unFocusColor>
       </JFXComboBox>
+      <AnchorPane fx:id="Pane" layoutX="830.0" layoutY="280.0" prefHeight="300.0" prefWidth="300.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a95858" height="300.0" stroke="BLACK" strokeType="INSIDE" width="300.0" />
+            <MFXButton fx:id="PlayButton" layoutX="112.0" layoutY="230.0" onAction="#play" text="Play" />
+            <MFXButton fx:id="nextButton" layoutX="245.0" layoutY="230.0" onAction="#next" text="Next" />
+            <MFXButton fx:id="shufflleButton" layoutX="123.0" layoutY="270.0" onAction="#shuffle" text="Shuffle" />
+            <MFXButton fx:id="PrevButton" layoutX="15.0" layoutY="230.0" onAction="#prev" text="Prev" />
+            <MFXButton fx:id="closeButton" layoutX="14.0" layoutY="14.0" onAction="#close" text="Close" />
+            <MFXSlider fx:id="slider" layoutX="15.0" layoutY="200.0" prefHeight="3.0" prefWidth="270.0" />
+            <ImageView fitHeight="185.0" fitWidth="172.0" layoutX="75.0" layoutY="24.0">
+               <image>
+                  <Image url="@../../../../../../../../../../../../R/yoshiHeadphones.png" />
+               </image>
+            </ImageView>
+            <MFXButton fx:id="pauseButton" layoutX="172.0" layoutY="228.0" onAction="#pause" text="Pause" />
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>
