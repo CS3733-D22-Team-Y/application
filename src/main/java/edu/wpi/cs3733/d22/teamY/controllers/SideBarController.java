@@ -198,16 +198,6 @@ public class SideBarController {
 
   @FXML
   void loadViewServiceRequests() throws IOException {
-    // Reset to the main request screen
-    /*
-    AnchorPane bgPane =
-        (AnchorPane) mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).lookup("#bgPane");
-    SceneUtil.hideAllPanes(bgPane.getChildren());
-    bgPane.getChildren().get(RequestMenuController.MAIN_PAGE_INDEX).setVisible(true);
-    // Main code
-    SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    mainScreenPane.getChildren().get(SERVICES_LIST_LOCATION).setVisible(true);
-     */
     NewSceneLoading.loadScene("views/RequestMenu.fxml");
     setButtonSelected(servicesHiddenRect);
   }
@@ -235,8 +225,6 @@ public class SideBarController {
 
   @FXML
   void loadInbox() throws IOException {
-    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    // mainScreenPane.getChildren().get(INBOX_LIST_LOCATION).setVisible(true);
     setButtonSelected(inboxHiddenRect);
     NewSceneLoading.addScene("views/ChatSelector.fxml");
     NewSceneLoading.loadScene("views/ChatSelector.fxml");
@@ -244,15 +232,12 @@ public class SideBarController {
 
   @FXML
   void loadProfile() {
-    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    // mainScreenPane.getChildren().get(PROFILE_LIST_LOCATION).setVisible(true);
     setButtonSelected(profileHiddenRect);
     NewSceneLoading.loadScene("views/PersonalSettings.fxml");
   }
 
   @FXML
   void loadHome_noUpdateButton() {
-    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     SceneUtil.removeSelection(
         mapHiddenRect,
         servicesHiddenRect,
