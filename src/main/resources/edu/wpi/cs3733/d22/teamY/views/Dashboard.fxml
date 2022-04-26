@@ -4,6 +4,9 @@
 <?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -448,11 +451,14 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <ImageView fitHeight="233.0" fitWidth="488.0" layoutX="14.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/temp_reqs.png" />
-               </image>
-            </ImageView>
+            <BarChart layoutX="-6.0" layoutY="46.0" prefHeight="251.0" prefWidth="500.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis minorTickCount="0" side="LEFT" />
+              </yAxis>
+            </BarChart>
          </children>
       </Group>
       <Group layoutX="890.0" layoutY="496.0">
