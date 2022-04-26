@@ -32,3 +32,6 @@ miscRequests_export.csv
 
 #Mac Specific
 .DS_Store
+/src/main/resources/edu/wpi/cs3733/d22/teamY/APIs/**
+!/src/main/resources/edu/wpi/cs3733/d22/teamY/APIs/**/*.jar
+

@@ -152,7 +152,7 @@ public class RequestMenuController {
   void loadTeamB() {
     System.out.println("Loading Team B");
     ProcessBuilder pb = new ProcessBuilder("java", "-jar", "TeamBAPI.jar");
-    pb.directory(new File("src/main/resources/edu/wpi/cs3733/d22/teamY/APIs"));
+    pb.directory(new File("src/main/resources/edu/wpi/cs3733/d22/teamY/APIs/TeamB"));
     try {
       Process p = pb.start();
       printResults(p);
@@ -165,7 +165,7 @@ public class RequestMenuController {
   void loadTeamZ() {
     System.out.println("Loading Team C");
     ProcessBuilder pb = new ProcessBuilder("java", "-jar", "teamC.jar");
-    pb.directory(new File("src/main/resources/edu/wpi/cs3733/d22/teamY/APIs"));
+    pb.directory(new File("src/main/resources/edu/wpi/cs3733/d22/teamY/APIs/TeamC"));
     try {
       Process p = pb.start();
       printResults(p);
