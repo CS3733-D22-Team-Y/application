@@ -17,16 +17,17 @@ public class RequestMenuController {
   @FXML private MFXButton facilitiesButton;
 
   @FXML
-  private Label creator1,
-      creator2,
-      creator3,
-      creator4,
-      creator5,
-      creator6,
-      creator7,
-      creator8,
-      creator9,
-      creator10;
+  private Label creator01,
+      creator02,
+      creator03,
+      creator04,
+      creator05,
+      creator06,
+      creator07,
+      creator08,
+      creator09,
+      creator10,
+      creator11;
 
   public RequestMenuController() {}
 
@@ -35,7 +36,18 @@ public class RequestMenuController {
     SceneUtil.requests = this;
     NewSceneLoading.loadSidebar(sidebarPane);
     RequestControllerUtil.initialize();
-    facilitiesButton.setVisible(false);
+
+    creator01.setVisible(false);
+    creator02.setVisible(false);
+    creator03.setVisible(false);
+    creator04.setVisible(false);
+    creator05.setVisible(false);
+    creator06.setVisible(false);
+    creator07.setVisible(false);
+    creator08.setVisible(false);
+    creator09.setVisible(false);
+    creator10.setVisible(false);
+    creator11.setVisible(false);
   }
 
   private void loadRequestScreen(int index) {
@@ -101,28 +113,35 @@ public class RequestMenuController {
   }
 
   @FXML
-  void showCreators() {
-    boolean state = creatorToggle.isSelected();
-
-    facilitiesButton.setVisible(state);
-
-    System.out.println(state);
-
-    creator1.setVisible(state);
-    creator2.setVisible(state);
-    creator3.setVisible(state);
-    creator4.setVisible(state);
-    creator5.setVisible(state);
-    creator6.setVisible(state);
-    creator7.setVisible(state);
-    creator8.setVisible(state);
-    creator9.setVisible(state);
-    creator10.setVisible(state);
+  void loadMaintenanceReq() {
+    NewSceneLoading.loadScene("views/requestTypes/MaintenanceRequest.fxml");
   }
 
   @FXML
-  void loadFacilities() {
-    // loadRequestScreen(FACILITIES_RESULTS_INDEX);
+  void loadFacilitiesReq() {
     NewSceneLoading.loadScene("views/requestTypes/FacilitiesRequest.fxml");
+  }
+
+  @FXML
+  void showCreators() {
+    boolean state = creatorToggle.isSelected();
+    System.out.println(state);
+
+    creator01.setVisible(state);
+    creator02.setVisible(state);
+    creator03.setVisible(state);
+    creator04.setVisible(state);
+    creator05.setVisible(state);
+    creator06.setVisible(state);
+    creator07.setVisible(state);
+    creator08.setVisible(state);
+    creator09.setVisible(state);
+    creator10.setVisible(state);
+    creator11.setVisible(state);
+  }
+
+  @FXML
+  void openHelp() throws IOException {
+    SceneLoading.loadPopup("views/popups/ServiceHelp.fxml", "views/SideBar.fxml");
   }
 }

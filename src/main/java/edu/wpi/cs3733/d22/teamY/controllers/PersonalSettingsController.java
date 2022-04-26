@@ -162,4 +162,9 @@ public class PersonalSettingsController {
             Objects.requireNonNull(App.class.getResource("views/css/ThemeDark.css"))
                 .toExternalForm());
   }
+
+  @FXML
+  private void openProfileHelp() throws IOException {
+    SceneLoading.loadPopup("views/popups/ProfileHelp.fxml", "views/SideBar.fxml");
+  }
 }

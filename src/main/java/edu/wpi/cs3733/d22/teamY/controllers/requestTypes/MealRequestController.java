@@ -19,9 +19,10 @@ import javafx.scene.layout.AnchorPane;
 public class MealRequestController {
   // Text input
   @FXML private TextArea input_AdditionalNotes;
-  @FXML private TextField input_AssignedNurse;
   @FXML private JFXComboBox<String> roomsComboBox;
   @FXML private TextField roomsHiddenField;
+  @FXML private JFXComboBox<String> nursesComboBox;
+  @FXML private TextField nursesHiddenField;
   @FXML private JFXComboBox<String> dietaryRestrictionsSelectionBox;
   @FXML private TextField restrictionsHiddenField;
 
@@ -58,6 +59,8 @@ public class MealRequestController {
 
   @FXML
   public void initialize() throws IOException {
+    resetAllFields();
+
     // Required b/c SceneBuilder doesn't provide a ComboBox element editor
     dietaryRestrictionsSelectionBox
         .getItems()
@@ -65,6 +68,7 @@ public class MealRequestController {
     dietaryRestrictionsSelectionBox.setValue("");
 
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    nursesComboBox.setItems(RequestControllerUtil.allNursesComboBox.getItems());
     restrictionsHiddenField.setText("None");
     NewSceneLoading.loadSidebar(sidebarPane);
   }
@@ -77,6 +81,11 @@ public class MealRequestController {
   @FXML
   private void setRestrictionText() {
     restrictionsHiddenField.setText(dietaryRestrictionsSelectionBox.getValue());
+  }
+
+  @FXML
+  private void setNurseText() {
+    nursesHiddenField.setText(nursesComboBox.getValue());
   }
 
   // BACKEND PEOPLE, THIS FUNCTION PASSES THE PARAMETERS TO THE DATABASE
@@ -122,7 +131,7 @@ public class MealRequestController {
 
     Boolean allFields =
         !Objects.equals(roomsHiddenField.getText(), "")
-            && !Objects.equals(input_AssignedNurse.getText(), "");
+            && !Objects.equals(nursesHiddenField.getText(), "");
 
     Boolean sideSelected =
         RequestControllerUtil.isRadioButtonSelected(
@@ -132,7 +141,7 @@ public class MealRequestController {
     if (mealSelected && sideSelected && allFields) {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          input_AssignedNurse.getText(),
+          nursesHiddenField.getText(),
           input_AdditionalNotes.getText(),
           getMainChoice(),
           getSideChoice(),
@@ -158,7 +167,7 @@ public class MealRequestController {
 
     Boolean allFields =
         !Objects.equals(roomsHiddenField.getText(), "")
-            || !Objects.equals(input_AssignedNurse.getText(), "");
+            || !Objects.equals(nursesHiddenField.getText(), "");
 
     Boolean sideSelected =
         RequestControllerUtil.isRadioButtonSelected(
@@ -196,7 +205,7 @@ public class MealRequestController {
   void resetAllFields() {
     // Input text fields
     RequestControllerUtil.resetTextFields(
-        input_AssignedNurse, input_AdditionalNotes, roomsHiddenField);
+        nursesHiddenField, input_AdditionalNotes, roomsHiddenField);
     // Mains
     RequestControllerUtil.resetRadioButtons(
         pizzaRadioButton,
@@ -209,5 +218,6 @@ public class MealRequestController {
     dietaryRestrictionsSelectionBox.setValue(textNone);
     errorLabel.setText("");
     roomsComboBox.setValue("");
+    nursesComboBox.setValue("");
   }
 }

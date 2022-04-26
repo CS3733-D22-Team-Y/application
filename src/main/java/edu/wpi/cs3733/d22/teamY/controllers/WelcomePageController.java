@@ -94,6 +94,7 @@ public class WelcomePageController {
         "views/requestTypes/TranslatorRequest.fxml",
         "views/Map.fxml",
         "views/requestTypes/SpecialistRequest.fxml",
+        "views/requestTypes/MaintenanceRequest.fxml",
         "views/requestTypes/FacilitiesRequest.fxml",
         "views/Dashboard.fxml");
   }
@@ -155,7 +156,7 @@ public class WelcomePageController {
           SideBarController controller = NewSceneLoading.sideBarController;
           try {
             // controller.initializeScale();
-            controller.loadViewServiceRequests();
+            controller.loadDashboard();
           } catch (IOException ex) {
             ex.printStackTrace();
           }
@@ -172,8 +173,7 @@ public class WelcomePageController {
       new Task<>() {
         @Override
         protected MainLoaderResult call() throws IOException {
-          FXMLLoader loader =
-              new FXMLLoader(App.class.getResource("views/ActiveServiceRequest.fxml"));
+          FXMLLoader loader = new FXMLLoader(App.class.getResource("views/Dashboard.fxml"));
           return new MainLoaderResult(loader, loader.load());
         }
       };
@@ -277,6 +277,7 @@ public class WelcomePageController {
 
   void display2FAOptions() throws IOException {
     String[] auth = Auth.getKeys(username.getText());
+    boolean didAuth = false;
     if (username.getText().equals("admin")) {
       faPane.setVisible(false);
       loginPane.setVisible(false);
@@ -285,22 +286,31 @@ public class WelcomePageController {
     if (Arrays.asList(auth).contains("yubikey")) {
       faYubikeyButton.setVisible(true);
       faYubikeyPane.setOpacity(1);
+      didAuth = true;
     }
     if (Arrays.asList(auth).contains("pushbullet")) {
       faPushButton.setVisible(true);
       faPushPane.setOpacity(1);
+      didAuth = true;
     }
     if (Arrays.asList(auth).contains("email")) {
       faEmailButton.setVisible(true);
       faEmailPane.setOpacity(1);
+      didAuth = true;
     }
     if (Arrays.asList(auth).contains("sms")) {
       faSmsButton.setVisible(true);
       faSmsPane.setOpacity(1);
+      didAuth = true;
     }
 
     loginPane.setVisible(false);
     faPane.setVisible(true);
+
+    if (!didAuth) {
+      System.out.println("No 2FA methods available!");
+      loginAnimation();
+    }
   }
 
   @FXML

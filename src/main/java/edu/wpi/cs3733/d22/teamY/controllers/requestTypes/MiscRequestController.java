@@ -17,7 +17,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 public class MiscRequestController {
-  @FXML private MFXTextField input_AssignedNurse;
+  @FXML private JFXComboBox<String> nursesComboBox;
+  @FXML private TextField nursesHiddenField;
   @FXML private JFXTextArea input_AdditionalNotes;
   @FXML private MFXTextField input_RequestName;
   @FXML private JFXComboBox<String> roomsComboBox;
@@ -31,12 +32,18 @@ public class MiscRequestController {
   @FXML
   void initialize() throws IOException {
     roomsComboBox.setItems(RequestControllerUtil.allRoomsComboBox.getItems());
+    nursesComboBox.setItems(RequestControllerUtil.allNursesComboBox.getItems());
     NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   @FXML
   private void setRoomText() {
     roomsHiddenField.setText(roomsComboBox.getValue());
+  }
+
+  @FXML
+  private void setNurseText() {
+    nursesHiddenField.setText(nursesComboBox.getValue());
   }
 
   /**
@@ -66,14 +73,14 @@ public class MiscRequestController {
   void submitButton() throws IOException {
     if (roomsHiddenField.getText().equals("")
         || input_AdditionalNotes.getText().equals("")
-        || input_AssignedNurse.getText().equals("")
+        || nursesHiddenField.getText().equals("")
         || input_RequestName.getText().equals("")) {
       errorLabel.setText("Missing Required Fields.");
 
     } else {
       submitRequest(
           DBUtils.convertNameToID(roomsComboBox.getValue()),
-          input_AssignedNurse.getText(),
+          nursesHiddenField.getText(),
           input_AdditionalNotes.getText(),
           input_RequestName.getText());
       errorLabel.setText("");
@@ -88,7 +95,7 @@ public class MiscRequestController {
   void backButton() throws IOException {
     if ((!roomsHiddenField.getText().equals("")
         || !input_AdditionalNotes.getText().equals("")
-        || !input_AssignedNurse.getText().equals("")
+        || !nursesHiddenField.getText().equals("")
         || !input_RequestName.getText().equals(""))) {
       SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
       if (SceneLoading.stayOnPage) {
@@ -102,7 +109,8 @@ public class MiscRequestController {
   @FXML
   void resetAllFields() {
     RequestControllerUtil.resetTextFields(
-        input_RequestName, input_AdditionalNotes, roomsHiddenField, input_AssignedNurse);
+        input_RequestName, input_AdditionalNotes, roomsHiddenField, nursesHiddenField);
     roomsComboBox.setValue("");
+    nursesComboBox.setValue("");
   }
 }

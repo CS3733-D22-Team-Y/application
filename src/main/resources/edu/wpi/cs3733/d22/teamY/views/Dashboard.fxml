@@ -22,6 +22,34 @@
 
 <AnchorPane fx:id="mainPane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.DashboardController">
     <children>
+      <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
+         <image>
+            <Image url="@images/do-rgb.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: .8;" width="1200.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.42222025286541415">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
         <Label layoutX="270.0" styleClass="title" text="Dashboard">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
@@ -43,7 +71,7 @@
                 <Font name="Arial Rounded MT Bold" size="60.0" />
             </font>
         </Label>
-        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="270.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="270.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="650.0">
             <fill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -63,81 +91,85 @@
         </Rectangle>
       <Group layoutX="284.0" layoutY="99.0">
          <children>
-            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eceffc" height="389.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="389.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
             <Label layoutX="10.0" layoutY="10.0" styleClass="title" text="Current Tasks">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
             </Label>
-            <MFXScrollPane layoutX="9.0" layoutY="52.0" prefHeight="326.0" prefWidth="276.0" style="-fx-background-color: eceffc;">
+            <MFXScrollPane layoutX="9.0" layoutY="52.0" prefHeight="326.0" prefWidth="276.0" style="-fx-background-color: #FFFFFF;">
                <content>
                   <VBox fx:id="tasksBox" prefHeight="320.0" prefWidth="262.0">
                      <children>
-                        <TextArea editable="false" prefHeight="46.0" prefWidth="160.0" text="An active service request goes here." wrapText="true">
+                        <Label styleClass="title" text="You have no tasks assigned." wrapText="true">
                            <font>
-                              <Font size="13.0" />
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
                            </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </TextArea>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
                      </children>
                   </VBox>
                </content>
             </MFXScrollPane>
          </children>
       </Group>
-      <Group layoutX="587.0" layoutY="255.0">
+      <Group layoutX="587.0" layoutY="99.0">
          <children>
-            <Rectangle fx:id="alertBox" arcHeight="15.0" arcWidth="15.0" fill="#eceffc" height="233.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
+            <Rectangle fx:id="alertBox" arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="389.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
             <Label layoutX="10.0" layoutY="10.0" styleClass="title" text="Alerts">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
             </Label>
-            <MFXScrollPane layoutX="10.0" layoutY="50.0" prefHeight="171.0" prefWidth="276.0" style="-fx-background-color: eceffc;">
+            <MFXScrollPane layoutX="10.0" layoutY="52.0" prefHeight="326.0" prefWidth="276.0" style="-fx-background-color: #FFF;">
                <content>
-                  <HBox fx:id="alertsBox" prefHeight="166.0" prefWidth="272.0" />
+                  <HBox fx:id="alertsBox" prefHeight="166.0" prefWidth="272.0">
+                     <children>
+                        <Label styleClass="title" text="No active alerts." wrapText="true">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="18.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                     </children></HBox>
                </content>
             </MFXScrollPane>
          </children>
       </Group>
       <Group layoutX="890.0" layoutY="99.0">
          <children>
-            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eceffc" height="389.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
-            <Label layoutX="27.0" layoutY="49.0" styleClass="title" text="Floor">
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="389.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
+            <Label layoutX="27.0" layoutY="14.0" styleClass="title" text="Floor">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -158,7 +190,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label layoutX="56.0" layoutY="101.0" styleClass="title" text="1">
+            <Label layoutX="56.0" layoutY="302.0" styleClass="title" text="1">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -179,7 +211,17 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label layoutX="56.0" layoutY="151.0" styleClass="title" text="2">
+            <Label fx:id="clean1" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="302.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="5" textFill="#3f833f">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="dirty1" layoutX="193.0" layoutY="302.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="5" textFill="#d74420">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="56.0" layoutY="251.0" styleClass="title" text="2">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -199,6 +241,16 @@
                      </stops>
                   </LinearGradient>
                </textFill>
+            </Label>
+            <Label fx:id="clean2" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="251.0" prefWidth="60.0" styleClass="title" text="10" textFill="#3f833f">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="dirty2" layoutX="193.0" layoutY="251.0" prefWidth="60.0" styleClass="title" text="10" textFill="#d74420">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
             </Label>
             <Label layoutX="56.0" layoutY="201.0" styleClass="title" text="3">
                <font>
@@ -221,7 +273,17 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label layoutX="56.0" layoutY="251.0" styleClass="title" text="4">
+            <Label fx:id="clean3" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="202.0" prefWidth="60.0" styleClass="title" text="11" textFill="#3f833f">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="dirty3" layoutX="193.0" layoutY="202.0" prefWidth="60.0" styleClass="title" text="11" textFill="#d74420">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="56.0" layoutY="151.0" styleClass="title" text="4">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -242,7 +304,17 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label layoutX="56.0" layoutY="302.0" styleClass="title" text="5">
+            <Label fx:id="clean4" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="151.0" prefWidth="60.0" styleClass="title" text="33" textFill="#3f833f">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="dirty4" layoutX="193.0" layoutY="151.0" prefWidth="60.0" styleClass="title" text="33" textFill="#d74420">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="56.0" layoutY="101.0" styleClass="title" text="5">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -263,68 +335,28 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="clean1" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="101.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="5" textFill="#80cf80">
+            <Label fx:id="clean5" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="101.0" prefWidth="60.0" styleClass="title" text="19" textFill="#3f833f">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="clean2" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="151.0" prefWidth="60.0" styleClass="title" text="10" textFill="#80cf80">
+            <Label fx:id="dirty5" layoutX="193.0" layoutY="101.0" prefWidth="60.0" styleClass="title" text="19" textFill="#d74420">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="clean3" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="202.0" prefWidth="60.0" styleClass="title" text="11" textFill="#80cf80">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1e648b" height="225.0" layoutX="174.0" layoutY="107.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="5.0" />
+            <Label layoutX="103.0" layoutY="60.0" styleClass="title" text="Clean" textFill="#3f833f">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
+                  <Font name="Arial Rounded MT Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="clean4" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="252.0" prefWidth="60.0" styleClass="title" text="33" textFill="#80cf80">
+            <Label layoutX="193.0" layoutY="60.0" styleClass="title" text="Dirty" textFill="#d74420">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
+                  <Font name="Arial Rounded MT Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="clean5" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="302.0" prefWidth="60.0" styleClass="title" text="19" textFill="#80cf80">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-            </Label>
-            <Label fx:id="dirty1" layoutX="193.0" layoutY="101.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="5" textFill="#cfa680">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-            </Label>
-            <Label fx:id="dirty2" layoutX="193.0" layoutY="151.0" prefWidth="60.0" styleClass="title" text="10" textFill="#cfa680">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-            </Label>
-            <Label fx:id="dirty3" layoutX="193.0" layoutY="202.0" prefWidth="60.0" styleClass="title" text="11" textFill="#cfa680">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-            </Label>
-            <Label fx:id="dirty4" layoutX="193.0" layoutY="252.0" prefWidth="60.0" styleClass="title" text="33" textFill="#cfa680">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-            </Label>
-            <Label fx:id="dirty5" layoutX="193.0" layoutY="302.0" prefWidth="60.0" styleClass="title" text="19" textFill="#cfa680">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-            </Label>
-            <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#bebebe" height="225.0" layoutX="174.0" layoutY="107.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="5.0" />
-            <Label layoutX="112.0" layoutY="74.0" styleClass="title" text="Clean" textFill="#80cf80">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="19.0" />
-               </font>
-            </Label>
-            <Label layoutX="188.0" layoutY="74.0" styleClass="title" text="Dirty" textFill="#cfa680">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="19.0" />
-               </font>
-            </Label>
-            <ImageView fx:id="dirtyWarning1" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="dirtyWarning5" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/icons/dash/warning.png" />
                </image>
@@ -332,7 +364,7 @@
                   <ColorAdjust brightness="0.18" />
                </effect>
             </ImageView>
-            <ImageView fx:id="dirtyWarning2" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="dirtyWarning4" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/icons/dash/warning.png" />
                </image>
@@ -348,7 +380,7 @@
                   <ColorAdjust brightness="0.18" />
                </effect>
             </ImageView>
-            <ImageView fx:id="dirtyWarning4" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="dirtyWarning2" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/icons/dash/warning.png" />
                </image>
@@ -356,7 +388,7 @@
                   <ColorAdjust brightness="0.18" />
                </effect>
             </ImageView>
-            <ImageView fx:id="dirtyWarning5" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="dirtyWarning1" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/icons/dash/warning.png" />
                </image>
@@ -366,9 +398,107 @@
             </ImageView>
          </children>
       </Group>
-      <Group layoutX="587.0" layoutY="99.0">
+      <Group layoutX="284.0" layoutY="496.0">
          <children>
-            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eceffc" height="148.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="599.0" />
+            <Label layoutX="10.0" layoutY="10.0" styleClass="title" text="Active Requests">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="494.0" layoutY="28.0" styleClass="title" text="Total:">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="activeRequestCount" alignment="CENTER" contentDisplay="CENTER" layoutX="496.0" layoutY="64.0" prefHeight="50.0" prefWidth="80.0" styleClass="title" text="999">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="42.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <ImageView fitHeight="233.0" fitWidth="488.0" layoutX="14.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/temp_reqs.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Group>
+      <Group layoutX="890.0" layoutY="496.0">
+         <children>
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
+            <Label layoutX="10.0" layoutY="10.0" styleClass="title" text="Messages">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <MFXScrollPane layoutX="10.0" layoutY="49.0" prefHeight="207.0" prefWidth="276.0" style="-fx-background-color: #93cddc;">
+               <content>
+                  <VBox fx:id="messageBox" prefHeight="271.0" prefWidth="262.0">
+                     <children>
+                        <HBox prefHeight="55.0" prefWidth="262.0" style="-fx-padding: 2;">
+                           <children>
+                              <TextArea editable="false" prefHeight="46.0" prefWidth="160.0" text="Hi! How are you!" wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </TextArea>
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="55.0" prefWidth="262.0" style="-fx-padding: 2;">
+                           <children>
+                              <TextArea editable="false" prefHeight="46.0" prefWidth="160.0" text="Great, thanks for asking!!! :)" wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </TextArea>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </MFXScrollPane>
+            <TextField fx:id="messageInputBox" layoutX="10.0" layoutY="256.0" prefHeight="26.0" prefWidth="218.0" promptText="type your message here..." />
+            <MFXButton fx:id="messageSendButton" layoutX="232.0" layoutY="256.0" prefHeight="26.0" prefWidth="48.0" style="-fx-background-color: #1b89a6;" text="Send" textFill="WHITE" />
+         </children>
+      </Group>
+      <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
+      <Group layoutX="912.0" layoutY="-25.0" scaleX="0.75" scaleY="0.75">
+         <children>
             <Label fx:id="timeDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="91.0" layoutY="21.0" prefHeight="54.0" prefWidth="196.0" styleClass="title" text="Offline">
                <font>
                   <Font name="Arial Rounded MT Bold" size="46.0" />
@@ -512,131 +642,5 @@
             </Line>
          </children>
       </Group>
-      <Group layoutX="284.0" layoutY="496.0">
-         <children>
-            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eceffc" height="290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="599.0" />
-            <Label layoutX="10.0" layoutY="10.0" styleClass="title" text="Active Requests">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <Label layoutX="494.0" layoutY="28.0" styleClass="title" text="Total:">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <Label fx:id="activeRequestCount" alignment="CENTER" contentDisplay="CENTER" layoutX="496.0" layoutY="64.0" prefHeight="50.0" prefWidth="80.0" styleClass="title" text="999">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="42.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-         </children>
-      </Group>
-      <Group layoutX="890.0" layoutY="496.0">
-         <children>
-            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eceffc" height="290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
-            <Label layoutX="10.0" layoutY="10.0" styleClass="title" text="Messages">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <MFXScrollPane layoutX="10.0" layoutY="49.0" prefHeight="207.0" prefWidth="276.0" style="-fx-background-color: eceffc;">
-               <content>
-                  <VBox fx:id="messageBox" prefHeight="271.0" prefWidth="262.0">
-                     <children>
-                        <HBox prefHeight="55.0" prefWidth="262.0" style="-fx-padding: 2;">
-                           <children>
-                              <TextArea editable="false" prefHeight="46.0" prefWidth="160.0" text="Sample message from a coworker." wrapText="true">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                              </TextArea>
-                           </children>
-                        </HBox>
-                        <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="55.0" prefWidth="262.0" style="-fx-padding: 2;">
-                           <children>
-                              <TextArea editable="false" prefHeight="46.0" prefWidth="160.0" text="Sample message to a coworker." wrapText="true">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                              </TextArea>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-               </content>
-            </MFXScrollPane>
-            <TextField fx:id="messageInputBox" layoutX="10.0" layoutY="256.0" prefHeight="26.0" prefWidth="218.0" promptText="type your message here..." />
-            <MFXButton fx:id="messageSendButton" layoutX="232.0" layoutY="256.0" prefHeight="26.0" prefWidth="48.0" style="-fx-background-color: #1b89a6;" text="Send" textFill="WHITE" />
-         </children>
-      </Group>
-      <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
     </children>
 </AnchorPane>
