@@ -698,7 +698,7 @@ public class MessageController {
                   refreshMessages();
                 }
               });
-                play();
+          play();
         }
 
         @Override
@@ -716,7 +716,7 @@ public class MessageController {
                   refreshMessages();
                 }
               });
-                play();
+          play();
         }
 
         @Override
@@ -730,7 +730,7 @@ public class MessageController {
                   refreshMessages();
                 }
               });
-                play();
+          play();
         }
 
         @Override
@@ -742,7 +742,7 @@ public class MessageController {
                   refreshMessages();
                 }
               });
-                play();
+          play();
         }
 
         @Override
