@@ -44,8 +44,18 @@ public class AboutUsController {
   // [String, String, String, String] = [Name, Role, Quote, Image path]
   String[] connor = {"Connor Horn", "Lead Software", "Quote", "views/images/Connor.jpg"};
   String[] ben = {"Ben Schmitt", "Assistant Lead", "Quote", "views/images/Ben.jpg"};
-  String[] emily = {"Emily Gorelik", "Assistant Lead", "Quote", "views/images/Emily.jpg"};
-  String[] nathanA = {"Nathan Anderson", "Product Owner", "Quote", "views/images/NathanA.jpg"};
+  String[] emily = {
+    "Emily Gorelik",
+    "Assistant Lead",
+    "Just trust that it works and leave it at that - Nathan A",
+    "views/images/Emily.jpg"
+  };
+  String[] nathanA = {
+    "Nathan Anderson",
+    "Product Owner",
+    "https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/Pane.html - Oracle",
+    "views/images/NathanA.jpg"
+  };
   String[] sky = {
     "Sky Tang",
     "Product Manager",
@@ -62,10 +72,20 @@ public class AboutUsController {
     "Jake Brady",
     "Document Analyst",
     "I'm the video game boy, I'm the one who wins! - Arin Hanson",
-    "views/images/Jake.jpg"
+    "views/images/Jake.png"
   };
-  String[] engjell = {"Engjell Ramadani", "Front End", "Quote", "views/images/Engjell.jpg"};
-  String[] nicholas = {"Nicholas Heineman", "Front End", "Quote", "views/images/Nicholas.jpg"};
+  String[] engjell = {
+    "Engjell Ramadani",
+    "Front End",
+    "Last name ever first name greatest like merging into main I ain't nothing to play with - Drake",
+    "views/images/Engjell.jpg"
+  };
+  String[] nicholas = {
+    "Nicholas Heineman",
+    "Front End",
+    "Not just the Panes but the Panes and the Panes too. They're like Panes and I slaughtered them like Panes. ... I hate Panes! - ",
+    "views/images/Nicholas.png"
+  };
   String[] nathanP = {"Nathan Pollock", "Back End", "Quote", "views/images/NathanP.jpg"};
   String[] ethan = {
     "Ethan Catania",

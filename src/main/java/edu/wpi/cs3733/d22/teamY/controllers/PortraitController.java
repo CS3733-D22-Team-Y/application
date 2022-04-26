@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
 import com.jfoenix.controls.JFXTextArea;
-import java.io.FileInputStream;
+import edu.wpi.cs3733.d22.teamY.App;
 import java.io.FileNotFoundException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -33,6 +33,6 @@ public class PortraitController {
     nameText.setText(name[0]);
     roleText.setText(name[1]);
     quoteText.setText(name[2]);
-    portraitImage = new ImageView(new Image(new FileInputStream(name[3])));
+    portraitImage.setImage(new Image(App.class.getResource(name[3]).toString()));
   }
 }
