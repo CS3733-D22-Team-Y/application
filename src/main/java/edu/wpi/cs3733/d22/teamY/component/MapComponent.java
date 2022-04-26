@@ -10,6 +10,8 @@ import javafx.scene.layout.*;
 public class MapComponent {
   public double universalScale = 0.3;
 
+  private static boolean isDraggingPin = false;
+
   public static class MapImage {
     Image image;
     double initialX, initialY, initialScale;
@@ -50,7 +52,7 @@ public class MapComponent {
     rootPane.setOnMouseDragged(
         e -> {
           // If right button is down, handle updating drag
-          if (e.isPrimaryButtonDown()) {
+          if (e.isPrimaryButtonDown() && !isDraggingPin) {
             double dx = dragX - e.getX();
             double dy = dragY - e.getY();
             dragX = e.getX();
@@ -170,5 +172,13 @@ public class MapComponent {
 
   public Pane getMapPane() {
     return mapPane;
+  }
+
+  public static boolean getIsDraggingPin() {
+    return isDraggingPin;
+  }
+
+  public static void setIsDraggingPin(boolean newValue) {
+    isDraggingPin = newValue;
   }
 }

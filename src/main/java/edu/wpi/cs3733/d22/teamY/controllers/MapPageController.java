@@ -427,6 +427,70 @@ public class MapPageController<T extends Requestable> implements IController {
                         equipType.setText(o.getEquipType());
                         equipClean.setText(o.getIsClean());
                       });
+                  // Dragging the pin
+                  newMedEquip.setOnMouseDragged(
+                      e -> {
+                        MapComponent.setIsDraggingPin(true);
+                        newMedEquip.setLayoutX(e.getX() + newMedEquip.getLayoutX() - 48 * .25);
+                        newMedEquip.setLayoutY(e.getY() + newMedEquip.getLayoutY() - 95 * .25);
+                      });
+                  newMedEquip.setOnMouseReleased(
+                      e -> {
+                        MapComponent.setIsDraggingPin(false);
+                        // Add the updated equipment
+                        MedEquip o = equip.get(currentEquip);
+                        System.out.println("loc id: " + o.getEquipLocId());
+                        // for testing: yPATI01005
+                        MedEquip newEquip =
+                            new MedEquip(
+                                String.valueOf(o.getEquipID()),
+                                o.getEquipType(),
+                                "yPATI01005",
+                                o.getIsClean(),
+                                o.getStatus());
+                        DBManager.update(newEquip);
+                        DBManager.save(newEquip);
+                        equip.add(newEquip);
+                        switchMap(newFloor, mapMode);
+                      });
+                  /*
+                  equipSubmit.setOnMouseClicked(
+                    e -> {
+                      MedEquip t =
+                          new MedEquip(
+                              fuck,
+                              equipType.getText(),
+                              equipLocation.getText(),
+                              equipClean.getText(),
+                              ""); // TODO fix
+                      DBManager.update(t);
+                      DBManager.save(t);
+                      equip.add(t);
+                      switchMap(newFloor, mapMode);
+                    });
+                   */
+                  /*
+                  locationPin.setOnMouseReleased(
+                          e -> {
+                            locationPin.setLayoutX(985);
+                            locationPin.setLayoutY(20);
+                            System.out.println(currentFloor);
+                            Robot bot = null;
+                            try {
+                              bot = new Robot();
+                            } catch (AWTException ex) {
+                              ex.printStackTrace();
+                            }
+                            int mask = InputEvent.BUTTON1_DOWN_MASK;
+                            assert bot != null;
+                            bot.mousePress(mask);
+                            bot.mouseRelease(mask);
+
+                            bot.mousePress(mask);
+                            bot.mouseRelease(mask);
+                            System.out.println(e.getX() + " " + e.getY());
+                          });
+                   */
                 }
                 if (serviceRequestAdded) {
                   // Set behavior for the requests circle
