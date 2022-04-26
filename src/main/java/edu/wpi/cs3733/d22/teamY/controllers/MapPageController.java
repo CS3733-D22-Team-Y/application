@@ -298,6 +298,8 @@ public class MapPageController<T extends Requestable> implements IController {
     try {
       // Get all locations on the floor
       List<Node> mapElements = new ArrayList<>();
+      List<Node> allLocations = new ArrayList<>();
+      List<String> allLocationIDs = new ArrayList<>();
 
       // Gets all locations on the newly selected floor
       DBUtils.getLocationsOnFloor(newFloor.dbKey)
@@ -346,6 +348,11 @@ public class MapPageController<T extends Requestable> implements IController {
                 newLocation.getChildren().add(imageView);
                 newLocation.visibleProperty().bind(locationsCheckbox.selectedProperty());
                 mapElements.add(newLocation);
+                allLocations.add(newLocation);
+                // TODO: Add all loc IDs to the list
+                // allLocationIDs.add(newLocation.getId());
+                allLocationIDs.add(l.getNodeID());
+                System.out.println("loc id: " + l.getNodeID());
                 // Add equipment bubbles
                 if (hasEquipment) {
                   Circle c =
@@ -438,16 +445,19 @@ public class MapPageController<T extends Requestable> implements IController {
                       e -> {
                         MapComponent.setIsDraggingPin(false);
                         // Add the updated equipment
-                        MedEquip o = equip.get(currentEquip);
-                        System.out.println("loc id: " + o.getEquipLocId());
+                        MedEquip equipPiece = equip.get(currentEquip);
                         // for testing: yPATI01005
                         MedEquip newEquip =
                             new MedEquip(
-                                String.valueOf(o.getEquipID()),
-                                o.getEquipType(),
-                                "yPATI01005",
-                                o.getIsClean(),
-                                o.getStatus());
+                                String.valueOf(equipPiece.getEquipID()),
+                                equipPiece.getEquipType(),
+                                findNearestLoc(
+                                    newMedEquip.getLayoutX() - 48 * .25,
+                                    newMedEquip.getLayoutY() - 95 * .25,
+                                    allLocations,
+                                    allLocationIDs),
+                                equipPiece.getIsClean(),
+                                equipPiece.getStatus());
                         DBManager.update(newEquip);
                         equip.add(newEquip);
                         switchMap(newFloor, mapMode);
@@ -589,6 +599,26 @@ public class MapPageController<T extends Requestable> implements IController {
 
     // Switch to new background image
     imageView.setImage(floorImages.get(newFloor));
+  }
+
+  private String findNearestLoc(
+      double xCoord, double yCoord, List<Node> allLocations, List<String> allLocationIDs) {
+    int bestID = 0;
+    double lowestDistance = 0;
+
+    for (int i = 0; i < allLocations.size(); i++) {
+      Node currNode = allLocations.get(i);
+      double nodeX = currNode.getLayoutX();
+      double nodeY = currNode.getLayoutY();
+      double xDist = Math.abs(nodeX - xCoord);
+      double yDist = Math.abs(nodeY - yCoord);
+      double totalDist = Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
+      if (totalDist > lowestDistance) {
+        bestID = i;
+      }
+    }
+    System.out.println("Best ID: " + bestID);
+    return allLocationIDs.get(bestID);
   }
 
   public void initialize() throws IOException {
