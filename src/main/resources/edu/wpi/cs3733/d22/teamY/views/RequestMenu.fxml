@@ -252,17 +252,8 @@
                <Font name="Calibri" size="20.0" />
             </font>
          </JFXToggleButton>
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="620.0" layoutY="586.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="145.0" />
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="620.0" layoutY="586.0" onAction="#loadTeamB" prefHeight="120.0" prefWidth="145.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Team B API" textAlignment="CENTER" wrapText="true">
-            <font>
-               <Font name="Calibri Bold" size="30.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-         </MFXButton>
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="775.0" layoutY="586.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="145.0" />
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="775.0" layoutY="586.0" onAction="#loadTeamZ" prefHeight="120.0" prefWidth="145.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Team C API" textAlignment="CENTER" wrapText="true">
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="620.0" layoutY="586.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+         <MFXButton alignment="CENTER" contentDisplay="RIGHT" layoutX="620.0" layoutY="586.0" onAction="#loadOtherTeams" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Other Team APIs" textAlignment="CENTER" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
