@@ -76,7 +76,7 @@ public class NewSceneLoading {
     double width = activeWindow.getWidth();
 
     App.getInstance().setScene(currScene);
-    //controller.initializeScale();
+    controller.initializeScale();
 
     // Preserve height and width of scene
     activeWindow.setHeight(height);

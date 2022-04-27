@@ -16,7 +16,10 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="mainPane" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.MapPageController">
-   <BorderPane layoutX="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="-270.0" AnchorPane.topAnchor="0.0" />
+   <BorderPane layoutX="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="-270.0" AnchorPane.topAnchor="0.0">
+      <center>
+         <AnchorPane fx:id="mapRoot" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      </center></BorderPane>
    <Pane fx:id="locationInfoPane" layoutX="971.0" prefHeight="780.0" prefWidth="219.0" visible="false">
       <children>
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="700.0" layoutX="-15.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
@@ -182,10 +185,7 @@
       </children>
    </VBox>
    <Label layoutX="985.0" layoutY="50.0" text="Add" />
-   <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0">
-      <children>
-         <AnchorPane fx:id="mapRoot" layoutX="-397.0" layoutY="24.0" prefHeight="200.0" prefWidth="200.0" />
-      </children></AnchorPane>
+   <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
    <Pane layoutX="330.0" layoutY="600.0" pickOnBounds="false" prefHeight="200.0" prefWidth="200.0">
       <children>
          <Pane fx:id="ll1MainPane" layoutX="10.0" layoutY="-110.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
