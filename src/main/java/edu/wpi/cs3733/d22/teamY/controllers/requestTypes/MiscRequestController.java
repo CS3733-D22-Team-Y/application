@@ -97,7 +97,7 @@ public class MiscRequestController {
         || !input_AdditionalNotes.getText().equals("")
         || !nursesHiddenField.getText().equals("")
         || !input_RequestName.getText().equals(""))) {
-      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/SideBar.fxml");
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/MiscRequest.fxml");
       } else {

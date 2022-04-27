@@ -172,7 +172,7 @@ public class MedicalEquipmentRequestController {
     if ((!roomsHiddenField.getText().equals("") || !nursesHiddenField.getText().equals(""))
         || RequestControllerUtil.isRadioButtonSelected(
             bedRadioButton, xrayRadioButton, infusionPumpRadioButton, reclinerRadioButton)) {
-      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/SideBar.fxml");
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/MedicalEquipmentRequest.fxml");
       } else {
