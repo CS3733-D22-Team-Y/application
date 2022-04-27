@@ -9,6 +9,8 @@ import javafx.scene.layout.*;
 
 public class MapComponent {
   public double universalScale = 0.3;
+  public double xOff = 0;
+  public double yOff = 0;
 
   public static class MapImage {
     Image image;
@@ -58,7 +60,7 @@ public class MapComponent {
 
             // Translate all children of the root node
             for (Node n : rootPane.getChildren()) {
-              if ((7484 * universalScale - 723) > n.getTranslateX() - dx
+              if ((7484 * universalScale - 723) > n.getTranslateX() - dx // 7484
                   && n.getTranslateX() - dx > 0) {
                 n.setTranslateX(n.getTranslateX() - dx);
               }
