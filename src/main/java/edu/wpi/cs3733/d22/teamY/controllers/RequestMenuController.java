@@ -8,7 +8,9 @@ import java.io.InputStreamReader;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
 
 public class RequestMenuController implements IController {
 
@@ -30,6 +32,10 @@ public class RequestMenuController implements IController {
       creator09,
       creator10,
       creator11;
+
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
+  @FXML private Rectangle bgGradient;
 
   public RequestMenuController() {}
 
@@ -168,6 +174,7 @@ public class RequestMenuController implements IController {
 
   @Override
   public void initializeScale() {
-    Scaling.scaleFullscreenItemAroundTopLeft(bgPane);
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage, bgGradient);
   }
 }
