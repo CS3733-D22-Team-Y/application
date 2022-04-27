@@ -35,4 +35,5 @@ public class PortraitController {
     quoteText.setText(name[2]);
     portraitImage.setImage(new Image(App.class.getResource(name[3]).toString()));
   }
+
 }

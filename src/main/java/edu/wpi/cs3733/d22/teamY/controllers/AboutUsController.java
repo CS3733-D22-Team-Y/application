@@ -7,6 +7,7 @@ import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -16,6 +17,17 @@ public class AboutUsController {
   @FXML private MFXButton backButton;
 
   // ImageViews with images
+  @FXML private ImageView loadConnor;
+  @FXML private ImageView loadBen;
+  @FXML private ImageView loadEmily;
+  @FXML private ImageView loadNathanA;
+  @FXML private ImageView loadSky;
+  @FXML private ImageView loadJohn;
+  @FXML private ImageView loadJake;
+  @FXML private ImageView loadEngjell;
+  @FXML private ImageView loadNicholas;
+  @FXML private ImageView loadNathanP;
+  @FXML private ImageView loadEthan;
 
   @FXML
   private void backButton() {
