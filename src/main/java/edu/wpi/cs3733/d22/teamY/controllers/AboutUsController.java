@@ -54,55 +54,70 @@ public class AboutUsController {
 
   // Structured array for convenient portrait loading
   // [String, String, String, String] = [Name, Role, Quote, Image path]
-  String[] connor = {"Connor Horn", "Lead Software", "Quote", "views/images/Connor.jpg"};
-  String[] ben = {"Ben Schmitt", "Assistant Lead", "Quote", "views/images/Ben.jpg"};
+  String[] connor = {
+          "Connor Horn",
+          "Lead Software",
+          "\"The only thing that matters about security is the perception of it\" - Connor",
+          "views/images/Connor.jpg"
+  };
+  String[] ben = {
+          "Ben Schmitt",
+          "Assistant Lead",
+          "\"I don't even know\"",
+          "views/images/Ben.jpg"
+  };
   String[] emily = {
     "Emily Gorelik",
     "Assistant Lead",
-    "Just trust that it works and leave it at that - Nathan A",
+    "\"Just trust that it works and leave it at that\" - Nathan A",
     "views/images/Emily.jpg"
   };
   String[] nathanA = {
     "Nathan Anderson",
     "Product Owner",
-    "https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/Pane.html - Oracle",
+    "\"https://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/Pane.html\" - Oracle",
     "views/images/NathanA.jpg"
   };
   String[] sky = {
     "Sky Tang",
     "Product Manager",
-    "We're all different people throughout our lives, and that's okay, that's good, you've gotta keep moving, so long as you remember all the people that you used to be - Matt Smith",
+    "\"We're all different people throughout our lives, and that's okay, that's good, you've gotta keep moving, so long as you remember all the people that you used to be\" - Matt Smith",
     "views/images/Sky.jpg"
   };
   String[] john = {
     "John Carrotta",
     "Scrum Master",
-    "Break main and it's hands on sight - Basically everyone",
+    "\"Break main and it's hands on sight\" - Basically everyone",
     "views/images/John.jpg"
   };
   String[] jake = {
     "Jake Brady",
     "Document Analyst",
-    "I'm the video game boy, I'm the one who wins! - Arin Hanson",
+    "\"I'm the video game boy, I'm the one who wins!\" - Arin Hanson",
     "views/images/Jake.png"
   };
   String[] engjell = {
     "Engjell Ramadani",
     "Front End",
-    "Last name ever first name greatest like merging into main I ain't nothing to play with - Drake",
+    "\"Last name ever first name greatest like merging into main I ain't nothing to play with\" - Drake",
     "views/images/Engjell.jpg"
   };
   String[] nicholas = {
     "Nicholas Heineman",
     "Front End",
-    "Not just the Panes but the Panes and the Panes too. They're like Panes and I slaughtered them like Panes. ... I hate Panes! - ",
+    "\"Not just the Panes but the Panes and the Panes too. They're like Panes and I slaughtered them like Panes. ... I hate Panes!\" - Couldn't tell you",
     "views/images/Nicholas.png"
   };
-  String[] nathanP = {"Nathan Pollock", "Back End", "Quote", "views/images/NathanP.jpg"};
+  String[] nathanP = {
+          "Nathan Pollock",
+          "Back End",
+          "\"Lambda functions - Connor\"",
+          "views/images/NathanP.jpg"
+  };
   String[] ethan = {
     "Ethan Catania",
     "Full Stack",
-    "Dude, get GitHub Desktop - Ben Schmitt",
+    "\"Dude, get GitHub Desktop\" - Ben Schmitt",
     "views/images/Ethan.jpg"
   };
 
