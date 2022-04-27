@@ -11,6 +11,7 @@ public class MapComponent {
   public double universalScale = 0.3;
   public double xOff = 0;
   public double yOff = 0;
+  public static boolean set = false;
 
   public static class MapImage {
     Image image;
@@ -55,20 +56,24 @@ public class MapComponent {
           if (e.isPrimaryButtonDown()) {
             double dx = dragX - e.getX();
             double dy = dragY - e.getY();
-            dragX = e.getX();
-            dragY = e.getY();
+            xOff += dx;
+            yOff += dy;
 
             // Translate all children of the root node
             for (Node n : rootPane.getChildren()) {
               if ((7484 * universalScale - 723) > n.getTranslateX() - dx // 7484
                   && n.getTranslateX() - dx > 0) {
-                n.setTranslateX(n.getTranslateX() - dx);
+                n.setTranslateX(n.getTranslateX() - dx + (set ? 0 : xOff));
               }
               System.out.println("TRANSLATE Y: " + n.getTranslateY());
               if ((3987 * universalScale - 271) > n.getTranslateY() - dy
                   && n.getTranslateY() - dy > 0) {
-                n.setTranslateY(n.getTranslateY() - dy);
+                n.setTranslateY(n.getTranslateY() - dy + (set ? 0 : yOff));
               }
+            }
+
+            if (set) {
+              set = false;
             }
 
             e.consume();
