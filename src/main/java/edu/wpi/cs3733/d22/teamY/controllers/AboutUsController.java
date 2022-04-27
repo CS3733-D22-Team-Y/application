@@ -55,21 +55,16 @@ public class AboutUsController {
   // Structured array for convenient portrait loading
   // [String, String, String, String] = [Name, Role, Quote, Image path]
   String[] connor = {
-          "Connor Horn",
-          "Lead Software",
-          "\"The only thing that matters about security is the perception of it\" - Connor",
-          "views/images/Connor.jpg"
+    "Connor Horn",
+    "Lead Software",
+    "\"The only thing that matters about security is the perception of it\" - Connor",
+    "views/images/Connor.jpg"
   };
-  String[] ben = {
-          "Ben Schmitt",
-          "Assistant Lead",
-          "\"I don't even know\"",
-          "views/images/Ben.jpg"
-  };
+  String[] ben = {"Ben Schmitt", "Assistant Lead", "\"I don't even know\"", "views/images/Ben.jpg"};
   String[] emily = {
     "Emily Gorelik",
     "Assistant Lead",
-    "\"Just trust that it works and leave it at that\" - Nathan A",
+    "\"This class is giving me gray hair\" - Ben",
     "views/images/Emily.jpg"
   };
   String[] nathanA = {
@@ -109,10 +104,7 @@ public class AboutUsController {
     "views/images/Nicholas.png"
   };
   String[] nathanP = {
-          "Nathan Pollock",
-          "Back End",
-          "\"Lambda functions - Connor\"",
-          "views/images/NathanP.jpg"
+    "Nathan Pollock", "Back End", "\"Lambda functions - Connor\"", "views/images/NathanP.jpg"
   };
   String[] ethan = {
     "Ethan Catania",
