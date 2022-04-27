@@ -451,12 +451,12 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <BarChart layoutX="-6.0" layoutY="46.0" prefHeight="251.0" prefWidth="500.0">
+            <BarChart fx:id="barChart" layoutX="-6.0" layoutY="46.0" prefHeight="251.0" prefWidth="500.0">
               <xAxis>
-                <CategoryAxis side="BOTTOM" />
+                <CategoryAxis fx:id="categoryAxis" side="BOTTOM" />
               </xAxis>
               <yAxis>
-                <NumberAxis minorTickCount="0" side="LEFT" />
+                <NumberAxis fx:id="numberAxis" minorTickCount="0" side="LEFT" />
               </yAxis>
             </BarChart>
          </children>

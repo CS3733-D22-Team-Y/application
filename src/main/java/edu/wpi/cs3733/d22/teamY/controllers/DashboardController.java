@@ -2,9 +2,7 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import edu.wpi.cs3733.d22.teamY.App;
-import edu.wpi.cs3733.d22.teamY.DBUtils;
-import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.*;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.Requestable;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
@@ -22,6 +20,7 @@ import java.util.LinkedList;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.chart.*;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -81,6 +80,12 @@ public class DashboardController {
   @FXML private ImageView dirtyWarning3;
   @FXML private ImageView dirtyWarning4;
   @FXML private ImageView dirtyWarning5;
+  @FXML private CategoryAxis categoryAxis = new CategoryAxis();
+  @FXML private NumberAxis numberAxis = new NumberAxis();
+
+  @FXML
+  private BarChart<String, Integer> barChart =
+      new BarChart<String, Integer>(categoryAxis, (Axis) numberAxis);
 
   private Label[] floorsClean;
   private Label[] floorsDirty;
@@ -102,6 +107,21 @@ public class DashboardController {
   }
 
   public void initialize() throws IOException {
+    int[] data = DBUtils.getAllServiceRequestsPriority();
+
+    XYChart.Series series1 = new XYChart.Series();
+    XYChart.Series series2 = new XYChart.Series();
+    XYChart.Series series3 = new XYChart.Series();
+    XYChart.Series series4 = new XYChart.Series();
+    XYChart.Series series5 = new XYChart.Series();
+
+    series1.getData().add(new XYChart.Data("Very High Priority", data[0]));
+    series1.getData().add(new XYChart.Data("High Priority", data[1]));
+    series1.getData().add(new XYChart.Data("Medium Priority", data[2]));
+    series1.getData().add(new XYChart.Data("Low Priority", data[3]));
+    series1.getData().add(new XYChart.Data("Very Low Priority", data[4]));
+
+    barChart.getData().addAll(series1);
     activeRequestCount.setText(String.valueOf(DBUtils.getRequestCount()));
     floorsClean =
         new Label[] {
@@ -256,6 +276,8 @@ public class DashboardController {
 
     NewSceneLoading.loadSidebar(sidebarPane);
   }
+
+  private void setupGraph() {}
 
   private void updateEquipment() {
     for (int i = 0; i < floorsClean.length; i++) {
