@@ -48,5 +48,13 @@ public class OtherTeamAPIs {
   @FXML
   void loadTeamY() {
     System.out.println("Loading Team Y");
+    ProcessBuilder pb = new ProcessBuilder("java", "-jar", "API.jar");
+    pb.directory(new File("src/main/resources/edu/wpi/cs3733/d22/teamY/APIs/TeamY"));
+    try {
+      Process p = pb.start();
+      printResults(p);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }
