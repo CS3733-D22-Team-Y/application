@@ -469,7 +469,7 @@ public class MapPageController<T extends Requestable> {
                               locationShort.getText());
                       DBManager.update(fuckMe);
                       exit();
-                      MapComponent.set = true;
+                      //                      MapComponent.set = true;
                       switchMap(newFloor, mapMode);
                     });
 
@@ -507,7 +507,7 @@ public class MapPageController<T extends Requestable> {
                       DBManager.save(t);
 
                       equip.add(t);
-                      MapComponent.set = true;
+                      //                      MapComponent.set = true;
                       switchMap(newFloor, mapMode);
                       System.out.println(
                           fuck

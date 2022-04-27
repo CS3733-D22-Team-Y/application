@@ -61,19 +61,20 @@ public class MapComponent {
 
             // Translate all children of the root node
             for (Node n : rootPane.getChildren()) {
-              if ((7484 * universalScale - 723) > n.getTranslateX() - dx // 7484
+              if ((7484 * universalScale - 723) > n.getTranslateX() - dx
                   && n.getTranslateX() - dx > 0) {
-                n.setTranslateX(n.getTranslateX() - dx + (set ? 0 : xOff));
+                n.setTranslateX(n.getTranslateX() - dx + (set ? xOff : 0));
               }
               System.out.println("TRANSLATE Y: " + n.getTranslateY());
               if ((3987 * universalScale - 271) > n.getTranslateY() - dy
                   && n.getTranslateY() - dy > 0) {
-                n.setTranslateY(n.getTranslateY() - dy + (set ? 0 : yOff));
+                n.setTranslateY(n.getTranslateY() - dy + (set ? yOff : 0));
               }
             }
 
             if (set) {
               set = false;
+              System.out.println("SET: " + set);
             }
 
             e.consume();
