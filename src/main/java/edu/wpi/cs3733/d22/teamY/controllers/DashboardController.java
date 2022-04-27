@@ -107,19 +107,23 @@ public class DashboardController {
   }
 
   public void initialize() throws IOException {
+
+    // categoryAxis.setLabel("Country");
+    // categoryAxis.setTickLabelRotation(90);
     int[] data = DBUtils.getAllServiceRequestsPriority();
 
     XYChart.Series series1 = new XYChart.Series();
-    XYChart.Series series2 = new XYChart.Series();
-    XYChart.Series series3 = new XYChart.Series();
-    XYChart.Series series4 = new XYChart.Series();
-    XYChart.Series series5 = new XYChart.Series();
 
     series1.getData().add(new XYChart.Data("Very High Priority", data[0]));
     series1.getData().add(new XYChart.Data("High Priority", data[1]));
     series1.getData().add(new XYChart.Data("Medium Priority", data[2]));
     series1.getData().add(new XYChart.Data("Low Priority", data[3]));
     series1.getData().add(new XYChart.Data("Very Low Priority", data[4]));
+    series1.setName("Priorities");
+    // Node fill = series1.getNode().lookup(".chart-series-bar-fill"); // only for AreaChart
+    // Node line = series1.getNode().lookup(".chart-series-bar-line");
+
+    // series1.getNode().setStyle("-fx-bar-fill: green;");
 
     barChart.getData().addAll(series1);
     activeRequestCount.setText(String.valueOf(DBUtils.getRequestCount()));

@@ -14,6 +14,11 @@ public class NewSceneLoading {
   private static final HashMap<String, Scene> allScenes = new HashMap<>();
   private static AnchorPane sidebar;
   private static SideBarController sidebarController;
+  private static Scene currScene;
+
+  public static Scene getCurrScene() {
+    return currScene;
+  }
 
   static {
     try {
@@ -57,7 +62,7 @@ public class NewSceneLoading {
   }
 
   public static void loadScene(String path) {
-    Scene currScene = allScenes.get(path);
+    currScene = allScenes.get(path);
     try {
       addSidebarHelper(currScene);
     } catch (IllegalArgumentException | IOException ignored) {
