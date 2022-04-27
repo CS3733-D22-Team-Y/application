@@ -56,6 +56,8 @@ public class MapComponent {
           if (e.isPrimaryButtonDown()) {
             double dx = dragX - e.getX();
             double dy = dragY - e.getY();
+            dragX = e.getX();
+            dragY = e.getY();
             xOff += dx;
             yOff += dy;
 
@@ -74,7 +76,6 @@ public class MapComponent {
 
             if (set) {
               set = false;
-              System.out.println("SET: " + set);
             }
 
             e.consume();

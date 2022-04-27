@@ -186,7 +186,7 @@ public class SideBarController {
 
   @FXML
   void loadMap() throws IOException {
-    NewSceneLoading.loadScene("views/Map.fxml");
+    NewSceneLoading.loadScene("views/Map2.fxml");
     setButtonSelected(mapHiddenRect);
   }
 

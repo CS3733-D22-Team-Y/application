@@ -199,37 +199,43 @@ public class MapPageController<T extends Requestable> {
         "1",
         "Floor 1",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor1.jpg").toString()), 0, 0, 0.05)),
-    LOWER_LEVEL_1(
-        "L1",
-        "Lower Level 1",
-        new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor-1.jpg").toString()), 0, 0, 0.05)),
-    LOWER_LEVEL_2(
-        "L2",
-        "Lower Level 2",
-        new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor-2.jpg").toString()), 0, 0, 0.05)),
-    SECOND_FLOOR(
-        "2",
-        "Floor 2",
-        new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor2.jpg").toString()), 0, 0, 0.05)),
-    THIRD_FLOOR(
-        "3",
-        "Floor 3",
-        new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor3.jpg").toString()), 0, 0, 0.05)),
-    FOURTH_FLOOR(
-        "4",
-        "Floor 4",
-        new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor4.jpg").toString()), 0, 0, 0.05)),
-    FIFTH_FLOOR(
-        "5",
-        "Floor 5",
-        new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor5.jpg").toString()), 0, 0, 0.05));
+            new Image(App.class.getResource("views/images/floor1.jpg").toString()), 0, 0, 0.05));
+    //    LOWER_LEVEL_1(
+    //        "L1",
+    //        "Lower Level 1",
+    //        new MapComponent.MapImage(
+    //            new Image(App.class.getResource("views/images/floor-1.jpg").toString()), 0, 0,
+    // 0.05)),
+    //    LOWER_LEVEL_2(
+    //        "L2",
+    //        "Lower Level 2",
+    //        new MapComponent.MapImage(
+    //            new Image(App.class.getResource("views/images/floor-2.jpg").toString()), 0, 0,
+    // 0.05)),
+    //    SECOND_FLOOR(
+    //        "2",
+    //        "Floor 2",
+    //        new MapComponent.MapImage(
+    //            new Image(App.class.getResource("views/images/floor2.jpg").toString()), 0, 0,
+    // 0.05)),
+    //    THIRD_FLOOR(
+    //        "3",
+    //        "Floor 3",
+    //        new MapComponent.MapImage(
+    //            new Image(App.class.getResource("views/images/floor3.jpg").toString()), 0, 0,
+    // 0.05)),
+    //    FOURTH_FLOOR(
+    //        "4",
+    //        "Floor 4",
+    //        new MapComponent.MapImage(
+    //            new Image(App.class.getResource("views/images/floor4.jpg").toString()), 0, 0,
+    // 0.05)),
+    //    FIFTH_FLOOR(
+    //        "5",
+    //        "Floor 5",
+    //        new MapComponent.MapImage(
+    //            new Image(App.class.getResource("views/images/floor5.jpg").toString()), 0, 0,
+    // 0.05));
 
     public final String dbKey;
     public final String name;
@@ -286,6 +292,7 @@ public class MapPageController<T extends Requestable> {
                   // The element was created
                   try {
                     DBManager.save(created);
+                    MapComponent.set = true;
                     switchMap(newFloor, mapMode);
                   } catch (Exception e1) {
                     e1.printStackTrace();
@@ -609,12 +616,12 @@ public class MapPageController<T extends Requestable> {
     // modeBox.setValue("Locations");
     floorLL1Button.setOnAction(
         e -> {
-          switchMap(Floors.LOWER_LEVEL_1, mapMode);
+          //          switchMap(Floors.LOWER_LEVEL_1, mapMode);
           currentFloor = "ll1";
         });
     floorLL2Button.setOnAction(
         e -> {
-          switchMap(Floors.LOWER_LEVEL_2, mapMode);
+          //          switchMap(Floors.LOWER_LEVEL_2, mapMode);
           currentFloor = "ll2";
         });
     floor1Button.setOnAction(
@@ -624,22 +631,22 @@ public class MapPageController<T extends Requestable> {
         });
     floor2Button.setOnAction(
         e -> {
-          switchMap(Floors.SECOND_FLOOR, mapMode);
+          //          switchMap(Floors.SECOND_FLOOR, mapMode);
           currentFloor = "2";
         });
     floor3Button.setOnAction(
         e -> {
-          switchMap(Floors.THIRD_FLOOR, mapMode);
+          //          switchMap(Floors.THIRD_FLOOR, mapMode);
           currentFloor = "3";
         });
     floor4Button.setOnAction(
         e -> {
-          switchMap(Floors.FOURTH_FLOOR, mapMode);
+          //          switchMap(Floors.FOURTH_FLOOR, mapMode);
           currentFloor = "4";
         });
     floor5Button.setOnAction(
         e -> {
-          switchMap(Floors.FIFTH_FLOOR, mapMode);
+          //          switchMap(Floors.FIFTH_FLOOR, mapMode);
           currentFloor = "5";
         });
     /*
@@ -652,6 +659,7 @@ public class MapPageController<T extends Requestable> {
      */
 
     // Load initial floor and mode
+    MapComponent.set = true;
     switchMap(lastFloor, MapMode.LOCATION);
     equipInfoPane.setVisible(false);
     reqInfoPane.setVisible(false);
@@ -847,36 +855,36 @@ public class MapPageController<T extends Requestable> {
   public ArrayList<Point> getHex(int n, double r, Point center) {
     ArrayList<Point> res = new ArrayList<Point>();
     res.add(center);
-    if (n != 1) {
-      res.addAll(getHexRecursive(--n, r, center, 1));
-    }
+    //    if (n != 1) {
+    //      res.addAll(getHexRecursive(--n, r, center, 1));
+    //    }
     return res;
   }
-
-  private ArrayList<Point> getHexRecursive(int n, double r, Point center, int layer) {
-    ArrayList<Point> res = new ArrayList<Point>();
-    int num = 6 * layer;
-    double dAngle = Math.toRadians(360.0 / num);
-    for (int i = 0; i < num && n > 0; i++) {
-      res.add(
-          new Point(
-              center.x + (2 * r * layer + 1) * Math.cos(dAngle * i),
-              center.y + (2 * r * layer + 1) * Math.sin(dAngle * i)));
-      n = n - 1;
-    }
-    if (n != 0) {
-      res.addAll(getHexRecursive(n, r, center, ++layer));
-    }
-    return res;
-  }
-
-  class Point {
-    double x;
-    double y;
-
-    Point(double x, double y) {
-      this.x = x;
-      this.y = y;
-    }
-  }
+  //
+  //  private ArrayList<Point> getHexRecursive(int n, double r, Point center, int layer) {
+  //    ArrayList<Point> res = new ArrayList<Point>();
+  //    int num = 6 * layer;
+  //    double dAngle = Math.toRadians(360.0 / num);
+  //    for (int i = 0; i < num && n > 0; i++) {
+  //      res.add(
+  //          new Point(
+  //              center.x + (2 * r * layer + 1) * Math.cos(dAngle * i),
+  //              center.y + (2 * r * layer + 1) * Math.sin(dAngle * i)));
+  //      n = n - 1;
+  //    }
+  //    if (n != 0) {
+  //      res.addAll(getHexRecursive(n, r, center, ++layer));
+  //    }
+  //    return res;
+  //  }
+  //
+  //  class Point {
+  //    double x;
+  //    double y;
+  //
+  //    Point(double x, double y) {
+  //      this.x = x;
+  //      this.y = y;
+  //    }
+  //  }
 }

@@ -21,7 +21,7 @@
          <AnchorPane fx:id="mapRoot" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
       </center>
       <bottom>
-         <Pane pickOnBounds="false" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <Pane layoutX="300.0" layoutY="600.0" pickOnBounds="false" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
                <Pane fx:id="ll1MainPane" layoutX="10.0" layoutY="-110.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
                   <children>
