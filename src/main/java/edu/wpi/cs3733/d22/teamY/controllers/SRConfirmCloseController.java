@@ -5,7 +5,7 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
-public class SRConfirmCloseController {
+public class SRConfirmCloseController implements IController {
   @FXML private JFXButton stayButton;
   @FXML private JFXButton exitButton;
 
@@ -24,4 +24,12 @@ public class SRConfirmCloseController {
     stage = (Stage) stayButton.getScene().getWindow();
     stage.close();
   }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {}
 }

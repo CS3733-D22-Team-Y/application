@@ -29,7 +29,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
-public class MapPageController<T extends Requestable> {
+public class MapPageController<T extends Requestable> implements IController {
 
   enum MapMode {
     LOCATION("Locations"),
@@ -176,6 +176,9 @@ public class MapPageController<T extends Requestable> {
   private final int pinDim = 100;
   private final int pinDim2 = 25;
 
+  // Snapping
+  private static final double LARGEST_SNAP_DISTANCE = 200;
+
   // Screen size constants
   private static final int MAP_XMIN = 0;
   private static final int MAP_YMIN = 0;
@@ -298,6 +301,8 @@ public class MapPageController<T extends Requestable> {
     try {
       // Get all locations on the floor
       List<Node> mapElements = new ArrayList<>();
+      List<Node> allLocations = new ArrayList<>();
+      List<String> allLocationIDs = new ArrayList<>();
 
       // Gets all locations on the newly selected floor
       DBUtils.getLocationsOnFloor(newFloor.dbKey)
@@ -346,6 +351,9 @@ public class MapPageController<T extends Requestable> {
                 newLocation.getChildren().add(imageView);
                 newLocation.visibleProperty().bind(locationsCheckbox.selectedProperty());
                 mapElements.add(newLocation);
+                allLocations.add(newLocation);
+                // TODO: Add all loc IDs to the list
+                allLocationIDs.add(l.getNodeID());
                 // Add equipment bubbles
                 if (hasEquipment) {
                   Circle c =
@@ -426,6 +434,36 @@ public class MapPageController<T extends Requestable> {
                         equipLocation.setText(o.getEquipLocId());
                         equipType.setText(o.getEquipType());
                         equipClean.setText(o.getIsClean());
+                      });
+                  // Dragging the pin
+                  newMedEquip.setOnMouseDragged(
+                      e -> {
+                        if (e.isPrimaryButtonDown()) {
+                          MapComponent.setIsDraggingPin(true);
+                          newMedEquip.setLayoutX(e.getX() + newMedEquip.getLayoutX() - 48 * .25);
+                          newMedEquip.setLayoutY(e.getY() + newMedEquip.getLayoutY() - 95 * .25);
+                        }
+                      });
+                  newMedEquip.setOnMouseReleased(
+                      e -> {
+                        MapComponent.setIsDraggingPin(false);
+                        // Add the updated equipment
+                        MedEquip equipPiece = equip.get(currentEquip);
+                        MedEquip newEquip =
+                            new MedEquip(
+                                String.valueOf(equipPiece.getEquipID()),
+                                equipPiece.getEquipType(),
+                                findNearestLoc(
+                                    newMedEquip.getLayoutX() - 48 * .25,
+                                    newMedEquip.getLayoutY() - 95 * .25,
+                                    allLocations,
+                                    allLocationIDs,
+                                    equipPiece.getEquipLocId()),
+                                equipPiece.getIsClean(),
+                                equipPiece.getStatus());
+                        DBManager.update(newEquip);
+                        equip.add(newEquip);
+                        switchMap(newFloor, mapMode);
                       });
                 }
                 if (serviceRequestAdded) {
@@ -526,6 +564,32 @@ public class MapPageController<T extends Requestable> {
 
     // Switch to new background image
     imageView.setImage(floorImages.get(newFloor));
+  }
+
+  private String findNearestLoc(
+      double xCoord,
+      double yCoord,
+      List<Node> allLocations,
+      List<String> allLocationIDs,
+      String defaultNodeToSnapTo) {
+
+    int bestID = 0;
+    double lowestDistance = LARGEST_SNAP_DISTANCE;
+
+    for (int i = 0; i < allLocations.size(); i++) {
+      Node currNode = allLocations.get(i);
+      double nodeX = currNode.getLayoutX();
+      double nodeY = currNode.getLayoutY();
+      double xDist = Math.abs(nodeX - xCoord);
+      double yDist = Math.abs(nodeY - yCoord);
+      double totalDist = Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
+      if (totalDist < lowestDistance) {
+        lowestDistance = totalDist;
+        bestID = i;
+      }
+    }
+    if (lowestDistance >= LARGEST_SNAP_DISTANCE) return defaultNodeToSnapTo;
+    else return allLocationIDs.get(bestID);
   }
 
   public void initialize() throws IOException {
@@ -876,5 +940,15 @@ public class MapPageController<T extends Requestable> {
       this.x = x;
       this.y = y;
     }
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
   }
 }

@@ -26,8 +26,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.shape.Rectangle;
 
-public class DashboardController {
+public class DashboardController implements IController {
 
   public class EquipmentMonitor {
     private Object thingToWatch;
@@ -81,6 +82,10 @@ public class DashboardController {
   @FXML private ImageView dirtyWarning3;
   @FXML private ImageView dirtyWarning4;
   @FXML private ImageView dirtyWarning5;
+
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
+  @FXML private Rectangle bgGradient;
 
   private Label[] floorsClean;
   private Label[] floorsDirty;
@@ -390,5 +395,16 @@ public class DashboardController {
         break;
     }
     return path + im + ".png";
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage, bgGradient);
   }
 }

@@ -5,7 +5,9 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
@@ -15,9 +17,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class MedicalEquipmentRequestController {
+public class MedicalEquipmentRequestController implements IController {
   // Text Inputs
   @FXML private JFXComboBox<String> nursesComboBox;
   @FXML private TextField nursesHiddenField;
@@ -40,6 +43,9 @@ public class MedicalEquipmentRequestController {
   private final String reclinerText = "RECLINER";
 
   private Scene requestMenu = null;
+
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
 
   public MedicalEquipmentRequestController() throws IOException {}
 
@@ -206,5 +212,16 @@ public class MedicalEquipmentRequestController {
     errorLabel.setText("");
     roomsComboBox.setValue("");
     nursesComboBox.setValue("");
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }
