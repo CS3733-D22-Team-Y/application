@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" maxHeight="780.0" maxWidth="920.0" minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/Blank.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.HelpButtonController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eeeeee" height="500.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="700.0" />
+      <Label layoutX="18.0" styleClass="title" text="Help : Map">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Arial Rounded MT Bold" size="45.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="10.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="246.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="80.0" layoutX="43.0" layoutY="123.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
+      <VBox layoutX="128.0" layoutY="128.0" spacing="5.0">
+         <children>
+            <MFXCheckbox text="Locations" />
+            <MFXCheckbox text="Medical Equipment" />
+            <MFXCheckbox text="Service Requests" />
+         </children>
+      </VBox>
+      <Label layoutX="73.0" layoutY="168.0" text="Add" />
+      <Label layoutX="63.0" layoutY="181.0" text="Location" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="77.0" prefHeight="37.0" prefWidth="683.0" text="Navigation pins show locations for service requests, medical equipment, and other various things">
+         <font>
+            <Font name="Microsoft Tai Le" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="37.0" fitWidth="40.0" layoutX="65.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons/pin.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="22.0" layoutY="235.0" text="Click and drag a navigation pin" />
+      <Label layoutX="13.0" layoutY="250.0" text="onto the map to specify a location" />
+      <Label layoutX="133.0" layoutY="275.0" text="Specific navigation pins can" />
+      <Label layoutX="149.0" layoutY="290.0" text="be filtered for with the" />
+      <Label layoutX="175.0" layoutY="305.0" text="checkmarks" />
+      <Circle fill="#1f93ff80" layoutX="84.0" layoutY="167.0" radius="15.0" stroke="#4f4f4f" strokeType="INSIDE" />
+      <Line endY="17.50921630859375" layoutX="84.0" layoutY="213.0" startY="-31.0" stroke="#4f4f4f" />
+      <Circle fill="#1f93ff80" layoutX="205.0" layoutY="163.0" radius="15.0" stroke="#4f4f4f" strokeType="INSIDE" />
+      <Line endX="-39.01416015625" endY="49.922576904296875" layoutX="264.0" layoutY="217.0" startX="-56.541015625" startY="-39.0" stroke="#4f4f4f" />
+      <Pane fx:id="equipInfoPane" layoutX="469.0" layoutY="20.0" prefHeight="447.0" prefWidth="303.0">
+         <children>
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="700.0" layoutX="-15.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
+            <TextField alignment="CENTER" editable="false" layoutX="69.0" layoutY="115.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Equip ID:">
+               <font>
+                  <Font name="Microsoft Tai Le" size="12.0" />
+               </font>
+            </TextField>
+            <MFXTextField floatMode="DISABLED" layoutX="47.0" layoutY="149.0" prefHeight="48.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+            <VBox layoutX="-14.0" layoutY="267.0" spacing="11.0">
+               <children>
+                  <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Location ID:">
+                     <font>
+                        <Font name="Microsoft Tai Le" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Equip Type:">
+                     <font>
+                        <Font name="Microsoft Tai Le" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Is Clean?:">
+                     <font>
+                        <Font name="Microsoft Tai Le" size="12.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox layoutX="73.0" layoutY="268.0" spacing="20.0">
+               <children>
+                  <MFXTextField floatMode="DISABLED" prefHeight="0.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+                  <MFXTextField floatMode="DISABLED" prefHeight="8.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+                  <MFXTextField floatMode="DISABLED" prefHeight="0.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+               </children>
+            </VBox>
+            <MFXButton layoutX="4.0" layoutY="148.0" text="&lt;">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </MFXButton>
+            <MFXButton layoutX="173.0" layoutY="148.0" text="&gt;">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </MFXButton>
+         </children>
+      </Pane>
+      <Pane fx:id="ll1MainPane" layoutX="18.0" layoutY="190.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
+         <children>
+            <MFXButton layoutY="250.0" onMouseEntered="#LL1Enter" onMouseExited="#LL1Exit" prefHeight="50.0" prefWidth="50.0" text="LL1">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </MFXButton>
+            <Pane mouseTransparent="true" pickOnBounds="false" prefHeight="250.0" prefWidth="50.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="152.0" layoutX="-1.0" layoutY="98.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="53.0" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons/bellLogo.png" />
+                     </image>
+                  </ImageView>
+                  <TextField editable="false" layoutX="25.0" layoutY="224.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="0" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="4.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons/bedlogoBlack.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons/pumplogoBlack.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons/reclinerlogoBlack.png" />
+                     </image>
+                  </ImageView>
+                  <TextField editable="false" layoutX="25.0" layoutY="196.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="0" />
+                  <TextField editable="false" layoutX="25.0" layoutY="166.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="0" />
+                  <TextField editable="false" layoutX="25.0" layoutY="135.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="0" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="5.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons/xrayIcon.png" />
+                     </image>
+                  </ImageView>
+                  <TextField editable="false" layoutX="25.0" layoutY="103.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="0" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <MFXButton layoutX="79.0" layoutY="440.0" onMouseEntered="#LL1Enter" onMouseExited="#LL1Exit" prefHeight="50.0" prefWidth="50.0" text="LL2">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </MFXButton>
+      <MFXButton layoutX="138.0" layoutY="440.0" onMouseEntered="#LL1Enter" onMouseExited="#LL1Exit" prefHeight="50.0" prefWidth="50.0" text="L1">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </MFXButton>
+      <MFXButton layoutX="196.0" layoutY="440.0" onMouseEntered="#LL1Enter" onMouseExited="#LL1Exit" prefHeight="50.0" prefWidth="50.0" text="L2">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </MFXButton>
+      <Circle fill="#1f93ff80" layoutX="73.0" layoutY="465.0" radius="15.0" stroke="#4f4f4f" strokeType="INSIDE" />
+      <Label layoutX="111.0" layoutY="375.0" text="Clicking on one of the tabs at the bottom of the screen" />
+      <Label layoutX="110.0" layoutY="392.0" text="can load the map of another floor. Hovering the mouse" />
+      <Label layoutX="129.0" layoutY="409.0" text="a tab can display amounts of various equipment" />
+      <Line endX="-124.99629974365234" endY="110.4283447265625" layoutX="242.0" layoutY="308.0" startX="-160.03915405273438" startY="145.2935791015625" stroke="#4f4f4f" />
+      <Circle fill="#1f93ff80" layoutX="587.0" layoutY="327.0" radius="15.0" stroke="#4f4f4f" strokeType="INSIDE" />
+      <Label layoutX="307.0" layoutY="173.0" text="Clicking on an existing" />
+      <Label layoutX="318.0" layoutY="188.0" text="navigation pin will" />
+      <Label layoutX="327.0" layoutY="202.0" text="let you edit the" />
+      <Label layoutX="314.0" layoutY="216.0" text="specific information" />
+      <Label layoutX="322.0" layoutY="231.0" text="contained within" />
+      <Label layoutX="332.0" layoutY="245.0" text="that location" />
+      <Line endX="144.87677001953125" endY="15.999282836914062" layoutX="274.0" layoutY="227.0" startX="300.24420166015625" startY="93.52935791015625" stroke="#4f4f4f" />
+      <MFXButton fx:id="backButton" computeRadiusMultiplier="false" layoutX="590.0" layoutY="10.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+      </MFXButton>
+   </children>
+</AnchorPane>

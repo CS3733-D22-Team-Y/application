@@ -711,6 +711,11 @@ public class MapPageController<T extends Requestable> {
     servicesCheckbox.setSelected(true);
   }
 
+  @FXML
+  private void openMapHelp() throws IOException {
+    SceneLoading.loadPopup("views/popups/MapHelp.fxml", "views/SideBar.fxml");
+  }
+
   public void exit() {
     locationInfoPane.setVisible(false);
     equipInfoPane.setVisible(false);
