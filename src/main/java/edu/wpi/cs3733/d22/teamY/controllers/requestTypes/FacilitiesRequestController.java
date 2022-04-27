@@ -106,8 +106,7 @@ public class FacilitiesRequestController implements IController {
     Boolean allFields = !Objects.equals(roomsHiddenField.getText(), "");
 
     if (typeSelected || allFields) {
-      SceneLoading.loadPopup(
-          "views/popups/ReqAbort.fxml", "views/requestTypes/FacilitiesRequest.fxml");
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/SideBar.fxml");
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/FacilitiesRequest.fxml");
       } else {

@@ -140,8 +140,7 @@ public class TranslatorRequestController implements IController {
             otherRadioButton)
         || !Objects.equals(roomsHiddenField.getText(), "")
         || !Objects.equals(nursesHiddenField.getText(), "")) {
-      SceneLoading.loadPopup(
-          "views/popups/ReqAbort.fxml", "views/requestTypes/TranslatorRequest.fxml");
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/SideBar.fxml");
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/TranslatorRequest.fxml");
       } else {

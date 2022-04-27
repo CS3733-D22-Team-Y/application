@@ -108,9 +108,10 @@ public class SpecialistRequestController implements IController {
     if (RequestControllerUtil.isRadioButtonSelected(
             dermatologistButton, cardiologistButton, neurologistButton)
         || !input_AdditionalNotes.getText().equals("")
-        || !Objects.equals(roomsHiddenField.getText(), "")) {
+        || !roomsHiddenField.getText().equals("")) {
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/SideBar.fxml");
       if (SceneLoading.stayOnPage) {
-        NewSceneLoading.loadScene("views/requestTypes/FloralRequest.fxml");
+        NewSceneLoading.loadScene("views/requestTypes/SpecialistRequest.fxml");
       } else {
         NewSceneLoading.loadScene("views/RequestMenu.fxml");
       }

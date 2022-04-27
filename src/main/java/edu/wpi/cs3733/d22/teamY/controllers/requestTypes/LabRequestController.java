@@ -119,7 +119,7 @@ public class LabRequestController implements IController {
             bloodRadioButton, urineRadioButton, xrayRadioButton, catScanRadioButton, mriRadioButton)
         || !Objects.equals(roomsHiddenField.getText(), "")
         || !Objects.equals(nursesHiddenField.getText(), "")) {
-      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/SideBar.fxml");
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/LabResult.fxml");
       } else {

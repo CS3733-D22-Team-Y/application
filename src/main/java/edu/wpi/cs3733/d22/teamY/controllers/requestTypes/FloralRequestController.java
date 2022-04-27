@@ -118,6 +118,7 @@ public class FloralRequestController implements IController {
         || !Objects.equals(nursesHiddenField.getText(), "")
         || !input_AdditionalNotes.getText().equals("")
         || !Objects.equals(roomsHiddenField.getText(), "")) {
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/SideBar.fxml");
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/FloralRequest.fxml");
       } else {

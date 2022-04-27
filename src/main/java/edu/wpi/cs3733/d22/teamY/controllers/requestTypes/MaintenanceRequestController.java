@@ -154,7 +154,7 @@ public class MaintenanceRequestController implements IController {
     Boolean allFields = !Objects.equals(roomsHiddenField.getText(), "");
 
     if (typeSelected || prioritySelected || allFields) {
-      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/SideBar.fxml");
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/MaintenanceRequest.fxml");
       } else {
