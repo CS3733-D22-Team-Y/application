@@ -277,6 +277,7 @@ public class WelcomePageController {
 
   void display2FAOptions() throws IOException {
     String[] auth = Auth.getKeys(username.getText());
+    boolean didAuth = false;
     if (username.getText().equals("admin")) {
       faPane.setVisible(false);
       loginPane.setVisible(false);
@@ -285,22 +286,31 @@ public class WelcomePageController {
     if (Arrays.asList(auth).contains("yubikey")) {
       faYubikeyButton.setVisible(true);
       faYubikeyPane.setOpacity(1);
+      didAuth = true;
     }
     if (Arrays.asList(auth).contains("pushbullet")) {
       faPushButton.setVisible(true);
       faPushPane.setOpacity(1);
+      didAuth = true;
     }
     if (Arrays.asList(auth).contains("email")) {
       faEmailButton.setVisible(true);
       faEmailPane.setOpacity(1);
+      didAuth = true;
     }
     if (Arrays.asList(auth).contains("sms")) {
       faSmsButton.setVisible(true);
       faSmsPane.setOpacity(1);
+      didAuth = true;
     }
 
     loginPane.setVisible(false);
     faPane.setVisible(true);
+
+    if (!didAuth) {
+      System.out.println("No 2FA methods available!");
+      loginAnimation();
+    }
   }
 
   @FXML
