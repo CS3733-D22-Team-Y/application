@@ -364,41 +364,34 @@ public class MapPageController<T extends Requestable> implements IController {
                     newMedEquip.setLayoutY(l.getYCoord());
                     Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
                     ImageView equipIcon = new ImageView();
-                    /*
-                    if (equip.size() < 9) {
-                      equipIcon.setImage(
-                          new Image(
-                              String.valueOf(
-                                  App.class
-                                      .getResource("views/images/icons/" + equip.size() + ".png")
-                                      .toString())));
-                    } else {
-                      equipIcon.setImage(
-                          new Image(
-                              String.valueOf(
-                                  App.class.getResource("views/images/icons/9.png").toString())));
-                    }
-                     */
                     switch (equip.get(i).getEquipType()) {
                       case ("PUMP"):
                         equipIcon.setImage(
                             new Image(
-                                App.class.getResource("views/images/icons/1.png").toString()));
+                                App.class
+                                    .getResource("views/images/icons/pumpLogoWhite.png")
+                                    .toString()));
                         break;
                       case ("XRAY"):
                         equipIcon.setImage(
                             new Image(
-                                App.class.getResource("views/images/icons/2.png").toString()));
+                                App.class
+                                    .getResource("views/images/icons/xrayIconWhite.png")
+                                    .toString()));
                         break;
                       case ("RECLINER"):
                         equipIcon.setImage(
                             new Image(
-                                App.class.getResource("views/images/icons/3.png").toString()));
+                                App.class
+                                    .getResource("views/images/icons/reclinerLogoWhite.png")
+                                    .toString()));
                         break;
                       case ("BED"):
                         equipIcon.setImage(
                             new Image(
-                                App.class.getResource("views/images/icons/4.png").toString()));
+                                App.class
+                                    .getResource("views/images/icons/bedLogoWhite.png")
+                                    .toString()));
                         break;
                       default:
                         System.out.println("Invalid, type: " + equip.get(i).getEquipType());
