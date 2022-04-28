@@ -83,7 +83,7 @@ public class ActiveServiceRequestController implements IController {
 
   @FXML
   private void openActiveReqHelp() throws IOException {
-    SceneLoading.loadPopup("views/popups/ActiveReqHelp.fxml", "views/SideBar.fxml");
+    SceneLoading.loadPopup("views/popups/HelpActiveRequests.fxml", "views/SideBar.fxml");
   }
 
   @Override
