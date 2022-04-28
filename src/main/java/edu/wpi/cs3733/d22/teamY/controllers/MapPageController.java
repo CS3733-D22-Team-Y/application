@@ -317,6 +317,10 @@ public class MapPageController implements IController {
 
                 boolean hasEquipment = equip.size() > 0;
                 List<ServiceRequest> requests = DBUtils.getAllServiceReqsAtLocation(l);
+                System.out.println("Target: " + l.getNodeID());
+                for (ServiceRequest r : requests) {
+                  System.out.println(r.getLocationID());
+                }
                 if (requests.size() > 0) {
                   System.out.println("Requests: " + requests.size());
                 }
@@ -827,6 +831,7 @@ public class MapPageController implements IController {
     currentEquip = currentEquip % fuck3.size();
     MedEquip o = fuck3.get(currentEquip);
     fuck = String.valueOf(o.getEquipID());
+    System.out.println(fuck);
     equipID.setText(String.valueOf(o.getEquipID()));
     equipLocation.setText(o.getEquipLocId());
     equipType.setText(o.getEquipType());
