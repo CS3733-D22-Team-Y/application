@@ -156,6 +156,10 @@ public class MapPageController<T extends Requestable> implements IController {
 
   int locationPinDefaultX = 500;
   int locationPinDefaultY = 500;
+
+  public static int runningX = 0;
+  public static int runningY = 0;
+  public static double runningZoom = 0.3;
   ImageView locationPin;
 
   Circle locationDot = new Circle(0, 0, 0, Color.RED);
@@ -185,6 +189,11 @@ public class MapPageController<T extends Requestable> implements IController {
   private static final int MAP_XMAX = 700;
   private static final int MAP_YMAX = 700;
   private static final int iconDim = 50;
+
+  public static double liveSc = 0.05;
+  public static double liveX = 0;
+  public static double liveY = 0;
+
   public static final Map<String, String> equipNames =
       Map.of(
           "BED", "Bed",
@@ -202,37 +211,58 @@ public class MapPageController<T extends Requestable> implements IController {
         "1",
         "Floor 1",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor1.jpg").toString()), 0, 0, 0.05)),
+            new Image(App.class.getResource("views/images/floor1.jpg").toString()),
+            liveX,
+            liveY,
+            liveSc)),
     LOWER_LEVEL_1(
         "L1",
         "Lower Level 1",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor-1.jpg").toString()), 0, 0, 0.05)),
+            new Image(App.class.getResource("views/images/floor-1.jpg").toString()),
+            liveX,
+            liveY,
+            liveSc)),
     LOWER_LEVEL_2(
         "L2",
         "Lower Level 2",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor-2.jpg").toString()), 0, 0, 0.05)),
+            new Image(App.class.getResource("views/images/floor-2.jpg").toString()),
+            liveX,
+            liveY,
+            liveSc)),
     SECOND_FLOOR(
         "2",
         "Floor 2",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor2.jpg").toString()), 0, 0, 0.05)),
+            new Image(App.class.getResource("views/images/floor2.jpg").toString()),
+            liveX,
+            liveY,
+            liveSc)),
     THIRD_FLOOR(
         "3",
         "Floor 3",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor3.jpg").toString()), 0, 0, 0.05)),
+            new Image(App.class.getResource("views/images/floor3.jpg").toString()),
+            liveX,
+            liveY,
+            liveSc)),
     FOURTH_FLOOR(
         "4",
         "Floor 4",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor4.jpg").toString()), 0, 0, 0.05)),
+            new Image(App.class.getResource("views/images/floor4.jpg").toString()),
+            liveX,
+            liveY,
+            liveSc)),
     FIFTH_FLOOR(
         "5",
         "Floor 5",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor5.jpg").toString()), 0, 0, 0.05));
+            new Image(App.class.getResource("views/images/floor5.jpg").toString()),
+            liveX,
+            liveY,
+            liveSc));
 
     public final String dbKey;
     public final String name;
@@ -265,6 +295,7 @@ public class MapPageController<T extends Requestable> implements IController {
    * @param newMode
    */
   private void switchMap(Floors newFloor, MapMode newMode) {
+    System.out.println(liveX + " " + liveY + " " + liveSc);
     lastFloor = newFloor;
 
     mapComponent
@@ -289,6 +320,7 @@ public class MapPageController<T extends Requestable> implements IController {
                   // The element was created
                   try {
                     DBManager.save(created);
+
                     switchMap(newFloor, mapMode);
                   } catch (Exception e1) {
                     e1.printStackTrace();

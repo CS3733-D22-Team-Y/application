@@ -1,5 +1,6 @@
 package edu.wpi.cs3733.d22.teamY.component;
 
+import edu.wpi.cs3733.d22.teamY.controllers.MapPageController;
 import java.util.List;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
@@ -8,7 +9,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.layout.*;
 
 public class MapComponent {
-  public double universalScale = 0.3;
+  public static double universalScale = 0.3;
 
   private static boolean isDraggingPin = false;
 
@@ -21,6 +22,8 @@ public class MapComponent {
       this.initialX = initialX;
       this.initialY = initialY;
       this.initialScale = initialScale;
+      System.out.println("MapImage created");
+      System.out.println(initialX + " " + initialY + " " + initialScale);
     }
   }
 
@@ -70,13 +73,19 @@ public class MapComponent {
                 n.setTranslateY(n.getTranslateY() - dy);
               }
             }
-
+            MapPageController.runningX += dx;
+            MapPageController.runningY += dy;
+            MapPageController.liveX = e.getX();
+            MapPageController.liveY = e.getY();
             e.consume();
           }
         });
 
     rootPane.setOnScroll(
-        e -> handleZoom(Math.pow(1.01, e.getDeltaY()), e.getSceneX(), e.getSceneY()));
+        e -> {
+          System.out.println("ZOOM: " + MapPageController.runningZoom);
+          handleZoom(Math.pow(1.01, e.getDeltaY()), e.getSceneX(), e.getSceneY());
+        });
   }
 
   private void handleZoom(double delta, double pivotX, double pivotY) {
@@ -101,7 +110,7 @@ public class MapComponent {
         n.setTranslateY(n.getTranslateY() - f * dy);
         mapPane.setScaleX(scale);
         mapPane.setScaleY(scale);
-        universalScale = scale;
+        MapPageController.liveSc = scale;
       }
     }
   }
