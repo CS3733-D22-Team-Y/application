@@ -389,11 +389,10 @@
             <Image url="@images/icons/dash/MusicIcons/11zon_cropped%20(2).png" />
          </image>
       </ImageView>
-      <Group layoutX="890.0" layoutY="397.0" />
       <Group layoutX="894.0" layoutY="396.0">
          <children>
             <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="375.0" layoutX="-3.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="305.0" />
-            <Label layoutX="8.0" layoutY="55.0" styleClass="title" text="Floor">
+            <Label layoutX="8.0" layoutY="19.0" styleClass="title" text="Floor">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -414,7 +413,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label layoutX="56.0" layoutY="302.0" styleClass="title" text="1">
+            <Label layoutX="47.0" layoutY="349.0" styleClass="title" text="L2">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -435,48 +434,25 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="clean1" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="302.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="5" textFill="#3f833f">
+            <Label fx:id="cleanl2" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="351.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="3" textFill="#3f833f">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="dirty1" layoutX="193.0" layoutY="302.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="5" textFill="#d74420">
+            <Label fx:id="dirtyl2" layoutX="193.0" layoutY="351.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="0" textFill="#d74420">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="56.0" layoutY="251.0" styleClass="title" text="2">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <Label fx:id="clean2" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="251.0" prefWidth="60.0" styleClass="title" text="10" textFill="#3f833f">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-            </Label>
-            <Label fx:id="dirty2" layoutX="193.0" layoutY="251.0" prefWidth="60.0" styleClass="title" text="10" textFill="#d74420">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-            </Label>
-            <Label layoutX="56.0" layoutY="201.0" styleClass="title" text="3">
+            <ImageView fx:id="dirtyWarningl2" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons/dash/warning.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.18" />
+               </effect>
+            </ImageView>
+            <Label layoutX="47.0" layoutY="300.0" styleClass="title" text="L1">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -497,48 +473,25 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="clean3" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="202.0" prefWidth="60.0" styleClass="title" text="11" textFill="#3f833f">
+            <Label fx:id="cleanl1" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="302.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="0" textFill="#3f833f">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="dirty3" layoutX="193.0" layoutY="202.0" prefWidth="60.0" styleClass="title" text="11" textFill="#d74420">
+            <Label fx:id="dirtyl1" layoutX="193.0" layoutY="302.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="3" textFill="#d74420">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="56.0" layoutY="151.0" styleClass="title" text="4">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <Label fx:id="clean4" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="151.0" prefWidth="60.0" styleClass="title" text="33" textFill="#3f833f">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-            </Label>
-            <Label fx:id="dirty4" layoutX="193.0" layoutY="151.0" prefWidth="60.0" styleClass="title" text="33" textFill="#d74420">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-            </Label>
-            <Label layoutX="56.0" layoutY="101.0" styleClass="title" text="5">
+            <ImageView fx:id="dirtyWarningl1" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons/dash/warning.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.18" />
+               </effect>
+            </ImageView>
+            <Label layoutX="56.0" layoutY="252.0" styleClass="title" text="1">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -559,68 +512,192 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="clean5" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="101.0" prefWidth="60.0" styleClass="title" text="19" textFill="#3f833f">
+            <Label fx:id="clean1" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="253.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="5" textFill="#3f833f">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="dirty5" layoutX="193.0" layoutY="101.0" prefWidth="60.0" styleClass="title" text="19" textFill="#d74420">
+            <Label fx:id="dirty1" layoutX="193.0" layoutY="253.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="5" textFill="#d74420">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1e648b" height="225.0" layoutX="174.0" layoutY="107.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="5.0" />
-            <Label layoutX="103.0" layoutY="60.0" styleClass="title" text="Clean" textFill="#3f833f">
+            <ImageView fx:id="dirtyWarning1" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons/dash/warning.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.18" />
+               </effect>
+            </ImageView>
+            <Label layoutX="56.0" layoutY="202.0" styleClass="title" text="2">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="clean2" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="202.0" prefWidth="60.0" styleClass="title" text="10" textFill="#3f833f">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="dirty2" layoutX="193.0" layoutY="202.0" prefWidth="60.0" styleClass="title" text="10" textFill="#d74420">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="dirtyWarning2" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons/dash/warning.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.18" />
+               </effect>
+            </ImageView>
+            <Label layoutX="56.0" layoutY="153.0" styleClass="title" text="3">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="clean3" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="154.0" prefWidth="60.0" styleClass="title" text="11" textFill="#3f833f">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="dirty3" layoutX="193.0" layoutY="154.0" prefWidth="60.0" styleClass="title" text="11" textFill="#d74420">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="dirtyWarning3" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons/dash/warning.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.18" />
+               </effect>
+            </ImageView>
+            <Label layoutX="56.0" layoutY="104.0" styleClass="title" text="4">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="clean4" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="104.0" prefWidth="60.0" styleClass="title" text="33" textFill="#3f833f">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="dirty4" layoutX="193.0" layoutY="104.0" prefWidth="60.0" styleClass="title" text="33" textFill="#d74420">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="dirtyWarning4" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons/dash/warning.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.18" />
+               </effect>
+            </ImageView>
+            <Label layoutX="56.0" layoutY="55.0" styleClass="title" text="5">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="clean5" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="55.0" prefWidth="60.0" styleClass="title" text="19" textFill="#3f833f">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="dirty5" layoutX="193.0" layoutY="55.0" prefWidth="60.0" styleClass="title" text="19" textFill="#d74420">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="dirtyWarning5" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/icons/dash/warning.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="0.18" />
+               </effect>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1e648b" height="320.0" layoutX="174.0" layoutY="63.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="5.0" />
+            <Label layoutX="102.0" layoutY="24.0" styleClass="title" text="Clean" textFill="#3f833f">
                <font>
                   <Font name="Arial Rounded MT Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="193.0" layoutY="60.0" styleClass="title" text="Dirty" textFill="#d74420">
+            <Label layoutX="183.0" layoutY="24.0" styleClass="title" text="Dirty" textFill="#d74420">
                <font>
                   <Font name="Arial Rounded MT Bold" size="24.0" />
                </font>
             </Label>
-            <ImageView fx:id="dirtyWarning5" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/icons/dash/warning.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="0.18" />
-               </effect>
-            </ImageView>
-            <ImageView fx:id="dirtyWarning4" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/icons/dash/warning.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="0.18" />
-               </effect>
-            </ImageView>
-            <ImageView fx:id="dirtyWarning3" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/icons/dash/warning.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="0.18" />
-               </effect>
-            </ImageView>
-            <ImageView fx:id="dirtyWarning2" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/icons/dash/warning.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="0.18" />
-               </effect>
-            </ImageView>
-            <ImageView fx:id="dirtyWarning1" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/icons/dash/warning.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="0.18" />
-               </effect>
-            </ImageView>
-            <Group layoutX="116.0" layoutY="-151.0">
+            <Group layoutX="116.0" layoutY="-197.0">
                <children>
                   <Group>
                      <children>
