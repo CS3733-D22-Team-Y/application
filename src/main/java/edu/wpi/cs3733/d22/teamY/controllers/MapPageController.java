@@ -342,10 +342,10 @@ public class MapPageController<T extends Requestable> implements IController {
                 test.add(recliner);
                 test.add(pump);
 
+                // Used to determine which med equip is selected
+                HashMap<Pane, Integer> allMedEquips = new HashMap<>();
+
                 // connor why >:(
-                //                  Circle c =
-                //                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX,
-                // CIRCLE_PAINT);
                 newLocation.setLayoutX(l.getXCoord());
                 newLocation.setLayoutY(l.getYCoord() - pinDim / 2);
                 ImageView imageView = new ImageView();
@@ -407,7 +407,8 @@ public class MapPageController<T extends Requestable> implements IController {
                         bed.add(newMedEquip);
                         break;
                       default:
-                        System.out.println("Invalid, type: " + equip.get(i).getEquipType());
+                        System.out.println(
+                            "Invalid equipment type: " + equip.get(i).getEquipType());
                     }
                     equipIcon.setFitWidth(iconDim);
                     equipIcon.setFitHeight(iconDim);
@@ -417,13 +418,18 @@ public class MapPageController<T extends Requestable> implements IController {
                     newMedEquip.getChildren().add(equipIcon);
                     newMedEquip.visibleProperty().bind(medCheckbox.selectedProperty());
                     mapElements.add(newMedEquip);
+                    allMedEquips.put(newMedEquip, i);
 
                     // Circle thingy implementation
                     ArrayList<ArrayList<Pane>> hasNodes = new ArrayList<>(4);
+
                     for (int j = 0; j < test.size(); j++) {
+                      // Check that there is actually that type of equipment at the location
                       if (!test.get(j).isEmpty()) hasNodes.add(test.get(j));
                     }
+
                     if (!hasNodes.isEmpty()) {
+
                       ArrayList<Point> points =
                           getHex(
                               hasNodes.size(),
@@ -475,7 +481,9 @@ public class MapPageController<T extends Requestable> implements IController {
                           MapComponent.setIsDraggingPin(false);
                           // Add the updated equipment
                           //                          currentEquip %= fuck3.size();
-                          MedEquip equipPiece = equip.get(currentEquip % equip.size());
+                          // Issue is here
+                          // MedEquip equipPiece = equip.get(currentEquip % equip.size());
+                          MedEquip equipPiece = equip.get(allMedEquips.get(newMedEquip));
                           MedEquip newEquip =
                               new MedEquip(
                                   String.valueOf(equipPiece.getEquipID()),
@@ -524,6 +532,7 @@ public class MapPageController<T extends Requestable> implements IController {
                       locationShort.setText(l.getShortName());
                       locationLong.setText(l.getLongName());
                       locationID.setText(String.valueOf(l.getNodeID()));
+                      System.out.println(equip);
                     });
                 if (serviceRequestAdded) {
                   // Set behavior for the requests circle
