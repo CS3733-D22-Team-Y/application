@@ -150,7 +150,7 @@ public class RequestMenuController implements IController {
 
   @FXML
   void openHelp() throws IOException {
-    SceneLoading.loadPopup("views/popups/ServiceHelp.fxml", "views/SideBar.fxml");
+    SceneLoading.loadPopup("views/popups/HelpActiveRequests.fxml", "views/SideBar.fxml");
   }
 
   @FXML
