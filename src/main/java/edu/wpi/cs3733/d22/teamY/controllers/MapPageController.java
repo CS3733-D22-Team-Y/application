@@ -333,7 +333,6 @@ public class MapPageController implements IController {
                 // type, only 1 element is in the list still
                 // equip: list of all equipment objects in the location
                 // hasEquipment: true if there is 1 or more equipment in location
-
                 // Checks if the point is in a valid position
                 // Create the circle for this location and add context menu handlers to it
                 Pane newLocation = new Pane();
