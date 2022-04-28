@@ -553,7 +553,11 @@ public class MapPageController implements IController {
                     e -> {
                       this.currReqSelection %= this.fuck2.size();
                       ServiceRequest req = fuck2.get(this.currReqSelection);
-                      req.getType().getAttributes()
+                      String[] atts = req.getType().getAttributes();
+
+                      for (String s : atts) {
+                        System.out.println(s);
+                      }
                       DBManager.update(req);
                       // ("Submit");
                     });
