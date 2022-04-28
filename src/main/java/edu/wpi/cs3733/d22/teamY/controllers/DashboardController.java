@@ -390,7 +390,6 @@ public class DashboardController implements IController {
     int count = 0;
     for (MedEquip m : list) {
       if (Objects.equals(m.getEquipType(), type)) {
-        System.out.println("epic\n");
         count++;
       }
     }
