@@ -16,6 +16,7 @@ import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -550,13 +551,18 @@ public class MapPageController implements IController {
                           String[] fAtts = rt.getFriendlyAttributes();
                           for (int i = 0; i < rt.getAttributeCount(); i++) {
                             TextField name = this.getFieldClone(this.attName);
-                            String friendlyAttName = "";
-                            // split s at upper case
-
                             name.setText(fAtts[i]);
                             this.extraAtts.add(name);
 
                             MFXTextField val = this.getMFXFieldClone(this.attValue);
+                            val.getStyleClass().clear();
+                            val.getStyleClass().add("mfx-text-field");
+                            val.getStyleClass().add("requestInput");
+                            val.setStyle("-fx-font-size: 12px;");
+                            // idk why this is necessary but it is
+                            val.setPrefHeight(29);
+                            val.setMaxHeight(29);
+                            val.setMinHeight(0);
                             val.setText(sreq.get(atts[i]));
                             this.extraVals.add(val);
 
@@ -589,14 +595,12 @@ public class MapPageController implements IController {
                       this.currReqSelection %= this.fuck2.size();
                       ServiceRequest req = fuck2.get(this.currReqSelection);
                       String[] atts = req.getType().getAttributes();
-
                       for (int i = 0; i < extraAtts.size(); i++) {
-                        String att = extraAtts.get(i).getText();
                         String val = extraVals.get(i).getText();
-                        req.set(att, val);
+                        req.set(atts[i], val);
                       }
                       DBManager.update(req);
-                      // ("Submit");
+                      System.out.println("Updated request");
                     });
 
                 equipUp.setOnMouseClicked(
@@ -1005,10 +1009,11 @@ public class MapPageController implements IController {
 
   public MFXTextField getMFXFieldClone(MFXTextField l) {
     MFXTextField clone = new MFXTextField();
+    clone.getStyleClass().clear();
     clone.setPrefSize(l.getPrefWidth(), l.getPrefHeight());
     clone.setLayoutX(l.getLayoutX());
     clone.setLayoutY(l.getLayoutY());
-    clone.setStyle(l.getStyle());
+    //    clone.setStyle(l.getStyle());
     clone.setText(l.getText());
     clone.setTextFill(l.getTextFill());
     clone.setFont(l.getFont());
@@ -1022,17 +1027,19 @@ public class MapPageController implements IController {
     clone.setPrefWidth(l.getPrefWidth());
     clone.setMinHeight(l.getMinHeight());
     clone.setMinWidth(l.getMinWidth());
-    if (l.getStyleClass().size() > 0) {
-      for (String s : l.getStyleClass()) {
-        clone.getStyleClass().add(s);
-      }
-    }
+    clone.setEditable(l.isEditable());
+    clone.getStylesheets().addAll(l.getStylesheets());
+
+    //    if (l.getStyleClass().size() > 0) {
+    //      clone.getStyleClass().add(l.getStyleClass().get(l.getStyleClass().size() - 1));
+    //    }
 
     return clone;
   }
 
   public TextField getFieldClone(TextField l) {
     TextField clone = new TextField();
+    //    clone.getStyleClass().clear();
     clone.setPrefSize(l.getPrefWidth(), l.getPrefHeight());
     clone.setLayoutX(l.getLayoutX());
     clone.setLayoutY(l.getLayoutY());
@@ -1049,11 +1056,11 @@ public class MapPageController implements IController {
     clone.setPrefWidth(l.getPrefWidth());
     clone.setMinHeight(l.getMinHeight());
     clone.setMinWidth(l.getMinWidth());
-    if (l.getStyleClass().size() > 0) {
-      for (String s : l.getStyleClass()) {
-        clone.getStyleClass().add(s);
-      }
-    }
+    clone.getStylesheets().addAll(l.getStylesheets());
+    clone.setEditable(l.isEditable());
+    //    if (l.getStyleClass().size() > 0) {
+    //      clone.getStyleClass().add(l.getStyleClass().get(l.getStyleClass().size() - 1));
+    //    }
 
     return clone;
   }
