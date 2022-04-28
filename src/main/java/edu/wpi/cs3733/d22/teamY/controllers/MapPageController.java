@@ -1,9 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
 import com.jfoenix.controls.JFXTextArea;
-import edu.wpi.cs3733.d22.teamY.App;
-import edu.wpi.cs3733.d22.teamY.DBManager;
-import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.*;
 import edu.wpi.cs3733.d22.teamY.component.MapComponent;
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.MedEquip;
@@ -547,13 +545,19 @@ public class MapPageController implements IController {
                           extraAtts.clear();
                           extraVals.clear();
                           ServiceRequest sreq = fuck2.get(this.currReqSelection);
-                          for (String s : sreq.getType().getAttributes()) {
+                          RequestTypes rt = sreq.getType();
+                          String[] atts = rt.getAttributes();
+                          String[] fAtts = rt.getFriendlyAttributes();
+                          for (int i = 0; i < rt.getAttributeCount(); i++) {
                             TextField name = this.getFieldClone(this.attName);
-                            name.setText(s);
+                            String friendlyAttName = "";
+                            // split s at upper case
+
+                            name.setText(fAtts[i]);
                             this.extraAtts.add(name);
 
                             MFXTextField val = this.getMFXFieldClone(this.attValue);
-                            val.setText(sreq.get(s));
+                            val.setText(sreq.get(atts[i]));
                             this.extraVals.add(val);
 
                             this.attVbox.getChildren().add(name);
@@ -587,9 +591,9 @@ public class MapPageController implements IController {
                       String[] atts = req.getType().getAttributes();
 
                       for (int i = 0; i < extraAtts.size(); i++) {
-                          String att = extraAtts.get(i).getText();
-                          String val = extraVals.get(i).getText();
-                        req.set(att,val);
+                        String att = extraAtts.get(i).getText();
+                        String val = extraVals.get(i).getText();
+                        req.set(att, val);
                       }
                       DBManager.update(req);
                       // ("Submit");
@@ -670,8 +674,8 @@ public class MapPageController implements IController {
 
   public void initialize() throws IOException {
 
-      this.attVbox.getChildren().remove(this.attName);
-      this.valueVbox.getChildren().remove(this.attValue);
+    this.attVbox.getChildren().remove(this.attName);
+    this.valueVbox.getChildren().remove(this.attValue);
 
     ll1PopupPane.setVisible(true);
     ll1PopupPane.setOpacity(0);
@@ -1018,6 +1022,11 @@ public class MapPageController implements IController {
     clone.setPrefWidth(l.getPrefWidth());
     clone.setMinHeight(l.getMinHeight());
     clone.setMinWidth(l.getMinWidth());
+    if (l.getStyleClass().size() > 0) {
+      for (String s : l.getStyleClass()) {
+        clone.getStyleClass().add(s);
+      }
+    }
 
     return clone;
   }
@@ -1040,6 +1049,11 @@ public class MapPageController implements IController {
     clone.setPrefWidth(l.getPrefWidth());
     clone.setMinHeight(l.getMinHeight());
     clone.setMinWidth(l.getMinWidth());
+    if (l.getStyleClass().size() > 0) {
+      for (String s : l.getStyleClass()) {
+        clone.getStyleClass().add(s);
+      }
+    }
 
     return clone;
   }
