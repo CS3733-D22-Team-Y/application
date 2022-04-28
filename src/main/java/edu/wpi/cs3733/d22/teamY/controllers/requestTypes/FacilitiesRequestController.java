@@ -4,7 +4,9 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
@@ -13,12 +15,12 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.util.Objects;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class FacilitiesRequestController {
+public class FacilitiesRequestController implements IController {
   // Radio Buttons
   @FXML private MFXRadioButton spillRadioButton;
   @FXML private MFXRadioButton hazRadioButton;
@@ -35,7 +37,9 @@ public class FacilitiesRequestController {
   @FXML private TextArea errorLabel;
   // Side bar
   @FXML private AnchorPane sidebarPane;
-  private Scene requestMenu = null;
+
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
 
   public FacilitiesRequestController() {}
 
@@ -106,9 +110,11 @@ public class FacilitiesRequestController {
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/FacilitiesRequest.fxml");
       } else {
+        resetAllFields();
         NewSceneLoading.loadScene("views/RequestMenu.fxml");
       }
     } else {
+      resetAllFields();
       NewSceneLoading.loadScene("views/RequestMenu.fxml");
     }
   }
@@ -152,5 +158,16 @@ public class FacilitiesRequestController {
     RequestControllerUtil.resetTextFields(roomsHiddenField, input_AdditionalNotes);
     errorLabel.setText("");
     roomsComboBox.setValue("");
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }

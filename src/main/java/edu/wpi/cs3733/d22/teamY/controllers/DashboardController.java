@@ -32,8 +32,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javax.sound.sampled.*;
+import javafx.scene.shape.Rectangle;
 
-public class DashboardController {
+public class DashboardController implements IController {
 
   public class EquipmentMonitor {
     private Object thingToWatch;
@@ -111,6 +112,10 @@ public class DashboardController {
   static String c = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/Symp530.wav";
 
   static Clip clip;
+
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
+  @FXML private Rectangle bgGradient;
 
   private Label[] floorsClean;
   private Label[] floorsDirty;
@@ -594,5 +599,17 @@ public class DashboardController {
       positionChosenBefore++;
     }
     return songs.get(positionChosenBefore);
+  }
+  
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage, bgGradient);
   }
 }

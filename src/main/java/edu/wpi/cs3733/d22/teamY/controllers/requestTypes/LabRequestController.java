@@ -5,7 +5,9 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
@@ -15,9 +17,10 @@ import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class LabRequestController {
+public class LabRequestController implements IController {
 
   // Input fields
   @FXML private JFXComboBox<String> roomsComboBox;
@@ -42,6 +45,9 @@ public class LabRequestController {
   private final String xrayText = "xray";
   private final String catScanText = "catScan";
   private final String mriText = "mri";
+
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
 
   @FXML
   void initialize() throws IOException {
@@ -117,9 +123,11 @@ public class LabRequestController {
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/LabResult.fxml");
       } else {
+        resetAllFields();
         NewSceneLoading.loadScene("views/RequestMenu.fxml");
       }
     } else {
+      resetAllFields();
       NewSceneLoading.loadScene("views/RequestMenu.fxml");
     }
   }
@@ -151,5 +159,16 @@ public class LabRequestController {
     errorLabel.setText("");
     roomsComboBox.setValue("");
     nursesComboBox.setValue("");
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }

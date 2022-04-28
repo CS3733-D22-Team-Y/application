@@ -24,10 +24,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
-public class WelcomePageController {
+public class WelcomePageController implements IController {
 
   @FXML private MFXTextField username;
   @FXML private MFXPasswordField password;
@@ -53,6 +54,7 @@ public class WelcomePageController {
   @FXML Label codeEntryLabel;
   @FXML JFXToggleButton dbSwitcherToggle;
   @FXML JFXComboBox<String> dbMenu;
+  @FXML AnchorPane mainPane;
 
   private boolean lockOut = false;
 
@@ -118,26 +120,6 @@ public class WelcomePageController {
       ex.printStackTrace();
     }
      */
-    NewSceneLoading.addMultipleScenes(
-        "views/AccountUpdate.fxml",
-        "views/ActiveServiceRequest.fxml",
-        "views/ActServReqTable.fxml",
-        "views/ChangeTheme.fxml",
-        "views/CreateAccount.fxml",
-        "views/LocTable.fxml",
-        "views/Map.fxml",
-        "views/MapIcon",
-        "views/MedEquipTable.fxml",
-        "views/PersonalSettings.fxml",
-        "views/RequestMenu.fxml",
-        "views/SecondaryMap_TEMPLATE.fxml",
-        "views/SideBar.fxml",
-        "views/SingularServiceRequest.fxml",
-        "views/SubMenu_TEMPLATE.fxml",
-        "views/Welcome.fxml",
-        "views/ConfirmClose.fxml",
-        "views/ReqAbort.fxml",
-        "views/ReqSubmitted.fxml");
     // NewSceneLoading.loadScene("views/ActiveServiceRequest.fxml");
 
     loadingRightNow = false;
@@ -391,5 +373,15 @@ public class WelcomePageController {
 
   public void createNewUser() throws Exception {
     NewSceneLoading.loadScene("views/CreateAccount.fxml");
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
   }
 }

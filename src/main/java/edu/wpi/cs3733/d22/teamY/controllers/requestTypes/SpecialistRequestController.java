@@ -4,7 +4,9 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
@@ -15,9 +17,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class SpecialistRequestController {
+public class SpecialistRequestController implements IController {
   // Radio Buttons
   @FXML private MFXRadioButton cardiologistButton;
   @FXML private MFXRadioButton neurologistButton;
@@ -32,6 +35,9 @@ public class SpecialistRequestController {
   // Side bar
   @FXML private AnchorPane sidebarPane;
   private Scene requestMenu = null;
+
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
 
   // Bouquet types text. These should be changed depending on what the names in the database are.
 
@@ -107,9 +113,11 @@ public class SpecialistRequestController {
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/SpecialistRequest.fxml");
       } else {
+        resetAllFields();
         NewSceneLoading.loadScene("views/RequestMenu.fxml");
       }
     } else {
+      resetAllFields();
       NewSceneLoading.loadScene("views/RequestMenu.fxml");
     }
   }
@@ -131,5 +139,16 @@ public class SpecialistRequestController {
     RequestControllerUtil.resetTextFields(roomsHiddenField, input_AdditionalNotes);
     errorLabel.setText("");
     roomsComboBox.setValue("");
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }

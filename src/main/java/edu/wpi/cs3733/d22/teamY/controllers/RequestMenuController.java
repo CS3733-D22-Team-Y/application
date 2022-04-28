@@ -8,9 +8,11 @@ import java.io.InputStreamReader;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
 
-public class RequestMenuController {
+public class RequestMenuController implements IController {
 
   @FXML AnchorPane bgPane;
   @FXML private ToggleButton creatorToggle;
@@ -30,6 +32,10 @@ public class RequestMenuController {
       creator09,
       creator10,
       creator11;
+
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
+  @FXML private Rectangle bgGradient;
 
   public RequestMenuController() {}
 
@@ -144,7 +150,7 @@ public class RequestMenuController {
 
   @FXML
   void openHelp() throws IOException {
-    SceneLoading.loadPopup("views/popups/ServiceHelp.fxml", "views/SideBar.fxml");
+    SceneLoading.loadPopup("views/popups/HelpService.fxml", "views/SideBar.fxml");
   }
 
   @FXML
@@ -159,5 +165,16 @@ public class RequestMenuController {
     while ((line = reader.readLine()) != null) {
       System.out.println(line);
     }
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage, bgGradient);
   }
 }

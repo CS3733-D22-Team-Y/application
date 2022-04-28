@@ -10,7 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
-public class SingularServiceRequestController {
+public class SingularServiceRequestController implements IController {
   @FXML
   void initialize() {
     ActiveServiceRequestController.requestControllers.add(this);
@@ -51,6 +51,14 @@ public class SingularServiceRequestController {
     int p = Math.min(Math.max(priority, 0), 10);
     return Color.hsb((10 - p) * 12.8, 0.36, 0.98);
   }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {}
 
   public void fillInfoField(String info) {
     extraInfoText.setText(info);

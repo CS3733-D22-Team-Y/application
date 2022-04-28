@@ -10,12 +10,14 @@ import java.util.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 
-public class ActiveServiceRequestController {
+public class ActiveServiceRequestController implements IController {
   public static LinkedList<SingularServiceRequestController> requestControllers =
       new LinkedList<>();
 
@@ -26,6 +28,10 @@ public class ActiveServiceRequestController {
   @FXML private Label nothingToSeeHere;
 
   @FXML AnchorPane sidebarPane;
+
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
+  @FXML private Rectangle bgGradient;
 
   private ArrayList<RequestSet> rqPairs;
 
@@ -77,6 +83,17 @@ public class ActiveServiceRequestController {
 
   @FXML
   private void openActiveReqHelp() throws IOException {
-    SceneLoading.loadPopup("views/popups/ActiveReqHelp.fxml", "views/SideBar.fxml");
+    SceneLoading.loadPopup("views/popups/HelpActiveRequests.fxml", "views/SideBar.fxml");
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage, bgGradient);
   }
 }

@@ -4,7 +4,9 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
@@ -16,9 +18,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class LaundryRequestController {
+public class LaundryRequestController implements IController {
   // Radio Buttons
   @FXML private MFXRadioButton hazardousRadioButton;
   @FXML private MFXRadioButton scrubsRadioButton;
@@ -34,6 +37,9 @@ public class LaundryRequestController {
   @FXML private TextArea errorLabel;
   // Side bar
   @FXML private AnchorPane sidebarPane;
+
+  @FXML private AnchorPane mainPane;
+  @FXML ImageView bgImage;
 
   private Scene requestMenu = null;
 
@@ -116,9 +122,11 @@ public class LaundryRequestController {
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/LaundryRequest.fxml");
       } else {
+        resetAllFields();
         NewSceneLoading.loadScene("views/RequestMenu.fxml");
       }
     } else {
+      resetAllFields();
       NewSceneLoading.loadScene("views/RequestMenu.fxml");
     }
   }
@@ -147,5 +155,17 @@ public class LaundryRequestController {
     errorLabel.setText("");
     roomsComboBox.setValue("");
     nursesComboBox.setValue("");
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
+    // bgImage.scaleYProperty().bind(NewSceneLoading.activeWindow.heightProperty());
   }
 }

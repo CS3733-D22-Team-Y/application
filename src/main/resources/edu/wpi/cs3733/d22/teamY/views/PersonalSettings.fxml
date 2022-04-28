@@ -1,27 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXTextField?>
-<?import java.lang.String?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController">
+<AnchorPane fx:id="bgPane" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController">
     <children>
-      <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
+      <ImageView fx:id="bgImage" fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
          <image>
             <Image url="@images/do-rgb.jpg" />
          </image>
       </ImageView>
-      <Rectangle height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: .8;" width="1200.0">
+      <Rectangle fx:id="bgGradient" height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: .8;" width="1200.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0">
                <stops>
@@ -44,132 +39,131 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-        <Label layoutX="270.0" text="My Profile" textFill="#20758b">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="60.0" />
-            </font>
-         <styleClass>
-            <String fx:value="title" />
-            <String fx:value="primaryColor" />
-         </styleClass>
-        </Label>
-      <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="270.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="primaryColor" width="700.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-        <Circle centerX="395.0" centerY="120.0" fill="#20758b" layoutX="335.0" layoutY="126.0" radius="100.0" stroke="#20758b" strokeType="INSIDE" />
-        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="630.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" styleClass="primaryColor" />
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#c2c2c2" height="400.0" layoutX="270.0" layoutY="380.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="920.0" />
-      <Label layoutX="280.0" layoutY="440.0" styleClass="inputLabel" text="Legal Name:">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </Label>
-      <Label layoutX="280.0" layoutY="515.0" styleClass="inputLabel" text="Preferred Name:">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </Label>
-      <Label layoutX="280.0" layoutY="590.0" styleClass="inputLabel" text="Title:">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </Label>
-      <Label layoutX="280.0" layoutY="665.0" styleClass="inputLabel" text="Email:">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </Label>
-      <MFXTextField fx:id="legalName" editable="false" floatMode="DISABLED" layoutX="500.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </MFXTextField>
-      <MFXTextField fx:id="prefName" editable="false" floatMode="DISABLED" layoutX="500.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </MFXTextField>
-      <MFXTextField fx:id="title" editable="false" floatMode="DISABLED" layoutX="500.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </MFXTextField>
-      <MFXTextField fx:id="email" editable="false" floatMode="DISABLED" layoutX="500.0" layoutY="661.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </MFXTextField>
-      <Label layoutX="740.0" layoutY="440.0" styleClass="inputLabel" text="Date of Birth:">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </Label>
-      <Label layoutX="740.0" layoutY="515.0" styleClass="inputLabel" text="Pronouns:">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </Label>
-      <Label layoutX="740.0" layoutY="590.0" styleClass="inputLabel" text="Phone:">
-         <font>
-            <Font name="Calibri Bold" size="30.0" />
-         </font>
-      </Label>
-      <MFXTextField fx:id="dob" editable="false" floatMode="DISABLED" layoutX="960.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </MFXTextField>
-      <MFXTextField fx:id="pronouns" editable="false" floatMode="DISABLED" layoutX="960.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </MFXTextField>
-      <MFXTextField fx:id="phone" editable="false" floatMode="DISABLED" layoutX="960.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </MFXTextField>
-      <MFXButton fx:id="apply" layoutX="1080.0" layoutY="720.0" onAction="#updateFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" styleClass="requestButton" text="Apply" textFill="WHITE" visible="false">
-         <font>
-            <Font name="Calibri Bold" size="20.0" />
-         </font>
-      </MFXButton>
-      <MFXButton fx:id="cancel" layoutX="970.0" layoutY="720.0" onAction="#cancelEdits" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" styleClass="requestButton" text="Cancel" textFill="WHITE" visible="false">
-         <font>
-            <Font name="Calibri Bold" size="20.0" />
-         </font>
-      </MFXButton>
-      <MFXButton fx:id="edit" layoutX="1080.0" layoutY="720.0" onAction="#editMode" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" text="Edit" textFill="WHITE">
-         <font>
-            <Font name="Calibri Bold" size="20.0" />
-         </font>
-         <styleClass>
-            <String fx:value="requestButton" />
-            <String fx:value="primaryColor" />
-         </styleClass>
-      </MFXButton>
-      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1130.0" layoutY="20.0" onMouseClicked="#openProfileHelp" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/icons/Help.png" />
-         </image>
-      </ImageView>
-      <MFXButton fx:id="lightModeButton" layoutX="780.0" layoutY="657.0" onAction="#lightMode" prefHeight="50.0" prefWidth="175.0" styleClass="requestButton" text="Light Mode" />
-      <MFXButton fx:id="darkModeButton" layoutX="965.0" layoutY="657.0" onAction="#darkMode" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #444;" styleClass="requestButton" text="Dark Mode" textFill="WHITE" />
-      <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
+      <AnchorPane fx:id="mainPane">
+         <children>
+              <Label layoutX="270.0" text="My Profile" textFill="#20758b">
+                  <font>
+                      <Font name="Arial Rounded MT Bold" size="60.0" />
+                  </font>
+               <styleClass>
+                  <String fx:value="title" />
+                  <String fx:value="primaryColor" />
+               </styleClass>
+              </Label>
+            <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="270.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="primaryColor" width="700.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+              <Circle centerX="395.0" centerY="120.0" fill="#20758b" layoutX="335.0" layoutY="126.0" radius="100.0" stroke="#20758b" strokeType="INSIDE" />
+              <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="630.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" styleClass="primaryColor" />
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#c2c2c2" height="400.0" layoutX="270.0" layoutY="380.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="920.0" />
+            <Label layoutX="280.0" layoutY="440.0" styleClass="inputLabel" text="Legal Name:">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="280.0" layoutY="515.0" styleClass="inputLabel" text="Preferred Name:">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="280.0" layoutY="590.0" styleClass="inputLabel" text="Title:">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="280.0" layoutY="665.0" styleClass="inputLabel" text="Email:">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <MFXTextField fx:id="legalName" editable="false" floatMode="DISABLED" layoutX="500.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXTextField>
+            <MFXTextField fx:id="prefName" editable="false" floatMode="DISABLED" layoutX="500.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXTextField>
+            <MFXTextField fx:id="title" editable="false" floatMode="DISABLED" layoutX="500.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXTextField>
+            <MFXTextField fx:id="email" editable="false" floatMode="DISABLED" layoutX="500.0" layoutY="661.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXTextField>
+            <Label layoutX="740.0" layoutY="440.0" styleClass="inputLabel" text="Date of Birth:">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="740.0" layoutY="515.0" styleClass="inputLabel" text="Pronouns:">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="740.0" layoutY="590.0" styleClass="inputLabel" text="Phone:">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <MFXTextField fx:id="dob" editable="false" floatMode="DISABLED" layoutX="960.0" layoutY="437.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXTextField>
+            <MFXTextField fx:id="pronouns" editable="false" floatMode="DISABLED" layoutX="960.0" layoutY="511.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXTextField>
+            <MFXTextField fx:id="phone" editable="false" floatMode="DISABLED" layoutX="960.0" layoutY="586.0" prefHeight="42.0" prefWidth="220.0" styleClass="requestInput">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXTextField>
+            <MFXButton fx:id="apply" layoutX="1080.0" layoutY="720.0" onAction="#updateFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" styleClass="requestButton" text="Apply" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+            </MFXButton>
+            <MFXButton fx:id="cancel" layoutX="970.0" layoutY="720.0" onAction="#cancelEdits" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" styleClass="requestButton" text="Cancel" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+            </MFXButton>
+            <MFXButton fx:id="edit" layoutX="1080.0" layoutY="720.0" onAction="#editMode" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" text="Edit" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="requestButton" />
+                  <String fx:value="primaryColor" />
+               </styleClass>
+            </MFXButton>
+            <MFXButton fx:id="lightModeButton" layoutX="780.0" layoutY="657.0" onAction="#lightMode" prefHeight="50.0" prefWidth="175.0" styleClass="requestButton" text="Light Mode" />
+            <MFXButton fx:id="darkModeButton" layoutX="965.0" layoutY="657.0" onAction="#darkMode" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #444;" styleClass="requestButton" text="Dark Mode" textFill="WHITE" />
+            <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>
