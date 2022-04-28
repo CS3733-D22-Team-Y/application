@@ -330,6 +330,12 @@ public class MapPageController<T extends Requestable> implements IController {
                 // Create the circle for this location and add context menu handlers to it
                 Pane newLocation = new Pane();
                 Pane newServiceRequest = new Pane();
+
+                List<Pane> bed = new ArrayList<>();
+                List<Pane> xray = new ArrayList<>();
+                List<Pane> recliner = new ArrayList<>();
+                List<Pane> pump = new ArrayList<>();
+
                 // connor why >:(
                 //                  Circle c =
                 //                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX,
@@ -341,27 +347,23 @@ public class MapPageController<T extends Requestable> implements IController {
                     new Image(App.class.getResource("views/images/icons/pin.png").toString()));
                 imageView.setFitHeight(pinDim);
                 imageView.setFitWidth(pinDim);
-                //                  imageView.setLayoutX(l.getXCoord() - pinDim / 2);
-                //                  imageView.setLayoutY(l.getYCoord() - pinDim / 2);
 
-                //                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim /
-                // 2, Color.NAVY);
                 newLocation.setPrefWidth(pinDim);
                 newLocation.setPrefHeight(pinDim);
                 newLocation.getChildren().add(imageView);
                 newLocation.visibleProperty().bind(locationsCheckbox.selectedProperty());
+
                 mapElements.add(newLocation);
                 allLocations.add(newLocation);
-                // TODO: Add all loc IDs to the list
                 allLocationIDs.add(l.getNodeID());
+
                 // Add equipment bubbles
                 if (hasEquipment) {
                   for (int i = 0; i < equip.size(); i++) {
                     Pane newMedEquip = new Pane();
-                    Circle c =
-                        new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
                     newMedEquip.setLayoutX(l.getXCoord() + 20);
                     newMedEquip.setLayoutY(l.getYCoord());
+
                     Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
                     ImageView equipIcon = new ImageView();
                     switch (equip.get(i).getEquipType()) {
@@ -371,6 +373,7 @@ public class MapPageController<T extends Requestable> implements IController {
                                 App.class
                                     .getResource("views/images/icons/pumpLogoWhite.png")
                                     .toString()));
+                        pump.add(newMedEquip);
                         break;
                       case ("XRAY"):
                         equipIcon.setImage(
@@ -378,6 +381,7 @@ public class MapPageController<T extends Requestable> implements IController {
                                 App.class
                                     .getResource("views/images/icons/xrayIconWhite.png")
                                     .toString()));
+                        xray.add(newMedEquip);
                         break;
                       case ("RECLINER"):
                         equipIcon.setImage(
@@ -385,6 +389,7 @@ public class MapPageController<T extends Requestable> implements IController {
                                 App.class
                                     .getResource("views/images/icons/reclinerLogoWhite.png")
                                     .toString()));
+                        recliner.add(newMedEquip);
                         break;
                       case ("BED"):
                         equipIcon.setImage(
@@ -392,6 +397,7 @@ public class MapPageController<T extends Requestable> implements IController {
                                 App.class
                                     .getResource("views/images/icons/bedLogoWhite.png")
                                     .toString()));
+                        bed.add(newMedEquip);
                         break;
                       default:
                         System.out.println("Invalid, type: " + equip.get(i).getEquipType());
@@ -404,7 +410,6 @@ public class MapPageController<T extends Requestable> implements IController {
                     newMedEquip.getChildren().add(equipIcon);
                     newMedEquip.visibleProperty().bind(medCheckbox.selectedProperty());
                     mapElements.add(newMedEquip);
-                    medEquipAdded = true;
 
                     newMedEquip.setOnContextMenuRequested(
                         e -> {
