@@ -192,23 +192,32 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <BarChart fx:id="barChart" layoutX="-6.0" layoutY="46.0" prefHeight="251.0" prefWidth="500.0" styleClass="chart-bar" stylesheets="@css/BarChart.css">
+            <BarChart fx:id="barChart" layoutX="-6.0" layoutY="46.0" prefHeight="251.0" prefWidth="500.0" style="-fx-background-color: 0; -fx-legend-visible: false;" styleClass="chart-bar" stylesheets="@css/BarChart.css">
               <xAxis>
-                <CategoryAxis fx:id="categoryAxis" side="BOTTOM" />
+                <CategoryAxis fx:id="categoryAxis" side="BOTTOM">
+                     <effect>
+                        <ColorAdjust brightness="-1.0" contrast="1.0" />
+                     </effect></CategoryAxis>
               </xAxis>
               <yAxis>
-                <NumberAxis fx:id="numberAxis" minorTickCount="0" side="LEFT" />
+                <NumberAxis fx:id="numberAxis" minorTickCount="0" side="LEFT">
+                     <effect>
+                        <ColorAdjust brightness="-1.0" contrast="1.0" />
+                     </effect></NumberAxis>
               </yAxis>
+               <effect>
+                  <ColorAdjust brightness="-0.1" contrast="0.1" />
+               </effect>
             </BarChart>
          </children>
       </Group>
       <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="82.0" layoutX="890.0" layoutY="99.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
-      <Group layoutX="933.0" layoutY="65.0">
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="82.0" layoutX="891.0" layoutY="99.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="305.0" />
+      <Group layoutX="937.0" layoutY="65.0">
          <children>
-            <Label fx:id="timeDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="23.0" prefHeight="54.0" prefWidth="196.0" styleClass="title" text="Offline">
+            <Label fx:id="timeDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="48.0" layoutY="27.0" prefHeight="54.0" prefWidth="196.0" styleClass="title" text="Offline">
                <font>
-                  <Font size="30.0" />
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
@@ -232,7 +241,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="dateDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="70.0" layoutY="63.0" prefHeight="22.0" prefWidth="185.0" styleClass="title" textAlignment="CENTER">
+            <Label fx:id="dateDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="67.0" prefHeight="22.0" prefWidth="195.0" styleClass="title" textAlignment="CENTER">
                <font>
                   <Font name="Arial Rounded MT Bold" size="19.0" />
                </font>
@@ -253,14 +262,14 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <ImageView fx:id="weatherIcon" fitHeight="82.0" fitWidth="82.0" layoutX="-37.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="weatherIcon" fitHeight="74.0" fitWidth="74.0" layoutX="-24.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
                <effect>
                   <ColorAdjust brightness="0.18" />
                </effect>
             </ImageView>
-            <Label fx:id="fahrenheit" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="123.0" layoutY="89.0" prefHeight="31.0" prefWidth="54.0" styleClass="title" text="-" textAlignment="CENTER">
+            <Label fx:id="fahrenheit" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="133.0" layoutY="86.0" prefHeight="31.0" prefWidth="54.0" styleClass="title" text="-" textAlignment="CENTER">
                <font>
-                  <Font size="19.0" />
+                  <Font name="Arial Rounded MT Bold" size="21.0" />
                </font>
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
@@ -279,9 +288,9 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="celsius" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="43.0" layoutY="89.0" prefHeight="31.0" prefWidth="54.0" styleClass="title" text="-" textAlignment="CENTER">
+            <Label fx:id="celsius" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="53.0" layoutY="87.0" prefHeight="31.0" prefWidth="54.0" styleClass="title" text="-" textAlignment="CENTER">
                <font>
-                  <Font size="19.0" />
+                  <Font name="Arial Rounded MT Bold" size="21.0" />
                </font>
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
@@ -342,14 +351,14 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Line endX="170.0" endY="-20.399993896484375" layoutX="-28.0" layoutY="116.0" startX="170.0" startY="-2.800018310546875" strokeLineCap="ROUND" strokeWidth="4.0">
+            <Line endX="170.0" endY="-16.400009155273438" layoutX="-23.0" layoutY="111.0" startX="170.0" startY="-2.800018310546875" strokeLineCap="ROUND" strokeWidth="3.0">
                <effect>
                   <ColorAdjust brightness="0.18" />
                </effect>
             </Line>
          </children>
       </Group>
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="200.0" layoutX="894.0" layoutY="194.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="213.0" layoutX="891.0" layoutY="190.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="305.0" />
       <ImageView fitHeight="101.0" fitWidth="106.0" layoutX="985.0" layoutY="200.0">
          <image>
             <Image url="@images/icons/dash/MusicIcons/11zon_cropped%20(7).png" />
@@ -383,8 +392,8 @@
       <Group layoutX="890.0" layoutY="397.0" />
       <Group layoutX="894.0" layoutY="396.0">
          <children>
-            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="375.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="295.0" />
-            <Label layoutX="27.0" layoutY="14.0" styleClass="title" text="Floor">
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="375.0" layoutX="-3.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="305.0" />
+            <Label layoutX="8.0" layoutY="55.0" styleClass="title" text="Floor">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>

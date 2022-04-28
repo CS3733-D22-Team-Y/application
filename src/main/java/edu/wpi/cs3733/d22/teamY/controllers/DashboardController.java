@@ -285,118 +285,131 @@ public class DashboardController implements IController {
     // requestBox.setPrefHeight(1000);
     alertsBox.setBackground(Background.EMPTY);
 
+    checkForAlerts();
+
+    NewSceneLoading.loadSidebar(sidebarPane);
+  }
+
+  private void checkForAlerts() {
     if (DBUtils.checkAvailableEquipmentOnFloor("3", "PUMP") < 5) {
 
       addToAlertsBox("Floor 3 has less than 5 Infusion Pumps");
-      new ServiceRequest(
-          RequestTypes.MEDEQUIP,
-          "",
-          "",
-          "supply an infusion pump to floor 3",
-          1,
-          RequestStatus.INCOMPLETE,
-          new String[] {"PUMP"});
+      DBManager.save(
+          new ServiceRequest(
+              RequestTypes.MEDEQUIP,
+              "",
+              "",
+              "supply an infusion pump to floor 3",
+              1,
+              RequestStatus.INCOMPLETE,
+              new String[] {"PUMP"}));
     }
     if (DBUtils.checkAvailableEquipmentOnFloor("4", "PUMP") < 5) {
 
       addToAlertsBox("Floor 4 has less than 5 Infusion Pumps");
-      new ServiceRequest(
-          RequestTypes.MEDEQUIP,
-          "",
-          "",
-          "supply an infusion pump to floor 4",
-          1,
-          RequestStatus.INCOMPLETE,
-          new String[] {"PUMP"});
+      DBManager.save(
+          new ServiceRequest(
+              RequestTypes.MEDEQUIP,
+              "",
+              "",
+              "supply an infusion pump to floor 4",
+              1,
+              RequestStatus.INCOMPLETE,
+              new String[] {"PUMP"}));
     }
     if (DBUtils.checkAvailableEquipmentOnFloor("5", "PUMP") < 5) {
 
       addToAlertsBox("Floor 5 has less than 5 Infusion Pumps");
-      new ServiceRequest(
-          RequestTypes.MEDEQUIP,
-          "",
-          "",
-          "supply an infusion pump to floor 5",
-          1,
-          RequestStatus.INCOMPLETE,
-          new String[] {"PUMP"});
+      DBManager.save(
+          new ServiceRequest(
+              RequestTypes.MEDEQUIP,
+              "",
+              "",
+              "supply an infusion pump to floor 5",
+              1,
+              RequestStatus.INCOMPLETE,
+              new String[] {"PUMP"}));
     }
 
     if (DBUtils.checkUnavailableEquipmentOnFloor("3", "PUMP") >= 10) {
 
       addToAlertsBox("Floor 3 has 10 dirty Infusion Pumps");
-      new ServiceRequest(
-          RequestTypes.MEDEQUIP,
-          "",
-          "",
-          "clean an infusion pump on floor 3",
-          1,
-          RequestStatus.INCOMPLETE,
-          new String[] {"PUMP"});
+      DBManager.save(
+          new ServiceRequest(
+              RequestTypes.MEDEQUIP,
+              "",
+              "",
+              "clean an infusion pump on floor 3",
+              1,
+              RequestStatus.INCOMPLETE,
+              new String[] {"PUMP"}));
     }
     if (DBUtils.checkUnavailableEquipmentOnFloor("4", "PUMP") >= 10) {
 
       addToAlertsBox("Floor 4 has 10 dirty Infusion Pumps");
-      new ServiceRequest(
-          RequestTypes.MEDEQUIP,
-          "",
-          "",
-          "clean an infusion pump on floor 4",
-          1,
-          RequestStatus.INCOMPLETE,
-          new String[] {"PUMP"});
+      DBManager.save(
+          new ServiceRequest(
+              RequestTypes.MEDEQUIP,
+              "",
+              "",
+              "clean an infusion pump on floor 4",
+              1,
+              RequestStatus.INCOMPLETE,
+              new String[] {"PUMP"}));
     }
     if (DBUtils.checkUnavailableEquipmentOnFloor("5", "PUMP") >= 10) {
 
       addToAlertsBox("Floor 5 has 10 dirty Infusion Pumps");
-      new ServiceRequest(
-          RequestTypes.MEDEQUIP,
-          "",
-          "",
-          "clean an infusion pump on floor 5",
-          1,
-          RequestStatus.INCOMPLETE,
-          new String[] {"PUMP"});
+      DBManager.save(
+          new ServiceRequest(
+              RequestTypes.MEDEQUIP,
+              "",
+              "",
+              "clean an infusion pump on floor 5",
+              1,
+              RequestStatus.INCOMPLETE,
+              new String[] {"PUMP"}));
     }
 
     if (DBUtils.checkUnavailableEquipmentOnFloor("3", "BED") >= 6) {
 
       addToAlertsBox("Floor 3 has 6 dirty beds");
-      new ServiceRequest(
-          RequestTypes.MEDEQUIP,
-          "",
-          "",
-          "clean a bed on floor 3",
-          1,
-          RequestStatus.INCOMPLETE,
-          new String[] {"PUMP"});
+      DBManager.save(
+          new ServiceRequest(
+              RequestTypes.MEDEQUIP,
+              "",
+              "",
+              "clean a bed on floor 3",
+              1,
+              RequestStatus.INCOMPLETE,
+              new String[] {"BED"}));
     }
     if (DBUtils.checkUnavailableEquipmentOnFloor("4", "BED") >= 6) {
 
       addToAlertsBox("Floor 4 has 6 dirty beds");
-      new ServiceRequest(
-          RequestTypes.MEDEQUIP,
-          "",
-          "",
-          "clean a bed on floor 4",
-          1,
-          RequestStatus.INCOMPLETE,
-          new String[] {"PUMP"});
+      DBManager.save(
+          new ServiceRequest(
+              RequestTypes.MEDEQUIP,
+              "",
+              "",
+              "clean a bed on floor 4",
+              1,
+              RequestStatus.INCOMPLETE,
+              new String[] {"BED"}));
     }
     if (DBUtils.checkUnavailableEquipmentOnFloor("5", "BED") >= 6) {
 
       addToAlertsBox("Floor 5 has 6 dirty beds");
-      new ServiceRequest(
-          RequestTypes.MEDEQUIP,
-          "",
-          "",
-          "clean a bed on floor 5",
-          1,
-          RequestStatus.INCOMPLETE,
-          new String[] {"PUMP"});
+      DBManager.save(
+          new ServiceRequest(
+              RequestTypes.MEDEQUIP,
+              "",
+              "",
+              "clean a bed on floor 5",
+              1,
+              RequestStatus.INCOMPLETE,
+              new String[] {"BED"}));
     }
-
-    NewSceneLoading.loadSidebar(sidebarPane);
   }
 
   private void addRequest(ServiceRequest req) throws IOException {

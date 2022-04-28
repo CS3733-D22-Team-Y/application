@@ -1,6 +1,5 @@
 .chart-bar {
     -fx-background-color: rgba(0,168,355,0.05);
-    -fx-border-color: rgba(0,168,355,0.3) rgba(0,168,355,0.3);
 
     -fx-background-radius: 0;
     -fx-background-position: left center;
@@ -8,17 +7,17 @@
 }
 
 .data0.chart-bar {
-    -fx-background-color: red;
+    -fx-background-color: #fab2a0;
 }
 .data1.chart-bar {
-    -fx-background-color: orange;
+    -fx-background-color: #fac5a0;
 }
 .data2.chart-bar {
-    -fx-background-color: yellow;
+    -fx-background-color: #faeca0;
 }
 .data3.chart-bar {
-    -fx-background-color: #0ffc03;
+    -fx-background-color: #e2faa0;
 }
 .data4.chart-bar {
-    -fx-background-color: green;
+    -fx-background-color: #bbfaa0;
 }
