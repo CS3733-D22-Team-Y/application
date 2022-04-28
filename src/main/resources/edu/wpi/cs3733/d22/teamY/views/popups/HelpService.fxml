@@ -11,6 +11,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.HelpButtonController">
    <children>
@@ -22,13 +23,13 @@
             <BoxBlur height="7.0" iterations="2" width="7.0" />
          </effect>
       </ImageView>
-      <Rectangle fill="WHITE" height="600.0" opacity="0.66" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0" />
+      <Rectangle fill="WHITE" height="600.0" layoutX="10.0" opacity="0.66" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0" />
       <MFXButton fx:id="backButton" computeRadiusMultiplier="false" layoutX="690.0" layoutY="10.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </MFXButton>
-      <Label contentDisplay="RIGHT" layoutX="10.0" prefHeight="54.0" prefWidth="319.0" styleClass="subtitle" text="Help Title">
+      <Label contentDisplay="RIGHT" layoutX="10.0" prefHeight="54.0" prefWidth="319.0" styleClass="subtitle" text="Help: Service">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -67,5 +68,28 @@
             </LinearGradient>
          </fill>
       </Rectangle>
+      <ImageView fitHeight="90.0" fitWidth="241.0" layoutX="141.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/helpimages/MedicalEquip.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="90.0" fitWidth="241.0" layoutX="451.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/helpimages/SecurityService.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="305.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="plainText" text="1. Select the request type" />
+      <Text layoutX="258.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="plainText" text="2. Select option bubbles if applicable" />
+      <ImageView fitHeight="56.0" fitWidth="264.0" layoutX="268.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/helpimages/unwantedGuest.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="279.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="plainText" text="3. Fill in the neccessary fields" />
+      <ImageView fitHeight="90.0" fitWidth="451.0" layoutX="207.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/helpimages/NursesRoom.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
