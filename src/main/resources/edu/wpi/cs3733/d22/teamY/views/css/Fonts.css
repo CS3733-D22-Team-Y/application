@@ -47,6 +47,11 @@
     -fx-font-size: 20;
 }
 
+.subText{
+    -fx-font-family: 'Varela Round';
+    -fx-font-size: 14;
+}
+
 .submenuButton{
     -fx-font-family: 'Nunito';
     -fx-font-size: 25;

@@ -5,7 +5,9 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
@@ -18,9 +20,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class SecurityRequestController {
+public class SecurityRequestController implements IController {
   // Text input
   @FXML private JFXComboBox<String> nursesComboBox;
   @FXML private TextField nursesHiddenField;
@@ -44,6 +47,9 @@ public class SecurityRequestController {
   // Side bar
   @FXML private AnchorPane sidebarPane;
   private Scene requestMenu = null;
+
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
 
   // Security types text. These should be changed depending on what the names in the database are.
   private static final String unwantedGuestText = "unwantedGuest";
@@ -226,5 +232,16 @@ public class SecurityRequestController {
     errorLabel.setText("");
     roomsComboBox.setValue("");
     nursesComboBox.setValue("");
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }

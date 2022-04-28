@@ -8,16 +8,21 @@ import java.io.IOException;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Polygon;
 import javafx.util.Duration;
 
-public class UpdateNewAccountController {
+public class UpdateNewAccountController implements IController {
   @FXML JFXButton backToMainButton;
   @FXML MFXPasswordField newPasswordField;
   @FXML Polygon submitTriangle;
   @FXML Label passwordValidityError;
   @FXML MFXPasswordField confirmPasswordField;
   @FXML Label passwordsDoNotMatch;
+
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
 
   public static String user;
 
@@ -60,5 +65,16 @@ public class UpdateNewAccountController {
     }
     // password must be at least 5 characters long, and contain at least one number and one letter
     // and one special character
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }

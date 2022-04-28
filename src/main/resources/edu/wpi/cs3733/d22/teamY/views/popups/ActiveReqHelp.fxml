@@ -194,10 +194,5 @@
             <Font name="Calibri" size="20.0" />
          </font>
       </Label>
-      <JFXTextArea fx:id="extraInfoText" editable="false" focusColor="#ffffff00" layoutX="160.0" layoutY="133.0" prefHeight="180.0" prefWidth="590.0" scaleX="0.5" scaleY="0.5" style="-fx-background-color: white;" text="More specific info" unFocusColor="#ffffff00">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </JFXTextArea>
    </children>
 </AnchorPane>
