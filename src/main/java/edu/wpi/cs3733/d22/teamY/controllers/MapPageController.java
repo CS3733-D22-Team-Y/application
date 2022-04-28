@@ -324,13 +324,6 @@ public class MapPageController implements IController {
 
                 boolean hasEquipment = equip.size() > 0;
                 List<ServiceRequest> requests = DBUtils.getAllServiceReqsAtLocation(l);
-                System.out.println("Target: " + l.getNodeID());
-                for (ServiceRequest r : requests) {
-                  System.out.println(r.getLocationID());
-                }
-                if (requests.size() > 0) {
-                  System.out.println("Requests: " + requests.size());
-                }
 
                 boolean medEquipAdded = false, serviceRequestAdded = false;
 
