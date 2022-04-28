@@ -5,7 +5,9 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
@@ -14,9 +16,10 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class MiscRequestController {
+public class MiscRequestController implements IController {
   @FXML private JFXComboBox<String> nursesComboBox;
   @FXML private TextField nursesHiddenField;
   @FXML private JFXTextArea input_AdditionalNotes;
@@ -26,6 +29,9 @@ public class MiscRequestController {
   @FXML private TextArea errorLabel;
   // Side bar
   @FXML private AnchorPane sidebarPane;
+
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
 
   public MiscRequestController() {}
 
@@ -97,7 +103,7 @@ public class MiscRequestController {
         || !input_AdditionalNotes.getText().equals("")
         || !nursesHiddenField.getText().equals("")
         || !input_RequestName.getText().equals(""))) {
-      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/requestTypes/FloralRequest.fxml");
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/SideBar.fxml");
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/MiscRequest.fxml");
       } else {
@@ -114,5 +120,16 @@ public class MiscRequestController {
         input_RequestName, input_AdditionalNotes, roomsHiddenField, nursesHiddenField);
     roomsComboBox.setValue("");
     nursesComboBox.setValue("");
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }

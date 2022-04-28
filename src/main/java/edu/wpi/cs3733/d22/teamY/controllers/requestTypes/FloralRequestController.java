@@ -4,7 +4,9 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
+import edu.wpi.cs3733.d22.teamY.controllers.IController;
 import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import edu.wpi.cs3733.d22.teamY.controllers.SceneLoading;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
@@ -15,9 +17,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class FloralRequestController {
+public class FloralRequestController implements IController {
   // Radio Buttons
   @FXML private MFXRadioButton getWellSoonBouquetRadioButton;
   @FXML private MFXRadioButton newBabyRadioButton;
@@ -34,6 +37,9 @@ public class FloralRequestController {
   // Side bar
   @FXML private AnchorPane sidebarPane;
   private Scene requestMenu = null;
+
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
 
   // Bouquet types text. These should be changed depending on what the names in the database are.
   private final String getWellSoonBouquetText = "getWellSoon";
@@ -112,6 +118,7 @@ public class FloralRequestController {
         || !Objects.equals(nursesHiddenField.getText(), "")
         || !input_AdditionalNotes.getText().equals("")
         || !Objects.equals(roomsHiddenField.getText(), "")) {
+      SceneLoading.loadPopup("views/popups/ReqAbort.fxml", "views/SideBar.fxml");
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/FloralRequest.fxml");
       } else {
@@ -141,5 +148,14 @@ public class FloralRequestController {
     errorLabel.setText("");
     roomsComboBox.setValue("");
     nursesComboBox.setValue("");
+  }
+
+  public IController getController() {
+    return this;
+  }
+
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage);
   }
 }

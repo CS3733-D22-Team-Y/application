@@ -30,19 +30,25 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.shape.Rectangle;
 
-public class DashboardController {
+public class DashboardController implements IController {
 
   public class EquipmentMonitor {
-    private Object thingToWatch;
+    private EquipmentSubject thingToWatch;
 
-    EquipmentMonitor(Object watch) {
+    EquipmentMonitor(EquipmentSubject watch) {
       thingToWatch = watch;
+      thingToWatch.attachObserver(this);
     }
 
     public void update() {
       updateEquipment();
     }
+  }
+
+  public interface EquipmentSubject {
+    void attachObserver(EquipmentMonitor monitor);
   }
 
   // Radio Buttons
@@ -144,6 +150,10 @@ public class DashboardController {
   @FXML
   private BarChart<String, Integer> barChart =
       new BarChart<String, Integer>(categoryAxis, (Axis) numberAxis);
+
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
+  @FXML private Rectangle bgGradient;
 
   private Label[] floorsClean;
   private Label[] floorsDirty;
@@ -593,5 +603,14 @@ public class DashboardController {
   @FXML
   public void L5CleanExit() {
     clean_l5Popup.setVisible(false);
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage, bgGradient);
   }
 }

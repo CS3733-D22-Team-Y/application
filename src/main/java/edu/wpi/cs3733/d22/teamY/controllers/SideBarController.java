@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
@@ -37,6 +38,10 @@ public class SideBarController {
   // List view stuff
   @FXML private MFXLegacyListView<String> listView;
   private ObservableList keyWords = FXCollections.observableArrayList();
+
+  // About Us stuff
+  @FXML private Label aboutUsButton;
+  AboutUsController About = new AboutUsController();
 
   Scene currScene;
   ArrayList<String> searchContent = new ArrayList<String>();
@@ -197,13 +202,14 @@ public class SideBarController {
   }
 
   @FXML
-  void loadViewServiceRequests() {
-    setButtonSelected(servicesHiddenRect);
+  void loadViewServiceRequests() throws IOException {
     NewSceneLoading.loadScene("views/RequestMenu.fxml");
+    setButtonSelected(servicesHiddenRect);
   }
 
   @FXML
-  void loadEquipment() {
+  void loadEquipment() throws IOException {
+    NewSceneLoading.reloadScene("views/MedEquipTable.fxml");
     NewSceneLoading.loadScene("views/MedEquipTable.fxml");
     setButtonSelected(equipmentHiddenRect);
   }
@@ -224,8 +230,6 @@ public class SideBarController {
 
   @FXML
   void loadInbox() throws IOException {
-    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    // mainScreenPane.getChildren().get(INBOX_LIST_LOCATION).setVisible(true);
     setButtonSelected(inboxHiddenRect);
     NewSceneLoading.addScene("views/ChatSelector.fxml");
     NewSceneLoading.loadScene("views/ChatSelector.fxml");
@@ -233,15 +237,12 @@ public class SideBarController {
 
   @FXML
   void loadProfile() {
-    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
-    // mainScreenPane.getChildren().get(PROFILE_LIST_LOCATION).setVisible(true);
     setButtonSelected(profileHiddenRect);
     NewSceneLoading.loadScene("views/PersonalSettings.fxml");
   }
 
   @FXML
   void loadHome_noUpdateButton() {
-    // SceneUtil.hideAllPanes(mainScreenPane.getChildren());
     SceneUtil.removeSelection(
         mapHiddenRect,
         servicesHiddenRect,
@@ -251,6 +252,11 @@ public class SideBarController {
         profileHiddenRect,
         inboxHiddenRect,
         logoutHiddenRect);
+  }
+
+  @FXML
+  private void openAboutUs() throws IOException {
+    SceneLoading.loadPopup("views/popups/AboutUs.fxml", "views/SideBar.fxml");
   }
 
   @FXML private TextField searchBar;

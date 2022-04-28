@@ -3,15 +3,16 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 import edu.wpi.cs3733.d22.teamY.controllers.requestTypes.RequestControllerUtil;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
 
-public class RequestMenuController {
+public class RequestMenuController implements IController {
 
   @FXML AnchorPane bgPane;
   @FXML private ToggleButton creatorToggle;
@@ -31,6 +32,10 @@ public class RequestMenuController {
       creator09,
       creator10,
       creator11;
+
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
+  @FXML private Rectangle bgGradient;
 
   public RequestMenuController() {}
 
@@ -149,29 +154,8 @@ public class RequestMenuController {
   }
 
   @FXML
-  void loadTeamB() {
-    System.out.println("Loading Team B");
-    ProcessBuilder pb = new ProcessBuilder("java", "-jar", "TeamBAPI.jar");
-    pb.directory(new File("src/main/resources/edu/wpi/cs3733/d22/teamY/APIs/TeamB"));
-    try {
-      Process p = pb.start();
-      printResults(p);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
-  @FXML
-  void loadTeamZ() {
-    System.out.println("Loading Team C");
-    ProcessBuilder pb = new ProcessBuilder("java", "-jar", "teamC.jar");
-    pb.directory(new File("src/main/resources/edu/wpi/cs3733/d22/teamY/APIs/TeamC"));
-    try {
-      Process p = pb.start();
-      printResults(p);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+  void loadOtherTeams() throws IOException {
+    SceneLoading.loadPopup("views/popups/OtherTeamAPIs.fxml", "views/SideBar.fxml");
   }
 
   public static void printResults(Process process) throws IOException {
@@ -181,5 +165,16 @@ public class RequestMenuController {
     while ((line = reader.readLine()) != null) {
       System.out.println(line);
     }
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage, bgGradient);
   }
 }

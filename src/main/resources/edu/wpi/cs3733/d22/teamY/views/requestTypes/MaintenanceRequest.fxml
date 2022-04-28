@@ -19,9 +19,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MaintenanceRequestController">
+<AnchorPane fx:id="bgPane" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.requestTypes.MaintenanceRequestController">
     <children>
-      <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
+      <ImageView fx:id="bgImage" fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
          <image>
             <Image url="@../images/do-rgb.jpg" />
          </image>
@@ -29,225 +29,213 @@
             <BoxBlur height="7.0" iterations="2" width="7.0" />
          </effect>
       </ImageView>
-      <Rectangle height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: .9;" width="1200.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.5681818543058453">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.32534247636795044" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-      <JFXComboBox fx:id="medEquipComboBox" layoutX="790.0" layoutY="250.0" onAction="#setMedicalEquipmentText" prefHeight="43.0" prefWidth="151.0" styleClass="inputField" unFocusColor="#ffffff00" />
-        <Label layoutX="270.0" layoutY="10.0" styleClass="title" text="Maintenance Request">
-            <textFill>
-                <LinearGradient endX="1.0" endY="1.0">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </textFill>
-            <font>
-                <Font name="Arial Rounded MT Bold" size="60.0" />
-            </font>
-        </Label>
-        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="270.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
-            <fill>
-                <LinearGradient endX="1.0" endY="1.0">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </fill>
-        </Rectangle>
-        <Label layoutX="285.0" layoutY="150.0" styleClass="inputLabel" text="Room:">
-            <font>
-                <Font name="Calibri Bold" size="30.0" />
-            </font>
-        </Label>
-        <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="575.0" layoutX="280.0" layoutY="205.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
-        <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="285.0" layoutY="210.0" prefHeight="565.0" prefWidth="390.0" text="Additional Text..." unFocusColor="#ffffff00">
-            <font>
-                <Font name="Calibri" size="20.0" />
-            </font>
-            <styleClass>
-                <String fx:value="inputLabel" />
-                <String fx:value="requestInput" />
-            </styleClass></JFXTextArea>
-        <MFXButton computeRadiusMultiplier="false" layoutX="980.0" layoutY="740.0" onAction="#resetAllFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" styleClass="requestButton" text="Reset" textFill="WHITE">
-            <font>
-                <Font name="Calibri Bold" size="20.0" />
-            </font>
-        </MFXButton>
-        <MFXButton fx:id="submitButton" computeRadiusMultiplier="false" layoutX="1090.0" layoutY="740.0" onAction="#submitButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Submit" textFill="WHITE">
-            <font>
-                <Font name="Calibri Bold" size="20.0" />
-            </font>
-        </MFXButton>
-        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="850.0" layoutY="109.0" prefHeight="66.0" prefWidth="335.0" styleClass="subtitle" text="What's Broken?" textAlignment="RIGHT">
-            <textFill>
-                <LinearGradient endX="1.0" endY="1.0">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </textFill>
-            <font>
-                <Font name="Arial Rounded MT Bold" size="45.0" />
-            </font>
-        </Label>
-        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="790.0" layoutY="175.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0">
-            <fill>
-                <LinearGradient endX="1.0" endY="1.0">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </fill>
-        </Rectangle>
-        <MFXRadioButton fx:id="medEquipRadioButton" layoutX="790.0" layoutY="200.0" onAction="#disableMiscBox" radius="12.0" styleClass="requestOption" text="Medical Equipment:">
-            <font>
-                <Font name="Calibri" size="30.0" />
-            </font>
-            <toggleGroup>
-                <ToggleGroup fx:id="Purpose" />
-            </toggleGroup>
-        </MFXRadioButton>
-        <MFXRadioButton fx:id="elevatorRadioButton" layoutX="790.0" layoutY="300.0" onAction="#disableMiscBox" radius="12.0" styleClass="requestOption" text="Elevator" toggleGroup="$Purpose">
-            <font>
-                <Font name="Calibri" size="30.0" />
-            </font>
-        </MFXRadioButton>
-        <MFXRadioButton fx:id="lightsRadioButton" layoutX="790.0" layoutY="350.0" onAction="#disableMiscBox" radius="12.0" styleClass="requestOption" text="Lights" toggleGroup="$Purpose">
-            <font>
-                <Font name="Calibri" size="30.0" />
-            </font>
-        </MFXRadioButton>
-        <MFXRadioButton fx:id="otherRadioButton" layoutX="790.0" layoutY="400.0" onAction="#enableMiscBox" radius="12.0" styleClass="requestOption" text="Other:" toggleGroup="$Purpose">
-            <font>
-                <Font name="Calibri" size="30.0" />
-            </font>
-        </MFXRadioButton>
-        <MFXTextField fx:id="input_OtherText" allowEdit="false" floatMode="DISABLED" layoutX="920.0" layoutY="400.0" pickOnBounds="false" prefHeight="42.0" prefWidth="270.0" selectable="false" styleClass="requestInput">
-            <font>
-                <Font name="Calibri" size="20.0" />
-            </font>
-        </MFXTextField>
-        <MFXRadioButton fx:id="replacementRadioButton" layoutX="790.0" layoutY="550.0" radius="10.0" styleClass="requestOption" text="Replacement">
-            <font>
-                <Font name="Calibri" size="30.0" />
-            </font>
-            <toggleGroup>
-                <ToggleGroup fx:id="Problem" />
-            </toggleGroup>
-        </MFXRadioButton>
-        <MFXRadioButton fx:id="maintenanceRadioButton" layoutX="790.0" layoutY="600.0" radius="10.0" styleClass="requestOption" text="Maintenance" toggleGroup="$Problem">
-            <font>
-                <Font name="Calibri" size="30.0" />
-            </font>
-        </MFXRadioButton>
-        <MFXRadioButton fx:id="unsureRadioButton" layoutX="790.0" layoutY="650.0" radius="10.0" styleClass="requestOption" text="Unsure" toggleGroup="$Problem">
-            <font>
-                <Font name="Calibri" size="30.0" />
-            </font>
-        </MFXRadioButton>
-        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="749.0" layoutY="464.0" prefHeight="66.0" prefWidth="443.0" styleClass="subtitle" text="How Can We Help?" textAlignment="RIGHT">
-            <textFill>
-                <LinearGradient endX="1.0" endY="1.0">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </textFill>
-            <font>
-                <Font name="Arial Rounded MT Bold" size="40.0" />
-            </font>
-        </Label>
-        <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="790.0" layoutY="525.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0">
-            <fill>
-                <LinearGradient endX="1.0" endY="1.0">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </fill>
-        </Rectangle>
-        <JFXTextArea fx:id="errorLabel" depthTest="DISABLE" disable="true" editable="false" focusColor="#ffffff00" layoutX="945.0" layoutY="675.0" opacity="0.97" prefHeight="10.0" prefWidth="243.0" style="-fx-text-fill: RED;" styleClass="plainText" unFocusColor="#ffffff00">
-            <font>
-                <Font name="Calibri" size="15.0" />
-            </font>
-        </JFXTextArea>
-        <TextField fx:id="roomsHiddenField" layoutX="430.0" layoutY="150.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
-        <JFXComboBox fx:id="roomsComboBox" layoutX="430.0" layoutY="150.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="inputField" unFocusColor="#ffffff00" />
-        <MFXButton computeRadiusMultiplier="false" layoutX="1090.0" layoutY="10.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
-            <font>
-                <Font name="Calibri Bold" size="20.0" />
-            </font>
-        </MFXButton>
-        <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
-      <TextField fx:id="medEquipHiddenField" layoutX="790.0" layoutY="250.0" prefHeight="43.0" prefWidth="151.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
+      <AnchorPane fx:id="mainPane">
+         <children>
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="800.0" layoutX="265.0" opacity="0.66" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="935.0" />
+            <JFXComboBox fx:id="medEquipComboBox" layoutX="790.0" layoutY="250.0" onAction="#setMedicalEquipmentText" prefHeight="43.0" prefWidth="151.0" styleClass="inputField" unFocusColor="#ffffff00" />
+              <Label layoutX="270.0" layoutY="10.0" styleClass="title" text="Maintenance Request">
+                  <textFill>
+                      <LinearGradient endX="1.0" endY="1.0">
+                          <stops>
+                              <Stop>
+                                  <color>
+                                      <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                                  </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                  <color>
+                                      <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                                  </color>
+                              </Stop>
+                          </stops>
+                      </LinearGradient>
+                  </textFill>
+                  <font>
+                      <Font name="Arial Rounded MT Bold" size="60.0" />
+                  </font>
+              </Label>
+              <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="270.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+                  <fill>
+                      <LinearGradient endX="1.0" endY="1.0">
+                          <stops>
+                              <Stop>
+                                  <color>
+                                      <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                                  </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                  <color>
+                                      <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                                  </color>
+                              </Stop>
+                          </stops>
+                      </LinearGradient>
+                  </fill>
+              </Rectangle>
+              <Label layoutX="285.0" layoutY="150.0" styleClass="inputLabel" text="Room:">
+                  <font>
+                      <Font name="Calibri Bold" size="30.0" />
+                  </font>
+              </Label>
+              <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="575.0" layoutX="280.0" layoutY="205.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
+              <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="285.0" layoutY="210.0" prefHeight="565.0" prefWidth="390.0" text="Additional Text..." unFocusColor="#ffffff00">
+                  <font>
+                      <Font name="Calibri" size="20.0" />
+                  </font>
+                  <styleClass>
+                      <String fx:value="inputLabel" />
+                      <String fx:value="requestInput" />
+                  </styleClass>
+            </JFXTextArea>
+              <MFXButton computeRadiusMultiplier="false" layoutX="980.0" layoutY="740.0" onAction="#resetAllFields" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b; -fx-border-radius: 15;" styleClass="requestButton" text="Reset" textFill="WHITE">
+                  <font>
+                      <Font name="Calibri Bold" size="20.0" />
+                  </font>
+              </MFXButton>
+              <MFXButton fx:id="submitButton" computeRadiusMultiplier="false" layoutX="1090.0" layoutY="740.0" onAction="#submitButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Submit" textFill="WHITE">
+                  <font>
+                      <Font name="Calibri Bold" size="20.0" />
+                  </font>
+              </MFXButton>
+              <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="850.0" layoutY="109.0" prefHeight="66.0" prefWidth="335.0" styleClass="subtitle" text="What's Broken?" textAlignment="RIGHT">
+                  <textFill>
+                      <LinearGradient endX="1.0" endY="1.0">
+                          <stops>
+                              <Stop>
+                                  <color>
+                                      <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                                  </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                  <color>
+                                      <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                                  </color>
+                              </Stop>
+                          </stops>
+                      </LinearGradient>
+                  </textFill>
+                  <font>
+                      <Font name="Arial Rounded MT Bold" size="45.0" />
+                  </font>
+              </Label>
+              <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="790.0" layoutY="175.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0">
+                  <fill>
+                      <LinearGradient endX="1.0" endY="1.0">
+                          <stops>
+                              <Stop>
+                                  <color>
+                                      <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                                  </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                  <color>
+                                      <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                                  </color>
+                              </Stop>
+                          </stops>
+                      </LinearGradient>
+                  </fill>
+              </Rectangle>
+              <MFXRadioButton fx:id="medEquipRadioButton" layoutX="790.0" layoutY="200.0" onAction="#disableMiscBox" radius="12.0" styleClass="requestOption" text="Medical Equipment:">
+                  <font>
+                      <Font name="Calibri" size="30.0" />
+                  </font>
+                  <toggleGroup>
+                      <ToggleGroup fx:id="Purpose" />
+                  </toggleGroup>
+              </MFXRadioButton>
+              <MFXRadioButton fx:id="elevatorRadioButton" layoutX="790.0" layoutY="300.0" onAction="#disableMiscBox" radius="12.0" styleClass="requestOption" text="Elevator" toggleGroup="$Purpose">
+                  <font>
+                      <Font name="Calibri" size="30.0" />
+                  </font>
+              </MFXRadioButton>
+              <MFXRadioButton fx:id="lightsRadioButton" layoutX="790.0" layoutY="350.0" onAction="#disableMiscBox" radius="12.0" styleClass="requestOption" text="Lights" toggleGroup="$Purpose">
+                  <font>
+                      <Font name="Calibri" size="30.0" />
+                  </font>
+              </MFXRadioButton>
+              <MFXRadioButton fx:id="otherRadioButton" layoutX="790.0" layoutY="400.0" onAction="#enableMiscBox" radius="12.0" styleClass="requestOption" text="Other:" toggleGroup="$Purpose">
+                  <font>
+                      <Font name="Calibri" size="30.0" />
+                  </font>
+              </MFXRadioButton>
+              <MFXTextField fx:id="input_OtherText" allowEdit="false" floatMode="DISABLED" layoutX="920.0" layoutY="400.0" pickOnBounds="false" prefHeight="42.0" prefWidth="270.0" selectable="false" styleClass="requestInput">
+                  <font>
+                      <Font name="Calibri" size="20.0" />
+                  </font>
+              </MFXTextField>
+              <MFXRadioButton fx:id="replacementRadioButton" layoutX="790.0" layoutY="550.0" radius="10.0" styleClass="requestOption" text="Replacement">
+                  <font>
+                      <Font name="Calibri" size="30.0" />
+                  </font>
+                  <toggleGroup>
+                      <ToggleGroup fx:id="Problem" />
+                  </toggleGroup>
+              </MFXRadioButton>
+              <MFXRadioButton fx:id="maintenanceRadioButton" layoutX="790.0" layoutY="600.0" radius="10.0" styleClass="requestOption" text="Maintenance" toggleGroup="$Problem">
+                  <font>
+                      <Font name="Calibri" size="30.0" />
+                  </font>
+              </MFXRadioButton>
+              <MFXRadioButton fx:id="unsureRadioButton" layoutX="790.0" layoutY="650.0" radius="10.0" styleClass="requestOption" text="Unsure" toggleGroup="$Problem">
+                  <font>
+                      <Font name="Calibri" size="30.0" />
+                  </font>
+              </MFXRadioButton>
+              <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="749.0" layoutY="464.0" prefHeight="66.0" prefWidth="443.0" styleClass="subtitle" text="How Can We Help?" textAlignment="RIGHT">
+                  <textFill>
+                      <LinearGradient endX="1.0" endY="1.0">
+                          <stops>
+                              <Stop>
+                                  <color>
+                                      <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                                  </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                  <color>
+                                      <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                                  </color>
+                              </Stop>
+                          </stops>
+                      </LinearGradient>
+                  </textFill>
+                  <font>
+                      <Font name="Arial Rounded MT Bold" size="40.0" />
+                  </font>
+              </Label>
+              <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="790.0" layoutY="525.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0">
+                  <fill>
+                      <LinearGradient endX="1.0" endY="1.0">
+                          <stops>
+                              <Stop>
+                                  <color>
+                                      <Color red="0.10588235408067703" green="0.5372549295425415" blue="0.6509804129600525" />
+                                  </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                  <color>
+                                      <Color red="0.11764705926179886" green="0.3921568691730499" blue="0.545098066329956" />
+                                  </color>
+                              </Stop>
+                          </stops>
+                      </LinearGradient>
+                  </fill>
+              </Rectangle>
+              <JFXTextArea fx:id="errorLabel" depthTest="DISABLE" disable="true" editable="false" focusColor="#ffffff00" layoutX="945.0" layoutY="675.0" opacity="0.97" prefHeight="10.0" prefWidth="243.0" style="-fx-text-fill: RED;" styleClass="plainText" unFocusColor="#ffffff00">
+                  <font>
+                      <Font name="Calibri" size="15.0" />
+                  </font>
+              </JFXTextArea>
+              <TextField fx:id="roomsHiddenField" layoutX="430.0" layoutY="150.0" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
+              <JFXComboBox fx:id="roomsComboBox" layoutX="430.0" layoutY="150.0" onAction="#setRoomText" prefHeight="42.0" prefWidth="250.0" styleClass="inputField" unFocusColor="#ffffff00" />
+              <MFXButton computeRadiusMultiplier="false" layoutX="1090.0" layoutY="10.0" onAction="#backButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667b;" styleClass="requestButton" text="Back" textFill="WHITE">
+                  <font>
+                      <Font name="Calibri Bold" size="20.0" />
+                  </font>
+              </MFXButton>
+              <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
+            <TextField fx:id="medEquipHiddenField" layoutX="790.0" layoutY="250.0" prefHeight="43.0" prefWidth="151.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="inputField" />
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

@@ -1,6 +1,8 @@
 package edu.wpi.cs3733.d22.teamY;
 
 import com.google.firebase.database.*;
+import edu.wpi.cs3733.d22.teamY.controllers.NewSceneLoading;
+import edu.wpi.cs3733.d22.teamY.controllers.Scaling;
 import java.util.Objects;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -37,8 +39,9 @@ public class App extends Application {
   @Override
   public void start(Stage primaryStage) throws Exception {
     instance = this; // instantiates instance
-    primaryStage.setMinWidth(900);
-    primaryStage.setMinHeight(600);
+    primaryStage.setMinWidth(1200);
+    primaryStage.setMinHeight(800);
+    NewSceneLoading.activeWindow = primaryStage;
     this.primaryStage = primaryStage;
 
     primaryStage.getIcons().add(new Image(String.valueOf(App.class.getResource("icon.png"))));
@@ -62,6 +65,7 @@ public class App extends Application {
     primaryStage.setTitle("Brigham and Women's Hospital Equipment Tracker");
     primaryStage.setScene(scene);
     primaryStage.show();
+    Scaling.initialize();
     // camera.newPfp();
     windowX = primaryStage.getX();
     windowY = primaryStage.getY();
