@@ -10,6 +10,7 @@ import edu.wpi.cs3733.d22.teamY.model.Requestable;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import java.awt.*;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -17,6 +18,7 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import javafx.animation.AnimationTimer;
@@ -26,6 +28,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javax.sound.sampled.*;
 
 public class DashboardController {
 
@@ -82,6 +85,24 @@ public class DashboardController {
   @FXML private ImageView dirtyWarning4;
   @FXML private ImageView dirtyWarning5;
 
+  private boolean paused;
+  private boolean playing;
+  private boolean loaded = false;
+  private boolean shuffle = false;
+  private boolean next = false;
+  private boolean prev = false;
+
+  // TODO add music Bitch!
+
+  AudioInputStream audioInputStream;
+  ArrayList<String> songs = new ArrayList<>();
+
+  String a = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/FurElise30.wav";
+  String b = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/MoltoVivace30.wav";
+  String c = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/Symp530.wav";
+
+  Clip clip;
+
   private Label[] floorsClean;
   private Label[] floorsDirty;
   private ImageView[] floorsDirtyWarning;
@@ -102,6 +123,10 @@ public class DashboardController {
   }
 
   public void initialize() throws IOException {
+    songs.add(a);
+    songs.add(b);
+    songs.add(c);
+
     activeRequestCount.setText(String.valueOf(DBUtils.getRequestCount()));
     floorsClean =
         new Label[] {
@@ -390,5 +415,77 @@ public class DashboardController {
         break;
     }
     return path + im + ".png";
+  }
+
+  public void play() {
+    if (shuffle) {
+      shuffle = false;
+      playSong(getRanSong());
+    } else {
+      playSong(getRanSong());
+    }
+  }
+
+  public void pause() {
+    clip.stop();
+    playing = false;
+    paused = true;
+  }
+
+  public void next() {}
+
+  public void back() {}
+
+  public void shuffle() {
+    shuffle = true;
+    if (playing) {
+      clip.stop();
+      clip.close();
+      playing = false;
+    }
+    loaded = false;
+    play();
+  }
+
+  public void playSong(String p) {
+    try {
+      File file = new File(p);
+      if (file.exists()) {
+        if (!playing && !loaded) {
+          playing = true;
+          audioInputStream = AudioSystem.getAudioInputStream(file);
+          clip = AudioSystem.getClip();
+          clip.open(audioInputStream);
+          audioInputStream.close();
+          clip.start();
+          loaded = true;
+        } else if (!playing) {
+          clip.start();
+          playing = true;
+        }
+      } else System.out.println("File Not Found");
+    } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  private int positionChosenBefore = 0;
+  private int ran = 0;
+
+  public String getRanSong() {
+    while (ran == positionChosenBefore) {
+      ran = (int) (Math.random() * (songs.size()));
+    }
+
+    positionChosenBefore = ran;
+    return songs.get(ran);
+  }
+
+  public String getPrev() {
+    return a;
+  }
+
+  public String getNext() {
+    return c;
   }
 }

@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -71,6 +67,7 @@
                 <Font name="Arial Rounded MT Bold" size="60.0" />
             </font>
         </Label>
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="82.0" layoutX="890.0" layoutY="99.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
         <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="270.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="650.0">
             <fill>
                 <LinearGradient endX="1.0" endY="1.0">
@@ -166,7 +163,7 @@
             </MFXScrollPane>
          </children>
       </Group>
-      <Group layoutX="890.0" layoutY="99.0">
+      <Group layoutX="890.0" layoutY="397.0">
          <children>
             <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="389.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
             <Label layoutX="27.0" layoutY="14.0" styleClass="title" text="Floor">
@@ -455,49 +452,9 @@
             </ImageView>
          </children>
       </Group>
-      <Group layoutX="890.0" layoutY="496.0">
-         <children>
-            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
-            <Label layoutX="10.0" layoutY="10.0" styleClass="title" text="Messages">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-            </Label>
-            <MFXScrollPane layoutX="10.0" layoutY="49.0" prefHeight="207.0" prefWidth="276.0" style="-fx-background-color: #93cddc;">
-               <content>
-                  <VBox fx:id="messageBox" prefHeight="271.0" prefWidth="262.0">
-                     <children>
-                        <HBox prefHeight="55.0" prefWidth="262.0" style="-fx-padding: 2;">
-                           <children>
-                              <TextArea editable="false" prefHeight="46.0" prefWidth="160.0" text="Hi! How are you!" wrapText="true">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                              </TextArea>
-                           </children>
-                        </HBox>
-                        <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="55.0" prefWidth="262.0" style="-fx-padding: 2;">
-                           <children>
-                              <TextArea editable="false" prefHeight="46.0" prefWidth="160.0" text="Great, thanks for asking!!! :)" wrapText="true">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                              </TextArea>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-               </content>
-            </MFXScrollPane>
-            <TextField fx:id="messageInputBox" layoutX="10.0" layoutY="256.0" prefHeight="26.0" prefWidth="218.0" promptText="type your message here..." />
-            <MFXButton fx:id="messageSendButton" layoutX="232.0" layoutY="256.0" prefHeight="26.0" prefWidth="48.0" style="-fx-background-color: #1b89a6;" text="Send" textFill="WHITE" />
-         </children>
-      </Group>
+      <Group layoutX="890.0" layoutY="496.0" />
       <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
-      <Group layoutX="912.0" layoutY="-25.0" scaleX="0.75" scaleY="0.75">
+      <Group layoutX="933.0" layoutY="65.0" scaleX="0.75" scaleY="0.75">
          <children>
             <Label fx:id="timeDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="91.0" layoutY="21.0" prefHeight="54.0" prefWidth="196.0" styleClass="title" text="Offline">
                <font>
@@ -642,5 +599,36 @@
             </Line>
          </children>
       </Group>
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="200.0" layoutX="890.0" layoutY="189.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
+      <ImageView fitHeight="101.0" fitWidth="106.0" layoutX="985.0" layoutY="200.0">
+         <image>
+            <Image url="@../../../../../../../../../../../../../../Downloads/11zon_cropped%20(7).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="903.0" layoutY="319.0" onMouseClicked="#back">
+         <image>
+            <Image url="@../../../../../../../../../../../../../../Downloads/11zon_cropped%20(6).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1112.0" layoutY="319.0" onMouseClicked="#next">
+         <image>
+            <Image url="@../../../../../../../../../../../../../../Downloads/11zon_cropped%20(5).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1112.0" layoutY="200.0" onMouseClicked="#pause">
+         <image>
+            <Image url="@../../../../../../../../../../../../../../Downloads/11zon_cropped%20(4).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1008.0" layoutY="319.0" onMouseClicked="#shuffle">
+         <image>
+            <Image url="@../../../../../../../../../../../../../../Downloads/11zon_cropped%20(3).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="903.0" layoutY="200.0" onMouseClicked="#play">
+         <image>
+            <Image url="@../../../../../../../../../../../../../../Downloads/11zon_cropped%20(2).png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
