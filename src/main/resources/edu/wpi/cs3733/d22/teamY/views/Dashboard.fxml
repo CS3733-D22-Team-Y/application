@@ -347,35 +347,35 @@
             </Line>
          </children>
       </Group>
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="200.0" layoutX="890.0" layoutY="189.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="200.0" layoutX="894.0" layoutY="194.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
       <ImageView fitHeight="101.0" fitWidth="106.0" layoutX="985.0" layoutY="200.0">
          <image>
-            <Image url="@IdeaProjects/application/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/dash/MusicIcons/11zon_cropped%20(7).png" />
+            <Image url="@images/icons/dash/MusicIcons/11zon_cropped%20(7).png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="903.0" layoutY="319.0" onMouseClicked="#back">
          <image>
-            <Image url="@IdeaProjects/application/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/dash/MusicIcons/11zon_cropped%20(6).png" />
+            <Image url="@images/icons/dash/MusicIcons/11zon_cropped%20(6).png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1112.0" layoutY="319.0" onMouseClicked="#next">
          <image>
-            <Image url="@IdeaProjects/application/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/dash/MusicIcons/11zon_cropped%20(5).png" />
+            <Image url="@images/icons/dash/MusicIcons/11zon_cropped%20(5).png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1112.0" layoutY="200.0" onMouseClicked="#pause">
          <image>
-            <Image url="@IdeaProjects/application/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/dash/MusicIcons/11zon_cropped%20(4).png" />
+            <Image url="@images/icons/dash/MusicIcons/11zon_cropped%20(4).png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1008.0" layoutY="319.0" onMouseClicked="#shuffle">
          <image>
-            <Image url="@IdeaProjects/application/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/dash/MusicIcons/11zon_cropped%20(3).png" />
+            <Image url="@images/icons/dash/MusicIcons/11zon_cropped%20(3).png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="903.0" layoutY="200.0" onMouseClicked="#play">
          <image>
-            <Image url="@IdeaProjects/application/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/dash/MusicIcons/11zon_cropped%20(2).png" />
+            <Image url="@images/icons/dash/MusicIcons/11zon_cropped%20(2).png" />
          </image>
       </ImageView>
       <Group layoutX="890.0" layoutY="397.0">
