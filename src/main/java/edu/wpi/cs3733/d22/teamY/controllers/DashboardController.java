@@ -6,6 +6,7 @@ import edu.wpi.cs3733.d22.teamY.*;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.Requestable;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
+import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,10 +16,11 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.LinkedList;
+import java.util.*;
+import java.util.List;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.control.Label;
@@ -91,6 +93,11 @@ public class DashboardController {
   private Label[] floorsDirty;
   private ImageView[] floorsDirtyWarning;
 
+  @FXML private VBox requestBox;
+  @FXML private MFXScrollPane scrollBox;
+
+  private ArrayList<RequestSet> rqPairs;
+
   private Scene requestMenu = null;
 
   public DashboardController() {}
@@ -107,6 +114,23 @@ public class DashboardController {
   }
 
   public void initialize() throws IOException {
+
+    scrollBox.setBackground(Background.EMPTY);
+
+    rqPairs = new ArrayList<>();
+
+    List<ServiceRequest> reqs = DBManager.getAll(ServiceRequest.class);
+    if (reqs != null) {
+      for (ServiceRequest req : reqs) {
+        addRequest(req);
+      }
+    }
+
+    rqPairs.sort(Comparator.comparingInt(rs -> (10 - rs.getRequest().getRequestPriority())));
+
+    for (RequestSet pair : rqPairs) {
+      addToBox(pair);
+    }
 
     // categoryAxis.setLabel("Country");
     // categoryAxis.setTickLabelRotation(90);
@@ -169,7 +193,7 @@ public class DashboardController {
 
     if (DBUtils.checkAvailableEquipmentOnFloor("3", "PUMP") < 5) {
 
-      addToBox("Floor 3 has less than 5 Infusion Pumps");
+      addToAlertsBox("Floor 3 has less than 5 Infusion Pumps");
       new ServiceRequest(
           RequestTypes.MEDEQUIP,
           "",
@@ -181,7 +205,7 @@ public class DashboardController {
     }
     if (DBUtils.checkAvailableEquipmentOnFloor("4", "PUMP") < 5) {
 
-      addToBox("Floor 4 has less than 5 Infusion Pumps");
+      addToAlertsBox("Floor 4 has less than 5 Infusion Pumps");
       new ServiceRequest(
           RequestTypes.MEDEQUIP,
           "",
@@ -193,7 +217,7 @@ public class DashboardController {
     }
     if (DBUtils.checkAvailableEquipmentOnFloor("5", "PUMP") < 5) {
 
-      addToBox("Floor 5 has less than 5 Infusion Pumps");
+      addToAlertsBox("Floor 5 has less than 5 Infusion Pumps");
       new ServiceRequest(
           RequestTypes.MEDEQUIP,
           "",
@@ -206,7 +230,7 @@ public class DashboardController {
 
     if (DBUtils.checkUnavailableEquipmentOnFloor("3", "PUMP") >= 10) {
 
-      addToBox("Floor 3 has 10 dirty Infusion Pumps");
+      addToAlertsBox("Floor 3 has 10 dirty Infusion Pumps");
       new ServiceRequest(
           RequestTypes.MEDEQUIP,
           "",
@@ -218,7 +242,7 @@ public class DashboardController {
     }
     if (DBUtils.checkUnavailableEquipmentOnFloor("4", "PUMP") >= 10) {
 
-      addToBox("Floor 4 has 10 dirty Infusion Pumps");
+      addToAlertsBox("Floor 4 has 10 dirty Infusion Pumps");
       new ServiceRequest(
           RequestTypes.MEDEQUIP,
           "",
@@ -230,7 +254,7 @@ public class DashboardController {
     }
     if (DBUtils.checkUnavailableEquipmentOnFloor("5", "PUMP") >= 10) {
 
-      addToBox("Floor 5 has 10 dirty Infusion Pumps");
+      addToAlertsBox("Floor 5 has 10 dirty Infusion Pumps");
       new ServiceRequest(
           RequestTypes.MEDEQUIP,
           "",
@@ -243,7 +267,7 @@ public class DashboardController {
 
     if (DBUtils.checkUnavailableEquipmentOnFloor("3", "BED") >= 6) {
 
-      addToBox("Floor 3 has 6 dirty beds");
+      addToAlertsBox("Floor 3 has 6 dirty beds");
       new ServiceRequest(
           RequestTypes.MEDEQUIP,
           "",
@@ -255,7 +279,7 @@ public class DashboardController {
     }
     if (DBUtils.checkUnavailableEquipmentOnFloor("4", "BED") >= 6) {
 
-      addToBox("Floor 4 has 6 dirty beds");
+      addToAlertsBox("Floor 4 has 6 dirty beds");
       new ServiceRequest(
           RequestTypes.MEDEQUIP,
           "",
@@ -267,7 +291,7 @@ public class DashboardController {
     }
     if (DBUtils.checkUnavailableEquipmentOnFloor("5", "BED") >= 6) {
 
-      addToBox("Floor 5 has 6 dirty beds");
+      addToAlertsBox("Floor 5 has 6 dirty beds");
       new ServiceRequest(
           RequestTypes.MEDEQUIP,
           "",
@@ -281,7 +305,21 @@ public class DashboardController {
     NewSceneLoading.loadSidebar(sidebarPane);
   }
 
-  private void setupGraph() {}
+  private void addRequest(ServiceRequest req) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("views/DashboardServiceRequest.fxml"));
+    Pane pane = loader.load();
+    // SingularServiceRequestController controller = loader.getController();
+    SingularServiceRequestController controller =
+        ActiveServiceRequestController.requestControllers.getLast();
+    // System.out.println(ActiveServiceRequestController.requestControllers.getLast());
+
+    rqPairs.add(new RequestSet(controller, pane, req));
+  }
+
+  private void addToBox(RequestSet rqSet) {
+    requestBox.getChildren().add(rqSet.getPane());
+    rqSet.getController().populateFromRequest(rqSet.getRequest());
+  }
 
   private void updateEquipment() {
     for (int i = 0; i < floorsClean.length; i++) {
@@ -350,7 +388,7 @@ public class DashboardController {
     // rqPairs.add(new RequestSet(controller, pane, req));
   }
 
-  private void addToBox(String inputText) {
+  private void addToAlertsBox(String inputText) {
 
     // Label test = new Label("test");
     // test.setBackground(new Background(new BackgroundFill(Paint.TRANSLUCENT, CornerRadii.EMPTY,

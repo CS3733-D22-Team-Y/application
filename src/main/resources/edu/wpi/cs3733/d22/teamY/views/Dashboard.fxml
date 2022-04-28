@@ -96,35 +96,10 @@
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <MFXScrollPane layoutX="9.0" layoutY="52.0" prefHeight="326.0" prefWidth="276.0" style="-fx-background-color: #FFFFFF;">
+            <MFXScrollPane fx:id="scrollBox" hbarPolicy="NEVER" layoutX="9.0" layoutY="52.0" prefHeight="326.0" prefWidth="276.0" style="-fx-background-color: #FFFFFF;" vvalue="0.52">
                <content>
-                  <VBox fx:id="tasksBox" prefHeight="320.0" prefWidth="262.0">
-                     <children>
-                        <Label styleClass="title" text="You have no tasks assigned." wrapText="true">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="18.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="1.0" endY="1.0">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Label>
-                     </children>
-                  </VBox>
-               </content>
-            </MFXScrollPane>
+                  <VBox fx:id="requestBox" prefHeight="26.0" prefWidth="275.0" />
+               </content></MFXScrollPane>
          </children>
       </Group>
       <Group layoutX="587.0" layoutY="99.0">
@@ -135,7 +110,7 @@
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <MFXScrollPane layoutX="10.0" layoutY="52.0" prefHeight="326.0" prefWidth="276.0" style="-fx-background-color: #FFF;">
+            <MFXScrollPane fx:id="scrollBox" layoutX="10.0" layoutY="52.0" prefHeight="326.0" prefWidth="276.0" style="-fx-background-color: #FFF;">
                <content>
                   <HBox fx:id="alertsBox" prefHeight="166.0" prefWidth="272.0">
                      <children>
