@@ -110,9 +110,11 @@ public class FacilitiesRequestController implements IController {
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/FacilitiesRequest.fxml");
       } else {
+        resetAllFields();
         NewSceneLoading.loadScene("views/RequestMenu.fxml");
       }
     } else {
+      resetAllFields();
       NewSceneLoading.loadScene("views/RequestMenu.fxml");
     }
   }

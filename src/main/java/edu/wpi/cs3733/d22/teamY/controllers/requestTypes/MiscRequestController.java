@@ -107,9 +107,11 @@ public class MiscRequestController implements IController {
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/MiscRequest.fxml");
       } else {
+        resetAllFields();
         NewSceneLoading.loadScene("views/RequestMenu.fxml");
       }
     } else {
+      resetAllFields();
       NewSceneLoading.loadScene("views/RequestMenu.fxml");
     }
   }

@@ -122,9 +122,11 @@ public class LaundryRequestController implements IController {
       if (SceneLoading.stayOnPage) {
         NewSceneLoading.loadScene("views/requestTypes/LaundryRequest.fxml");
       } else {
+        resetAllFields();
         NewSceneLoading.loadScene("views/RequestMenu.fxml");
       }
     } else {
+      resetAllFields();
       NewSceneLoading.loadScene("views/RequestMenu.fxml");
     }
   }
