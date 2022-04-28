@@ -42,107 +42,102 @@
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </MFXButton>
-      <Label layoutX="10.0" layoutY="625.0" prefWidth="880.0" styleClass="plainText" text="The Brigham &amp; Women’s Hospital maps and data used in this application are copyrighted and provided for the sole use of educational purposes." textAlignment="CENTER" wrapText="true">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="loadConnor" fitHeight="125.0" fitWidth="125.0" layoutX="13.0" layoutY="250.0" onMouseClicked="#loadConnor" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="loadConnor" fitHeight="125.0" fitWidth="125.0" layoutX="13.0" layoutY="275.0" onMouseClicked="#loadConnor" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Connor.jpg" />
          </image></ImageView>
-      <ImageView fx:id="loadBen" fitHeight="125.0" fitWidth="125.0" layoutX="163.0" layoutY="250.0" onMouseClicked="#loadBen" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="loadBen" fitHeight="125.0" fitWidth="125.0" layoutX="163.0" layoutY="275.0" onMouseClicked="#loadBen" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Ben.jpg" />
          </image></ImageView>
-      <ImageView fx:id="loadEmily" fitHeight="125.0" fitWidth="125.0" layoutX="313.0" layoutY="250.0" onMouseClicked="#loadEmily" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="loadEmily" fitHeight="125.0" fitWidth="125.0" layoutX="313.0" layoutY="275.0" onMouseClicked="#loadEmily" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Emily.jpg" />
          </image></ImageView>
-      <ImageView fx:id="loadNathanA" fitHeight="125.0" fitWidth="125.0" layoutX="463.0" layoutY="250.0" onMouseClicked="#loadNathanA" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="loadNathanA" fitHeight="125.0" fitWidth="125.0" layoutX="463.0" layoutY="275.0" onMouseClicked="#loadNathanA" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/NathanA.jpg" />
          </image></ImageView>
-      <ImageView fx:id="loadSky" fitHeight="125.0" fitWidth="125.0" layoutX="613.0" layoutY="250.0" onMouseClicked="#loadSky" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="loadSky" fitHeight="125.0" fitWidth="125.0" layoutX="613.0" layoutY="275.0" onMouseClicked="#loadSky" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Sky.jpg" />
          </image></ImageView>
-      <ImageView fx:id="loadJohn" fitHeight="125.0" fitWidth="125.0" layoutX="763.0" layoutY="250.0" onMouseClicked="#loadJohn" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="loadJohn" fitHeight="125.0" fitWidth="125.0" layoutX="763.0" layoutY="275.0" onMouseClicked="#loadJohn" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/John.jpg" />
          </image></ImageView>
-      <ImageView fx:id="loadJake" fitHeight="125.0" fitWidth="125.0" layoutX="117.0" layoutY="430.0" onMouseClicked="#loadJake" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="loadJake" fitHeight="125.0" fitWidth="125.0" layoutX="117.0" layoutY="455.0" onMouseClicked="#loadJake" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Jake.png" />
          </image></ImageView>
-      <ImageView fx:id="loadEngjell" fitHeight="125.0" fitWidth="125.0" layoutX="257.0" layoutY="430.0" onMouseClicked="#loadEngjell" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="loadEngjell" fitHeight="125.0" fitWidth="125.0" layoutX="257.0" layoutY="455.0" onMouseClicked="#loadEngjell" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Engjell.jpg" />
          </image></ImageView>
-      <ImageView fx:id="loadNicholas" fitHeight="125.0" fitWidth="125.0" layoutX="397.0" layoutY="430.0" onMouseClicked="#loadNicholas" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="loadNicholas" fitHeight="125.0" fitWidth="125.0" layoutX="397.0" layoutY="455.0" onMouseClicked="#loadNicholas" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Nicholas.png" />
          </image></ImageView>
-      <ImageView fx:id="loadNathanP" fitHeight="125.0" fitWidth="125.0" layoutX="537.0" layoutY="430.0" onMouseClicked="#loadNathanP" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="loadNathanP" fitHeight="125.0" fitWidth="125.0" layoutX="537.0" layoutY="455.0" onMouseClicked="#loadNathanP" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/NathanP.jpg" />
          </image></ImageView>
-      <ImageView fx:id="loadEthan" fitHeight="125.0" fitWidth="125.0" layoutX="677.0" layoutY="430.0" onMouseClicked="#loadEthan" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="loadEthan" fitHeight="125.0" fitWidth="125.0" layoutX="677.0" layoutY="455.0" onMouseClicked="#loadEthan" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Ethan.jpg" />
          </image></ImageView>
-      <Label layoutX="10.0" layoutY="100.0" prefHeight="150.0" prefWidth="880.0" styleClass="plainText" text="Thank you for taking the time to view and use our application. Our team was the Yowling Yodeling Yoshis (Team Y) for CS3733 D22 at WPI. We would like to thank Professor Wilson Wong and TA Roman Wicky Van Doyer for their input and assistance over the duration of this course. Below are all team members and their roles. Click on each photo to learn more about our application. " wrapText="true" />
-      <Label alignment="TOP_CENTER" layoutX="162.0" layoutY="380.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Ben Schmitt" wrapText="true">
+      <Label layoutX="10.0" layoutY="107.0" prefHeight="150.0" prefWidth="880.0" styleClass="plainText" text="Thank you for taking the time to view and use our application. Our team was the Yowling Yodeling Yoshis (Team Y) for CS3733 D22 at WPI. We would like to thank Professor Wilson Wong and TA Roman Wicky Van Doyer for their input and assistance over the duration of this course. Below are all team members and their roles. Click on each photo to learn more about our application. " wrapText="true" />
+      <Label alignment="TOP_CENTER" layoutX="162.0" layoutY="405.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Ben Schmitt" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="TOP_CENTER" layoutX="13.0" layoutY="380.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Connor Horn" wrapText="true">
+      <Label alignment="TOP_CENTER" layoutX="13.0" layoutY="405.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Connor Horn" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="TOP_CENTER" layoutX="313.0" layoutY="380.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Emily Gorelik" wrapText="true">
+      <Label alignment="TOP_CENTER" layoutX="313.0" layoutY="405.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Emily Gorelik" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="TOP_CENTER" layoutX="463.0" layoutY="380.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Nathan Anderson" wrapText="true">
+      <Label alignment="TOP_CENTER" layoutX="463.0" layoutY="405.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Nathan Anderson" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="TOP_CENTER" layoutX="613.0" layoutY="380.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Sky Tang" wrapText="true">
+      <Label alignment="TOP_CENTER" layoutX="613.0" layoutY="405.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Sky Tang" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="TOP_CENTER" layoutX="763.0" layoutY="380.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="John Carrotta" wrapText="true">
+      <Label alignment="TOP_CENTER" layoutX="763.0" layoutY="405.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="John Carrotta" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="TOP_CENTER" layoutX="117.0" layoutY="565.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Jake Brady" wrapText="true">
+      <Label alignment="TOP_CENTER" layoutX="117.0" layoutY="590.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Jake Brady" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="TOP_CENTER" layoutX="257.0" layoutY="565.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Engjell Ramadani" wrapText="true">
+      <Label alignment="TOP_CENTER" layoutX="257.0" layoutY="590.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Engjell Ramadani" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="TOP_CENTER" layoutX="397.0" layoutY="565.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Nick Heineman" wrapText="true">
+      <Label alignment="TOP_CENTER" layoutX="397.0" layoutY="590.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Nick Heineman" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="TOP_CENTER" layoutX="537.0" layoutY="565.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Nathan Pollock" wrapText="true">
+      <Label alignment="TOP_CENTER" layoutX="537.0" layoutY="590.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Nathan Pollock" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="TOP_CENTER" layoutX="677.0" layoutY="565.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Ethan Catania" wrapText="true">
+      <Label alignment="TOP_CENTER" layoutX="677.0" layoutY="590.0" prefHeight="30.0" prefWidth="125.0" styleClass="subText" text="Ethan Catania" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
