@@ -241,7 +241,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <Label fx:id="creator10" alignment="CENTER_RIGHT" layoutX="401.0" layoutY="587.0" prefHeight="17.0" prefWidth="167.0" text="Nathan Pollack" textAlignment="RIGHT" />
+         <Label fx:id="creator10" alignment="CENTER_RIGHT" layoutX="401.0" layoutY="587.0" prefHeight="17.0" prefWidth="167.0" text="Nathan Pollock" textAlignment="RIGHT" />
          <JFXToggleButton fx:id="creatorToggle" contentDisplay="RIGHT" layoutX="996.0" layoutY="734.0" onAction="#showCreators" size="12.0" text="Show Creators">
             <font>
                <Font name="Calibri" size="20.0" />
