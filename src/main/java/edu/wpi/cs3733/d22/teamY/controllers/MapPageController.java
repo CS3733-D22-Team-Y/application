@@ -7,7 +7,7 @@ import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.component.MapComponent;
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.MedEquip;
-import edu.wpi.cs3733.d22.teamY.model.Requestable;
+import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -29,7 +29,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
-public class MapPageController<T extends Requestable> implements IController {
+public class MapPageController implements IController {
 
   enum MapMode {
     LOCATION("Locations"),
@@ -81,7 +81,7 @@ public class MapPageController<T extends Requestable> implements IController {
 
   @FXML public MFXButton locationSubmit;
   private String fuck = "shit";
-  private ArrayList<T> fuck2 = new ArrayList<>();
+  private ArrayList<ServiceRequest> fuck2 = new ArrayList<>();
   private ArrayList<MedEquip> fuck3 = new ArrayList<>();
   private int currReqSelection = 0;
   // @FXML private MFXLegacyComboBox<String> modeBox;
@@ -316,7 +316,14 @@ public class MapPageController<T extends Requestable> implements IController {
                     equip.stream().map(MedEquip::getEquipType).collect(Collectors.toSet());
 
                 boolean hasEquipment = equip.size() > 0;
-                List<T> requests = DBUtils.getAllServiceReqsAtLocation(l);
+                List<ServiceRequest> requests = DBUtils.getAllServiceReqsAtLocation(l);
+                System.out.println("Target: " + l.getNodeID());
+                for (ServiceRequest r : requests) {
+                  System.out.println(r.getLocationID());
+                }
+                if (requests.size() > 0) {
+                  System.out.println("Requests: " + requests.size());
+                }
 
                 boolean medEquipAdded = false, serviceRequestAdded = false;
 
@@ -392,12 +399,34 @@ public class MapPageController<T extends Requestable> implements IController {
                       new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
                   newServiceRequest.setLayoutX(l.getXCoord() - 20);
                   newServiceRequest.setLayoutY(l.getYCoord());
-                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.RED);
+                  Circle frame =
+                      new Circle(
+                          iconDim / 2,
+                          iconDim / 2,
+                          iconDim / 2,
+                          new Color(255 / 255.0, 43 / 255.0, 43 / 255.0, 1));
+                  ImageView reqIcon = new ImageView();
+                  if (equip.size() < 9) {
+                    reqIcon.setImage(
+                        new Image(
+                            String.valueOf(
+                                App.class
+                                    .getResource("views/images/icons/" + equip.size() + ".png")
+                                    .toString())));
+                  } else {
+                    reqIcon.setImage(
+                        new Image(
+                            String.valueOf(
+                                App.class.getResource("views/images/icons/9.png").toString())));
+                  }
+                  reqIcon.setFitWidth(iconDim);
+                  reqIcon.setFitHeight(iconDim);
                   newServiceRequest.setPrefWidth(iconDim);
                   newServiceRequest.setPrefHeight(iconDim);
                   newServiceRequest.getChildren().add(frame);
+                  newServiceRequest.getChildren().add(reqIcon);
                   newServiceRequest.visibleProperty().bind(servicesCheckbox.selectedProperty());
-                  mapElements.add(newLocation);
+                  mapElements.add(newServiceRequest);
                   serviceRequestAdded = true;
                 }
 
@@ -478,7 +507,7 @@ public class MapPageController<T extends Requestable> implements IController {
                       e -> {
                         if (requests.size() > 0) {
                           fuck2.clear();
-                          for (T r : requests) {
+                          for (ServiceRequest r : requests) {
                             fuck2.add(r);
                           }
                           // Show only the correct pane
@@ -487,12 +516,16 @@ public class MapPageController<T extends Requestable> implements IController {
                           equipInfoPane.setVisible(false);
 
                           this.currReqSelection %= fuck2.size();
-                          currReqDisplay.setText(fuck2.get(this.currReqSelection).getTypeString());
-                          this.reqLocationBox.setText(fuck2.get(this.currReqSelection).getLocID());
+                          currReqDisplay.setText(
+                              fuck2.get(this.currReqSelection).getRequestId() + "");
+                          this.reqLocationBox.setText(
+                              fuck2.get(this.currReqSelection).getLocationID());
                           this.reqDescriptionBox.setText(
                               fuck2.get(this.currReqSelection).getAdditionalNotes());
-                          this.reqStatusBox.setText(fuck2.get(this.currReqSelection).getStatus());
-                          this.reqTypeBox.setText(fuck2.get(this.currReqSelection).getTypeString());
+                          this.reqStatusBox.setText(
+                              fuck2.get(this.currReqSelection).getStatus().name());
+                          this.reqTypeBox.setText(
+                              fuck2.get(this.currReqSelection).getType().getFriendlyName());
                           this.reqNurseBox.setText(
                               fuck2.get(this.currReqSelection).getAssignedNurse());
                         }
@@ -519,7 +552,7 @@ public class MapPageController<T extends Requestable> implements IController {
                 reqSubmit.setOnMouseClicked(
                     e -> {
                       this.currReqSelection %= this.fuck2.size();
-                      T req = fuck2.get(this.currReqSelection);
+                      ServiceRequest req = fuck2.get(this.currReqSelection);
                       req.setAssignedNurse(reqNurseBox.getText());
                       // req.setStatus(reqStatusBox.getText());
 
@@ -783,6 +816,11 @@ public class MapPageController<T extends Requestable> implements IController {
     servicesCheckbox.setSelected(true);
   }
 
+  @FXML
+  private void openMapHelp() throws IOException {
+    SceneLoading.loadPopup("views/popups/HelpMap.fxml", "views/SideBar.fxml");
+  }
+
   public void exit() {
     locationInfoPane.setVisible(false);
     equipInfoPane.setVisible(false);
@@ -803,11 +841,11 @@ public class MapPageController<T extends Requestable> implements IController {
 
   public void updateReqInfo() {
     this.currReqSelection %= fuck2.size();
-    currReqDisplay.setText(fuck2.get(this.currReqSelection).getTypeString());
-    this.reqLocationBox.setText(fuck2.get(this.currReqSelection).getLocID());
+    currReqDisplay.setText(fuck2.get(this.currReqSelection).getRequestId() + "");
+    this.reqLocationBox.setText(fuck2.get(this.currReqSelection).getLocationID());
     this.reqDescriptionBox.setText(fuck2.get(this.currReqSelection).getAdditionalNotes());
-    this.reqStatusBox.setText(fuck2.get(this.currReqSelection).getStatus());
-    this.reqTypeBox.setText(fuck2.get(this.currReqSelection).getTypeString());
+    this.reqStatusBox.setText(fuck2.get(this.currReqSelection).getStatus().name());
+    this.reqTypeBox.setText(fuck2.get(this.currReqSelection).getType().getFriendlyName());
     this.reqNurseBox.setText(fuck2.get(this.currReqSelection).getAssignedNurse());
 
     equipInfoPane.setVisible(false);
@@ -820,6 +858,7 @@ public class MapPageController<T extends Requestable> implements IController {
     currentEquip = currentEquip % fuck3.size();
     MedEquip o = fuck3.get(currentEquip);
     fuck = String.valueOf(o.getEquipID());
+    System.out.println(fuck);
     equipID.setText(String.valueOf(o.getEquipID()));
     equipLocation.setText(o.getEquipLocId());
     equipType.setText(o.getEquipType());
