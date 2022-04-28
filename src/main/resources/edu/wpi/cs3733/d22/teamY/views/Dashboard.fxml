@@ -204,7 +204,7 @@
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="82.0" layoutX="890.0" layoutY="99.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
       <Group layoutX="933.0" layoutY="65.0">
          <children>
-            <Label fx:id="timeDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="33.0" prefHeight="54.0" prefWidth="196.0" styleClass="title" text="Offline">
+            <Label fx:id="timeDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="23.0" prefHeight="54.0" prefWidth="196.0" styleClass="title" text="Offline">
                <font>
                   <Font size="30.0" />
                </font>
@@ -230,7 +230,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="dateDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="75.0" prefHeight="22.0" prefWidth="185.0" styleClass="title" textAlignment="CENTER">
+            <Label fx:id="dateDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="70.0" layoutY="63.0" prefHeight="22.0" prefWidth="185.0" styleClass="title" textAlignment="CENTER">
                <font>
                   <Font name="Arial Rounded MT Bold" size="19.0" />
                </font>
@@ -251,14 +251,14 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <ImageView fx:id="weatherIcon" fitHeight="82.0" fitWidth="82.0" layoutX="13.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="weatherIcon" fitHeight="82.0" fitWidth="82.0" layoutX="-37.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                <effect>
                   <ColorAdjust brightness="0.18" />
                </effect>
             </ImageView>
-            <Label fx:id="fahrenheit" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="149.0" layoutY="65.0" prefHeight="31.0" prefWidth="54.0" styleClass="title" text="-" textAlignment="CENTER">
+            <Label fx:id="fahrenheit" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="123.0" layoutY="89.0" prefHeight="31.0" prefWidth="54.0" styleClass="title" text="-" textAlignment="CENTER">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="26.0" />
+                  <Font size="19.0" />
                </font>
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
@@ -277,9 +277,9 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="celsius" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="74.0" layoutY="56.0" prefHeight="31.0" prefWidth="54.0" styleClass="title" text="-" textAlignment="CENTER">
+            <Label fx:id="celsius" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="43.0" layoutY="89.0" prefHeight="31.0" prefWidth="54.0" styleClass="title" text="-" textAlignment="CENTER">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="26.0" />
+                  <Font size="19.0" />
                </font>
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
@@ -298,7 +298,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="dateDisplay112" alignment="CENTER" contentDisplay="CENTER" layoutX="148.0" layoutY="70.0" prefHeight="22.0" prefWidth="29.0" styleClass="title" text="°C" textAlignment="CENTER">
+            <Label fx:id="dateDisplay112" alignment="CENTER" contentDisplay="CENTER" layoutX="104.0" layoutY="89.0" prefHeight="22.0" prefWidth="29.0" styleClass="title" text="°C" textAlignment="CENTER">
                <font>
                   <Font name="Arial Rounded MT Bold" size="19.0" />
                </font>
@@ -319,7 +319,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="dateDisplay1121" alignment="CENTER" contentDisplay="CENTER" layoutX="198.0" layoutY="71.0" prefHeight="22.0" prefWidth="29.0" styleClass="title" text="°F" textAlignment="CENTER">
+            <Label fx:id="dateDisplay1121" alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="89.0" prefHeight="22.0" prefWidth="29.0" styleClass="title" text="°F" textAlignment="CENTER">
                <font>
                   <Font name="Arial Rounded MT Bold" size="19.0" />
                </font>
@@ -340,7 +340,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Line endX="170.0" endY="-20.399993896484375" layoutX="13.0" layoutY="97.0" startX="170.0" startY="-2.800018310546875" strokeLineCap="ROUND" strokeWidth="4.0">
+            <Line endX="170.0" endY="-20.399993896484375" layoutX="-28.0" layoutY="116.0" startX="170.0" startY="-2.800018310546875" strokeLineCap="ROUND" strokeWidth="4.0">
                <effect>
                   <ColorAdjust brightness="0.18" />
                </effect>
