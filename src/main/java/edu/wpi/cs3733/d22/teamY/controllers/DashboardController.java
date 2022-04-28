@@ -603,6 +603,8 @@ public class DashboardController implements IController {
   @FXML
   public void L5CleanExit() {
     clean_l5Popup.setVisible(false);
+  }
+  
   @Override
   public IController getController() {
     return this;
