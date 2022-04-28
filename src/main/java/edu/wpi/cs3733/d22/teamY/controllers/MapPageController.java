@@ -342,12 +342,12 @@ public class MapPageController implements IController {
                 ArrayList<Pane> xray = new ArrayList<>();
                 ArrayList<Pane> recliner = new ArrayList<>();
                 ArrayList<Pane> pump = new ArrayList<>();
-                List<ArrayList<Pane>> test = new ArrayList<>();
+                List<ArrayList<Pane>> diffEquipTypes = new ArrayList<>();
                 // this is a stupid way of doing it but addAll doesn't work
-                test.add(bed);
-                test.add(xray);
-                test.add(recliner);
-                test.add(pump);
+                diffEquipTypes.add(bed);
+                diffEquipTypes.add(xray);
+                diffEquipTypes.add(recliner);
+                diffEquipTypes.add(pump);
 
                 // Used to determine which med equip is selected
                 HashMap<Pane, Integer> allMedEquips = new HashMap<>();
@@ -430,9 +430,9 @@ public class MapPageController implements IController {
                     // Circle thingy implementation
                     ArrayList<ArrayList<Pane>> hasNodes = new ArrayList<>(4);
 
-                    for (int j = 0; j < test.size(); j++) {
+                    for (int j = 0; j < diffEquipTypes.size(); j++) {
                       // Check that there is actually that type of equipment at the location
-                      if (!test.get(j).isEmpty()) hasNodes.add(test.get(j));
+                      if (!diffEquipTypes.get(j).isEmpty()) hasNodes.add(diffEquipTypes.get(j));
                     }
 
                     // One circle should be centered
