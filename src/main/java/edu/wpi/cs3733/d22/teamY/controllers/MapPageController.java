@@ -399,10 +399,32 @@ public class MapPageController implements IController {
                       new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
                   newServiceRequest.setLayoutX(l.getXCoord() - 20);
                   newServiceRequest.setLayoutY(l.getYCoord());
-                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.RED);
+                  Circle frame =
+                      new Circle(
+                          iconDim / 2,
+                          iconDim / 2,
+                          iconDim / 2,
+                          new Color(255 / 255.0, 43 / 255.0, 43 / 255.0, 1));
+                  ImageView reqIcon = new ImageView();
+                  if (equip.size() < 9) {
+                    reqIcon.setImage(
+                        new Image(
+                            String.valueOf(
+                                App.class
+                                    .getResource("views/images/icons/" + equip.size() + ".png")
+                                    .toString())));
+                  } else {
+                    reqIcon.setImage(
+                        new Image(
+                            String.valueOf(
+                                App.class.getResource("views/images/icons/9.png").toString())));
+                  }
+                  reqIcon.setFitWidth(iconDim);
+                  reqIcon.setFitHeight(iconDim);
                   newServiceRequest.setPrefWidth(iconDim);
                   newServiceRequest.setPrefHeight(iconDim);
                   newServiceRequest.getChildren().add(frame);
+                  newServiceRequest.getChildren().add(reqIcon);
                   newServiceRequest.visibleProperty().bind(servicesCheckbox.selectedProperty());
                   mapElements.add(newServiceRequest);
                   serviceRequestAdded = true;
