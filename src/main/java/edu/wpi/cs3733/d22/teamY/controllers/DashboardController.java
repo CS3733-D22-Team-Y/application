@@ -9,6 +9,7 @@ import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import java.awt.*;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -18,6 +19,9 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedList;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +31,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javax.sound.sampled.*;
 
 public class DashboardController {
 
@@ -89,6 +94,24 @@ public class DashboardController {
   private BarChart<String, Integer> barChart =
       new BarChart<String, Integer>(categoryAxis, (Axis) numberAxis);
 
+  private static boolean paused;
+  private static boolean playing;
+  private static boolean loaded = false;
+  private static boolean shuffle = false;
+  private static boolean next = false;
+  private static boolean prev = false;
+
+  // TODO add music Bitch!
+
+  static AudioInputStream audioInputStream;
+  static ArrayList<String> songs = new ArrayList<>();
+
+  static String a = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/FurElise30.wav";
+  static String b = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/MoltoVivace30.wav";
+  static String c = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/Symp530.wav";
+
+  static Clip clip;
+
   private Label[] floorsClean;
   private Label[] floorsDirty;
   private ImageView[] floorsDirtyWarning;
@@ -150,6 +173,10 @@ public class DashboardController {
     // series1.getNode().setStyle("-fx-bar-fill: green;");
 
     barChart.getData().addAll(series1);
+    songs.add(a);
+    songs.add(b);
+    songs.add(c);
+
     activeRequestCount.setText(String.valueOf(DBUtils.getRequestCount()));
     floorsClean =
         new Label[] {
@@ -454,5 +481,118 @@ public class DashboardController {
         break;
     }
     return path + im + ".png";
+  }
+
+  @FXML
+  public void play() {
+    if (shuffle) {
+      shuffle = false;
+      playSong(getRanSong());
+    } else if (next) {
+      next = false;
+      playSong(getNext());
+    } else if (prev) {
+      prev = false;
+      playSong(getBack());
+    } else {
+      playSong(b);
+    }
+  }
+
+  @FXML
+  public void pause() {
+    clip.stop();
+    playing = false;
+    paused = true;
+  }
+
+  @FXML
+  public void next() {
+    next = true;
+    if (playing) {
+      clip.stop();
+      clip.close();
+      playing = false;
+    }
+    loaded = false;
+    play();
+  }
+
+  @FXML
+  public void back() {
+    prev = true;
+    if (playing) {
+      clip.stop();
+      clip.close();
+      playing = false;
+    }
+    loaded = false;
+    play();
+  }
+
+  @FXML
+  public void shuffle() {
+    shuffle = true;
+    if (playing) {
+      clip.stop();
+      clip.close();
+      playing = false;
+    }
+    loaded = false;
+    play();
+  }
+
+  public static void playSong(String p) {
+    try {
+      File file = new File(p);
+      if (file.exists()) {
+        if (!playing && !loaded) {
+          playing = true;
+          audioInputStream = AudioSystem.getAudioInputStream(file);
+          clip = AudioSystem.getClip();
+          clip.open(audioInputStream);
+          audioInputStream.close();
+          clip.start();
+          loaded = true;
+        } else if (!playing) {
+          clip.start();
+          playing = true;
+        }
+      } else System.out.println("File Not Found");
+    } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  private static int positionChosenBefore = 0;
+  private static int ran = 0;
+
+  public static String getRanSong() {
+    while (ran == positionChosenBefore) {
+      ran = (int) (Math.random() * (songs.size()));
+    }
+
+    positionChosenBefore = ran;
+    return songs.get(ran);
+  }
+
+  public static String getBack() {
+    if (positionChosenBefore - 1 < songs.indexOf(a)) {
+      positionChosenBefore = 2;
+      return c;
+    } else {
+      positionChosenBefore--;
+    }
+    return songs.get(positionChosenBefore);
+  }
+
+  public static String getNext() {
+    if (positionChosenBefore + 1 > songs.indexOf(c)) {
+      positionChosenBefore = 0;
+      return a;
+    } else {
+      positionChosenBefore++;
+    }
+    return songs.get(positionChosenBefore);
   }
 }
