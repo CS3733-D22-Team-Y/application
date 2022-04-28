@@ -318,7 +318,7 @@ public class MapPageController implements IController {
 
                 boolean hasEquipment = equip.size() > 0;
                 List<ServiceRequest> requests = DBUtils.getAllServiceReqsAtLocation(l);
-                System.out.println("Target: " + l.getNodeID());
+                //System.out.println("Target: " + l.getNodeID());
                 for (ServiceRequest r : requests) {
                   System.out.println(r.getLocationID());
                 }
@@ -476,7 +476,7 @@ public class MapPageController implements IController {
                             equipInfoPane.setVisible(true);
                             locationInfoPane.setVisible(false);
                             reqInfoPane.setVisible(false);
-                            currentEquip %= fuck3.size();
+                            currentEquip = allMedEquips.get(newMedEquip);
                             MedEquip o = fuck3.get(currentEquip);
                             fuck = String.valueOf(o.getEquipID());
                             equipID.setText(String.valueOf(o.getEquipID()));
@@ -533,12 +533,12 @@ public class MapPageController implements IController {
                           iconDim / 2,
                           new Color(255 / 255.0, 43 / 255.0, 43 / 255.0, 1));
                   ImageView reqIcon = new ImageView();
-                  if (equip.size() < 9) {
+                  if (requests.size() < 9) {
                     reqIcon.setImage(
                         new Image(
                             String.valueOf(
                                 App.class
-                                    .getResource("views/images/icons/" + equip.size() + ".png")
+                                    .getResource("views/images/icons/" + requests.size() + ".png")
                                     .toString())));
                   } else {
                     reqIcon.setImage(
