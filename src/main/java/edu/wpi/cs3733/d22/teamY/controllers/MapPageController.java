@@ -312,7 +312,6 @@ public class MapPageController<T extends Requestable> implements IController {
               (l) -> {
                 // System.out.println(l.getXCoord() + "," + l.getYCoord());
                 List<MedEquip> equip = DBUtils.getEquipmentAtLocation(l);
-                System.out.println("Equipment set: " + equip.size());
                 Set<String> equipTypes =
                     equip.stream().map(MedEquip::getEquipType).collect(Collectors.toSet());
 
@@ -818,6 +817,7 @@ public class MapPageController<T extends Requestable> implements IController {
     if (currentEquip == -1) {
       currentEquip = fuck3.size() - 1;
     }
+    currentEquip = currentEquip % fuck3.size();
     MedEquip o = fuck3.get(currentEquip);
     fuck = String.valueOf(o.getEquipID());
     equipID.setText(String.valueOf(o.getEquipID()));
