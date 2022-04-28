@@ -85,23 +85,23 @@ public class DashboardController {
   @FXML private ImageView dirtyWarning4;
   @FXML private ImageView dirtyWarning5;
 
-  private boolean paused;
-  private boolean playing;
-  private boolean loaded = false;
-  private boolean shuffle = false;
-  private boolean next = false;
-  private boolean prev = false;
+  private static boolean paused;
+  private static boolean playing;
+  private static boolean loaded = false;
+  private static boolean shuffle = false;
+  private static boolean next = false;
+  private static boolean prev = false;
 
   // TODO add music Bitch!
 
-  AudioInputStream audioInputStream;
-  ArrayList<String> songs = new ArrayList<>();
+  static AudioInputStream audioInputStream;
+  static ArrayList<String> songs = new ArrayList<>();
 
-  String a = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/FurElise30.wav";
-  String b = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/MoltoVivace30.wav";
-  String c = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/Symp530.wav";
+  static String a = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/FurElise30.wav";
+  static String b = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/MoltoVivace30.wav";
+  static String c = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/Symp530.wav";
 
-  Clip clip;
+  static Clip clip;
 
   private Label[] floorsClean;
   private Label[] floorsDirty;
@@ -417,6 +417,7 @@ public class DashboardController {
     return path + im + ".png";
   }
 
+  @FXML
   public void play() {
     if (shuffle) {
       shuffle = false;
@@ -432,12 +433,14 @@ public class DashboardController {
     }
   }
 
+  @FXML
   public void pause() {
     clip.stop();
     playing = false;
     paused = true;
   }
 
+  @FXML
   public void next() {
     next = true;
     if (playing) {
@@ -449,6 +452,7 @@ public class DashboardController {
     play();
   }
 
+  @FXML
   public void back() {
     prev = true;
     if (playing) {
@@ -460,6 +464,7 @@ public class DashboardController {
     play();
   }
 
+  @FXML
   public void shuffle() {
     shuffle = true;
     if (playing) {
@@ -471,7 +476,7 @@ public class DashboardController {
     play();
   }
 
-  public void playSong(String p) {
+  public static void playSong(String p) {
     try {
       File file = new File(p);
       if (file.exists()) {
@@ -493,10 +498,10 @@ public class DashboardController {
     }
   }
 
-  private int positionChosenBefore = 0;
-  private int ran = 0;
+  private static int positionChosenBefore = 0;
+  private static int ran = 0;
 
-  public String getRanSong() {
+  public static String getRanSong() {
     while (ran == positionChosenBefore) {
       ran = (int) (Math.random() * (songs.size()));
     }
@@ -505,7 +510,7 @@ public class DashboardController {
     return songs.get(ran);
   }
 
-  public String getBack() {
+  public static String getBack() {
     if (positionChosenBefore - 1 < songs.indexOf(a)) {
       positionChosenBefore = 2;
       return c;
@@ -515,7 +520,7 @@ public class DashboardController {
     return songs.get(positionChosenBefore);
   }
 
-  public String getNext() {
+  public static String getNext() {
     if (positionChosenBefore + 1 > songs.indexOf(c)) {
       positionChosenBefore = 0;
       return a;
