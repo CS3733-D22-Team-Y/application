@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -700,7 +701,9 @@ public class MapPageController implements IController {
     numEquipDisplay.setPrefHeight(iconDim / 2);
     numEquipDisplay.getChildren().add(c);
     numEquipDisplay.getChildren().add(numEquipImage);
-    numEquipDisplay.visibleProperty().bind(currPane.hoverProperty());
+    numEquipDisplay
+        .visibleProperty()
+        .bind(currPane.hoverProperty().and(Bindings.not(currPane.pressedProperty())));
     currPane.getChildren().add(numEquipDisplay);
   }
 
