@@ -71,7 +71,7 @@
          <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Close" />
       </children>
    </Pane>
-   <Pane fx:id="equipInfoPane" layoutX="971.0" prefHeight="780.0" prefWidth="219.0">
+   <Pane fx:id="equipInfoPane" layoutX="971.0" prefHeight="780.0" prefWidth="219.0" visible="false">
       <children>
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="700.0" layoutX="-15.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
          <TextField alignment="CENTER" editable="false" layoutX="69.0" layoutY="115.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Equip ID:">
@@ -119,10 +119,10 @@
          </MFXButton>
       </children>
    </Pane>
-   <Pane fx:id="reqInfoPane" layoutX="981.0" prefHeight="790.0" prefWidth="219.0" visible="false">
+   <Pane fx:id="reqInfoPane" layoutX="981.0" prefHeight="790.0" prefWidth="219.0">
       <children>
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="700.0" layoutX="-25.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
-         <VBox layoutX="-32.0" layoutY="238.0" spacing="11.0">
+         <VBox layoutX="-41.0" layoutY="153.0" spacing="11.0">
             <children>
                <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Type:">
                   <font>
@@ -144,14 +144,20 @@
                      <Font name="Microsoft Tai Le" size="12.0" />
                   </font>
                </TextField>
+               <TextField fx:id="attName" alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="ATTName">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="12.0" />
+                  </font>
+               </TextField>
             </children>
          </VBox>
-         <VBox layoutX="57.0" layoutY="241.0" spacing="20.0">
+         <VBox layoutX="48.0" layoutY="156.0" spacing="20.0">
             <children>
                <MFXTextField fx:id="reqTypeBox" floatMode="DISABLED" prefHeight="15.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
                <MFXTextField fx:id="reqLocationBox" floatMode="DISABLED" prefHeight="7.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
                <MFXTextField fx:id="reqStatusBox" floatMode="DISABLED" prefHeight="11.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
                <MFXTextField fx:id="reqNurseBox" floatMode="DISABLED" prefHeight="13.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+               <MFXTextField fx:id="attValue" floatMode="DISABLED" prefHeight="13.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
             </children>
          </VBox>
          <MFXButton fx:id="reqSubmit" layoutX="100.0" layoutY="650.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />

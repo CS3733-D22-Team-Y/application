@@ -553,9 +553,7 @@ public class MapPageController implements IController {
                     e -> {
                       this.currReqSelection %= this.fuck2.size();
                       ServiceRequest req = fuck2.get(this.currReqSelection);
-                      req.setAssignedNurse(reqNurseBox.getText());
-                      // req.setStatus(reqStatusBox.getText());
-
+                      req.getType().getAttributes()
                       DBManager.update(req);
                       // ("Submit");
                     });
