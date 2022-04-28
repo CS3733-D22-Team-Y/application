@@ -26,8 +26,6 @@ import java.util.List;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.animation.AnimationTimer;
-import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.chart.*;
@@ -37,8 +35,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javax.sound.sampled.*;
 import javafx.scene.shape.Rectangle;
+import javax.sound.sampled.*;
 
 public class DashboardController implements IController {
 
