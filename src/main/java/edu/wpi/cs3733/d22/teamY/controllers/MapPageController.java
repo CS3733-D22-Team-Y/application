@@ -318,7 +318,7 @@ public class MapPageController implements IController {
 
                 boolean hasEquipment = equip.size() > 0;
                 List<ServiceRequest> requests = DBUtils.getAllServiceReqsAtLocation(l);
-                //System.out.println("Target: " + l.getNodeID());
+                // System.out.println("Target: " + l.getNodeID());
                 for (ServiceRequest r : requests) {
                   System.out.println(r.getLocationID());
                 }
