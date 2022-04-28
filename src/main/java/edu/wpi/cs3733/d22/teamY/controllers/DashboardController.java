@@ -78,28 +78,37 @@ public class DashboardController implements IController {
 
   @FXML private TextArea testAlert;
 
+  @FXML private Label cleanl1;
+  @FXML private Label cleanl2;
   @FXML private Label clean1;
   @FXML private Label clean2;
   @FXML private Label clean3;
   @FXML private Label clean4;
   @FXML private Label clean5;
 
+  @FXML private Label dirtyl1;
+  @FXML private Label dirtyl2;
   @FXML private Label dirty1;
   @FXML private Label dirty2;
   @FXML private Label dirty3;
   @FXML private Label dirty4;
   @FXML private Label dirty5;
 
-  @FXML private Group clean_l1Popup;
-  @FXML private Group clean_l2Popup;
-  @FXML private Group clean_l3Popup;
-  @FXML private Group clean_l4Popup;
-  @FXML private Group clean_l5Popup;
-  @FXML private Group dirty_l1Popup;
-  @FXML private Group dirty_l2Popup;
-  @FXML private Group dirty_l3Popup;
-  @FXML private Group dirty_l4Popup;
-  @FXML private Group dirty_l5Popup;
+  @FXML private Group clean_floorl1Popup;
+  @FXML private Group clean_floorl2Popup;
+  @FXML private Group clean_floor1Popup;
+  @FXML private Group clean_floor2Popup;
+  @FXML private Group clean_floor3Popup;
+  @FXML private Group clean_floor4Popup;
+  @FXML private Group clean_floor5Popup;
+
+  @FXML private Group dirty_floorl1Popup;
+  @FXML private Group dirty_floorl2Popup;
+  @FXML private Group dirty_floor1Popup;
+  @FXML private Group dirty_floor2Popup;
+  @FXML private Group dirty_floor3Popup;
+  @FXML private Group dirty_floor4Popup;
+  @FXML private Group dirty_floor5Popup;
 
   @FXML private TextField dirty_l1Bed;
   @FXML private TextField dirty_l1Pump;
@@ -109,18 +118,26 @@ public class DashboardController implements IController {
   @FXML private TextField dirty_l2Pump;
   @FXML private TextField dirty_l2Rec;
   @FXML private TextField dirty_l2X;
-  @FXML private TextField dirty_l3Bed;
-  @FXML private TextField dirty_l3Pump;
-  @FXML private TextField dirty_l3Rec;
-  @FXML private TextField dirty_l3X;
-  @FXML private TextField dirty_l4Bed;
-  @FXML private TextField dirty_l4Pump;
-  @FXML private TextField dirty_l4Rec;
-  @FXML private TextField dirty_l4X;
-  @FXML private TextField dirty_l5Bed;
-  @FXML private TextField dirty_l5Pump;
-  @FXML private TextField dirty_l5Rec;
-  @FXML private TextField dirty_l5X;
+  @FXML private TextField dirty_1Bed;
+  @FXML private TextField dirty_1Pump;
+  @FXML private TextField dirty_1Rec;
+  @FXML private TextField dirty_1X;
+  @FXML private TextField dirty_2Bed;
+  @FXML private TextField dirty_2Pump;
+  @FXML private TextField dirty_2Rec;
+  @FXML private TextField dirty_2X;
+  @FXML private TextField dirty_3Bed;
+  @FXML private TextField dirty_3Pump;
+  @FXML private TextField dirty_3Rec;
+  @FXML private TextField dirty_3X;
+  @FXML private TextField dirty_4Bed;
+  @FXML private TextField dirty_4Pump;
+  @FXML private TextField dirty_4Rec;
+  @FXML private TextField dirty_4X;
+  @FXML private TextField dirty_5Bed;
+  @FXML private TextField dirty_5Pump;
+  @FXML private TextField dirty_5Rec;
+  @FXML private TextField dirty_5X;
 
   @FXML private TextField clean_l1Bed;
   @FXML private TextField clean_l1Pump;
@@ -130,26 +147,37 @@ public class DashboardController implements IController {
   @FXML private TextField clean_l2Pump;
   @FXML private TextField clean_l2Rec;
   @FXML private TextField clean_l2X;
-  @FXML private TextField clean_l3Bed;
-  @FXML private TextField clean_l3Pump;
-  @FXML private TextField clean_l3Rec;
-  @FXML private TextField clean_l3X;
-  @FXML private TextField clean_l4Bed;
-  @FXML private TextField clean_l4Pump;
-  @FXML private TextField clean_l4Rec;
-  @FXML private TextField clean_l4X;
-  @FXML private TextField clean_l5Bed;
-  @FXML private TextField clean_l5Pump;
-  @FXML private TextField clean_l5Rec;
-  @FXML private TextField clean_l5X;
+  @FXML private TextField clean_1Bed;
+  @FXML private TextField clean_1Pump;
+  @FXML private TextField clean_1Rec;
+  @FXML private TextField clean_1X;
+  @FXML private TextField clean_2Bed;
+  @FXML private TextField clean_2Pump;
+  @FXML private TextField clean_2Rec;
+  @FXML private TextField clean_2X;
+  @FXML private TextField clean_3Bed;
+  @FXML private TextField clean_3Pump;
+  @FXML private TextField clean_3Rec;
+  @FXML private TextField clean_3X;
+  @FXML private TextField clean_4Bed;
+  @FXML private TextField clean_4Pump;
+  @FXML private TextField clean_4Rec;
+  @FXML private TextField clean_4X;
+  @FXML private TextField clean_5Bed;
+  @FXML private TextField clean_5Pump;
+  @FXML private TextField clean_5Rec;
+  @FXML private TextField clean_5X;
 
   @FXML private Label activeRequestCount;
 
+  @FXML private ImageView dirtyWarningl1;
+  @FXML private ImageView dirtyWarningl2;
   @FXML private ImageView dirtyWarning1;
   @FXML private ImageView dirtyWarning2;
   @FXML private ImageView dirtyWarning3;
   @FXML private ImageView dirtyWarning4;
   @FXML private ImageView dirtyWarning5;
+
   @FXML private CategoryAxis categoryAxis = new CategoryAxis();
   @FXML private NumberAxis numberAxis = new NumberAxis();
 
@@ -164,7 +192,7 @@ public class DashboardController implements IController {
   private static boolean next = false;
   private static boolean prev = false;
 
-  // TODO add music Bitch!
+  // TODO add music !
 
   static AudioInputStream audioInputStream;
   static ArrayList<String> songs = new ArrayList<>();
@@ -224,22 +252,16 @@ public class DashboardController implements IController {
       addToBox(pair);
     }
 
-    // categoryAxis.setLabel("Country");
-    // categoryAxis.setTickLabelRotation(90);
     int[] data = DBUtils.getAllServiceRequestsPriority();
 
-    XYChart.Series series1 = new XYChart.Series();
+    XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
 
-    series1.getData().add(new XYChart.Data("Very High Priority", data[0]));
-    series1.getData().add(new XYChart.Data("High Priority", data[1]));
-    series1.getData().add(new XYChart.Data("Medium Priority", data[2]));
-    series1.getData().add(new XYChart.Data("Low Priority", data[3]));
-    series1.getData().add(new XYChart.Data("Very Low Priority", data[4]));
+    series1.getData().add(new XYChart.Data<>("Very High Priority", data[0]));
+    series1.getData().add(new XYChart.Data<>("High Priority", data[1]));
+    series1.getData().add(new XYChart.Data<>("Medium Priority", data[2]));
+    series1.getData().add(new XYChart.Data<>("Low Priority", data[3]));
+    series1.getData().add(new XYChart.Data<>("Very Low Priority", data[4]));
     series1.setName("Priorities");
-    // Node fill = series1.getNode().lookup(".chart-series-bar-fill"); // only for AreaChart
-    // Node line = series1.getNode().lookup(".chart-series-bar-line");
-
-    // series1.getNode().setStyle("-fx-bar-fill: green;");
 
     barChart.getData().addAll(series1);
     songs.add(a);
@@ -249,17 +271,23 @@ public class DashboardController implements IController {
     activeRequestCount.setText(String.valueOf(DBUtils.getRequestCount()));
     floorsClean =
         new Label[] {
-          clean1, clean2, clean3, clean4, clean5,
+          cleanl2, cleanl1, clean1, clean2, clean3, clean4, clean5,
         };
 
     floorsDirty =
         new Label[] {
-          dirty1, dirty2, dirty3, dirty4, dirty5,
+          dirtyl2, dirtyl1, dirty1, dirty2, dirty3, dirty4, dirty5,
         };
 
     floorsDirtyWarning =
         new ImageView[] {
-          dirtyWarning1, dirtyWarning2, dirtyWarning3, dirtyWarning4, dirtyWarning5,
+          dirtyWarningl2,
+          dirtyWarningl1,
+          dirtyWarning1,
+          dirtyWarning2,
+          dirtyWarning3,
+          dirtyWarning4,
+          dirtyWarning5,
         };
 
     AnimationTimer timer =
@@ -431,24 +459,30 @@ public class DashboardController implements IController {
   private void updateEquipment() {
     TextField[][] cleanFields =
         new TextField[][] {
-          {clean_l1Bed, clean_l1Pump, clean_l1Rec, clean_l1X},
           {clean_l2Bed, clean_l2Pump, clean_l2Rec, clean_l2X},
-          {clean_l3Bed, clean_l3Pump, clean_l3Rec, clean_l3X},
-          {clean_l4Bed, clean_l4Pump, clean_l4Rec, clean_l4X},
-          {clean_l5Bed, clean_l5Pump, clean_l5Rec, clean_l5X}
+          {clean_l1Bed, clean_l1Pump, clean_l1Rec, clean_l1X},
+          {clean_1Bed, clean_1Pump, clean_1Rec, clean_1X},
+          {clean_2Bed, clean_2Pump, clean_2Rec, clean_2X},
+          {clean_3Bed, clean_3Pump, clean_3Rec, clean_3X},
+          {clean_4Bed, clean_4Pump, clean_4Rec, clean_4X},
+          {clean_5Bed, clean_5Pump, clean_5Rec, clean_5X}
         };
     TextField[][] dirtyFields =
         new TextField[][] {
-          {dirty_l1Bed, dirty_l1Pump, dirty_l1Rec, dirty_l1X},
           {dirty_l2Bed, dirty_l2Pump, dirty_l2Rec, dirty_l2X},
-          {dirty_l3Bed, dirty_l3Pump, dirty_l3Rec, dirty_l3X},
-          {dirty_l4Bed, dirty_l4Pump, dirty_l4Rec, dirty_l4X},
-          {dirty_l5Bed, dirty_l5Pump, dirty_l5Rec, dirty_l5X}
+          {dirty_l1Bed, dirty_l1Pump, dirty_l1Rec, dirty_l1X},
+          {dirty_1Bed, dirty_1Pump, dirty_1Rec, dirty_1X},
+          {dirty_2Bed, dirty_2Pump, dirty_2Rec, dirty_2X},
+          {dirty_3Bed, dirty_3Pump, dirty_3Rec, dirty_3X},
+          {dirty_4Bed, dirty_4Pump, dirty_4Rec, dirty_4X},
+          {dirty_5Bed, dirty_5Pump, dirty_5Rec, dirty_5X}
         };
 
-    for (int i = 0; i < floorsClean.length; i++) {
-      List<MedEquip> cleanEq = DBUtils.findAllOfStatusOnFloor(Integer.toString(i + 1), "1");
-      List<MedEquip> dirtyEq = DBUtils.findAllOfStatusOnFloor(Integer.toString(i + 1), "0");
+    String[] floorNames = {"L2", "L1", "1", "2", "3", "4", "5"};
+
+    for (int i = 0; i < floorNames.length; i++) {
+      List<MedEquip> cleanEq = DBUtils.findAllOfStatusOnFloor(floorNames[i], "1");
+      List<MedEquip> dirtyEq = DBUtils.findAllOfStatusOnFloor(floorNames[i], "0");
 
       floorsClean[i].setText(String.valueOf(cleanEq.size()));
       floorsDirty[i].setText(String.valueOf(dirtyEq.size()));
@@ -724,113 +758,157 @@ public class DashboardController implements IController {
   }
 
   @FXML
+  public void LL2DirtyEnter() {
+    updateQuickDash();
+    dirty_floorl2Popup.setVisible(true);
+  }
+
+  @FXML
+  public void LL2DirtyExit() {
+    dirty_floorl2Popup.setVisible(false);
+  }
+
+  @FXML
+  public void LL1DirtyEnter() {
+    updateQuickDash();
+    dirty_floorl1Popup.setVisible(true);
+  }
+
+  @FXML
+  public void LL1DirtyExit() {
+    dirty_floorl1Popup.setVisible(false);
+  }
+
+  @FXML
   public void L1DirtyEnter() {
     updateQuickDash();
-    dirty_l1Popup.setVisible(true);
+    dirty_floor1Popup.setVisible(true);
   }
 
   @FXML
   public void L1DirtyExit() {
-    dirty_l1Popup.setVisible(false);
+    dirty_floor1Popup.setVisible(false);
   }
 
   @FXML
   public void L2DirtyEnter() {
     updateQuickDash();
-    dirty_l2Popup.setVisible(true);
+    dirty_floor2Popup.setVisible(true);
   }
 
   @FXML
   public void L2DirtyExit() {
-    dirty_l2Popup.setVisible(false);
+    dirty_floor2Popup.setVisible(false);
   }
 
   @FXML
   public void L3DirtyEnter() {
     updateQuickDash();
-    dirty_l3Popup.setVisible(true);
+    dirty_floor3Popup.setVisible(true);
   }
 
   @FXML
   public void L3DirtyExit() {
-    dirty_l3Popup.setVisible(false);
+    dirty_floor3Popup.setVisible(false);
   }
 
   @FXML
   public void L4DirtyEnter() {
     updateQuickDash();
-    dirty_l4Popup.setVisible(true);
+    dirty_floor4Popup.setVisible(true);
   }
 
   @FXML
   public void L4DirtyExit() {
-    dirty_l4Popup.setVisible(false);
+    dirty_floor4Popup.setVisible(false);
   }
 
   @FXML
   public void L5DirtyEnter() {
     updateQuickDash();
-    dirty_l5Popup.setVisible(true);
+    dirty_floor5Popup.setVisible(true);
   }
 
   @FXML
   public void L5DirtyExit() {
-    dirty_l5Popup.setVisible(false);
+    dirty_floor5Popup.setVisible(false);
+  }
+
+  @FXML
+  public void LL2CleanEnter() {
+    updateQuickDash();
+    clean_floorl2Popup.setVisible(true);
+  }
+
+  @FXML
+  public void LL2CleanExit() {
+    clean_floorl2Popup.setVisible(false);
+  }
+
+  @FXML
+  public void LL1CleanEnter() {
+    updateQuickDash();
+    clean_floorl1Popup.setVisible(true);
+  }
+
+  @FXML
+  public void LL1CleanExit() {
+    clean_floorl1Popup.setVisible(false);
   }
 
   @FXML
   public void L1CleanEnter() {
     updateQuickDash();
-    clean_l1Popup.setVisible(true);
+    clean_floor1Popup.setVisible(true);
   }
 
   @FXML
   public void L1CleanExit() {
-    clean_l1Popup.setVisible(false);
+    clean_floor1Popup.setVisible(false);
   }
 
   @FXML
   public void L2CleanEnter() {
     updateQuickDash();
-    clean_l2Popup.setVisible(true);
+    clean_floor2Popup.setVisible(true);
   }
 
   @FXML
   public void L2CleanExit() {
-    clean_l2Popup.setVisible(false);
+    clean_floor2Popup.setVisible(false);
   }
 
   @FXML
   public void L3CleanEnter() {
     updateQuickDash();
-    clean_l3Popup.setVisible(true);
+    clean_floor3Popup.setVisible(true);
   }
 
   @FXML
   public void L3CleanExit() {
-    clean_l3Popup.setVisible(false);
+    clean_floor3Popup.setVisible(false);
   }
 
   @FXML
   public void L4CleanEnter() {
     updateQuickDash();
-    clean_l4Popup.setVisible(true);
+    clean_floor4Popup.setVisible(true);
   }
 
   @FXML
   public void L4CleanExit() {
-    clean_l4Popup.setVisible(false);
+    clean_floor4Popup.setVisible(false);
   }
 
   @FXML
   public void L5CleanEnter() {
     updateQuickDash();
-    clean_l5Popup.setVisible(true);
+    clean_floor5Popup.setVisible(true);
   }
 
   @FXML
   public void L5CleanExit() {
-    clean_l5Popup.setVisible(false);
+    clean_floor5Popup.setVisible(false);
   }
 
   @Override

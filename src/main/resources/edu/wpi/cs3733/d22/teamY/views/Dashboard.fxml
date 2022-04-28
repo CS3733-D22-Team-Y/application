@@ -192,7 +192,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <BarChart fx:id="barChart" layoutX="-6.0" layoutY="46.0" prefHeight="251.0" prefWidth="500.0" style="-fx-background-color: 0; -fx-legend-visible: false;" styleClass="chart-bar" stylesheets="@css/BarChart.css">
+            <BarChart fx:id="barChart" layoutX="-6.0" layoutY="46.0" prefHeight="251.0" prefWidth="500.0" style="-fx-background-color: #00000000; -fx-legend-visible: false;" styleClass="chart-bar" stylesheets="@css/BarChart.css">
               <xAxis>
                 <CategoryAxis fx:id="categoryAxis" side="BOTTOM">
                      <effect>
@@ -483,7 +483,7 @@
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <ImageView fx:id="dirtyWarningl1" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="dirtyWarningl1" fitHeight="44.0" fitWidth="45.0" layoutX="245.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/icons/dash/warning.png" />
                </image>
@@ -686,7 +686,7 @@
                   <ColorAdjust brightness="0.18" />
                </effect>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1e648b" height="320.0" layoutX="174.0" layoutY="63.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="5.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1e648b" height="320.0" layoutX="174.0" layoutY="62.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="5.0" />
             <Label layoutX="102.0" layoutY="24.0" styleClass="title" text="Clean" textFill="#3f833f">
                <font>
                   <Font name="Arial Rounded MT Bold" size="24.0" />
@@ -706,7 +706,7 @@
                               <Font size="15.0" />
                            </font>
                         </MFXButton>
-                        <Group fx:id="clean_l5Popup" layoutX="-1.0" layoutY="98.0" visible="false">
+                        <Group fx:id="clean_floor5Popup" layoutX="-1.0" layoutY="98.0" visible="false">
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c1c1" height="44.0" layoutX="-213.0" layoutY="148.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="213.0" />
                               <Group layoutX="-47.0" layoutY="157.0">
@@ -716,7 +716,7 @@
                                           <Image url="@images/icons/bedlogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="clean_l5Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_5Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-96.0" layoutY="159.0">
@@ -726,7 +726,7 @@
                                           <Image url="@images/icons/pumplogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="clean_l5Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_5Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-146.0" layoutY="158.0">
@@ -736,7 +736,7 @@
                                           <Image url="@images/icons/reclinerlogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="clean_l5Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_5Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-196.0" layoutY="159.0">
@@ -746,7 +746,7 @@
                                           <Image url="@images/icons/xrayIcon.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="clean_l5X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_5X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                            </children>
@@ -755,12 +755,12 @@
                   </Group>
                   <Group layoutY="50.0">
                      <children>
-                        <MFXButton fx:id="clean_floorl4Button" layoutY="250.0" onMouseEntered="#L4CleanEnter" onMouseExited="#L4CleanExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
+                        <MFXButton fx:id="clean_floor4Button" layoutY="250.0" onMouseEntered="#L4CleanEnter" onMouseExited="#L4CleanExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </MFXButton>
-                        <Group fx:id="clean_l4Popup" layoutX="-1.0" layoutY="98.0" visible="false">
+                        <Group fx:id="clean_floor4Popup" layoutX="-1.0" layoutY="98.0" visible="false">
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c1c1" height="44.0" layoutX="-213.0" layoutY="148.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="213.0" />
                               <Group layoutX="-47.0" layoutY="157.0">
@@ -770,7 +770,7 @@
                                           <Image url="@images/icons/bedlogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="clean_l4Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_4Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-96.0" layoutY="159.0">
@@ -780,7 +780,7 @@
                                           <Image url="@images/icons/pumplogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="clean_l4Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_4Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-146.0" layoutY="158.0">
@@ -790,7 +790,7 @@
                                           <Image url="@images/icons/reclinerlogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="clean_l4Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_4Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-196.0" layoutY="159.0">
@@ -800,7 +800,7 @@
                                           <Image url="@images/icons/xrayIcon.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="clean_l4X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_4X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                            </children>
@@ -809,12 +809,12 @@
                   </Group>
                   <Group layoutY="100.0">
                      <children>
-                        <MFXButton fx:id="clean_floorl3Button" layoutY="250.0" onMouseEntered="#L3CleanEnter" onMouseExited="#L3CleanExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
+                        <MFXButton fx:id="clean_floor3Button" layoutY="250.0" onMouseEntered="#L3CleanEnter" onMouseExited="#L3CleanExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </MFXButton>
-                        <Group fx:id="clean_l3Popup" layoutX="-1.0" layoutY="98.0" visible="false">
+                        <Group fx:id="clean_floor3Popup" layoutX="-1.0" layoutY="98.0" visible="false">
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c1c1" height="44.0" layoutX="-213.0" layoutY="148.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="213.0" />
                               <Group layoutX="-47.0" layoutY="157.0">
@@ -824,7 +824,7 @@
                                           <Image url="@images/icons/bedlogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="clean_l3Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_3Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-96.0" layoutY="159.0">
@@ -834,7 +834,7 @@
                                           <Image url="@images/icons/pumplogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="clean_l3Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_3Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-146.0" layoutY="158.0">
@@ -844,7 +844,7 @@
                                           <Image url="@images/icons/reclinerlogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="clean_l3Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_3Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-196.0" layoutY="159.0">
@@ -854,7 +854,7 @@
                                           <Image url="@images/icons/xrayIcon.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="clean_l3X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_3X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                            </children>
@@ -863,12 +863,12 @@
                   </Group>
                   <Group layoutY="150.0">
                      <children>
-                        <MFXButton fx:id="clean_floorl2Button" layoutY="250.0" onMouseEntered="#L2CleanEnter" onMouseExited="#L2CleanExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
+                        <MFXButton fx:id="clean_floor2Button" layoutY="250.0" onMouseEntered="#L2CleanEnter" onMouseExited="#L2CleanExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </MFXButton>
-                        <Group fx:id="clean_l2Popup" layoutX="-1.0" layoutY="98.0" visible="false">
+                        <Group fx:id="clean_floor2Popup" layoutX="-1.0" layoutY="98.0" visible="false">
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c1c1" height="44.0" layoutX="-213.0" layoutY="148.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="213.0" />
                               <Group layoutX="-47.0" layoutY="157.0">
@@ -878,7 +878,7 @@
                                           <Image url="@images/icons/bedlogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="clean_l2Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_2Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-96.0" layoutY="159.0">
@@ -888,7 +888,7 @@
                                           <Image url="@images/icons/pumplogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="clean_l2Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_2Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-146.0" layoutY="158.0">
@@ -898,7 +898,7 @@
                                           <Image url="@images/icons/reclinerlogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="clean_l2Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_2Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-196.0" layoutY="159.0">
@@ -908,7 +908,7 @@
                                           <Image url="@images/icons/xrayIcon.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="clean_l2X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_2X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                            </children>
@@ -917,12 +917,66 @@
                   </Group>
                   <Group layoutY="200.0">
                      <children>
-                        <MFXButton fx:id="clean_floorl1Button" layoutY="250.0" onMouseEntered="#L1CleanEnter" onMouseExited="#L1CleanExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
+                        <MFXButton fx:id="clean_floor1Button" layoutY="250.0" onMouseEntered="#L1CleanEnter" onMouseExited="#L1CleanExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </MFXButton>
-                        <Group fx:id="clean_l1Popup" layoutX="-1.0" layoutY="98.0" visible="false">
+                        <Group fx:id="clean_floor1Popup" layoutX="-1.0" layoutY="98.0" visible="false">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c1c1" height="44.0" layoutX="-213.0" layoutY="148.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="213.0" />
+                              <Group layoutX="-47.0" layoutY="157.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/icons/bedlogoBlack.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="clean_1Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="-96.0" layoutY="159.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/icons/pumplogoBlack.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="clean_1Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="-146.0" layoutY="158.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/icons/reclinerlogoBlack.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="clean_1Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="-196.0" layoutY="159.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/icons/xrayIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="clean_1X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                 </children>
+                              </Group>
+                           </children>
+                        </Group>
+                     </children>
+                  </Group>
+                  <Group layoutY="248.0">
+                     <children>
+                        <MFXButton fx:id="clean_floorl1Button" layoutY="250.0" onMouseEntered="#LL1CleanEnter" onMouseExited="#LL1CleanExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </MFXButton>
+                        <Group fx:id="clean_floorl1Popup" layoutX="-1.0" layoutY="98.0" visible="false">
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c1c1" height="44.0" layoutX="-213.0" layoutY="148.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="213.0" />
                               <Group layoutX="-47.0" layoutY="157.0">
@@ -969,14 +1023,14 @@
                         </Group>
                      </children>
                   </Group>
-                  <Group layoutX="70.0">
+                  <Group layoutY="297.0">
                      <children>
-                        <MFXButton fx:id="clean_floorl5Button1" layoutY="250.0" onMouseEntered="#L5DirtyEnter" onMouseExited="#L5DirtyExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
+                        <MFXButton fx:id="clean_floorl2Button" layoutY="250.0" onMouseEntered="#LL2CleanEnter" onMouseExited="#LL2CleanExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </MFXButton>
-                        <Group fx:id="dirty_l5Popup" layoutX="-1.0" layoutY="98.0" visible="false">
+                        <Group fx:id="clean_floorl2Popup" layoutX="-1.0" layoutY="98.0" visible="false">
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c1c1" height="44.0" layoutX="-213.0" layoutY="148.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="213.0" />
                               <Group layoutX="-47.0" layoutY="157.0">
@@ -986,7 +1040,7 @@
                                           <Image url="@images/icons/bedlogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="dirty_l5Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_l2Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-96.0" layoutY="159.0">
@@ -996,7 +1050,7 @@
                                           <Image url="@images/icons/pumplogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="dirty_l5Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_l2Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-146.0" layoutY="158.0">
@@ -1006,7 +1060,7 @@
                                           <Image url="@images/icons/reclinerlogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="dirty_l5Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_l2Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-196.0" layoutY="159.0">
@@ -1016,7 +1070,61 @@
                                           <Image url="@images/icons/xrayIcon.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="dirty_l5X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="clean_l2X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                 </children>
+                              </Group>
+                           </children>
+                        </Group>
+                     </children>
+                  </Group>
+                  <Group layoutX="70.0">
+                     <children>
+                        <MFXButton fx:id="dirty_floor5Button" layoutY="250.0" onMouseEntered="#L5DirtyEnter" onMouseExited="#L5DirtyExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </MFXButton>
+                        <Group fx:id="dirty_floor5Popup" layoutX="-1.0" layoutY="98.0" visible="false">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c1c1" height="44.0" layoutX="-213.0" layoutY="148.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="213.0" />
+                              <Group layoutX="-47.0" layoutY="157.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/icons/bedlogoBlack.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="dirty_5Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="-96.0" layoutY="159.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/icons/pumplogoBlack.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="dirty_5Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="-146.0" layoutY="158.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/icons/reclinerlogoBlack.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="dirty_5Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="-196.0" layoutY="159.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/icons/xrayIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="dirty_5X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                            </children>
@@ -1025,12 +1133,12 @@
                   </Group>
                   <Group layoutX="70.0" layoutY="50.0">
                      <children>
-                        <MFXButton fx:id="clean_floorl4Button1" layoutY="250.0" onMouseEntered="#L4DirtyEnter" onMouseExited="#L4DirtyExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
+                        <MFXButton fx:id="dirty_floor4Button" layoutY="250.0" onMouseEntered="#L4DirtyEnter" onMouseExited="#L4DirtyExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </MFXButton>
-                        <Group fx:id="dirty_l4Popup" layoutX="-1.0" layoutY="98.0" visible="false">
+                        <Group fx:id="dirty_floor4Popup" layoutX="-1.0" layoutY="98.0" visible="false">
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c1c1" height="44.0" layoutX="-213.0" layoutY="148.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="213.0" />
                               <Group layoutX="-47.0" layoutY="157.0">
@@ -1040,7 +1148,7 @@
                                           <Image url="@images/icons/bedlogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="dirty_l4Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="dirty_4Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-96.0" layoutY="159.0">
@@ -1050,7 +1158,7 @@
                                           <Image url="@images/icons/pumplogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="dirty_l4Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="dirty_4Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-146.0" layoutY="158.0">
@@ -1060,7 +1168,7 @@
                                           <Image url="@images/icons/reclinerlogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="dirty_l4Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="dirty_4Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-196.0" layoutY="159.0">
@@ -1070,7 +1178,7 @@
                                           <Image url="@images/icons/xrayIcon.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="dirty_l4X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="dirty_4X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                            </children>
@@ -1079,12 +1187,12 @@
                   </Group>
                   <Group layoutX="70.0" layoutY="100.0">
                      <children>
-                        <MFXButton fx:id="clean_floorl3Button1" layoutY="250.0" onMouseEntered="#L3DirtyEnter" onMouseExited="#L3DirtyExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
+                        <MFXButton fx:id="dirty_floor3Button" layoutY="250.0" onMouseEntered="#L3DirtyEnter" onMouseExited="#L3DirtyExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </MFXButton>
-                        <Group fx:id="dirty_l3Popup" layoutX="-1.0" layoutY="98.0" visible="false">
+                        <Group fx:id="dirty_floor3Popup" layoutX="-1.0" layoutY="98.0" visible="false">
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c1c1" height="44.0" layoutX="-213.0" layoutY="148.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="213.0" />
                               <Group layoutX="-47.0" layoutY="157.0">
@@ -1094,7 +1202,7 @@
                                           <Image url="@images/icons/bedlogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="dirty_l3Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="dirty_3Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-96.0" layoutY="159.0">
@@ -1104,7 +1212,7 @@
                                           <Image url="@images/icons/pumplogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="dirty_l3Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="dirty_3Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-146.0" layoutY="158.0">
@@ -1114,7 +1222,7 @@
                                           <Image url="@images/icons/reclinerlogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="dirty_l3Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="dirty_3Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-196.0" layoutY="159.0">
@@ -1124,7 +1232,7 @@
                                           <Image url="@images/icons/xrayIcon.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="dirty_l3X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="dirty_3X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                            </children>
@@ -1133,12 +1241,12 @@
                   </Group>
                   <Group layoutX="70.0" layoutY="150.0">
                      <children>
-                        <MFXButton fx:id="clean_floorl2Button1" layoutY="250.0" onMouseEntered="#L2DirtyEnter" onMouseExited="#L2DirtyExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
+                        <MFXButton fx:id="dirty_floor2Button" layoutY="250.0" onMouseEntered="#L2DirtyEnter" onMouseExited="#L2DirtyExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </MFXButton>
-                        <Group fx:id="dirty_l2Popup" layoutX="-1.0" layoutY="98.0" visible="false">
+                        <Group fx:id="dirty_floor2Popup" layoutX="-1.0" layoutY="98.0" visible="false">
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c1c1" height="44.0" layoutX="-213.0" layoutY="148.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="213.0" />
                               <Group layoutX="-47.0" layoutY="157.0">
@@ -1148,7 +1256,7 @@
                                           <Image url="@images/icons/bedlogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="dirty_l2Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="dirty_2Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-96.0" layoutY="159.0">
@@ -1158,7 +1266,7 @@
                                           <Image url="@images/icons/pumplogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="dirty_l2Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="dirty_2Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-146.0" layoutY="158.0">
@@ -1168,7 +1276,7 @@
                                           <Image url="@images/icons/reclinerlogoBlack.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="dirty_l2Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="dirty_2Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                               <Group layoutX="-196.0" layoutY="159.0">
@@ -1178,7 +1286,7 @@
                                           <Image url="@images/icons/xrayIcon.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="dirty_l2X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                    <TextField fx:id="dirty_2X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                            </children>
@@ -1187,12 +1295,66 @@
                   </Group>
                   <Group layoutX="70.0" layoutY="200.0">
                      <children>
-                        <MFXButton fx:id="clean_floorl1Button1" layoutY="250.0" onMouseEntered="#L1DirtyEnter" onMouseExited="#L1DirtyExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
+                        <MFXButton fx:id="dirty_floor1Button" layoutY="250.0" onMouseEntered="#L1DirtyEnter" onMouseExited="#L1DirtyExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </MFXButton>
-                        <Group fx:id="dirty_l1Popup" layoutX="-1.0" layoutY="98.0" visible="false">
+                        <Group fx:id="dirty_floor1Popup" layoutX="-1.0" layoutY="98.0" visible="false">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c1c1" height="44.0" layoutX="-213.0" layoutY="148.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="213.0" />
+                              <Group layoutX="-47.0" layoutY="157.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/icons/bedlogoBlack.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="dirty_1Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="-96.0" layoutY="159.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/icons/pumplogoBlack.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="dirty_1Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="-146.0" layoutY="158.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/icons/reclinerlogoBlack.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="dirty_1Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="-196.0" layoutY="159.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/icons/xrayIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="dirty_1X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                 </children>
+                              </Group>
+                           </children>
+                        </Group>
+                     </children>
+                  </Group>
+                  <Group layoutX="70.0" layoutY="248.0">
+                     <children>
+                        <MFXButton fx:id="dirty_floorl1Button" layoutY="250.0" onMouseEntered="#LL1DirtyEnter" onMouseExited="#LL1DirtyExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </MFXButton>
+                        <Group fx:id="dirty_floorl1Popup" layoutX="-1.0" layoutY="98.0" visible="false">
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c1c1" height="44.0" layoutX="-213.0" layoutY="148.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="213.0" />
                               <Group layoutX="-47.0" layoutY="157.0">
@@ -1233,6 +1395,60 @@
                                        </image>
                                     </ImageView>
                                     <TextField fx:id="dirty_l1X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                 </children>
+                              </Group>
+                           </children>
+                        </Group>
+                     </children>
+                  </Group>
+                  <Group layoutX="70.0" layoutY="297.0">
+                     <children>
+                        <MFXButton fx:id="dirty_floorl2Button" layoutY="250.0" onMouseEntered="#LL2DirtyEnter" onMouseExited="#LL2DirtyExit" prefHeight="40.0" prefWidth="50.0" style="-fx-blend-mode: MULTIPLY;" text=" ">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </MFXButton>
+                        <Group fx:id="dirty_floorl2Popup" layoutX="-1.0" layoutY="98.0" visible="false">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c1c1" height="44.0" layoutX="-213.0" layoutY="148.0" opacity="0.8" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="213.0" />
+                              <Group layoutX="-47.0" layoutY="157.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/icons/bedlogoBlack.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="dirty_l2Bed" editable="false" layoutX="21.0" layoutY="2.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: #00000000;" text="-1" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="-96.0" layoutY="159.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/icons/pumplogoBlack.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="dirty_l2Pump" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="-146.0" layoutY="158.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/icons/reclinerlogoBlack.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="dirty_l2Rec" editable="false" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="-196.0" layoutY="159.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/icons/xrayIcon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="dirty_l2X" editable="false" layoutX="20.0" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #00000000;" text="-1" />
                                  </children>
                               </Group>
                            </children>
