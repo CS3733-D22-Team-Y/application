@@ -15,9 +15,7 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
@@ -164,8 +162,8 @@ public class DashboardController implements IController {
 
   private EquipmentMonitor monitor = null;
 
-  public EquipmentMonitor initMonitor(Object watch) {
-    // monitor = new EquipmentMonitor(watch);
+  public EquipmentMonitor initMonitor(EquipmentSubject watch) {
+    monitor = new EquipmentMonitor(watch);
     return monitor;
   }
 
@@ -174,6 +172,7 @@ public class DashboardController implements IController {
   }
 
   public void initialize() throws IOException {
+    initMonitor(DBHandler.getInstance());
 
     // categoryAxis.setLabel("Country");
     // categoryAxis.setTickLabelRotation(90);
@@ -228,8 +227,6 @@ public class DashboardController implements IController {
     updateWeather();
     updateEquipment();
     timer.start();
-
-    // updateEquipment();
 
     // requestBox.setPrefHeight(1000);
     alertsBox.setBackground(Background.EMPTY);
@@ -351,6 +348,23 @@ public class DashboardController implements IController {
   private void setupGraph() {}
 
   private void updateEquipment() {
+    TextField[][] cleanFields =
+        new TextField[][] {
+          {clean_l1Bed, clean_l1Pump, clean_l1Rec, clean_l1X},
+          {clean_l2Bed, clean_l2Pump, clean_l2Rec, clean_l2X},
+          {clean_l3Bed, clean_l3Pump, clean_l3Rec, clean_l3X},
+          {clean_l4Bed, clean_l4Pump, clean_l4Rec, clean_l4X},
+          {clean_l5Bed, clean_l5Pump, clean_l5Rec, clean_l5X}
+        };
+    TextField[][] dirtyFields =
+        new TextField[][] {
+          {dirty_l1Bed, dirty_l1Pump, dirty_l1Rec, dirty_l1X},
+          {dirty_l2Bed, dirty_l2Pump, dirty_l2Rec, dirty_l2X},
+          {dirty_l3Bed, dirty_l3Pump, dirty_l3Rec, dirty_l3X},
+          {dirty_l4Bed, dirty_l4Pump, dirty_l4Rec, dirty_l4X},
+          {dirty_l5Bed, dirty_l5Pump, dirty_l5Rec, dirty_l5X}
+        };
+
     for (int i = 0; i < floorsClean.length; i++) {
       List<MedEquip> cleanEq = DBUtils.findAllOfStatusOnFloor(Integer.toString(i + 1), "1");
       List<MedEquip> dirtyEq = DBUtils.findAllOfStatusOnFloor(Integer.toString(i + 1), "0");
@@ -359,7 +373,29 @@ public class DashboardController implements IController {
       floorsDirty[i].setText(String.valueOf(dirtyEq.size()));
 
       floorsDirtyWarning[i].setVisible(dirtyEq.size() >= cleanEq.size() && dirtyEq.size() >= 5);
+
+      setPopupText(cleanFields, i, cleanEq);
+      setPopupText(dirtyFields, i, dirtyEq);
     }
+  }
+
+  private void setPopupText(TextField[][] fields, int i, List<MedEquip> list) {
+    fields[i][0].setText(String.valueOf(numberOfTypeFromList(list, "BED")));
+    fields[i][1].setText(String.valueOf(numberOfTypeFromList(list, "PUMP")));
+    fields[i][2].setText(String.valueOf(numberOfTypeFromList(list, "RECLINER")));
+    fields[i][3].setText(String.valueOf(numberOfTypeFromList(list, "XRAY")));
+  }
+
+  private int numberOfTypeFromList(List<MedEquip> list, String type) {
+    int count = 0;
+    for (MedEquip m : list) {
+      if (Objects.equals(m.getEquipType(), type)) {
+        System.out.println("epic\n");
+        count++;
+      }
+    }
+
+    return count;
   }
 
   private void updateWeather() {
@@ -486,9 +522,9 @@ public class DashboardController implements IController {
   }
 
   private void updateQuickDash() {
-    /*HashMap<String, HashMap<String, Integer>> floorCounts = DBUtils.getEquipFloorCounts();
+    HashMap<String, HashMap<String, Integer>> floorCounts = DBUtils.getEquipFloorCounts();
 
-    this.bedLabels[index].setText(floorCounts.get(floor).get("BED") + "");
+    /*this.bedLabels[index].setText(floorCounts.get(floor).get("BED") + "");
     this.pumpLabels[index].setText(floorCounts.get(floor).get("PUMP") + "");
     this.recLabels[index].setText(floorCounts.get(floor).get("RECLINER") + "");
     this.xLabels[index].setText(floorCounts.get(floor).get("XRAY") + "");*/
