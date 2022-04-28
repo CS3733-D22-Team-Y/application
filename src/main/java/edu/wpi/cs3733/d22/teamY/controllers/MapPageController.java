@@ -5,6 +5,7 @@ import edu.wpi.cs3733.d22.teamY.*;
 import edu.wpi.cs3733.d22.teamY.component.MapComponent;
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.MedEquip;
+import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXCheckbox;
@@ -516,58 +517,7 @@ public class MapPageController implements IController {
                           for (ServiceRequest r : requests) {
                             fuck2.add(r);
                           }
-
-                          // Show only the correct pane
-                          reqInfoPane.setVisible(true);
-                          locationInfoPane.setVisible(false);
-                          equipInfoPane.setVisible(false);
-
-                          this.currReqSelection %= fuck2.size();
-                          currReqDisplay.setText(
-                              fuck2.get(this.currReqSelection).getRequestId() + "");
-                          this.reqLocationBox.setText(
-                              fuck2.get(this.currReqSelection).getLocationID());
-                          this.reqDescriptionBox.setText(
-                              fuck2.get(this.currReqSelection).getAdditionalNotes());
-                          this.reqStatusBox.setText(
-                              fuck2.get(this.currReqSelection).getStatus().name());
-                          this.reqTypeBox.setText(
-                              fuck2.get(this.currReqSelection).getType().getFriendlyName());
-                          this.reqNurseBox.setText(
-                              fuck2.get(this.currReqSelection).getAssignedNurse());
-
-                          for (TextField tf : extraAtts) {
-                            attVbox.getChildren().remove(tf);
-                          }
-                          for (MFXTextField mtf : extraVals) {
-                            valueVbox.getChildren().remove(mtf);
-                          }
-                          extraAtts.clear();
-                          extraVals.clear();
-                          ServiceRequest sreq = fuck2.get(this.currReqSelection);
-                          RequestTypes rt = sreq.getType();
-                          String[] atts = rt.getAttributes();
-                          String[] fAtts = rt.getFriendlyAttributes();
-                          for (int i = 0; i < rt.getAttributeCount(); i++) {
-                            TextField name = this.getFieldClone(this.attName);
-                            name.setText(fAtts[i]);
-                            this.extraAtts.add(name);
-
-                            MFXTextField val = this.getMFXFieldClone(this.attValue);
-                            val.getStyleClass().clear();
-                            val.getStyleClass().add("mfx-text-field");
-                            val.getStyleClass().add("requestInput");
-                            val.setStyle("-fx-font-size: 12px;");
-                            // idk why this is necessary but it is
-                            val.setPrefHeight(29);
-                            val.setMaxHeight(29);
-                            val.setMinHeight(0);
-                            val.setText(sreq.get(atts[i]));
-                            this.extraVals.add(val);
-
-                            this.attVbox.getChildren().add(name);
-                            this.valueVbox.getChildren().add(val);
-                          }
+                          updateReqInfo();
                         }
                       });
                 }
@@ -598,6 +548,10 @@ public class MapPageController implements IController {
                         String val = extraVals.get(i).getText();
                         req.set(atts[i], val);
                       }
+
+                      req.setStatus(RequestStatus.toStatus(this.reqStatusBox.getText()));
+                      req.setAssignedNurse(this.reqNurseBox.getText());
+                      req.setAdditionalNotes(this.reqDescriptionBox.getText());
                       DBManager.update(req);
                       System.out.println("Updated request");
                     });
@@ -885,7 +839,16 @@ public class MapPageController implements IController {
   }
 
   public void updateReqInfo() {
+
+    // Show only the correct pane
+    reqInfoPane.setVisible(true);
+    locationInfoPane.setVisible(false);
+    equipInfoPane.setVisible(false);
+
     this.currReqSelection %= fuck2.size();
+    if (this.currReqSelection < 0) {
+      this.currReqSelection = fuck2.size() - 1;
+    }
     currReqDisplay.setText(fuck2.get(this.currReqSelection).getRequestId() + "");
     this.reqLocationBox.setText(fuck2.get(this.currReqSelection).getLocationID());
     this.reqDescriptionBox.setText(fuck2.get(this.currReqSelection).getAdditionalNotes());
@@ -893,7 +856,38 @@ public class MapPageController implements IController {
     this.reqTypeBox.setText(fuck2.get(this.currReqSelection).getType().getFriendlyName());
     this.reqNurseBox.setText(fuck2.get(this.currReqSelection).getAssignedNurse());
 
-    equipInfoPane.setVisible(false);
+    for (TextField tf : extraAtts) {
+      attVbox.getChildren().remove(tf);
+    }
+    for (MFXTextField mtf : extraVals) {
+      valueVbox.getChildren().remove(mtf);
+    }
+    extraAtts.clear();
+    extraVals.clear();
+    ServiceRequest sreq = fuck2.get(this.currReqSelection);
+    RequestTypes rt = sreq.getType();
+    String[] atts = rt.getAttributes();
+    String[] fAtts = rt.getFriendlyAttributes();
+    for (int i = 0; i < rt.getAttributeCount(); i++) {
+      TextField name = this.getFieldClone(this.attName);
+      name.setText(fAtts[i]);
+      this.extraAtts.add(name);
+
+      MFXTextField val = this.getMFXFieldClone(this.attValue);
+      val.getStyleClass().clear();
+      val.getStyleClass().add("mfx-text-field");
+      val.getStyleClass().add("requestInput");
+      val.setStyle("-fx-font-size: 12px;");
+      // idk why this is necessary but it is
+      val.setPrefHeight(29);
+      val.setMaxHeight(29);
+      val.setMinHeight(0);
+      val.setText(sreq.get(atts[i]));
+      this.extraVals.add(val);
+
+      this.attVbox.getChildren().add(name);
+      this.valueVbox.getChildren().add(val);
+    }
   }
 
   public void updateEquipInfo() {

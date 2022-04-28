@@ -153,8 +153,8 @@
          </VBox>
          <VBox fx:id="valueVbox" layoutX="70.0" layoutY="164.0" spacing="20.0">
             <children>
-               <MFXTextField fx:id="reqTypeBox" floatMode="DISABLED" prefHeight="15.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
-               <MFXTextField fx:id="reqLocationBox" floatMode="DISABLED" prefHeight="7.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+               <MFXTextField fx:id="reqTypeBox" allowEdit="false" floatMode="DISABLED" prefHeight="15.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+               <MFXTextField fx:id="reqLocationBox" allowEdit="false" floatMode="DISABLED" prefHeight="7.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
                <MFXTextField fx:id="reqStatusBox" floatMode="DISABLED" prefHeight="11.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
                <MFXTextField fx:id="reqNurseBox" floatMode="DISABLED" prefHeight="13.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
                <MFXTextField fx:id="attValue" floatMode="DISABLED" prefHeight="13.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
