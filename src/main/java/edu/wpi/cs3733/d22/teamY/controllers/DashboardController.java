@@ -3,6 +3,7 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import edu.wpi.cs3733.d22.teamY.*;
+import edu.wpi.cs3733.d22.teamY.model.MedEquip;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.Requestable;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
@@ -25,9 +26,14 @@ import java.util.List;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.animation.AnimationTimer;
+import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -37,15 +43,20 @@ import javafx.scene.shape.Rectangle;
 public class DashboardController implements IController {
 
   public class EquipmentMonitor {
-    private Object thingToWatch;
+    private EquipmentSubject thingToWatch;
 
-    EquipmentMonitor(Object watch) {
+    EquipmentMonitor(EquipmentSubject watch) {
       thingToWatch = watch;
+      thingToWatch.attachObserver(this);
     }
 
     public void update() {
       updateEquipment();
     }
+  }
+
+  public interface EquipmentSubject {
+    void attachObserver(EquipmentMonitor monitor);
   }
 
   // Radio Buttons
@@ -80,6 +91,59 @@ public class DashboardController implements IController {
   @FXML private Label dirty3;
   @FXML private Label dirty4;
   @FXML private Label dirty5;
+
+  @FXML private Group clean_l1Popup;
+  @FXML private Group clean_l2Popup;
+  @FXML private Group clean_l3Popup;
+  @FXML private Group clean_l4Popup;
+  @FXML private Group clean_l5Popup;
+  @FXML private Group dirty_l1Popup;
+  @FXML private Group dirty_l2Popup;
+  @FXML private Group dirty_l3Popup;
+  @FXML private Group dirty_l4Popup;
+  @FXML private Group dirty_l5Popup;
+
+  @FXML private TextField dirty_l1Bed;
+  @FXML private TextField dirty_l1Pump;
+  @FXML private TextField dirty_l1Rec;
+  @FXML private TextField dirty_l1X;
+  @FXML private TextField dirty_l2Bed;
+  @FXML private TextField dirty_l2Pump;
+  @FXML private TextField dirty_l2Rec;
+  @FXML private TextField dirty_l2X;
+  @FXML private TextField dirty_l3Bed;
+  @FXML private TextField dirty_l3Pump;
+  @FXML private TextField dirty_l3Rec;
+  @FXML private TextField dirty_l3X;
+  @FXML private TextField dirty_l4Bed;
+  @FXML private TextField dirty_l4Pump;
+  @FXML private TextField dirty_l4Rec;
+  @FXML private TextField dirty_l4X;
+  @FXML private TextField dirty_l5Bed;
+  @FXML private TextField dirty_l5Pump;
+  @FXML private TextField dirty_l5Rec;
+  @FXML private TextField dirty_l5X;
+
+  @FXML private TextField clean_l1Bed;
+  @FXML private TextField clean_l1Pump;
+  @FXML private TextField clean_l1Rec;
+  @FXML private TextField clean_l1X;
+  @FXML private TextField clean_l2Bed;
+  @FXML private TextField clean_l2Pump;
+  @FXML private TextField clean_l2Rec;
+  @FXML private TextField clean_l2X;
+  @FXML private TextField clean_l3Bed;
+  @FXML private TextField clean_l3Pump;
+  @FXML private TextField clean_l3Rec;
+  @FXML private TextField clean_l3X;
+  @FXML private TextField clean_l4Bed;
+  @FXML private TextField clean_l4Pump;
+  @FXML private TextField clean_l4Rec;
+  @FXML private TextField clean_l4X;
+  @FXML private TextField clean_l5Bed;
+  @FXML private TextField clean_l5Pump;
+  @FXML private TextField clean_l5Rec;
+  @FXML private TextField clean_l5X;
 
   @FXML private Label activeRequestCount;
 
@@ -132,7 +196,7 @@ public class DashboardController implements IController {
 
   private EquipmentMonitor monitor = null;
 
-  public EquipmentMonitor initMonitor(Object watch) {
+  public EquipmentMonitor initMonitor(EquipmentSubject watch) {
     monitor = new EquipmentMonitor(watch);
     return monitor;
   }
@@ -142,6 +206,7 @@ public class DashboardController implements IController {
   }
 
   public void initialize() throws IOException {
+    initMonitor(DBHandler.getInstance());
 
     scrollBox.setBackground(Background.EMPTY);
 
@@ -217,8 +282,6 @@ public class DashboardController implements IController {
     updateWeather();
     updateEquipment();
     timer.start();
-
-    // updateEquipment();
 
     // requestBox.setPrefHeight(1000);
     alertsBox.setBackground(Background.EMPTY);
@@ -354,15 +417,53 @@ public class DashboardController implements IController {
   }
 
   private void updateEquipment() {
+    TextField[][] cleanFields =
+        new TextField[][] {
+          {clean_l1Bed, clean_l1Pump, clean_l1Rec, clean_l1X},
+          {clean_l2Bed, clean_l2Pump, clean_l2Rec, clean_l2X},
+          {clean_l3Bed, clean_l3Pump, clean_l3Rec, clean_l3X},
+          {clean_l4Bed, clean_l4Pump, clean_l4Rec, clean_l4X},
+          {clean_l5Bed, clean_l5Pump, clean_l5Rec, clean_l5X}
+        };
+    TextField[][] dirtyFields =
+        new TextField[][] {
+          {dirty_l1Bed, dirty_l1Pump, dirty_l1Rec, dirty_l1X},
+          {dirty_l2Bed, dirty_l2Pump, dirty_l2Rec, dirty_l2X},
+          {dirty_l3Bed, dirty_l3Pump, dirty_l3Rec, dirty_l3X},
+          {dirty_l4Bed, dirty_l4Pump, dirty_l4Rec, dirty_l4X},
+          {dirty_l5Bed, dirty_l5Pump, dirty_l5Rec, dirty_l5X}
+        };
+
     for (int i = 0; i < floorsClean.length; i++) {
-      int cleanEq = DBUtils.findAllOfStatusOnFloor(Integer.toString(i + 1), "1").size();
-      int dirtyEq = DBUtils.findAllOfStatusOnFloor(Integer.toString(i + 1), "0").size();
+      List<MedEquip> cleanEq = DBUtils.findAllOfStatusOnFloor(Integer.toString(i + 1), "1");
+      List<MedEquip> dirtyEq = DBUtils.findAllOfStatusOnFloor(Integer.toString(i + 1), "0");
 
-      floorsClean[i].setText(String.valueOf(cleanEq));
-      floorsDirty[i].setText(String.valueOf(dirtyEq));
+      floorsClean[i].setText(String.valueOf(cleanEq.size()));
+      floorsDirty[i].setText(String.valueOf(dirtyEq.size()));
 
-      floorsDirtyWarning[i].setVisible(dirtyEq >= cleanEq && dirtyEq >= 5);
+      floorsDirtyWarning[i].setVisible(dirtyEq.size() >= cleanEq.size() && dirtyEq.size() >= 5);
+
+      setPopupText(cleanFields, i, cleanEq);
+      setPopupText(dirtyFields, i, dirtyEq);
     }
+  }
+
+  private void setPopupText(TextField[][] fields, int i, List<MedEquip> list) {
+    fields[i][0].setText(String.valueOf(numberOfTypeFromList(list, "BED")));
+    fields[i][1].setText(String.valueOf(numberOfTypeFromList(list, "PUMP")));
+    fields[i][2].setText(String.valueOf(numberOfTypeFromList(list, "RECLINER")));
+    fields[i][3].setText(String.valueOf(numberOfTypeFromList(list, "XRAY")));
+  }
+
+  private int numberOfTypeFromList(List<MedEquip> list, String type) {
+    int count = 0;
+    for (MedEquip m : list) {
+      if (Objects.equals(m.getEquipType(), type)) {
+        count++;
+      }
+    }
+
+    return count;
   }
 
   private void updateWeather() {
@@ -600,7 +701,125 @@ public class DashboardController implements IController {
     }
     return songs.get(positionChosenBefore);
   }
-  
+
+  private void updateQuickDash() {
+    HashMap<String, HashMap<String, Integer>> floorCounts = DBUtils.getEquipFloorCounts();
+
+    /*this.bedLabels[index].setText(floorCounts.get(floor).get("BED") + "");
+    this.pumpLabels[index].setText(floorCounts.get(floor).get("PUMP") + "");
+    this.recLabels[index].setText(floorCounts.get(floor).get("RECLINER") + "");
+    this.xLabels[index].setText(floorCounts.get(floor).get("XRAY") + "");*/
+  }
+
+  @FXML
+  public void L1DirtyEnter() {
+    updateQuickDash();
+    dirty_l1Popup.setVisible(true);
+  }
+
+  @FXML
+  public void L1DirtyExit() {
+    dirty_l1Popup.setVisible(false);
+  }
+
+  @FXML
+  public void L2DirtyEnter() {
+    updateQuickDash();
+    dirty_l2Popup.setVisible(true);
+  }
+
+  @FXML
+  public void L2DirtyExit() {
+    dirty_l2Popup.setVisible(false);
+  }
+
+  @FXML
+  public void L3DirtyEnter() {
+    updateQuickDash();
+    dirty_l3Popup.setVisible(true);
+  }
+
+  @FXML
+  public void L3DirtyExit() {
+    dirty_l3Popup.setVisible(false);
+  }
+
+  @FXML
+  public void L4DirtyEnter() {
+    updateQuickDash();
+    dirty_l4Popup.setVisible(true);
+  }
+
+  @FXML
+  public void L4DirtyExit() {
+    dirty_l4Popup.setVisible(false);
+  }
+
+  @FXML
+  public void L5DirtyEnter() {
+    updateQuickDash();
+    dirty_l5Popup.setVisible(true);
+  }
+
+  @FXML
+  public void L5DirtyExit() {
+    dirty_l5Popup.setVisible(false);
+  }
+
+  @FXML
+  public void L1CleanEnter() {
+    updateQuickDash();
+    clean_l1Popup.setVisible(true);
+  }
+
+  @FXML
+  public void L1CleanExit() {
+    clean_l1Popup.setVisible(false);
+  }
+
+  @FXML
+  public void L2CleanEnter() {
+    updateQuickDash();
+    clean_l2Popup.setVisible(true);
+  }
+
+  @FXML
+  public void L2CleanExit() {
+    clean_l2Popup.setVisible(false);
+  }
+
+  @FXML
+  public void L3CleanEnter() {
+    updateQuickDash();
+    clean_l3Popup.setVisible(true);
+  }
+
+  @FXML
+  public void L3CleanExit() {
+    clean_l3Popup.setVisible(false);
+  }
+
+  @FXML
+  public void L4CleanEnter() {
+    updateQuickDash();
+    clean_l4Popup.setVisible(true);
+  }
+
+  @FXML
+  public void L4CleanExit() {
+    clean_l4Popup.setVisible(false);
+  }
+
+  @FXML
+  public void L5CleanEnter() {
+    updateQuickDash();
+    clean_l5Popup.setVisible(true);
+  }
+
+  @FXML
+  public void L5CleanExit() {
+    clean_l5Popup.setVisible(false);
+  }
 
   @Override
   public IController getController() {
