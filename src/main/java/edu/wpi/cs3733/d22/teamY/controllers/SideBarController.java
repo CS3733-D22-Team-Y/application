@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
@@ -37,6 +38,10 @@ public class SideBarController {
   // List view stuff
   @FXML private MFXLegacyListView<String> listView;
   private ObservableList keyWords = FXCollections.observableArrayList();
+
+  // About Us stuff
+  @FXML private Label aboutUsButton;
+  AboutUsController About = new AboutUsController();
 
   Scene currScene;
   ArrayList<String> searchContent = new ArrayList<String>();
@@ -247,6 +252,11 @@ public class SideBarController {
         profileHiddenRect,
         inboxHiddenRect,
         logoutHiddenRect);
+  }
+
+  @FXML
+  private void openAboutUs() throws IOException {
+    SceneLoading.loadPopup("views/popups/AboutUs.fxml", "views/SideBar.fxml");
   }
 
   @FXML private TextField searchBar;

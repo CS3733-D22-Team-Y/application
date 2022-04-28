@@ -9,7 +9,7 @@ public class HelpButtonController {
   @FXML private MFXButton backButton;
 
   @FXML
-  private void backButton() {
+  void backButton() {
     Stage stage;
     stage = (Stage) backButton.getScene().getWindow();
     stage.close();

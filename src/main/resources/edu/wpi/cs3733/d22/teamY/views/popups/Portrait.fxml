@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" maxHeight="350.0" maxWidth="250.0" minHeight="350.0" minWidth="250.0" prefHeight="350.0" prefWidth="250.0" styleClass="plainText" stylesheets="@../css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.PortraitController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14667b" height="350.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+      <Label fx:id="roleText" alignment="CENTER" contentDisplay="CENTER" layoutY="200.0" prefHeight="35.0" prefWidth="250.0" styleClass="plainText" text="Role text" textFill="WHITE">
+         <font>
+            <Font name="Microsoft New Tai Lue" size="24.0" />
+         </font></Label>
+      <JFXTextArea fx:id="quoteText" editable="false" focusColor="#ffffff00" layoutX="10.0" layoutY="240.0" maxHeight="100.0" maxWidth="230.0" minHeight="100.0" minWidth="230.0" prefColumnCount="0" prefHeight="100.0" prefRowCount="0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="subText" text="Quote text" unFocusColor="#ffffff00" />
+      <Label fx:id="nameText" alignment="CENTER" contentDisplay="CENTER" layoutY="20.0" prefHeight="35.0" prefWidth="250.0" styleClass="plainText" text="Name text" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Microsoft New Tai Lue" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="backButton" fitHeight="20.0" fitWidth="20.0" layoutX="225.0" layoutY="5.0" onMouseClicked="#backButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons/X.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="portraitImage" fitHeight="150.0" fitWidth="150.0" layoutX="50.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
