@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -169,7 +165,245 @@
             </MFXScrollPane>
          </children>
       </Group>
-      <Group layoutX="890.0" layoutY="99.0">
+      <Group layoutX="284.0" layoutY="496.0">
+         <children>
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="599.0" />
+            <Label layoutX="10.0" layoutY="10.0" styleClass="title" text="Active Requests">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="494.0" layoutY="28.0" styleClass="title" text="Total:">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="30.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="activeRequestCount" alignment="CENTER" contentDisplay="CENTER" layoutX="496.0" layoutY="64.0" prefHeight="50.0" prefWidth="80.0" styleClass="title" text="999">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="42.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <BarChart fx:id="barChart" layoutX="-6.0" layoutY="46.0" prefHeight="251.0" prefWidth="500.0" styleClass="chart-bar" stylesheets="@css/BarChart.css">
+              <xAxis>
+                <CategoryAxis fx:id="categoryAxis" side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="numberAxis" minorTickCount="0" side="LEFT" />
+              </yAxis>
+            </BarChart>
+         </children>
+      </Group>
+      <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="82.0" layoutX="890.0" layoutY="99.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
+      <Group layoutX="933.0" layoutY="65.0">
+         <children>
+            <Label fx:id="timeDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="33.0" prefHeight="54.0" prefWidth="196.0" styleClass="title" text="Offline">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.10439560439560441">
+                           <color>
+                              <Color red="0.16862745583057404" green="0.16862745583057404" blue="0.16862745583057404" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="dateDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="75.0" prefHeight="22.0" prefWidth="185.0" styleClass="title" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="19.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <ImageView fx:id="weatherIcon" fitHeight="82.0" fitWidth="82.0" layoutX="13.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <ColorAdjust brightness="0.18" />
+               </effect>
+            </ImageView>
+            <Label fx:id="fahrenheit" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="149.0" layoutY="65.0" prefHeight="31.0" prefWidth="54.0" styleClass="title" text="-" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="26.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="celsius" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="74.0" layoutY="56.0" prefHeight="31.0" prefWidth="54.0" styleClass="title" text="-" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="26.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.16862745583057404" green="0.16862745583057404" blue="0.16862745583057404" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="dateDisplay112" alignment="CENTER" contentDisplay="CENTER" layoutX="148.0" layoutY="70.0" prefHeight="22.0" prefWidth="29.0" styleClass="title" text="°C" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="19.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="dateDisplay1121" alignment="CENTER" contentDisplay="CENTER" layoutX="198.0" layoutY="71.0" prefHeight="22.0" prefWidth="29.0" styleClass="title" text="°F" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="19.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Line endX="170.0" endY="-20.399993896484375" layoutX="13.0" layoutY="97.0" startX="170.0" startY="-2.800018310546875" strokeLineCap="ROUND" strokeWidth="4.0">
+               <effect>
+                  <ColorAdjust brightness="0.18" />
+               </effect>
+            </Line>
+         </children>
+      </Group>
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="200.0" layoutX="890.0" layoutY="189.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
+      <ImageView fitHeight="101.0" fitWidth="106.0" layoutX="985.0" layoutY="200.0">
+         <image>
+            <Image url="@IdeaProjects/application/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/dash/MusicIcons/11zon_cropped%20(7).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="903.0" layoutY="319.0" onMouseClicked="#back">
+         <image>
+            <Image url="@IdeaProjects/application/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/dash/MusicIcons/11zon_cropped%20(6).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1112.0" layoutY="319.0" onMouseClicked="#next">
+         <image>
+            <Image url="@IdeaProjects/application/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/dash/MusicIcons/11zon_cropped%20(5).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1112.0" layoutY="200.0" onMouseClicked="#pause">
+         <image>
+            <Image url="@IdeaProjects/application/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/dash/MusicIcons/11zon_cropped%20(4).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1008.0" layoutY="319.0" onMouseClicked="#shuffle">
+         <image>
+            <Image url="@IdeaProjects/application/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/dash/MusicIcons/11zon_cropped%20(3).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="903.0" layoutY="200.0" onMouseClicked="#play">
+         <image>
+            <Image url="@IdeaProjects/application/src/main/resources/edu/wpi/cs3733/d22/teamY/views/images/icons/dash/MusicIcons/11zon_cropped%20(2).png" />
+         </image>
+      </ImageView>
+      <Group layoutX="890.0" layoutY="397.0">
          <children>
             <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="389.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
             <Label layoutX="27.0" layoutY="14.0" styleClass="title" text="Floor">
@@ -399,253 +633,6 @@
                   <ColorAdjust brightness="0.18" />
                </effect>
             </ImageView>
-         </children>
-      </Group>
-      <Group layoutX="284.0" layoutY="496.0">
-         <children>
-            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="599.0" />
-            <Label layoutX="10.0" layoutY="10.0" styleClass="title" text="Active Requests">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-            </Label>
-            <Label layoutX="494.0" layoutY="28.0" styleClass="title" text="Total:">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <Label fx:id="activeRequestCount" alignment="CENTER" contentDisplay="CENTER" layoutX="496.0" layoutY="64.0" prefHeight="50.0" prefWidth="80.0" styleClass="title" text="999">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="42.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <BarChart fx:id="barChart" layoutX="-6.0" layoutY="46.0" prefHeight="251.0" prefWidth="500.0" styleClass="chart-bar" stylesheets="@css/BarChart.css">
-              <xAxis>
-                <CategoryAxis fx:id="categoryAxis" side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis fx:id="numberAxis" minorTickCount="0" side="LEFT" />
-              </yAxis>
-            </BarChart>
-         </children>
-      </Group>
-      <Group layoutX="890.0" layoutY="496.0">
-         <children>
-            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
-            <Label layoutX="10.0" layoutY="10.0" styleClass="title" text="Messages">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="30.0" />
-               </font>
-            </Label>
-            <MFXScrollPane layoutX="10.0" layoutY="49.0" prefHeight="207.0" prefWidth="276.0" style="-fx-background-color: #93cddc;">
-               <content>
-                  <VBox fx:id="messageBox" prefHeight="271.0" prefWidth="262.0">
-                     <children>
-                        <HBox prefHeight="55.0" prefWidth="262.0" style="-fx-padding: 2;">
-                           <children>
-                              <TextArea editable="false" prefHeight="46.0" prefWidth="160.0" text="Hi! How are you!" wrapText="true">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                              </TextArea>
-                           </children>
-                        </HBox>
-                        <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="55.0" prefWidth="262.0" style="-fx-padding: 2;">
-                           <children>
-                              <TextArea editable="false" prefHeight="46.0" prefWidth="160.0" text="Great, thanks for asking!!! :)" wrapText="true">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                              </TextArea>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-               </content>
-            </MFXScrollPane>
-            <TextField fx:id="messageInputBox" layoutX="10.0" layoutY="256.0" prefHeight="26.0" prefWidth="218.0" promptText="type your message here..." />
-            <MFXButton fx:id="messageSendButton" layoutX="232.0" layoutY="256.0" prefHeight="26.0" prefWidth="48.0" style="-fx-background-color: #1b89a6;" text="Send" textFill="WHITE" />
-         </children>
-      </Group>
-      <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
-      <Group layoutX="912.0" layoutY="-25.0" scaleX="0.75" scaleY="0.75">
-         <children>
-            <Label fx:id="timeDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="91.0" layoutY="21.0" prefHeight="54.0" prefWidth="196.0" styleClass="title" text="Offline">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="46.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
-                           </color>
-                        </Stop>
-                        <Stop offset="0.10439560439560441">
-                           <color>
-                              <Color red="0.16862745583057404" green="0.16862745583057404" blue="0.16862745583057404" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <Label fx:id="dateDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="75.0" prefHeight="22.0" prefWidth="185.0" styleClass="title" textAlignment="CENTER">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="19.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <ImageView fx:id="weatherIcon" fitHeight="82.0" fitWidth="82.0" layoutX="13.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
-               <effect>
-                  <ColorAdjust brightness="0.18" />
-               </effect>
-            </ImageView>
-            <Label fx:id="fahrenheit" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="169.0" layoutY="99.0" prefHeight="31.0" prefWidth="54.0" styleClass="title" text="-" textAlignment="CENTER">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="26.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <Label fx:id="celsius" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="98.0" layoutY="99.0" prefHeight="31.0" prefWidth="54.0" styleClass="title" text="-" textAlignment="CENTER">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="26.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.16862745583057404" green="0.16862745583057404" blue="0.16862745583057404" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <Label fx:id="dateDisplay112" alignment="CENTER" contentDisplay="CENTER" layoutX="148.0" layoutY="100.0" prefHeight="22.0" prefWidth="29.0" styleClass="title" text="°C" textAlignment="CENTER">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="19.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <Label fx:id="dateDisplay1121" alignment="CENTER" contentDisplay="CENTER" layoutX="218.0" layoutY="101.0" prefHeight="22.0" prefWidth="29.0" styleClass="title" text="°F" textAlignment="CENTER">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="19.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.17894737422466278" green="0.17894737422466278" blue="0.17894737422466278" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <Line endX="170.0" endY="-20.399993896484375" layoutX="13.0" layoutY="127.0" startX="170.0" startY="-2.800018310546875" strokeLineCap="ROUND" strokeWidth="4.0">
-               <effect>
-                  <ColorAdjust brightness="0.18" />
-               </effect>
-            </Line>
          </children>
       </Group>
     </children>
