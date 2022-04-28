@@ -404,7 +404,7 @@ public class MapPageController implements IController {
                   newServiceRequest.setPrefHeight(iconDim);
                   newServiceRequest.getChildren().add(frame);
                   newServiceRequest.visibleProperty().bind(servicesCheckbox.selectedProperty());
-                  mapElements.add(newLocation);
+                  mapElements.add(newServiceRequest);
                   serviceRequestAdded = true;
                 }
 
