@@ -7,7 +7,6 @@ import edu.wpi.cs3733.d22.teamY.model.MedEquip;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.Requestable;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -19,7 +18,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
@@ -27,6 +25,7 @@ import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -95,47 +94,47 @@ public class DashboardController implements IController {
   @FXML private Group dirty_l4Popup;
   @FXML private Group dirty_l5Popup;
 
-  @FXML private TextArea dirty_l1Bed;
-  @FXML private TextArea dirty_l1Pump;
-  @FXML private TextArea dirty_l1Rec;
-  @FXML private TextArea dirty_l1X;
-  @FXML private TextArea dirty_l2Bed;
-  @FXML private TextArea dirty_l2Pump;
-  @FXML private TextArea dirty_l2Rec;
-  @FXML private TextArea dirty_l2X;
-  @FXML private TextArea dirty_l3Bed;
-  @FXML private TextArea dirty_l3Pump;
-  @FXML private TextArea dirty_l3Rec;
-  @FXML private TextArea dirty_l3X;
-  @FXML private TextArea dirty_l4Bed;
-  @FXML private TextArea dirty_l4Pump;
-  @FXML private TextArea dirty_l4Rec;
-  @FXML private TextArea dirty_l4X;
-  @FXML private TextArea dirty_l5Bed;
-  @FXML private TextArea dirty_l5Pump;
-  @FXML private TextArea dirty_l5Rec;
-  @FXML private TextArea dirty_l5X;
+  @FXML private TextField dirty_l1Bed;
+  @FXML private TextField dirty_l1Pump;
+  @FXML private TextField dirty_l1Rec;
+  @FXML private TextField dirty_l1X;
+  @FXML private TextField dirty_l2Bed;
+  @FXML private TextField dirty_l2Pump;
+  @FXML private TextField dirty_l2Rec;
+  @FXML private TextField dirty_l2X;
+  @FXML private TextField dirty_l3Bed;
+  @FXML private TextField dirty_l3Pump;
+  @FXML private TextField dirty_l3Rec;
+  @FXML private TextField dirty_l3X;
+  @FXML private TextField dirty_l4Bed;
+  @FXML private TextField dirty_l4Pump;
+  @FXML private TextField dirty_l4Rec;
+  @FXML private TextField dirty_l4X;
+  @FXML private TextField dirty_l5Bed;
+  @FXML private TextField dirty_l5Pump;
+  @FXML private TextField dirty_l5Rec;
+  @FXML private TextField dirty_l5X;
 
-  @FXML private TextArea clean_l1Bed;
-  @FXML private TextArea clean_l1Pump;
-  @FXML private TextArea clean_l1Rec;
-  @FXML private TextArea clean_l1X;
-  @FXML private TextArea clean_l2Bed;
-  @FXML private TextArea clean_l2Pump;
-  @FXML private TextArea clean_l2Rec;
-  @FXML private TextArea clean_l2X;
-  @FXML private TextArea clean_l3Bed;
-  @FXML private TextArea clean_l3Pump;
-  @FXML private TextArea clean_l3Rec;
-  @FXML private TextArea clean_l3X;
-  @FXML private TextArea clean_l4Bed;
-  @FXML private TextArea clean_l4Pump;
-  @FXML private TextArea clean_l4Rec;
-  @FXML private TextArea clean_l4X;
-  @FXML private TextArea clean_l5Bed;
-  @FXML private TextArea clean_l5Pump;
-  @FXML private TextArea clean_l5Rec;
-  @FXML private TextArea clean_l5X;
+  @FXML private TextField clean_l1Bed;
+  @FXML private TextField clean_l1Pump;
+  @FXML private TextField clean_l1Rec;
+  @FXML private TextField clean_l1X;
+  @FXML private TextField clean_l2Bed;
+  @FXML private TextField clean_l2Pump;
+  @FXML private TextField clean_l2Rec;
+  @FXML private TextField clean_l2X;
+  @FXML private TextField clean_l3Bed;
+  @FXML private TextField clean_l3Pump;
+  @FXML private TextField clean_l3Rec;
+  @FXML private TextField clean_l3X;
+  @FXML private TextField clean_l4Bed;
+  @FXML private TextField clean_l4Pump;
+  @FXML private TextField clean_l4Rec;
+  @FXML private TextField clean_l4X;
+  @FXML private TextField clean_l5Bed;
+  @FXML private TextField clean_l5Pump;
+  @FXML private TextField clean_l5Rec;
+  @FXML private TextField clean_l5X;
 
   @FXML private Label activeRequestCount;
 
@@ -166,7 +165,7 @@ public class DashboardController implements IController {
   private EquipmentMonitor monitor = null;
 
   public EquipmentMonitor initMonitor(Object watch) {
-    monitor = new EquipmentMonitor(watch);
+    // monitor = new EquipmentMonitor(watch);
     return monitor;
   }
 
@@ -604,7 +603,7 @@ public class DashboardController implements IController {
   public void L5CleanExit() {
     clean_l5Popup.setVisible(false);
   }
-  
+
   @Override
   public IController getController() {
     return this;
