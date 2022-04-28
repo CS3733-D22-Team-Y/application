@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -336,12 +337,23 @@ public class MapPageController implements IController {
                 // Checks if the point is in a valid position
                 // Create the circle for this location and add context menu handlers to it
                 Pane newLocation = new Pane();
-                Pane newMedEquip = new Pane();
                 Pane newServiceRequest = new Pane();
+
+                ArrayList<Pane> bed = new ArrayList<>();
+                ArrayList<Pane> xray = new ArrayList<>();
+                ArrayList<Pane> recliner = new ArrayList<>();
+                ArrayList<Pane> pump = new ArrayList<>();
+                List<ArrayList<Pane>> diffEquipTypes = new ArrayList<>();
+                // this is a stupid way of doing it but addAll doesn't work
+                diffEquipTypes.add(bed);
+                diffEquipTypes.add(xray);
+                diffEquipTypes.add(recliner);
+                diffEquipTypes.add(pump);
+
+                // Used to determine which med equip is selected
+                HashMap<Pane, Integer> allMedEquips = new HashMap<>();
+
                 // connor why >:(
-                //                  Circle c =
-                //                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX,
-                // CIRCLE_PAINT);
                 newLocation.setLayoutX(l.getXCoord());
                 newLocation.setLayoutY(l.getYCoord() - pinDim / 2);
                 ImageView imageView = new ImageView();
@@ -349,49 +361,164 @@ public class MapPageController implements IController {
                     new Image(App.class.getResource("views/images/icons/pin.png").toString()));
                 imageView.setFitHeight(pinDim);
                 imageView.setFitWidth(pinDim);
-                //                  imageView.setLayoutX(l.getXCoord() - pinDim / 2);
-                //                  imageView.setLayoutY(l.getYCoord() - pinDim / 2);
 
-                //                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim /
-                // 2, Color.NAVY);
                 newLocation.setPrefWidth(pinDim);
                 newLocation.setPrefHeight(pinDim);
                 newLocation.getChildren().add(imageView);
                 newLocation.visibleProperty().bind(locationsCheckbox.selectedProperty());
+
                 mapElements.add(newLocation);
                 allLocations.add(newLocation);
-                // TODO: Add all loc IDs to the list
                 allLocationIDs.add(l.getNodeID());
+
                 // Add equipment bubbles
                 if (hasEquipment) {
-                  Circle c =
-                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
-                  newMedEquip.setLayoutX(l.getXCoord() + 20);
-                  newMedEquip.setLayoutY(l.getYCoord());
-                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
-                  ImageView equipIcon = new ImageView();
-                  if (equip.size() < 9) {
-                    equipIcon.setImage(
-                        new Image(
-                            String.valueOf(
+                  for (int i = 0; i < equip.size(); i++) {
+                    Pane newMedEquip = new Pane();
+                    newMedEquip.setLayoutX(l.getXCoord());
+                    newMedEquip.setLayoutY(l.getYCoord());
+
+                    Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
+                    ImageView equipIcon = new ImageView();
+                    // Determine what type of equipment the pane is
+                    switch (equip.get(i).getEquipType()) {
+                      case ("PUMP"):
+                        equipIcon.setImage(
+                            new Image(
                                 App.class
-                                    .getResource("views/images/icons/" + equip.size() + ".png")
-                                    .toString())));
-                  } else {
-                    equipIcon.setImage(
-                        new Image(
-                            String.valueOf(
-                                App.class.getResource("views/images/icons/9.png").toString())));
+                                    .getResource("views/images/icons/pumpLogoWhite.png")
+                                    .toString()));
+                        pump.add(newMedEquip);
+                        break;
+                      case ("XRAY"):
+                        equipIcon.setImage(
+                            new Image(
+                                App.class
+                                    .getResource("views/images/icons/xrayIconWhite.png")
+                                    .toString()));
+                        xray.add(newMedEquip);
+                        break;
+                      case ("RECLINER"):
+                        equipIcon.setImage(
+                            new Image(
+                                App.class
+                                    .getResource("views/images/icons/reclinerLogoWhite.png")
+                                    .toString()));
+                        recliner.add(newMedEquip);
+                        break;
+                      case ("BED"):
+                        equipIcon.setImage(
+                            new Image(
+                                App.class
+                                    .getResource("views/images/icons/bedLogoWhite.png")
+                                    .toString()));
+                        bed.add(newMedEquip);
+                        break;
+                      default:
+                        System.out.println(
+                            "Invalid equipment type: " + equip.get(i).getEquipType());
+                    }
+                    equipIcon.setFitWidth(iconDim);
+                    equipIcon.setFitHeight(iconDim);
+                    newMedEquip.setPrefWidth(iconDim);
+                    newMedEquip.setPrefHeight(iconDim);
+                    newMedEquip.getChildren().add(frame);
+                    newMedEquip.getChildren().add(equipIcon);
+                    newMedEquip.visibleProperty().bind(medCheckbox.selectedProperty());
+                    mapElements.add(newMedEquip);
+                    allMedEquips.put(newMedEquip, i);
+
+                    // Circle thingy implementation
+                    ArrayList<ArrayList<Pane>> hasNodes = new ArrayList<>(4);
+
+                    for (int j = 0; j < diffEquipTypes.size(); j++) {
+                      // Check that there is actually that type of equipment at the location
+                      if (!diffEquipTypes.get(j).isEmpty()) hasNodes.add(diffEquipTypes.get(j));
+                    }
+
+                    // One circle should be centered
+                    if (hasNodes.size() == 1) {
+                      for (Pane currPane : hasNodes.get(0)) {
+                        currPane.setLayoutX(l.getXCoord() + (iconDim / 6));
+                        currPane.setLayoutY(l.getYCoord());
+
+                        addNumEquipDisplay(currPane, hasNodes.get(0).size());
+                      }
+                    } else if (!hasNodes.isEmpty()) {
+
+                      ArrayList<Point> points =
+                          getHex(
+                              hasNodes.size(),
+                              iconDim / 2,
+                              new Point(l.getXCoord(), l.getYCoord()));
+
+                      for (int j = 0; j < hasNodes.size(); j++) {
+                        ArrayList<Pane> currList = hasNodes.get(j);
+
+                        for (Pane currPane : currList) {
+                          currPane.setLayoutX(points.get(j).x);
+                          currPane.setLayoutY(points.get(j).y);
+
+                          addNumEquipDisplay(currPane, currList.size());
+                        }
+                      }
+                    }
+
+                    newMedEquip.setOnContextMenuRequested(
+                        e -> {
+                          if (equip.size() > 0) {
+                            fuck3.clear();
+                            for (MedEquip r : equip) {
+                              fuck3.add(r);
+                            }
+
+                            // Show only the correct pane
+                            equipInfoPane.setVisible(true);
+                            locationInfoPane.setVisible(false);
+                            reqInfoPane.setVisible(false);
+                            currentEquip = allMedEquips.get(newMedEquip);
+                            MedEquip o = fuck3.get(currentEquip);
+                            fuck = String.valueOf(o.getEquipID());
+                            equipID.setText(String.valueOf(o.getEquipID()));
+                            equipLocation.setText(o.getEquipLocId());
+                            equipType.setText(o.getEquipType());
+                            equipClean.setText(o.getIsClean());
+                          }
+                        });
+                    // Dragging the pin
+                    newMedEquip.setOnMouseDragged(
+                        e -> {
+                          if (e.isPrimaryButtonDown()) {
+                            MapComponent.setIsDraggingPin(true);
+                            newMedEquip.setLayoutX(e.getX() + newMedEquip.getLayoutX() - 48 * .25);
+                            newMedEquip.setLayoutY(e.getY() + newMedEquip.getLayoutY() - 95 * .25);
+                          }
+                        });
+                    newMedEquip.setOnMouseReleased(
+                        e -> {
+                          MapComponent.setIsDraggingPin(false);
+                          // Add the updated equipment
+                          //                          currentEquip %= fuck3.size();
+                          // Issue is here
+                          // MedEquip equipPiece = equip.get(currentEquip % equip.size());
+                          MedEquip equipPiece = equip.get(allMedEquips.get(newMedEquip));
+                          MedEquip newEquip =
+                              new MedEquip(
+                                  String.valueOf(equipPiece.getEquipID()),
+                                  equipPiece.getEquipType(),
+                                  findNearestLoc(
+                                      newMedEquip.getLayoutX() - 48 * .25,
+                                      newMedEquip.getLayoutY() - 95 * .25,
+                                      allLocations,
+                                      allLocationIDs,
+                                      equipPiece.getEquipLocId()),
+                                  equipPiece.getIsClean(),
+                                  equipPiece.getStatus());
+                          DBManager.update(newEquip);
+                          equip.add(newEquip);
+                          switchMap(newFloor, mapMode);
+                        });
                   }
-                  equipIcon.setFitWidth(iconDim);
-                  equipIcon.setFitHeight(iconDim);
-                  newMedEquip.setPrefWidth(iconDim);
-                  newMedEquip.setPrefHeight(iconDim);
-                  newMedEquip.getChildren().add(frame);
-                  newMedEquip.getChildren().add(equipIcon);
-                  newMedEquip.visibleProperty().bind(medCheckbox.selectedProperty());
-                  mapElements.add(newMedEquip);
-                  medEquipAdded = true;
                 }
                 // Add service request bubbles
                 if (requests.size() > 0) {
@@ -445,62 +572,8 @@ public class MapPageController implements IController {
                       locationShort.setText(l.getShortName());
                       locationLong.setText(l.getLongName());
                       locationID.setText(String.valueOf(l.getNodeID()));
+                      System.out.println(equip);
                     });
-                if (medEquipAdded) {
-                  // Set behavior for the equipment circles
-                  newMedEquip.setOnContextMenuRequested(
-                      e -> {
-                        if (equip.size() > 0) {
-                          fuck3.clear();
-                          for (MedEquip r : equip) {
-                            fuck3.add(r);
-                          }
-
-                          // Show only the correct pane
-                          equipInfoPane.setVisible(true);
-                          locationInfoPane.setVisible(false);
-                          reqInfoPane.setVisible(false);
-                          currentEquip %= fuck3.size();
-                          MedEquip o = fuck3.get(currentEquip);
-                          fuck = String.valueOf(o.getEquipID());
-                          equipID.setText(String.valueOf(o.getEquipID()));
-                          equipLocation.setText(o.getEquipLocId());
-                          equipType.setText(o.getEquipType());
-                          equipClean.setText(o.getIsClean());
-                        }
-                      });
-                  // Dragging the pin
-                  newMedEquip.setOnMouseDragged(
-                      e -> {
-                        if (e.isPrimaryButtonDown()) {
-                          MapComponent.setIsDraggingPin(true);
-                          newMedEquip.setLayoutX(e.getX() + newMedEquip.getLayoutX() - 48 * .25);
-                          newMedEquip.setLayoutY(e.getY() + newMedEquip.getLayoutY() - 95 * .25);
-                        }
-                      });
-                  newMedEquip.setOnMouseReleased(
-                      e -> {
-                        MapComponent.setIsDraggingPin(false);
-                        // Add the updated equipment
-                        //                          currentEquip %= fuck3.size();
-                        MedEquip equipPiece = equip.get(currentEquip % equip.size());
-                        MedEquip newEquip =
-                            new MedEquip(
-                                String.valueOf(equipPiece.getEquipID()),
-                                equipPiece.getEquipType(),
-                                findNearestLoc(
-                                    newMedEquip.getLayoutX() - 48 * .25,
-                                    newMedEquip.getLayoutY() - 95 * .25,
-                                    allLocations,
-                                    allLocationIDs,
-                                    equipPiece.getEquipLocId()),
-                                equipPiece.getIsClean(),
-                                equipPiece.getStatus());
-                        DBManager.update(newEquip);
-                        equip.add(newEquip);
-                        switchMap(newFloor, mapMode);
-                      });
-                }
                 if (serviceRequestAdded) {
                   // Set behavior for the requests circle
                   newServiceRequest.setOnContextMenuRequested(
@@ -594,6 +667,33 @@ public class MapPageController implements IController {
 
     // Switch to new background image
     imageView.setImage(floorImages.get(newFloor));
+  }
+
+  private void addNumEquipDisplay(Pane currPane, int numEquip) {
+    Pane numEquipDisplay = new Pane();
+    Circle c =
+        new Circle(iconDim / 2 + iconDim / 4, iconDim / 2 - iconDim / 4, iconDim / 3, Color.RED);
+    ImageView numEquipImage = new ImageView();
+    if (numEquip >= 9) {
+      numEquipImage.setImage(
+          new Image(App.class.getResource("views/images/icons/9.png").toString()));
+    } else {
+      numEquipImage.setImage(
+          new Image(App.class.getResource("views/images/icons/" + numEquip + ".png").toString()));
+    }
+    numEquipImage.setLayoutX(c.getLayoutX() + (iconDim / 2));
+    numEquipImage.setLayoutY(c.getLayoutY());
+    numEquipImage.setFitHeight(iconDim / 2);
+    numEquipImage.setFitWidth(iconDim / 2);
+
+    numEquipDisplay.setPrefWidth(iconDim / 2);
+    numEquipDisplay.setPrefHeight(iconDim / 2);
+    numEquipDisplay.getChildren().add(c);
+    numEquipDisplay.getChildren().add(numEquipImage);
+    numEquipDisplay
+        .visibleProperty()
+        .bind(currPane.hoverProperty().and(Bindings.not(currPane.pressedProperty())));
+    currPane.getChildren().add(numEquipDisplay);
   }
 
   private String findNearestLoc(
