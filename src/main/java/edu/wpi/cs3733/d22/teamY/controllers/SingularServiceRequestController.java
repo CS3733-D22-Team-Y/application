@@ -3,20 +3,20 @@ package edu.wpi.cs3733.d22.teamY.controllers;
 import com.jfoenix.controls.JFXTextArea;
 import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
 public class SingularServiceRequestController implements IController {
-  @FXML
-  void initialize() {
-    ActiveServiceRequestController.requestControllers.add(this);
-  }
 
   @FXML private Group colorGizmo;
+
+  @FXML private Rectangle reqRectangle;
 
   @FXML private Label assignedNurse;
   @FXML private Label reqType;
@@ -25,6 +25,13 @@ public class SingularServiceRequestController implements IController {
   @FXML private JFXTextArea extraInfoText;
   private String additional;
   private int priority;
+
+  private ServiceRequest selected;
+
+  @FXML
+  void initialize() {
+    ActiveServiceRequestController.requestControllers.add(this);
+  }
 
   public void populateFromRequest(ServiceRequest req) {
     additional = req.getInfoBoxText();
@@ -35,6 +42,7 @@ public class SingularServiceRequestController implements IController {
     reqType.setText(req.getType().getFriendlyName());
     mapLocation.setText(DBUtils.convertIDToName(req.getLocationID()));
     fillInfoField(additional);
+    selected = req;
   }
 
   public int getPriority() {
@@ -62,5 +70,12 @@ public class SingularServiceRequestController implements IController {
 
   public void fillInfoField(String info) {
     extraInfoText.setText(info);
+  }
+
+  @FXML
+  private void openReqPopup() throws IOException {
+    RequestEditPopupController.selected = selected;
+    System.out.println("Selected Request: " + RequestEditPopupController.selected.getInfoBoxText());
+    SceneLoading.loadPopup("views/popups/RequestEdit.fxml", "views/SideBar.fxml");
   }
 }

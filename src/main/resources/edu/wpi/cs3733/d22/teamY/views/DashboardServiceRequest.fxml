@@ -13,7 +13,7 @@
          <font>
             <Font size="24.0" />
          </font></JFXTextArea>
-      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#93cddc" height="145.0" layoutX="7.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+      <Rectangle fx:id="reqRectangle" arcHeight="10.0" arcWidth="10.0" fill="#93cddc" height="145.0" layoutX="8.0" layoutY="-1.0" onContextMenuRequested="#openReqPopup" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
       <Group fx:id="colorGizmo" />
       <Label fx:id="reqType" alignment="TOP_LEFT" layoutX="22.0" layoutY="14.0" maxWidth="240.0" prefHeight="80.0" prefWidth="158.0" text="Type" wrapText="true">
          <font>
