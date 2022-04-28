@@ -82,6 +82,7 @@ public class MapPageController<T extends Requestable> implements IController {
   @FXML public MFXButton locationSubmit;
   private String fuck = "shit";
   private ArrayList<T> fuck2 = new ArrayList<>();
+  private ArrayList<MedEquip> fuck3 = new ArrayList<>();
   private int currReqSelection = 0;
   // @FXML private MFXLegacyComboBox<String> modeBox;
   // @FXML private TextField selectorBoxText;
@@ -403,9 +404,6 @@ public class MapPageController<T extends Requestable> implements IController {
                 // Set behavior for the location pins
                 newLocation.setOnContextMenuRequested(
                     e -> {
-                      if (currentEquip > equip.size() - 1) {
-                        currentEquip = 0;
-                      }
                       fuck = String.valueOf(l.getNodeID());
                       // Show only the correct pane
                       locationInfoPane.setVisible(true);
@@ -423,17 +421,24 @@ public class MapPageController<T extends Requestable> implements IController {
                   // Set behavior for the equipment circles
                   newMedEquip.setOnContextMenuRequested(
                       e -> {
-                        // Show only the correct pane
-                        equipInfoPane.setVisible(true);
-                        locationInfoPane.setVisible(false);
-                        reqInfoPane.setVisible(false);
+                        if (equip.size() > 0) {
+                          fuck3.clear();
+                          for (MedEquip r : equip) {
+                            fuck3.add(r);
+                          }
 
-                        MedEquip o = equip.get(currentEquip);
-                        fuck = String.valueOf(o.getEquipID());
-                        equipID.setText(String.valueOf(o.getEquipID()));
-                        equipLocation.setText(o.getEquipLocId());
-                        equipType.setText(o.getEquipType());
-                        equipClean.setText(o.getIsClean());
+                          // Show only the correct pane
+                          equipInfoPane.setVisible(true);
+                          locationInfoPane.setVisible(false);
+                          reqInfoPane.setVisible(false);
+                          currentEquip %= fuck3.size();
+                          MedEquip o = fuck3.get(currentEquip);
+                          fuck = String.valueOf(o.getEquipID());
+                          equipID.setText(String.valueOf(o.getEquipID()));
+                          equipLocation.setText(o.getEquipLocId());
+                          equipType.setText(o.getEquipType());
+                          equipClean.setText(o.getIsClean());
+                        }
                       });
                   // Dragging the pin
                   newMedEquip.setOnMouseDragged(
@@ -448,7 +453,8 @@ public class MapPageController<T extends Requestable> implements IController {
                       e -> {
                         MapComponent.setIsDraggingPin(false);
                         // Add the updated equipment
-                        MedEquip equipPiece = equip.get(currentEquip);
+                        //                          currentEquip %= fuck3.size();
+                        MedEquip equipPiece = equip.get(currentEquip % equip.size());
                         MedEquip newEquip =
                             new MedEquip(
                                 String.valueOf(equipPiece.getEquipID()),
@@ -524,11 +530,13 @@ public class MapPageController<T extends Requestable> implements IController {
                 equipUp.setOnMouseClicked(
                     e -> {
                       currentEquip++;
+                      updateEquipInfo();
                     });
 
                 equipDown.setOnMouseClicked(
                     e -> {
                       currentEquip--;
+                      updateEquipInfo();
                     });
 
                 equipSubmit.setOnMouseClicked(
@@ -803,6 +811,19 @@ public class MapPageController<T extends Requestable> implements IController {
     this.reqNurseBox.setText(fuck2.get(this.currReqSelection).getAssignedNurse());
 
     equipInfoPane.setVisible(false);
+  }
+
+  public void updateEquipInfo() {
+    if (currentEquip == -1) {
+      currentEquip = fuck3.size() - 1;
+    }
+    currentEquip = currentEquip % fuck3.size();
+    MedEquip o = fuck3.get(currentEquip);
+    fuck = String.valueOf(o.getEquipID());
+    equipID.setText(String.valueOf(o.getEquipID()));
+    equipLocation.setText(o.getEquipLocId());
+    equipType.setText(o.getEquipType());
+    equipClean.setText(o.getIsClean());
   }
 
   private void updateQuickDash(String floor) {
