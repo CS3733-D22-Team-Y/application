@@ -82,7 +82,7 @@ public class AboutUsController {
   String[] john = {
     "John Carrotta",
     "Scrum Master",
-    "\"Break main and it's hands on sight\" - Basically everyone",
+    "\"Break main and it's hands on sight\" - Ass Leads",
     "views/images/John.jpg"
   };
   String[] jake = {
