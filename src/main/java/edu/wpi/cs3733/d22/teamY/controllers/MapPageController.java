@@ -785,7 +785,7 @@ public class MapPageController<T extends Requestable> implements IController {
 
   @FXML
   private void openMapHelp() throws IOException {
-    SceneLoading.loadPopup("views/popups/MapHelp.fxml", "views/SideBar.fxml");
+    SceneLoading.loadPopup("views/popups/HelpMap.fxml", "views/SideBar.fxml");
   }
 
   public void exit() {
