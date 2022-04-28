@@ -259,6 +259,11 @@ public class SideBarController {
     SceneLoading.loadPopup("views/popups/AboutUs.fxml", "views/SideBar.fxml");
   }
 
+  @FXML
+  private void openCredits() throws IOException {
+    SceneLoading.loadPopup("views/popups/Credits.fxml", "views/SideBar.fxml");
+  }
+
   @FXML private TextField searchBar;
   /**
    * Performs a search given key words these words are processed through a series of RegEx's and

@@ -3,9 +3,8 @@ package edu.wpi.cs3733.d22.teamY;
 import edu.wpi.cs3733.d22.teamY.model.StringArrayConv;
 import java.io.Serializable;
 import java.util.List;
-import org.hibernate.Session;
 
-/** Provides utility methods to use Hibernate API. */
+/** DBHandler Facade for use of Hibernate API. */
 public class DBManager {
 
   /** Single object of the given class. */
@@ -17,17 +16,7 @@ public class DBManager {
    * @param o The object to save.
    */
   public static void save(Object o) {
-    Session s = SessionManager.getSession();
-    try {
-      s.beginTransaction();
-      s.save(o);
-      s.getTransaction().commit();
-      s.close();
-    } catch (Exception e) {
-      s.getTransaction().rollback();
-      s.close();
-      System.out.println(e.getMessage());
-    }
+    DBHandler.getInstance().handleSave(o);
   }
 
   /**
@@ -36,10 +25,7 @@ public class DBManager {
    * @param objects The list of objects to save.
    */
   public static <T> void saveList(List<T> objects) {
-    System.out.println("Saving " + objects.size() + " objects");
-    for (Object obj : objects) {
-      save(obj);
-    }
+    DBHandler.getInstance().handleSaveList(objects);
   }
 
   /**
@@ -48,16 +34,7 @@ public class DBManager {
    * @param o The object to update.
    */
   public static void update(Object o) {
-    Session s = SessionManager.getSession();
-    try {
-      s.beginTransaction();
-      s.update(o);
-      s.getTransaction().commit();
-    } catch (Exception e) {
-      s.getTransaction().rollback();
-      s.close();
-      System.out.println(e.getMessage());
-    }
+    DBHandler.getInstance().handleUpdate(o);
   }
 
   /**
@@ -66,17 +43,7 @@ public class DBManager {
    * @param o The object to delete.
    */
   public static void delete(Object o) {
-    Session s = SessionManager.getSession();
-    try {
-      s.beginTransaction();
-      s.delete(o);
-      s.getTransaction().commit();
-      s.close();
-    } catch (Exception e) {
-      s.getTransaction().rollback();
-      s.close();
-      System.out.println(e.getMessage());
-    }
+    DBHandler.getInstance().handleDelete(o);
   }
 
   /**
@@ -86,18 +53,7 @@ public class DBManager {
    * @param id The id of the object to delete.
    */
   public static void delete(Class<?> c, Serializable id) {
-    Session s = SessionManager.getSession();
-    try {
-      s.beginTransaction();
-      Object o = s.get(c, id);
-      s.delete(o);
-      s.getTransaction().commit();
-      s.close();
-    } catch (Exception e) {
-      s.getTransaction().rollback();
-      s.close();
-      System.out.println(e.getMessage());
-    }
+    DBHandler.getInstance().handleDelete(c, id);
   }
 
   /**
@@ -107,7 +63,7 @@ public class DBManager {
    * @param id The id of the object to delete.
    */
   public static void delete(EntryType eT, Serializable id) {
-    delete(eT.getEntryClass(), id);
+    DBHandler.getInstance().handleDelete(eT, id);
   }
 
   /**
@@ -118,37 +74,8 @@ public class DBManager {
    * @param wheres 0 or more WHERE clauses for the SQL request.
    * @return A list of objects of the given class.
    */
-  @SuppressWarnings("unchecked")
   public static <T> List<T> getAll(Class<?> c, Where... wheres) {
-    Session s = SessionManager.getSession();
-    try {
-      s.beginTransaction();
-      StringBuilder q = new StringBuilder("from " + c.getName());
-      if (wheres.length > 0) {
-        boolean whereAdded = false;
-        for (Where w : wheres) {
-          q.append(whereAdded ? " and " : " where ");
-          q.append(w.getField()).append(" = :").append(w.getField());
-
-          whereAdded = true;
-        }
-      }
-
-      org.hibernate.query.Query<T> query = s.createQuery(q.toString());
-      for (Where w : wheres) {
-        query.setParameter(w.getField(), w.getValue());
-      }
-
-      List<T> list = query.list();
-      s.getTransaction().commit();
-      s.close();
-      return list;
-    } catch (Exception e) {
-      s.getTransaction().rollback();
-      s.close();
-      System.out.println(e.getMessage());
-      return null;
-    }
+    return DBHandler.getInstance().handleGetAll(c, wheres);
   }
 
   /**
@@ -159,6 +86,6 @@ public class DBManager {
    * @return A list of objects of the given class (as Object).
    */
   public static <T extends StringArrayConv> List<T> getAll(EntryType eT, Where... wheres) {
-    return getAll(eT.getEntryClass(), wheres);
+    return DBHandler.getInstance().handleGetAll(eT, wheres);
   }
 }
