@@ -11,9 +11,12 @@ import java.io.IOException;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-public class CreateAccountController {
+public class CreateAccountController implements IController {
 
   @FXML MFXTextField username;
   @FXML MFXTextField password;
@@ -29,6 +32,10 @@ public class CreateAccountController {
   @FXML Label userExistsDisplay;
   @FXML Label invalidInputsDisplay;
   @FXML Label addUserSuccessDisplay;
+
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
+  @FXML private Rectangle bgGradient;
 
   public void initialize() {
     invalidInputsDisplay.setVisible(false);
@@ -127,5 +134,16 @@ public class CreateAccountController {
       ft.play();
     }
     return state;
+  }
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage, bgGradient);
   }
 }

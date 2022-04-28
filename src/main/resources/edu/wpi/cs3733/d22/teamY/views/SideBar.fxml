@@ -194,6 +194,11 @@
             <Rectangle fx:id="logoutButtonHitbox" fill="#2e2e2e00" height="31.0" onMouseClicked="#killApplication" onMouseEntered="#startLogoutButtonHover" onMouseExited="#endLogoutButtonHover" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
          </children>
       </VBox>
+      <Label fx:id="aboutUsButton" layoutX="109.0" layoutY="769.0" onMouseClicked="#openAboutUs" text="About Us" textFill="WHITE">
+         <font>
+            <Font name="Microsoft New Tai Lue Bold" size="12.0" />
+         </font>
+      </Label>
       <MFXLegacyListView fx:id="listView" layoutX="20.0" layoutY="185.0" onMouseClicked="#doSearch" prefHeight="150.0" prefWidth="230.0" visible="false" />
    </children>
 </AnchorPane>

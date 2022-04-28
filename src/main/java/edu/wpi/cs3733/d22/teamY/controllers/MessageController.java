@@ -22,6 +22,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -33,7 +34,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
-public class MessageController {
+public class MessageController implements IController {
 
   @FXML private MFXTextField messageText;
   @FXML private Button sendButton;
@@ -89,6 +90,10 @@ public class MessageController {
   @FXML private Rectangle searchBoxCover;
 
   @FXML private Rectangle selectedChatRect;
+
+  @FXML private AnchorPane mainPane;
+  @FXML private ImageView bgImage;
+  @FXML private Rectangle bgGradient;
 
   @FXML ArrayList<String> hiddenToField = new ArrayList<>();
 
@@ -747,6 +752,17 @@ public class MessageController {
         @Override
         public void onCancelled(DatabaseError error) {}
       };
+
+  @Override
+  public IController getController() {
+    return this;
+  }
+
+  @Override
+  public void initializeScale() {
+    // Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
+    Scaling.scaleBackground(bgImage, bgGradient);
+  }
 
   class EmployeeResult {
     private String name, role, id;
