@@ -138,7 +138,7 @@
       </Pane>
       <Pane fx:id="ll1MainPane" layoutX="18.0" layoutY="190.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
          <children>
-            <MFXButton layoutY="250.0" onMouseEntered="#LL1Enter" onMouseExited="#LL1Exit" prefHeight="50.0" prefWidth="50.0" text="LL1">
+            <MFXButton layoutY="250.0" prefHeight="50.0" prefWidth="50.0" text="LL1">
                <font>
                   <Font size="15.0" />
                </font>
@@ -180,17 +180,17 @@
             </Pane>
          </children>
       </Pane>
-      <MFXButton layoutX="79.0" layoutY="440.0" onMouseEntered="#LL1Enter" onMouseExited="#LL1Exit" prefHeight="50.0" prefWidth="50.0" text="LL2">
+      <MFXButton layoutX="79.0" layoutY="440.0" prefHeight="50.0" prefWidth="50.0" text="LL2">
          <font>
             <Font size="15.0" />
          </font>
       </MFXButton>
-      <MFXButton layoutX="138.0" layoutY="440.0" onMouseEntered="#LL1Enter" onMouseExited="#LL1Exit" prefHeight="50.0" prefWidth="50.0" text="L1">
+      <MFXButton layoutX="138.0" layoutY="440.0" prefHeight="50.0" prefWidth="50.0" text="L1">
          <font>
             <Font size="15.0" />
          </font>
       </MFXButton>
-      <MFXButton layoutX="196.0" layoutY="440.0" onMouseEntered="#LL1Enter" onMouseExited="#LL1Exit" prefHeight="50.0" prefWidth="50.0" text="L2">
+      <MFXButton layoutX="196.0" layoutY="440.0" prefHeight="50.0" prefWidth="50.0" text="L2">
          <font>
             <Font size="15.0" />
          </font>
