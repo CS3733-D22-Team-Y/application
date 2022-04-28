@@ -670,6 +670,9 @@ public class MapPageController implements IController {
 
   public void initialize() throws IOException {
 
+      this.attVbox.getChildren().remove(this.attName);
+      this.valueVbox.getChildren().remove(this.attValue);
+
     ll1PopupPane.setVisible(true);
     ll1PopupPane.setOpacity(0);
 
