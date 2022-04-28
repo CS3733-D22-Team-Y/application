@@ -16,7 +16,6 @@ import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -413,12 +412,12 @@ public class MapPageController implements IController {
                           iconDim / 2,
                           new Color(255 / 255.0, 43 / 255.0, 43 / 255.0, 1));
                   ImageView reqIcon = new ImageView();
-                  if (equip.size() < 9) {
+                  if (requests.size() < 9) {
                     reqIcon.setImage(
                         new Image(
                             String.valueOf(
                                 App.class
-                                    .getResource("views/images/icons/" + equip.size() + ".png")
+                                    .getResource("views/images/icons/" + requests.size() + ".png")
                                     .toString())));
                   } else {
                     reqIcon.setImage(
