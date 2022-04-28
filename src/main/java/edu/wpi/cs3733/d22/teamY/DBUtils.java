@@ -433,40 +433,13 @@ public class DBUtils {
     return (passwordHash == defaultPass.hashCode());
   }
 
-  public static <T extends Requestable> List<T> getRequestsOnFloor(
-      Class<T> requestType, String floor) {
-    List<T> requests = DBManager.getAll(requestType);
-    if (requests.size() == 0) {
-      return requests;
-    }
-    List<T> filtered = new ArrayList<>();
-    List<Location> locations = DBUtils.getLocationsOnFloor(floor);
-    for (T r : requests) {
-      String locID = r.getLocID();
-      for (Location l : locations) {
-        if (l.getNodeID().equals(locID)) {
-          filtered.add(r);
-        }
+  public static List<ServiceRequest> getAllServiceReqsAtLocation(Location l) {
+    List<ServiceRequest> requests = new ArrayList<>();
+    List<ServiceRequest> all = DBManager.getAll(ServiceRequest.class);
+    for (ServiceRequest r : all) {
+      if (r.getLocationID().equals(l.getNodeID())) {
+        requests.add(r);
       }
-    }
-    return filtered;
-  }
-
-  public static <T extends Requestable> List<T> serviceReqsAtLocation(Class<?> type, Location l) {
-    List<T> requests = DBManager.getAll(type);
-    List<T> filtered = new ArrayList<>();
-    for (T r : requests) {
-      if (r.getLocID().equals(l.getNodeID())) {
-        filtered.add(r);
-      }
-    }
-    return filtered;
-  }
-
-  public static <T extends Requestable> List<T> getAllServiceReqsAtLocation(Location l) {
-    List<T> requests = new ArrayList<>();
-    for (RequestType rt : RequestType.values()) {
-      requests.addAll(serviceReqsAtLocation(rt.requestClass, l));
     }
     return requests;
   }
@@ -502,10 +475,18 @@ public class DBUtils {
 
   public static int getSumOfRequestsOnFloor(String floor) {
     int sum = 0;
-    for (RequestType r : RequestType.values()) {
-      sum += getRequestsOnFloor(r.requestClass, floor).size();
+    List<ServiceRequest> requests = DBManager.getAll(ServiceRequest.class);
+    for (ServiceRequest r : requests) {
+      if (onFloor(r.getLocationID(), floor)) {
+        sum++;
+      }
     }
     return sum;
+  }
+
+  private static boolean onFloor(String locationID, String floor) {
+    List<Location> ls = DBManager.getAll(Location.class, new Where("nodeID", locationID));
+    return ls.size() > 0 && ls.get(0).getFloor().equals(floor);
   }
 
   /**
