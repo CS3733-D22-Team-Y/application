@@ -586,10 +586,10 @@ public class MapPageController implements IController {
                       ServiceRequest req = fuck2.get(this.currReqSelection);
                       String[] atts = req.getType().getAttributes();
 
-                      int i = 0;
-                      for (String s : req.getType().getAttributes()) {
-                        req.set(s, this.extraVals.get(i).getText());
-                        i++;
+                      for (int i = 0; i < extraAtts.size(); i++) {
+                          String att = extraAtts.get(i).getText();
+                          String val = extraVals.get(i).getText();
+                        req.set(att,val);
                       }
                       DBManager.update(req);
                       // ("Submit");
