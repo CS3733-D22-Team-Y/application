@@ -331,10 +331,16 @@ public class MapPageController<T extends Requestable> implements IController {
                 Pane newLocation = new Pane();
                 Pane newServiceRequest = new Pane();
 
-                List<Pane> bed = new ArrayList<>();
-                List<Pane> xray = new ArrayList<>();
-                List<Pane> recliner = new ArrayList<>();
-                List<Pane> pump = new ArrayList<>();
+                ArrayList<Pane> bed = new ArrayList<>();
+                ArrayList<Pane> xray = new ArrayList<>();
+                ArrayList<Pane> recliner = new ArrayList<>();
+                ArrayList<Pane> pump = new ArrayList<>();
+                List<ArrayList<Pane>> test = new ArrayList<>();
+                // this is a stupid way of doing it but addAll doesn't work
+                test.add(bed);
+                test.add(xray);
+                test.add(recliner);
+                test.add(pump);
 
                 // connor why >:(
                 //                  Circle c =
@@ -366,6 +372,7 @@ public class MapPageController<T extends Requestable> implements IController {
 
                     Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
                     ImageView equipIcon = new ImageView();
+                    // Determine what type of equipment the pane is
                     switch (equip.get(i).getEquipType()) {
                       case ("PUMP"):
                         equipIcon.setImage(
@@ -410,6 +417,28 @@ public class MapPageController<T extends Requestable> implements IController {
                     newMedEquip.getChildren().add(equipIcon);
                     newMedEquip.visibleProperty().bind(medCheckbox.selectedProperty());
                     mapElements.add(newMedEquip);
+
+                    // Circle thingy implementation
+                    ArrayList<ArrayList<Pane>> hasNodes = new ArrayList<>(4);
+                    for (int j = 0; j < test.size(); j++) {
+                      if (!test.get(j).isEmpty()) hasNodes.add(test.get(j));
+                    }
+                    if (!hasNodes.isEmpty()) {
+                      ArrayList<Point> points =
+                          getHex(
+                              hasNodes.size(),
+                              iconDim / 2,
+                              new Point(l.getXCoord(), l.getYCoord()));
+
+                      for (int j = 0; j < hasNodes.size(); j++) {
+                        ArrayList<Pane> currList = hasNodes.get(j);
+
+                        for (Pane currPane : currList) {
+                          currPane.setLayoutX(points.get(j).x);
+                          currPane.setLayoutY(points.get(j).y);
+                        }
+                      }
+                    }
 
                     newMedEquip.setOnContextMenuRequested(
                         e -> {
