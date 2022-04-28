@@ -85,7 +85,12 @@
             </fill>
          </Rectangle>
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="270.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="268.0" layoutY="149.0" onAction="#loadMedEquipReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Medical&#10;Equipment" textAlignment="RIGHT" wrapText="true">
+         <ImageView fitHeight="98.0" fitWidth="115.0" layoutX="280.0" layoutY="164.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/medicalRequestFinal.png" />
+            </image>
+         </ImageView>
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="269.0" layoutY="149.0" onAction="#loadMedEquipReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Medical&#10;Equipment" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="29.0" />
             </font>
@@ -95,7 +100,7 @@
          </MFXButton>
          <Label fx:id="creator01" alignment="CENTER_RIGHT" layoutX="402.0" layoutY="153.0" prefHeight="17.0" prefWidth="167.0" text="Engjell Ramadani" textAlignment="RIGHT" />
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="580.0" layoutY="152.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="590.0" layoutY="172.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="93.0" fitWidth="115.0" layoutX="591.0" layoutY="170.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/securityRequestFinal.png" />
             </image>
@@ -110,12 +115,12 @@
          </MFXButton>
          <Label fx:id="creator02" alignment="CENTER_RIGHT" layoutX="712.0" layoutY="153.0" prefHeight="17.0" prefWidth="167.0" text="Nicholas Heineman" textAlignment="RIGHT" />
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="890.0" layoutY="152.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="900.0" layoutY="162.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="907.0" layoutY="162.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/mealRequestFinal.png" />
             </image>
          </ImageView>
-         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="890.0" layoutY="152.0" onAction="#loadMealReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Meal&#10;Delivery" textAlignment="RIGHT" wrapText="true">
+         <MFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="889.0" layoutY="152.0" onAction="#loadMealReq" prefHeight="120.0" prefWidth="300.0" rippleAnimateBackground="false" rippleRadius="0.0" style="-fx-background-color: transparent;" styleClass="submenuButton" text="Meal&#10;Delivery" textAlignment="RIGHT" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="30.0" />
             </font>
@@ -125,7 +130,7 @@
          </MFXButton>
          <Label fx:id="creator03" alignment="CENTER_RIGHT" layoutX="1022.0" layoutY="153.0" prefHeight="17.0" prefWidth="167.0" text="Nathan Anderson" textAlignment="RIGHT" />
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="270.0" layoutY="300.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="280.0" layoutY="320.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="81.0" fitWidth="120.0" layoutX="277.0" layoutY="321.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/laundryRequestFinal.png" />
             </image>
@@ -140,7 +145,7 @@
          </MFXButton>
          <Label fx:id="creator04" alignment="CENTER_RIGHT" layoutX="402.0" layoutY="303.0" prefHeight="17.0" prefWidth="167.0" text="John Carrotta" textAlignment="RIGHT" />
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="580.0" layoutY="300.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="608.0" layoutY="306.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="607.0" layoutY="310.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/labRequestFinal.png" />
             </image>
@@ -155,7 +160,7 @@
          </MFXButton>
          <Label fx:id="creator05" alignment="CENTER_RIGHT" layoutX="712.0" layoutY="303.0" prefHeight="17.0" prefWidth="167.0" text="Sky Tang" textAlignment="RIGHT" />
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="890.0" layoutY="303.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="925.0" layoutY="307.0" opacity="0.85" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: -25;">
+         <ImageView fitHeight="110.0" fitWidth="105.0" layoutX="905.0" layoutY="311.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/floralRequestFinal.png" />
             </image>
@@ -170,7 +175,7 @@
          </MFXButton>
          <Label fx:id="creator06" alignment="CENTER_RIGHT" layoutX="1022.0" layoutY="303.0" prefHeight="17.0" prefWidth="167.0" text="Jake Brady" textAlignment="RIGHT" />
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="270.0" layoutY="444.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="289.0" layoutY="448.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="289.0" layoutY="456.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/translateRequestFinal.png" />
             </image>
@@ -200,7 +205,7 @@
          </MFXButton>
          <Label fx:id="creator11" alignment="CENTER_RIGHT" layoutX="712.0" layoutY="588.0" prefHeight="17.0" prefWidth="167.0" text="Emily Gorelik" textAlignment="RIGHT" />
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="580.0" layoutY="444.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="585.0" layoutY="450.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="597.0" layoutY="455.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/doctor.png" />
             </image>
@@ -215,7 +220,7 @@
          </MFXButton>
          <Label fx:id="creator08" alignment="CENTER_RIGHT" layoutX="712.0" layoutY="446.0" prefHeight="17.0" prefWidth="167.0" text="Benjamin Schmitt" textAlignment="RIGHT" />
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="890.0" layoutY="444.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="903.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="909.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/tools.png" />
             </image></ImageView>
@@ -229,7 +234,7 @@
          </MFXButton>
          <Label fx:id="creator09" alignment="CENTER_RIGHT" layoutX="1022.0" layoutY="446.0" prefHeight="17.0" prefWidth="167.0" text="Ethan Catania" textAlignment="RIGHT" />
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffffcc" height="120.0" layoutX="270.0" layoutY="586.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="289.0" layoutY="596.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="298.0" layoutY="596.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@images/icons/trash.png" />
             </image></ImageView>
@@ -247,11 +252,6 @@
                <Font name="Calibri" size="20.0" />
             </font>
          </JFXToggleButton>
-         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="280.0" layoutY="170.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/icons/medicalRequestFinal.png" />
-            </image>
-         </ImageView>
          <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
          <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1142.0" layoutY="13.0" onMouseClicked="#openHelp" pickOnBounds="true" preserveRatio="true">
             <image>
