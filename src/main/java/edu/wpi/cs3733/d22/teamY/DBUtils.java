@@ -33,6 +33,29 @@ public class DBUtils {
     return returnList;
   }
 
+  public static int[] getAllServiceRequestsPriority() {
+    Session s = SessionManager.getSession();
+    List<ServiceRequest> allServiceRequests = s.createQuery("from ServiceRequest").list();
+    s.close();
+
+    int[] priorityLists = {0, 0, 0, 0, 0};
+    for (ServiceRequest i : allServiceRequests) {
+      if (i.getRequestPriority() > 8) {
+        priorityLists[0]++;
+      } else if (i.getRequestPriority() > 6) {
+        priorityLists[1]++;
+      } else if (i.getRequestPriority() > 4) {
+        priorityLists[2]++;
+      } else if (i.getRequestPriority() > 2) {
+        priorityLists[3]++;
+      } else if (i.getRequestPriority() > 0) {
+        priorityLists[4]++;
+      }
+    }
+
+    return priorityLists;
+  }
+
   public static int checkAvailableEquipmentOnFloor(String floor, String equipType) {
 
     List<MedEquip> floorEquip = getEquipmentOnFloor(floor, equipType);
