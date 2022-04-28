@@ -45,7 +45,7 @@
    </Rectangle>
    <AnchorPane fx:id="mainPane" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0">
       <children>
-         <Label layoutX="380.0" styleClass="title" text="Service Request Systems">
+         <Label layoutX="270.0" styleClass="title" text="Service Request Systems">
             <textFill>
                <LinearGradient endX="1.0" endY="1.0">
                   <stops>
@@ -66,7 +66,7 @@
                <Font name="Arial Rounded MT Bold" size="60.0" />
             </font>
          </Label>
-         <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="380.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+         <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="270.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
             <fill>
                <LinearGradient endX="1.0" endY="1.0">
                   <stops>
@@ -241,7 +241,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </MFXButton>
-         <Label fx:id="creator10" alignment="CENTER_RIGHT" layoutX="401.0" layoutY="587.0" prefHeight="17.0" prefWidth="167.0" text="Nathan Pollack" textAlignment="RIGHT" />
+         <Label fx:id="creator10" alignment="CENTER_RIGHT" layoutX="401.0" layoutY="587.0" prefHeight="17.0" prefWidth="167.0" text="Nathan Pollock" textAlignment="RIGHT" />
          <JFXToggleButton fx:id="creatorToggle" contentDisplay="RIGHT" layoutX="996.0" layoutY="734.0" onAction="#showCreators" size="12.0" text="Show Creators">
             <font>
                <Font name="Calibri" size="20.0" />

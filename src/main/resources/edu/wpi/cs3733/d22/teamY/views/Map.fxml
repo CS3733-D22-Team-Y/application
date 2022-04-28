@@ -169,14 +169,9 @@
          <MFXTextField fx:id="currReqDisplay" allowEdit="false" floatMode="DISABLED" layoutX="43.0" layoutY="113.0" prefHeight="12.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
          <JFXTextArea fx:id="reqDescriptionBox" layoutX="19.0" layoutY="491.0" prefHeight="151.0" prefWidth="179.0" style="-fx-font-size: 12;" text="No Description Provided" />
          <Label layoutX="13.0" layoutY="480.0" text="Description:" />
-         <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="86.0" layoutY="711.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@images/icons/Help.png" />
-            </image>
-         </ImageView>
       </children>
    </Pane>
-   <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eeeeee" height="80.0" layoutX="955.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
+   <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eeeeee" height="80.0" layoutX="909.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="281.0" />
    <VBox layoutX="1040.0" layoutY="10.0" spacing="5.0">
       <children>
          <MFXCheckbox fx:id="locationsCheckbox" text="Locations" />
@@ -499,4 +494,9 @@
       </children>
    </Pane>
    <Label layoutX="975.0" layoutY="63.0" text="Location" />
+   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="918.0" layoutY="19.0" onMouseClicked="#openMapHelp" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@images/icons/Help.png" />
+      </image>
+   </ImageView>
 </AnchorPane>
