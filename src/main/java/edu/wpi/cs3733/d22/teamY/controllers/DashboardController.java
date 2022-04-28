@@ -421,8 +421,14 @@ public class DashboardController {
     if (shuffle) {
       shuffle = false;
       playSong(getRanSong());
+    } else if (next) {
+      next = false;
+      playSong(getNext());
+    } else if (prev) {
+      prev = false;
+      playSong(getBack());
     } else {
-      playSong(getRanSong());
+      playSong(b);
     }
   }
 
@@ -432,9 +438,27 @@ public class DashboardController {
     paused = true;
   }
 
-  public void next() {}
+  public void next() {
+    next = true;
+    if (playing) {
+      clip.stop();
+      clip.close();
+      playing = false;
+    }
+    loaded = false;
+    play();
+  }
 
-  public void back() {}
+  public void back() {
+    prev = true;
+    if (playing) {
+      clip.stop();
+      clip.close();
+      playing = false;
+    }
+    loaded = false;
+    play();
+  }
 
   public void shuffle() {
     shuffle = true;
@@ -481,11 +505,23 @@ public class DashboardController {
     return songs.get(ran);
   }
 
-  public String getPrev() {
-    return a;
+  public String getBack() {
+    if (positionChosenBefore - 1 < songs.indexOf(a)) {
+      positionChosenBefore = 2;
+      return c;
+    } else {
+      positionChosenBefore--;
+    }
+    return songs.get(positionChosenBefore);
   }
 
   public String getNext() {
-    return c;
+    if (positionChosenBefore + 1 > songs.indexOf(c)) {
+      positionChosenBefore = 0;
+      return a;
+    } else {
+      positionChosenBefore++;
+    }
+    return songs.get(positionChosenBefore);
   }
 }
