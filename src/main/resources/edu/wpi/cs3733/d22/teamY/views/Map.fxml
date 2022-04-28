@@ -122,7 +122,7 @@
    <Pane fx:id="reqInfoPane" layoutX="981.0" prefHeight="790.0" prefWidth="219.0">
       <children>
          <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="700.0" layoutX="-25.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
-         <VBox layoutX="-41.0" layoutY="153.0" spacing="11.0">
+         <VBox fx:id="attVbox" layoutX="-41.0" layoutY="153.0" spacing="11.0">
             <children>
                <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Type:">
                   <font>
@@ -151,7 +151,7 @@
                </TextField>
             </children>
          </VBox>
-         <VBox layoutX="48.0" layoutY="156.0" spacing="20.0">
+         <VBox fx:id="valueVbox" layoutX="48.0" layoutY="156.0" spacing="20.0">
             <children>
                <MFXTextField fx:id="reqTypeBox" floatMode="DISABLED" prefHeight="15.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
                <MFXTextField fx:id="reqLocationBox" floatMode="DISABLED" prefHeight="7.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />

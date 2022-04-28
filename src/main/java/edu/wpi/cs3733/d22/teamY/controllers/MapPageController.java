@@ -83,6 +83,9 @@ public class MapPageController implements IController {
   private String fuck = "shit";
   private ArrayList<ServiceRequest> fuck2 = new ArrayList<>();
   private ArrayList<MedEquip> fuck3 = new ArrayList<>();
+  private ArrayList<TextField> extraAtts = new ArrayList<>();
+  private ArrayList<MFXTextField> extraVals = new ArrayList<>();
+
   private int currReqSelection = 0;
   // @FXML private MFXLegacyComboBox<String> modeBox;
   // @FXML private TextField selectorBoxText;
@@ -150,6 +153,11 @@ public class MapPageController implements IController {
   @FXML private MFXCheckbox locationsCheckbox;
   @FXML private MFXCheckbox medCheckbox;
   @FXML private MFXCheckbox servicesCheckbox;
+
+  @FXML private VBox valueVbox;
+  @FXML private VBox attVbox;
+  @FXML private TextField attName;
+  @FXML private MFXTextField attValue;
 
   Pane e = new Pane();
 
@@ -510,6 +518,7 @@ public class MapPageController implements IController {
                           for (ServiceRequest r : requests) {
                             fuck2.add(r);
                           }
+
                           // Show only the correct pane
                           reqInfoPane.setVisible(true);
                           locationInfoPane.setVisible(false);
@@ -528,6 +537,28 @@ public class MapPageController implements IController {
                               fuck2.get(this.currReqSelection).getType().getFriendlyName());
                           this.reqNurseBox.setText(
                               fuck2.get(this.currReqSelection).getAssignedNurse());
+
+                          for (TextField tf : extraAtts) {
+                            attVbox.getChildren().remove(tf);
+                          }
+                          for (MFXTextField mtf : extraVals) {
+                            valueVbox.getChildren().remove(mtf);
+                          }
+                          extraAtts.clear();
+                          extraVals.clear();
+                          ServiceRequest sreq = fuck2.get(this.currReqSelection);
+                          for (String s : sreq.getType().getAttributes()) {
+                            TextField name = this.getFieldClone(this.attName);
+                            name.setText(s);
+                            this.extraAtts.add(name);
+
+                            MFXTextField val = this.getMFXFieldClone(this.attValue);
+                            val.setText(sreq.get(s));
+                            this.extraVals.add(val);
+
+                            this.attVbox.getChildren().add(name);
+                            this.valueVbox.getChildren().add(val);
+                          }
                         }
                       });
                 }
@@ -555,8 +586,10 @@ public class MapPageController implements IController {
                       ServiceRequest req = fuck2.get(this.currReqSelection);
                       String[] atts = req.getType().getAttributes();
 
-                      for (String s : atts) {
-                        System.out.println(s);
+                      int i = 0;
+                      for (String s : req.getType().getAttributes()) {
+                        req.set(s, this.extraVals.get(i).getText());
+                        i++;
                       }
                       DBManager.update(req);
                       // ("Submit");
@@ -961,6 +994,64 @@ public class MapPageController implements IController {
   public void L5Enter() {
     updateQuickDash("5");
     l5PopupPane.setOpacity(1);
+  }
+
+  public MFXTextField getMFXFieldClone(MFXTextField l) {
+    MFXTextField clone = new MFXTextField();
+    clone.setPrefSize(l.getPrefWidth(), l.getPrefHeight());
+    clone.setLayoutX(l.getLayoutX());
+    clone.setLayoutY(l.getLayoutY());
+    clone.setStyle(l.getStyle());
+    clone.setText(l.getText());
+    clone.setTextFill(l.getTextFill());
+    clone.setFont(l.getFont());
+    clone.setPadding(l.getPadding());
+    clone.setAlignment(l.getAlignment());
+    clone.setTranslateX(l.getTranslateX());
+    clone.setTranslateY(l.getTranslateY());
+    clone.setMaxHeight(l.getMaxHeight());
+    clone.setMaxWidth(l.getMaxWidth());
+    clone.setPrefHeight(l.getPrefHeight());
+    clone.setPrefWidth(l.getPrefWidth());
+    clone.setMinHeight(l.getMinHeight());
+    clone.setMinWidth(l.getMinWidth());
+
+    return clone;
+  }
+
+  public TextField getFieldClone(TextField l) {
+    TextField clone = new TextField();
+    clone.setPrefSize(l.getPrefWidth(), l.getPrefHeight());
+    clone.setLayoutX(l.getLayoutX());
+    clone.setLayoutY(l.getLayoutY());
+    clone.setStyle(l.getStyle());
+    clone.setText(l.getText());
+    clone.setFont(l.getFont());
+    clone.setPadding(l.getPadding());
+    clone.setAlignment(l.getAlignment());
+    clone.setTranslateX(l.getTranslateX());
+    clone.setTranslateY(l.getTranslateY());
+    clone.setMaxHeight(l.getMaxHeight());
+    clone.setMaxWidth(l.getMaxWidth());
+    clone.setPrefHeight(l.getPrefHeight());
+    clone.setPrefWidth(l.getPrefWidth());
+    clone.setMinHeight(l.getMinHeight());
+    clone.setMinWidth(l.getMinWidth());
+
+    return clone;
+  }
+
+  private VBox getVboxClone(VBox vbox) {
+    // clones the vbox vbox
+    VBox clone = new VBox();
+    clone.setPrefSize(vbox.getPrefWidth(), vbox.getPrefHeight());
+    clone.setLayoutX(vbox.getLayoutX());
+    clone.setLayoutY(vbox.getLayoutY());
+    clone.setStyle(vbox.getStyle());
+    clone.setAlignment(vbox.getAlignment());
+    clone.setTranslateX(vbox.getTranslateX());
+    clone.setTranslateY(vbox.getTranslateY());
+    return clone;
   }
 
   @FXML
