@@ -367,7 +367,7 @@ public class MapPageController<T extends Requestable> implements IController {
                 if (hasEquipment) {
                   for (int i = 0; i < equip.size(); i++) {
                     Pane newMedEquip = new Pane();
-                    newMedEquip.setLayoutX(l.getXCoord() + 20);
+                    newMedEquip.setLayoutX(l.getXCoord());
                     newMedEquip.setLayoutY(l.getYCoord());
 
                     Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
@@ -428,7 +428,15 @@ public class MapPageController<T extends Requestable> implements IController {
                       if (!test.get(j).isEmpty()) hasNodes.add(test.get(j));
                     }
 
-                    if (!hasNodes.isEmpty()) {
+                    // One circle should be centered
+                    if (hasNodes.size() == 1) {
+                      for (Pane currPane : hasNodes.get(0)) {
+                        currPane.setLayoutX(l.getXCoord() + (iconDim / 6));
+                        currPane.setLayoutY(l.getYCoord());
+
+                        addNumEquipDisplay(currPane, hasNodes.get(0).size());
+                      }
+                    } else if (!hasNodes.isEmpty()) {
 
                       ArrayList<Point> points =
                           getHex(
@@ -442,6 +450,8 @@ public class MapPageController<T extends Requestable> implements IController {
                         for (Pane currPane : currList) {
                           currPane.setLayoutX(points.get(j).x);
                           currPane.setLayoutY(points.get(j).y);
+
+                          addNumEquipDisplay(currPane, currList.size());
                         }
                       }
                     }
@@ -634,6 +644,31 @@ public class MapPageController<T extends Requestable> implements IController {
 
     // Switch to new background image
     imageView.setImage(floorImages.get(newFloor));
+  }
+
+  private void addNumEquipDisplay(Pane currPane, int numEquip) {
+    Pane numEquipDisplay = new Pane();
+    Circle c =
+        new Circle(iconDim / 2 + iconDim / 4, iconDim / 2 - iconDim / 4, iconDim / 3, Color.RED);
+    ImageView numEquipImage = new ImageView();
+    if (numEquip >= 9) {
+      numEquipImage.setImage(
+          new Image(App.class.getResource("views/images/icons/9.png").toString()));
+    } else {
+      numEquipImage.setImage(
+          new Image(App.class.getResource("views/images/icons/" + numEquip + ".png").toString()));
+    }
+    numEquipImage.setLayoutX(c.getLayoutX() + (iconDim / 2));
+    numEquipImage.setLayoutY(c.getLayoutY());
+    numEquipImage.setFitHeight(iconDim / 2);
+    numEquipImage.setFitWidth(iconDim / 2);
+
+    numEquipDisplay.setPrefWidth(iconDim / 2);
+    numEquipDisplay.setPrefHeight(iconDim / 2);
+    numEquipDisplay.getChildren().add(c);
+    numEquipDisplay.getChildren().add(numEquipImage);
+    numEquipDisplay.visibleProperty().bind(currPane.hoverProperty());
+    currPane.getChildren().add(numEquipDisplay);
   }
 
   private String findNearestLoc(
