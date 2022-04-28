@@ -209,11 +209,12 @@ public class DashboardController implements IController {
     scrollBox.setBackground(Background.EMPTY);
 
     rqPairs = new ArrayList<>();
-
     List<ServiceRequest> reqs = DBManager.getAll(ServiceRequest.class);
     if (reqs != null) {
       for (ServiceRequest req : reqs) {
-        addRequest(req);
+        if (req.getAssignedNurse().equals(PersonalSettings.currentEmployee.getName())) {
+          addRequest(req);
+        }
       }
     }
 
