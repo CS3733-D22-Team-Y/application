@@ -80,7 +80,7 @@
                   </font>
               </Label>
               <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="567.0" layoutX="280.0" layoutY="223.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
-              <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="285.0" layoutY="233.0" prefHeight="552.0" prefWidth="390.0" styleClass="requestInput" text="Additional Text..." unFocusColor="#ffffff00">
+              <JFXTextArea fx:id="input_AdditionalNotes" focusColor="#ffffff00" layoutX="285.0" layoutY="233.0" prefHeight="552.0" prefWidth="390.0" promptText="Additional Notes..." styleClass="requestInput" unFocusColor="#ffffff00">
                   <font>
                       <Font name="Calibri" size="20.0" />
                   </font>
