@@ -23,7 +23,7 @@ public class OtherTeamAPIs {
   void loadTeamB() {
     System.out.println("Loading Team B");
     ProcessBuilder pb = new ProcessBuilder("java", "-jar", "TeamBAPI.jar");
-    pb.directory(new File("src/main/resources/edu/wpi/cs3733/d22/teamY/APIs/TeamB"));
+    pb.directory(new File("libs"));
     try {
       Process p = pb.start();
       printResults(p);
@@ -36,7 +36,7 @@ public class OtherTeamAPIs {
   void loadTeamC() {
     System.out.println("Loading Team C");
     ProcessBuilder pb = new ProcessBuilder("java", "-jar", "teamC.jar");
-    pb.directory(new File("src/main/resources/edu/wpi/cs3733/d22/teamY/APIs/TeamC"));
+    pb.directory(new File("libs"));
     try {
       Process p = pb.start();
       printResults(p);
