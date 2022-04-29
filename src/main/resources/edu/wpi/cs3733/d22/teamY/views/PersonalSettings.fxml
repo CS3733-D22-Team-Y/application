@@ -168,8 +168,7 @@
             <MFXButton fx:id="lightModeButton" layoutX="780.0" layoutY="657.0" onAction="#lightMode" prefHeight="50.0" prefWidth="175.0" styleClass="requestButton" text="Light Mode" />
             <MFXButton fx:id="darkModeButton" layoutX="965.0" layoutY="657.0" onAction="#darkMode" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #444;" styleClass="requestButton" text="Dark Mode" textFill="WHITE" />
             <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
-            <MFXButton layoutX="786.0" layoutY="307.0" onAction="#newPfp" />
-            <ImageView fx:id="pfp" fitHeight="200.0" fitWidth="200.0" layoutX="630.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="pfp" fitHeight="200.0" fitWidth="200.0" layoutX="630.0" layoutY="146.0" onMouseClicked="#newPfp" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
     </children>
