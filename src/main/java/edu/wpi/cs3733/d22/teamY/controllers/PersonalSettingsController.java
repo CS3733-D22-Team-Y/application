@@ -207,7 +207,18 @@ public class PersonalSettingsController implements IController {
   @FXML
   public void newPfp() throws IOException {
     Camera.newPfp();
-    pfp.setImage(
-        new Image(App.class.getResource("views/profilePics/" + "default" + ".jpg").toString()));
+    try {
+      pfp.setImage(
+              new Image(
+                      App.class
+                              .getResource(
+                                      "views/profilePics/"
+                                              + PersonalSettings.currentEmployee.getIDNumber()
+                                              + ".jpg")
+                              .toString()));
+    } catch (NullPointerException e) {
+      pfp.setImage(
+              new Image(App.class.getResource("views/profilePics/" + "default" + ".jpg").toString()));
+    }
   }
 }
