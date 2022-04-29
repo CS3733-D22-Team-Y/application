@@ -121,7 +121,6 @@ public class MessageController implements IController {
     setChatOpen(chatOpen);
     setChatPickerOpen(newChatOpen);
     String id = PersonalSettings.currentEmployee.getIDNumber();
-    // ChatManager.getChats().size());
     if (!initialized) {
       id = PersonalSettings.currentEmployee.getIDNumber();
       Firebase.chatRef.child(id).addChildEventListener(childEventListener);
