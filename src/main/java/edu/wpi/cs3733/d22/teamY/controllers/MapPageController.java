@@ -1037,6 +1037,8 @@ public class MapPageController implements IController {
     for (int i = 0; i < rt.getAttributeCount(); i++) {
       TextField name = this.getFieldClone(this.attName);
       name.setText(fAtts[i]);
+      //dont ask
+      VBox.setMargin(name, new javafx.geometry.Insets(1, 0, 0, 0));
       this.extraAtts.add(name);
 
       MFXTextField val = this.getMFXFieldClone(this.attValue);

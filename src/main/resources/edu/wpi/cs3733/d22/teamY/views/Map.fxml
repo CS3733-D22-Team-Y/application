@@ -4,6 +4,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -148,6 +149,12 @@
                   <font>
                      <Font name="Microsoft Tai Le" size="12.0" />
                   </font>
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  </padding>
                </TextField>
             </children>
          </VBox>
