@@ -189,7 +189,7 @@
    <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
    <Pane layoutX="330.0" layoutY="600.0" pickOnBounds="false" prefHeight="200.0" prefWidth="200.0">
       <children>
-         <Pane fx:id="ll1MainPane" layoutX="10.0" layoutY="-110.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
+         <Pane fx:id="ll1MainPane" layoutX="70.0" layoutY="-110.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
             <children>
                <MFXButton fx:id="floorLL1Button" layoutY="250.0" onMouseEntered="#LL1Enter" onMouseExited="#LL1Exit" prefHeight="50.0" prefWidth="50.0" text="LL1">
                   <font>
@@ -233,7 +233,7 @@
                </Pane>
             </children>
          </Pane>
-         <Pane fx:id="ll1MainPane1" layoutX="70.0" layoutY="-110.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
+         <Pane fx:id="ll1MainPane1" layoutX="10.0" layoutY="-110.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
             <children>
                <MFXButton fx:id="floorLL2Button" layoutY="250.0" onMouseEntered="#LL2Enter" onMouseExited="#LL2Exit" prefHeight="50.0" prefWidth="50.0" text="LL2">
                   <font>

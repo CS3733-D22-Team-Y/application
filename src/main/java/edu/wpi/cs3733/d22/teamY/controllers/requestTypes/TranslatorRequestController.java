@@ -193,6 +193,7 @@ public class TranslatorRequestController implements IController {
         roomsHiddenField, nursesHiddenField, input_AdditionalNotes);
     errorLabel.setText("");
     roomsComboBox.setValue("");
+    nursesComboBox.setValue("");
   }
 
   @Override

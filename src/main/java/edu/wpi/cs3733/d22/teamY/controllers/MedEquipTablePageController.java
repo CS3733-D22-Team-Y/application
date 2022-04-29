@@ -26,7 +26,6 @@ public class MedEquipTablePageController implements IController {
   @FXML
   public void initialize() throws IOException {
 
-    // Snag all of the equipment from the database.
     List<MedEquip> medEquips;
     try {
       medEquips = DBManager.getAll(MedEquip.class);
@@ -36,19 +35,19 @@ public class MedEquipTablePageController implements IController {
     }
 
     // Setup columns and how the data is displayed
-    TableColumn<MedEquip, String> equipIDCol = new TableColumn<>("Equipment ID");
+    TableColumn<MedEquip, String> equipIDCol = new TableColumn<>("ID");
     equipIDCol.setCellValueFactory(new PropertyValueFactory<>("equipID"));
 
-    TableColumn<MedEquip, String> equipTypeCol = new TableColumn<>("Equipment Type");
+    TableColumn<MedEquip, String> equipTypeCol = new TableColumn<>("Type");
     equipTypeCol.setCellValueFactory(new PropertyValueFactory<>("equipType"));
 
-    TableColumn<MedEquip, String> equipLocIdCol = new TableColumn<>("Equipment Location");
+    TableColumn<MedEquip, String> equipLocIdCol = new TableColumn<>("Location");
     equipLocIdCol.setCellValueFactory(new PropertyValueFactory<>("equipLocId"));
 
-    TableColumn<MedEquip, String> isCleanCol = new TableColumn<>("Clean Status");
+    TableColumn<MedEquip, String> isCleanCol = new TableColumn<>("Is Clean");
     isCleanCol.setCellValueFactory(new PropertyValueFactory<>("isClean"));
 
-    TableColumn<MedEquip, String> statusCol = new TableColumn<>("Equipment Status");
+    TableColumn<MedEquip, String> statusCol = new TableColumn<>("Status");
     statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
 
     // Add columns into the tableview
