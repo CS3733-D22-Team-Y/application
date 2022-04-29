@@ -72,7 +72,7 @@ public class SideBarController {
           "Specialist Services",
           "Translator Services",
           "Map",
-          /*"Inbox",*/
+          "Inbox",
           "Personal Settings",
           "Request Menu"
         };
