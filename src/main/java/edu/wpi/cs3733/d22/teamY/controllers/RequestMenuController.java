@@ -83,7 +83,6 @@ public class RequestMenuController implements IController {
 
   @FXML
   void loadMealReq() {
-    // loadRequestScreen(MEAL_RESULTS_INDEX);
     NewSceneLoading.loadScene("views/requestTypes/MealRequest.fxml");
   }
 
