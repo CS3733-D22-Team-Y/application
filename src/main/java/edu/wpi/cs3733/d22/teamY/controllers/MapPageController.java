@@ -80,9 +80,9 @@ public class MapPageController implements IController {
   // end req stuff
 
   @FXML public MFXButton locationSubmit;
-  private String fuck = "shit";
-  private ArrayList<ServiceRequest> fuck2 = new ArrayList<>();
-  private ArrayList<MedEquip> fuck3 = new ArrayList<>();
+  private String newLocationID = "";
+  private ArrayList<ServiceRequest> requestsList = new ArrayList<>();
+  private ArrayList<MedEquip> equipList = new ArrayList<>();
   private ArrayList<TextField> extraAtts = new ArrayList<>();
   private ArrayList<MFXTextField> extraVals = new ArrayList<>();
 
@@ -326,6 +326,45 @@ public class MapPageController implements IController {
 
   private final HashMap<Floors, Image> floorImages = new HashMap<>();
 
+  private void setButtonColors(String floor) {
+    String onStyle = "-fx-background-color: #93CDDC;";
+    String offStyle = "-fx-background-color: #FFFFFF;";
+
+    floorLL2Button.setStyle(offStyle);
+    floorLL1Button.setStyle(offStyle);
+    floor1Button.setStyle(offStyle);
+    floor2Button.setStyle(offStyle);
+    floor3Button.setStyle(offStyle);
+    floor4Button.setStyle(offStyle);
+    floor5Button.setStyle(offStyle);
+
+    switch (floor) {
+      case "L2":
+        floorLL2Button.setStyle(onStyle);
+        break;
+      case "L1":
+        floorLL1Button.setStyle(onStyle);
+        break;
+      case "1":
+        floor1Button.setStyle(onStyle);
+        break;
+      case "2":
+        floor2Button.setStyle(onStyle);
+        break;
+      case "3":
+        floor3Button.setStyle(onStyle);
+        break;
+      case "4":
+        floor4Button.setStyle(onStyle);
+        break;
+      case "5":
+        floor5Button.setStyle(onStyle);
+        break;
+      default:
+        break;
+    }
+  }
+
   /**
    * Called whenever the floor or map mode is switched
    *
@@ -529,9 +568,9 @@ public class MapPageController implements IController {
                     newMedEquip.setOnContextMenuRequested(
                         e -> {
                           if (equip.size() > 0) {
-                            fuck3.clear();
+                            equipList.clear();
                             for (MedEquip r : equip) {
-                              fuck3.add(r);
+                              equipList.add(r);
                             }
 
                             // Show only the correct pane
@@ -539,8 +578,8 @@ public class MapPageController implements IController {
                             locationInfoPane.setVisible(false);
                             reqInfoPane.setVisible(false);
                             currentEquip = allMedEquips.get(newMedEquip);
-                            MedEquip o = fuck3.get(currentEquip);
-                            fuck = String.valueOf(o.getEquipID());
+                            MedEquip o = equipList.get(currentEquip);
+                            newLocationID = String.valueOf(o.getEquipID());
                             equipID.setText(String.valueOf(o.getEquipID()));
                             equipLocation.setText(o.getEquipLocId());
                             equipType.setText(o.getEquipType());
@@ -633,7 +672,7 @@ public class MapPageController implements IController {
                 // Set behavior for the location pins
                 newLocation.setOnContextMenuRequested(
                     e -> {
-                      fuck = String.valueOf(l.getNodeID());
+                      newLocationID = String.valueOf(l.getNodeID());
                       // Show only the correct pane
                       locationInfoPane.setVisible(true);
                       equipInfoPane.setVisible(false);
@@ -652,9 +691,9 @@ public class MapPageController implements IController {
                   newServiceRequest.setOnContextMenuRequested(
                       e -> {
                         if (requests.size() > 0) {
-                          fuck2.clear();
+                          requestsList.clear();
                           for (ServiceRequest r : requests) {
-                            fuck2.add(r);
+                            requestsList.add(r);
                           }
                           updateReqInfo();
                         }
@@ -663,9 +702,9 @@ public class MapPageController implements IController {
 
                 locationSubmit.setOnMouseClicked(
                     e -> {
-                      Location fuckMe =
+                      Location newLoc =
                           new Location(
-                              fuck,
+                              newLocationID,
                               Integer.parseInt(locationX.getText()),
                               Integer.parseInt(locationY.getText()),
                               l.getFloor(),
@@ -673,15 +712,15 @@ public class MapPageController implements IController {
                               l.getNodeType(),
                               locationLong.getText(),
                               locationShort.getText());
-                      DBManager.update(fuckMe);
+                      DBManager.update(newLoc);
                       exit();
                       switchMap(newFloor, mapMode);
                     });
 
                 reqSubmit.setOnMouseClicked(
                     e -> {
-                      this.currReqSelection %= this.fuck2.size();
-                      ServiceRequest req = fuck2.get(this.currReqSelection);
+                      this.currReqSelection %= this.requestsList.size();
+                      ServiceRequest req = requestsList.get(this.currReqSelection);
                       String[] atts = req.getType().getAttributes();
                       for (int i = 0; i < extraAtts.size(); i++) {
                         String val = extraVals.get(i).getText();
@@ -711,7 +750,7 @@ public class MapPageController implements IController {
                     e -> {
                       MedEquip t =
                           new MedEquip(
-                              fuck,
+                              newLocationID,
                               equipType.getText(),
                               equipLocation.getText(),
                               equipClean.getText(),
@@ -721,7 +760,7 @@ public class MapPageController implements IController {
                       equip.add(t);
                       switchMap(newFloor, mapMode);
                       System.out.println(
-                          fuck
+                          newLocationID
                               + ","
                               + equipLocation.getText()
                               + ","
@@ -878,36 +917,43 @@ public class MapPageController implements IController {
         e -> {
           switchMap(Floors.LOWER_LEVEL_1, mapMode);
           currentFloor = "ll1";
+          setButtonColors("L1");
         });
     floorLL2Button.setOnAction(
         e -> {
           switchMap(Floors.LOWER_LEVEL_2, mapMode);
           currentFloor = "ll2";
+          setButtonColors("L2");
         });
     floor1Button.setOnAction(
         e -> {
           switchMap(Floors.FIRST_FLOOR, mapMode);
           currentFloor = "1";
+          setButtonColors("1");
         });
     floor2Button.setOnAction(
         e -> {
           switchMap(Floors.SECOND_FLOOR, mapMode);
           currentFloor = "2";
+          setButtonColors("2");
         });
     floor3Button.setOnAction(
         e -> {
           switchMap(Floors.THIRD_FLOOR, mapMode);
           currentFloor = "3";
+          setButtonColors("3");
         });
     floor4Button.setOnAction(
         e -> {
           switchMap(Floors.FOURTH_FLOOR, mapMode);
           currentFloor = "4";
+          setButtonColors("4");
         });
     floor5Button.setOnAction(
         e -> {
           switchMap(Floors.FIFTH_FLOOR, mapMode);
           currentFloor = "5";
+          setButtonColors("5");
         });
     /*
     modeBox.setOnAction(
@@ -920,6 +966,8 @@ public class MapPageController implements IController {
 
     // Load initial floor and mode
     switchMap(lastFloor, MapMode.LOCATION);
+    setButtonColors(lastFloor.dbKey);
+
     equipInfoPane.setVisible(false);
     reqInfoPane.setVisible(false);
     locationInfoPane.setVisible(false);
@@ -1010,16 +1058,16 @@ public class MapPageController implements IController {
     locationInfoPane.setVisible(false);
     equipInfoPane.setVisible(false);
 
-    this.currReqSelection %= fuck2.size();
+    this.currReqSelection %= requestsList.size();
     if (this.currReqSelection < 0) {
-      this.currReqSelection = fuck2.size() - 1;
+      this.currReqSelection = requestsList.size() - 1;
     }
-    currReqDisplay.setText(fuck2.get(this.currReqSelection).getRequestId() + "");
-    this.reqLocationBox.setText(fuck2.get(this.currReqSelection).getLocationID());
-    this.reqDescriptionBox.setText(fuck2.get(this.currReqSelection).getAdditionalNotes());
-    this.reqStatusBox.setText(fuck2.get(this.currReqSelection).getStatus().name());
-    this.reqTypeBox.setText(fuck2.get(this.currReqSelection).getType().getFriendlyName());
-    this.reqNurseBox.setText(fuck2.get(this.currReqSelection).getAssignedNurse());
+    currReqDisplay.setText(requestsList.get(this.currReqSelection).getRequestId() + "");
+    this.reqLocationBox.setText(requestsList.get(this.currReqSelection).getLocationID());
+    this.reqDescriptionBox.setText(requestsList.get(this.currReqSelection).getAdditionalNotes());
+    this.reqStatusBox.setText(requestsList.get(this.currReqSelection).getStatus().name());
+    this.reqTypeBox.setText(requestsList.get(this.currReqSelection).getType().getFriendlyName());
+    this.reqNurseBox.setText(requestsList.get(this.currReqSelection).getAssignedNurse());
 
     for (TextField tf : extraAtts) {
       attVbox.getChildren().remove(tf);
@@ -1029,7 +1077,7 @@ public class MapPageController implements IController {
     }
     extraAtts.clear();
     extraVals.clear();
-    ServiceRequest sreq = fuck2.get(this.currReqSelection);
+    ServiceRequest sreq = requestsList.get(this.currReqSelection);
     RequestTypes rt = sreq.getType();
     String[] atts = rt.getAttributes();
     String[] fAtts = rt.getFriendlyAttributes();
@@ -1057,12 +1105,12 @@ public class MapPageController implements IController {
 
   public void updateEquipInfo() {
     if (currentEquip == -1) {
-      currentEquip = fuck3.size() - 1;
+      currentEquip = equipList.size() - 1;
     }
-    currentEquip = currentEquip % fuck3.size();
-    MedEquip o = fuck3.get(currentEquip);
-    fuck = String.valueOf(o.getEquipID());
-    System.out.println(fuck);
+    currentEquip = currentEquip % equipList.size();
+    MedEquip o = equipList.get(currentEquip);
+    newLocationID = String.valueOf(o.getEquipID());
+    System.out.println(newLocationID);
     equipID.setText(String.valueOf(o.getEquipID()));
     equipLocation.setText(o.getEquipLocId());
     equipType.setText(o.getEquipType());
