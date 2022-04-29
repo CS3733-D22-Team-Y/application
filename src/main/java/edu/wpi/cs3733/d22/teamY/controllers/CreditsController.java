@@ -24,7 +24,7 @@ public class CreditsController {
 
 
 
-  // stage.initModality(Modality.APPLICATION_MODAL);
+
   // stage.initOwner(parentScene.getWindow());
   // stage.showAndWait();
   // }
