@@ -98,7 +98,6 @@ public class RequestMenuController implements IController {
 
   @FXML
   void loadTranslatorReq() {
-    // loadRequestScreen(TRANSLATOR_RESULTS_INDEX);
     NewSceneLoading.loadScene("views/requestTypes/TranslatorRequest.fxml");
   }
 
