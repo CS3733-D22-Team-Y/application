@@ -60,12 +60,12 @@ public class MapComponent {
 
             // Translate all children of the root node
             for (Node n : rootPane.getChildren()) {
-              if ((7484 * universalScale - 723) > n.getTranslateX() - dx
+              if ((7477 * universalScale - 849) > n.getTranslateX() - dx
                   && n.getTranslateX() - dx > 0) {
                 n.setTranslateX(n.getTranslateX() - dx);
               }
-              System.out.println("TRANSLATE Y: " + n.getTranslateY());
-              if ((3987 * universalScale - 271) > n.getTranslateY() - dy
+              System.out.println("TRANSLATE X: " + n.getTranslateX());
+              if ((5083 * universalScale - 383) > n.getTranslateY() - dy
                   && n.getTranslateY() - dy > 0) {
                 n.setTranslateY(n.getTranslateY() - dy);
               }
@@ -84,7 +84,7 @@ public class MapComponent {
     double scale = oldScale * delta;
     if (scale < 0.1) scale = 0.1;
     if (scale > 1) scale = 1;
-    // System.out.println("ZOOM: " + scale);
+    System.out.println("ZOOM: " + scale);
 
     double f = (scale / oldScale) - 1;
 
