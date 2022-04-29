@@ -7,7 +7,6 @@ import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.MedEquip;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
-import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.awt.*;
@@ -74,13 +73,13 @@ public class MapPageController implements IController {
   @FXML private MFXTextField reqStatusBox;
   @FXML private MFXTextField reqNurseBox;
   @FXML private JFXTextArea reqDescriptionBox;
-  @FXML private MFXButton reqSubmit;
+  @FXML private ImageView reqSubmit;
   String currentFloor = "1";
   @FXML private Pane reqInfoPane;
 
   // end req stuff
 
-  @FXML public MFXButton locationSubmit;
+  @FXML public ImageView locationSubmit;
   private String newLocationID = "";
   private ArrayList<ServiceRequest> requestsList = new ArrayList<>();
   private ArrayList<MedEquip> equipList = new ArrayList<>();
@@ -147,7 +146,7 @@ public class MapPageController implements IController {
   @FXML MFXTextField equipType;
   @FXML MFXTextField equipClean;
   @FXML Pane equipInfoPane;
-  @FXML MFXButton equipSubmit;
+  @FXML ImageView equipSubmit;
   @FXML ImageView equipUp;
   @FXML ImageView equipDown;
 
@@ -1085,7 +1084,7 @@ public class MapPageController implements IController {
     for (int i = 0; i < rt.getAttributeCount(); i++) {
       TextField name = getFieldClone(attName);
       name.setText(fAtts[i]);
-      //dont ask
+      // dont ask
       VBox.setMargin(name, new javafx.geometry.Insets(1, 0, 0, 0));
       this.extraAtts.add(name);
 
