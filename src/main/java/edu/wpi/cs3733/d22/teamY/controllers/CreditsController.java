@@ -13,19 +13,4 @@ public class CreditsController {
     stage = (Stage) backButton.getScene().getWindow();
     stage.close();
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // stage.showAndWait();
-  // }
 }
