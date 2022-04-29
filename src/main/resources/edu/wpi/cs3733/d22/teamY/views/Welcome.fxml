@@ -180,11 +180,6 @@
                </color4>
             </MFXProgressSpinner>
          </children></Pane>
-        <JFXButton layoutX="21.0" layoutY="222.0" onAction="#testingButton" prefHeight="282.0" prefWidth="299.0" ripplerFill="#5c4f4f00" text="Testing Button (DELETE BEFORE SUBMISSION)" textAlignment="CENTER" textFill="#ff00a1" visible="true" wrapText="true">
-            <font>
-                <Font name="System Bold Italic" size="36.0" />
-            </font>
-        </JFXButton>
         <Pane fx:id="faPane" layoutX="275.0" layoutY="175.0" visible="false">
             <children>
                 <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="461.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="663.0" />

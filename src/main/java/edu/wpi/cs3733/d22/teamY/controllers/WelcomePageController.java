@@ -363,10 +363,6 @@ public class WelcomePageController implements IController {
     DBUtils.switchDBType(dbMenu.getValue());
   }
 
-  public void testingButton() throws IOException {
-    loginAnimation();
-  }
-
   public static String getCode() {
     return String.format("%06d", new Random().nextInt(999999));
   }
