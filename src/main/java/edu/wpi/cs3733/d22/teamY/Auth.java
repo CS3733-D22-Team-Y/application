@@ -60,13 +60,6 @@ public class Auth {
     return list;
   }
 
-  //  public static boolean checkPopUp(String code) {
-  //    TextInputDialog nodeDialog = new TextInputDialog();
-  //    nodeDialog.setHeaderText("Enter Auth Code");
-  //    Optional<String> result = nodeDialog.showAndWait();
-  //    return result.filter(code::equals).isPresent();
-  //  }
-
   public static boolean vaildYubikey(String key) throws Exception {
     Boolean valid = false;
     UUID randomUUID = UUID.randomUUID();
