@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-public class camera {
+public class Camera {
 
   private static String imageFolder =
       "src/main/resources/edu/wpi/cs3733/d22/teamY/views/profilePics/";
@@ -29,5 +29,14 @@ public class camera {
         ImageUtils.FORMAT_JPG,
         new File(imageFolder + PersonalSettings.currentEmployee.getIDNumber() + fileType));
     webcam.close();
+  }
+
+  public static BufferedImage getPfp() throws IOException {
+    try {
+      return ImageIO.read(
+          new File(imageFolder + PersonalSettings.currentEmployee.getIDNumber() + fileType));
+    } catch (IOException e) {
+      return ImageIO.read(new File(imageFolder + "default" + fileType));
+    }
   }
 }

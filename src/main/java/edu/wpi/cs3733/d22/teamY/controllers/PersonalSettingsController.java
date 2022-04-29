@@ -1,6 +1,7 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
 import edu.wpi.cs3733.d22.teamY.App;
+import edu.wpi.cs3733.d22.teamY.Camera;
 import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.model.Employee;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -182,5 +183,10 @@ public class PersonalSettingsController implements IController {
   public void initializeScale() {
     Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
     Scaling.scaleBackground(bgImage, bgGradient);
+  }
+
+  @FXML
+  public void newPfp() throws IOException {
+    Camera.newPfp();
   }
 }

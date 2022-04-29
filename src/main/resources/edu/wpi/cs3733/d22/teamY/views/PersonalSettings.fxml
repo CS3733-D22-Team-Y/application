@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="bgPane" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController">
+<AnchorPane fx:id="bgPane" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.PersonalSettingsController">
     <children>
       <ImageView fx:id="bgImage" fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
          <image>
@@ -163,6 +168,7 @@
             <MFXButton fx:id="lightModeButton" layoutX="780.0" layoutY="657.0" onAction="#lightMode" prefHeight="50.0" prefWidth="175.0" styleClass="requestButton" text="Light Mode" />
             <MFXButton fx:id="darkModeButton" layoutX="965.0" layoutY="657.0" onAction="#darkMode" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: #444;" styleClass="requestButton" text="Dark Mode" textFill="WHITE" />
             <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
+            <MFXButton layoutX="786.0" layoutY="307.0" onAction="#newPfp" />
          </children>
       </AnchorPane>
     </children>
