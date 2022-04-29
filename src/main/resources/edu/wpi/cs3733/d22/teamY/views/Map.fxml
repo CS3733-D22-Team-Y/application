@@ -166,6 +166,16 @@
          <MFXTextField fx:id="currReqDisplay" allowEdit="false" floatMode="DISABLED" layoutX="26.0" layoutY="109.0" prefHeight="12.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
          <JFXTextArea fx:id="reqDescriptionBox" layoutX="23.0" layoutY="622.0" prefHeight="90.0" prefWidth="179.0" style="-fx-font-size: 12;" text="No Description Provided" />
          <Label layoutX="14.0" layoutY="605.0" text="Description:" />
+         <ImageView fitHeight="29.0" fitWidth="53.0" layoutX="-8.0" layoutY="108.0" onMouseClicked="#left" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/leftArrow.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="equipUp1" fitHeight="29.0" fitWidth="53.0" layoutX="165.0" layoutY="109.0" onMouseClicked="#right" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/rightArrow.png" />
+            </image>
+         </ImageView>
       </children>
    </Pane>
    <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eeeeee" height="80.0" layoutX="909.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="281.0" />
@@ -494,16 +504,6 @@
    <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="918.0" layoutY="19.0" onMouseClicked="#openMapHelp" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@images/icons/Help.png" />
-      </image>
-   </ImageView>
-   <ImageView fitHeight="29.0" fitWidth="53.0" layoutX="977.0" layoutY="109.0" onMouseClicked="#left" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@images/icons/leftArrow.png" />
-      </image>
-   </ImageView>
-   <ImageView fx:id="equipUp1" fitHeight="29.0" fitWidth="53.0" layoutX="1142.0" layoutY="109.0" onMouseClicked="#right" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@images/icons/rightArrow.png" />
       </image>
    </ImageView>
 </AnchorPane>
