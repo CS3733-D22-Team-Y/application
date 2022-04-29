@@ -59,15 +59,15 @@
             <String fx:value="primaryColor" />
          </styleClass>
         </Label>
-      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#93cddc" height="680.0" layoutX="270.0" layoutY="110.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="420.0" />
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#93cddc" height="680.0" layoutX="272.0" layoutY="110.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="416.0" />
       <MFXScrollPane hbarPolicy="NEVER" layoutX="280.0" layoutY="120.0" prefHeight="660.0" prefWidth="400.0" style="-fx-background-color: transparent;">
          <content>
             <VBox fx:id="chatSelector">
                <children>
                   <Pane fx:id="blankMessage" prefHeight="88.0" prefWidth="399.0">
                      <children>
-                        <Rectangle fx:id="bRect" arcHeight="20.0" arcWidth="20.0" fill="#a899a1" height="85.0" layoutX="3.0" layoutY="2.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="392.0" />
-                        <HBox fx:id="bHbox" alignment="CENTER" layoutX="-4.0" layoutY="8.0" prefWidth="396.0">
+                        <Rectangle fx:id="bRect" arcHeight="20.0" arcWidth="20.0" fill="#a899a1" height="85.0" layoutX="3.0" layoutY="2.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="382.0" />
+                        <HBox fx:id="bHbox" alignment="CENTER" layoutX="-9.0" layoutY="8.0" prefWidth="396.0">
                            <children>
                               <Pane fx:id="bPicPane" prefHeight="74.0" prefWidth="70.0">
                                  <children>
@@ -79,7 +79,7 @@
                                     </Label>
                                  </children>
                               </Pane>
-                              <VBox fx:id="bNamePrevBox" alignment="CENTER" prefHeight="74.0" prefWidth="249.0">
+                              <VBox fx:id="bNamePrevBox" alignment="CENTER" prefHeight="74.0" prefWidth="238.0">
                                  <children>
                                     <Label fx:id="bName" prefHeight="27.0" prefWidth="249.0" text="Nathan Pollock">
                                        <font>
@@ -110,9 +110,9 @@
             </VBox>
          </content>
       </MFXScrollPane>
-      <Pane fx:id="sendPane" layoutX="678.0" layoutY="724.0" visible="false">
+      <Pane fx:id="sendPane" layoutX="678.0" layoutY="723.0">
          <children>
-            <MFXButton fx:id="sendButton" layoutX="412.0" onAction="#send" prefHeight="67.0" prefWidth="104.0" style="-fx-background-color: #14667B;" text="Send" textFill="WHITE">
+            <MFXButton fx:id="sendButton" layoutX="412.0" onAction="#send" prefHeight="67.0" prefWidth="99.0" style="-fx-background-color: #14667B;" text="Send" textFill="WHITE">
                <font>
                   <Font name="Calibri Bold" size="20.0" />
                </font>
@@ -121,7 +121,7 @@
                   <String fx:value="primaryColor" />
                </styleClass>
             </MFXButton>
-            <MFXTextField fx:id="messageText" floatingTextGap="1.0" layoutX="6.0" onAction="#send" prefHeight="50.0" prefWidth="403.0">
+            <MFXTextField fx:id="messageText" floatingTextGap="1.0" layoutX="19.0" onAction="#send" prefHeight="67.0" prefWidth="390.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -142,7 +142,7 @@
             <String fx:value="primaryColor" />
          </styleClass>
       </MFXButton>
-      <MFXScrollPane fx:id="messageAreaContainer" hbarPolicy="NEVER" layoutX="679.0" layoutY="104.0" prefHeight="618.0" prefWidth="515.0" visible="false">
+      <MFXScrollPane fx:id="messageAreaContainer" hbarPolicy="NEVER" layoutX="697.0" layoutY="104.0" prefHeight="618.0" prefWidth="490.0" visible="false">
          <content>
             <VBox fx:id="messageArea" alignment="BOTTOM_CENTER" prefHeight="616.0" prefWidth="521.0">
                <children>
@@ -190,19 +190,19 @@
             </VBox>
          </content>
       </MFXScrollPane>
-      <VBox fx:id="newChatArea" alignment="TOP_CENTER" layoutX="698.0" layoutY="58.0" prefHeight="723.0" prefWidth="489.0">
+      <VBox fx:id="newChatArea" alignment="TOP_CENTER" layoutX="698.0" layoutY="75.0" prefHeight="693.0" prefWidth="490.0">
          <children>
             <Label prefHeight="48.0" prefWidth="158.0" text="Create a new chat">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Pane>
+            <Pane layoutY="-5.0">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <children>
-                  <MFXTextField fx:id="toBox" onAction="#selectedChat" prefHeight="64.0" prefWidth="488.0" promptText="Search">
+                  <MFXTextField fx:id="toBox" borderGap="1.0" floatingTextGap="1.0" onAction="#selectedChat" prefHeight="64.0" prefWidth="488.0" promptText="Search">
                      <font>
                         <Font size="22.0" />
                      </font>
@@ -214,10 +214,10 @@
                <content>
                   <VBox fx:id="resultPane" prefHeight="608.0" prefWidth="488.0">
                      <children>
-                        <Pane fx:id="resultItemPane" minHeight="-Infinity" prefHeight="65.0" prefWidth="488.0">
+                        <Pane fx:id="resultItemPane" minHeight="-Infinity" prefHeight="65.0" prefWidth="46.0">
                            <children>
                               <Rectangle fx:id="resultRect" arcHeight="20.0" arcWidth="20.0" fill="#bcbcbc" height="62.0" layoutX="1.0" layoutY="2.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="472.0" />
-                              <VBox fx:id="resultVbox" alignment="CENTER" prefHeight="64.0" prefWidth="488.0">
+                              <VBox fx:id="resultVbox" alignment="CENTER" prefHeight="64.0" prefWidth="474.0">
                                  <children>
                                     <Label fx:id="resultName" alignment="CENTER" layoutX="-10.0" prefHeight="31.0" prefWidth="475.0" text="Nathan Pollock #11">
                                        <font>
