@@ -715,7 +715,7 @@ public class MapPageController implements IController {
                               equipType.getText(),
                               equipLocation.getText(),
                               equipClean.getText(),
-                              " "); // TODO fix
+                              " ");
                       DBManager.update(t);
 
                       equip.add(t);
