@@ -177,9 +177,7 @@ public class DBUtils {
 
   // find MedEquip object
   @SuppressWarnings("unchecked")
-  /**
-   * Updates clean status of equipment.
-   */
+  /** Updates clean status of equipment. */
   public static void updateCleanStatus(String equipType, String locationID) {
     Session s = SessionManager.getSession();
     List<MedEquip> equipment =
@@ -202,6 +200,7 @@ public class DBUtils {
 
   /**
    * Get legal name from ID
+   *
    * @param id ID of employee
    * @return name of linked employee
    */
@@ -231,6 +230,7 @@ public class DBUtils {
 
   /**
    * Gets preference name from employee ID
+   *
    * @param id ID to retrieve
    * @return Preference name of employee.
    * @throws IOException
@@ -255,6 +255,7 @@ public class DBUtils {
 
   /**
    * Retrieve name of employee from ID number
+   *
    * @param id Number to retrieve
    * @return String of name of linked employee
    * @throws IOException
@@ -276,6 +277,7 @@ public class DBUtils {
 
   /**
    * Gets employee names from ID
+   *
    * @param ids List of ids to retrieve
    * @param excludeMe
    * @return List of names retrieved from id.
@@ -364,6 +366,7 @@ public class DBUtils {
 
   /**
    * Gets amount of requests currently in DB
+   *
    * @return Number of requests in database
    */
   public static int getRequestCount() {
@@ -394,6 +397,7 @@ public class DBUtils {
 
   /**
    * Converts shortName to locationID
+   *
    * @param shortName shortName of location
    * @return Null if improper retrieval, nodeID of location otherwise
    */
@@ -415,6 +419,7 @@ public class DBUtils {
 
   /**
    * Convert locationID into shortName of location
+   *
    * @param nodeID locationID of location to check
    * @return shortName of desired location
    */
@@ -494,6 +499,7 @@ public class DBUtils {
 
   /**
    * Get Service Requests at specified location
+   *
    * @param l Location to check
    * @return A list of service requests at specified location
    */
@@ -510,6 +516,7 @@ public class DBUtils {
 
   /**
    * HashMap of equipment counts on floor.
+   *
    * @return Hashmap of each floor and num of equips
    */
   public static HashMap<String, HashMap<String, Integer>> getEquipFloorCounts() {
@@ -543,6 +550,7 @@ public class DBUtils {
 
   /**
    * Returns sum of requests on a specified floor
+   *
    * @param floor Floor to check
    * @return Number of reqs on Floor.
    */
@@ -559,6 +567,7 @@ public class DBUtils {
 
   /**
    * Returns if location is on specified floor
+   *
    * @param locationID locationID to check
    * @param floor floor to check
    * @return TRUE if is on floor, FALSE otherwise
