@@ -224,23 +224,20 @@ public class DBUtils {
 
   // Gets an employee's preferred name from their ID
   @SuppressWarnings("Unchecked")
-  public static String getPrefNameFromID(String id) {
-    id = id.hashCode() + "";
-    List<Employee> people = DBManager.getAll(Employee.class, new Where(Employee.USERNAME, id));
+  public static String getPrefNameFromID(String id) throws IOException {
+    Session s = SessionManager.getSession();
+    List<Employee> people =
+        s.createQuery("from Employee where username = :id")
+            .setParameter("id", id.hashCode() + "")
+            .list();
+    s.close();
+
     if (people.size() == 0) {
-      System.out.println("No employee found with hashed ID: " + id);
       return "";
     }
+
     Employee thePerson = people.get(0);
-    PersonalSettingsController.currentEmployee = thePerson; // TODO change
-    //    Firebase.init();
-    //    System.out.println("Firebase initialized");
-
-    System.out.println("Found employee with hashed ID: " + id);
-    System.out.println(thePerson.getName() + " is the employee's name");
-    System.out.println(thePerson.getPrefName() + " is the employee's preferred name");
-
-    // just gives name
+    PersonalSettingsController.currentEmployee = thePerson;
     return thePerson.getName();
   }
 

@@ -121,6 +121,8 @@ public class MessageController implements IController {
     setChatOpen(chatOpen);
     setChatPickerOpen(newChatOpen);
     String id = PersonalSettings.currentEmployee.getIDNumber();
+    //    System.out.println("Init message controller here: " + id + " " +
+    // ChatManager.getChats().size());
     if (!initialized) {
       id = PersonalSettings.currentEmployee.getIDNumber();
       Firebase.chatRef.child(id).addChildEventListener(childEventListener);
@@ -219,6 +221,7 @@ public class MessageController implements IController {
       try {
         messageArea.getChildren().add(getMessageClone(p));
       } catch (Exception e) {
+        //        System.out.println("Error getting message clone");
       }
     }
     // scrolls to bottom
@@ -302,6 +305,7 @@ public class MessageController implements IController {
         toBox.positionCaret(toBox.getText().length());
       }
     }
+
 
     int numCommas = 0;
     // find number of commas
@@ -472,7 +476,7 @@ public class MessageController implements IController {
 
     // if i am not the sender, make the message background grey
     if (!p.getSender().equals(PersonalSettings.currentEmployee.getIDNumber())) {
-      messageBackgroundClone.setFill(Color.rgb(168, 153, 161));
+      messageBackgroundClone.setFill(Color.rgb(200, 200, 200));
     }
 
     // set the height property of the rectangle to be the height of the message label
