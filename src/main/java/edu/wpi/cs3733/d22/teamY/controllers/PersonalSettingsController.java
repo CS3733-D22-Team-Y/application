@@ -209,16 +209,16 @@ public class PersonalSettingsController implements IController {
     Camera.newPfp();
     try {
       pfp.setImage(
-              new Image(
-                      App.class
-                              .getResource(
-                                      "views/profilePics/"
-                                              + PersonalSettings.currentEmployee.getIDNumber()
-                                              + ".jpg")
-                              .toString()));
+          new Image(
+              App.class
+                  .getResource(
+                      "views/profilePics/"
+                          + PersonalSettings.currentEmployee.getIDNumber()
+                          + ".jpg")
+                  .toString()));
     } catch (NullPointerException e) {
       pfp.setImage(
-              new Image(App.class.getResource("views/profilePics/" + "default" + ".jpg").toString()));
+          new Image(App.class.getResource("views/profilePics/" + "default" + ".jpg").toString()));
     }
   }
 }

@@ -14,7 +14,15 @@ public class Camera {
   private static String imageFolder =
       "src/main/resources/edu/wpi/cs3733/d22/teamY/views/profilePics/";
   private static String fileType = ".jpg";
-  static Webcam webcam = Webcam.getDefault();
+  static Webcam webcam;
+
+  public void initialize() {
+    try {
+      webcam = Webcam.getDefault();
+    } catch (Exception e) {
+      System.out.println("No webcam found");
+    }
+  }
 
   public static void newPfp() throws IOException {
     webcam.open();
