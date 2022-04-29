@@ -231,6 +231,8 @@ public class DashboardController implements IController {
   }
 
   public void initialize() throws IOException {
+    requestBox.getChildren().removeAll();
+
     initMonitor(DBHandler.getInstance());
 
     scrollBox.setBackground(Background.EMPTY);
