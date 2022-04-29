@@ -203,37 +203,96 @@ public class MapPageController<T extends Requestable> implements IController {
         "1",
         "Floor 1",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor1.jpg").toString()), 0, 0, 0.05)),
+            new Image(
+                App.class.getResource("views/images/1.jpg").toString(),
+                15000.0,
+                10200.0,
+                true,
+                true),
+            0,
+            0,
+            0.05)),
     LOWER_LEVEL_1(
         "L1",
         "Lower Level 1",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor-1.jpg").toString()), 0, 0, 0.05)),
+            new Image(
+                App.class.getResource("views/images/-1.jpg").toString(),
+                15000.0,
+                10200.0,
+                true,
+                true),
+            0,
+            0,
+            0.05)),
     LOWER_LEVEL_2(
         "L2",
         "Lower Level 2",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor-2.jpg").toString()), 0, 0, 0.05)),
+            new Image(
+                App.class.getResource("views/images/-2.jpg").toString(),
+                15000.0,
+                10200.0,
+                true,
+                true),
+            0,
+            0,
+            0.05)),
     SECOND_FLOOR(
         "2",
         "Floor 2",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor2.jpg").toString()), 0, 0, 0.05)),
+            new Image(
+                App.class.getResource("views/images/2.jpg").toString(),
+                15000.0,
+                10200.0,
+                true,
+                true),
+            0,
+            0,
+            0.05)),
     THIRD_FLOOR(
         "3",
         "Floor 3",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor3.jpg").toString()), 0, 0, 0.05)),
+            new Image(
+                App.class.getResource("views/images/3-5.jpg").toString(),
+                15000.0,
+                10200.0,
+                true,
+                true),
+            new Image(App.class.getResource("views/images/3_overlay.png").toString()),
+            0,
+            0,
+            0.05)),
     FOURTH_FLOOR(
         "4",
         "Floor 4",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor4.jpg").toString()), 0, 0, 0.05)),
+            new Image(
+                App.class.getResource("views/images/4-5_background.jpg").toString(),
+                15000.0,
+                10200.0,
+                true,
+                true),
+            new Image(App.class.getResource("views/images/4_overlay.png").toString()),
+            0,
+            0,
+            0.05)),
     FIFTH_FLOOR(
         "5",
         "Floor 5",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor5.jpg").toString()), 0, 0, 0.05));
+            new Image(
+                App.class.getResource("views/images/4-5_background.jpg").toString(),
+                15000.0,
+                10200.0,
+                true,
+                true),
+            new Image(App.class.getResource("views/images/5_overlay.png").toString()),
+            0,
+            0,
+            0.05));
 
     public final String dbKey;
     public final String name;
