@@ -57,7 +57,7 @@ public class MealRequestController implements IController {
   private final String peasText = "peas";
   private final String appleText = "apple";
   // Combobox text
-  private final String textGF = "glutenFree";
+
   private final String vegetarianText = "vegetarian";
   private final String veganText = "vegan";
 
