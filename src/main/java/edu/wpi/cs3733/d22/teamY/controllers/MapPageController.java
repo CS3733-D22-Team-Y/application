@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -1048,6 +1049,9 @@ public class MapPageController implements IController {
       val.setMaxHeight(29);
       val.setMinHeight(0);
       val.setText(sreq.get(atts[i]));
+      val.setAlignment(Pos.CENTER_LEFT);
+      // add text padding
+      val.setPadding(new javafx.geometry.Insets(5, 5, 5, 5));
       this.extraVals.add(val);
 
       this.attVbox.getChildren().add(name);
