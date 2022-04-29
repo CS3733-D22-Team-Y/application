@@ -32,7 +32,6 @@ public class Firebase {
       // Get a reference to our posts
       database = FirebaseDatabase.getInstance();
       chatRef = database.getReference("/chats/");
-
     }
     ChatManager.myChats.clear();
   }
@@ -59,30 +58,19 @@ public class Firebase {
     chatRef.addChildEventListener(
         new ChildEventListener() {
           @Override
-          public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-          }
+          public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {}
 
           @Override
-          public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {
-
-          }
+          public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {}
 
           @Override
-          public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-
-          }
+          public void onChildRemoved(DataSnapshot dataSnapshot) {}
 
           @Override
-          public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {
-
-          }
+          public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}
 
           @Override
-          public void onCancelled(DatabaseError databaseError) {
-
-
-          }
+          public void onCancelled(DatabaseError databaseError) {}
         });
   }
 }
