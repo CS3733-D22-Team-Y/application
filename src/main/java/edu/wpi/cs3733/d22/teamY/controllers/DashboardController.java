@@ -197,7 +197,7 @@ public class DashboardController implements IController {
   static ArrayList<String> songs = new ArrayList<>();
 
   static String a = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/FurElise30.wav";
-  static String b = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/MoltoVivace30.wav";
+  static String b = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/MoltoVivaceFinal.wav";
   static String c = "src/main/resources/edu/wpi/cs3733/d22/teamY/Music/Symp530.wav";
 
   static Clip clip;
