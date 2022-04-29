@@ -58,7 +58,7 @@ public class MealRequestController implements IController {
   private final String appleText = "apple";
   // Combobox text
 
-  private final String vegetarianText = "vegetarian";
+
   private final String veganText = "vegan";
 
   public MealRequestController() throws IOException {}
