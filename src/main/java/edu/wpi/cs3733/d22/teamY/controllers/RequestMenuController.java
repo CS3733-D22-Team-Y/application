@@ -78,7 +78,6 @@ public class RequestMenuController implements IController {
 
   @FXML
   void loadLaundryReq() {
-    // loadRequestScreen(LAUNDRY_RESULTS_INDEX);
     NewSceneLoading.loadScene("views/requestTypes/LaundryRequest.fxml");
   }
 
