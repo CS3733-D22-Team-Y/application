@@ -745,10 +745,6 @@ public class DashboardController implements IController {
   private void updateQuickDash() {
     HashMap<String, HashMap<String, Integer>> floorCounts = DBUtils.getEquipFloorCounts();
 
-    /*
-
-
-    this.xLabels[index].setText(floorCounts.get(floor).get("XRAY") + "");*/
   }
 
   @FXML
