@@ -303,7 +303,6 @@ public class MessageController implements IController {
       }
     }
     //    // remove all spaces
-    //    toBox.setText(toBox.getText().replaceAll(" ", ""));
     //    //    // remove all double commas
     //    toBox.setText(toBox.getText().replaceAll(",,", ","));
 
