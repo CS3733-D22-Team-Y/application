@@ -232,10 +232,7 @@ public class DBUtils {
     }
 
     Employee thePerson = people.get(0);
-    PersonalSettingsController.currentEmployee = thePerson; // TODO change
-    //    Firebase.init();
-    //    System.out.println("Firebase initialized");
-
+    PersonalSettingsController.currentEmployee = thePerson;
     return thePerson.getPrefName();
   }
 
