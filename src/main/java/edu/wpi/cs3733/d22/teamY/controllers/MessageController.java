@@ -302,9 +302,7 @@ public class MessageController implements IController {
         toBox.positionCaret(toBox.getText().length());
       }
     }
-    //    // remove all spaces
-    //    //    // remove all double commas
-    //    toBox.setText(toBox.getText().replaceAll(",,", ","));
+
 
     int numCommas = 0;
     // find number of commas
