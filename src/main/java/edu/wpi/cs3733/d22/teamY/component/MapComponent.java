@@ -1,9 +1,11 @@
 package edu.wpi.cs3733.d22.teamY.component;
 
+import edu.wpi.cs3733.d22.teamY.App;
 import java.util.List;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.*;
 
@@ -13,7 +15,7 @@ public class MapComponent {
   private static boolean isDraggingPin = false;
 
   public static class MapImage {
-    Image image;
+    Image image, image2;
     double initialX, initialY, initialScale;
 
     public MapImage(Image image, double initialX, double initialY, double initialScale) {
@@ -21,6 +23,16 @@ public class MapComponent {
       this.initialX = initialX;
       this.initialY = initialY;
       this.initialScale = initialScale;
+      this.image2 = new Image(App.class.getResource("views/images/empty.png").toString());
+    }
+
+    public MapImage(
+        Image image, Image image2, double initialX, double initialY, double initialScale) {
+      this.image = image;
+      this.initialX = initialX;
+      this.initialY = initialY;
+      this.initialScale = initialScale;
+      this.image2 = image2;
     }
   }
 
@@ -130,6 +142,7 @@ public class MapComponent {
     mapPane.getChildren().clear();
 
     Image i = image.image;
+    Image i2 = image.image2;
 
     // Update background image
     mapPane.setBackground(
@@ -140,6 +153,10 @@ public class MapComponent {
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT)));
+    ImageView imageTwo = new ImageView(i2);
+    imageTwo.setLayoutX(4090);
+    imageTwo.setLayoutY(1753);
+    mapPane.getChildren().add(imageTwo);
 
     // Resize to image and reset translation and scale
     mapPane.setScaleX(image.initialScale);

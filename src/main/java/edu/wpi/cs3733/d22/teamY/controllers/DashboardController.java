@@ -5,7 +5,6 @@ import com.google.gson.JsonParser;
 import edu.wpi.cs3733.d22.teamY.*;
 import edu.wpi.cs3733.d22.teamY.model.MedEquip;
 import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
-import edu.wpi.cs3733.d22.teamY.model.Requestable;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import java.awt.*;
@@ -559,13 +558,6 @@ public class DashboardController implements IController {
   }
 
   public static void reloadDashboard() {}
-
-  private void addRequest(Requestable req) throws IOException {
-
-    // System.out.println(ActiveServiceRequestController.requestControllers.getLast());
-
-    // rqPairs.add(new RequestSet(controller, pane, req));
-  }
 
   private void addToAlertsBox(String inputText) {
 

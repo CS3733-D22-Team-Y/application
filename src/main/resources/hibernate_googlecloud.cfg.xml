@@ -23,7 +23,6 @@
 
     <mapping class="edu.wpi.cs3733.d22.teamY.model.Location"/>
     <mapping class="edu.wpi.cs3733.d22.teamY.model.MedEquip"/>
-    <mapping class="edu.wpi.cs3733.d22.teamY.model.MedEquipReq"/>
     <mapping class="edu.wpi.cs3733.d22.teamY.model.Employee"/>
     <mapping class="edu.wpi.cs3733.d22.teamY.model.ServiceRequest"/>
 
