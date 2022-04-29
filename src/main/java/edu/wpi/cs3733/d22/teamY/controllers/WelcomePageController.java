@@ -206,7 +206,7 @@ public class WelcomePageController implements IController {
     yubikeyPane.setVisible(true);
     yubikeyEntry.requestFocus();
   }
-
+//Done
   @FXML
   public void yubikeyDone() throws Exception {
     if (Auth.vaildYubikey(yubikeyEntry.getText())) {
