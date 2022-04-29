@@ -46,10 +46,10 @@ public class TranslatorRequestController implements IController {
   @FXML private ImageView bgImage;
 
   // Language types text. These should be changed depending on what the names in the database are.
-  private final String spanishText = "spanish";
-  private final String chineseText = "chinese";
-  private final String germanText = "german";
-  private final String arabicText = "arabic";
+  private final String spanishText = "Spanish";
+  private final String chineseText = "Chinese";
+  private final String germanText = "German";
+  private final String arabicText = "Arabic";
   public Languages langs = new Languages();
 
   public TranslatorRequestController() {}

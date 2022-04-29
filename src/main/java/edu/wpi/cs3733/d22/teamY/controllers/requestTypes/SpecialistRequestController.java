@@ -41,9 +41,9 @@ public class SpecialistRequestController implements IController {
 
   // Bouquet types text. These should be changed depending on what the names in the database are.
 
-  private final String cardiologistText = "cardiologist";
-  private final String neurologistText = "neurologist";
-  private final String dermatologistText = "dermatologist";
+  private final String cardiologistText = "Cardiologist";
+  private final String neurologistText = "Neurologist";
+  private final String dermatologistText = "Dermatologist";
 
   public SpecialistRequestController() {}
 

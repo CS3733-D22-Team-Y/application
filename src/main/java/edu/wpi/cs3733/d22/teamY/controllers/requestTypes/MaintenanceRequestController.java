@@ -50,10 +50,10 @@ public class MaintenanceRequestController implements IController {
   //
   //  Maintenance types text. These should be changed depending on what the names in the database
   // are.
-  private static final String medicalEquipmentText = "medicalEquipment";
-  private static final String elevatorText = "elevator";
-  private static final String lightsText = "lights";
-  private static final String otherText = "other";
+  private static final String medicalEquipmentText = "Medical Equipment";
+  private static final String elevatorText = "Elevator";
+  private static final String lightsText = "Lights";
+  private static final String otherText = "Other";
 
   // Maintenance priority text. These should be changed depending on what the names in  the database
   // are.

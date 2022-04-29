@@ -49,13 +49,13 @@ public class MealRequestController implements IController {
   private final String textNone = "None";
 
   // Main choices text
-  private final String pizzaText = "pizza";
-  private final String burgerText = "burger";
-  private final String saladText = "salad";
+  private final String pizzaText = "Pizza";
+  private final String burgerText = "Burger";
+  private final String saladText = "Salad";
   // Side choices text
-  private final String riceText = "rice";
-  private final String peasText = "peas";
-  private final String appleText = "apple";
+  private final String riceText = "Rice";
+  private final String peasText = "Peas";
+  private final String appleText = "Apple";
   // Combobox text
 
   public MealRequestController() throws IOException {}

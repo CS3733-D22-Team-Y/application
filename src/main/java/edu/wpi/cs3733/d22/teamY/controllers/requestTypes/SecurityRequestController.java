@@ -51,16 +51,16 @@ public class SecurityRequestController implements IController {
   @FXML private ImageView bgImage;
 
   // Security types text. These should be changed depending on what the names in the database are.
-  private static final String unwantedGuestText = "unwantedGuest";
-  private static final String disruptionText = "disruption";
-  private static final String theftText = "theft";
-  private static final String otherText = "other";
+  private static final String unwantedGuestText = "Unwanted Guest";
+  private static final String disruptionText = "Disruption";
+  private static final String theftText = "Theft";
+  private static final String otherText = "Other";
 
   // Security priority text. These should be changed depending on what the names in  the database
   // are.
-  private static final String mostUrgentText = "mostUrgent";
-  private static final String urgentText = "urgent";
-  private static final String lowPriorityText = "lowPriority";
+  private static final String mostUrgentText = "Most Urgent";
+  private static final String urgentText = "Urgent";
+  private static final String lowPriorityText = "Low Priority";
 
   public SecurityRequestController() throws IOException {}
 

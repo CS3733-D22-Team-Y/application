@@ -37,10 +37,10 @@ public class MedicalEquipmentRequestController implements IController {
   // Side bar
   @FXML private AnchorPane sidebarPane;
   // Equipment types text. These should be changed depending on what the names in the database are.
-  private final String bedText = "BED";
-  private final String xrayText = "XRAY";
-  private final String infusionPumpText = "PUMP";
-  private final String reclinerText = "RECLINER";
+  private final String bedText = "Bed";
+  private final String xrayText = "X-Ray";
+  private final String infusionPumpText = "Pump";
+  private final String reclinerText = "Recliner";
 
   private Scene requestMenu = null;
 
