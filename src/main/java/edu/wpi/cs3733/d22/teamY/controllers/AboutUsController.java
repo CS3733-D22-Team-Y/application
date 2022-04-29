@@ -27,7 +27,7 @@ public class AboutUsController {
 
 
 
-  @FXML private ImageView loadEthan;
+
 
   @FXML
   private void backButton() {
