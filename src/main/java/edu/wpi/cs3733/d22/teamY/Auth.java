@@ -21,38 +21,7 @@ public class Auth {
     return String.format("%06d", new Random().nextInt(999999));
   }
 
-  //  public static boolean doAuth(String userName) {
-  //    // get user with userName
-  //    List<Employee> emps =
-  //        DBManager.getAll(Employee.class, new Where(Employee.USERNAME, userName.hashCode()));
-  //    if (emps.size() != 1) {
-  //      System.out.println("Error: " + emps.size() + " users found with username " + userName);
-  //      return false;
-  //    }
-  //    Employee emp = emps.get(0);
-  //    String authString = emp.getAuthString();
-  //
-  //    // if no set authString return false
-  //    if (authString == null || authString.equals("none")) {
-  //      return true;
-  //    }
-  //
-  //    String[] auth = authString.split(":");
-  //    String authType = auth[0];
-  //    switch (authType) {
-  //      case "none":
-  //        return true;
-  //      case "pushbullet":
-  //        return doPushBulletAuth(auth[1]);
-  //      case "twilio":
-  //        return doTwilioAuth(auth[1]);
-  //      case "mail":
-  //        return doMailAuth(auth[1]);
-  //      default: // if unrecoginzed auth type return false
-  //        System.out.println("Unrecognized auth type: " + authType);
-  //        return false;
-  //    }
-  //  }
+
 
   public static String[] getKeys(String userName) {
     // get user with userName
