@@ -26,7 +26,6 @@ public class MedEquipTablePageController implements IController {
   @FXML
   public void initialize() throws IOException {
 
-    // Snag all of the equipment from the database.
     List<MedEquip> medEquips;
     try {
       medEquips = DBManager.getAll(MedEquip.class);
