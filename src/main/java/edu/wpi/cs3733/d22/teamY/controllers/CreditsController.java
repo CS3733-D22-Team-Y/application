@@ -22,7 +22,7 @@ public class CreditsController {
 
 
 
-  // portrait.rewriteInfo(name);
+
   // stage.setScene(sceneToLoad);
   // stage.initModality(Modality.APPLICATION_MODAL);
   // stage.initOwner(parentScene.getWindow());
