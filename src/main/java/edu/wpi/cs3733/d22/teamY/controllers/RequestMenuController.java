@@ -93,7 +93,6 @@ public class RequestMenuController implements IController {
 
   @FXML
   void loadSecurityReq() {
-    // loadRequestScreen(SECURITY_RESULTS_INDEX);
     NewSceneLoading.loadScene("views/requestTypes/SecurityRequest.fxml");
   }
 
