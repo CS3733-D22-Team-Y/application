@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -1011,16 +1010,16 @@ public class MapPageController implements IController {
     locationInfoPane.setVisible(false);
     equipInfoPane.setVisible(false);
 
-    this.currReqSelection %= fuck2.size();
-    if (this.currReqSelection < 0) {
-      this.currReqSelection = fuck2.size() - 1;
+    currReqSelection %= fuck2.size();
+    if (currReqSelection < 0) {
+      currReqSelection = fuck2.size() - 1;
     }
-    currReqDisplay.setText(fuck2.get(this.currReqSelection).getRequestId() + "");
-    this.reqLocationBox.setText(fuck2.get(this.currReqSelection).getLocationID());
-    this.reqDescriptionBox.setText(fuck2.get(this.currReqSelection).getAdditionalNotes());
-    this.reqStatusBox.setText(fuck2.get(this.currReqSelection).getStatus().name());
-    this.reqTypeBox.setText(fuck2.get(this.currReqSelection).getType().getFriendlyName());
-    this.reqNurseBox.setText(fuck2.get(this.currReqSelection).getAssignedNurse());
+    currReqDisplay.setText(fuck2.get(currReqSelection).getRequestId() + "");
+    reqLocationBox.setText(fuck2.get(currReqSelection).getLocationID());
+    reqDescriptionBox.setText(fuck2.get(currReqSelection).getAdditionalNotes());
+    reqStatusBox.setText(fuck2.get(currReqSelection).getStatus().name());
+    reqTypeBox.setText(fuck2.get(currReqSelection).getType().getFriendlyName());
+    reqNurseBox.setText(fuck2.get(currReqSelection).getAssignedNurse());
 
     for (TextField tf : extraAtts) {
       attVbox.getChildren().remove(tf);
@@ -1030,16 +1029,16 @@ public class MapPageController implements IController {
     }
     extraAtts.clear();
     extraVals.clear();
-    ServiceRequest sreq = fuck2.get(this.currReqSelection);
+    ServiceRequest sreq = fuck2.get(currReqSelection);
     RequestTypes rt = sreq.getType();
     String[] atts = rt.getAttributes();
     String[] fAtts = rt.getFriendlyAttributes();
     for (int i = 0; i < rt.getAttributeCount(); i++) {
-      TextField name = this.getFieldClone(this.attName);
+      TextField name = getFieldClone(attName);
       name.setText(fAtts[i]);
-      this.extraAtts.add(name);
+      extraAtts.add(name);
 
-      MFXTextField val = this.getMFXFieldClone(this.attValue);
+      MFXTextField val = getMFXFieldClone(attValue);
       val.getStyleClass().clear();
       val.getStyleClass().add("mfx-text-field");
       val.getStyleClass().add("requestInput");
@@ -1049,10 +1048,10 @@ public class MapPageController implements IController {
       val.setMaxHeight(29);
       val.setMinHeight(0);
       val.setText(sreq.get(atts[i]));
-      this.extraVals.add(val);
+      extraVals.add(val);
 
-      this.attVbox.getChildren().add(name);
-      this.valueVbox.getChildren().add(val);
+      attVbox.getChildren().add(name);
+      valueVbox.getChildren().add(val);
     }
   }
 
