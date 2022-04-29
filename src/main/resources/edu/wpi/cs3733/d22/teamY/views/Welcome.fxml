@@ -181,7 +181,7 @@
                </color4>
             </MFXProgressSpinner>
          </children></Pane>
-        <JFXButton layoutX="21.0" layoutY="222.0" onAction="#testingButton" prefHeight="282.0" prefWidth="299.0" ripplerFill="#5c4f4f00" styleClass="plainText" text="Testing Button (DELETE BEFORE SUBMISSION)" textAlignment="CENTER" textFill="#ff00a1" visible="true" wrapText="true">
+        <JFXButton layoutX="21.0" layoutY="222.0" onAction="#testingButton" prefHeight="282.0" prefWidth="299.0" ripplerFill="#5c4f4f00" styleClass="plainText" text="Testing Button (DELETE BEFORE SUBMISSION)" textAlignment="CENTER" textFill="#ff00a1" visible="false" wrapText="true">
             <font>
                 <Font name="System Bold Italic" size="36.0" />
             </font>
