@@ -21,7 +21,7 @@ public class AboutUsController {
 
 
 
-  @FXML private ImageView loadSky;
+
   @FXML private ImageView loadJohn;
   @FXML private ImageView loadJake;
   @FXML private ImageView loadEngjell;
