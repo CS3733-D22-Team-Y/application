@@ -107,20 +107,6 @@ public class WelcomePageController implements IController {
     loadingRightNow = true;
 
     SceneUtil.welcomePage = this;
-    // RequestControllerUtil.initialize();
-
-    /*
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("views/SideBar.fxml"));
-    App.getInstance().setScene(new Scene(loader.load()));
-    SideBarController controller = loader.getController();
-    try {
-      controller.initializeScale();
-      controller.loadViewServiceRequests();
-    } catch (IOException ex) {
-      ex.printStackTrace();
-    }
-     */
-    // NewSceneLoading.loadScene("views/ActiveServiceRequest.fxml");
 
     loadingRightNow = false;
   }
@@ -137,7 +123,6 @@ public class WelcomePageController implements IController {
           App.getInstance().setScene(new Scene(loadMainTask.getValue().getParent()));
           SideBarController controller = NewSceneLoading.sideBarController;
           try {
-            // controller.initializeScale();
             controller.loadDashboard();
           } catch (IOException ex) {
             ex.printStackTrace();
@@ -167,11 +152,6 @@ public class WelcomePageController implements IController {
 
   @FXML
   void loginToMainPage() throws IOException, InterruptedException {
-    //     if (DBUtils.isValidLogin(username.getText(), password.getText())
-    //         && !lockOut
-    //         && Auth.doAuth(username.getText())) {
-    //       loginAnimation();
-
     if (username.getText().length() <= 0 || password.getText().length() <= 0) {
       showLoginFail(false);
       return;
@@ -187,17 +167,6 @@ public class WelcomePageController implements IController {
     } else {
       showLoginFail(true);
     }
-
-    // NewSceneLoading.loadScene("views/SideBar.fxml");
-    // NewSceneLoading.loadScene("views/ActiveServiceRequest.fxml");
-
-    /*
-    try {
-      //controller.initializeScale();
-    } catch (IOException ex) {
-      ex.printStackTrace();
-    }
-     */
   }
 
   private void showLoginFail(boolean deduct) {
@@ -237,7 +206,7 @@ public class WelcomePageController implements IController {
     yubikeyPane.setVisible(true);
     yubikeyEntry.requestFocus();
   }
-
+//Done
   @FXML
   public void yubikeyDone() throws Exception {
     if (Auth.vaildYubikey(yubikeyEntry.getText())) {
@@ -356,6 +325,7 @@ public class WelcomePageController implements IController {
     } catch (IOException e) {
       e.printStackTrace();
     }
+    NewSceneLoading.reloadScene("views/PersonalSettings.fxml");
   }
 
   @FXML

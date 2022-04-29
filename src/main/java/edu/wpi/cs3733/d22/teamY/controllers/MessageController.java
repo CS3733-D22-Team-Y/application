@@ -305,10 +305,7 @@ public class MessageController implements IController {
         toBox.positionCaret(toBox.getText().length());
       }
     }
-    //    // remove all spaces
-    //    toBox.setText(toBox.getText().replaceAll(" ", ""));
-    //    //    // remove all double commas
-    //    toBox.setText(toBox.getText().replaceAll(",,", ","));
+
 
     int numCommas = 0;
     // find number of commas
@@ -479,7 +476,7 @@ public class MessageController implements IController {
 
     // if i am not the sender, make the message background grey
     if (!p.getSender().equals(PersonalSettings.currentEmployee.getIDNumber())) {
-      messageBackgroundClone.setFill(Color.rgb(168, 153, 161));
+      messageBackgroundClone.setFill(Color.rgb(200, 200, 200));
     }
 
     // set the height property of the rectangle to be the height of the message label

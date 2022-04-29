@@ -159,6 +159,5 @@ public class LaundryRequestController implements IController {
   public void initializeScale() {
     Scaling.scaleFullscreenItemAroundTopLeft(mainPane);
     Scaling.scaleBackground(bgImage);
-    // bgImage.scaleYProperty().bind(NewSceneLoading.activeWindow.heightProperty());
   }
 }

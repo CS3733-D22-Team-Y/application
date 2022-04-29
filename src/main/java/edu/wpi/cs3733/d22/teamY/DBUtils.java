@@ -237,11 +237,8 @@ public class DBUtils {
     }
 
     Employee thePerson = people.get(0);
-    PersonalSettingsController.currentEmployee = thePerson; // TODO change
-    //    Firebase.init();
-    //    System.out.println("Firebase initialized");
-
-    return thePerson.getPrefName();
+    PersonalSettingsController.currentEmployee = thePerson;
+    return thePerson.getName();
   }
 
   public static String getNameFromActualID(String id) throws IOException {

@@ -50,7 +50,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-        <Label alignment="CENTER" layoutX="333.0" layoutY="14.0" prefHeight="88.0" prefWidth="292.0" text="Messages" textFill="#20758b">
+        <Label alignment="CENTER" layoutX="270.0" layoutY="10.0" prefHeight="88.0" prefWidth="292.0" text="Messages" textFill="#20758b">
             <font>
                 <Font name="Arial Rounded MT Bold" size="60.0" />
             </font>
@@ -59,7 +59,8 @@
             <String fx:value="primaryColor" />
          </styleClass>
         </Label>
-      <MFXScrollPane hbarPolicy="NEVER" layoutX="278.0" layoutY="104.0" prefHeight="677.0" prefWidth="403.0" style="-fx-background-color: #93CDDCB8;">
+      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#93cddc" height="680.0" layoutX="270.0" layoutY="110.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="420.0" />
+      <MFXScrollPane hbarPolicy="NEVER" layoutX="280.0" layoutY="120.0" prefHeight="660.0" prefWidth="400.0" style="-fx-background-color: transparent;">
          <content>
             <VBox fx:id="chatSelector">
                <children>
@@ -132,7 +133,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <MFXButton layoutX="544.0" layoutY="726.0" onAction="#startChat" prefHeight="50.0" prefWidth="124.0" style="-fx-background-color: #14667B;" text="Start Chat" textAlignment="CENTER" textFill="WHITE">
+      <MFXButton layoutX="555.0" layoutY="730.0" onAction="#startChat" prefHeight="50.0" prefWidth="124.0" style="-fx-background-color: #14667B;" text="Start Chat" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
