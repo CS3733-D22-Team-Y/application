@@ -20,8 +20,7 @@ public class CreditsController {
 
 
 
-  //
-  // Objects.requireNonNull(App.class.getResource("views/popups/AboutUs.fxml"))));
+
   // PortraitController portrait = loader.getController();
   // portrait.rewriteInfo(name);
   // stage.setScene(sceneToLoad);
