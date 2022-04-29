@@ -56,7 +56,6 @@ public class MedEquip implements StringArrayConv {
     } else {
       clean = "Dirty";
     }
-    // return equipNames.get(equipType) + " : " + equipID + " : " + clean;
     return "\n" + MapPageController.equipNames.get(equipType) + " : " + equipID + " : " + clean;
   }
 
