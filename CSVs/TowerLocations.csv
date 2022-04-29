@@ -148,8 +148,8 @@ yPATI01703,4569,3609,3,Tower,PATI,Floor 3 Pod C Patient Room 7,C3 Patient 7
 yPATI01803,4479,3549,3,Tower,PATI,Floor 3 Pod C Patient Room 8,C3 Patient 8
 yPATI01903,4569,3456,3,Tower,PATI,Floor 3 Pod C Patient Room 9,C3 Patient 9
 yPATI02003,4635,3255,3,Tower,PATI,Floor 3 Pod C Patient Room 10,C3 Patient 10
-ySTOR00303,4866,3102,3,Tower,STOR,Bed and Recliner Parking North,B&R North
-ySTOR00403,4950,5430,3,Tower,STOR,Bed and Recliner Parking South,B&R South
+ySTOR00303,4866,3102,3,Tower,STOR,Bed and Recliner Parking North,B and R North
+ySTOR00403,4950,5430,3,Tower,STOR,Bed and Recliner Parking South,B and R South
 ySTOR00104,4521,2364,4,Tower,STOR,Floor 4 Pod B Clean Equipment Storage,B4 Clean Equipment
 ySTOR00204,4521,3177,4,Tower,STOR,Floor 4 Pod C Clean Equipment Storage,C4 Clean Equipment
 yDIRT00104,4605,2778,4,Tower,DIRT,Floor 4 Dirty Equipment Storage,04 Dirty Equipment
@@ -173,8 +173,8 @@ yPATI01704,4569,3609,4,Tower,PATI,Floor 4 Pod C Patient Room 7,C4 Patient 7
 yPATI01804,4479,3549,4,Tower,PATI,Floor 4 Pod C Patient Room 8,C4 Patient 8
 yPATI01904,4569,3456,4,Tower,PATI,Floor 4 Pod C Patient Room 9,C4 Patient 9
 yPATI02004,4635,3255,4,Tower,PATI,Floor 4 Pod C Patient Room 10,C4 Patient 10
-ySTOR00304,4866,3102,4,Tower,STOR,Bed and Recliner Parking North,B&R North
-ySTOR00404,4950,5430,4,Tower,STOR,Bed and Recliner Parking South,B&R South
+ySTOR00304,4866,3102,4,Tower,STOR,Bed and Recliner Parking North,B and R North
+ySTOR00404,4950,5430,4,Tower,STOR,Bed and Recliner Parking South,B and R South
 ySTOR00105,4521,2364,5,Tower,STOR,Floor 5 Pod B Clean Equipment Storage,B5 Clean Equipment
 ySTOR00205,4521,3177,5,Tower,STOR,Floor 5 Pod C Clean Equipment Storage,C5 Clean Equipment
 yDIRT00105,4605,2778,5,Tower,DIRT,Floor 5 Dirty Equipment Storage,05 Dirty Equipment
@@ -198,5 +198,3 @@ yPATI01705,4569,3609,5,Tower,PATI,Floor 5 Pod C Patient Room 7,C5 Patient 7
 yPATI01805,4479,3549,5,Tower,PATI,Floor 5 Pod C Patient Room 8,C5 Patient 8
 yPATI01905,4569,3456,5,Tower,PATI,Floor 5 Pod C Patient Room 9,C5 Patient 9
 yPATI02005,4635,3255,5,Tower,PATI,Floor 5 Pod C Patient Room 10,C5 Patient 10
-ySTOR00305,4866,3102,5,Tower,STOR,Bed and Recliner Parking North,B&R North
-ySTOR00405,4950,5430,5,Tower,STOR,Bed and Recliner Parking South,B&R South

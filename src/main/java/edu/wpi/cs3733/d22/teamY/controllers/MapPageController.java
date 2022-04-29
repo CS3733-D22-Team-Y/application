@@ -1,12 +1,11 @@
 package edu.wpi.cs3733.d22.teamY.controllers;
 
 import com.jfoenix.controls.JFXTextArea;
-import edu.wpi.cs3733.d22.teamY.App;
-import edu.wpi.cs3733.d22.teamY.DBManager;
-import edu.wpi.cs3733.d22.teamY.DBUtils;
+import edu.wpi.cs3733.d22.teamY.*;
 import edu.wpi.cs3733.d22.teamY.component.MapComponent;
 import edu.wpi.cs3733.d22.teamY.model.Location;
 import edu.wpi.cs3733.d22.teamY.model.MedEquip;
+import edu.wpi.cs3733.d22.teamY.model.RequestStatus;
 import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXCheckbox;
@@ -17,7 +16,9 @@ import java.io.IOException;
 import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -80,9 +81,12 @@ public class MapPageController implements IController {
   // end req stuff
 
   @FXML public MFXButton locationSubmit;
-  private String fuck = "shit";
-  private ArrayList<ServiceRequest> fuck2 = new ArrayList<>();
-  private ArrayList<MedEquip> fuck3 = new ArrayList<>();
+  private String newLocationID = "";
+  private ArrayList<ServiceRequest> requestsList = new ArrayList<>();
+  private ArrayList<MedEquip> equipList = new ArrayList<>();
+  private ArrayList<TextField> extraAtts = new ArrayList<>();
+  private ArrayList<MFXTextField> extraVals = new ArrayList<>();
+
   private int currReqSelection = 0;
   // @FXML private MFXLegacyComboBox<String> modeBox;
   // @FXML private TextField selectorBoxText;
@@ -144,12 +148,17 @@ public class MapPageController implements IController {
   @FXML MFXTextField equipClean;
   @FXML Pane equipInfoPane;
   @FXML MFXButton equipSubmit;
-  @FXML MFXButton equipUp;
-  @FXML MFXButton equipDown;
+  @FXML ImageView equipUp;
+  @FXML ImageView equipDown;
 
   @FXML private MFXCheckbox locationsCheckbox;
   @FXML private MFXCheckbox medCheckbox;
   @FXML private MFXCheckbox servicesCheckbox;
+
+  @FXML private VBox valueVbox;
+  @FXML private VBox attVbox;
+  @FXML private TextField attName;
+  @FXML private MFXTextField attValue;
 
   Pane e = new Pane();
 
@@ -203,37 +212,96 @@ public class MapPageController implements IController {
         "1",
         "Floor 1",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor1.jpg").toString()), 0, 0, 0.05)),
+            new Image(
+                App.class.getResource("views/images/1.jpg").toString(),
+                15000.0,
+                10200.0,
+                true,
+                true),
+            0,
+            0,
+            0.05)),
     LOWER_LEVEL_1(
         "L1",
         "Lower Level 1",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor-1.jpg").toString()), 0, 0, 0.05)),
+            new Image(
+                App.class.getResource("views/images/-1.jpg").toString(),
+                15000.0,
+                10200.0,
+                true,
+                true),
+            0,
+            0,
+            0.05)),
     LOWER_LEVEL_2(
         "L2",
         "Lower Level 2",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor-2.jpg").toString()), 0, 0, 0.05)),
+            new Image(
+                App.class.getResource("views/images/-2.jpg").toString(),
+                15000.0,
+                10200.0,
+                true,
+                true),
+            0,
+            0,
+            0.05)),
     SECOND_FLOOR(
         "2",
         "Floor 2",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor2.jpg").toString()), 0, 0, 0.05)),
+            new Image(
+                App.class.getResource("views/images/2.jpg").toString(),
+                15000.0,
+                10200.0,
+                true,
+                true),
+            0,
+            0,
+            0.05)),
     THIRD_FLOOR(
         "3",
         "Floor 3",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor3.jpg").toString()), 0, 0, 0.05)),
+            new Image(
+                App.class.getResource("views/images/3-5.jpg").toString(),
+                15000.0,
+                10200.0,
+                true,
+                true),
+            new Image(App.class.getResource("views/images/3_overlay.png").toString()),
+            0,
+            0,
+            0.05)),
     FOURTH_FLOOR(
         "4",
         "Floor 4",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor4.jpg").toString()), 0, 0, 0.05)),
+            new Image(
+                App.class.getResource("views/images/4-5_background.jpg").toString(),
+                15000.0,
+                10200.0,
+                true,
+                true),
+            new Image(App.class.getResource("views/images/4_overlay.png").toString()),
+            0,
+            0,
+            0.05)),
     FIFTH_FLOOR(
         "5",
         "Floor 5",
         new MapComponent.MapImage(
-            new Image(App.class.getResource("views/images/floor5.jpg").toString()), 0, 0, 0.05));
+            new Image(
+                App.class.getResource("views/images/4-5_background.jpg").toString(),
+                15000.0,
+                10200.0,
+                true,
+                true),
+            new Image(App.class.getResource("views/images/5_overlay.png").toString()),
+            0,
+            0,
+            0.05));
 
     public final String dbKey;
     public final String name;
@@ -258,6 +326,45 @@ public class MapPageController implements IController {
   private final ImageView imageView = new ImageView();
 
   private final HashMap<Floors, Image> floorImages = new HashMap<>();
+
+  private void setButtonColors(String floor) {
+    String onStyle = "-fx-background-color: #93CDDC;";
+    String offStyle = "-fx-background-color: #FFFFFF;";
+
+    floorLL2Button.setStyle(offStyle);
+    floorLL1Button.setStyle(offStyle);
+    floor1Button.setStyle(offStyle);
+    floor2Button.setStyle(offStyle);
+    floor3Button.setStyle(offStyle);
+    floor4Button.setStyle(offStyle);
+    floor5Button.setStyle(offStyle);
+
+    switch (floor) {
+      case "L2":
+        floorLL2Button.setStyle(onStyle);
+        break;
+      case "L1":
+        floorLL1Button.setStyle(onStyle);
+        break;
+      case "1":
+        floor1Button.setStyle(onStyle);
+        break;
+      case "2":
+        floor2Button.setStyle(onStyle);
+        break;
+      case "3":
+        floor3Button.setStyle(onStyle);
+        break;
+      case "4":
+        floor4Button.setStyle(onStyle);
+        break;
+      case "5":
+        floor5Button.setStyle(onStyle);
+        break;
+      default:
+        break;
+    }
+  }
 
   /**
    * Called whenever the floor or map mode is switched
@@ -317,13 +424,6 @@ public class MapPageController implements IController {
 
                 boolean hasEquipment = equip.size() > 0;
                 List<ServiceRequest> requests = DBUtils.getAllServiceReqsAtLocation(l);
-                System.out.println("Target: " + l.getNodeID());
-                for (ServiceRequest r : requests) {
-                  System.out.println(r.getLocationID());
-                }
-                if (requests.size() > 0) {
-                  System.out.println("Requests: " + requests.size());
-                }
 
                 boolean medEquipAdded = false, serviceRequestAdded = false;
 
@@ -332,16 +432,26 @@ public class MapPageController implements IController {
                 // type, only 1 element is in the list still
                 // equip: list of all equipment objects in the location
                 // hasEquipment: true if there is 1 or more equipment in location
-
                 // Checks if the point is in a valid position
                 // Create the circle for this location and add context menu handlers to it
                 Pane newLocation = new Pane();
-                Pane newMedEquip = new Pane();
                 Pane newServiceRequest = new Pane();
+
+                ArrayList<Pane> bed = new ArrayList<>();
+                ArrayList<Pane> xray = new ArrayList<>();
+                ArrayList<Pane> recliner = new ArrayList<>();
+                ArrayList<Pane> pump = new ArrayList<>();
+                List<ArrayList<Pane>> diffEquipTypes = new ArrayList<>();
+                // this is a stupid way of doing it but addAll doesn't work
+                diffEquipTypes.add(bed);
+                diffEquipTypes.add(xray);
+                diffEquipTypes.add(recliner);
+                diffEquipTypes.add(pump);
+
+                // Used to determine which med equip is selected
+                HashMap<Pane, Integer> allMedEquips = new HashMap<>();
+
                 // connor why >:(
-                //                  Circle c =
-                //                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX,
-                // CIRCLE_PAINT);
                 newLocation.setLayoutX(l.getXCoord());
                 newLocation.setLayoutY(l.getYCoord() - pinDim / 2);
                 ImageView imageView = new ImageView();
@@ -349,56 +459,186 @@ public class MapPageController implements IController {
                     new Image(App.class.getResource("views/images/icons/pin.png").toString()));
                 imageView.setFitHeight(pinDim);
                 imageView.setFitWidth(pinDim);
-                //                  imageView.setLayoutX(l.getXCoord() - pinDim / 2);
-                //                  imageView.setLayoutY(l.getYCoord() - pinDim / 2);
 
-                //                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim /
-                // 2, Color.NAVY);
                 newLocation.setPrefWidth(pinDim);
                 newLocation.setPrefHeight(pinDim);
                 newLocation.getChildren().add(imageView);
                 newLocation.visibleProperty().bind(locationsCheckbox.selectedProperty());
+
                 mapElements.add(newLocation);
                 allLocations.add(newLocation);
-                // TODO: Add all loc IDs to the list
                 allLocationIDs.add(l.getNodeID());
+
+                int numOfEquipAtLocation = 0;
+
                 // Add equipment bubbles
                 if (hasEquipment) {
-                  Circle c =
-                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
-                  newMedEquip.setLayoutX(l.getXCoord() + 20);
-                  newMedEquip.setLayoutY(l.getYCoord());
-                  Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
-                  ImageView equipIcon = new ImageView();
-                  if (equip.size() < 9) {
-                    equipIcon.setImage(
-                        new Image(
-                            String.valueOf(
+                  for (int i = 0; i < equip.size(); i++) {
+                    Pane newMedEquip = new Pane();
+                    newMedEquip.setLayoutX(l.getXCoord());
+                    newMedEquip.setLayoutY(l.getYCoord());
+
+                    Circle frame = new Circle(iconDim / 2, iconDim / 2, iconDim / 2, Color.NAVY);
+                    ImageView equipIcon = new ImageView();
+                    // Determine what type of equipment the pane is
+                    switch (equip.get(i).getEquipType()) {
+                      case ("PUMP"):
+                        equipIcon.setImage(
+                            new Image(
                                 App.class
-                                    .getResource("views/images/icons/" + equip.size() + ".png")
-                                    .toString())));
-                  } else {
-                    equipIcon.setImage(
-                        new Image(
-                            String.valueOf(
-                                App.class.getResource("views/images/icons/9.png").toString())));
+                                    .getResource("views/images/icons/pumpLogoWhite.png")
+                                    .toString()));
+                        pump.add(newMedEquip);
+                        break;
+                      case ("XRAY"):
+                        equipIcon.setImage(
+                            new Image(
+                                App.class
+                                    .getResource("views/images/icons/xrayIconWhite.png")
+                                    .toString()));
+                        xray.add(newMedEquip);
+                        break;
+                      case ("RECLINER"):
+                        equipIcon.setImage(
+                            new Image(
+                                App.class
+                                    .getResource("views/images/icons/reclinerLogoWhite.png")
+                                    .toString()));
+                        recliner.add(newMedEquip);
+                        break;
+                      case ("BED"):
+                        equipIcon.setImage(
+                            new Image(
+                                App.class
+                                    .getResource("views/images/icons/bedLogoWhite.png")
+                                    .toString()));
+                        bed.add(newMedEquip);
+                        break;
+                      default:
+                        System.out.println(
+                            "Invalid equipment type: " + equip.get(i).getEquipType());
+                    }
+                    equipIcon.setFitWidth(iconDim);
+                    equipIcon.setFitHeight(iconDim);
+                    newMedEquip.setPrefWidth(iconDim);
+                    newMedEquip.setPrefHeight(iconDim);
+                    newMedEquip.getChildren().add(frame);
+                    newMedEquip.getChildren().add(equipIcon);
+                    newMedEquip.visibleProperty().bind(medCheckbox.selectedProperty());
+                    mapElements.add(newMedEquip);
+                    allMedEquips.put(newMedEquip, i);
+
+                    // Circle thingy implementation
+                    ArrayList<ArrayList<Pane>> hasNodes = new ArrayList<>(4);
+
+                    for (int j = 0; j < diffEquipTypes.size(); j++) {
+                      // Check that there is actually that type of equipment at the location
+                      if (!diffEquipTypes.get(j).isEmpty()) hasNodes.add(diffEquipTypes.get(j));
+                    }
+
+                    numOfEquipAtLocation = hasNodes.size();
+
+                    // One circle should be centered
+                    if (hasNodes.size() == 1) {
+                      for (Pane currPane : hasNodes.get(0)) {
+                        currPane.setLayoutX(l.getXCoord() + (iconDim / 6));
+                        currPane.setLayoutY(l.getYCoord());
+
+                        addNumEquipDisplay(currPane, hasNodes.get(0).size());
+                      }
+                    } else if (!hasNodes.isEmpty()) {
+
+                      ArrayList<Point> points =
+                          getHex(
+                              hasNodes.size(),
+                              iconDim / 2,
+                              new Point(l.getXCoord(), l.getYCoord()));
+
+                      for (int j = 0; j < hasNodes.size(); j++) {
+                        ArrayList<Pane> currList = hasNodes.get(j);
+
+                        for (Pane currPane : currList) {
+                          currPane.setLayoutX(points.get(j).x);
+                          currPane.setLayoutY(points.get(j).y);
+
+                          addNumEquipDisplay(currPane, currList.size());
+                        }
+                      }
+                    }
+
+                    newMedEquip.setOnContextMenuRequested(
+                        e -> {
+                          if (equip.size() > 0) {
+                            equipList.clear();
+                            for (MedEquip r : equip) {
+                              equipList.add(r);
+                            }
+
+                            // Show only the correct pane
+                            equipInfoPane.setVisible(true);
+                            locationInfoPane.setVisible(false);
+                            reqInfoPane.setVisible(false);
+                            currentEquip = allMedEquips.get(newMedEquip);
+                            MedEquip o = equipList.get(currentEquip);
+                            newLocationID = String.valueOf(o.getEquipID());
+                            equipID.setText(String.valueOf(o.getEquipID()));
+                            equipLocation.setText(o.getEquipLocId());
+                            equipType.setText(o.getEquipType());
+                            equipClean.setText(o.getIsClean());
+                          }
+                        });
+                    // Dragging the pin
+                    newMedEquip.setOnMouseDragged(
+                        e -> {
+                          if (e.isPrimaryButtonDown()) {
+                            MapComponent.setIsDraggingPin(true);
+                            newMedEquip.setLayoutX(e.getX() + newMedEquip.getLayoutX() - 48 * .25);
+                            newMedEquip.setLayoutY(e.getY() + newMedEquip.getLayoutY() - 95 * .25);
+                          }
+                        });
+                    newMedEquip.setOnMouseReleased(
+                        e -> {
+                          if (MapComponent.getIsDraggingPin()) {
+                            MapComponent.setIsDraggingPin(false);
+                            MedEquip equipPiece = equip.get(allMedEquips.get(newMedEquip));
+                            MedEquip newEquip =
+                                new MedEquip(
+                                    String.valueOf(equipPiece.getEquipID()),
+                                    equipPiece.getEquipType(),
+                                    findNearestLoc(
+                                        newMedEquip.getLayoutX() - 48 * .25,
+                                        newMedEquip.getLayoutY() - 95 * .25,
+                                        allLocations,
+                                        allLocationIDs,
+                                        equipPiece.getEquipLocId()),
+                                    equipPiece.getIsClean(),
+                                    equipPiece.getStatus());
+                            DBManager.update(newEquip);
+                            equip.add(newEquip);
+                            switchMap(newFloor, mapMode);
+                          }
+                        });
                   }
-                  equipIcon.setFitWidth(iconDim);
-                  equipIcon.setFitHeight(iconDim);
-                  newMedEquip.setPrefWidth(iconDim);
-                  newMedEquip.setPrefHeight(iconDim);
-                  newMedEquip.getChildren().add(frame);
-                  newMedEquip.getChildren().add(equipIcon);
-                  newMedEquip.visibleProperty().bind(medCheckbox.selectedProperty());
-                  mapElements.add(newMedEquip);
-                  medEquipAdded = true;
                 }
                 // Add service request bubbles
                 if (requests.size() > 0) {
-                  Circle c =
-                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
-                  newServiceRequest.setLayoutX(l.getXCoord() - 20);
-                  newServiceRequest.setLayoutY(l.getYCoord());
+                  // Set location (circle thingy)
+                  if (numOfEquipAtLocation == 0) {
+                    newServiceRequest.setLayoutX(l.getXCoord() + iconDim);
+                    newServiceRequest.setLayoutY(l.getYCoord());
+                  } else if (numOfEquipAtLocation == 1) {
+                    newServiceRequest.setLayoutX(l.getXCoord() + (iconDim / 6) + iconDim);
+                    newServiceRequest.setLayoutY(l.getYCoord());
+                  } else {
+                    ArrayList<Point> points =
+                        getHex(
+                            numOfEquipAtLocation + 1,
+                            iconDim / 2,
+                            new Point(l.getXCoord(), l.getYCoord()));
+                    Point finalPoint = points.get(numOfEquipAtLocation);
+                    newServiceRequest.setLayoutX(finalPoint.x);
+                    newServiceRequest.setLayoutY(finalPoint.y);
+                  }
                   Circle frame =
                       new Circle(
                           iconDim / 2,
@@ -406,12 +646,12 @@ public class MapPageController implements IController {
                           iconDim / 2,
                           new Color(255 / 255.0, 43 / 255.0, 43 / 255.0, 1));
                   ImageView reqIcon = new ImageView();
-                  if (equip.size() < 9) {
+                  if (requests.size() < 9) {
                     reqIcon.setImage(
                         new Image(
                             String.valueOf(
                                 App.class
-                                    .getResource("views/images/icons/" + equip.size() + ".png")
+                                    .getResource("views/images/icons/" + requests.size() + ".png")
                                     .toString())));
                   } else {
                     reqIcon.setImage(
@@ -433,7 +673,7 @@ public class MapPageController implements IController {
                 // Set behavior for the location pins
                 newLocation.setOnContextMenuRequested(
                     e -> {
-                      fuck = String.valueOf(l.getNodeID());
+                      newLocationID = String.valueOf(l.getNodeID());
                       // Show only the correct pane
                       locationInfoPane.setVisible(true);
                       equipInfoPane.setVisible(false);
@@ -445,98 +685,27 @@ public class MapPageController implements IController {
                       locationShort.setText(l.getShortName());
                       locationLong.setText(l.getLongName());
                       locationID.setText(String.valueOf(l.getNodeID()));
+                      System.out.println(equip);
                     });
-                if (medEquipAdded) {
-                  // Set behavior for the equipment circles
-                  newMedEquip.setOnContextMenuRequested(
-                      e -> {
-                        if (equip.size() > 0) {
-                          fuck3.clear();
-                          for (MedEquip r : equip) {
-                            fuck3.add(r);
-                          }
-
-                          // Show only the correct pane
-                          equipInfoPane.setVisible(true);
-                          locationInfoPane.setVisible(false);
-                          reqInfoPane.setVisible(false);
-                          currentEquip %= fuck3.size();
-                          MedEquip o = fuck3.get(currentEquip);
-                          fuck = String.valueOf(o.getEquipID());
-                          equipID.setText(String.valueOf(o.getEquipID()));
-                          equipLocation.setText(o.getEquipLocId());
-                          equipType.setText(o.getEquipType());
-                          equipClean.setText(o.getIsClean());
-                        }
-                      });
-                  // Dragging the pin
-                  newMedEquip.setOnMouseDragged(
-                      e -> {
-                        if (e.isPrimaryButtonDown()) {
-                          MapComponent.setIsDraggingPin(true);
-                          newMedEquip.setLayoutX(e.getX() + newMedEquip.getLayoutX() - 48 * .25);
-                          newMedEquip.setLayoutY(e.getY() + newMedEquip.getLayoutY() - 95 * .25);
-                        }
-                      });
-                  newMedEquip.setOnMouseReleased(
-                      e -> {
-                        MapComponent.setIsDraggingPin(false);
-                        // Add the updated equipment
-                        //                          currentEquip %= fuck3.size();
-                        MedEquip equipPiece = equip.get(currentEquip % equip.size());
-                        MedEquip newEquip =
-                            new MedEquip(
-                                String.valueOf(equipPiece.getEquipID()),
-                                equipPiece.getEquipType(),
-                                findNearestLoc(
-                                    newMedEquip.getLayoutX() - 48 * .25,
-                                    newMedEquip.getLayoutY() - 95 * .25,
-                                    allLocations,
-                                    allLocationIDs,
-                                    equipPiece.getEquipLocId()),
-                                equipPiece.getIsClean(),
-                                equipPiece.getStatus());
-                        DBManager.update(newEquip);
-                        equip.add(newEquip);
-                        switchMap(newFloor, mapMode);
-                      });
-                }
                 if (serviceRequestAdded) {
                   // Set behavior for the requests circle
                   newServiceRequest.setOnContextMenuRequested(
                       e -> {
                         if (requests.size() > 0) {
-                          fuck2.clear();
+                          requestsList.clear();
                           for (ServiceRequest r : requests) {
-                            fuck2.add(r);
+                            requestsList.add(r);
                           }
-                          // Show only the correct pane
-                          reqInfoPane.setVisible(true);
-                          locationInfoPane.setVisible(false);
-                          equipInfoPane.setVisible(false);
-
-                          this.currReqSelection %= fuck2.size();
-                          currReqDisplay.setText(
-                              fuck2.get(this.currReqSelection).getRequestId() + "");
-                          this.reqLocationBox.setText(
-                              fuck2.get(this.currReqSelection).getLocationID());
-                          this.reqDescriptionBox.setText(
-                              fuck2.get(this.currReqSelection).getAdditionalNotes());
-                          this.reqStatusBox.setText(
-                              fuck2.get(this.currReqSelection).getStatus().name());
-                          this.reqTypeBox.setText(
-                              fuck2.get(this.currReqSelection).getType().getFriendlyName());
-                          this.reqNurseBox.setText(
-                              fuck2.get(this.currReqSelection).getAssignedNurse());
+                          updateReqInfo();
                         }
                       });
                 }
 
                 locationSubmit.setOnMouseClicked(
                     e -> {
-                      Location fuckMe =
+                      Location newLoc =
                           new Location(
-                              fuck,
+                              newLocationID,
                               Integer.parseInt(locationX.getText()),
                               Integer.parseInt(locationY.getText()),
                               l.getFloor(),
@@ -544,20 +713,26 @@ public class MapPageController implements IController {
                               l.getNodeType(),
                               locationLong.getText(),
                               locationShort.getText());
-                      DBManager.update(fuckMe);
+                      DBManager.update(newLoc);
                       exit();
                       switchMap(newFloor, mapMode);
                     });
 
                 reqSubmit.setOnMouseClicked(
                     e -> {
-                      this.currReqSelection %= this.fuck2.size();
-                      ServiceRequest req = fuck2.get(this.currReqSelection);
-                      req.setAssignedNurse(reqNurseBox.getText());
-                      // req.setStatus(reqStatusBox.getText());
+                      this.currReqSelection %= this.requestsList.size();
+                      ServiceRequest req = requestsList.get(this.currReqSelection);
+                      String[] atts = req.getType().getAttributes();
+                      for (int i = 0; i < extraAtts.size(); i++) {
+                        String val = extraVals.get(i).getText();
+                        req.set(atts[i], val);
+                      }
 
+                      req.setStatus(RequestStatus.toStatus(this.reqStatusBox.getText()));
+                      req.setAssignedNurse(this.reqNurseBox.getText());
+                      req.setAdditionalNotes(this.reqDescriptionBox.getText());
                       DBManager.update(req);
-                      // ("Submit");
+                      System.out.println("Updated request");
                     });
 
                 equipUp.setOnMouseClicked(
@@ -576,18 +751,17 @@ public class MapPageController implements IController {
                     e -> {
                       MedEquip t =
                           new MedEquip(
-                              fuck,
+                              newLocationID,
                               equipType.getText(),
                               equipLocation.getText(),
                               equipClean.getText(),
-                              ""); // TODO fix
+                              " "); // TODO fix
                       DBManager.update(t);
-                      DBManager.save(t);
 
                       equip.add(t);
                       switchMap(newFloor, mapMode);
                       System.out.println(
-                          fuck
+                          newLocationID
                               + ","
                               + equipLocation.getText()
                               + ","
@@ -605,6 +779,33 @@ public class MapPageController implements IController {
 
     // Switch to new background image
     imageView.setImage(floorImages.get(newFloor));
+  }
+
+  private void addNumEquipDisplay(Pane currPane, int numEquip) {
+    Pane numEquipDisplay = new Pane();
+    Circle c =
+        new Circle(iconDim / 2 + iconDim / 4, iconDim / 2 - iconDim / 4, iconDim / 3, Color.RED);
+    ImageView numEquipImage = new ImageView();
+    if (numEquip >= 9) {
+      numEquipImage.setImage(
+          new Image(App.class.getResource("views/images/icons/9.png").toString()));
+    } else {
+      numEquipImage.setImage(
+          new Image(App.class.getResource("views/images/icons/" + numEquip + ".png").toString()));
+    }
+    numEquipImage.setLayoutX(c.getLayoutX() + (iconDim / 2));
+    numEquipImage.setLayoutY(c.getLayoutY());
+    numEquipImage.setFitHeight(iconDim / 2);
+    numEquipImage.setFitWidth(iconDim / 2);
+
+    numEquipDisplay.setPrefWidth(iconDim / 2);
+    numEquipDisplay.setPrefHeight(iconDim / 2);
+    numEquipDisplay.getChildren().add(c);
+    numEquipDisplay.getChildren().add(numEquipImage);
+    numEquipDisplay
+        .visibleProperty()
+        .bind(currPane.hoverProperty().and(Bindings.not(currPane.pressedProperty())));
+    currPane.getChildren().add(numEquipDisplay);
   }
 
   private String findNearestLoc(
@@ -634,6 +835,9 @@ public class MapPageController implements IController {
   }
 
   public void initialize() throws IOException {
+
+    this.attVbox.getChildren().remove(this.attName);
+    this.valueVbox.getChildren().remove(this.attValue);
 
     ll1PopupPane.setVisible(true);
     ll1PopupPane.setOpacity(0);
@@ -714,36 +918,43 @@ public class MapPageController implements IController {
         e -> {
           switchMap(Floors.LOWER_LEVEL_1, mapMode);
           currentFloor = "ll1";
+          setButtonColors("L1");
         });
     floorLL2Button.setOnAction(
         e -> {
           switchMap(Floors.LOWER_LEVEL_2, mapMode);
           currentFloor = "ll2";
+          setButtonColors("L2");
         });
     floor1Button.setOnAction(
         e -> {
           switchMap(Floors.FIRST_FLOOR, mapMode);
           currentFloor = "1";
+          setButtonColors("1");
         });
     floor2Button.setOnAction(
         e -> {
           switchMap(Floors.SECOND_FLOOR, mapMode);
           currentFloor = "2";
+          setButtonColors("2");
         });
     floor3Button.setOnAction(
         e -> {
           switchMap(Floors.THIRD_FLOOR, mapMode);
           currentFloor = "3";
+          setButtonColors("3");
         });
     floor4Button.setOnAction(
         e -> {
           switchMap(Floors.FOURTH_FLOOR, mapMode);
           currentFloor = "4";
+          setButtonColors("4");
         });
     floor5Button.setOnAction(
         e -> {
           switchMap(Floors.FIFTH_FLOOR, mapMode);
           currentFloor = "5";
+          setButtonColors("5");
         });
     /*
     modeBox.setOnAction(
@@ -756,6 +967,8 @@ public class MapPageController implements IController {
 
     // Load initial floor and mode
     switchMap(lastFloor, MapMode.LOCATION);
+    setButtonColors(lastFloor.dbKey);
+
     equipInfoPane.setVisible(false);
     reqInfoPane.setVisible(false);
     locationInfoPane.setVisible(false);
@@ -766,7 +979,7 @@ public class MapPageController implements IController {
         .getMapPane()
         .setOnMouseReleased(
             e -> {
-              System.out.println("Mouse released");
+              // System.out.println("Mouse released");
               if (locationDragStatus) {}
               locationDragStatus = false;
             });
@@ -794,7 +1007,7 @@ public class MapPageController implements IController {
         e -> {
           locationPin.setLayoutX(985);
           locationPin.setLayoutY(20);
-          System.out.println(currentFloor);
+          // System.out.println(currentFloor);
           Robot bot = null;
           try {
             bot = new Robot();
@@ -808,7 +1021,7 @@ public class MapPageController implements IController {
 
           bot.mousePress(mask);
           bot.mouseRelease(mask);
-          System.out.println(e.getX() + " " + e.getY());
+          // System.out.println(e.getX() + " " + e.getY());
         });
 
     locationsCheckbox.setSelected(true);
@@ -829,36 +1042,81 @@ public class MapPageController implements IController {
 
   public void right() {
     this.currReqSelection++;
-    System.out.println("right" + currReqSelection);
+    // System.out.println("right" + currReqSelection);
     updateReqInfo();
   }
 
   public void left() {
     this.currReqSelection--;
-    System.out.println("left" + currReqSelection);
+    // System.out.println("left" + currReqSelection);
     updateReqInfo();
   }
 
   public void updateReqInfo() {
-    this.currReqSelection %= fuck2.size();
-    currReqDisplay.setText(fuck2.get(this.currReqSelection).getRequestId() + "");
-    this.reqLocationBox.setText(fuck2.get(this.currReqSelection).getLocationID());
-    this.reqDescriptionBox.setText(fuck2.get(this.currReqSelection).getAdditionalNotes());
-    this.reqStatusBox.setText(fuck2.get(this.currReqSelection).getStatus().name());
-    this.reqTypeBox.setText(fuck2.get(this.currReqSelection).getType().getFriendlyName());
-    this.reqNurseBox.setText(fuck2.get(this.currReqSelection).getAssignedNurse());
 
+    // Show only the correct pane
+    reqInfoPane.setVisible(true);
+    locationInfoPane.setVisible(false);
     equipInfoPane.setVisible(false);
+
+    this.currReqSelection %= requestsList.size();
+    if (this.currReqSelection < 0) {
+      this.currReqSelection = requestsList.size() - 1;
+    }
+    currReqDisplay.setText(requestsList.get(this.currReqSelection).getRequestId() + "");
+    this.reqLocationBox.setText(requestsList.get(this.currReqSelection).getLocationID());
+    this.reqDescriptionBox.setText(requestsList.get(this.currReqSelection).getAdditionalNotes());
+    this.reqStatusBox.setText(requestsList.get(this.currReqSelection).getStatus().name());
+    this.reqTypeBox.setText(requestsList.get(this.currReqSelection).getType().getFriendlyName());
+    this.reqNurseBox.setText(requestsList.get(this.currReqSelection).getAssignedNurse());
+
+    for (TextField tf : extraAtts) {
+      attVbox.getChildren().remove(tf);
+    }
+    for (MFXTextField mtf : extraVals) {
+      valueVbox.getChildren().remove(mtf);
+    }
+    extraAtts.clear();
+    extraVals.clear();
+    ServiceRequest sreq = requestsList.get(this.currReqSelection);
+    RequestTypes rt = sreq.getType();
+    String[] atts = rt.getAttributes();
+    String[] fAtts = rt.getFriendlyAttributes();
+    for (int i = 0; i < rt.getAttributeCount(); i++) {
+      TextField name = getFieldClone(attName);
+      name.setText(fAtts[i]);
+      // dont ask
+      VBox.setMargin(name, new javafx.geometry.Insets(1, 0, 0, 0));
+      this.extraAtts.add(name);
+
+      MFXTextField val = getMFXFieldClone(attValue);
+      val.getStyleClass().clear();
+      val.getStyleClass().add("mfx-text-field");
+      val.getStyleClass().add("requestInput");
+      val.setStyle("-fx-font-size: 12px;");
+      // idk why this is necessary but it is
+      val.setPrefHeight(29);
+      val.setMaxHeight(29);
+      val.setMinHeight(0);
+      val.setText(sreq.get(atts[i]));
+      val.setAlignment(Pos.CENTER_LEFT);
+      // add text padding
+      val.setPadding(new javafx.geometry.Insets(5, 5, 5, 5));
+      this.extraVals.add(val);
+
+      attVbox.getChildren().add(name);
+      valueVbox.getChildren().add(val);
+    }
   }
 
   public void updateEquipInfo() {
     if (currentEquip == -1) {
-      currentEquip = fuck3.size() - 1;
+      currentEquip = equipList.size() - 1;
     }
-    currentEquip = currentEquip % fuck3.size();
-    MedEquip o = fuck3.get(currentEquip);
-    fuck = String.valueOf(o.getEquipID());
-    System.out.println(fuck);
+    currentEquip = currentEquip % equipList.size();
+    MedEquip o = equipList.get(currentEquip);
+    newLocationID = String.valueOf(o.getEquipID());
+    System.out.println(newLocationID);
     equipID.setText(String.valueOf(o.getEquipID()));
     equipLocation.setText(o.getEquipLocId());
     equipType.setText(o.getEquipType());
@@ -959,6 +1217,77 @@ public class MapPageController implements IController {
   public void L5Enter() {
     updateQuickDash("5");
     l5PopupPane.setOpacity(1);
+  }
+
+  public MFXTextField getMFXFieldClone(MFXTextField l) {
+    MFXTextField clone = new MFXTextField();
+    clone.getStyleClass().clear();
+    clone.setPrefSize(l.getPrefWidth(), l.getPrefHeight());
+    clone.setLayoutX(l.getLayoutX());
+    clone.setLayoutY(l.getLayoutY());
+    //    clone.setStyle(l.getStyle());
+    clone.setText(l.getText());
+    clone.setTextFill(l.getTextFill());
+    clone.setFont(l.getFont());
+    clone.setPadding(l.getPadding());
+    clone.setAlignment(l.getAlignment());
+    clone.setTranslateX(l.getTranslateX());
+    clone.setTranslateY(l.getTranslateY());
+    clone.setMaxHeight(l.getMaxHeight());
+    clone.setMaxWidth(l.getMaxWidth());
+    clone.setPrefHeight(l.getPrefHeight());
+    clone.setPrefWidth(l.getPrefWidth());
+    clone.setMinHeight(l.getMinHeight());
+    clone.setMinWidth(l.getMinWidth());
+    clone.setEditable(l.isEditable());
+    clone.getStylesheets().addAll(l.getStylesheets());
+
+    //    if (l.getStyleClass().size() > 0) {
+    //      clone.getStyleClass().add(l.getStyleClass().get(l.getStyleClass().size() - 1));
+    //    }
+
+    return clone;
+  }
+
+  public TextField getFieldClone(TextField l) {
+    TextField clone = new TextField();
+    //    clone.getStyleClass().clear();
+    clone.setPrefSize(l.getPrefWidth(), l.getPrefHeight());
+    clone.setLayoutX(l.getLayoutX());
+    clone.setLayoutY(l.getLayoutY());
+    clone.setStyle(l.getStyle());
+    clone.setText(l.getText());
+    clone.setFont(l.getFont());
+    clone.setPadding(l.getPadding());
+    clone.setAlignment(l.getAlignment());
+    clone.setTranslateX(l.getTranslateX());
+    clone.setTranslateY(l.getTranslateY());
+    clone.setMaxHeight(l.getMaxHeight());
+    clone.setMaxWidth(l.getMaxWidth());
+    clone.setPrefHeight(l.getPrefHeight());
+    clone.setPrefWidth(l.getPrefWidth());
+    clone.setMinHeight(l.getMinHeight());
+    clone.setMinWidth(l.getMinWidth());
+    clone.getStylesheets().addAll(l.getStylesheets());
+    clone.setEditable(l.isEditable());
+    //    if (l.getStyleClass().size() > 0) {
+    //      clone.getStyleClass().add(l.getStyleClass().get(l.getStyleClass().size() - 1));
+    //    }
+
+    return clone;
+  }
+
+  private VBox getVboxClone(VBox vbox) {
+    // clones the vbox vbox
+    VBox clone = new VBox();
+    clone.setPrefSize(vbox.getPrefWidth(), vbox.getPrefHeight());
+    clone.setLayoutX(vbox.getLayoutX());
+    clone.setLayoutY(vbox.getLayoutY());
+    clone.setStyle(vbox.getStyle());
+    clone.setAlignment(vbox.getAlignment());
+    clone.setTranslateX(vbox.getTranslateX());
+    clone.setTranslateY(vbox.getTranslateY());
+    return clone;
   }
 
   @FXML

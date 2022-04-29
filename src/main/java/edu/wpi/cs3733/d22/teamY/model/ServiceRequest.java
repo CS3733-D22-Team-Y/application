@@ -1,6 +1,5 @@
 package edu.wpi.cs3733.d22.teamY.model;
 
-import edu.wpi.cs3733.d22.teamY.DBUtils;
 import edu.wpi.cs3733.d22.teamY.RequestTypes;
 import javax.persistence.*;
 
@@ -432,7 +431,6 @@ public class ServiceRequest implements StringArrayConv {
 
   public String getInfoBoxText() {
     StringBuilder sb = new StringBuilder();
-    sb.append("Room: ").append(DBUtils.convertIDToName(getLocationID())).append("\n");
     switch (type) {
       case FLORAL:
       case MISC:
@@ -448,6 +446,7 @@ public class ServiceRequest implements StringArrayConv {
         sb.append(getSpecificText());
         break;
     }
+    sb.append("\nAdditional Notes: ").append(additionalNotes);
     return sb.toString();
   }
 }

@@ -15,7 +15,6 @@ import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.util.Objects;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -184,12 +183,6 @@ public class MaintenanceRequestController implements IController {
     if (unsureRadioButton.isSelected()) return unsureText;
     // Should never happen
     return ("");
-  }
-
-  @FXML
-  void backToRequestMenu(ActionEvent event) throws IOException {
-    SceneLoading.loadScene("views/RequestMenu.fxml");
-    resetAllFields();
   }
 
   @FXML

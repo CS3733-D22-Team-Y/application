@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -44,12 +43,6 @@
       </Rectangle>
       <AnchorPane fx:id="mainPane">
          <children>
-            <TextArea fx:id="equipmentTable" layoutX="450.0" layoutY="200.0" prefHeight="400.0" prefWidth="570.0" style="letter-spacing: em-wide; letter-spacing: 5px;">
-               <font>
-                  <Font name="Monospaced Bold" size="12.0" />
-               </font>
-            </TextArea>
-            <Label layoutX="451.0" layoutY="181.0" prefHeight="18.0" prefWidth="570.0" style="-fx-background-color: GRAY;" text="Equipment ID                              Equipment Type           Location                                         Status" />
             <Label layoutX="270.0" styleClass="title" text="Medical Equipment">
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
@@ -71,7 +64,7 @@
                   <Font name="Arial Rounded MT Bold" size="60.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="10.0" arcWidth="10.0" height="10.0" layoutX="270.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0">
+            <Rectangle arcHeight="10.0" arcWidth="10.0" height="9.0" layoutX="270.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="515.0">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -90,7 +83,10 @@
                </fill>
             </Rectangle>
             <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
-            <TableView fx:id="medEquipTableView" layoutX="320.0" layoutY="117.0" prefHeight="550.0" prefWidth="700.0" />
+            <TableView fx:id="medEquipTableView" layoutX="277.0" layoutY="117.0" prefHeight="663.0" prefWidth="895.0" styleClass="plainText">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy></TableView>
          </children>
       </AnchorPane>
     </children>

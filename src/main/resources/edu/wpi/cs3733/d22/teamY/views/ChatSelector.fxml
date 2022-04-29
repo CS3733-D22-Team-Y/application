@@ -59,18 +59,18 @@
             <String fx:value="primaryColor" />
          </styleClass>
         </Label>
-      <MFXScrollPane hbarPolicy="NEVER" layoutX="278.0" layoutY="104.0" prefHeight="677.0" prefWidth="403.0">
+      <MFXScrollPane hbarPolicy="NEVER" layoutX="278.0" layoutY="104.0" prefHeight="677.0" prefWidth="403.0" style="-fx-background-color: #93CDDCB8;">
          <content>
             <VBox fx:id="chatSelector">
                <children>
                   <Pane fx:id="blankMessage" prefHeight="88.0" prefWidth="399.0">
                      <children>
-                        <Rectangle fx:id="bRect" arcHeight="5.0" fill="#bcbcbc" height="88.0" layoutX="-1.0" layoutY="-1.0" stroke="BLACK" strokeType="OUTSIDE" width="399.0" />
-                        <HBox fx:id="bHbox" alignment="CENTER" layoutY="8.0" prefWidth="396.0">
+                        <Rectangle fx:id="bRect" arcHeight="20.0" arcWidth="20.0" fill="#a899a1" height="85.0" layoutX="3.0" layoutY="2.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="392.0" />
+                        <HBox fx:id="bHbox" alignment="CENTER" layoutX="-4.0" layoutY="8.0" prefWidth="396.0">
                            <children>
                               <Pane fx:id="bPicPane" prefHeight="74.0" prefWidth="70.0">
                                  <children>
-                                    <Circle fx:id="bCircle" fill="WHITE" layoutX="37.0" layoutY="37.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="bCircle" fill="WHITE" layoutX="37.0" layoutY="37.0" radius="27.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" />
                                     <Label fx:id="bInitials" layoutX="30.0" layoutY="18.0" text="L">
                                        <font>
                                           <Font name="System Bold" size="26.0" />
@@ -109,9 +109,9 @@
             </VBox>
          </content>
       </MFXScrollPane>
-      <Pane fx:id="sendPane" layoutX="678.0" layoutY="726.0" visible="false">
+      <Pane fx:id="sendPane" layoutX="678.0" layoutY="724.0" visible="false">
          <children>
-            <MFXButton fx:id="sendButton" layoutX="415.0" onAction="#send" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #14667B;" text="Send" textFill="WHITE">
+            <MFXButton fx:id="sendButton" layoutX="412.0" onAction="#send" prefHeight="67.0" prefWidth="104.0" style="-fx-background-color: #14667B;" text="Send" textFill="WHITE">
                <font>
                   <Font name="Calibri Bold" size="20.0" />
                </font>
@@ -120,7 +120,7 @@
                   <String fx:value="primaryColor" />
                </styleClass>
             </MFXButton>
-            <MFXTextField fx:id="messageText" layoutX="6.0" onAction="#send" prefHeight="49.0" prefWidth="403.0">
+            <MFXTextField fx:id="messageText" floatingTextGap="1.0" layoutX="6.0" onAction="#send" prefHeight="50.0" prefWidth="403.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -132,7 +132,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <MFXButton layoutX="548.0" layoutY="726.0" onAction="#startChat" prefHeight="50.0" prefWidth="124.0" style="-fx-background-color: #14667B;" text="Start Chat" textAlignment="CENTER" textFill="WHITE">
+      <MFXButton layoutX="544.0" layoutY="726.0" onAction="#startChat" prefHeight="50.0" prefWidth="124.0" style="-fx-background-color: #14667B;" text="Start Chat" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
@@ -149,7 +149,7 @@
                      <children>
                         <Pane fx:id="textContainer" layoutX="8.0" layoutY="27.0" maxHeight="500.0" prefHeight="72.0" prefWidth="496.0">
                            <children>
-                              <Rectangle fx:id="messageBackground" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="72.0" layoutX="-3.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" width="489.0" />
+                              <Rectangle fx:id="messageBackground" arcHeight="10.0" arcWidth="10.0" fill="DODGERBLUE" height="72.0" layoutX="-3.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="489.0" />
                               <Label fx:id="messageLabel" alignment="CENTER_RIGHT" layoutX="3.0" layoutY="4.0" maxHeight="500.0" maxWidth="515.0" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="64.0" prefWidth="478.0" text="few wor d few wordfew wordfew wordfew wordfew wordfew wordfew wordfew wordfew word" wrapText="true">
                                  <font>
                                     <Font size="18.0" />
@@ -206,7 +206,7 @@
                         <Font size="22.0" />
                      </font>
                   </MFXTextField>
-                  <Rectangle fx:id="searchBoxCover" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="73.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="488.0" />
+                  <Rectangle fx:id="searchBoxCover" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="73.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="490.0" />
                </children>
             </Pane>
             <MFXScrollPane fx:id="resultsArea" hbarPolicy="NEVER" prefHeight="610.0" prefWidth="503.0">
@@ -215,15 +215,15 @@
                      <children>
                         <Pane fx:id="resultItemPane" minHeight="-Infinity" prefHeight="65.0" prefWidth="488.0">
                            <children>
-                              <Rectangle fx:id="resultRect" arcHeight="5.0" fill="#bcbcbc" height="64.0" layoutX="-2.0" layoutY="1.0" stroke="BLACK" strokeType="OUTSIDE" width="492.0" />
+                              <Rectangle fx:id="resultRect" arcHeight="20.0" arcWidth="20.0" fill="#bcbcbc" height="62.0" layoutX="1.0" layoutY="2.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="472.0" />
                               <VBox fx:id="resultVbox" alignment="CENTER" prefHeight="64.0" prefWidth="488.0">
                                  <children>
-                                    <Label fx:id="resultName" alignment="CENTER" prefHeight="31.0" prefWidth="485.0" text="Nathan Pollock #11">
+                                    <Label fx:id="resultName" alignment="CENTER" layoutX="-10.0" prefHeight="31.0" prefWidth="475.0" text="Nathan Pollock #11">
                                        <font>
                                           <Font name="System Bold" size="21.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="resultRole" alignment="CENTER" prefHeight="27.0" prefWidth="485.0" text="Fulltime Backend">
+                                    <Label fx:id="resultRole" alignment="CENTER" layoutX="-10.0" prefHeight="27.0" prefWidth="475.0" text="Fulltime Backend">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -238,7 +238,7 @@
             </MFXScrollPane>
          </children>
       </VBox>
-      <Line endX="-100.0" endY="-536.0" layoutX="778.0" layoutY="536.0" startX="-100.0" startY="244.0" />
+      <Line endX="-100.0" endY="-536.0" layoutX="778.0" layoutY="536.0" startX="-100.0" startY="244.0" strokeWidth="0.0" />
       <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
       <Label fx:id="chatIndicator" alignment="BOTTOM_LEFT" layoutX="679.0" layoutY="1.0" prefHeight="104.0" prefWidth="515.0" text="Chat with: Nathan , Connor, Emily, Yoshi, Ben, Dan, Wong, Wilson" visible="false" wrapText="true">
          <font>
@@ -248,6 +248,6 @@
             <Insets left="10.0" />
          </padding>
       </Label>
-      <Line fx:id="chatHeaderLine" endX="-107.5" endY="-536.0" layoutX="785.0" layoutY="641.0" startX="415.0" startY="-536.0" visible="false" />
+      <Line fx:id="chatHeaderLine" endX="-107.5" endY="-536.0" layoutX="785.0" layoutY="641.0" startX="415.0" startY="-536.0" strokeWidth="0.0" visible="false" />
     </children>
 </AnchorPane>

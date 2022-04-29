@@ -4,6 +4,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -22,7 +23,7 @@
       </center></BorderPane>
    <Pane fx:id="locationInfoPane" layoutX="971.0" prefHeight="780.0" prefWidth="219.0" visible="false">
       <children>
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="700.0" layoutX="-15.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eeeeee" height="700.0" layoutX="-15.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
          <VBox layoutX="-17.0" layoutY="202.0" spacing="12.0">
             <children>
                <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Node ID:">
@@ -71,9 +72,9 @@
          <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Close" />
       </children>
    </Pane>
-   <Pane fx:id="equipInfoPane" layoutX="971.0" prefHeight="780.0" prefWidth="219.0">
+   <Pane fx:id="equipInfoPane" layoutX="971.0" prefHeight="780.0" prefWidth="219.0" visible="false">
       <children>
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="700.0" layoutX="-15.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eeeeee" height="700.0" layoutX="-15.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
          <TextField alignment="CENTER" editable="false" layoutX="69.0" layoutY="115.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Equip ID:">
             <font>
                <Font name="Microsoft Tai Le" size="12.0" />
@@ -99,7 +100,7 @@
                </TextField>
             </children>
          </VBox>
-         <VBox layoutX="90.0" layoutY="270.0" spacing="20.0">
+         <VBox layoutX="80.0" layoutY="270.0" spacing="20.0">
             <children>
                <MFXTextField fx:id="equipLocation" floatMode="DISABLED" prefHeight="0.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
                <MFXTextField fx:id="equipType" floatMode="DISABLED" prefHeight="8.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
@@ -108,21 +109,22 @@
          </VBox>
          <MFXButton fx:id="equipSubmit" layoutX="110.0" layoutY="675.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />
          <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Close" />
-         <MFXButton fx:id="equipDown" layoutX="4.0" layoutY="148.0" text="&lt;">
-            <font>
-               <Font size="24.0" />
-            </font></MFXButton>
-         <MFXButton fx:id="equipUp" layoutX="173.0" layoutY="148.0" text="&gt;">
-            <font>
-               <Font size="24.0" />
-            </font>
-         </MFXButton>
+         <ImageView fx:id="equipDown" fitHeight="29.0" fitWidth="53.0" layoutX="17.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/leftArrow.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="equipUp" fitHeight="29.0" fitWidth="53.0" layoutX="182.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/rightArrow.png" />
+            </image>
+         </ImageView>
       </children>
    </Pane>
-   <Pane fx:id="reqInfoPane" layoutX="981.0" prefHeight="790.0" prefWidth="219.0" visible="false">
+   <Pane fx:id="reqInfoPane" layoutX="981.0" prefHeight="790.0" prefWidth="219.0">
       <children>
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="700.0" layoutX="-25.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
-         <VBox layoutX="-32.0" layoutY="238.0" spacing="11.0">
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eeeeee" height="700.0" layoutX="-25.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
+         <VBox fx:id="attVbox" layoutX="-19.0" layoutY="161.0" spacing="11.0">
             <children>
                <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Type:">
                   <font>
@@ -144,31 +146,43 @@
                      <Font name="Microsoft Tai Le" size="12.0" />
                   </font>
                </TextField>
+               <TextField fx:id="attName" alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="ATTName">
+                  <font>
+                     <Font name="Microsoft Tai Le" size="12.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets top="5.0" />
+                  </VBox.margin>
+                  <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  </padding>
+               </TextField>
             </children>
          </VBox>
-         <VBox layoutX="57.0" layoutY="241.0" spacing="20.0">
+         <VBox fx:id="valueVbox" layoutX="70.0" layoutY="164.0" spacing="20.0">
             <children>
-               <MFXTextField fx:id="reqTypeBox" floatMode="DISABLED" prefHeight="15.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
-               <MFXTextField fx:id="reqLocationBox" floatMode="DISABLED" prefHeight="7.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+               <MFXTextField fx:id="reqTypeBox" allowEdit="false" floatMode="DISABLED" prefHeight="15.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+               <MFXTextField fx:id="reqLocationBox" allowEdit="false" floatMode="DISABLED" prefHeight="7.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
                <MFXTextField fx:id="reqStatusBox" floatMode="DISABLED" prefHeight="11.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
                <MFXTextField fx:id="reqNurseBox" floatMode="DISABLED" prefHeight="13.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+               <MFXTextField fx:id="attValue" floatMode="DISABLED" prefHeight="13.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
             </children>
          </VBox>
-         <MFXButton fx:id="reqSubmit" layoutX="100.0" layoutY="650.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />
-         <MFXButton layoutX="20.0" layoutY="650.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Close" />
-         <MFXButton layoutX="1.0" layoutY="99.0" onAction="#left" prefHeight="56.0" prefWidth="54.0" text="&lt;">
-            <font>
-               <Font size="30.0" />
-            </font>
-         </MFXButton>
-         <MFXButton layoutX="161.0" layoutY="99.0" onAction="#right" prefHeight="56.0" prefWidth="54.0" text="&gt;">
-            <font>
-               <Font size="30.0" />
-            </font>
-         </MFXButton>
-         <MFXTextField fx:id="currReqDisplay" allowEdit="false" floatMode="DISABLED" layoutX="43.0" layoutY="113.0" prefHeight="12.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
-         <JFXTextArea fx:id="reqDescriptionBox" layoutX="19.0" layoutY="491.0" prefHeight="151.0" prefWidth="179.0" style="-fx-font-size: 12;" text="No Description Provided" />
-         <Label layoutX="13.0" layoutY="480.0" text="Description:" />
+         <MFXButton fx:id="reqSubmit" layoutX="104.0" layoutY="720.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />
+         <MFXButton layoutX="24.0" layoutY="720.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Close" />
+         <MFXTextField fx:id="currReqDisplay" allowEdit="false" floatMode="DISABLED" layoutX="26.0" layoutY="109.0" prefHeight="12.0" prefWidth="134.0" style="-fx-font-size: 12;" styleClass="requestInput" />
+         <JFXTextArea fx:id="reqDescriptionBox" layoutX="23.0" layoutY="622.0" prefHeight="90.0" prefWidth="179.0" style="-fx-font-size: 12;" text="No Description Provided" />
+         <Label layoutX="14.0" layoutY="605.0" text="Description:" />
+         <ImageView fitHeight="29.0" fitWidth="53.0" layoutX="-8.0" layoutY="108.0" onMouseClicked="#left" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/leftArrow.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="equipUp1" fitHeight="29.0" fitWidth="53.0" layoutX="165.0" layoutY="109.0" onMouseClicked="#right" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/rightArrow.png" />
+            </image>
+         </ImageView>
       </children>
    </Pane>
    <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eeeeee" height="80.0" layoutX="909.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="281.0" />
@@ -183,7 +197,7 @@
    <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
    <Pane layoutX="330.0" layoutY="600.0" pickOnBounds="false" prefHeight="200.0" prefWidth="200.0">
       <children>
-         <Pane fx:id="ll1MainPane" layoutX="10.0" layoutY="-110.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
+         <Pane fx:id="ll1MainPane" layoutX="70.0" layoutY="-110.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
             <children>
                <MFXButton fx:id="floorLL1Button" layoutY="250.0" onMouseEntered="#LL1Enter" onMouseExited="#LL1Exit" prefHeight="50.0" prefWidth="50.0" text="LL1">
                   <font>
@@ -227,7 +241,7 @@
                </Pane>
             </children>
          </Pane>
-         <Pane fx:id="ll1MainPane1" layoutX="70.0" layoutY="-110.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
+         <Pane fx:id="ll1MainPane1" layoutX="10.0" layoutY="-110.0" maxHeight="300.0" pickOnBounds="false" prefHeight="50.0" prefWidth="50.0">
             <children>
                <MFXButton fx:id="floorLL2Button" layoutY="250.0" onMouseEntered="#LL2Enter" onMouseExited="#LL2Exit" prefHeight="50.0" prefWidth="50.0" text="LL2">
                   <font>

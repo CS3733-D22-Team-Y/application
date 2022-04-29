@@ -64,7 +64,7 @@ public class MiscRequestController implements IController {
     // Get request Num
     DBManager.save(
         new ServiceRequest(
-            RequestTypes.MEAL,
+            RequestTypes.MISC,
             assignedNurse,
             roomID,
             additionalNotes,
