@@ -19,7 +19,6 @@ public enum EntryType {
 
   REQUESTS(10, "CSVs/Requests", "Export_CSVs/requests_export", ServiceRequest.class),
 
-  MED_EQUIP_REQUEST(6, "MedEquipReq", "Export_CSVs/medEquipRequests_export", MedEquipReq.class),
 // region Enum Data / Methods
 /* Enum specification begins below... */ ;
 
