@@ -72,6 +72,10 @@ dependencies {
     compile "org.apache.commons:commons-lang3:3.3.2"
     compile group: 'com.github.sarxos', name: 'webcam-capture', version: '0.3.12'
 
+    implementation files('libs/TeamBAPI.jar')
+    implementation files('libs/teamC.jar')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
 }
 
 

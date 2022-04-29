@@ -21,8 +21,6 @@ public class Auth {
     return String.format("%06d", new Random().nextInt(999999));
   }
 
-
-
   public static String[] getKeys(String userName) {
     // get user with userName
     List<Employee> emps =

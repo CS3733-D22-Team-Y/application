@@ -50,27 +50,12 @@ public class MedEquip implements StringArrayConv {
 
   @Override
   public String toString() {
-    //    return "MedEquip{"
-    //        + "equipID='"
-    //        + equipID
-    //        + '\''
-    //        + ", equipType='"
-    //        + equipType
-    //        + '\''
-    //        + ", equipLocId='"
-    //        + equipLocId
-    //        + '\''
-    //        + ", isClean='"
-    //        + isClean
-    //        + '\''
-    //        + '}';
     String clean;
     if (Integer.parseInt(isClean) == 1) {
       clean = "Clean";
     } else {
       clean = "Dirty";
     }
-    // return equipNames.get(equipType) + " : " + equipID + " : " + clean;
     return "\n" + MapPageController.equipNames.get(equipType) + " : " + equipID + " : " + clean;
   }
 

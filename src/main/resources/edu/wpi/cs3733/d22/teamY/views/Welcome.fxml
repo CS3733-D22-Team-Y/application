@@ -6,6 +6,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
 <?import io.github.palexdev.materialfx.controls.MFXProgressSpinner?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -18,17 +19,17 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Blank.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.WelcomePageController">
+<AnchorPane fx:id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.WelcomePageController">
     <children>
         <Pane fx:id="yubikeyPane" layoutX="400.0" layoutY="222.0">
             <children>
                 <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="250.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
-                <Label fx:id="yubikeyInstruct" layoutY="98.0" prefHeight="25.0" prefWidth="370.0" style="-fx-text-alignment: center; -fx-alignment: center;" text="Tap Your Ubikey" textAlignment="CENTER">
+                <Label fx:id="yubikeyInstruct" layoutY="98.0" prefHeight="25.0" prefWidth="370.0" style="-fx-text-alignment: center; -fx-alignment: center;" styleClass="plainText" text="Tap Your Ubikey" textAlignment="CENTER">
                     <font>
                         <Font name="Microsoft Tai Le Bold" size="18.0" />
                     </font>
                 </Label>
-                <TextField fx:id="yubikeyEntry" layoutX="110.0" layoutY="142.0" onAction="#yubikeyDone" opacity="0.0" />
+                <TextField fx:id="yubikeyEntry" layoutX="110.0" layoutY="142.0" onAction="#yubikeyDone" opacity="0.0" styleClass="plainText" />
             </children>
         </Pane>
       <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
@@ -180,7 +181,7 @@
                </color4>
             </MFXProgressSpinner>
          </children></Pane>
-        <JFXButton layoutX="21.0" layoutY="222.0" onAction="#testingButton" prefHeight="282.0" prefWidth="299.0" ripplerFill="#5c4f4f00" text="Testing Button (DELETE BEFORE SUBMISSION)" textAlignment="CENTER" textFill="#ff00a1" visible="true" wrapText="true">
+        <JFXButton layoutX="21.0" layoutY="222.0" onAction="#testingButton" prefHeight="282.0" prefWidth="299.0" ripplerFill="#5c4f4f00" styleClass="plainText" text="Testing Button (DELETE BEFORE SUBMISSION)" textAlignment="CENTER" textFill="#ff00a1" visible="false" wrapText="true">
             <font>
                 <Font name="System Bold Italic" size="36.0" />
             </font>
@@ -188,7 +189,7 @@
         <Pane fx:id="faPane" layoutX="275.0" layoutY="175.0" visible="false">
             <children>
                 <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="461.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="663.0" />
-                <Label alignment="CENTER" layoutX="106.0" layoutY="14.0" prefHeight="75.0" prefWidth="452.0" text="2FA Selection" textAlignment="CENTER">
+                <Label alignment="CENTER" layoutX="106.0" layoutY="14.0" prefHeight="75.0" prefWidth="452.0" styleClass="title" text="2FA Selection" textAlignment="CENTER">
                     <font>
                         <Font name="Microsoft Tai Le Bold" size="40.0" />
                     </font>
@@ -238,15 +239,15 @@
         <Pane fx:id="codeEntryPane" layoutX="364.0" layoutY="222.0" prefHeight="256.0" prefWidth="370.0" visible="false">
             <children>
                 <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="256.0" opacity="0.72" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="370.0" />
-                <Label fx:id="codeEntryLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="7.0" prefHeight="113.0" prefWidth="299.0" text="Please enter the code that was sent to your device" textAlignment="CENTER" wrapText="true">
+                <Label fx:id="codeEntryLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="7.0" prefHeight="113.0" prefWidth="299.0" styleClass="plainText" text="Please enter the code that was sent to your device" textAlignment="CENTER" wrapText="true">
                     <font>
                         <Font name="Microsoft Tai Le Bold" size="23.0" />
                     </font>
                 </Label>
-                <TextField fx:id="codeEntryField" layoutX="69.0" layoutY="162.0" onAction="#codeChecker" prefHeight="50.0" prefWidth="236.0" />
+                <TextField fx:id="codeEntryField" layoutX="69.0" layoutY="162.0" onAction="#codeChecker" prefHeight="50.0" prefWidth="236.0" styleClass="plainText" />
             </children>
         </Pane>
-      <Label layoutX="1010.0" layoutY="771.0">
+      <Label layoutX="1010.0" layoutY="771.0" styleClass="plainText">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -264,7 +265,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label layoutX="1019.0" layoutY="665.0" text="Database Choice">
+      <Label layoutX="1019.0" layoutY="665.0" styleClass="plainText" text="Database Choice">
          <font>
             <Font name="Arial Rounded MT Bold" size="16.0" />
          </font>
@@ -285,7 +286,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <JFXComboBox fx:id="dbMenu" focusColor="BLACK" layoutX="1011.0" layoutY="687.0" onAction="#databaseSwitch" prefHeight="26.0" prefWidth="150.0">
+      <JFXComboBox fx:id="dbMenu" focusColor="BLACK" layoutX="1011.0" layoutY="687.0" onAction="#databaseSwitch" prefHeight="26.0" prefWidth="150.0" styleClass="plainText">
          <unFocusColor>
             <LinearGradient endX="0.5681817603833748" endY="1.0" startX="0.5643939542951006" startY="0.22348483403523764">
                <stops>
@@ -304,4 +305,8 @@
          </unFocusColor>
       </JFXComboBox>
     </children>
+   <stylesheets>
+      <URL value="@css/Blank.css" />
+      <URL value="@css/Fonts.css" />
+   </stylesheets>
 </AnchorPane>

@@ -63,46 +63,53 @@ public class RequestMenuController implements IController {
     bgPane.getChildren().get(index).setVisible(true);
   }
 
-  void showMainPane() {
-  }
+  void showMainPane() {}
 
   @FXML
   void loadLabReq() {
+    // loadRequestScreen(LAB_RESULTS_INDEX);
     NewSceneLoading.loadScene("views/requestTypes/LabResult.fxml");
   }
 
   @FXML
   void loadMedEquipReq() {
+    // loadRequestScreen(MEDICAL_RESULTS_INDEX);
     NewSceneLoading.loadScene("views/requestTypes/MedicalEquipmentRequest.fxml");
   }
 
   @FXML
   void loadLaundryReq() {
+    // loadRequestScreen(LAUNDRY_RESULTS_INDEX);
     NewSceneLoading.loadScene("views/requestTypes/LaundryRequest.fxml");
   }
 
   @FXML
   void loadMealReq() {
+    // loadRequestScreen(MEAL_RESULTS_INDEX);
     NewSceneLoading.loadScene("views/requestTypes/MealRequest.fxml");
   }
 
   @FXML
   void loadFloralReq() {
+    // loadRequestScreen(FLORAL_RESULTS_INDEX);
     NewSceneLoading.loadScene("views/requestTypes/FloralRequest.fxml");
   }
 
   @FXML
   void loadSecurityReq() {
+    // loadRequestScreen(SECURITY_RESULTS_INDEX);
     NewSceneLoading.loadScene("views/requestTypes/SecurityRequest.fxml");
   }
 
   @FXML
   void loadTranslatorReq() {
+    // loadRequestScreen(TRANSLATOR_RESULTS_INDEX);
     NewSceneLoading.loadScene("views/requestTypes/TranslatorRequest.fxml");
   }
 
   @FXML
   void loadOtherReq() {
+    // loadRequestScreen(MISC_RESULTS_INDEX);
     NewSceneLoading.loadScene("views/requestTypes/MiscRequest.fxml");
   }
 
