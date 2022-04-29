@@ -64,7 +64,6 @@ public class RequestMenuController implements IController {
   }
 
   void showMainPane() {
-    // loadRequestScreen(MAIN_PAGE_INDEX);
   }
 
   @FXML
