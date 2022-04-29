@@ -116,7 +116,7 @@
                <content>
                   <HBox fx:id="alertsBox" prefHeight="166.0" prefWidth="272.0">
                      <children>
-                        <Label styleClass="plainText" text="No active alerts." wrapText="true">
+                        <Label fx:id="noActiveAlertsMessage" styleClass="plainText" text="No active alerts." wrapText="true">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="18.0" />
                            </font>

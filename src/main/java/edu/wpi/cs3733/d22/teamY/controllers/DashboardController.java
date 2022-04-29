@@ -180,6 +180,8 @@ public class DashboardController implements IController {
   @FXML private CategoryAxis categoryAxis = new CategoryAxis();
   @FXML private NumberAxis numberAxis = new NumberAxis();
 
+  @FXML private Label noActiveAlertsMessage;
+
   @FXML
   private BarChart<String, Integer> barChart =
       new BarChart<String, Integer>(categoryAxis, (Axis) numberAxis);
@@ -566,6 +568,7 @@ public class DashboardController implements IController {
     // Label test = new Label("test");
     // test.setBackground(new Background(new BackgroundFill(Paint.TRANSLUCENT, CornerRadii.EMPTY,
     // Insets.EMPTY)));
+    noActiveAlertsMessage.setVisible(false);
     Label testLabel = new Label(inputText);
     testLabel.setStyle("-fx-font-size: 20");
     testLabel.setStyle("-fx-border-color: black;");

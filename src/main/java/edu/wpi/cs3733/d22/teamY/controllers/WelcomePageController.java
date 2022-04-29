@@ -263,7 +263,7 @@ public class WelcomePageController implements IController {
       loginAnimation();
     }
   }
-
+  // Done
   @FXML
   public void sendPushBullet() {
     String code = getCode();
