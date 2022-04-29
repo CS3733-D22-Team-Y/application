@@ -103,7 +103,6 @@ public class RequestMenuController implements IController {
 
   @FXML
   void loadOtherReq() {
-    // loadRequestScreen(MISC_RESULTS_INDEX);
     NewSceneLoading.loadScene("views/requestTypes/MiscRequest.fxml");
   }
 
