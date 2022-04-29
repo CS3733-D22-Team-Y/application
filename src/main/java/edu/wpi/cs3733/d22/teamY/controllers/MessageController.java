@@ -303,7 +303,6 @@ public class MessageController implements IController {
       }
     }
 
-
     int numCommas = 0;
     // find number of commas
     for (int i = 0; i < toBox.getText().length(); i++) {

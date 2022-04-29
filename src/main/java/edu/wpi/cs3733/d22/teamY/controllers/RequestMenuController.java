@@ -63,8 +63,7 @@ public class RequestMenuController implements IController {
     bgPane.getChildren().get(index).setVisible(true);
   }
 
-  void showMainPane() {
-  }
+  void showMainPane() {}
 
   @FXML
   void loadLabReq() {
