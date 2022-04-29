@@ -746,7 +746,7 @@ public class DashboardController implements IController {
     HashMap<String, HashMap<String, Integer>> floorCounts = DBUtils.getEquipFloorCounts();
 
     /*
-    this.pumpLabels[index].setText(floorCounts.get(floor).get("PUMP") + "");
+
     this.recLabels[index].setText(floorCounts.get(floor).get("RECLINER") + "");
     this.xLabels[index].setText(floorCounts.get(floor).get("XRAY") + "");*/
   }
