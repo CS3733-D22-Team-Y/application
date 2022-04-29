@@ -50,21 +50,7 @@ public class MedEquip implements StringArrayConv {
 
   @Override
   public String toString() {
-    //    return "MedEquip{"
-    //        + "equipID='"
-    //        + equipID
-    //        + '\''
-    //        + ", equipType='"
-    //        + equipType
-    //        + '\''
-    //        + ", equipLocId='"
-    //        + equipLocId
-    //        + '\''
-    //        + ", isClean='"
-    //        + isClean
-    //        + '\''
-    //        + '}';
-    String clean;
+        String clean;
     if (Integer.parseInt(isClean) == 1) {
       clean = "Clean";
     } else {
