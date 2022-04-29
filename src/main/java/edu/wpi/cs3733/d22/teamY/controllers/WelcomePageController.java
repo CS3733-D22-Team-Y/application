@@ -65,7 +65,7 @@ public class WelcomePageController implements IController {
 
   String universalCode;
 
-  String[] dbOptions = new String[] {"Embedded", "Client-Server", "GoogleCloud"};
+  String[] dbOptions = new String[] {"Embedded", "Client-Server"};
 
   @FXML
   void initialize() throws IOException {
