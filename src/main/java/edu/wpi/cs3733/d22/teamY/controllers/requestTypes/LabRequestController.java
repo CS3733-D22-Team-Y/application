@@ -143,12 +143,6 @@ public class LabRequestController implements IController {
     return "";
   }
 
-  @FXML
-  void backToRequestMenu() throws IOException {
-    SceneLoading.loadScene("views/RequestMenu.fxml");
-    resetAllFields();
-  }
-
   // Reset button functionality
   @FXML
   void resetAllFields() {

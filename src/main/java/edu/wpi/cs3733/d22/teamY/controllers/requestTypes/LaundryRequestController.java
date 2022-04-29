@@ -13,7 +13,6 @@ import edu.wpi.cs3733.d22.teamY.model.ServiceRequest;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
 import java.io.IOException;
 import java.util.Objects;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -138,12 +137,6 @@ public class LaundryRequestController implements IController {
     if (scrubsRadioButton.isSelected()) return scrubsText;
     // Will never be used
     return "";
-  }
-
-  @FXML
-  void backToRequestMenu(ActionEvent event) throws IOException {
-    SceneLoading.loadScene("views/RequestMenu.fxml");
-    resetAllFields();
   }
 
   @FXML
