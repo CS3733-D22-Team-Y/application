@@ -21,7 +21,7 @@ public class CreditsController {
 
 
 
-  // PortraitController portrait = loader.getController();
+
   // portrait.rewriteInfo(name);
   // stage.setScene(sceneToLoad);
   // stage.initModality(Modality.APPLICATION_MODAL);
