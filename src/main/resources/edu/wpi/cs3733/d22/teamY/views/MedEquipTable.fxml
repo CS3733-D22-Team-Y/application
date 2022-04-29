@@ -83,7 +83,7 @@
                </fill>
             </Rectangle>
             <AnchorPane fx:id="sidebarPane" prefHeight="800.0" prefWidth="270.0" />
-            <TableView fx:id="medEquipTableView" layoutX="277.0" layoutY="117.0" prefHeight="663.0" prefWidth="895.0" styleClass="plainText" stylesheets="@css/Table.css">
+            <TableView fx:id="medEquipTableView" layoutX="277.0" layoutY="117.0" prefHeight="663.0" prefWidth="895.0" styleClass="plainText">
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy></TableView>

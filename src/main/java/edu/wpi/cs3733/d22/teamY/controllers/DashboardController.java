@@ -742,6 +742,10 @@ public class DashboardController implements IController {
     return songs.get(positionChosenBefore);
   }
 
+  private void updateQuickDash() {
+    HashMap<String, HashMap<String, Integer>> floorCounts = DBUtils.getEquipFloorCounts();
+  }
+
   @FXML
   public void LL2DirtyEnter() {
     dirty_floorl2Popup.setVisible(true);
