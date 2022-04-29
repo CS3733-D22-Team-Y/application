@@ -356,6 +356,7 @@ public class WelcomePageController implements IController {
     } catch (IOException e) {
       e.printStackTrace();
     }
+    NewSceneLoading.reloadScene("views/PersonalSettings.fxml");
   }
 
   @FXML
