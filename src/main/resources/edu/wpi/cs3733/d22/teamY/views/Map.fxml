@@ -73,7 +73,7 @@
    </Pane>
    <Pane fx:id="equipInfoPane" layoutX="971.0" prefHeight="780.0" prefWidth="219.0">
       <children>
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="700.0" layoutX="-15.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eeeeee" height="700.0" layoutX="-15.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
          <TextField alignment="CENTER" editable="false" layoutX="69.0" layoutY="115.0" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Equip ID:">
             <font>
                <Font name="Microsoft Tai Le" size="12.0" />
@@ -108,15 +108,16 @@
          </VBox>
          <MFXButton fx:id="equipSubmit" layoutX="110.0" layoutY="675.0" prefHeight="56.0" prefWidth="100.0" text="Submit" />
          <MFXButton layoutX="14.0" layoutY="675.0" onAction="#exit" prefHeight="56.0" prefWidth="100.0" text="Close" />
-         <MFXButton fx:id="equipDown" layoutX="4.0" layoutY="148.0" text="&lt;">
-            <font>
-               <Font size="24.0" />
-            </font></MFXButton>
-         <MFXButton fx:id="equipUp" layoutX="173.0" layoutY="148.0" text="&gt;">
-            <font>
-               <Font size="24.0" />
-            </font>
-         </MFXButton>
+         <ImageView fx:id="equipDown" fitHeight="29.0" fitWidth="53.0" layoutX="17.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/leftArrow.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="equipUp" fitHeight="29.0" fitWidth="53.0" layoutX="182.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/icons/rightArrow.png" />
+            </image>
+         </ImageView>
       </children>
    </Pane>
    <Pane fx:id="reqInfoPane" layoutX="981.0" prefHeight="790.0" prefWidth="219.0" visible="false">

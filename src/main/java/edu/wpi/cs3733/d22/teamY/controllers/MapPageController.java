@@ -147,8 +147,8 @@ public class MapPageController implements IController {
   @FXML MFXTextField equipClean;
   @FXML Pane equipInfoPane;
   @FXML MFXButton equipSubmit;
-  @FXML MFXButton equipUp;
-  @FXML MFXButton equipDown;
+  @FXML ImageView equipUp;
+  @FXML ImageView equipDown;
 
   @FXML private MFXCheckbox locationsCheckbox;
   @FXML private MFXCheckbox medCheckbox;
@@ -930,7 +930,7 @@ public class MapPageController implements IController {
         .getMapPane()
         .setOnMouseReleased(
             e -> {
-              System.out.println("Mouse released");
+              // System.out.println("Mouse released");
               if (locationDragStatus) {}
               locationDragStatus = false;
             });
@@ -958,7 +958,7 @@ public class MapPageController implements IController {
         e -> {
           locationPin.setLayoutX(985);
           locationPin.setLayoutY(20);
-          System.out.println(currentFloor);
+          // System.out.println(currentFloor);
           Robot bot = null;
           try {
             bot = new Robot();
@@ -972,7 +972,7 @@ public class MapPageController implements IController {
 
           bot.mousePress(mask);
           bot.mouseRelease(mask);
-          System.out.println(e.getX() + " " + e.getY());
+          // System.out.println(e.getX() + " " + e.getY());
         });
 
     locationsCheckbox.setSelected(true);
@@ -993,13 +993,13 @@ public class MapPageController implements IController {
 
   public void right() {
     this.currReqSelection++;
-    System.out.println("right" + currReqSelection);
+    // System.out.println("right" + currReqSelection);
     updateReqInfo();
   }
 
   public void left() {
     this.currReqSelection--;
-    System.out.println("left" + currReqSelection);
+    // System.out.println("left" + currReqSelection);
     updateReqInfo();
   }
 
