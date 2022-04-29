@@ -121,7 +121,6 @@ public class MessageController implements IController {
     setChatOpen(chatOpen);
     setChatPickerOpen(newChatOpen);
     String id = PersonalSettings.currentEmployee.getIDNumber();
-    //    System.out.println("Init message controller here: " + id + " " +
     // ChatManager.getChats().size());
     if (!initialized) {
       id = PersonalSettings.currentEmployee.getIDNumber();
