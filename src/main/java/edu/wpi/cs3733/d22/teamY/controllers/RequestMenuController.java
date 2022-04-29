@@ -88,7 +88,6 @@ public class RequestMenuController implements IController {
 
   @FXML
   void loadFloralReq() {
-    // loadRequestScreen(FLORAL_RESULTS_INDEX);
     NewSceneLoading.loadScene("views/requestTypes/FloralRequest.fxml");
   }
 
