@@ -19,20 +19,14 @@
         <!-- DB schema will be updated if needed -->
         <!--     <property name="hibernate.hbm2ddl.auto">update</property>-->
 
-        <!--property name="hibernate.hbm2ddl.auto">update</--property-->
+        <!--property name="hibernate.hbm2ddl.auto">update</-property-->
 
 
         <mapping class="edu.wpi.cs3733.d22.teamY.model.Location"/>
         <mapping class="edu.wpi.cs3733.d22.teamY.model.MedEquip"/>
         <mapping class="edu.wpi.cs3733.d22.teamY.model.MedEquipReq"/>
-        <mapping class="edu.wpi.cs3733.d22.teamY.model.LabRequest"/>
         <mapping class="edu.wpi.cs3733.d22.teamY.model.Employee"/>
-        <mapping class="edu.wpi.cs3733.d22.teamY.model.FloralRequest"/>
-        <mapping class="edu.wpi.cs3733.d22.teamY.model.LaundryRequest"/>
-        <mapping class="edu.wpi.cs3733.d22.teamY.model.MealRequest"/>
-        <mapping class="edu.wpi.cs3733.d22.teamY.model.SecurityServiceRequest"/>
-        <mapping class="edu.wpi.cs3733.d22.teamY.model.TranslatorRequest"/>
-        <mapping class="edu.wpi.cs3733.d22.teamY.model.MiscRequest"/>
+        <mapping class="edu.wpi.cs3733.d22.teamY.model.ServiceRequest"/>
 
     </session-factory>
 </hibernate-configuration>
