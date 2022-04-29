@@ -22,7 +22,7 @@
       </center></BorderPane>
    <Pane fx:id="locationInfoPane" layoutX="971.0" prefHeight="780.0" prefWidth="219.0" visible="false">
       <children>
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="700.0" layoutX="-15.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eeeeee" height="700.0" layoutX="-15.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
          <VBox layoutX="-17.0" layoutY="202.0" spacing="12.0">
             <children>
                <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Node ID:">
@@ -122,7 +122,7 @@
    </Pane>
    <Pane fx:id="reqInfoPane" layoutX="981.0" prefHeight="790.0" prefWidth="219.0">
       <children>
-         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="700.0" layoutX="-25.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
+         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#eeeeee" height="700.0" layoutX="-25.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="235.0" />
          <VBox fx:id="attVbox" layoutX="-19.0" layoutY="161.0" spacing="11.0">
             <children>
                <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="37.0" prefWidth="84.0" style="-fx-background-color: #00000000;" text="Type:">
