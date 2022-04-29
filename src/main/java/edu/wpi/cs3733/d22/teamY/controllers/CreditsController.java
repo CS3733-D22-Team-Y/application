@@ -14,7 +14,7 @@ public class CreditsController {
     stage.close();
   }
 
-  // Stage stage = new Stage(StageStyle.UNDECORATED);
+
   //   FXMLLoader loader = new FXMLLoader(App.class.getResource("views/popups/Portrait.fxml"));
   // Scene sceneToLoad = new Scene(loader.load());
   // Scene parentScene =
