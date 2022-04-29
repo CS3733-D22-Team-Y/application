@@ -42,9 +42,9 @@ public class FloralRequestController implements IController {
   @FXML private ImageView bgImage;
 
   // Bouquet types text. These should be changed depending on what the names in the database are.
-  private final String getWellSoonBouquetText = "getWellSoon";
-  private final String newBabyBouquetText = "newBaby";
-  private final String bouquetOfTheDayText = "bouquetOfDay";
+  private final String getWellSoonBouquetText = "Get Well Soon";
+  private final String newBabyBouquetText = "New Baby";
+  private final String bouquetOfTheDayText = "Bouquet of the Day";
 
   public FloralRequestController() {}
 

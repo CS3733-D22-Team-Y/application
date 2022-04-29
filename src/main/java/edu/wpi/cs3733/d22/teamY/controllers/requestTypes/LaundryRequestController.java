@@ -42,9 +42,9 @@ public class LaundryRequestController implements IController {
 
   private Scene requestMenu = null;
 
-  private final String hazardousText = "hazardous";
-  private final String scrubsText = "scrubs";
-  private final String linensText = "linens";
+  private final String hazardousText = "Hazardous";
+  private final String scrubsText = "Scrubs";
+  private final String linensText = "Linens";
 
   public LaundryRequestController() {}
 

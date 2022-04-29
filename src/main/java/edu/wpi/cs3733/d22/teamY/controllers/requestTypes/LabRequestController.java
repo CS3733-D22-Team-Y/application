@@ -40,11 +40,11 @@ public class LabRequestController implements IController {
   // Side bar
   @FXML private AnchorPane sidebarPane;
   // Result types text. These should be changed depending on what the names in the database are.
-  private final String bloodSampleText = "bloodSample";
-  private final String urineSampleText = "urineSample";
-  private final String xrayText = "xray";
-  private final String catScanText = "catScan";
-  private final String mriText = "mri";
+  private final String bloodSampleText = "Blood Sample";
+  private final String urineSampleText = "Urine Sample";
+  private final String xrayText = "X-Ray";
+  private final String catScanText = "CAT Scan";
+  private final String mriText = "MRI";
 
   @FXML private AnchorPane mainPane;
   @FXML private ImageView bgImage;
