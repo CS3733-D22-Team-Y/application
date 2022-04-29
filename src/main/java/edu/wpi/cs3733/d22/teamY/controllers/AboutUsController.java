@@ -17,7 +17,7 @@ public class AboutUsController {
   @FXML private MFXButton backButton;
 
   // ImageViews with images
-  @FXML private ImageView loadConnor;
+
   @FXML private ImageView loadBen;
   @FXML private ImageView loadEmily;
   @FXML private ImageView loadNathanA;
