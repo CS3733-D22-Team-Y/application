@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
