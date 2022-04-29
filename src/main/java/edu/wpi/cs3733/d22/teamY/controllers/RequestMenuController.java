@@ -68,7 +68,6 @@ public class RequestMenuController implements IController {
 
   @FXML
   void loadLabReq() {
-    // loadRequestScreen(LAB_RESULTS_INDEX);
     NewSceneLoading.loadScene("views/requestTypes/LabResult.fxml");
   }
 
