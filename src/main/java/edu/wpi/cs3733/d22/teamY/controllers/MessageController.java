@@ -219,7 +219,6 @@ public class MessageController implements IController {
       try {
         messageArea.getChildren().add(getMessageClone(p));
       } catch (Exception e) {
-        //        System.out.println("Error getting message clone");
       }
     }
     // scrolls to bottom
