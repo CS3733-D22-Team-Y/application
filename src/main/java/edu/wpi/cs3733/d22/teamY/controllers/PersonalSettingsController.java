@@ -6,9 +6,11 @@ import edu.wpi.cs3733.d22.teamY.DBManager;
 import edu.wpi.cs3733.d22.teamY.model.Employee;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
@@ -30,6 +32,10 @@ public class PersonalSettingsController implements IController {
   @FXML private AnchorPane mainPane;
   @FXML private ImageView bgImage;
   @FXML private Rectangle bgGradient;
+  @FXML ImageView pfp;
+  private static String imageFolder =
+      "src/main/resources/edu/wpi/cs3733/d22/teamY/views/profilePics/";
+  private static String fileType = ".jpg";
 
   public static Employee currentEmployee =
       new Employee(
@@ -45,6 +51,19 @@ public class PersonalSettingsController implements IController {
     dob.setText(PersonalSettings.currentEmployee.getDOB());
     pronouns.setText(PersonalSettings.currentEmployee.getPronouns());
     phone.setText(PersonalSettings.currentEmployee.getPhone());
+    try {
+      pfp.setImage(
+          new Image(
+              App.class
+                  .getResource(
+                      "views/profilePics/"
+                          + PersonalSettings.currentEmployee.getIDNumber()
+                          + ".jpg")
+                  .toString()));
+    } catch (NullPointerException e) {
+      pfp.setImage(
+          new Image(App.class.getResource("views/profilePics/" + "default" + ".jpg").toString()));
+    }
 
     setEdit(false);
     NewSceneLoading.loadSidebar(sidebarPane);
