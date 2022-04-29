@@ -747,7 +747,7 @@ public class DashboardController implements IController {
 
     /*
 
-    this.recLabels[index].setText(floorCounts.get(floor).get("RECLINER") + "");
+
     this.xLabels[index].setText(floorCounts.get(floor).get("XRAY") + "");*/
   }
 
