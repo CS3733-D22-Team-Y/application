@@ -745,7 +745,7 @@ public class DashboardController implements IController {
   private void updateQuickDash() {
     HashMap<String, HashMap<String, Integer>> floorCounts = DBUtils.getEquipFloorCounts();
 
-    /*this.bedLabels[index].setText(floorCounts.get(floor).get("BED") + "");
+    /*
     this.pumpLabels[index].setText(floorCounts.get(floor).get("PUMP") + "");
     this.recLabels[index].setText(floorCounts.get(floor).get("RECLINER") + "");
     this.xLabels[index].setText(floorCounts.get(floor).get("XRAY") + "");*/
