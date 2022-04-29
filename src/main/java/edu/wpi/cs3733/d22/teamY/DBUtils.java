@@ -213,12 +213,7 @@ public class DBUtils {
 
     Employee thePerson = people.get(0);
     PersonalSettingsController.currentEmployee = thePerson; // TODO change
-    //    try {
-    ////      Firebase.init();
-    ////    } catch (IOException e) {
-    ////      e.printStackTrace();
-    ////    }
-    ////    System.out.println("Firebase initialized");
+
     return thePerson.getName();
   }
 
