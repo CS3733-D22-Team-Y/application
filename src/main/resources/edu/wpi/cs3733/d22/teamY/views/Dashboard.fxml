@@ -21,7 +21,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.DashboardController">
+<AnchorPane fx:id="mainPane" prefHeight="800.0" prefWidth="1200.0" stylesheets="@css/Fonts.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d22.teamY.controllers.DashboardController">
     <children>
       <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: .4;">
          <image>
@@ -93,7 +93,7 @@
       <Group layoutX="284.0" layoutY="99.0">
          <children>
             <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="389.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
-            <Label layoutX="10.0" layoutY="10.0" styleClass="title" text="Current Tasks">
+            <Label layoutX="10.0" layoutY="10.0" styleClass="plainText" text="Current Tasks">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -107,7 +107,7 @@
       <Group layoutX="587.0" layoutY="99.0">
          <children>
             <Rectangle fx:id="alertBox" arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="389.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="296.0" />
-            <Label layoutX="10.0" layoutY="10.0" styleClass="title" text="Alerts">
+            <Label layoutX="10.0" layoutY="10.0" styleClass="plainText" text="Alerts">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -116,7 +116,7 @@
                <content>
                   <HBox fx:id="alertsBox" prefHeight="166.0" prefWidth="272.0">
                      <children>
-                        <Label styleClass="title" text="No active alerts." wrapText="true">
+                        <Label styleClass="plainText" text="No active alerts." wrapText="true">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="18.0" />
                            </font>
@@ -145,12 +145,12 @@
       <Group layoutX="284.0" layoutY="496.0">
          <children>
             <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="599.0" />
-            <Label layoutX="10.0" layoutY="10.0" styleClass="title" text="Active Requests">
+            <Label layoutX="10.0" layoutY="10.0" styleClass="plainText" text="Active Requests">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="494.0" layoutY="28.0" styleClass="title" text="Total:">
+            <Label layoutX="494.0" layoutY="28.0" styleClass="plainText" text="Total:">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -171,7 +171,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="activeRequestCount" alignment="CENTER" contentDisplay="CENTER" layoutX="496.0" layoutY="64.0" prefHeight="50.0" prefWidth="80.0" styleClass="title" text="999">
+            <Label fx:id="activeRequestCount" alignment="CENTER" contentDisplay="CENTER" layoutX="496.0" layoutY="64.0" prefHeight="50.0" prefWidth="80.0" styleClass="plainText" text="999">
                <font>
                   <Font name="Arial Rounded MT Bold" size="42.0" />
                </font>
@@ -215,7 +215,7 @@
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="82.0" layoutX="891.0" layoutY="99.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="305.0" />
       <Group layoutX="937.0" layoutY="65.0">
          <children>
-            <Label fx:id="timeDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="48.0" layoutY="27.0" prefHeight="54.0" prefWidth="196.0" styleClass="title" text="Offline">
+            <Label fx:id="timeDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="48.0" layoutY="27.0" prefHeight="54.0" prefWidth="196.0" styleClass="plainText" text="Offline">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -241,7 +241,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="dateDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="67.0" prefHeight="22.0" prefWidth="195.0" styleClass="title" textAlignment="CENTER">
+            <Label fx:id="dateDisplay" alignment="CENTER" contentDisplay="CENTER" layoutX="49.0" layoutY="67.0" prefHeight="22.0" prefWidth="195.0" styleClass="plainText" textAlignment="CENTER">
                <font>
                   <Font name="Arial Rounded MT Bold" size="19.0" />
                </font>
@@ -267,7 +267,7 @@
                   <ColorAdjust brightness="0.18" />
                </effect>
             </ImageView>
-            <Label fx:id="fahrenheit" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="133.0" layoutY="86.0" prefHeight="31.0" prefWidth="54.0" styleClass="title" text="-" textAlignment="CENTER">
+            <Label fx:id="fahrenheit" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="133.0" layoutY="86.0" prefHeight="31.0" prefWidth="54.0" styleClass="plainText" text="-" textAlignment="CENTER">
                <font>
                   <Font name="Arial Rounded MT Bold" size="21.0" />
                </font>
@@ -288,7 +288,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="celsius" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="53.0" layoutY="87.0" prefHeight="31.0" prefWidth="54.0" styleClass="title" text="-" textAlignment="CENTER">
+            <Label fx:id="celsius" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="53.0" layoutY="87.0" prefHeight="31.0" prefWidth="54.0" styleClass="plainText" text="-" textAlignment="CENTER">
                <font>
                   <Font name="Arial Rounded MT Bold" size="21.0" />
                </font>
@@ -309,7 +309,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="dateDisplay112" alignment="CENTER" contentDisplay="CENTER" layoutX="104.0" layoutY="89.0" prefHeight="22.0" prefWidth="29.0" styleClass="title" text="°C" textAlignment="CENTER">
+            <Label fx:id="dateDisplay112" alignment="CENTER" contentDisplay="CENTER" layoutX="104.0" layoutY="89.0" prefHeight="22.0" prefWidth="29.0" styleClass="plainText" text="°C" textAlignment="CENTER">
                <font>
                   <Font name="Arial Rounded MT Bold" size="19.0" />
                </font>
@@ -330,7 +330,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="dateDisplay1121" alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="89.0" prefHeight="22.0" prefWidth="29.0" styleClass="title" text="°F" textAlignment="CENTER">
+            <Label fx:id="dateDisplay1121" alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="89.0" prefHeight="22.0" prefWidth="29.0" styleClass="plainText" text="°F" textAlignment="CENTER">
                <font>
                   <Font name="Arial Rounded MT Bold" size="19.0" />
                </font>
@@ -392,7 +392,7 @@
       <Group layoutX="894.0" layoutY="396.0">
          <children>
             <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#93cddc" height="375.0" layoutX="-3.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="305.0" />
-            <Label layoutX="8.0" layoutY="19.0" styleClass="title" text="Floor">
+            <Label layoutX="8.0" layoutY="19.0" styleClass="plainText" text="Floor">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -413,7 +413,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label layoutX="47.0" layoutY="349.0" styleClass="title" text="L2">
+            <Label layoutX="47.0" layoutY="349.0" styleClass="plainText" text="L2">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -434,12 +434,12 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="cleanl2" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="351.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="3" textFill="#3f833f">
+            <Label fx:id="cleanl2" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="351.0" prefHeight="36.0" prefWidth="60.0" styleClass="plainText" text="3" textFill="#3f833f">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="dirtyl2" layoutX="193.0" layoutY="351.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="0" textFill="#d74420">
+            <Label fx:id="dirtyl2" layoutX="193.0" layoutY="351.0" prefHeight="36.0" prefWidth="60.0" styleClass="plainText" text="0" textFill="#d74420">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -452,7 +452,7 @@
                   <ColorAdjust brightness="0.18" />
                </effect>
             </ImageView>
-            <Label layoutX="47.0" layoutY="300.0" styleClass="title" text="L1">
+            <Label layoutX="47.0" layoutY="300.0" styleClass="plainText" text="L1">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -473,12 +473,12 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="cleanl1" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="302.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="0" textFill="#3f833f">
+            <Label fx:id="cleanl1" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="302.0" prefHeight="36.0" prefWidth="60.0" styleClass="plainText" text="0" textFill="#3f833f">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="dirtyl1" layoutX="193.0" layoutY="302.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="3" textFill="#d74420">
+            <Label fx:id="dirtyl1" layoutX="193.0" layoutY="302.0" prefHeight="36.0" prefWidth="60.0" styleClass="plainText" text="3" textFill="#d74420">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -491,7 +491,7 @@
                   <ColorAdjust brightness="0.18" />
                </effect>
             </ImageView>
-            <Label layoutX="56.0" layoutY="252.0" styleClass="title" text="1">
+            <Label layoutX="56.0" layoutY="252.0" styleClass="plainText" text="1">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -512,12 +512,12 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="clean1" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="253.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="5" textFill="#3f833f">
+            <Label fx:id="clean1" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="253.0" prefHeight="36.0" prefWidth="60.0" styleClass="plainText" text="5" textFill="#3f833f">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="dirty1" layoutX="193.0" layoutY="253.0" prefHeight="36.0" prefWidth="60.0" styleClass="title" text="5" textFill="#d74420">
+            <Label fx:id="dirty1" layoutX="193.0" layoutY="253.0" prefHeight="36.0" prefWidth="60.0" styleClass="plainText" text="5" textFill="#d74420">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -530,7 +530,7 @@
                   <ColorAdjust brightness="0.18" />
                </effect>
             </ImageView>
-            <Label layoutX="56.0" layoutY="202.0" styleClass="title" text="2">
+            <Label layoutX="56.0" layoutY="202.0" styleClass="plainText" text="2">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -551,12 +551,12 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="clean2" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="202.0" prefWidth="60.0" styleClass="title" text="10" textFill="#3f833f">
+            <Label fx:id="clean2" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="202.0" prefWidth="60.0" styleClass="plainText" text="10" textFill="#3f833f">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="dirty2" layoutX="193.0" layoutY="202.0" prefWidth="60.0" styleClass="title" text="10" textFill="#d74420">
+            <Label fx:id="dirty2" layoutX="193.0" layoutY="202.0" prefWidth="60.0" styleClass="plainText" text="10" textFill="#d74420">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -569,7 +569,7 @@
                   <ColorAdjust brightness="0.18" />
                </effect>
             </ImageView>
-            <Label layoutX="56.0" layoutY="153.0" styleClass="title" text="3">
+            <Label layoutX="56.0" layoutY="153.0" styleClass="plainText" text="3">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -590,12 +590,12 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="clean3" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="154.0" prefWidth="60.0" styleClass="title" text="11" textFill="#3f833f">
+            <Label fx:id="clean3" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="154.0" prefWidth="60.0" styleClass="plainText" text="11" textFill="#3f833f">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="dirty3" layoutX="193.0" layoutY="154.0" prefWidth="60.0" styleClass="title" text="11" textFill="#d74420">
+            <Label fx:id="dirty3" layoutX="193.0" layoutY="154.0" prefWidth="60.0" styleClass="plainText" text="11" textFill="#d74420">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -608,7 +608,7 @@
                   <ColorAdjust brightness="0.18" />
                </effect>
             </ImageView>
-            <Label layoutX="56.0" layoutY="104.0" styleClass="title" text="4">
+            <Label layoutX="56.0" layoutY="104.0" styleClass="plainText" text="4">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -629,12 +629,12 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="clean4" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="104.0" prefWidth="60.0" styleClass="title" text="33" textFill="#3f833f">
+            <Label fx:id="clean4" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="104.0" prefWidth="60.0" styleClass="plainText" text="33" textFill="#3f833f">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="dirty4" layoutX="193.0" layoutY="104.0" prefWidth="60.0" styleClass="title" text="33" textFill="#d74420">
+            <Label fx:id="dirty4" layoutX="193.0" layoutY="104.0" prefWidth="60.0" styleClass="plainText" text="33" textFill="#d74420">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -647,7 +647,7 @@
                   <ColorAdjust brightness="0.18" />
                </effect>
             </ImageView>
-            <Label layoutX="56.0" layoutY="55.0" styleClass="title" text="5">
+            <Label layoutX="56.0" layoutY="55.0" styleClass="plainText" text="5">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -668,12 +668,12 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label fx:id="clean5" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="55.0" prefWidth="60.0" styleClass="title" text="19" textFill="#3f833f">
+            <Label fx:id="clean5" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="99.0" layoutY="55.0" prefWidth="60.0" styleClass="plainText" text="19" textFill="#3f833f">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="dirty5" layoutX="193.0" layoutY="55.0" prefWidth="60.0" styleClass="title" text="19" textFill="#d74420">
+            <Label fx:id="dirty5" layoutX="193.0" layoutY="55.0" prefWidth="60.0" styleClass="plainText" text="19" textFill="#d74420">
                <font>
                   <Font name="Arial Rounded MT Bold" size="30.0" />
                </font>
@@ -687,12 +687,12 @@
                </effect>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1e648b" height="320.0" layoutX="174.0" layoutY="62.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="5.0" />
-            <Label layoutX="102.0" layoutY="24.0" styleClass="title" text="Clean" textFill="#3f833f">
+            <Label layoutX="102.0" layoutY="24.0" styleClass="plainText" text="Clean" textFill="#3f833f">
                <font>
                   <Font name="Arial Rounded MT Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="183.0" layoutY="24.0" styleClass="title" text="Dirty" textFill="#d74420">
+            <Label layoutX="183.0" layoutY="24.0" styleClass="plainText" text="Dirty" textFill="#d74420">
                <font>
                   <Font name="Arial Rounded MT Bold" size="24.0" />
                </font>
