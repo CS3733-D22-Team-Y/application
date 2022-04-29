@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -1084,7 +1085,9 @@ public class MapPageController implements IController {
     for (int i = 0; i < rt.getAttributeCount(); i++) {
       TextField name = getFieldClone(attName);
       name.setText(fAtts[i]);
-      extraAtts.add(name);
+      //dont ask
+      VBox.setMargin(name, new javafx.geometry.Insets(1, 0, 0, 0));
+      this.extraAtts.add(name);
 
       MFXTextField val = getMFXFieldClone(attValue);
       val.getStyleClass().clear();
@@ -1096,7 +1099,10 @@ public class MapPageController implements IController {
       val.setMaxHeight(29);
       val.setMinHeight(0);
       val.setText(sreq.get(atts[i]));
-      extraVals.add(val);
+      val.setAlignment(Pos.CENTER_LEFT);
+      // add text padding
+      val.setPadding(new javafx.geometry.Insets(5, 5, 5, 5));
+      this.extraVals.add(val);
 
       attVbox.getChildren().add(name);
       valueVbox.getChildren().add(val);
