@@ -80,9 +80,9 @@ public class MapPageController implements IController {
   // end req stuff
 
   @FXML public MFXButton locationSubmit;
-  private String fuck = "shit";
-  private ArrayList<ServiceRequest> fuck2 = new ArrayList<>();
-  private ArrayList<MedEquip> fuck3 = new ArrayList<>();
+  private String newLocationID = "";
+  private ArrayList<ServiceRequest> requestsList = new ArrayList<>();
+  private ArrayList<MedEquip> equipList = new ArrayList<>();
   private ArrayList<TextField> extraAtts = new ArrayList<>();
   private ArrayList<MFXTextField> extraVals = new ArrayList<>();
 
@@ -525,9 +525,9 @@ public class MapPageController implements IController {
                     newMedEquip.setOnContextMenuRequested(
                         e -> {
                           if (equip.size() > 0) {
-                            fuck3.clear();
+                            equipList.clear();
                             for (MedEquip r : equip) {
-                              fuck3.add(r);
+                              equipList.add(r);
                             }
 
                             // Show only the correct pane
@@ -535,8 +535,8 @@ public class MapPageController implements IController {
                             locationInfoPane.setVisible(false);
                             reqInfoPane.setVisible(false);
                             currentEquip = allMedEquips.get(newMedEquip);
-                            MedEquip o = fuck3.get(currentEquip);
-                            fuck = String.valueOf(o.getEquipID());
+                            MedEquip o = equipList.get(currentEquip);
+                            newLocationID = String.valueOf(o.getEquipID());
                             equipID.setText(String.valueOf(o.getEquipID()));
                             equipLocation.setText(o.getEquipLocId());
                             equipType.setText(o.getEquipType());
@@ -618,7 +618,7 @@ public class MapPageController implements IController {
                 // Set behavior for the location pins
                 newLocation.setOnContextMenuRequested(
                     e -> {
-                      fuck = String.valueOf(l.getNodeID());
+                      newLocationID = String.valueOf(l.getNodeID());
                       // Show only the correct pane
                       locationInfoPane.setVisible(true);
                       equipInfoPane.setVisible(false);
@@ -637,9 +637,9 @@ public class MapPageController implements IController {
                   newServiceRequest.setOnContextMenuRequested(
                       e -> {
                         if (requests.size() > 0) {
-                          fuck2.clear();
+                          requestsList.clear();
                           for (ServiceRequest r : requests) {
-                            fuck2.add(r);
+                            requestsList.add(r);
                           }
                           updateReqInfo();
                         }
@@ -650,7 +650,7 @@ public class MapPageController implements IController {
                     e -> {
                       Location fuckMe =
                           new Location(
-                              fuck,
+                              newLocationID,
                               Integer.parseInt(locationX.getText()),
                               Integer.parseInt(locationY.getText()),
                               l.getFloor(),
@@ -665,8 +665,8 @@ public class MapPageController implements IController {
 
                 reqSubmit.setOnMouseClicked(
                     e -> {
-                      this.currReqSelection %= this.fuck2.size();
-                      ServiceRequest req = fuck2.get(this.currReqSelection);
+                      this.currReqSelection %= this.requestsList.size();
+                      ServiceRequest req = requestsList.get(this.currReqSelection);
                       String[] atts = req.getType().getAttributes();
                       for (int i = 0; i < extraAtts.size(); i++) {
                         String val = extraVals.get(i).getText();
@@ -696,7 +696,7 @@ public class MapPageController implements IController {
                     e -> {
                       MedEquip t =
                           new MedEquip(
-                              fuck,
+                              newLocationID,
                               equipType.getText(),
                               equipLocation.getText(),
                               equipClean.getText(),
@@ -706,7 +706,7 @@ public class MapPageController implements IController {
                       equip.add(t);
                       switchMap(newFloor, mapMode);
                       System.out.println(
-                          fuck
+                          newLocationID
                               + ","
                               + equipLocation.getText()
                               + ","
@@ -995,16 +995,16 @@ public class MapPageController implements IController {
     locationInfoPane.setVisible(false);
     equipInfoPane.setVisible(false);
 
-    this.currReqSelection %= fuck2.size();
+    this.currReqSelection %= requestsList.size();
     if (this.currReqSelection < 0) {
-      this.currReqSelection = fuck2.size() - 1;
+      this.currReqSelection = requestsList.size() - 1;
     }
-    currReqDisplay.setText(fuck2.get(this.currReqSelection).getRequestId() + "");
-    this.reqLocationBox.setText(fuck2.get(this.currReqSelection).getLocationID());
-    this.reqDescriptionBox.setText(fuck2.get(this.currReqSelection).getAdditionalNotes());
-    this.reqStatusBox.setText(fuck2.get(this.currReqSelection).getStatus().name());
-    this.reqTypeBox.setText(fuck2.get(this.currReqSelection).getType().getFriendlyName());
-    this.reqNurseBox.setText(fuck2.get(this.currReqSelection).getAssignedNurse());
+    currReqDisplay.setText(requestsList.get(this.currReqSelection).getRequestId() + "");
+    this.reqLocationBox.setText(requestsList.get(this.currReqSelection).getLocationID());
+    this.reqDescriptionBox.setText(requestsList.get(this.currReqSelection).getAdditionalNotes());
+    this.reqStatusBox.setText(requestsList.get(this.currReqSelection).getStatus().name());
+    this.reqTypeBox.setText(requestsList.get(this.currReqSelection).getType().getFriendlyName());
+    this.reqNurseBox.setText(requestsList.get(this.currReqSelection).getAssignedNurse());
 
     for (TextField tf : extraAtts) {
       attVbox.getChildren().remove(tf);
@@ -1014,7 +1014,7 @@ public class MapPageController implements IController {
     }
     extraAtts.clear();
     extraVals.clear();
-    ServiceRequest sreq = fuck2.get(this.currReqSelection);
+    ServiceRequest sreq = requestsList.get(this.currReqSelection);
     RequestTypes rt = sreq.getType();
     String[] atts = rt.getAttributes();
     String[] fAtts = rt.getFriendlyAttributes();
@@ -1042,12 +1042,12 @@ public class MapPageController implements IController {
 
   public void updateEquipInfo() {
     if (currentEquip == -1) {
-      currentEquip = fuck3.size() - 1;
+      currentEquip = equipList.size() - 1;
     }
-    currentEquip = currentEquip % fuck3.size();
-    MedEquip o = fuck3.get(currentEquip);
-    fuck = String.valueOf(o.getEquipID());
-    System.out.println(fuck);
+    currentEquip = currentEquip % equipList.size();
+    MedEquip o = equipList.get(currentEquip);
+    newLocationID = String.valueOf(o.getEquipID());
+    System.out.println(newLocationID);
     equipID.setText(String.valueOf(o.getEquipID()));
     equipLocation.setText(o.getEquipLocId());
     equipType.setText(o.getEquipType());
