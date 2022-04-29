@@ -177,6 +177,9 @@ public class DBUtils {
 
   // find MedEquip object
   @SuppressWarnings("unchecked")
+  /**
+   * Updates clean status of equipment.
+   */
   public static void updateCleanStatus(String equipType, String locationID) {
     Session s = SessionManager.getSession();
     List<MedEquip> equipment =
@@ -197,7 +200,11 @@ public class DBUtils {
     DBManager.update(thisEquip);
   }
 
-  // Gets an employee's legal name from their ID
+  /**
+   * Get legal name from ID
+   * @param id ID of employee
+   * @return name of linked employee
+   */
   @SuppressWarnings("Unchecked")
   public static String getNameFromID(String id) {
     Session s = SessionManager.getSession();
@@ -222,7 +229,12 @@ public class DBUtils {
     return thePerson.getName();
   }
 
-  // Gets an employee's preferred name from their ID
+  /**
+   * Gets preference name from employee ID
+   * @param id ID to retrieve
+   * @return Preference name of employee.
+   * @throws IOException
+   */
   @SuppressWarnings("Unchecked")
   public static String getPrefNameFromID(String id) throws IOException {
     Session s = SessionManager.getSession();
@@ -241,6 +253,12 @@ public class DBUtils {
     return thePerson.getName();
   }
 
+  /**
+   * Retrieve name of employee from ID number
+   * @param id Number to retrieve
+   * @return String of name of linked employee
+   * @throws IOException
+   */
   public static String getNameFromActualID(String id) throws IOException {
     Session s = SessionManager.getSession();
     List<Employee> people =
@@ -256,6 +274,13 @@ public class DBUtils {
     return thePerson.getName();
   }
 
+  /**
+   * Gets employee names from ID
+   * @param ids List of ids to retrieve
+   * @param excludeMe
+   * @return List of names retrieved from id.
+   * @throws IOException
+   */
   public static String getNamesFromIds(ArrayList<String> ids, boolean excludeMe)
       throws IOException {
     StringBuilder sb = new StringBuilder();
@@ -337,6 +362,10 @@ public class DBUtils {
     return nurses;
   }
 
+  /**
+   * Gets amount of requests currently in DB
+   * @return Number of requests in database
+   */
   public static int getRequestCount() {
     Session s = SessionManager.getSession();
     int count =
@@ -363,6 +392,11 @@ public class DBUtils {
     return employees.size() == 0;
   }
 
+  /**
+   * Converts shortName to locationID
+   * @param shortName shortName of location
+   * @return Null if improper retrieval, nodeID of location otherwise
+   */
   @SuppressWarnings("Unchecked")
   public static String convertNameToID(String shortName) {
     Session s = SessionManager.getSession();
@@ -379,6 +413,11 @@ public class DBUtils {
     return (tempLocations.get(0).getNodeID());
   }
 
+  /**
+   * Convert locationID into shortName of location
+   * @param nodeID locationID of location to check
+   * @return shortName of desired location
+   */
   @SuppressWarnings("Unchecked")
   public static String convertIDToName(String nodeID) {
     Session s = SessionManager.getSession();
@@ -453,6 +492,11 @@ public class DBUtils {
     return (passwordHash == defaultPass.hashCode());
   }
 
+  /**
+   * Get Service Requests at specified location
+   * @param l Location to check
+   * @return A list of service requests at specified location
+   */
   public static List<ServiceRequest> getAllServiceReqsAtLocation(Location l) {
     List<ServiceRequest> requests = new ArrayList<>();
     List<ServiceRequest> all = DBManager.getAll(ServiceRequest.class);
@@ -464,6 +508,10 @@ public class DBUtils {
     return requests;
   }
 
+  /**
+   * HashMap of equipment counts on floor.
+   * @return Hashmap of each floor and num of equips
+   */
   public static HashMap<String, HashMap<String, Integer>> getEquipFloorCounts() {
     // floor can be index, then need hashmap for each equipment type
     HashMap<String, HashMap<String, Integer>> equipFloorCounts = new HashMap<>();
@@ -493,6 +541,11 @@ public class DBUtils {
     return equipFloorCounts;
   }
 
+  /**
+   * Returns sum of requests on a specified floor
+   * @param floor Floor to check
+   * @return Number of reqs on Floor.
+   */
   public static int getSumOfRequestsOnFloor(String floor) {
     int sum = 0;
     List<ServiceRequest> requests = DBManager.getAll(ServiceRequest.class);
@@ -504,6 +557,12 @@ public class DBUtils {
     return sum;
   }
 
+  /**
+   * Returns if location is on specified floor
+   * @param locationID locationID to check
+   * @param floor floor to check
+   * @return TRUE if is on floor, FALSE otherwise
+   */
   private static boolean onFloor(String locationID, String floor) {
     List<Location> ls = DBManager.getAll(Location.class, new Where("nodeID", locationID));
     return ls.size() > 0 && ls.get(0).getFloor().equals(floor);
