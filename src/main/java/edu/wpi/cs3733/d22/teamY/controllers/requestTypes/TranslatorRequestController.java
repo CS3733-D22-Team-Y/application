@@ -50,8 +50,6 @@ public class TranslatorRequestController implements IController {
   private final String chineseText = "chinese";
   private final String germanText = "german";
   private final String arabicText = "arabic";
-
-
   public Languages langs = new Languages();
 
   public TranslatorRequestController() {}
