@@ -479,7 +479,7 @@ public class MessageController implements IController {
 
     // if i am not the sender, make the message background grey
     if (!p.getSender().equals(PersonalSettings.currentEmployee.getIDNumber())) {
-      messageBackgroundClone.setFill(Color.rgb(200, 200, 200));
+      messageBackgroundClone.setFill(Color.rgb(168, 153, 161));
     }
 
     // set the height property of the rectangle to be the height of the message label
