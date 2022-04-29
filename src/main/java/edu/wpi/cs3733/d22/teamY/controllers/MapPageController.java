@@ -556,7 +556,7 @@ public class MapPageController implements IController {
                         e -> {
                           MapComponent.setIsDraggingPin(false);
                           // Add the updated equipment
-                          //                          currentEquip %= fuck3.size();
+                          //                          currentEquip %= equipList.size();
                           // Issue is here
                           // MedEquip equipPiece = equip.get(currentEquip % equip.size());
                           MedEquip equipPiece = equip.get(allMedEquips.get(newMedEquip));
@@ -648,7 +648,7 @@ public class MapPageController implements IController {
 
                 locationSubmit.setOnMouseClicked(
                     e -> {
-                      Location fuckMe =
+                      Location newLoc =
                           new Location(
                               newLocationID,
                               Integer.parseInt(locationX.getText()),
@@ -658,7 +658,7 @@ public class MapPageController implements IController {
                               l.getNodeType(),
                               locationLong.getText(),
                               locationShort.getText());
-                      DBManager.update(fuckMe);
+                      DBManager.update(newLoc);
                       exit();
                       switchMap(newFloor, mapMode);
                     });
