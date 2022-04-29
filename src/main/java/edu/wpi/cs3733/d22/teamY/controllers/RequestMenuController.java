@@ -73,7 +73,6 @@ public class RequestMenuController implements IController {
 
   @FXML
   void loadMedEquipReq() {
-    // loadRequestScreen(MEDICAL_RESULTS_INDEX);
     NewSceneLoading.loadScene("views/requestTypes/MedicalEquipmentRequest.fxml");
   }
 
