@@ -153,7 +153,10 @@ public class MapComponent {
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT)));
-    mapPane.getChildren().add(new ImageView(i2));
+    ImageView imageTwo = new ImageView(i2);
+    imageTwo.setLayoutX(4090);
+    imageTwo.setLayoutY(1753);
+    mapPane.getChildren().add(imageTwo);
 
     // Resize to image and reset translation and scale
     mapPane.setScaleX(image.initialScale);
