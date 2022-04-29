@@ -326,6 +326,45 @@ public class MapPageController implements IController {
 
   private final HashMap<Floors, Image> floorImages = new HashMap<>();
 
+  private void setButtonColors(String floor) {
+    String onStyle = "-fx-background-color: #93CDDC;";
+    String offStyle = "-fx-background-color: #FFFFFF;";
+
+    floorLL2Button.setStyle(offStyle);
+    floorLL1Button.setStyle(offStyle);
+    floor1Button.setStyle(offStyle);
+    floor2Button.setStyle(offStyle);
+    floor3Button.setStyle(offStyle);
+    floor4Button.setStyle(offStyle);
+    floor5Button.setStyle(offStyle);
+
+    switch (floor) {
+      case "L2":
+        floorLL2Button.setStyle(onStyle);
+        break;
+      case "L1":
+        floorLL1Button.setStyle(onStyle);
+        break;
+      case "1":
+        floor1Button.setStyle(onStyle);
+        break;
+      case "2":
+        floor2Button.setStyle(onStyle);
+        break;
+      case "3":
+        floor3Button.setStyle(onStyle);
+        break;
+      case "4":
+        floor4Button.setStyle(onStyle);
+        break;
+      case "5":
+        floor5Button.setStyle(onStyle);
+        break;
+      default:
+        break;
+    }
+  }
+
   /**
    * Called whenever the floor or map mode is switched
    *
@@ -863,36 +902,43 @@ public class MapPageController implements IController {
         e -> {
           switchMap(Floors.LOWER_LEVEL_1, mapMode);
           currentFloor = "ll1";
+          setButtonColors("L1");
         });
     floorLL2Button.setOnAction(
         e -> {
           switchMap(Floors.LOWER_LEVEL_2, mapMode);
           currentFloor = "ll2";
+          setButtonColors("L2");
         });
     floor1Button.setOnAction(
         e -> {
           switchMap(Floors.FIRST_FLOOR, mapMode);
           currentFloor = "1";
+          setButtonColors("1");
         });
     floor2Button.setOnAction(
         e -> {
           switchMap(Floors.SECOND_FLOOR, mapMode);
           currentFloor = "2";
+          setButtonColors("2");
         });
     floor3Button.setOnAction(
         e -> {
           switchMap(Floors.THIRD_FLOOR, mapMode);
           currentFloor = "3";
+          setButtonColors("3");
         });
     floor4Button.setOnAction(
         e -> {
           switchMap(Floors.FOURTH_FLOOR, mapMode);
           currentFloor = "4";
+          setButtonColors("4");
         });
     floor5Button.setOnAction(
         e -> {
           switchMap(Floors.FIFTH_FLOOR, mapMode);
           currentFloor = "5";
+          setButtonColors("5");
         });
     /*
     modeBox.setOnAction(
@@ -905,6 +951,8 @@ public class MapPageController implements IController {
 
     // Load initial floor and mode
     switchMap(lastFloor, MapMode.LOCATION);
+    setButtonColors(lastFloor.dbKey);
+
     equipInfoPane.setVisible(false);
     reqInfoPane.setVisible(false);
     locationInfoPane.setVisible(false);
