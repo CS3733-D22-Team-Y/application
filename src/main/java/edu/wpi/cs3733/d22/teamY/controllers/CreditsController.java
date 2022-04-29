@@ -16,7 +16,7 @@ public class CreditsController {
 
 
 
-  // Scene sceneToLoad = new Scene(loader.load());
+
   // Scene parentScene =
   //         new Scene(
   //                FXMLLoader.load(
