@@ -18,7 +18,7 @@ public class CreditsController {
 
 
 
-  //         new Scene(
+
   //                FXMLLoader.load(
   //
   // Objects.requireNonNull(App.class.getResource("views/popups/AboutUs.fxml"))));
