@@ -25,7 +25,7 @@ public class CreditsController {
 
 
 
-  // stage.initOwner(parentScene.getWindow());
+
   // stage.showAndWait();
   // }
 }
