@@ -15,7 +15,7 @@ public class CreditsController {
   }
 
 
-  //   FXMLLoader loader = new FXMLLoader(App.class.getResource("views/popups/Portrait.fxml"));
+
   // Scene sceneToLoad = new Scene(loader.load());
   // Scene parentScene =
   //         new Scene(
