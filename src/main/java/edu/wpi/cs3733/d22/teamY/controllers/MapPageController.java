@@ -147,8 +147,8 @@ public class MapPageController implements IController {
   @FXML MFXTextField equipClean;
   @FXML Pane equipInfoPane;
   @FXML MFXButton equipSubmit;
-  @FXML MFXButton equipUp;
-  @FXML MFXButton equipDown;
+  @FXML ImageView equipUp;
+  @FXML ImageView equipDown;
 
   @FXML private MFXCheckbox locationsCheckbox;
   @FXML private MFXCheckbox medCheckbox;
@@ -978,7 +978,7 @@ public class MapPageController implements IController {
         .getMapPane()
         .setOnMouseReleased(
             e -> {
-              System.out.println("Mouse released");
+              // System.out.println("Mouse released");
               if (locationDragStatus) {}
               locationDragStatus = false;
             });
@@ -1006,7 +1006,7 @@ public class MapPageController implements IController {
         e -> {
           locationPin.setLayoutX(985);
           locationPin.setLayoutY(20);
-          System.out.println(currentFloor);
+          // System.out.println(currentFloor);
           Robot bot = null;
           try {
             bot = new Robot();
@@ -1020,7 +1020,7 @@ public class MapPageController implements IController {
 
           bot.mousePress(mask);
           bot.mouseRelease(mask);
-          System.out.println(e.getX() + " " + e.getY());
+          // System.out.println(e.getX() + " " + e.getY());
         });
 
     locationsCheckbox.setSelected(true);
@@ -1041,13 +1041,13 @@ public class MapPageController implements IController {
 
   public void right() {
     this.currReqSelection++;
-    System.out.println("right" + currReqSelection);
+    // System.out.println("right" + currReqSelection);
     updateReqInfo();
   }
 
   public void left() {
     this.currReqSelection--;
-    System.out.println("left" + currReqSelection);
+    // System.out.println("left" + currReqSelection);
     updateReqInfo();
   }
 
@@ -1082,11 +1082,11 @@ public class MapPageController implements IController {
     String[] atts = rt.getAttributes();
     String[] fAtts = rt.getFriendlyAttributes();
     for (int i = 0; i < rt.getAttributeCount(); i++) {
-      TextField name = this.getFieldClone(this.attName);
+      TextField name = getFieldClone(attName);
       name.setText(fAtts[i]);
-      this.extraAtts.add(name);
+      extraAtts.add(name);
 
-      MFXTextField val = this.getMFXFieldClone(this.attValue);
+      MFXTextField val = getMFXFieldClone(attValue);
       val.getStyleClass().clear();
       val.getStyleClass().add("mfx-text-field");
       val.getStyleClass().add("requestInput");
@@ -1096,10 +1096,10 @@ public class MapPageController implements IController {
       val.setMaxHeight(29);
       val.setMinHeight(0);
       val.setText(sreq.get(atts[i]));
-      this.extraVals.add(val);
+      extraVals.add(val);
 
-      this.attVbox.getChildren().add(name);
-      this.valueVbox.getChildren().add(val);
+      attVbox.getChildren().add(name);
+      valueVbox.getChildren().add(val);
     }
   }
 
