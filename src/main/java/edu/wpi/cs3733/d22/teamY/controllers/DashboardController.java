@@ -748,7 +748,6 @@ public class DashboardController implements IController {
 
   @FXML
   public void LL2DirtyEnter() {
-    updateQuickDash();
     dirty_floorl2Popup.setVisible(true);
   }
 
@@ -759,7 +758,6 @@ public class DashboardController implements IController {
 
   @FXML
   public void LL1DirtyEnter() {
-    updateQuickDash();
     dirty_floorl1Popup.setVisible(true);
   }
 
@@ -770,7 +768,7 @@ public class DashboardController implements IController {
 
   @FXML
   public void L1DirtyEnter() {
-    updateQuickDash();
+
     dirty_floor1Popup.setVisible(true);
   }
 
@@ -781,7 +779,7 @@ public class DashboardController implements IController {
 
   @FXML
   public void L2DirtyEnter() {
-    updateQuickDash();
+
     dirty_floor2Popup.setVisible(true);
   }
 
@@ -792,7 +790,7 @@ public class DashboardController implements IController {
 
   @FXML
   public void L3DirtyEnter() {
-    updateQuickDash();
+
     dirty_floor3Popup.setVisible(true);
   }
 
@@ -803,7 +801,7 @@ public class DashboardController implements IController {
 
   @FXML
   public void L4DirtyEnter() {
-    updateQuickDash();
+
     dirty_floor4Popup.setVisible(true);
   }
 
@@ -814,7 +812,7 @@ public class DashboardController implements IController {
 
   @FXML
   public void L5DirtyEnter() {
-    updateQuickDash();
+
     dirty_floor5Popup.setVisible(true);
   }
 
@@ -825,7 +823,7 @@ public class DashboardController implements IController {
 
   @FXML
   public void LL2CleanEnter() {
-    updateQuickDash();
+
     clean_floorl2Popup.setVisible(true);
   }
 
@@ -836,7 +834,7 @@ public class DashboardController implements IController {
 
   @FXML
   public void LL1CleanEnter() {
-    updateQuickDash();
+
     clean_floorl1Popup.setVisible(true);
   }
 
@@ -847,7 +845,7 @@ public class DashboardController implements IController {
 
   @FXML
   public void L1CleanEnter() {
-    updateQuickDash();
+
     clean_floor1Popup.setVisible(true);
   }
 
@@ -858,7 +856,7 @@ public class DashboardController implements IController {
 
   @FXML
   public void L2CleanEnter() {
-    updateQuickDash();
+
     clean_floor2Popup.setVisible(true);
   }
 
@@ -869,7 +867,7 @@ public class DashboardController implements IController {
 
   @FXML
   public void L3CleanEnter() {
-    updateQuickDash();
+
     clean_floor3Popup.setVisible(true);
   }
 
@@ -880,7 +878,7 @@ public class DashboardController implements IController {
 
   @FXML
   public void L4CleanEnter() {
-    updateQuickDash();
+
     clean_floor4Popup.setVisible(true);
   }
 
@@ -891,7 +889,7 @@ public class DashboardController implements IController {
 
   @FXML
   public void L5CleanEnter() {
-    updateQuickDash();
+
     clean_floor5Popup.setVisible(true);
   }
 

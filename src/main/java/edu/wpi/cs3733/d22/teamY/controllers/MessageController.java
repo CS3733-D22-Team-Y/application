@@ -121,8 +121,6 @@ public class MessageController implements IController {
     setChatOpen(chatOpen);
     setChatPickerOpen(newChatOpen);
     String id = PersonalSettings.currentEmployee.getIDNumber();
-    //    System.out.println("Init message controller here: " + id + " " +
-    // ChatManager.getChats().size());
     if (!initialized) {
       id = PersonalSettings.currentEmployee.getIDNumber();
       Firebase.chatRef.child(id).addChildEventListener(childEventListener);
@@ -221,7 +219,6 @@ public class MessageController implements IController {
       try {
         messageArea.getChildren().add(getMessageClone(p));
       } catch (Exception e) {
-        //        System.out.println("Error getting message clone");
       }
     }
     // scrolls to bottom
@@ -305,10 +302,7 @@ public class MessageController implements IController {
         toBox.positionCaret(toBox.getText().length());
       }
     }
-    //    // remove all spaces
-    //    toBox.setText(toBox.getText().replaceAll(" ", ""));
-    //    //    // remove all double commas
-    //    toBox.setText(toBox.getText().replaceAll(",,", ","));
+
 
     int numCommas = 0;
     // find number of commas
