@@ -370,6 +370,8 @@ public class MapPageController implements IController {
                 allLocations.add(newLocation);
                 allLocationIDs.add(l.getNodeID());
 
+                int numOfEquipAtLocation = 0;
+
                 // Add equipment bubbles
                 if (hasEquipment) {
                   for (int i = 0; i < equip.size(); i++) {
@@ -435,6 +437,8 @@ public class MapPageController implements IController {
                       if (!diffEquipTypes.get(j).isEmpty()) hasNodes.add(diffEquipTypes.get(j));
                     }
 
+                    numOfEquipAtLocation = hasNodes.size();
+
                     // One circle should be centered
                     if (hasNodes.size() == 1) {
                       for (Pane currPane : hasNodes.get(0)) {
@@ -495,36 +499,47 @@ public class MapPageController implements IController {
                         });
                     newMedEquip.setOnMouseReleased(
                         e -> {
-                          MapComponent.setIsDraggingPin(false);
-                          // Add the updated equipment
-                          //                          currentEquip %= fuck3.size();
-                          // Issue is here
-                          // MedEquip equipPiece = equip.get(currentEquip % equip.size());
-                          MedEquip equipPiece = equip.get(allMedEquips.get(newMedEquip));
-                          MedEquip newEquip =
-                              new MedEquip(
-                                  String.valueOf(equipPiece.getEquipID()),
-                                  equipPiece.getEquipType(),
-                                  findNearestLoc(
-                                      newMedEquip.getLayoutX() - 48 * .25,
-                                      newMedEquip.getLayoutY() - 95 * .25,
-                                      allLocations,
-                                      allLocationIDs,
-                                      equipPiece.getEquipLocId()),
-                                  equipPiece.getIsClean(),
-                                  equipPiece.getStatus());
-                          DBManager.update(newEquip);
-                          equip.add(newEquip);
-                          switchMap(newFloor, mapMode);
+                          if (MapComponent.getIsDraggingPin()) {
+                            MapComponent.setIsDraggingPin(false);
+                            MedEquip equipPiece = equip.get(allMedEquips.get(newMedEquip));
+                            MedEquip newEquip =
+                                new MedEquip(
+                                    String.valueOf(equipPiece.getEquipID()),
+                                    equipPiece.getEquipType(),
+                                    findNearestLoc(
+                                        newMedEquip.getLayoutX() - 48 * .25,
+                                        newMedEquip.getLayoutY() - 95 * .25,
+                                        allLocations,
+                                        allLocationIDs,
+                                        equipPiece.getEquipLocId()),
+                                    equipPiece.getIsClean(),
+                                    equipPiece.getStatus());
+                            DBManager.update(newEquip);
+                            equip.add(newEquip);
+                            switchMap(newFloor, mapMode);
+                          }
                         });
                   }
                 }
                 // Add service request bubbles
                 if (requests.size() > 0) {
-                  Circle c =
-                      new Circle(l.getXCoord(), l.getYCoord(), CIRCLE_RADIUS_PX, CIRCLE_PAINT);
-                  newServiceRequest.setLayoutX(l.getXCoord() - 20);
-                  newServiceRequest.setLayoutY(l.getYCoord());
+                  // Set location (circle thingy)
+                  if (numOfEquipAtLocation == 0) {
+                    newServiceRequest.setLayoutX(l.getXCoord() + iconDim);
+                    newServiceRequest.setLayoutY(l.getYCoord());
+                  } else if (numOfEquipAtLocation == 1) {
+                    newServiceRequest.setLayoutX(l.getXCoord() + (iconDim / 6) + iconDim);
+                    newServiceRequest.setLayoutY(l.getYCoord());
+                  } else {
+                    ArrayList<Point> points =
+                        getHex(
+                            numOfEquipAtLocation + 1,
+                            iconDim / 2,
+                            new Point(l.getXCoord(), l.getYCoord()));
+                    Point finalPoint = points.get(numOfEquipAtLocation);
+                    newServiceRequest.setLayoutX(finalPoint.x);
+                    newServiceRequest.setLayoutY(finalPoint.y);
+                  }
                   Circle frame =
                       new Circle(
                           iconDim / 2,
