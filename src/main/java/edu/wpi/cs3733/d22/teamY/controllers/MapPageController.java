@@ -700,9 +700,8 @@ public class MapPageController implements IController {
                               equipType.getText(),
                               equipLocation.getText(),
                               equipClean.getText(),
-                              ""); // TODO fix
+                              " "); // TODO fix
                       DBManager.update(t);
-                      DBManager.save(t);
 
                       equip.add(t);
                       switchMap(newFloor, mapMode);
